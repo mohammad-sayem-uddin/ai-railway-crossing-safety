@@ -1,0 +1,255 @@
+"""Command-line interface for the railway detection research foundation."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from collections.abc import Sequence
+from pathlib import Path
+from typing import Any
+
+from railway_detection import __version__
+from railway_detection.config.exceptions import ConfigError
+from railway_detection.config.loader import ConfigLoader
+from railway_detection.data.split import generate_group_split, verify_group_disjointness
+from railway_detection.data.validator import validate_vision_dataset
+from railway_detection.utils.logging import configure_logging, get_logger
+from railway_detection.utils.reproducibility import (
+    append_registry_record,
+    build_run_manifest,
+    write_run_manifest,
+)
+
+logger = get_logger("cli")
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    configure_logging()
+    parser = build_parser()
+    try:
+        args = parser.parse_args(argv)
+    except SystemExit as exc:
+        return int(exc.code or 0)
+    if not hasattr(args, "func"):
+        parser.print_help()
+        return 0
+    try:
+        return int(args.func(args))
+    except ConfigError as exc:
+        logger.error("configuration error: %s", exc)
+        return 2
+    except KeyboardInterrupt:
+        logger.warning("interrupted")
+        return 130
+    except Exception as exc:  # pragma: no cover - last-resort CLI boundary
+        logger.exception("unexpected error: %s", exc)
+        return 1
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="railway_detection",
+        description="Railway-crossing train detection research foundation (simulation only).",
+    )
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+    subparsers = parser.add_subparsers(dest="command")
+
+    data_parser = subparsers.add_parser("data", help="Dataset validation and split commands")
+    data_sub = data_parser.add_subparsers(dest="data_command", required=True)
+
+    validate_parser = data_sub.add_parser("validate", help="Validate a vision dataset")
+    validate_parser.add_argument("--config", required=True, help="Path to vision.yaml")
+    validate_parser.add_argument("--dry-run", action="store_true", help="Validate config only")
+    validate_parser.add_argument("--output-dir", default=None, help="Override output directory")
+    validate_parser.set_defaults(func=_data_validate)
+
+    split_parser = data_sub.add_parser("split", help="Generate a group-aware split")
+    split_parser.add_argument("--config", required=True, help="Path to vision.yaml")
+    split_parser.add_argument("--metadata", default=None, help="Path to a JSON/JSONL metadata file")
+    split_parser.add_argument("--dry-run", action="store_true", help="Validate config only")
+    split_parser.add_argument(
+        "--allow-ungrouped",
+        action="store_true",
+        help="Explicitly allow fallback splitting",
+    )
+    split_parser.set_defaults(func=_data_split)
+
+    # Future namespaces: clear "not implemented in Phase 0" errors.
+    for name in ("vision", "audio", "simulate", "experiment", "report"):
+        sub = subparsers.add_parser(name, help=f"{name} commands (Phase 0 placeholder)")
+        sub_sub = sub.add_subparsers(dest=f"{name}_command", required=True)
+        for action in ("train", "evaluate", "infer", "run", "generate"):
+            action_parser = sub_sub.add_parser(action, help="Not implemented in Phase 0")
+            action_parser.add_argument("--config", required=False)
+            action_parser.add_argument("--checkpoint", required=False)
+            action_parser.add_argument("--source", required=False)
+            action_parser.add_argument("--source-id", required=False)
+            action_parser.add_argument("--scenario", required=False)
+            action_parser.set_defaults(func=_not_implemented)
+
+    return parser
+
+
+def _data_validate(args: argparse.Namespace) -> int:
+    loader = ConfigLoader()
+    config = loader.load_vision(args.config)
+
+    if args.dry_run:
+        logger.info("dry-run: config valid; no dataset validation performed")
+        return 0
+
+    output_dir = Path(args.output_dir) if args.output_dir else config.output_root
+    manifest = build_run_manifest(
+        command="data validate",
+        config=_config_dict(config),
+        output_dir=output_dir,
+        seed=config.seed,
+        dataset_identity=str(config.dataset_root),
+        mock_data=config.mock_data,
+    )
+    write_run_manifest(manifest, output_dir)
+
+    report = validate_vision_dataset(
+        config.dataset_root,
+        config.annotations_root,
+        config.class_mapping,
+        mock_data=config.mock_data,
+        detect_duplicate_hashes=config.detect_duplicate_hashes,
+    )
+    report_path = output_dir / "report.json"
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text(json.dumps(report.to_dict(), indent=2) + "\n", encoding="utf-8")
+    logger.info("validation report written to %s", report_path)
+
+    append_registry_record(
+        {
+            "run_id": manifest["run_id"],
+            "command": "data validate",
+            "dataset_root": str(config.dataset_root),
+            "mock_data": config.mock_data,
+            "passed": report.passed,
+            "error_count": report.error_count,
+            "warning_count": report.warning_count,
+            "report_path": str(report_path),
+        },
+        Path("results/experiment_registry.jsonl"),
+    )
+
+    if not report.passed:
+        logger.error(
+            "validation failed with %d error(s) and %d warning(s)",
+            report.error_count,
+            report.warning_count,
+        )
+        return 1
+    logger.info(
+        "validation passed: %d image(s), %d annotation(s), %d warning(s)",
+        report.image_count,
+        report.annotation_count,
+        report.warning_count,
+    )
+    return 0
+
+
+def _data_split(args: argparse.Namespace) -> int:
+    loader = ConfigLoader()
+    config = loader.load_vision(args.config)
+
+    if args.dry_run:
+        logger.info("dry-run: config valid; no split generated")
+        return 0
+
+    samples = _load_samples(args.metadata, config)
+    split = generate_group_split(
+        samples,
+        group_field=config.split.get("group_field", "crossing_id"),
+        ratios=config.split["ratios"],
+        seed=config.seed,
+        require_grouping=bool(config.split.get("require_grouping", True)),
+        allow_ungrouped_fallback=args.allow_ungrouped
+        or bool(config.split.get("allow_ungrouped_fallback", False)),
+    )
+
+    output_dir = config.split_output_root / split.split_id
+    manifest = build_run_manifest(
+        command="data split",
+        config=_config_dict(config),
+        output_dir=output_dir,
+        seed=config.seed,
+        dataset_identity=str(config.dataset_root),
+        mock_data=config.mock_data,
+        extra={"split_summary": split.to_dict()},
+    )
+    write_run_manifest(manifest, output_dir)
+
+    for name, ids in split.partitions.items():
+        path = output_dir / f"{name}.jsonl"
+        path.write_text(
+            "\n".join(json.dumps({"sample_id": i}) for i in ids) + "\n",
+            encoding="utf-8",
+        )
+
+    summary_path = output_dir / "split_summary.json"
+    summary_path.write_text(json.dumps(split.to_dict(), indent=2) + "\n", encoding="utf-8")
+
+    for warning in split.warnings:
+        logger.warning("%s", warning)
+
+    if split.error:
+        logger.error("split failed: %s", split.error)
+        return 1
+
+    disjoint = verify_group_disjointness(split)
+    if not disjoint["disjoint"]:
+        logger.error("split is not group-disjoint: %s", disjoint["overlapping_groups"])
+        return 1
+
+    logger.info("split written to %s (group-disjoint: yes)", output_dir)
+    return 0
+
+
+def _load_samples(metadata_path: str | None, config: object) -> list[Any]:
+    """Load normalized samples from a JSON/JSONL metadata file."""
+    from dataclasses import dataclass
+
+    @dataclass
+    class Sample:
+        sample_id: str
+        split_group_id: str | None
+
+    if not metadata_path:
+        # Fall back to configured metadata path when present.
+        metadata_path = getattr(config, "metadata_path", None)
+    if not metadata_path:
+        return []
+
+    path = Path(metadata_path)
+    if not path.exists():
+        return []
+
+    samples: list[Any] = []
+    text = path.read_text(encoding="utf-8")
+    for line in text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        record = json.loads(line)
+        sample_id = record.get("image_id") or record.get("clip_id")
+        if not sample_id:
+            continue
+        group_id = record.get("split_group_id")
+        samples.append(Sample(sample_id=sample_id, split_group_id=group_id))
+    return samples
+
+
+def _config_dict(config: object) -> dict[str, object]:
+    return getattr(config, "raw", {})
+
+
+def _not_implemented(args: argparse.Namespace) -> int:
+    logger.error("this command is not implemented in Phase 0")
+    return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

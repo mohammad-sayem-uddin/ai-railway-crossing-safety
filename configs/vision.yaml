@@ -1,0 +1,31 @@
+adapter: yolo
+mock_data: false
+
+dataset_root: data/raw/vision/v1/baler.v1i.yolov8
+annotations_root: data/raw/vision/v1/baler.v1i.yolov8
+metadata_path: data/metadata/vision_v1_metadata.json
+
+class_mapping:
+  front: 0
+  rear: 1
+  side: 2
+
+negative_policy: missing_label_is_negative
+
+seed: 42
+device: cpu
+image_size: [640, 640]
+
+output_root: results/dataset_validation
+split_output_root: data/splits
+
+detect_duplicate_hashes: true
+
+split:
+  ratios:
+    train: 0.7
+    val: 0.15
+    test: 0.15
+  group_field: crossing_id
+  require_grouping: true
+  allow_ungrouped_fallback: false

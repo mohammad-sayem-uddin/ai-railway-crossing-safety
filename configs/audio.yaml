@@ -1,0 +1,25 @@
+adapter: wav
+mock_data: false
+
+dataset_root: data/raw/audio
+metadata_path: data/metadata/audio_metadata.json
+
+label_mapping:
+  train_horn: 0
+  non_train_sound: 1
+
+sample_rate: 16000
+seed: 42
+device: cpu
+
+output_root: results/dataset_validation
+split_output_root: data/splits
+
+split:
+  ratios:
+    train: 0.7
+    val: 0.15
+    test: 0.15
+  group_field: session_id
+  require_grouping: true
+  allow_ungrouped_fallback: false

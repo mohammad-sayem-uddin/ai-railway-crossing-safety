@@ -1,0 +1,29 @@
+# Phase 0 placeholder schema only. No fusion policy is executed yet.
+policy_version: "0.0.0"
+
+source_roles:
+  camera_1:
+    role: approach_side
+    allowed_labels: [front, side]
+  camera_2:
+    role: departure_side
+    allowed_labels: [side, rear]
+  microphone_1:
+    role: audio
+    allowed_labels: [train_horn]
+
+confidence_thresholds:
+  front: 0.5
+  side: 0.5
+  rear: 0.5
+  train_horn: 0.5
+
+temporal:
+  confirm_window_s: 1.0
+  evidence_expiry_s: 5.0
+  smoothing: null
+
+opening_criteria:
+  requires_positive_departure: true
+  requires_clearance_evidence: true
+  audio_cannot_authorize_opening: true

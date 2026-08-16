@@ -1,0 +1,10 @@
+# Phase 0 placeholder schema only. No simulation runner is executed yet.
+scenario_name: normal
+mock_data: true
+
+timing:
+  warning_dwell_s: 2.0
+  gate_closing_s: 3.0
+  gate_open_s: 3.0
+
+output_root: results/simulations
