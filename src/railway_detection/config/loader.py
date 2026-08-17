@@ -25,6 +25,8 @@ class VisionConfig:
     image_size: tuple[int, int]
     output_root: Path
     split_output_root: Path
+    experiment_root: Path
+    training: dict[str, Any]
     detect_duplicate_hashes: bool
     split: dict[str, Any]
     source_path: Path
@@ -105,6 +107,10 @@ class ConfigLoader:
             image_size=_as_int_pair(raw.get("image_size", [640, 640]), "image_size"),
             output_root=self._resolve(raw["output_root"]),
             split_output_root=self._resolve(raw["split_output_root"]),
+            experiment_root=self._resolve(
+                raw.get("experiment_root", "experiments/vision")
+            ),
+            training=self._validate_training(raw.get("training", {})),
             detect_duplicate_hashes=bool(raw.get("detect_duplicate_hashes", True)),
             split=self._validate_split(raw.get("split", {}), "vision"),
             source_path=self._abs_path(path),
@@ -251,6 +257,24 @@ class ConfigLoader:
         if abs(total - 1.0) > 1e-6:
             raise ConfigError(f"{kind} split ratios must sum to 1.0, got {total}")
         return split
+
+    def _validate_training(self, training: Any) -> dict[str, Any]:
+        if not isinstance(training, dict):
+            raise ConfigError("vision training must be a mapping")
+        validated = dict(training)
+        if "model_name" in validated:
+            validated["model_name"] = str(validated["model_name"])
+        if "epochs" in validated:
+            validated["epochs"] = _as_int(validated["epochs"], "training.epochs")
+        if "batch_size" in validated:
+            validated["batch_size"] = _as_int(validated["batch_size"], "training.batch_size")
+        if "workers" in validated:
+            validated["workers"] = _as_int(validated["workers"], "training.workers")
+        if "lr0" in validated:
+            validated["lr0"] = _as_float(validated["lr0"], "training.lr0")
+        if "optimizer" in validated:
+            validated["optimizer"] = str(validated["optimizer"])
+        return validated
 
     def _resolve(self, value: Any) -> Path:
         path = Path(str(value))

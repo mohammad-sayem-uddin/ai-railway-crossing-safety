@@ -16,8 +16,17 @@ seed: 42
 device: cpu
 image_size: [640, 640]
 
+training:
+  model_name: yolov8n.pt
+  epochs: 100
+  batch_size: 16
+  workers: 4
+  optimizer: auto
+  lr0: 0.01
+
 output_root: results/dataset_validation
 split_output_root: data/splits
+experiment_root: experiments/vision
 
 detect_duplicate_hashes: true
 

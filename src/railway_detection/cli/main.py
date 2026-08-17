@@ -78,8 +78,32 @@ def build_parser() -> argparse.ArgumentParser:
     )
     split_parser.set_defaults(func=_data_split)
 
+    vision_parser = subparsers.add_parser("vision", help="Vision training commands")
+    vision_sub = vision_parser.add_subparsers(dest="vision_command", required=True)
+
+    vision_train_parser = vision_sub.add_parser(
+        "train", help="Train a vision model from split manifests"
+    )
+    vision_train_parser.add_argument("--config", required=True, help="Path to vision.yaml")
+    vision_train_parser.add_argument(
+        "--split-id",
+        default=None,
+        help="Split id under data/splits/<id>/ (latest if omitted)",
+    )
+    vision_train_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Build descriptors and resolve config without training",
+    )
+    vision_train_parser.add_argument(
+        "--mock",
+        action="store_true",
+        help="Force a mock backend (tests only)",
+    )
+    vision_train_parser.set_defaults(func=_vision_train)
+
     # Future namespaces: clear "not implemented in Phase 0" errors.
-    for name in ("vision", "audio", "simulate", "experiment", "report"):
+    for name in ("audio", "simulate", "experiment", "report"):
         sub = subparsers.add_parser(name, help=f"{name} commands (Phase 0 placeholder)")
         sub_sub = sub.add_subparsers(dest=f"{name}_command", required=True)
         for action in ("train", "evaluate", "infer", "run", "generate"):
@@ -231,6 +255,123 @@ def _data_split(args: argparse.Namespace) -> int:
 
     logger.info("split written to %s (group-disjoint: yes)", output_dir)
     return 0
+
+
+def _vision_train(args: argparse.Namespace) -> int:
+    loader = ConfigLoader()
+    config = loader.load_vision(args.config)
+
+    split_id = args.split_id or _latest_split_id(config.split_output_root)
+    if split_id is None:
+        logger.error(
+            "no split found under %s; run `data split` first",
+            config.split_output_root,
+        )
+        return 1
+    split_dir = config.split_output_root / split_id
+    summary_path = split_dir / "split_summary.json"
+    if not summary_path.exists():
+        logger.error("split summary not found at %s", summary_path)
+        return 1
+    split_summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    from railway_detection.data.split import SplitSummary
+
+    summary = SplitSummary(
+        split_id=split_summary["split_id"],
+        group_field=split_summary["group_field"],
+        seed=split_summary["seed"],
+        ratios=split_summary["ratios"],
+        require_grouping=split_summary["require_grouping"],
+        allow_ungrouped_fallback=split_summary["allow_ungrouped_fallback"],
+        partitions=split_summary["partitions"],
+        group_assignments=split_summary["group_assignments"],
+        warnings=split_summary["warnings"],
+    )
+
+    if args.mock:
+        from railway_detection.vision.trainer import train_vision
+
+        class MockBackend:
+            backend_name = "mock"
+
+            def prepare_dataset(self, split_summary, output_dir):
+                output_dir.mkdir(parents=True, exist_ok=True)
+                return output_dir / "data.yaml"
+
+            def train(self, config, data_descriptor, output_dir):
+                output_dir.mkdir(parents=True, exist_ok=True)
+                return output_dir / "best.pt"
+
+            def evaluate(self, checkpoint_path, split_manifest):
+                return {}
+
+            def load(self, checkpoint_path):
+                pass
+
+            def predict(self, image, conf, iou):
+                return []
+
+            def predict_batch(self, images, conf, iou):
+                return [[] for _ in images]
+
+        result = train_vision(
+            config,
+            summary,
+            MockBackend(),
+            output_root=config.experiment_root,
+            dry_run=args.dry_run,
+        )
+    else:
+        from railway_detection.vision.trainer import train_vision
+        from railway_detection.vision.yolo_adapter import UltralyticsYOLOAdapter
+
+        result = train_vision(
+            config,
+            summary,
+            UltralyticsYOLOAdapter(),
+            output_root=config.experiment_root,
+            dry_run=args.dry_run,
+        )
+
+    if result.errors:
+        logger.error("training failed: %s", result.errors[0])
+        return 1
+    if args.dry_run:
+        logger.info("dry-run complete: run_id=%s", result.run_id)
+    else:
+        logger.info("training complete: run_id=%s", result.run_id)
+        append_registry_record(
+            {
+                "run_id": result.run_id,
+                "command": "vision train",
+                "dataset_root": str(config.dataset_root),
+                "mock_data": bool(args.mock or config.mock_data),
+                "checkpoint_path": str(result.checkpoint_path)
+                if result.checkpoint_path
+                else None,
+                "split_id": summary.split_id,
+            },
+            Path("results/experiment_registry.jsonl"),
+        )
+    return 0
+
+
+def _latest_split_id(split_output_root: Path) -> str | None:
+    if not split_output_root.exists():
+        return None
+    candidates = [
+        path.name for path in split_output_root.iterdir() if path.is_dir()
+    ]
+    if not candidates:
+        return None
+    return sorted(candidates, key=lambda name: _mtime(split_output_root / name))[-1]
+
+
+def _mtime(path: Path) -> float:
+    try:
+        return path.stat().st_mtime
+    except OSError:
+        return 0.0
 
 
 def _load_metadata_mapping(metadata_path: Path | None) -> dict[str, Any] | None:
