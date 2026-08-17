@@ -403,7 +403,7 @@ def _load_metadata_mapping(metadata_path: Path | None) -> dict[str, Any] | None:
 
 
 def _load_samples(metadata_path: str | None, config: object) -> list[Any]:
-    """Load normalized samples from a JSON/JSONL metadata file."""
+    """Load normalized samples from a JSON/JSONL metadata file or manifest."""
     from dataclasses import dataclass
 
     @dataclass
@@ -411,29 +411,39 @@ def _load_samples(metadata_path: str | None, config: object) -> list[Any]:
         sample_id: str
         split_group_id: str | None
 
-    if not metadata_path:
-        # Fall back to configured metadata path when present.
-        metadata_path = getattr(config, "metadata_path", None)
-    if not metadata_path:
-        return []
+    candidate_paths: list[Path] = []
+    if metadata_path:
+        candidate_paths.append(Path(metadata_path))
+    cfg_meta = getattr(config, "metadata_path", None)
+    if cfg_meta:
+        candidate_paths.append(Path(cfg_meta))
+    cfg_out = getattr(config, "output_root", None)
+    if cfg_out:
+        candidate_paths.append(Path(cfg_out) / "dataset_manifest.jsonl")
 
-    path = Path(metadata_path)
-    if not path.exists():
-        return []
-
-    samples: list[Any] = []
-    text = path.read_text(encoding="utf-8")
-    for line in text.splitlines():
-        line = line.strip()
-        if not line:
+    for path in candidate_paths:
+        if not path.exists() or not path.is_file():
             continue
-        record = json.loads(line)
-        sample_id = record.get("image_id") or record.get("clip_id")
-        if not sample_id:
+        try:
+            samples: list[Any] = []
+            text = path.read_text(encoding="utf-8")
+            for line in text.splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                record = json.loads(line)
+                if not isinstance(record, dict):
+                    continue
+                sample_id = record.get("image_id") or record.get("clip_id")
+                if not sample_id:
+                    continue
+                group_id = record.get("split_group_id")
+                samples.append(Sample(sample_id=sample_id, split_group_id=group_id))
+            if samples:
+                return samples
+        except Exception:
             continue
-        group_id = record.get("split_group_id")
-        samples.append(Sample(sample_id=sample_id, split_group_id=group_id))
-    return samples
+    return []
 
 
 def _config_dict(config: object) -> dict[str, object]:
