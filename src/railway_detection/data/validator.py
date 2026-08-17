@@ -11,6 +11,8 @@ from typing import Any
 
 from PIL import Image
 
+from railway_detection.data.contracts import BoundingBox, VisionAnnotation
+
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"}
 LABEL_EXTENSIONS = {".txt"}
 
@@ -132,7 +134,7 @@ def validate_vision_dataset(
             digest = _file_sha256(image_path)
             hash_groups[digest].append(image_path)
 
-        label_path = _label_path_for(annotations_root, image_path)
+        label_path = label_path_for(annotations_root, image_path)
         if label_path is None or not label_path.exists():
             report.issues.append(
                 ValidationIssue(
@@ -144,18 +146,16 @@ def validate_vision_dataset(
             )
             continue
 
-        label_errors = _parse_label_file(label_path, id_to_class)
+        label_errors = parse_label_file(label_path, id_to_class)
         if label_errors:
             for code, message in label_errors:
                 report.issues.append(ValidationIssue(sample_id, "error", code, message))
             continue
 
         report.annotation_count += 1
-        classes, annotations = _parse_annotations(label_path, id_to_class)
-        for class_name in classes:
-            report.class_distribution[class_name] += 1
-        for code, message in annotations:
-            report.issues.append(ValidationIssue(sample_id, "error", code, message))
+        annotations = parse_label_annotations(label_path, id_to_class)
+        for annotation in annotations:
+            report.class_distribution[annotation.label] += 1
 
     for basename, paths in basename_groups.items():
         if len(paths) > 1:
@@ -211,7 +211,12 @@ def _file_sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _label_path_for(annotations_root: Path, image_path: Path) -> Path | None:
+def label_path_for(annotations_root: Path, image_path: Path) -> Path | None:
+    """Locate the YOLO label file for an image in a Roboflow-style layout.
+
+    Resolves the split-aware ``images/`` sibling layout first, then a direct
+    sibling file next to the image.
+    """
     direct = annotations_root / (image_path.stem + ".txt")
     if direct.exists():
         return direct
@@ -222,7 +227,8 @@ def _label_path_for(annotations_root: Path, image_path: Path) -> Path | None:
     return direct
 
 
-def _parse_label_file(path: Path, id_to_class: dict[int, str]) -> list[tuple[str, str]]:
+def parse_label_file(path: Path, id_to_class: dict[int, str]) -> list[tuple[str, str]]:
+    """Validate a YOLO label file; returns ``(error_code, message)`` pairs."""
     errors: list[tuple[str, str]] = []
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
@@ -264,16 +270,20 @@ def _parse_label_file(path: Path, id_to_class: dict[int, str]) -> list[tuple[str
     return errors
 
 
-def _parse_annotations(
+def parse_label_annotations(
     path: Path, id_to_class: dict[int, str]
-) -> tuple[list[str], list[tuple[str, str]]]:
-    classes: list[str] = []
-    errors: list[tuple[str, str]] = []
+) -> list[VisionAnnotation]:
+    """Parse a validated YOLO label file into normalized annotations.
+
+    Lines that do not parse are skipped; run :func:`parse_label_file` first to
+    detect and report them.
+    """
+    annotations: list[VisionAnnotation] = []
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
-    except Exception as exc:
-        return classes, [("label_read_error", f"cannot read label {path.name}: {exc}")]
-    for _line_no, line in enumerate(lines, start=1):
+    except Exception:
+        return annotations
+    for line in lines:
         if not line.strip():
             continue
         parts = line.split()
@@ -281,11 +291,27 @@ def _parse_annotations(
             continue
         try:
             class_id = int(float(parts[0]))
+            x_center, y_center, width, height = (float(part) for part in parts[1:])
         except ValueError:
             continue
-        if class_id in id_to_class:
-            classes.append(id_to_class[class_id])
-    return classes, errors
+        if class_id not in id_to_class:
+            continue
+        if not _normalized_box_valid([x_center, y_center, width, height]):
+            continue
+        xmin = x_center - width / 2
+        ymin = y_center - height / 2
+        annotations.append(
+            VisionAnnotation(
+                label=id_to_class[class_id],
+                bbox=BoundingBox(
+                    xmin=xmin,
+                    ymin=ymin,
+                    xmax=xmin + width,
+                    ymax=ymin + height,
+                ),
+            )
+        )
+    return annotations
 
 
 def _normalized_box_valid(values: list[float]) -> bool:

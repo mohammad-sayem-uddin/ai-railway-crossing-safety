@@ -11,6 +11,10 @@ from typing import Any
 from railway_detection import __version__
 from railway_detection.config.exceptions import ConfigError
 from railway_detection.config.loader import ConfigLoader
+from railway_detection.data.manifest import (
+    build_vision_manifest,
+    write_manifest,
+)
 from railway_detection.data.split import generate_group_split, verify_group_disjointness
 from railway_detection.data.validator import validate_vision_dataset
 from railway_detection.utils.logging import configure_logging, get_logger
@@ -121,6 +125,27 @@ def _data_validate(args: argparse.Namespace) -> int:
     report_path.write_text(json.dumps(report.to_dict(), indent=2) + "\n", encoding="utf-8")
     logger.info("validation report written to %s", report_path)
 
+    if report.passed:
+        metadata = _load_metadata_mapping(config.metadata_path)
+        manifest_result, manifest_summary = build_vision_manifest(
+            config.dataset_root,
+            config.annotations_root,
+            config.class_mapping,
+            metadata=metadata,
+        )
+        manifest_path = write_manifest(
+            manifest_result,
+            output_dir,
+            metadata={"dataset_identity": str(config.dataset_root)},
+        )
+        logger.info(
+            "dataset manifest written to %s (%d records)",
+            manifest_path,
+            manifest_summary.sample_count,
+        )
+        for warning in manifest_result.warnings:
+            logger.warning("%s", warning)
+
     append_registry_record(
         {
             "run_id": manifest["run_id"],
@@ -206,6 +231,34 @@ def _data_split(args: argparse.Namespace) -> int:
 
     logger.info("split written to %s (group-disjoint: yes)", output_dir)
     return 0
+
+
+def _load_metadata_mapping(metadata_path: Path | None) -> dict[str, Any] | None:
+    """Load a per-image metadata mapping, or None when unavailable.
+
+    Dataset-level summary files (like the Roboflow V1 metadata sheet) are not
+    per-image records and are treated as absent, so grouping falls back to the
+    documented inferred-source hint.
+    """
+    if metadata_path is None or not metadata_path.exists():
+        return None
+    try:
+        data = json.loads(metadata_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        logger.warning("metadata file %s is not valid JSON; ignoring", metadata_path)
+        return None
+    if not isinstance(data, dict):
+        return None
+    records = data.get("records")
+    if isinstance(records, dict):
+        return records
+    if data.get("dataset_version") is not None and not any(
+        isinstance(value, dict) for value in data.values() if value not in (None,)
+    ):
+        return None
+    if all(isinstance(value, dict) for value in data.values()):
+        return data
+    return None
 
 
 def _load_samples(metadata_path: str | None, config: object) -> list[Any]:
