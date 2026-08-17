@@ -50,7 +50,7 @@ class UltralyticsYOLOAdapter:
     def train(self, config: object, data_descriptor: Path, output_dir: Path) -> Path:
         """Execute Ultralytics training and return the best checkpoint path."""
         try:
-            from ultralytics import YOLO
+            from ultralytics import YOLO  # type: ignore[import-not-found]
         except ImportError as exc:
             raise ConfigError(
                 "ultralytics is not installed; add it to the environment to "
@@ -78,7 +78,7 @@ class UltralyticsYOLOAdapter:
     def evaluate(self, checkpoint_path: Path, split_manifest: Path) -> dict[str, float]:
         """Evaluate a checkpoint against a held-out split manifest."""
         try:
-            from ultralytics import YOLO
+            from ultralytics import YOLO  # type: ignore[import-not-found]
         except ImportError as exc:
             raise ConfigError("ultralytics is not installed") from exc
 
@@ -91,7 +91,7 @@ class UltralyticsYOLOAdapter:
 
     def load(self, checkpoint_path: Path) -> None:
         try:
-            from ultralytics import YOLO
+            from ultralytics import YOLO  # type: ignore[import-not-found]
         except ImportError as exc:
             raise ConfigError("ultralytics is not installed") from exc
         self._model = YOLO(str(checkpoint_path))
@@ -119,12 +119,19 @@ class UltralyticsYOLOAdapter:
                 label_index = int(box.cls[0])
                 name = result.names.get(label_index, str(label_index))
                 xyxy_raw = box.xyxy[0]
-                xyxy = tuple(float(v) for v in xyxy_raw)
+                xyxy_float = tuple(float(v) for v in xyxy_raw)
+                if len(xyxy_float) != 4:
+                    continue
                 detections.append(
                     Detection(
                         label=str(name),
                         confidence=float(box.conf[0]),
-                        bbox_xyxy=xyxy,
+                        bbox_xyxy=(
+                            xyxy_float[0],
+                            xyxy_float[1],
+                            xyxy_float[2],
+                            xyxy_float[3],
+                        ),
                     )
                 )
             outputs.append(detections)
