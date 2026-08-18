@@ -15,6 +15,7 @@ from research.scripts.generate_evaluation_figures import (
     generate_figure_10_precision_recall_curves,
     generate_figure_11_per_class_metrics_comparison,
     generate_figure_12_confidence_f1_analysis,
+    generate_figure_18_roc_auc_curves,
     load_evaluation_metrics,
 )
 from research.scripts.generate_failure_figures import (
@@ -72,11 +73,13 @@ def test_evaluation_figures_generation(tmp_path: Path):
     generate_figure_10_precision_recall_curves(metrics, tmp_path)
     generate_figure_11_per_class_metrics_comparison(metrics, tmp_path)
     generate_figure_12_confidence_f1_analysis(metrics, tmp_path)
+    generate_figure_18_roc_auc_curves(metrics, tmp_path)
 
     assert (tmp_path / "fig09_confusion_matrix_normalized.png").exists()
     assert (tmp_path / "fig10_precision_recall_curves.png").exists()
     assert (tmp_path / "fig11_per_class_metrics_comparison.png").exists()
     assert (tmp_path / "fig12_confidence_f1_analysis.png").exists()
+    assert (tmp_path / "fig18_roc_auc_curves.png").exists()
 
 
 def test_failure_figures_generation(tmp_path: Path):

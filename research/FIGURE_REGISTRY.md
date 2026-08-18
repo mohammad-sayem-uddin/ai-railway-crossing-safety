@@ -30,12 +30,13 @@ This registry indexes all research figures, diagrams, and empirical artifacts pr
 | **FIGURE 15** | `fig15_failure_examples` | Qualitative Boundary & Failure Examples | **Real Empirical Inference** | Model `best.pt` on Test Frames | [`generate_qualitative_figures.py`](file:///Users/sayemuddin/Desktop/Train_automation/research/scripts/generate_qualitative_figures.py) |
 | **FIGURE 16** | `fig16_video_progression_sequence` | Temporal Passage Progression (Approach $\to$ Passage $\to$ Departure) | **Real Empirical Inference** | Test Video Stream / Sequential Frames | [`generate_video_progression_figure.py`](file:///Users/sayemuddin/Desktop/Train_automation/research/scripts/generate_video_progression_figure.py) |
 | **FIGURE 17** | `fig17_ablation_comparison` | Multi-System Ablation Safety Evaluation | *Future Experiment Placeholder* | `research/templates/ablation_template.csv` | [`generate_ablation_figures.py`](file:///Users/sayemuddin/Desktop/Train_automation/research/scripts/generate_ablation_figures.py) |
+| **FIGURE 18** | `fig18_roc_auc_curves` | Receiver Operating Characteristic (ROC) & AUC Curves | **Real Empirical Data** | `experiments/vision/39f402dfe460/evaluation/metrics.json` | [`generate_evaluation_figures.py`](file:///Users/sayemuddin/Desktop/Train_automation/research/scripts/generate_evaluation_figures.py) |
 
 ---
 
 ## Categorization Breakdown
 
-1. **Empirical Results (7 Figures):** Figures 7, 8, 9, 10, 11, 12, 13
+1. **Empirical Results (8 Figures):** Figures 7, 8, 9, 10, 11, 12, 13, 18
 2. **Empirical Qualitative Inference (3 Figures):** Figures 14, 15, 16
 3. **Conceptual Architecture & System Logic (6 Figures):** Figures 1, 2, 3, 4, 5, 6
 4. **Future Experiment Placeholders (1 Figure / Template):** Figure 17

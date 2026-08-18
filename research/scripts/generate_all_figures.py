@@ -26,6 +26,7 @@ from research.scripts.generate_evaluation_figures import (  # noqa: E402
     generate_figure_10_precision_recall_curves,
     generate_figure_11_per_class_metrics_comparison,
     generate_figure_12_confidence_f1_analysis,
+    generate_figure_18_roc_auc_curves,
     load_evaluation_metrics,
 )
 from research.scripts.generate_failure_figures import (  # noqa: E402
@@ -85,6 +86,7 @@ def main() -> None:
     generate_figure_10_precision_recall_curves(metrics)
     generate_figure_11_per_class_metrics_comparison(metrics)
     generate_figure_12_confidence_f1_analysis(metrics)
+    generate_figure_18_roc_auc_curves(metrics)
 
     # 6. Failure Analysis Visualization
     print("\n[6/8] Generating Failure Mode Distribution...")

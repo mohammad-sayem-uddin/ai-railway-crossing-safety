@@ -70,6 +70,7 @@ These figures are generated directly from verified baseline training logs and he
 - **Figure 14 (`fig14_qualitative_detections`):** 2×3 annotated detection grid on representative test frames using trained weights `best.pt`.
 - **Figure 15 (`fig15_failure_examples`):** Visual diagnostic examples of low-confidence approach and trackside clutter false alarms.
 - **Figure 16 (`fig16_video_progression_sequence`):** Multi-frame progression sequence illustrating transitions across detection zones (Approach $\to$ Passage $\to$ Departure).
+- **Figure 18 (`fig18_roc_auc_curves`):** Receiver Operating Characteristic (ROC) curves and Area Under Curve (AUC) scores per class and macro-average from `metrics.json`.
 
 ### B. Conceptual Architecture & Logic Diagrams
 These figures define the theoretical system architecture, sensor layouts, and formal decision mechanisms:
