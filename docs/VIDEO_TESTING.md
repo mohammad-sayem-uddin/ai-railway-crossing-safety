@@ -32,8 +32,26 @@ The demo tool always maps and renders the three canonical train viewpoint classe
 
 ## 3. Quick Start & Execution
 
-### Basic Interactive Run
-Run the tool from the repository root without arguments:
+### Option 1: Interactive Web Dashboard (Recommended — No Terminal Needed!)
+Launch the interactive graphical dashboard with:
+```bash
+python dashboard.py
+```
+*(or `python scripts/dashboard.py`)*
+
+This opens the local web application at `http://127.0.0.1:8501` featuring:
+- Drag-and-drop video upload and playback
+- Real-time animated progress meter and live class counters
+- Interactive confidence and IoU sliders
+- Apple Silicon MPS / GPU hardware acceleration
+- Single-image quick test dropzone
+- Baseline benchmark results, PR curves, and confusion matrix viewer
+- History replay of all past test runs
+
+---
+
+### Option 2: Terminal Interactive Run
+Run the CLI tool without arguments:
 ```bash
 python demo_video.py
 ```
