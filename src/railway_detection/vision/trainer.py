@@ -67,7 +67,7 @@ def train_vision(
 
     if dry_run:
         run_dir.mkdir(parents=True, exist_ok=True)
-        descriptor = backend.prepare_dataset(split_summary, run_dir / "descriptor")
+        descriptor = _prepare_descriptor(backend, split_summary, run_dir / "descriptor", config)
         resolved = {
             "training": getattr(config, "training", {}),
             "seed": getattr(config, "seed", None),
@@ -92,11 +92,12 @@ def train_vision(
         seed=getattr(config, "seed", None),
         dataset_identity=str(getattr(config, "dataset_root", "")),
         mock_data=bool(getattr(config, "mock_data", False)),
+        extra={"device": getattr(config, "device", "mps")},
     )
     write_run_manifest(manifest, run_dir)
 
     descriptor_dir = run_dir / "descriptor"
-    descriptor = backend.prepare_dataset(split_summary, descriptor_dir)
+    descriptor = _prepare_descriptor(backend, split_summary, descriptor_dir, config)
 
     try:
         checkpoint = backend.train(config, descriptor, run_dir / "checkpoints")
@@ -141,6 +142,20 @@ def _generate_run_id() -> str:
     from railway_detection.utils.reproducibility import generate_run_id
 
     return generate_run_id()
+
+
+def _prepare_descriptor(
+    backend: Any, split_summary: SplitSummary, output_dir: Path, config: object
+) -> Path:
+    try:
+        return backend.prepare_dataset(
+            split_summary,
+            output_dir,
+            dataset_root=getattr(config, "dataset_root", None),
+            class_mapping=getattr(config, "class_mapping", None),
+        )
+    except TypeError:
+        return backend.prepare_dataset(split_summary, output_dir)
 
 
 def _to_yaml(data: dict[str, Any]) -> str:

@@ -1,6 +1,4 @@
 
-from tests.fixtures.mock_data import make_mock_vision_dataset
-
 from railway_detection.config.loader import ConfigLoader
 from railway_detection.data.split import generate_group_split, verify_group_disjointness
 from railway_detection.data.validator import validate_vision_dataset
@@ -9,6 +7,7 @@ from railway_detection.utils.reproducibility import (
     build_run_manifest,
     write_run_manifest,
 )
+from tests.fixtures.mock_data import make_mock_vision_dataset
 
 
 def test_phase0_end_to_end(tmp_path):

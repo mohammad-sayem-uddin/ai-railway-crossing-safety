@@ -38,7 +38,10 @@ class SplitSummary:
         return self.error is None
 
     def to_dict(self) -> dict[str, Any]:
-        is_fallback = bool(self.allow_ungrouped_fallback or any("leakage" in w.lower() or "no crossing" in w.lower() for w in self.warnings))
+        has_leakage_warning = any(
+            "leakage" in w.lower() or "no crossing" in w.lower() for w in self.warnings
+        )
+        is_fallback = bool(self.allow_ungrouped_fallback or has_leakage_warning)
         data: dict[str, Any] = {
             "split_id": self.split_id,
             "split_type": "development_fallback" if is_fallback else "group_disjoint",

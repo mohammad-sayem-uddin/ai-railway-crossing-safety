@@ -2,9 +2,8 @@
 
 import json
 
-from tests.fixtures.mock_data import make_mock_vision_dataset
-
 from railway_detection.cli.main import main
+from tests.fixtures.mock_data import make_mock_vision_dataset
 
 
 def test_cli_validate_mock_dataset(tmp_path):

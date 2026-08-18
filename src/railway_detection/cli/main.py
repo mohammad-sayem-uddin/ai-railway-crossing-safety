@@ -350,6 +350,7 @@ def _vision_train(args: argparse.Namespace) -> int:
                 if result.checkpoint_path
                 else None,
                 "split_id": summary.split_id,
+                "device": getattr(config, "device", "mps"),
             },
             Path("results/experiment_registry.jsonl"),
         )

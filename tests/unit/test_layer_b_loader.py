@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 import pytest
+
+from railway_detection.data.layer_b import load_event_bundle
+from railway_detection.data.sync import SyncAligner
 from tests.fixtures.mock_events import (
     make_mock_event_bundle,
     make_mock_event_bundle_incomplete,
 )
-
-from railway_detection.data.layer_b import load_event_bundle
-from railway_detection.data.sync import SyncAligner
 
 
 def test_load_valid_bundle(tmp_path):
