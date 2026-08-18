@@ -1,0 +1,19 @@
+class_mapping:
+  front: 0
+  rear: 1
+  side: 2
+descriptor: /Users/sayemuddin/Desktop/Train_automation/experiments/vision/189a3afc9809/descriptor/data.yaml
+device: cpu
+dry_run: true
+image_size:
+- 640
+- 640
+seed: 42
+split_id: 705d388743ea
+training:
+  batch_size: 16
+  epochs: 100
+  lr0: 0.01
+  model_name: yolov8n.pt
+  optimizer: auto
+  workers: 4

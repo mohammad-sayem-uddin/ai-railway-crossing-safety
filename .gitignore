@@ -2,51 +2,89 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
 *.egg-info/
 .eggs/
 build/
 dist/
+
+# Virtual Environments
 .venv/
 venv/
+env/
+ENV/
+
+# Testing & Quality Assurance Caches
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .coverage
+.coverage.*
 htmlcov/
 
-# OS & IDE
+# Jupyter
+.ipynb_checkpoints/
+
+# Operating System
 .DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+
+# IDE & Editors
+.vscode/
+.idea/
 .commandcode/
+*.swp
+*.swo
 
-# Data (real research data and generated artifacts are not committed)
-data/raw/vision/*
-!data/raw/vision/.gitkeep
-data/raw/audio/*
-!data/raw/audio/.gitkeep
+# Secrets & Credentials
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+service_account*.json
+
+# Data Protection (raw data, interim data, processed caches, and local split files)
+data/raw/*
+!data/raw/**/.gitkeep
 data/interim/*
-!data/interim/.gitkeep
+!data/interim/**/.gitkeep
 data/processed/*
-!data/processed/.gitkeep
-data/metadata/*
-!data/metadata/.gitkeep
+!data/processed/**/.gitkeep
 data/splits/*
-!data/splits/.gitkeep
+!data/splits/**/.gitkeep
 
-# Models
+# Models & Large Checkpoints
 models/*
 !models/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.engine
+weights/
 
-# Results and generated outputs
-results/*
-!results/.gitkeep
+# Video Outputs & Temporary Uploads
+Unseen_Video/
 outputs/*
 !outputs/.gitkeep
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
 
-# Experiment run directories
-experiments/*
-!experiments/.gitkeep
+# Ephemeral Training Framework Artifacts & Descriptors
+train_batch*.jpg
+train_batch*.png
+labels.jpg
+labels.png
+descriptor/
 
-# Logs
+# Logs & Temporary Files
 *.log
+*.tmp
+*.temp
 runs/
-*.pt

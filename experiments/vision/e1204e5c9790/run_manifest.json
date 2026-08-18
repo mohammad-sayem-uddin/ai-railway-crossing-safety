@@ -1,0 +1,58 @@
+{
+  "command": "vision train",
+  "config": {
+    "adapter": "yolo",
+    "annotations_root": "data/raw/vision/v1/baler.v1i.yolov8",
+    "class_mapping": {
+      "front": 0,
+      "rear": 1,
+      "side": 2
+    },
+    "dataset_root": "data/raw/vision/v1/baler.v1i.yolov8",
+    "detect_duplicate_hashes": true,
+    "device": "cpu",
+    "experiment_root": "experiments/vision",
+    "image_size": [
+      640,
+      640
+    ],
+    "metadata_path": "data/metadata/vision_v1_metadata.json",
+    "mock_data": false,
+    "negative_policy": "missing_label_is_negative",
+    "output_root": "results/dataset_validation",
+    "seed": 42,
+    "split": {
+      "allow_ungrouped_fallback": false,
+      "group_field": "crossing_id",
+      "ratios": {
+        "test": 0.15,
+        "train": 0.7,
+        "val": 0.15
+      },
+      "require_grouping": true
+    },
+    "split_output_root": "data/splits",
+    "training": {
+      "batch_size": 16,
+      "epochs": 100,
+      "lr0": 0.01,
+      "model_name": "yolov8n.pt",
+      "optimizer": "auto",
+      "workers": 4
+    }
+  },
+  "dataset_identity": "/Users/sayemuddin/Desktop/Train_automation/data/raw/vision/v1/baler.v1i.yolov8",
+  "environment": {
+    "executable": "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+    "machine": "arm64",
+    "os": "Darwin",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python_version": "3.11.15"
+  },
+  "git_commit": "3aebefbde9f8d7b9ed39ddfc48f19aa0ca200874",
+  "mock_data": false,
+  "output_dir": "/Users/sayemuddin/Desktop/Train_automation/experiments/vision/e1204e5c9790",
+  "run_id": "b76d5d95fa7a",
+  "seed": 42,
+  "timestamp_utc": "2026-08-17T22:04:42.260232+00:00"
+}

@@ -1,0 +1,303 @@
+{
+  "cases": [
+    {
+      "confidence": 0.2576470375061035,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/1764911995542_jpg.rf.77041aabe19b80f76d2a398a6714c71b",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": 0.4108758270740509,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/IMG_20251204_121459_565_jpg.rf.78496fb1220fe81ba264a453a77a0962",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": 0.3678881525993347,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/IMG_20251204_142126_313_jpg.rf.79e94202fa6effbe623ffd8599e2d8dc",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.3155057728290558,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-08-at-10-58-28_png.rf.160fa215f72be5f35a67ee32a138d67b",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.3631478548049927,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-08-at-10-58-28_png.rf.ec2772cae498a0362091446c12f2d0dc",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.17619678378105164,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-06-31-00_png.rf.0eb4c4557d19c7fe767c7cee282abca2",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "rear"
+    },
+    {
+      "confidence": 0.014134601689875126,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-06-40-23_png.rf.0a1826d7942fbe154950d05a9507c869",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.057099759578704834,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-07-40-50_png.rf.f95717c4fe40712240fb66b7ac55d1bb",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.4797278642654419,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-07-49-24_png.rf.d39d04cd74601eacb38b678389526d20",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.8839758038520813,
+      "failure_code": "front_side_confusion",
+      "image_id": "valid/images/IMG_20251204_110812_644_jpg.rf.42a34c93d8673eff9bbedc39c598436c",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": 0.2576470375061035,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/1764911995542_jpg.rf.77041aabe19b80f76d2a398a6714c71b",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": null,
+      "failure_code": "missed_front",
+      "image_id": "train/images/1764911997062_jpg.rf.01b5af4aaca470ffc6b718afad99195d",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": null
+    },
+    {
+      "confidence": null,
+      "failure_code": "missed_front",
+      "image_id": "train/images/1764911997062_jpg.rf.460b545b365f031196224442e933d060",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": null
+    },
+    {
+      "confidence": null,
+      "failure_code": "missed_front",
+      "image_id": "train/images/1764911997062_jpg.rf.490ef118a4ab813e8dc7c1301e670be5",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": null
+    },
+    {
+      "confidence": 0.4108758270740509,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/IMG_20251204_121459_565_jpg.rf.78496fb1220fe81ba264a453a77a0962",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": 0.3678881525993347,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/IMG_20251204_142126_313_jpg.rf.79e94202fa6effbe623ffd8599e2d8dc",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": null,
+      "failure_code": "missed_front",
+      "image_id": "train/images/Screenshot-2026-07-08-at-10-58-28_png.rf.0ca1fcf86a7c1a743bc4d91797dffeac",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": null
+    },
+    {
+      "confidence": 0.3155057728290558,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-08-at-10-58-28_png.rf.160fa215f72be5f35a67ee32a138d67b",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.3631478548049927,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-08-at-10-58-28_png.rf.ec2772cae498a0362091446c12f2d0dc",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.17619678378105164,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-06-31-00_png.rf.0eb4c4557d19c7fe767c7cee282abca2",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "rear"
+    },
+    {
+      "confidence": 0.014134601689875126,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-06-40-23_png.rf.0a1826d7942fbe154950d05a9507c869",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": null,
+      "failure_code": "missed_front",
+      "image_id": "train/images/Screenshot-2026-07-09-at-07-40-50_png.rf.26750db36238af226750572983489bd8",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": null
+    },
+    {
+      "confidence": null,
+      "failure_code": "missed_front",
+      "image_id": "train/images/Screenshot-2026-07-09-at-07-40-50_png.rf.c1ab10a1245a9b9fa138d3a8c89e0b85",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": null
+    },
+    {
+      "confidence": 0.057099759578704834,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-07-40-50_png.rf.f95717c4fe40712240fb66b7ac55d1bb",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.4797278642654419,
+      "failure_code": "low_confidence_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-07-49-24_png.rf.d39d04cd74601eacb38b678389526d20",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.6063165068626404,
+      "failure_code": "false_train_detection",
+      "image_id": "test/images/image-2025-12-06T094956-241_png.rf.2216a5d775e4cdac0fd130d230c4ee2e",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.8923406600952148,
+      "failure_code": "false_train_detection",
+      "image_id": "train/images/1764911997062_jpg.rf.01b5af4aaca470ffc6b718afad99195d",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.8900823593139648,
+      "failure_code": "false_train_detection",
+      "image_id": "train/images/1764911997062_jpg.rf.460b545b365f031196224442e933d060",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.9132912755012512,
+      "failure_code": "false_train_detection",
+      "image_id": "train/images/1764911997062_jpg.rf.490ef118a4ab813e8dc7c1301e670be5",
+      "label": "front",
+      "metadata": {},
+      "predicted_label": "front"
+    },
+    {
+      "confidence": 0.6452382206916809,
+      "failure_code": "false_train_detection",
+      "image_id": "train/images/Screenshot-2026-05-23-at-14-06-52_png.rf.99b84342c541590091246f3ad1a917ea",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": 0.7086522579193115,
+      "failure_code": "false_train_detection",
+      "image_id": "train/images/Screenshot-2026-05-23-at-14-06-52_png.rf.d7df94507ddf5c3d963097aa5c0027a8",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": 0.5633823871612549,
+      "failure_code": "false_train_detection",
+      "image_id": "train/images/Screenshot-2026-05-23-at-14-06-52_png.rf.ed0ff673ca33c43d52185412839a03ea",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": 0.6798973679542542,
+      "failure_code": "false_train_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-07-40-50_png.rf.26750db36238af226750572983489bd8",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    },
+    {
+      "confidence": 0.6667333245277405,
+      "failure_code": "false_train_detection",
+      "image_id": "train/images/Screenshot-2026-07-09-at-07-40-50_png.rf.c1ab10a1245a9b9fa138d3a8c89e0b85",
+      "label": "side",
+      "metadata": {},
+      "predicted_label": "side"
+    }
+  ],
+  "failure_count": 34,
+  "summary": {
+    "failure_counts": {
+      "false_train_detection": 9,
+      "front_side_confusion": 1,
+      "low_confidence_detection": 18,
+      "missed_front": 6
+    },
+    "images_with_metadata": 0,
+    "metadata_coverage_note": "slices only count failures whose image has the corresponding metadata key; unknown values are recorded as 'unknown'",
+    "slices": {
+      "distance_band": {
+        "unknown": 34
+      },
+      "lighting": {
+        "unknown": 34
+      },
+      "occlusion": {
+        "unknown": 34
+      },
+      "weather": {
+        "unknown": 34
+      }
+    },
+    "total_failure_cases": 34,
+    "total_images": 472
+  }
+}

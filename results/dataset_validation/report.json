@@ -1,0 +1,25 @@
+{
+  "dataset_root": "/Users/sayemuddin/Desktop/Train_automation/data/raw/vision/v1/baler.v1i.yolov8",
+  "annotations_root": "/Users/sayemuddin/Desktop/Train_automation/data/raw/vision/v1/baler.v1i.yolov8",
+  "mock_data": false,
+  "image_count": 3157,
+  "annotation_count": 3157,
+  "error_count": 0,
+  "warning_count": 0,
+  "passed": true,
+  "class_distribution": {
+    "front": 1761,
+    "rear": 701,
+    "side": 805
+  },
+  "unique_image_sizes": [
+    [
+      640,
+      640
+    ]
+  ],
+  "duplicate_basenames": [],
+  "duplicate_hashes": [],
+  "missing_group_metadata_count": 0,
+  "issues": []
+}

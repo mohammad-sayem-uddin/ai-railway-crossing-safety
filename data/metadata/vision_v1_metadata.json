@@ -1,0 +1,87 @@
+{
+  "dataset_version": "v1",
+  "dataset_role": "development_baseline",
+  "source": "roboflow",
+  "roboflow_metadata": {
+    "workspace": "mohammads-workspace-bemou",
+    "project": "baler",
+    "version": 1,
+    "license": "CC BY 4.0",
+    "url": "https://universe.roboflow.com/mohammads-workspace-bemou/baler/dataset/1",
+    "export_timestamp_gmt": "2026-08-16T20:40:00Z"
+  },
+  "canonical_path": "data/raw/vision/v1/baler.v1i.yolov8",
+  "format": "yolov8",
+  "class_mapping": {
+    "front": 0,
+    "rear": 1,
+    "side": 2
+  },
+  "roboflow_class_names": [
+    "front",
+    "rare",
+    "side"
+  ],
+  "note_on_classes": "Roboflow class name index 1 is labeled 'rare', which represents 'rear' in the research specification.",
+  "counts": {
+    "total_images": 3157,
+    "total_labels": 3157,
+    "splits": {
+      "train": {
+        "images": 2763,
+        "labels": 2763,
+        "class_boxes": {
+          "front": 1533,
+          "rear": 624,
+          "side": 705
+        }
+      },
+      "valid": {
+        "images": 263,
+        "labels": 263,
+        "class_boxes": {
+          "front": 152,
+          "rear": 47,
+          "side": 70
+        }
+      },
+      "test": {
+        "images": 131,
+        "labels": 131,
+        "class_boxes": {
+          "front": 76,
+          "rear": 30,
+          "side": 30
+        }
+      }
+    },
+    "total_bounding_boxes": 3267,
+    "total_class_distribution": {
+      "front": 1761,
+      "rear": 701,
+      "side": 805
+    },
+    "estimated_original_source_images": 1315
+  },
+  "preprocessing": {
+    "auto_orientation": true,
+    "resize": "640x640 (Stretch)"
+  },
+  "export_augmentation_applied_to_train": {
+    "versions_per_source_image": 3,
+    "horizontal_flip_probability": 0.5,
+    "random_rotation_degrees": [-8, 8],
+    "random_shear_degrees": [-5, 5],
+    "random_brightness_percent": [-15, 15],
+    "random_exposure_percent": [-10, 10],
+    "salt_and_pepper_noise_percent": 0.1
+  },
+  "validation_status": {
+    "passed": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "unreadable_images": 0,
+    "missing_labels": 0,
+    "invalid_boxes": 0
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "run_id": "d9dfa4e34d02",
+  "status": "terminated_early",
+  "reason": "Terminated early at Epoch 3 due to compute-device transition from CPU to Apple Silicon MPS. Must not be used for final results.",
+  "device": "cpu",
+  "epochs_completed": 2,
+  "preserved_artifacts": [
+    "checkpoints",
+    "descriptor",
+    "run_manifest.json"
+  ]
+}
