@@ -39,6 +39,8 @@ models/*
 # Results and generated outputs
 results/*
 !results/.gitkeep
+outputs/*
+!outputs/.gitkeep
 
 # Experiment run directories
 experiments/*
