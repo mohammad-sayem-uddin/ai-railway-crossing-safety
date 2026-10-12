@@ -1,90 +1,134 @@
-# Python
+# ==============================================================================
+# Railway Level-Crossing Safety Research Framework (.gitignore)
+# ==============================================================================
+
+# --- Operating System & Editor Artifacts ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# --- Python Runtime & Bytecode ---
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-*.egg-info/
-.eggs/
+.Python
 build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Virtual Environments
+# --- Virtual Environments ---
+.venv
 .venv/
+venv
 venv/
-env/
+ENV
 ENV/
+env
+env/
+env.bak/
+venv.bak/
 
-# Testing & Quality Assurance Caches
+# --- Testing, Typing, & Linting Caches ---
+.pytest_cache
 .pytest_cache/
+.mypy_cache
 .mypy_cache/
+.ruff_cache
 .ruff_cache/
 .coverage
 .coverage.*
 htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
 
-# Jupyter
+# --- Jupyter & Notebook Caches ---
 .ipynb_checkpoints/
+*-checkpoint.ipynb
 
-# Operating System
-.DS_Store
-.AppleDouble
-.LSOverride
-Thumbs.db
-Desktop.ini
-
-# IDE & Editors
-.vscode/
-.idea/
-.commandcode/
-*.swp
-*.swo
-
-# Secrets & Credentials
+# --- Environment Variables & Secrets ---
 .env
 .env.*
-*.key
+!.env.example
 *.pem
-credentials.json
-service_account*.json
+*.key
+*.cert
+*.crt
 
-# Data Protection (raw data, interim data, processed caches, and local split files)
-data/raw/*
-!data/raw/**/.gitkeep
-data/interim/*
-!data/interim/**/.gitkeep
-data/processed/*
-!data/processed/**/.gitkeep
-data/splits/*
-!data/splits/**/.gitkeep
+# --- Scratch & Pilot Inspection Workspace ---
+# (Maintained locally on disk for researcher review; excluded from version control)
+scratch
+scratch/
 
-# Models & Large Checkpoints
-models/*
-!models/.gitkeep
+# --- Large Raw Media & External Datasets ---
+# Original multi-gigabyte recordings and training corpora
+data/raw/layer_b/
+data/raw/vision/images/
+data/raw/vision/labels/
+data/raw/audio/
+ESC-50-master
+ESC-50-master/
+Unseen_Video
+Unseen_Video/
+
+# Preserve directory anchors in data/
+!data/raw/audio/.gitkeep
+!data/raw/vision/.gitkeep
+!data/interim/.gitkeep
+!data/metadata/.gitkeep
+!data/splits/.gitkeep
+
+# --- Large Trained Model Weights ---
 *.pt
 *.pth
 *.onnx
+*.tflite
 *.engine
-weights/
 
-# Video Outputs & Temporary Uploads
-Unseen_Video/
-outputs/*
+# Preserve model and experiment directory anchors
+!models/.gitkeep
+!experiments/**/.gitkeep
+
+# --- Runtime Outputs & Temporary Files ---
+outputs/temp_uploads
+outputs/temp_uploads/
+outputs/video_tests
+outputs/video_tests/
+outputs/*.mov
+outputs/*.mp4
+outputs/*.avi
+outputs/*.png
+outputs/*.jpg
 !outputs/.gitkeep
-*.mp4
-*.mov
-*.avi
-*.mkv
-*.webm
 
-# Ephemeral Training Framework Artifacts & Descriptors
-train_batch*.jpg
-train_batch*.png
-labels.jpg
-labels.png
-descriptor/
-
-# Logs & Temporary Files
+# --- Logs ---
 *.log
-*.tmp
-*.temp
-runs/
+logs/

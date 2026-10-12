@@ -4,7 +4,7 @@
 
 **Last updated:** 2026-08-10
 
-> **Protocol status (2026-08-13):** Decisions D-001 through D-010 remain historical records. System-level methodology is governed by [`RESEARCH_PROTOCOL_V2.md`](RESEARCH_PROTOCOL_V2.md). The former “fail-safe” wording must not be interpreted as a physical-safety claim; material replacement decisions must be appended below rather than silently editing historical records.
+> **Protocol status (2026-10-11 update):** Decisions D-001 through D-010 remain historical records. System-level methodology is governed by the authoritative protocols: [`FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md`](FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md), [`FINAL_GROUND_TRUTH_PROTOCOL.md`](FINAL_GROUND_TRUTH_PROTOCOL.md), [`FINAL_EXPERIMENT_DATA_FLOW.md`](FINAL_EXPERIMENT_DATA_FLOW.md), and [`FINAL_ABLATION_MATRIX.md`](FINAL_ABLATION_MATRIX.md). The historical protocol v2 is archived at [`archive/RESEARCH_PROTOCOL_V2.md`](archive/RESEARCH_PROTOCOL_V2.md). The former “fail-safe” wording must not be interpreted as a physical-safety claim; material replacement decisions must be appended below rather than silently editing historical records.
 
 ---
 
