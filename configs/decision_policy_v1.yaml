@@ -1,0 +1,67 @@
+policy_metadata:
+  name: "multimodal_decision_policy"
+  version: "v1.0.0"
+  description: "Phase 3 deterministic sensor health, staleness, and safety decision policy"
+  reference_frozen_config: "configs/frozen_experiment_v1.yaml"
+  reference_frozen_config_sha256: "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e"
+
+sensor_health_model:
+  states:
+    - name: "HEALTHY"
+      description: "Sensor active, observations arrive within 2.0s, valid frames/windows. Valid frame with 0 detections is HEALTHY negative evidence."
+    - name: "DEGRADED"
+      description: "Observation received but degraded in resolution, frame corruption, or quality."
+    - name: "STALE"
+      description: "Observation age exceeds 2.0s timeout."
+    - name: "MISSING"
+      description: "Sensor stream dropped, disconnected, or unobserved."
+    - name: "RECOVERING"
+      description: "Sensor resumed valid observations, awaiting confirmation frames."
+  staleness_timeout_s: 2.0
+  recovery_confirmation_frames: 2
+  fault_recovery_hold_s: 3.0
+
+timing_and_kinematics:
+  tick_interval_s: 0.1
+  vision_nominal_sampling_s: 0.2
+  audio_nominal_hop_s: 0.5
+  warning_dwell_s: 2.0
+  gate_closing_duration_s: 3.0
+  clearance_dwell_s: 3.0
+  gate_opening_duration_s: 3.0
+  barrier_actuation:
+    open_angle_deg: 90.0
+    closed_angle_deg: 0.0
+    closing_rate_deg_per_s: 30.0
+    opening_rate_deg_per_s: 30.0
+    passage_blocked_threshold_deg: 45.0
+    time_to_passage_blocked_s: 3.5
+    time_to_fully_closed_s: 5.0
+
+rules:
+  RULE_1_APPROACH_TRIGGER:
+    description: "Qualified approach requires 2 consecutive frames at confidence >= 0.35"
+    threshold: 0.35
+    confirmation_frames: 2
+  RULE_2_AUDIO_SUPPORT_ONLY:
+    description: "Audio alone cannot actuate gate in IDLE; delays clearance dwell in REAR_CONFIRMED"
+    operating_threshold: 0.3700
+  RULE_3_POSITIVE_CLEARANCE:
+    description: "Requires confirmed departure evidence and 3.0s clearance dwell without conflicting detections"
+    departure_threshold: 0.35
+    dwell_duration_s: 3.0
+  RULE_4_FAIL_SAFE_CLAMP:
+    description: "Dual camera loss while active clamps closed immediately; in IDLE clamps after 2 consecutive frames"
+    confirmation_frames: 2
+  RULE_5_STALE_SOURCE_ABORT:
+    description: "Stale vision data in REAR_CONFIRMED or CROSSING_CLEAR aborts clearance and fail-safe clamps closed"
+    timeout_s: 2.0
+  RULE_6_DEGRADED_SOURCE_HOLD:
+    description: "Degraded or missing departure camera holds TRAIN_DEPARTING; prohibits premature rear confirmation"
+  RULE_7_NEW_TRAIN_INTERRUPT:
+    description: "Immediate interruption of clearance or gate opening upon new qualified approach detection"
+  RULE_8_OUT_OF_ORDER_REJECTION:
+    description: "Observations with timestamp earlier than last master time are rejected"
+  RULE_9_SENSOR_RECOVERY:
+    description: "Recovering sensors require 2 confirmation frames of clean evidence before exiting fail-safe clamp"
+    confirmation_frames: 2

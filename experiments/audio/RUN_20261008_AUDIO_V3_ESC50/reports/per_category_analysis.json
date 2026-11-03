@@ -1,0 +1,123 @@
+{
+  "car_horn": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 0,
+    "fp_rate_windows": 0.0,
+    "fp_recordings": 0,
+    "fp_rate_recordings": 0.0,
+    "mean_prob": 0.0749,
+    "max_prob": 0.0892,
+    "std_prob": 0.019
+  },
+  "engine": {
+    "recordings_count": 2,
+    "windows_count": 18,
+    "fp_windows": 9,
+    "fp_rate_windows": 0.5,
+    "fp_recordings": 1,
+    "fp_rate_recordings": 0.5,
+    "mean_prob": 0.4657,
+    "max_prob": 0.9309,
+    "std_prob": 0.4148
+  },
+  "siren": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 1,
+    "fp_rate_windows": 0.1111,
+    "fp_recordings": 1,
+    "fp_rate_recordings": 1.0,
+    "mean_prob": 0.131,
+    "max_prob": 0.9406,
+    "std_prob": 0.2895
+  },
+  "church_bells": {
+    "recordings_count": 2,
+    "windows_count": 18,
+    "fp_windows": 7,
+    "fp_rate_windows": 0.3889,
+    "fp_recordings": 2,
+    "fp_rate_recordings": 1.0,
+    "mean_prob": 0.3593,
+    "max_prob": 0.9822,
+    "std_prob": 0.2442
+  },
+  "clock_alarm": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 0,
+    "fp_rate_windows": 0.0,
+    "fp_recordings": 0,
+    "fp_rate_recordings": 0.0,
+    "mean_prob": 0.0001,
+    "max_prob": 0.0002,
+    "std_prob": 0.0001
+  },
+  "rain": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 0,
+    "fp_rate_windows": 0.0,
+    "fp_recordings": 0,
+    "fp_rate_recordings": 0.0,
+    "mean_prob": 0.0318,
+    "max_prob": 0.0951,
+    "std_prob": 0.0236
+  },
+  "wind": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 0,
+    "fp_rate_windows": 0.0,
+    "fp_recordings": 0,
+    "fp_rate_recordings": 0.0,
+    "mean_prob": 0.035,
+    "max_prob": 0.0535,
+    "std_prob": 0.01
+  },
+  "thunderstorm": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 0,
+    "fp_rate_windows": 0.0,
+    "fp_recordings": 0,
+    "fp_rate_recordings": 0.0,
+    "mean_prob": 0.1105,
+    "max_prob": 0.3126,
+    "std_prob": 0.1075
+  },
+  "footsteps": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 0,
+    "fp_rate_windows": 0.0,
+    "fp_recordings": 0,
+    "fp_rate_recordings": 0.0,
+    "mean_prob": 0.0237,
+    "max_prob": 0.0441,
+    "std_prob": 0.011
+  },
+  "airplane": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 0,
+    "fp_rate_windows": 0.0,
+    "fp_recordings": 0,
+    "fp_rate_recordings": 0.0,
+    "mean_prob": 0.0069,
+    "max_prob": 0.0094,
+    "std_prob": 0.0016
+  },
+  "helicopter": {
+    "recordings_count": 1,
+    "windows_count": 9,
+    "fp_windows": 0,
+    "fp_rate_windows": 0.0,
+    "fp_recordings": 0,
+    "fp_rate_recordings": 0.0,
+    "mean_prob": 0.1365,
+    "max_prob": 0.2656,
+    "std_prob": 0.0567
+  }
+}

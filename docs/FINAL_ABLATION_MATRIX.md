@@ -1,8 +1,8 @@
 # Final Ablation Matrix & Experimental Taxonomy
 
-**Document Version:** 6.0.0  
-**Date:** 2026-10-09  
-**Status:** REFERENCE SPECIFICATION — Reconciled with Ground Truth v6.0.0 & Protocol v8.0.0  
+**Document Version:** 7.0.0  
+**Date:** 2026-10-12  
+**Status:** REFERENCE SPECIFICATION — Reconciled with Ground Truth v7.0.0 & Protocol v9.0.0  
 **Companion to:** `docs/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md`
 
 ---
@@ -123,11 +123,11 @@ Evaluated across the 3 no-train negative control recordings:
 
 ## 7. Ground Truth Dependency & Evaluation Integrity
 
-Execution of evaluation replay across conditions E1–E10 strictly requires satisfaction of all four research prerequisites (R01 through R04), which are currently **INCOMPLETE (NO-GO)**:
-1. **Certified Ground Truth (R01 — Incomplete):** Evaluation ingests exclusively Stage 3 approved ground truth (`data/ground_truth/{train_events,no_train_events,engine_events}/`) where `approval_status == "APPROVED"`. Ingestion of raw AI proposals (`data/ground_truth/proposals/`) is strictly prohibited.
-2. **Cryptographic Integrity (R02 — Incomplete):** Hashes of all 27 approved ground truth files, review logs, and raw proposals must match `data/ground_truth/ground_truth_manifest.json`.
-3. **Geographic Documentation (R03 — Incomplete):** Physical crossing boundaries and visual landmarks must be formally documented.
-4. **Inter-Camera Synchronization (R04 — Incomplete):** Inter-camera temporal offsets for no-train events must be empirically measured before concurrent overlap denominators can be evaluated.
+Execution of evaluation replay across conditions E1–E10 strictly requires satisfaction of evaluation readiness gates:
+1. **Certified Ground Truth (R01 — In Progress / Firewall Enforced):** Evaluation ingests exclusively Stage 3 approved ground truth (`data/ground_truth/{train_events,no_train_events,engine_events}/`) where `approval_status == "APPROVED"`. Ingestion of raw AI proposals (`data/ground_truth/proposals/`) is strictly prohibited. Candidate proposals (v2/v6) currently await human researcher review.
+2. **Cryptographic Integrity (R02 — Pending):** Hashes of all 27 approved ground truth files, review logs, and raw proposals must match `data/ground_truth/ground_truth_manifest.json`.
+3. **Geographic Documentation (R03 — RETIRED):** Formally retired as a separate methodology blocker under Ground Truth Protocol v7.0.0. Replaced by the documented Operational Danger-Zone Annotation Convention utilizing visible track and roadway features.
+4. **Inter-Camera Synchronization (R04 — UNRESOLVED / PRESERVED):** Inter-camera temporal offsets for no-train events must be empirically measured before concurrent overlap denominators can be evaluated. Independent media-local clocks are strictly enforced.
 5. **Strict Decoupling:** Ground truth is created independently via raw sensor inspection; evaluated models (YOLO, Audio V3, FSM) have zero involvement in label generation.
 
 ---
@@ -139,5 +139,7 @@ Execution of evaluation replay across conditions E1–E10 strictly requires sati
 | 4.0.0 | 2026-10-09 | Methodological correction pass: Established E1–E7 single-DOF matrix; decoupled planned contrasts from guaranteed significance; integrated full 64-character SHA-256 validation; reinforced zero acoustic clearance authority (INV-1). |
 | 5.0.0 | 2026-10-09 | AI-assisted ground-truth integration: Reconciled ablation matrix with Protocol v7.0.0 and Ground Truth v5.0.0; added multi-level nuisance reporting flow and R01–R04 gate enforcement. |
 | 6.0.0 | 2026-10-09 | Canonical Terminology & Left-Censoring Harmonization Pass: Resolved T3 as **Locomotive Unit Clearance (rear end exits danger zone)**; distinguished locomotive front exit from complete unit clearance; preserved T4 as tail clearance; defined left-censored $T_0$ representation and detection latency denominator exclusion; documented schema key compatibility mapping (`T3_locomotive_unit_clearance` / `T3_locomotive_exit`) preserving proposals v1–v4; reinforced R03 visual landmark provisional status. |
+| 7.0.0 | 2026-10-12 | Research Methodology Update & Prerequisite R03 Retirement Pass: (1) Formally retired Prerequisite R03 as a separate methodology blocker; replaced external physical geometry requirement with researcher-defined Operational Danger-Zone Annotation Convention referencing visible physical track and roadway features. (2) Kept canonical boundaries T0–T4 semantically aligned with operational conventions. (3) Strictly preserved Prerequisite R04 (camera synchronization remains unresolved; independent camera-local timelines enforced). (4) Mandated evidence-based forensic re-verification of all 27 active events, replacing synthetic formula heuristics with dense frame and acoustic measurements. |
+
 
 

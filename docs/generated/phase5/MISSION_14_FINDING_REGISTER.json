@@ -1,0 +1,670 @@
+{
+ "audit_id": "MISSION_14",
+ "date": "2026-11-02",
+ "repository_head": "d4db94d4a4ea83ae4c510d65dfc99c5d6798304b",
+ "disposition": "PARTIALLY_REMEDIATED",
+ "real_data_execution_authorized": false,
+ "independent_closure_claimed": false,
+ "mission_15_audit_required": true,
+ "summary": {
+  "total": 38,
+  "status_counts": {
+   "FIXED_PENDING_MISSION_15_AUDIT": 14,
+   "UNCHANGED_VERIFIED_BY_MISSION_13": 3,
+   "UNRESOLVED_INCIDENT": 1,
+   "OPEN_RESEARCHER_DECISION": 5,
+   "PARTIALLY_FIXED": 3,
+   "OPEN_NOT_IN_SCOPE": 5,
+   "RESOLVED_BY_EVIDENCE": 1,
+   "NOT_VERIFIABLE_BY_AUTHOR": 2,
+   "DOCUMENTED": 4
+  },
+  "fixed_pending_mission_15": 14,
+  "critical_remaining": [],
+  "high_remaining_or_unverified": [
+   "F13-08",
+   "F13-17",
+   "N-06",
+   "H-01..H-05",
+   "H-09/R-H05"
+  ]
+ },
+ "findings": [
+  {
+   "id": "C-02/R-H01",
+   "origin_mission": "11B",
+   "title": "Alternate media readers unguarded",
+   "severity": "CRITICAL",
+   "mission13_status": "PARTIALLY_FIXED",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Centralised location-first media boundary; declared_media at reader sites; command guard; loader, dashboard and scratch guarded",
+   "evidence": "probe_before/after; 55-test media boundary suite; opener tripwire 0 unreviewed hits",
+   "files": [
+    "src/railway_detection/safety/media_guard.py",
+    "src/railway_detection/safety/path_identity.py",
+    "(reader call sites in MISSION_14_MEDIA_BOUNDARY_DESIGN.md §4)"
+   ],
+   "tests": [
+    "tests/unit/test_security_media_boundary.py",
+    "tests/unit/test_media_authorization.py",
+    "tests/unit/test_media_opener_coverage.py"
+   ],
+   "remaining_risk": "Hard links, copies in temp, TOCTOU, native/shell reads (no OS isolation); checkpoint hashing uncontrolled (F13-09); unsuffixed repo files outside data/raw guarded only when a reader declares media",
+   "independent_verification_required": true
+  },
+  {
+   "id": "C-03",
+   "origin_mission": "11B",
+   "title": "Unsafe routine suite / raw-media access",
+   "severity": "CRITICAL",
+   "mission13_status": "PARTIALLY_FIXED",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Classification recovered; safe runner executed and PASSED; protected files never executed",
+   "evidence": "runner PASSED twice: 2,198 tests, 100 files, 0 blocked",
+   "files": [
+    "tests/test_access_classification.yaml",
+    "tests/unit/test_media_opener_coverage.py"
+   ],
+   "tests": [
+    "tests/unit/test_access_classification_tools.py"
+   ],
+   "remaining_risk": "F13-08 incident remains unresolved; classification is hash-bound and goes stale on any edit",
+   "independent_verification_required": true
+  },
+  {
+   "id": "M-02",
+   "origin_mission": "11B",
+   "title": "Forgeable _OfficialPermit bypasses official evaluation boundary",
+   "severity": "MEDIUM",
+   "mission13_status": "FIXED_VERIFIED",
+   "mission14_status": "UNCHANGED_VERIFIED_BY_MISSION_13",
+   "mission14_action": "Original forged-permit exploit already closed; synthetic regression tests added to the safe set (F13-12)",
+   "evidence": "E-suite forged permit/context/digest tests",
+   "files": [
+    "src/railway_detection/evaluation/evaluation_runner.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_evaluation_input.py"
+   ],
+   "remaining_risk": "Same-process private-name access is the documented Python-level limit",
+   "independent_verification_required": false
+  },
+  {
+   "id": "C-01",
+   "origin_mission": "11B",
+   "title": "Promotion receipt integrity",
+   "severity": "CRITICAL",
+   "mission13_status": "FIXED_VERIFIED",
+   "mission14_status": "UNCHANGED_VERIFIED_BY_MISSION_13",
+   "mission14_action": "None; receipt matrix tests added",
+   "evidence": "G-suite receipt tests",
+   "files": [],
+   "tests": [
+    "tests/unit/test_security_governance_regressions.py"
+   ],
+   "remaining_risk": "Tamper-evident only; no expiry/revocation (F13-10)",
+   "independent_verification_required": false
+  },
+  {
+   "id": "F13-01",
+   "origin_mission": "13",
+   "title": "Evaluation input loader reads and hashes in-root media-suffixed sources with no media guard; digest leaks in error",
+   "severity": "HIGH",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Loader guarded before open/hash; location-based refusal; digest-free errors; catalogue entry",
+   "evidence": "E-suite; probe I1 before/after",
+   "files": [
+    "src/railway_detection/evaluation/input_contracts.py",
+    "src/railway_detection/evaluation/execution_gate.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_evaluation_input.py"
+   ],
+   "remaining_risk": "Manifest header JSON is still read once to learn the classification",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-02",
+   "origin_mission": "13",
+   "title": "Public run_from_manifest reads and hashes all declared sources twice before refusing a REAL manifest",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Argument / location / header checks before any source read; private core demands context before sources",
+   "evidence": "probe 6b/6c: 6 reads -> 0",
+   "files": [
+    "src/railway_detection/evaluation/evaluation_runner.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_evaluation_input.py"
+   ],
+   "remaining_risk": "One header-only manifest read for a REAL manifest with innocuous arguments",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-03",
+   "origin_mission": "13",
+   "title": "media_guard classifies by suffix of the given path: symlink/hardlink aliases and unlisted suffixes bypass it",
+   "severity": "HIGH",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Location-first classification; alias/extensionless/unlisted-suffix cases denied; widened suffix lists; command guard",
+   "evidence": "probe D2/D3/G before/after",
+   "files": [
+    "src/railway_detection/safety/media_guard.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "remaining_risk": "Hard links and copies in temp remain undetectable",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-04",
+   "origin_mission": "13",
+   "title": "Case-insensitive path identity defeats descriptive gate, protected-output check and related guards",
+   "severity": "HIGH",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Identity (samefile) comparison everywhere a spelling decided a gate",
+   "evidence": "probe_case/outdir before/after",
+   "files": [
+    "src/railway_detection/safety/path_identity.py",
+    "src/railway_detection/evaluation/descriptive_exec_gate.py",
+    "src/railway_detection/evaluation/evaluation_runner.py",
+    "src/railway_detection/evaluation/cache_only_engine.py",
+    "src/railway_detection/evaluation/experiment_engine.py",
+    "src/railway_detection/annotation/stage21_timing_pilot.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_path_identity.py"
+   ],
+   "remaining_risk": "Case-variant tests skip on a case-sensitive filesystem; not exercised against a real engine/cache (prohibited)",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-05",
+   "origin_mission": "13",
+   "title": "Dashboard /outputs/ and /experiments/ handlers serve any file under the project root via '..' with no guard",
+   "severity": "HIGH",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Allowlisted roots + suffix allowlists + canonical identity containment + full decoding; static translate_path; /api/process guard",
+   "evidence": "probe_server before/after; 50-test suite; real-socket smoke test",
+   "files": [
+    "src/railway_detection/demo/server.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_dashboard.py"
+   ],
+   "remaining_risk": "Derived outputs served by containment not media guard; no authentication; bind host configurable",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-06",
+   "origin_mission": "13",
+   "title": "scratch/ holds seven unguarded ffmpeg/wave scripts outside every scan root",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "All 9 ffmpeg launches and the wave.open in 7 scripts guarded immediately before use",
+   "evidence": "AST + dynamic tests",
+   "files": [
+    "scratch/analyze_train_events.py",
+    "scratch/analyze_forensic_results.py",
+    "scratch/analyze_audio.py",
+    "scratch/extract_frames.py",
+    "scratch/forensic_event_auditor.py",
+    "scratch/measure_ground_truth_v7.py",
+    "scratch/run_phase2_verification.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py",
+    "tests/unit/test_media_opener_coverage.py"
+   ],
+   "remaining_risk": "scratch/ is git-ignored (unpreserved); scripts were not executed",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-07",
+   "origin_mission": "13",
+   "title": "Guard denial swallowed by broad except in image manifest/validator",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Guard moved outside try/except in manifest and validator; denial propagates",
+   "evidence": "media boundary tests",
+   "files": [
+    "src/railway_detection/data/manifest.py",
+    "src/railway_detection/data/validator.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "remaining_risk": "Behavior change: unauthorized callers now get an exception, not an empty manifest",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-08",
+   "origin_mission": "13",
+   "title": "Mission 12 ran protected-access-classified test files directly; 'no checkpoint hashed' unverifiable and probably wrong",
+   "severity": "HIGH",
+   "mission13_status": "NOT_VERIFIABLE",
+   "mission14_status": "UNRESOLVED_INCIDENT",
+   "mission14_action": "Investigated; no tests executed; no checkpoint touched. Strong evidence the two protected files were executed unguarded; checkpoint hashing probable by code path but NOT established",
+   "evidence": "pyc timestamps 10:36:45; 300 = 19+76+88+72+4+41; static trace; Mission 12 transcript absent",
+   "files": [],
+   "tests": [
+    "(none executed)"
+   ],
+   "remaining_risk": "Human review of the Mission 12 session record required; Mission 12 'no checkpoint hashed' claim is unverified",
+   "independent_verification_required": false
+  },
+  {
+   "id": "F13-09",
+   "origin_mission": "13",
+   "title": "Readiness gate hashes protected checkpoints before and independent of authorization; no checkpoint-access control",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "OPEN_RESEARCHER_DECISION",
+   "mission14_action": "None (out of scope: policy decision)",
+   "evidence": "readiness gate still hashes checkpoints",
+   "files": [
+    "src/railway_detection/evaluation/execution_gate.py"
+   ],
+   "tests": [],
+   "remaining_risk": "Decide whether checkpoint integrity hashing needs authorization",
+   "independent_verification_required": false
+  },
+  {
+   "id": "F13-10",
+   "origin_mission": "13",
+   "title": "EVAL-AUTH and promotion receipt have no expiry/revocation; receipt is hand-computable",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "OPEN_RESEARCHER_DECISION",
+   "mission14_action": "None (must not invent fields); gap pinned by tests and documented",
+   "evidence": "G-suite",
+   "files": [],
+   "tests": [
+    "tests/unit/test_security_governance_regressions.py"
+   ],
+   "remaining_risk": "EVAL-AUTH and receipt cannot expire or be revoked",
+   "independent_verification_required": false
+  },
+  {
+   "id": "F13-11",
+   "origin_mission": "13",
+   "title": "Four stale classification entries; two need reclassification, not only a hash refresh; safe runner not reproducible",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Four stale entries recovered by inspection + guarded classification / static review; siblings split out",
+   "evidence": "manifest OK; runner PASSED",
+   "files": [
+    "tests/test_access_classification.yaml"
+   ],
+   "tests": [
+    "tests/unit/test_phase12_governance_synthetic.py",
+    "tests/unit/test_phase12_official_replay_synthetic.py"
+   ],
+   "remaining_risk": "Hash-bound; 2 original protected files remain unexecuted",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-12",
+   "origin_mission": "13",
+   "title": "M-02 regression tests exist only in files classified as protected-access",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "M-02 and gate regression tests exist in safe-classified files",
+   "evidence": "E-suite + sibling files",
+   "files": [],
+   "tests": [
+    "tests/unit/test_security_evaluation_input.py",
+    "tests/unit/test_phase12_official_replay_synthetic.py"
+   ],
+   "remaining_risk": "Originals still hold the real-repository tests",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-13",
+   "origin_mission": "13",
+   "title": "Opener tripwire is function-level, order-blind, and its allowlist hides F13-01",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Tripwire is now order-aware; covers predict(source=path), full-path ffmpeg, module-level code, scratch/; misleading allowlist entry removed",
+   "evidence": "4 self-tests; 0 unreviewed hits",
+   "files": [
+    "tests/unit/test_media_opener_coverage.py"
+   ],
+   "tests": [
+    "tests/unit/test_media_opener_coverage.py"
+   ],
+   "remaining_risk": "Heuristic text/AST scan, not a proof of coverage",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-14",
+   "origin_mission": "13",
+   "title": "predict(source=path) with no adjacent guard in figure 14 fallback loop",
+   "severity": "LOW",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Adjacent guard added before the fallback predict call",
+   "evidence": "static tripwire",
+   "files": [
+    "research/scripts/generate_qualitative_figures.py"
+   ],
+   "tests": [
+    "tests/unit/test_media_opener_coverage.py"
+   ],
+   "remaining_risk": "None known",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-15",
+   "origin_mission": "13",
+   "title": "Authorization context not instance/operation/time bound; official_authorization_verified is a plain unsigned bool",
+   "severity": "LOW",
+   "mission13_status": "OPEN",
+   "mission14_status": "OPEN_RESEARCHER_DECISION",
+   "mission14_action": "None; limit asserted in a test so it stays visible",
+   "evidence": "E-suite marker test",
+   "files": [],
+   "tests": [
+    "tests/unit/test_security_evaluation_input.py"
+   ],
+   "remaining_risk": "Context not instance/operation/time bound; flag unsigned",
+   "independent_verification_required": false
+  },
+  {
+   "id": "F13-16",
+   "origin_mission": "13",
+   "title": "Manuscript and provenance inaccuracies",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "PARTIALLY_FIXED",
+   "mission14_action": "Correction notices issued; manuscript not edited",
+   "evidence": "MISSION_14_DOCUMENTATION_RECONCILIATION.md",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Researcher must apply corrections to the manuscript",
+   "independent_verification_required": true
+  },
+  {
+   "id": "F13-17",
+   "origin_mission": "13",
+   "title": "Security-critical implementation untracked; Mission 12 edits have no backup; backups are in volatile /private/tmp",
+   "severity": "HIGH",
+   "mission13_status": "OPEN",
+   "mission14_status": "OPEN_NOT_IN_SCOPE",
+   "mission14_action": "Git preservation is forbidden in this mission; new in-repo pre-edit backups made for files Mission 14 edited",
+   "evidence": "mission14_pre_edit_backup/ (33 files)",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Security-critical packages still untracked; older backups still in volatile /private/tmp",
+   "independent_verification_required": false
+  },
+  {
+   "id": "F13-18",
+   "origin_mission": "13",
+   "title": "Mission 12 reformatted two research scripts; modified-file count discrepancy unexplained",
+   "severity": "LOW",
+   "mission13_status": "OPEN",
+   "mission14_status": "RESOLVED_BY_EVIDENCE",
+   "mission14_action": "22 -> 25 explained from Mission 12's own snapshots: three previously clean tracked files edited",
+   "evidence": "/private/tmp/m12_status_before.txt vs current status",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Reformatting churn in two research scripts remains",
+   "independent_verification_required": false
+  },
+  {
+   "id": "N-06",
+   "origin_mission": "11B",
+   "title": "Mission 10 enforcement packages untracked",
+   "severity": "HIGH",
+   "mission13_status": "OPEN",
+   "mission14_status": "OPEN_NOT_IN_SCOPE",
+   "mission14_action": "None (no Git write allowed)",
+   "evidence": "git ls-files",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Untracked enforcement packages",
+   "independent_verification_required": false
+  },
+  {
+   "id": "BKP-01",
+   "origin_mission": "11B",
+   "title": "Backup and rollback gap",
+   "severity": "LOW",
+   "mission13_status": "OPEN",
+   "mission14_status": "OPEN_NOT_IN_SCOPE",
+   "mission14_action": "Partial mitigation only: new in-repo backups",
+   "evidence": "see F13-17",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Rollback of Mission 10/12 changes not demonstrable",
+   "independent_verification_required": false
+  },
+  {
+   "id": "H-01..H-05",
+   "origin_mission": "11B",
+   "title": "Reviewer / trigger / allowlist / identity / timestamp controls",
+   "severity": "HIGH",
+   "mission13_status": "NOT_VERIFIABLE",
+   "mission14_status": "NOT_VERIFIABLE_BY_AUTHOR",
+   "mission14_action": "Synthetic regression path confirmed/added; no independent adversarial probing by the implementer",
+   "evidence": "referenced safe-set tests passed; G::test_referenced_safe_set_tests_still_exist",
+   "files": [],
+   "tests": [
+    "tests/unit/test_security_governance_regressions.py",
+    "tests/test_mission10_second_review.py",
+    "tests/test_mission4b_review_operations.py",
+    "tests/test_phase11_12_readiness_gate.py"
+   ],
+   "remaining_risk": "Independent verification belongs to Mission 15; RD-043 not adopted",
+   "independent_verification_required": false
+  },
+  {
+   "id": "H-09/R-H05",
+   "origin_mission": "11B",
+   "title": "Unsupported manuscript claims",
+   "severity": "HIGH",
+   "mission13_status": "PARTIALLY_FIXED",
+   "mission14_status": "PARTIALLY_FIXED",
+   "mission14_action": "Correction notices; manuscript unchanged",
+   "evidence": "see F13-16",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Manuscript wording remains",
+   "independent_verification_required": true
+  },
+  {
+   "id": "M-03",
+   "origin_mission": "11B",
+   "title": "No descriptive back-stream cache route",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "OPEN_RESEARCHER_DECISION",
+   "mission14_action": "None",
+   "evidence": "DEC-B05 pending",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Back-stream route",
+   "independent_verification_required": false
+  },
+  {
+   "id": "M-06",
+   "origin_mission": "11B",
+   "title": "Reproducibility incomplete",
+   "severity": "MEDIUM",
+   "mission13_status": "PARTIALLY_FIXED",
+   "mission14_status": "PARTIALLY_FIXED",
+   "mission14_action": "Counts reconciled; frozen-config hash label noted",
+   "evidence": "reconciliation doc",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Hash label and checkpoint statement need researcher edits",
+   "independent_verification_required": true
+  },
+  {
+   "id": "M-08",
+   "origin_mission": "11B",
+   "title": "References / authors",
+   "severity": "MEDIUM",
+   "mission13_status": "PARTIALLY_FIXED",
+   "mission14_status": "OPEN_RESEARCHER_DECISION",
+   "mission14_action": "None",
+   "evidence": "no web research",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Bibliography unverified",
+   "independent_verification_required": false
+  },
+  {
+   "id": "L-03",
+   "origin_mission": "11B",
+   "title": "Uncited statistic",
+   "severity": "LOW",
+   "mission13_status": "FIXED_VERIFIED",
+   "mission14_status": "UNCHANGED_VERIFIED_BY_MISSION_13",
+   "mission14_action": "None",
+   "evidence": "",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "",
+   "independent_verification_required": false
+  },
+  {
+   "id": "MR12-01",
+   "origin_mission": "12",
+   "title": "Safe runner not executed after remediation",
+   "severity": "MEDIUM",
+   "mission13_status": "OPEN",
+   "mission14_status": "FIXED_PENDING_MISSION_15_AUDIT",
+   "mission14_action": "Safe runner executed after remediation and PASSED",
+   "evidence": "archived report",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "See C-03",
+   "independent_verification_required": true
+  },
+  {
+   "id": "MR12-02",
+   "origin_mission": "12",
+   "title": "Python-level guards are not OS isolation",
+   "severity": "LOW",
+   "mission13_status": "NOT_APPLICABLE",
+   "mission14_status": "DOCUMENTED",
+   "mission14_action": "Python-level vs OS-level distinction restated everywhere",
+   "evidence": "design doc §0, reconciliation §2",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "No OS isolation",
+   "independent_verification_required": false
+  },
+  {
+   "id": "MR12-03",
+   "origin_mission": "12",
+   "title": "Checkpoint hashes NOT_VERIFIED — REQUIRES AUTHORIZED ACCESS",
+   "severity": "LOW",
+   "mission13_status": "NOT_VERIFIABLE",
+   "mission14_status": "NOT_VERIFIABLE_BY_AUTHOR",
+   "mission14_action": "Checkpoints not touched",
+   "evidence": "",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "Hashes remain NOT_VERIFIED; see F13-08",
+   "independent_verification_required": false
+  },
+  {
+   "id": "MR12-04",
+   "origin_mission": "12",
+   "title": "Ruff format differences pre-existing",
+   "severity": "LOW",
+   "mission13_status": "OPEN",
+   "mission14_status": "OPEN_NOT_IN_SCOPE",
+   "mission14_action": "Mission 14 formatted only its own new files",
+   "evidence": "",
+   "files": [],
+   "tests": [],
+   "remaining_risk": "No repository-wide lint/format claim",
+   "independent_verification_required": false
+  },
+  {
+   "id": "M14-01",
+   "origin_mission": "14",
+   "title": "layer_b_processor.py and execution_gate.py edited without a pre-edit backup",
+   "severity": "LOW",
+   "mission13_status": "NEW_IN_MISSION_14",
+   "mission14_status": "OPEN_NOT_IN_SCOPE",
+   "mission14_action": "Process gap: two files edited without a prior backup",
+   "evidence": "artifact manifest",
+   "files": [
+    "src/railway_detection/experiments/layer_b_processor.py",
+    "src/railway_detection/evaluation/execution_gate.py"
+   ],
+   "tests": [],
+   "remaining_risk": "Each change is a single known insertion; the pre-edit text is not preserved as a file",
+   "independent_verification_required": false
+  },
+  {
+   "id": "M14-02",
+   "origin_mission": "14",
+   "title": "scratch script that writes review records",
+   "severity": "LOW",
+   "mission13_status": "NEW_IN_MISSION_14",
+   "mission14_status": "DOCUMENTED",
+   "mission14_action": "Run phase-2 verification script writes review records (observation); its only media step is now guarded and runs first",
+   "evidence": "scratch audit §2",
+   "files": [
+    "scratch/run_phase2_verification.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py"
+   ],
+   "remaining_risk": "Human-review artifacts must not be script-generated; researcher decision on the script",
+   "independent_verification_required": false
+  },
+  {
+   "id": "M14-03",
+   "origin_mission": "14",
+   "title": "duplicate test text (originals + siblings)",
+   "severity": "LOW",
+   "mission13_status": "NEW_IN_MISSION_14",
+   "mission14_status": "DOCUMENTED",
+   "mission14_action": "Original Mission 12 test files retained next to generated synthetic siblings",
+   "evidence": "classification report §3",
+   "files": [
+    "tests/unit/test_phase12_governance.py",
+    "tests/unit/test_phase12_official_replay.py"
+   ],
+   "tests": [],
+   "remaining_risk": "~2,000 duplicated test lines; delete only by researcher decision",
+   "independent_verification_required": false
+  },
+  {
+   "id": "M14-04",
+   "origin_mission": "14",
+   "title": "text-metadata exemption under data/raw",
+   "severity": "LOW",
+   "mission13_status": "NEW_IN_MISSION_14",
+   "mission14_status": "DOCUMENTED",
+   "mission14_action": "Plain-text metadata suffixes under data/raw are not treated as media unless a reader declares it",
+   "evidence": "design doc §2",
+   "files": [
+    "src/railway_detection/safety/media_guard.py"
+   ],
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "remaining_risk": "A media file with a text suffix stored in data/raw is read as metadata by undeclared helpers",
+   "independent_verification_required": false
+  }
+ ]
+}

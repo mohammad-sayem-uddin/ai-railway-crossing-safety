@@ -1,0 +1,643 @@
+{
+ "schema": "mission14-artifact-manifest/1",
+ "date": "2026-11-02",
+ "mission": 14,
+ "disposition": "PARTIALLY_REMEDIATED",
+ "independent_closure_claimed": false,
+ "real_data_execution_authorized": false,
+ "git": {
+  "head_before": "d4db94d4a4ea83ae4c510d65dfc99c5d6798304b",
+  "head_after": "d4db94d4a4ea83ae4c510d65dfc99c5d6798304b",
+  "staged_before": 0,
+  "staged_after": 0,
+  "modified_tracked_before": 25,
+  "modified_tracked_after": 25,
+  "modified_tracked_set_unchanged": true,
+  "untracked_status_entries_before": 379,
+  "untracked_status_entries_after": 388,
+  "note": "new files are untracked; no staging, commit, push, reset, clean, restore or checkout was executed"
+ },
+ "safety": {
+  "real_media_accessed": false,
+  "checkpoints_accessed": false,
+  "protected_processed_data_accessed": false,
+  "production_caches_accessed": false,
+  "real_inference_replay_training_or_evaluation": false,
+  "authorizations_created": false,
+  "promotion_receipts_created": false,
+  "human_review_or_adjudication_artifacts_created": false,
+  "protected_classified_test_files_executed": false,
+  "qualification": "Python-level evidence only: all probes/tests used fake repository paths and temp files; protected-file metadata (stat/atime) was deliberately not examined. The one exception to 'no checkpoint access' is NOT an act of Mission 14: Mission 12 may have hashed checkpoints (F13-08, unresolved)."
+ },
+ "validation": {
+  "safe_runner": {
+   "status": "PASSED",
+   "exit_code": 0,
+   "tests": {
+    "errors": 0,
+    "failed": 0,
+    "passed": 2198,
+    "skipped": 0
+   },
+   "guard": {
+    "blocked": 0,
+    "events": 2601,
+    "metadata_reads": 2597
+   },
+   "files_selected": 100,
+   "violations": [],
+   "excluded_files": {
+    "MODEL_CHECKPOINT_ACCESS": 15,
+    "PROCESSED_DATA_ACCESS": 2,
+    "RAW_MEDIA_ACCESS": 4
+   },
+   "manifest_sha256": "b6dce489c6a40f30639b30978eb1d9f8a3640c2d517aca58a0fec65cd8109113",
+   "report": "docs/generated/phase5/mission14_evidence/mission14_synthetic_test_report.json"
+  },
+  "new_suite_tests": {
+   "media_boundary": 55,
+   "evaluation_input": 24,
+   "path_identity": 52,
+   "dashboard": 50,
+   "scratch_scripts": 24,
+   "governance_regressions": 25,
+   "phase12_governance_synthetic": 74,
+   "phase12_official_replay_synthetic": 87
+  },
+  "lint": "ruff check: clean on new files and on safety/, evaluation_runner, input_contracts, descriptive_exec_gate, cache_only_engine, demo/server; pre-existing findings remain elsewhere; no repo-wide claim"
+ },
+ "backup": {
+  "directory": "docs/generated/phase5/mission14_pre_edit_backup",
+  "files": 47,
+  "sha256_listing": "docs/generated/phase5/mission14_pre_edit_backup/SHA256SUMS.txt",
+  "preexisting_backups_untouched": "/private/tmp/claude-501/m10/backup (64 files, volatile) not modified"
+ },
+ "modified_or_created_files": [
+  {
+   "path": "src/railway_detection/safety/path_identity.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW shared path canonicalisation / identity containment / untrusted-path resolver",
+   "tests": [
+    "tests/unit/test_security_path_identity.py"
+   ],
+   "sha256_final": "2f0fd44a22659a11478883ba74a664ddd090b49e04afd6570971fa9df9ba2d80",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "src/railway_detection/safety/media_guard.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "location-first resource classification, widened suffix lists, declared_media, command guard, protected-output guard, identity containment",
+   "tests": [
+    "tests/unit/test_security_media_boundary.py",
+    "tests/unit/test_media_authorization.py"
+   ],
+   "sha256_final": "65098c8a486bc9814f2a21c3e5f7dc1e1e7e4602ee769bd9534d479a93d55635",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/safety/media_guard.py",
+   "backup_sha256": "b5d484472f370bcdb79556239ca899d39f2e767856cfa36e09783c827c57e257"
+  },
+  {
+   "path": "src/railway_detection/evaluation/input_contracts.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "loader guard before open/hash, digest-free errors, identity containment (F13-01)",
+   "tests": [
+    "tests/unit/test_security_evaluation_input.py"
+   ],
+   "sha256_final": "8de004a71c8ae132c039c88e7404dacbde02673f210c4b329596318c79f34bbd",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/evaluation/input_contracts.py",
+   "backup_sha256": "afc2ddaad7cf127a423fb5ce687fc478629fc29f0c68ecd2acc16e88d2a7095e"
+  },
+  {
+   "path": "src/railway_detection/evaluation/evaluation_runner.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "public-API location+header refusal, private-core context check before source reads, identity output check (F13-02/04)",
+   "tests": [
+    "tests/unit/test_security_evaluation_input.py",
+    "tests/unit/test_security_path_identity.py"
+   ],
+   "sha256_final": "d60ae7da563fc9babfc65661c78622c75771a8a6a88cdbe3d2d4d452f132ed50",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/evaluation/evaluation_runner.py",
+   "backup_sha256": "9b6bd56269bfd9316ffd4e35b62c6ba2f8837332795167308cbfede5e842ed4d"
+  },
+  {
+   "path": "src/railway_detection/evaluation/execution_gate.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "one BLOCKER_CATALOGUE entry for SOURCE_MEDIA_ACCESS_DENIED",
+   "tests": [
+    "tests/unit/test_phase12_governance_synthetic.py::test_loader_error_codes_are_all_classified"
+   ],
+   "sha256_final": "e01116c8c95c6479d0ce6a1d310d39715437d0b60261e91444e424166a1d3e0b",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null,
+   "backup_note": "NO pre-edit backup exists; change is a single small insertion described in purpose; pre-edit text not reconstructed"
+  },
+  {
+   "path": "src/railway_detection/evaluation/descriptive_exec_gate.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "gate by identity: real checkout in any spelling / containing / contained (F13-04)",
+   "tests": [
+    "tests/unit/test_security_path_identity.py"
+   ],
+   "sha256_final": "d3543539fd1e993950316d2d303b8e280a3d0a76d4803e20e3a425f26b1a0c3b",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/evaluation/descriptive_exec_gate.py",
+   "backup_sha256": "644f3ea672a9f42237baadee4e7d264e18d9a85c9b4ea958c3702d48ccac3734"
+  },
+  {
+   "path": "src/railway_detection/evaluation/cache_only_engine.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "cache path containment by identity",
+   "tests": [
+    "tests/unit/test_security_path_identity.py"
+   ],
+   "sha256_final": "e61343cc3849b1fd8bcac316b9314e41850bb9f8fe797dcbc2d62fc764d76cd9",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/evaluation/cache_only_engine.py",
+   "backup_sha256": "3641ffafb3c4b77290011fcab1c802c17d6da6d899e232b9b6b3bf4be602cf43"
+  },
+  {
+   "path": "src/railway_detection/evaluation/experiment_engine.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "official-tree output refusal by identity",
+   "tests": [
+    "tests/unit/test_security_path_identity.py"
+   ],
+   "sha256_final": "aeb7699aae148dd86892b18cf8ff1e83a9a59b4f7ce1b1e84186810df25e5235",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/evaluation/experiment_engine.py",
+   "backup_sha256": "258ef298112098d974efd37cb26b396319b03e0d29d96d922b9493015354b65c"
+  },
+  {
+   "path": "src/railway_detection/annotation/stage21_timing_pilot.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "checkout identity helper for two sites",
+   "tests": [
+    "tests/unit/test_security_path_identity.py"
+   ],
+   "sha256_final": "15a8ed02387ead5586b1c799eae77114882bc2ccb66ae1c7fc6eacc1eaf2b045",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/annotation/stage21_timing_pilot.py",
+   "backup_sha256": "1d82359cb954bc7400f8f927f21a83847055672a0199f287cddd0424e18439f0"
+  },
+  {
+   "path": "src/railway_detection/annotation/media_inspector.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "declared_media at probe / frame extraction",
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "sha256_final": "e20097f8fea6326ffe1e79f39d541e3ee6d62300a1cc46ac591d343d436ebc0e",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/annotation/media_inspector.py",
+   "backup_sha256": "3d692b7de11f76250a228294a0467db49a184cbc8eff7242ed1722be0c979576"
+  },
+  {
+   "path": "src/railway_detection/data/audio_extractor.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "declared_media",
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "sha256_final": "9a90130cb46e7a1bb0d49a75c995f57e570440fa1328bcae22336ebcae82c7c1",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/data/audio_extractor.py",
+   "backup_sha256": "cb90e73b3f19bc4cfd1ef76c307bfda8e589f72ed3f99407357b70007630d11e"
+  },
+  {
+   "path": "src/railway_detection/vision/video.py",
+   "existed_before_mission_14": true,
+   "git_status_before": " M",
+   "git_status_final": " M",
+   "purpose": "declared_media",
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "sha256_final": "caa7bd2ed84a17483cd6808f7f8315f5fddc71a307499dd0cfff0c356fb5c464",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/vision/video.py",
+   "backup_sha256": "983c4674a7dc76d8c81b1e52618c401c2e628abe635c6b412ac95edcc67daa0e"
+  },
+  {
+   "path": "src/railway_detection/audio/preprocessor.py",
+   "existed_before_mission_14": true,
+   "git_status_before": " M",
+   "git_status_final": " M",
+   "purpose": "declared_media",
+   "tests": [
+    "tests/unit/test_media_authorization.py"
+   ],
+   "sha256_final": "2978a14bd44e1de608dd29dca7e5bd00bd48a054f3431dff169a3fd77e060d1a",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/audio/preprocessor.py",
+   "backup_sha256": "116adb72fc6513915676ba9856fd050329edc2ae89c88fe495e1581a17e7f477"
+  },
+  {
+   "path": "src/railway_detection/data/manifest.py",
+   "existed_before_mission_14": true,
+   "git_status_before": " M",
+   "git_status_final": " M",
+   "purpose": "guard outside try; denial propagates; declared_media (F13-07)",
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "sha256_final": "041dcae88e45a1eddb6d24d00a3620a247c47f8168afa93a7eb93d05727c2857",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/data/manifest.py",
+   "backup_sha256": "48ea124918da8b14df454c5d57596a5e9676ef461fb8d0484fc214dc75560267"
+  },
+  {
+   "path": "src/railway_detection/data/validator.py",
+   "existed_before_mission_14": true,
+   "git_status_before": " M",
+   "git_status_final": " M",
+   "purpose": "guard outside try; denial propagates; declared_media (F13-07)",
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "sha256_final": "38103fbe8b340d7131f0ea1aaccd102a330ea99a2e254add67c285cc1e30fb92",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/data/validator.py",
+   "backup_sha256": "1a2a98664da88086f3560e5f4fece0bb34e2716dad33292eec896dd187e36665"
+  },
+  {
+   "path": "src/railway_detection/demo/server.py",
+   "existed_before_mission_14": true,
+   "git_status_before": " M",
+   "git_status_final": " M",
+   "purpose": "allowlisted serving roots, canonical containment, static translate_path, /api/process guard (F13-05)",
+   "tests": [
+    "tests/unit/test_security_dashboard.py"
+   ],
+   "sha256_final": "5c950b5bb59ee7bca5e272b71ad1655c72a86dae661d7a4915d4750f234f2323",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/demo/server.py",
+   "backup_sha256": "35eab996fe1929a711677d80931c180a05e20421d6e766630ceb89916d99e28a"
+  },
+  {
+   "path": "src/railway_detection/demo/video_demo.py",
+   "existed_before_mission_14": true,
+   "git_status_before": " M",
+   "git_status_final": " M",
+   "purpose": "declared_media",
+   "tests": [
+    "tests/unit/test_security_media_boundary.py"
+   ],
+   "sha256_final": "c44f3ea44ec4890664ead399105271fa3d062a3dd7ae3b7a72fe84f9a8da001c",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/src/railway_detection/demo/video_demo.py",
+   "backup_sha256": "1fa9dfb4781b87abb16bb830cd7cdb732b047562f0b42728aca636293bd3f48c"
+  },
+  {
+   "path": "src/railway_detection/experiments/layer_b_processor.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "declared_media (one-line change)",
+   "tests": [],
+   "sha256_final": "4ceab3b8657d827c078bed38886fe3eabe42795a3a27378eaea0a7803c129985",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null,
+   "backup_note": "NO pre-edit backup exists; change is a single small insertion described in purpose; pre-edit text not reconstructed"
+  },
+  {
+   "path": "research/scripts/generate_qualitative_figures.py",
+   "existed_before_mission_14": true,
+   "git_status_before": " M",
+   "git_status_final": " M",
+   "purpose": "declared_media; adjacent guard before fallback predict (F13-14)",
+   "tests": [
+    "tests/unit/test_media_opener_coverage.py"
+   ],
+   "sha256_final": "8d3ea90bbe4656c8ad04861ffe04bebd6764008231232b53750886cd549cfdae",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/research/scripts/generate_qualitative_figures.py",
+   "backup_sha256": "08c3fa1181c9b5889ef4b9f359d80c79f1795f8840286a74a3fc655677a5ec38"
+  },
+  {
+   "path": "research/scripts/generate_video_progression_figure.py",
+   "existed_before_mission_14": true,
+   "git_status_before": " M",
+   "git_status_final": " M",
+   "purpose": "declared_media",
+   "tests": [
+    "tests/unit/test_media_opener_coverage.py"
+   ],
+   "sha256_final": "7ecf8a7397d7415853356317cafe406323e1d352c5624a260bf2943ce87241b3",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/research/scripts/generate_video_progression_figure.py",
+   "backup_sha256": "a1601f489907fdb64a0e7ba0695161dc2e219223d82a17aae2d343c49fdce225"
+  },
+  {
+   "path": "scratch/analyze_train_events.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "  ",
+   "git_status_final": "!!",
+   "purpose": "guard bootstrap + guard immediately before each ffmpeg launch / wave.open (F13-06)",
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py"
+   ],
+   "sha256_final": "96358f97eaa8b8fde13252e0fbb6ae25d06a194a5b4e841c5e6f1b5eaa1c382d",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/scratch/analyze_train_events.py",
+   "backup_sha256": "478b862e36fb7284d88719dcc9c19c98eead4986f228c1e8a94f3b2adb10d54a"
+  },
+  {
+   "path": "scratch/analyze_forensic_results.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "  ",
+   "git_status_final": "!!",
+   "purpose": "guard bootstrap + guard immediately before each ffmpeg launch / wave.open (F13-06)",
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py"
+   ],
+   "sha256_final": "d83737547826c232da7fff84ff687f3f36db2cdd388b116569c64f7d2b1e51bb",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/scratch/analyze_forensic_results.py",
+   "backup_sha256": "c8ad93acbd88f6d2caf0a66304d47e9525faa716a4c6578b9a5feac39de7b100"
+  },
+  {
+   "path": "scratch/analyze_audio.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "  ",
+   "git_status_final": "!!",
+   "purpose": "guard bootstrap + guard immediately before each ffmpeg launch / wave.open (F13-06)",
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py"
+   ],
+   "sha256_final": "7138f463d52439ab892309f0f3629dc437f22f62fb54d9e28c877a9394b524c3",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/scratch/analyze_audio.py",
+   "backup_sha256": "ec5cc77ba2eb83f9856eac3b387d5306de3e171242506f0c315b57f3e4f93792"
+  },
+  {
+   "path": "scratch/extract_frames.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "  ",
+   "git_status_final": "!!",
+   "purpose": "guard bootstrap + guard immediately before each ffmpeg launch / wave.open (F13-06)",
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py"
+   ],
+   "sha256_final": "f04a0bd3d17fa6a64a0c8a997fde350e5de1b454a730b88e62a96a800bd18fb3",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/scratch/extract_frames.py",
+   "backup_sha256": "f5cd906a683eca5a5be61b27c6dac5b5509aebc3735d544853173e5e0324b194"
+  },
+  {
+   "path": "scratch/forensic_event_auditor.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "  ",
+   "git_status_final": "!!",
+   "purpose": "guard bootstrap + guard immediately before each ffmpeg launch / wave.open (F13-06)",
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py"
+   ],
+   "sha256_final": "8205795f52da8416dfe69910725d1f6fcfe070e4caeae910ab1e35a2ff97a17a",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/scratch/forensic_event_auditor.py",
+   "backup_sha256": "0266fb5bcc27f4417ae8385b5828ddec49fdbc26ac29a4ff403ff78138f0fa99"
+  },
+  {
+   "path": "scratch/measure_ground_truth_v7.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "  ",
+   "git_status_final": "!!",
+   "purpose": "guard bootstrap + guard immediately before each ffmpeg launch / wave.open (F13-06)",
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py"
+   ],
+   "sha256_final": "80a8e16ce2871b81ac27e06483211736163ca8f432bc44c1ab48758600bf87c6",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/scratch/measure_ground_truth_v7.py",
+   "backup_sha256": "b515f254f03ccda5727ce8612f2aed54c7e133c0d96b5df6606cdee28c2f3bac"
+  },
+  {
+   "path": "scratch/run_phase2_verification.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "  ",
+   "git_status_final": "!!",
+   "purpose": "guard bootstrap + guard immediately before each ffmpeg launch / wave.open (F13-06)",
+   "tests": [
+    "tests/unit/test_security_scratch_scripts.py"
+   ],
+   "sha256_final": "9682f596a868ff7d8214141eed3b6026c286a54209c2626723ce061a2df05dea",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/scratch/run_phase2_verification.py",
+   "backup_sha256": "f6b0d0b3afb36026f11435d86f03a40c0742818c5b9b3796eeb2733bcdf53d18"
+  },
+  {
+   "path": "tests/unit/security_support.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW shared synthetic fixtures",
+   "tests": [],
+   "sha256_final": "63944f14c7bb20f24c940987272365bf84b82e453650c8f1dbf451f8f4763d8b",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_security_media_boundary.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW 55 tests",
+   "tests": [],
+   "sha256_final": "fa55238f3613f5d24d52a64d37a8b73b6e2b74ed5c193ec1cd7bc36f4b6ff064",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_security_evaluation_input.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW 24 tests",
+   "tests": [],
+   "sha256_final": "c23e48835e83ac386375d8cb832250fb60bf4ea4790d2398f807d54c6d67c7a5",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_security_path_identity.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW 52 tests",
+   "tests": [],
+   "sha256_final": "49ace47e5ea572e5c8d2f30b72ccae0880be32c055a4a428e13b6bcf01a09725",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_security_dashboard.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW 50 tests",
+   "tests": [],
+   "sha256_final": "9513dee5d8587c382e60e877f0db88959325e46a83f1906704edd4ae14a3b6ce",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_security_scratch_scripts.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW 24 tests",
+   "tests": [],
+   "sha256_final": "8b9539bb10059d91e852d66efcbe96de1e85a084261b7dfbb84ad43d2031c398",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_security_governance_regressions.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW 25 tests",
+   "tests": [],
+   "sha256_final": "a162aac2715c039159d013d631a2ed70d2977d20994ede2e4aefb7693078eaa2",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_phase12_governance_synthetic.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW generated synthetic sibling (74 tests)",
+   "tests": [],
+   "sha256_final": "8439b56e4d1db010f6a2961511b9de984c9b14d1e02b97b68a3461ea99ec6df6",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_phase12_official_replay_synthetic.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW generated synthetic sibling (87 tests)",
+   "tests": [],
+   "sha256_final": "79b17c97b197e4892a4fa45e19a7ae6e2c2fda6cd0fab6b4ca83b5e74619129e",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "tests/unit/test_media_opener_coverage.py",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "tripwire strengthened (order-aware, predict(source=path), full-path ffmpeg, module level, scratch/); loader allowlist entry removed; 4 self-tests",
+   "tests": [],
+   "sha256_final": "c27ddf55f137bc281aae8a6fabe79dc0c1e62a6cd31be764beefe8a66edfefe8",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/tests/unit/test_media_opener_coverage.py",
+   "backup_sha256": "b7f79ee02cf933fcbacec79bc79ec5100672c061cf822875674d884a876ddbe7"
+  },
+  {
+   "path": "tests/test_access_classification.yaml",
+   "existed_before_mission_14": true,
+   "git_status_before": "??",
+   "git_status_final": "??",
+   "purpose": "classification recovered: 113->121 files, safe 92->100, amendments recorded",
+   "tests": [],
+   "sha256_final": "b6dce489c6a40f30639b30978eb1d9f8a3640c2d517aca58a0fec65cd8109113",
+   "verified_backup_made_before_edit": true,
+   "backup_path": "docs/generated/phase5/mission14_pre_edit_backup/tests/test_access_classification.yaml",
+   "backup_sha256": "c98db6676df88afd8e45371c231f17abeb255f1cdb37580ed568b5f25f0d8a72"
+  },
+  {
+   "path": "docs/generated/phase5/mission14_tools/classify_selected.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW incremental classification driver",
+   "tests": [],
+   "sha256_final": "0b464efb8f5dc7a91ea0569bbcfdba5a5621488afdcaa699cfec09b22c489680",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  },
+  {
+   "path": "docs/generated/phase5/mission14_tools/smoke_http_dashboard.py",
+   "existed_before_mission_14": false,
+   "git_status_before": "NEW",
+   "git_status_final": "??",
+   "purpose": "NEW real-socket dashboard smoke test (synthetic tree)",
+   "tests": [],
+   "sha256_final": "a39927f7c2e2eef7068808858d0325d060dcb9d3077421320bcc0d572230e850",
+   "verified_backup_made_before_edit": false,
+   "backup_path": null,
+   "backup_sha256": null
+  }
+ ],
+ "unmodified_by_design": [
+  "scripts/run_synthetic_tests.py",
+  "scripts/classify_test_access.py",
+  "src/railway_detection/safety/access_manifest.py",
+  "src/railway_detection/safety/access_guard_plugin.py",
+  "tests/unit/test_phase12_governance.py",
+  "tests/unit/test_phase12_official_replay.py"
+ ],
+ "documentation": {
+  "deliverables": [
+   "docs/generated/phase5/MISSION_14_DASHBOARD_SECURITY.md",
+   "docs/generated/phase5/MISSION_14_DOCUMENTATION_RECONCILIATION.md",
+   "docs/generated/phase5/MISSION_14_EVALUATION_INPUT_SECURITY.md",
+   "docs/generated/phase5/MISSION_14_FINDING_REGISTER.json",
+   "docs/generated/phase5/MISSION_14_INITIAL_BASELINE.md",
+   "docs/generated/phase5/MISSION_14_MEDIA_BOUNDARY_DESIGN.md",
+   "docs/generated/phase5/MISSION_14_MISSION12_EXECUTION_PROVENANCE.md",
+   "docs/generated/phase5/MISSION_14_PATH_CANONICALIZATION.md",
+   "docs/generated/phase5/MISSION_14_RECOVERY_REPORT.md",
+   "docs/generated/phase5/MISSION_14_SCRATCH_MEDIA_SCRIPT_AUDIT.md",
+   "docs/generated/phase5/MISSION_14_SECURITY_REGRESSION_TESTS.md",
+   "docs/generated/phase5/MISSION_14_TEST_CLASSIFICATION_RECOVERY.md"
+  ],
+  "evidence": [
+   "docs/generated/phase5/mission14_evidence/README.md",
+   "docs/generated/phase5/mission14_evidence/mission14_synthetic_test_report.json",
+   "docs/generated/phase5/mission14_evidence/probe_after_mission14.txt",
+   "docs/generated/phase5/mission14_evidence/probe_before_mission14.txt"
+  ]
+ }
+}

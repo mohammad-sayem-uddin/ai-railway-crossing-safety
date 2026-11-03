@@ -1,0 +1,8 @@
+{
+  "event_id": "train_events_event_020",
+  "condition": "Back_Independent",
+  "step_count": 150,
+  "total_duration_s": 29.8,
+  "closed_duration_s": 25.2,
+  "fault_occurred": false
+}

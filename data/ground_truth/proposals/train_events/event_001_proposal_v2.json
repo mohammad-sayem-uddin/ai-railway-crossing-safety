@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "proposal_id": "proposal_event_001_v2",
+  "event_id": "event_001",
+  "event_type": "REAL_WORLD_TRAIN_EVENT",
+  "proposal_timestamp_utc": "2026-10-09T15:51:22Z",
+  "schema_version": "5.0.0",
+  "ai_assistant_metadata": {
+    "model_name": "gemini-3.8-flash",
+    "prompt_template_version": "v1.0.0",
+    "prompt_template_sha256": "8ea581b1453f72b4673642d510acc4a4e0a9aeb9727ae63ff0c0546b65741a5e",
+    "input_media_files": [
+      {
+        "file_name": "camera_front.mov",
+        "duration_s": 49.835,
+        "sha256": "d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b"
+      },
+      {
+        "file_name": "camera_back.mov",
+        "duration_s": 46.065,
+        "sha256": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1"
+      }
+    ]
+  },
+  "proposed_site_metadata": {
+    "crossing_id": "crossing_A",
+    "recording_session_id": "session_20260914_morning"
+  },
+  "proposed_environmental_conditions": {
+    "lighting": "day",
+    "weather": "overcast"
+  },
+  "proposed_train_metadata": {
+    "train_present": true,
+    "train_direction": "left_to_right",
+    "train_type": "passenger",
+    "trailing_cars_count": 7,
+    "horn_status": "absent_observed",
+    "horn_onset_s": null,
+    "horn_uncertainty_s": null,
+    "horn_reason": null,
+    "confidence_note": "Front and back audio tracks inspected. Engine low-frequency rumble (80-92 Hz) and ambient pedestrian voices clearly recorded; no locomotive pneumatic horn blast observed during approach or crossing."
+  },
+  "proposed_timestamps": {
+    "T0_first_visible": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 0.0,
+      "frame_index": 0,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Locomotive #2933 headlight and blue/cream body already visible in distance under metro flyover at start of recording.",
+      "ambiguity_flag": false
+    },
+    "T1_danger_zone_entry": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 5.8,
+      "frame_index": 174,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Front pilot of locomotive #2933 reaches foreground track zone / pedestrian clearance boundary.",
+      "ambiguity_flag": false
+    },
+    "T2_crossing_occupancy_start": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 6.5,
+      "frame_index": 195,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Locomotive pilot completely enters the crossing plane; coincident with acoustic engine rumble peak.",
+      "ambiguity_flag": false
+    },
+    "T3_locomotive_exit": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 3.6,
+      "frame_index": 216,
+      "reference_camera": "back",
+      "native_fps": 59.94005994005994,
+      "rationale": "Trailing end of lead locomotive #2933 clears immediate crossing roadway on back camera view.",
+      "ambiguity_flag": false
+    },
+    "T4_tail_clearance": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 45.0,
+      "frame_index": 2697,
+      "reference_camera": "back",
+      "native_fps": 59.94005994005994,
+      "rationale": "Rear vestibule of final passenger coach clears the crossing roadway line where pedestrian crowd immediately crosses.",
+      "ambiguity_flag": false
+    },
+    "T_scene_clear": {
+      "applicable": true,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": "back",
+      "native_fps": 59.94005994005994,
+      "rationale": "Unobservable: recording ends at 46.065s while train is still visible in distance past the crossing.",
+      "ambiguity_flag": true
+    }
+  },
+  "proposed_camera_alignment_markers": {
+    "candidate_front_marker": "Locomotive front reaches camera line at t=6.50s (front timeline)",
+    "candidate_back_marker": "Locomotive nose enters back view at t=0.80s (back timeline)",
+    "candidate_offset_s": null,
+    "requires_human_empirical_verification": true,
+    "audited_front_stream_exposure_s": 60.3,
+    "audited_back_stream_exposure_s": 60.488,
+    "audited_combined_camera_stream_exposure_s": 120.788,
+    "stream_exposure_note": "Combined camera-stream exposure (120.788s) represents summed stream-seconds and must NOT be treated as concurrent wall-clock exposure."
+  },
+  "raw_proposal_immutable": true,
+  "prior_proposal_ref": "data/ground_truth/proposals/train_events/event_001_proposal.json"
+}

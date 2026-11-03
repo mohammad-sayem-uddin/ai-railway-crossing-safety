@@ -1,0 +1,89 @@
+policy_metadata:
+  name: "multimodal_decision_policy_candidate"
+  version: "v2.0.0-candidate"
+  description: "Phase 10 candidate policy: explicit detection-class semantics, explicit camera-role semantics, and continuity-aware new-train detection. Addresses the Phase 9-demonstrated clearance-divergence mechanism. NOT the frozen policy."
+  status: "CANDIDATE_UNDER_RESEARCH_REVIEW_NOT_AUTHORIZED_FOR_DEPLOYMENT"
+  supersedes: "none -- this is a parallel candidate, not a replacement. configs/decision_policy_v1.yaml remains the frozen, authorized policy and is unmodified."
+  reference_frozen_config: "configs/frozen_experiment_v1.yaml"
+  reference_frozen_config_sha256: "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e"
+  reference_frozen_policy: "configs/decision_policy_v1.yaml"
+  reference_forensic_report: "docs/PHASE9_CLEARANCE_DIVERGENCE_REPORT.md"
+  implementation: "src/railway_detection/fusion/rules_v2_candidate.py, src/railway_detection/fusion/decision_engine_v2_candidate.py"
+  authorization_note: "This candidate is validated against cached evidence and synthetic fixtures only (Phase 10). It has not been authorized for any new model inference, full-cohort experiment, or deployment. Any such use requires a separate, explicit human authorization."
+
+detection_class_semantics:
+  description: "The vision model emits four classes: front, rear, side, train. This candidate explicitly separates them by how much directional information they encode, which the frozen policy's APPROACH_LABELS/DEPARTURE_LABELS union (both containing 'side' and 'train') did not."
+  unambiguous_approach_labels: ["front"]
+  unambiguous_departure_labels: ["rear"]
+  ambiguous_orientation_labels: ["side", "train"]
+  ambiguous_label_rule: "An ambiguous label (side, train) MUST NOT, by itself, confirm either approach or departure. It is only promoted to 'new approach' evidence if the reporting source has gone >= gap_frames consecutive ticks with no qualifying detection immediately beforehand (see new_train_interrupt_conditions below); it is never used to confirm departure at all (see departure_confirmation_conditions)."
+  audio_labels: "Unchanged from the frozen policy (train, horn, rail, train_horn) -- audio orientation is not implicated in the Phase 9 finding and is not redefined here."
+
+camera_role_semantics:
+  description: "Scopes WHICH SENSOR is authoritative for positive departure confirmation. Does not claim camera role alone proves train direction (unambiguous front/rear labels remain source-agnostic evidence on their own)."
+  departure_role_heuristic: "source id contains '2', 'back', or 'rear' -- identical to the existing heuristic already used by the frozen engine's RULE_5/RULE_6 departure-source checks (decision_engine.py), not a new assumption."
+  justification: "The dual-camera rig's documented physical geometry (docs/R04_CALIBRATION_VALIDATION_REPORT.md, the Phase 8 report) has the back camera mounted to view the departure side of the crossing and the front camera the approach side. This is a sensor-authority claim, not a direction-inference-from-role claim."
+  single_camera_fallback: "When no departure-role source is registered at all (e.g. the B0 front-only baseline topology), positive departure confirmation can never come from a label (there is no camera watching the departure side); it is instead confirmed by sustained disappearance (see departure_confirmation_conditions)."
+
+evidence_required_for_approach_vs_departure:
+  approach: "An unambiguous 'front' label from ANY available vision source, at confidence >= confidence_threshold_approach. Source-agnostic (see camera_role_semantics)."
+  departure_confirmation_conditions:
+    - "An unambiguous 'rear' label from a departure-role source (if one is registered), at confidence >= confidence_threshold_departure, OR"
+    - "Sustained disappearance: the departure-role source (or, in a single-camera topology, the sole camera) reports zero qualifying detections (none of front/rear/side/train above threshold) for confirm_frames consecutive ticks, while that source remains AVAILABLE (not stale/missing -- RULE_6 still applies if it is not)."
+  not_sufficient_for_departure: "An ambiguous 'side' or 'train' label alone, from any source, including the departure-role camera, never by itself confirms departure."
+
+new_train_interrupt_conditions:
+  description: "RULE_7_NEW_TRAIN_INTERRUPT, scoped identically to the frozen policy (fires only during REAR_CONFIRMED, CROSSING_CLEAR, and GATE_OPENING)."
+  conditions:
+    - "An unambiguous 'front' label from any source, at any time (no continuity requirement -- orientation-specific evidence is always treated as potentially a new train), OR"
+    - "An ambiguous 'side'/'train' label from a source that has gone >= gap_frames consecutive ticks with no qualifying detection immediately before this one (a genuine reappearance after silence, not a continuing detection stream)."
+  gap_frames: "Reuses the frozen config's existing timing.miss_tolerance_frames field (default 2) as the 'genuine silence' threshold. No new configuration field is introduced in configs/frozen_experiment_v1.yaml; this candidate reads that field read-only."
+  distinguishing_same_train_from_new_train: "A source's own continuing, unbroken ambiguous detections of the same departing/passing train (no gap) are never treated as a new approach and never reset the clearance dwell. This is the direct fix for the Phase 9 mechanism, where the departing train's own lingering 'side' classification was indistinguishable, under the frozen policy, from a new train's approach."
+
+clearance_dwell_conditions:
+  start: "Set on first evaluation while in REAR_CONFIRMED (unchanged mechanically from the frozen policy)."
+  reset: "Only on a genuinely-new-train determination (the RULE_7 conditions above) or on audio evidence (RULE_2_AUDIO_SUPPORT_ONLY, unchanged from frozen) -- continuing ambiguous evidence with no gap no longer resets it at all."
+  abort: "Stale or missing departure-role vision source during the dwell (RULE_5_STALE_SOURCE_ABORT, unchanged mechanics from frozen -- reused verbatim, not weakened)."
+  completion: "Elapsed dwell time (now - clearance_started_at_s) >= clearance_dwell_s (3.0s), unchanged from frozen."
+  dwell_duration_s: 3.0
+
+camera_disagreement_behavior:
+  description: "When an approach-role source and a departure-role source report simultaneous, conflicting evidence (e.g. front reports unambiguous 'front' while back reports unambiguous 'rear' at the same tick), approach evidence takes priority -- the RULE_7 check is evaluated before any dwell/departure-confirmation logic in every relevant state, same ordering as the frozen policy. This is a deliberate safety-conservative choice (fail toward treating ambiguous/conflicting simultaneous evidence as a potential new train), not an attempt to adjudicate which camera is 'right'."
+
+stale_source_behavior:
+  description: "Unchanged from the frozen policy. RULE_5_STALE_SOURCE_ABORT and RULE_6_DEGRADED_SOURCE_HOLD are reused with identical logic (departure-role-source-specific staleness, reusing the same heuristic already present in the frozen engine since Phase 6) -- the candidate does not touch sensor-health or fail-safe mechanics in any way."
+
+rules:
+  RULE_1_APPROACH_TRIGGER:
+    description: "Qualified approach requires 2 consecutive frames of genuinely-new approach evidence (see evidence_required_for_approach_vs_departure) at confidence >= 0.35"
+    threshold: 0.35
+    confirmation_frames: 2
+  RULE_2_AUDIO_SUPPORT_ONLY:
+    description: "Unchanged from frozen: audio alone cannot actuate gate in IDLE; delays clearance dwell in REAR_CONFIRMED"
+    operating_threshold: 0.3700
+  RULE_3_POSITIVE_CLEARANCE:
+    description: "Unchanged completion condition: 3.0s clearance dwell elapsed without a genuinely-new-train interrupt or audio delay"
+    dwell_duration_s: 3.0
+  RULE_3B_DEPARTURE_CONFIRMED_UNAMBIGUOUS_REAR:
+    description: "NEW (candidate-only): departure-role source reports unambiguous 'rear' label -- replaces the frozen policy's broader (and, per Phase 9, defective) departure_detected check for this transition"
+    departure_threshold: 0.35
+  RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE:
+    description: "NEW (candidate-only): departure-role source (or sole camera in single-camera topology) reports zero qualifying detections for confirm_frames consecutive ticks while remaining available"
+    confirmation_frames: 2
+  RULE_4_FAIL_SAFE_CLAMP:
+    description: "Unchanged from frozen: dual camera loss while active clamps closed immediately; in IDLE clamps after 2 consecutive frames"
+    confirmation_frames: 2
+  RULE_5_STALE_SOURCE_ABORT:
+    description: "Unchanged from frozen: stale vision data in REAR_CONFIRMED or CROSSING_CLEAR aborts clearance and fail-safe clamps closed"
+    timeout_s: 2.0
+  RULE_6_DEGRADED_SOURCE_HOLD:
+    description: "Unchanged from frozen: degraded or missing departure-role camera holds TRAIN_DEPARTING; prohibits premature rear confirmation"
+  RULE_7_NEW_TRAIN_INTERRUPT:
+    description: "CHANGED (candidate): immediate interruption of clearance or gate opening upon GENUINELY NEW qualified approach evidence (see new_train_interrupt_conditions) -- the frozen policy's raw label-membership check is replaced by the unambiguous-or-gap-reoccurrence check"
+  RULE_8_OUT_OF_ORDER_REJECTION:
+    description: "Unchanged from frozen: observations with timestamp earlier than last master time are rejected"
+  RULE_9_SENSOR_RECOVERY:
+    description: "Unchanged from frozen: recovering sensors require 2 confirmation frames of clean evidence before exiting fail-safe clamp"
+    confirmation_frames: 2
+  RULE_10_DUPLICATE_FRAME_REJECTION:
+    description: "Unchanged from frozen (Phase 6 addition): a second frame at an identical master timestamp is rejected before state-machine logic executes"

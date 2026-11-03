@@ -1,0 +1,380 @@
+{
+  "train_events/event_001": {
+    "front": {
+      "start": 1.5,
+      "end": 49.5,
+      "dur": 47.0,
+      "total": 49.835
+    },
+    "back": {
+      "start": 0.5,
+      "end": 45.5,
+      "dur": 44.5,
+      "total": 46.065
+    }
+  },
+  "train_events/event_002": {
+    "front": {
+      "start": 0.5,
+      "end": 32.0,
+      "dur": 32.0,
+      "total": 32.49
+    },
+    "back": {
+      "start": 0.5,
+      "end": 29.5,
+      "dur": 28.5,
+      "total": 30.202
+    }
+  },
+  "train_events/event_003": {
+    "front": {
+      "start": 0.5,
+      "end": 33.0,
+      "dur": 32.5,
+      "total": 33.323
+    },
+    "back": {
+      "start": 0.5,
+      "end": 31.0,
+      "dur": 28.5,
+      "total": 32.535
+    }
+  },
+  "train_events/event_004": {
+    "front": {
+      "start": 1.0,
+      "end": 73.5,
+      "dur": 27.0,
+      "total": 75.588
+    },
+    "back": {
+      "start": 0.5,
+      "end": 77.5,
+      "dur": 66.0,
+      "total": 78.073
+    }
+  },
+  "train_events/event_005": {
+    "front": {
+      "start": 0.5,
+      "end": 78.0,
+      "dur": 56.5,
+      "total": 79.557
+    },
+    "back": {
+      "start": 0.5,
+      "end": 76.5,
+      "dur": 47.0,
+      "total": 78.107
+    }
+  },
+  "train_events/event_006": {
+    "front": {
+      "start": 0.5,
+      "end": 125.5,
+      "dur": 98.5,
+      "total": 126.19
+    },
+    "back": {
+      "start": 1.0,
+      "end": 126.5,
+      "dur": 123.0,
+      "total": 126.978
+    }
+  },
+  "train_events/event_007": {
+    "front": {
+      "start": 0.5,
+      "end": 38.0,
+      "dur": 38.0,
+      "total": 38.26
+    },
+    "back": {
+      "start": 0.5,
+      "end": 34.0,
+      "dur": 34.0,
+      "total": 34.542
+    }
+  },
+  "train_events/event_008": {
+    "front": {
+      "start": 0.5,
+      "end": 58.5,
+      "dur": 57.0,
+      "total": 58.875
+    },
+    "back": {
+      "start": 0.5,
+      "end": 62.0,
+      "dur": 62.0,
+      "total": 62.717
+    }
+  },
+  "train_events/event_009": {
+    "front": {
+      "start": 2.0,
+      "end": 42.5,
+      "dur": 35.5,
+      "total": 42.897
+    },
+    "back": {
+      "start": 0.5,
+      "end": 37.0,
+      "dur": 31.0,
+      "total": 37.602
+    }
+  },
+  "train_events/event_010": {
+    "front": {
+      "start": 0.5,
+      "end": 23.5,
+      "dur": 23.5,
+      "total": 24.017
+    },
+    "back": {
+      "start": 0.5,
+      "end": 23.0,
+      "dur": 23.0,
+      "total": 23.517
+    }
+  },
+  "train_events/event_011": {
+    "front": {
+      "start": 0.5,
+      "end": 37.0,
+      "dur": 33.0,
+      "total": 37.692
+    },
+    "back": {
+      "start": 0.5,
+      "end": 30.0,
+      "dur": 28.0,
+      "total": 37.37
+    }
+  },
+  "train_events/event_012": {
+    "front": {
+      "start": 1.0,
+      "end": 74.5,
+      "dur": 71.5,
+      "total": 75.187
+    },
+    "back": {
+      "start": 0.5,
+      "end": 70.0,
+      "dur": 66.5,
+      "total": 70.738
+    }
+  },
+  "train_events/event_013": {
+    "front": {
+      "start": 1.0,
+      "end": 73.0,
+      "dur": 65.5,
+      "total": 73.687
+    },
+    "back": {
+      "start": 1.0,
+      "end": 71.5,
+      "dur": 65.5,
+      "total": 73.237
+    }
+  },
+  "train_events/event_014": {
+    "front": {
+      "start": 0.5,
+      "end": 54.0,
+      "dur": 52.0,
+      "total": 55.04
+    },
+    "back": {
+      "start": 1.0,
+      "end": 52.0,
+      "dur": 37.5,
+      "total": 53.503
+    }
+  },
+  "train_events/event_015": {
+    "front": {
+      "start": 2.0,
+      "end": 30.5,
+      "dur": 27.0,
+      "total": 31.155
+    },
+    "back": {
+      "start": 1.0,
+      "end": 20.0,
+      "dur": 4.0,
+      "total": 22.233
+    }
+  },
+  "train_events/event_016": {
+    "front": {
+      "start": 2.0,
+      "end": 46.0,
+      "dur": 42.5,
+      "total": 46.867
+    },
+    "back": {
+      "start": 0.5,
+      "end": 45.0,
+      "dur": 42.0,
+      "total": 45.27
+    }
+  },
+  "train_events/event_017": {
+    "front": {
+      "start": 0.5,
+      "end": 73.0,
+      "dur": 27.0,
+      "total": 81.658
+    },
+    "back": {
+      "start": 1.5,
+      "end": 83.5,
+      "dur": 36.5,
+      "total": 83.773
+    }
+  },
+  "train_events/event_018": {
+    "front": {
+      "start": 0.5,
+      "end": 58.5,
+      "dur": 55.0,
+      "total": 58.942
+    },
+    "back": {
+      "start": 1.0,
+      "end": 51.5,
+      "dur": 42.5,
+      "total": 52.637
+    }
+  },
+  "train_events/event_019": {
+    "front": {
+      "start": 1.0,
+      "end": 59.5,
+      "dur": 55.5,
+      "total": 60.31
+    },
+    "back": {
+      "start": 0.5,
+      "end": 48.0,
+      "dur": 41.5,
+      "total": 51.13
+    }
+  },
+  "train_events/event_020": {
+    "front": {
+      "start": 0.5,
+      "end": 28.0,
+      "dur": 28.0,
+      "total": 28.553
+    },
+    "back": {
+      "start": 0.5,
+      "end": 29.5,
+      "dur": 27.0,
+      "total": 29.87
+    }
+  },
+  "train_events/event_021": {
+    "front": {
+      "start": 1.0,
+      "end": 52.0,
+      "dur": 31.5,
+      "total": 53.413
+    },
+    "back": {
+      "start": 0.5,
+      "end": 61.0,
+      "dur": 52.5,
+      "total": 61.37
+    }
+  },
+  "train_events/event_022": {
+    "front": {
+      "start": 0.5,
+      "end": 41.0,
+      "dur": 32.0,
+      "total": 43.637
+    },
+    "back": {
+      "start": 0.5,
+      "end": 46.0,
+      "dur": 39.0,
+      "total": 46.335
+    }
+  },
+  "train_events/event_023": {
+    "front": {
+      "start": 0.5,
+      "end": 44.5,
+      "dur": 44.5,
+      "total": 44.838
+    },
+    "back": {
+      "start": 0.5,
+      "end": 44.0,
+      "dur": 42.5,
+      "total": 45.768
+    }
+  },
+  "no_train_events/event_001": {
+    "front": {
+      "start": 0.5,
+      "end": 22.0,
+      "dur": 14.0,
+      "total": 24.635
+    },
+    "back": {
+      "start": 2.5,
+      "end": 20.0,
+      "dur": 6.5,
+      "total": 24.422
+    }
+  },
+  "no_train_events/event_002": {
+    "front": {
+      "start": 0.5,
+      "end": 11.5,
+      "dur": 11.5,
+      "total": 11.877
+    },
+    "back": {
+      "start": 1.0,
+      "end": 13.0,
+      "dur": 4.5,
+      "total": 13.333
+    }
+  },
+  "no_train_events/event_003": {
+    "front": {
+      "start": 0.5,
+      "end": 23.5,
+      "dur": 23.5,
+      "total": 23.788
+    },
+    "back": {
+      "start": 0.5,
+      "end": 11.5,
+      "dur": 2.0,
+      "total": 22.733
+    }
+  },
+  "engine_events/event_001": {
+    "front": {
+      "start": 0.5,
+      "end": 6.0,
+      "dur": 2.5,
+      "total": 7.873
+    },
+    "back": {
+      "start": 0.5,
+      "end": 9.5,
+      "dur": 7.5,
+      "total": 9.8
+    }
+  }
+}

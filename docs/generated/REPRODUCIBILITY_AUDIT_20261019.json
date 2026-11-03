@@ -1,0 +1,273 @@
+{
+  "claim_findings": [
+    {
+      "code": "OVERCLAIM_LANGUAGE",
+      "detail": "guarantee/elimination/validation/real-time style claim with no hedge, negation, status marker or resolvable evidence tag",
+      "line": 15,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "Flawless Departure Confirmation: The safety-critical 'rear' viewpoint class achieved 100.0% precision and 100.0% recall (AP@50: 99.84%), eliminating catastrophic premature opening risks."
+    },
+    {
+      "code": "UNSUPPORTED_EMPIRICAL_NUMBER",
+      "detail": "1.44% appears in no evidence file; no evidence tag",
+      "line": 155,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "Only 7 targets were missed across the entire dataset (False Negatives = 7, an error rate of merely 1.44%)."
+    },
+    {
+      "code": "OVERCLAIM_LANGUAGE",
+      "detail": "guarantee/elimination/validation/real-time style claim with no hedge, negation, status marker or resolvable evidence tag",
+      "line": 156,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "Flawless Rear Coach Detection (100% Recall): Crucially for crossing clearance safety, the detector achieved 100.0% Recall and 100.0% Precision on the 'rear' viewpoint class with zero missed rear targets (FN = 0) and zero false rear classifi"
+    },
+    {
+      "code": "OVERCLAIM_LANGUAGE",
+      "detail": "guarantee/elimination/validation/real-time style claim with no hedge, negation, status marker or resolvable evidence tag",
+      "line": 175,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "Flawless side detection (0 misses)."
+    },
+    {
+      "code": "OVERCLAIM_LANGUAGE",
+      "detail": "guarantee/elimination/validation/real-time style claim with no hedge, negation, status marker or resolvable evidence tag",
+      "line": 175,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "Guarantees crossing occupancy is maintained continuously during train passage."
+    },
+    {
+      "code": "OVERCLAIM_LANGUAGE",
+      "detail": "guarantee/elimination/validation/real-time style claim with no hedge, negation, status marker or resolvable evidence tag",
+      "line": 178,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "Flawless rear detection (0 misses)."
+    },
+    {
+      "code": "OVERCLAIM_LANGUAGE",
+      "detail": "guarantee/elimination/validation/real-time style claim with no hedge, negation, status marker or resolvable evidence tag",
+      "line": 178,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "Guarantees train clearance is reliably captured before gate opening."
+    },
+    {
+      "code": "OVERCLAIM_LANGUAGE",
+      "detail": "guarantee/elimination/validation/real-time style claim with no hedge, negation, status marker or resolvable evidence tag",
+      "line": 222,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "This initial research report demonstrates that the core scientific foundation and vision perception components of the multimodal railway level-crossing safety framework have been successfully designed, implemented, and validated."
+    },
+    {
+      "code": "OVERCLAIM_LANGUAGE",
+      "detail": "guarantee/elimination/validation/real-time style claim with no hedge, negation, status marker or resolvable evidence tag",
+      "line": 222,
+      "source": "Railway_Crossing_Automation_Research_Report.docx",
+      "text": "The vision detector achieved state-of-the-art accuracy with 99.46% mAP@50, crucially maintaining 100% recall on the safety-critical rear coach detection required for safe crossing clearance."
+    }
+  ],
+  "evidence_classes": {
+    "controlled_validation": "NOT OBTAINED (no field session has occurred)",
+    "implemented_software": "present (see tests)",
+    "real_data_evaluation": "NOT OBTAINED",
+    "synthetic_tests": "present; never research evidence",
+    "target_hardware_measurement": "NOT OBTAINED (no target platform declared)"
+  },
+  "generated_at_utc": "2026-10-19T08:58:55Z",
+  "items": [
+    {
+      "detail": "all required manifests present and hashed",
+      "evidence": {
+        "manifests": {
+          "data/manifests/camera_sync_offsets_candidate.yaml": "2a2f3faa88ae9ffa3e49cd4fb26cf32f3e1595cf0e24422a1dd198102df51f69",
+          "data/manifests/layer_b_v2_annotation_inventory.json": "5585e22ecc7841e2cca4d8e56b9d61999e252e1efaf5dfa6e57d81471b809a56",
+          "data/manifests/real_world_v2_video_manifest.json": "d8ddfdf861f5045d466049c187a8443f0e5b9e7d2fd65f240ac6f6d543a1ad66",
+          "data/manifests/train_horn_audio_manifest.json": "bdb0b0521e6c7707e4ccadcb9f9a494ea2145279adaa02e8e5f9c1379d4ed85b"
+        },
+        "missing": []
+      },
+      "id": "dataset_manifests",
+      "status": "PASS"
+    },
+    {
+      "detail": "0 valid Stage-2.1 record(s), 0 eligible; receipt: absent_or_invalid; legacy records are never ground truth",
+      "evidence": {
+        "legacy_records": 27,
+        "schema_versions": {
+          "6.0.0": 27
+        }
+      },
+      "id": "approved_ground_truth",
+      "status": "UNRESOLVED"
+    },
+    {
+      "detail": "unresolved protocol definitions: ['premature_opening_window']",
+      "evidence": {
+        "documents": {
+          "design": "2e906c1e19426d2fa406fe626858b0b308fc6abb38510afd660768e954fbb407",
+          "ground_truth_protocol": "d100c1e6a63280c375f94e297416efb0cf7dd3c15c9aa8df076ede052d49ecf4",
+          "protocol_v9": "7c183b323970591b68f0db692e70413e54dcacfc4bf78a358c28f1b1ed68734c"
+        },
+        "unresolved_definitions": [
+          "premature_opening_window"
+        ]
+      },
+      "id": "protocol_version",
+      "status": "UNRESOLVED"
+    },
+    {
+      "detail": "no event-level split decision exists; none is invented",
+      "evidence": {
+        "sha256": null
+      },
+      "id": "event_split_decision",
+      "status": "UNRESOLVED"
+    },
+    {
+      "detail": "no R04 scope decision recorded",
+      "evidence": {
+        "candidates": {
+          "calibration_supported": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_005",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_009",
+            "train_events/event_011",
+            "train_events/event_012",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_017"
+          ],
+          "consistent": true,
+          "is_decision": false,
+          "note": "Evidence only. The Phase 8 authorization covers the exploratory ablation, not the official evaluation scope; recording accepted_sync_events is the researcher's act.",
+          "phase8_authorized_exploratory": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_005",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_009",
+            "train_events/event_011",
+            "train_events/event_012",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_017"
+          ]
+        }
+      },
+      "id": "r04_scope_decision",
+      "status": "UNRESOLVED"
+    },
+    {
+      "detail": "checkpoints match the frozen configuration",
+      "evidence": {
+        "checkpoints": {
+          "audio_v3": {
+            "actual_sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782",
+            "expected_sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782",
+            "matches_frozen_config": true,
+            "path": "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt"
+          },
+          "prohibited_audio_v2_used": false,
+          "vision": {
+            "actual_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+            "expected_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+            "matches_frozen_config": true,
+            "path": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt"
+          }
+        }
+      },
+      "id": "model_checkpoint_fingerprints",
+      "status": "PASS"
+    },
+    {
+      "detail": "raw-byte and canonical-content hashes recorded for both (they answer different questions: Phase 5 cited the canonical policy hash)",
+      "evidence": {
+        "decision_policy": {
+          "canonical_sha256": "051c908d4db23687db33cbc8349945b241a0735b362413be876d7017a5eacc9d",
+          "path": "configs/decision_policy_v1.yaml",
+          "raw_sha256": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575"
+        },
+        "frozen_config": {
+          "canonical_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+          "path": "configs/frozen_experiment_v1.yaml",
+          "raw_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a"
+        }
+      },
+      "id": "config_and_policy_fingerprints",
+      "status": "PASS"
+    },
+    {
+      "detail": "no official evaluation result exists; none is claimed",
+      "evidence": {},
+      "id": "evaluation_result_provenance",
+      "status": "NOT_AVAILABLE"
+    },
+    {
+      "detail": "no experiment manifest supplied; no official Phase 13 experiment exists",
+      "evidence": {},
+      "id": "experiment_manifest_completeness",
+      "status": "NOT_AVAILABLE"
+    },
+    {
+      "detail": "50 pinned packages agree with the installed versions",
+      "evidence": {
+        "lock_sha256": "1e2152dbd1002ffef175d3fe489317923c93ff2f1644d5c4f1cc7a48bf2e3063",
+        "mismatches": {}
+      },
+      "id": "dependency_lock",
+      "status": "PASS"
+    },
+    {
+      "detail": "ultralytics importable",
+      "evidence": {
+        "origin": "/Users/sayemuddin/Desktop/Train_automation/venv/lib/python3.11/site-packages/ultralytics/__init__.py"
+      },
+      "id": "ultralytics_importable",
+      "status": "PASS"
+    },
+    {
+      "detail": "decisions still required of the researcher",
+      "evidence": {
+        "register": {
+          "d1_review_duration_thresholds": "UNRESOLVED",
+          "d3c_clear_boundary_audit": "UNRESOLVED",
+          "eval_auth": "NOT RECORDED",
+          "event_level_split": "UNRESOLVED",
+          "leg_exec": "AUTHORIZED (verified operation-specific recorded statement)",
+          "premature_opening_window": "UNRESOLVED (v9 vs M4; no researcher-attributed acceptance)",
+          "r04_camera_scope": "UNRESOLVED",
+          "stage21_ground_truth": "NOT OBTAINED (0 valid records)"
+        }
+      },
+      "id": "unresolved_decisions",
+      "status": "UNRESOLVED"
+    },
+    {
+      "detail": "9 unsupported or overreaching statement(s) in ['docs/PHASE16_MANUSCRIPT_DRAFT.md', 'Railway_Crossing_Automation_Research_Report.docx']",
+      "evidence": {
+        "evidence_files": 13,
+        "inventory_counts": {
+          "engine_events": 1,
+          "no_train_events": 3,
+          "train_events": 23
+        },
+        "scanned": [
+          "docs/PHASE16_MANUSCRIPT_DRAFT.md",
+          "Railway_Crossing_Automation_Research_Report.docx"
+        ]
+      },
+      "id": "manuscript_claims_vs_evidence",
+      "status": "FAIL"
+    }
+  ],
+  "read_only": true,
+  "schema_version": "reproducibility-audit/1",
+  "status_counts": {
+    "FAIL": 1,
+    "NOT_AVAILABLE": 2,
+    "PASS": 5,
+    "UNRESOLVED": 5
+  }
+}

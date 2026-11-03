@@ -12,6 +12,7 @@ from typing import Any
 from PIL import Image
 
 from railway_detection.data.contracts import BoundingBox, VisionAnnotation
+from railway_detection.safety.media_guard import require_media_authorization
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"}
 LABEL_EXTENSIONS = {".txt"}
@@ -187,6 +188,7 @@ def _discover_images(root: Path) -> list[Path]:
 
 
 def _check_image(path: Path) -> tuple[str, str] | None:
+    require_media_authorization(path, "READ_RAW_MEDIA", declared_media=True)
     try:
         with Image.open(path) as img:
             img.verify()
@@ -196,6 +198,7 @@ def _check_image(path: Path) -> tuple[str, str] | None:
 
 
 def _read_dimensions(path: Path) -> tuple[int, int] | None:
+    require_media_authorization(path, "READ_RAW_MEDIA", declared_media=True)
     try:
         with Image.open(path) as img:
             return img.size
@@ -204,6 +207,7 @@ def _read_dimensions(path: Path) -> tuple[int, int] | None:
 
 
 def _file_sha256(path: Path) -> str:
+    require_media_authorization(path, "HASH_RAW_MEDIA", declared_media=True)
     digest = hashlib.sha256()
     with path.open("rb") as handle:
         for chunk in iter(lambda: handle.read(65536), b""):

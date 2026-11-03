@@ -25,6 +25,7 @@ from railway_detection.data.validator import (
     label_path_for,
     parse_label_annotations,
 )
+from railway_detection.safety.media_guard import require_media_authorization
 
 MANIFEST_VERSION = "1.0.0"
 
@@ -148,6 +149,9 @@ def build_vision_manifest(
         sample_id = _relative_stem(dataset_root, image_path)
         record = metadata.get(sample_id) if metadata else None
 
+        # Authorization is checked outside the try: a denial must propagate, not be recorded as an
+        # "unreadable image" (Mission 14, F13-07).
+        require_media_authorization(image_path, "READ_RAW_MEDIA", declared_media=True)
         try:
             with Image.open(image_path) as img:
                 img.verify()

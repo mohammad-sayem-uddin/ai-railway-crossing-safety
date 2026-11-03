@@ -1,0 +1,1466 @@
+# Stage-2.1 Human Review Queue
+
+> **Candidate review aid only — not an annotation, approval, promotion receipt, or authorization.**
+
+- Status: `CANDIDATE_ONLY` / `NOT_APPROVED`
+- Events: 27; human action required: 27
+- Inventory: `data/manifests/layer_b_v2_annotation_inventory.json` SHA-256 `5585e22ecc7841e2cca4d8e56b9d61999e252e1efaf5dfa6e57d81471b809a56`
+- Every entry below requires a new genuine Stage-2.1 record. Invalidated legacy records are not migrated or edited.
+
+## engine_events/event_001
+
+- Cohort: `engine_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/engine_events/event_001_proposal_v3.json` SHA-256 `aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a`
+- Source media:
+  - back: `data/raw/layer_b/v2/engine_events/event_001/camera_back.mov` SHA-256 `80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72`
+  - front: `data/raw/layer_b/v2/engine_events/event_001/camera_front.mov` SHA-256 `d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Locomotive already visible on tracks at recording start (Frame 0). Left-censored.
+  - `T1_danger_zone_entry`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Locomotive front already occupies crossing danger zone at t=0.00s. Left-censored landmark traversal.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Locomotive pilot occupies crossing road lane at t=0.00s. Left-censored.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `6.2`, camera `front`; Trailing coupler/buffer of single locomotive clears roadway crossing plane on camera_front.mov at t=6.20s (Frame 186). On camera_back.mov, locomotive remains in frame through t=9.80s.
+  - `T4_tail_clearance`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Unobservable (right-censored): camera_back.mov recording terminates at t=9.80s (Frame 294) while locomotive body and rear buffer remain actively visible and detected in the departure field of view (conf=0.88). The trailing buffer never clears the crossing departure boundary during available media. Corrects proposal v2 error that misattributed 6.20s front clearance to the back camera.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Unobservable (right-censored): recording terminates at t=9.80s while locomotive is still receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## no_train_events/event_001
+
+- Cohort: `no_train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json` SHA-256 `6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2`
+- Source media:
+  - back: `data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov` SHA-256 `5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9`
+  - front: `data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov` SHA-256 `58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T1_danger_zone_entry`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T4_tail_clearance`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T_scene_clear`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## no_train_events/event_002
+
+- Cohort: `no_train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json` SHA-256 `0fd3a48a0c30675e46635795c6aacdbaed294a0d21ad510462fd4848db1de956`
+- Source media:
+  - back: `data/raw/layer_b/v2/no_train_events/event_002/camera_back.mov` SHA-256 `7b578008c037648c37dfb7f2b029c3c192dd4680198d655b6d6ac11734426126`
+  - front: `data/raw/layer_b/v2/no_train_events/event_002/camera_front.mov` SHA-256 `9196bd13700d26bb8b0b03ac8034150e0537b202b2690c21bef4943cceab0b97`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T1_danger_zone_entry`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T4_tail_clearance`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T_scene_clear`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## no_train_events/event_003
+
+- Cohort: `no_train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json` SHA-256 `e7619841db2308290bde1cb3267e485a2edcf07bae389a1798c50a5aaabd670f`
+- Source media:
+  - back: `data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov` SHA-256 `4914515714eb1ca8a282f61112afcfb11391dd2ec08543796611e22b884b4d9c`
+  - front: `data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov` SHA-256 `969c8b118996d56d5593f8a3cb6ef9e16e571d4829076824952663d719239205`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T1_danger_zone_entry`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T4_tail_clearance`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+  - `T_scene_clear`: `CANDIDATE_NOT_APPLICABLE`, value `None`, camera `None`; Not applicable: no train present.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_001
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_001_proposal_v6.json` SHA-256 `0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_001/camera_back.mov` SHA-256 `8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1`
+  - front: `data/raw/layer_b/v2/train_events/event_001/camera_front.mov` SHA-256 `d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `5.8`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `6.5`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.6`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `45.0`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#7) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_002
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_002_proposal_v2.json` SHA-256 `3079950c376a2085d747e9287badd92b3ef3915f305ddd250cb5325cf9e02ea3`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_002/camera_back.mov` SHA-256 `964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b`
+  - front: `data/raw/layer_b/v2/train_events/event_002/camera_front.mov` SHA-256 `69811c9e515515e93e25597244d2d1e8b4f1976d874a27cfb794076c5226a161`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.9`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.6`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.4`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `28.8`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_003
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_003_proposal_v2.json` SHA-256 `8042807536dc178e3c672385c5854336e6cf35c6141ebaf55728d7d9468c3674`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_003/camera_back.mov` SHA-256 `172d99ef4a2488abcac7715bd4098c28b2cc1388b6aa286df19246d0e297a395`
+  - front: `data/raw/layer_b/v2/train_events/event_003/camera_front.mov` SHA-256 `7a12b86be8511738d4d8539476cdba1c90270159fd65d0931189e367e3550ca5`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.1`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.8`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.2`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `30.5`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_004
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_004_proposal_v2.json` SHA-256 `b5f892f737ceec53bcc5b00966107be03031e44d488d71d5dad06f04131301d3`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_004/camera_back.mov` SHA-256 `6ccfa9b6fe74adf01cf9aeac3faba73194446398e3c7c74b057d778eddb1ed60`
+  - front: `data/raw/layer_b/v2/train_events/event_004/camera_front.mov` SHA-256 `85215975b328cec583678fef3d51579f66953b779b35da56bd2aef3065954e49`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.1`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.9`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.1`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `76.8`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#14) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_005
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_005_proposal_v4.json` SHA-256 `020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_005/camera_back.mov` SHA-256 `55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e`
+  - front: `data/raw/layer_b/v2/train_events/event_005/camera_front.mov` SHA-256 `015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Left-censored stream arrival on camera_front.mov (Frame 0): mid-consist passenger vehicle (Dining Car 1402) occupies full frame at t=0.00s. Locomotive arrival occurred before front recording start (t < 0.00s); excluded from detection-latency denominator. On independent camera_back.mov stream, locomotive pilot is observed entering at t=0.50s (Frame 15).
+  - `T1_danger_zone_entry`: `CANDIDATE_UNOBSERVABLE_OR_UNRESOLVED`, value `None`, camera `front`; Unobservable: Locomotive entered danger zone prior to camera_front.mov recording start (mid-consist vehicle occupies Frame 0).
+  - `T2_crossing_occupancy_start`: `CANDIDATE_UNOBSERVABLE_OR_UNRESOLVED`, value `None`, camera `front`; Unobservable: Locomotive occupied crossing lens plane prior to camera_front.mov recording start.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `6.0`, camera `back`; Operational Danger-Zone Exit Boundary Convention: Lead locomotive enters camera_back.mov at t=0.50s (Frame 15). At t=5.60s (Frame 168), the locomotive rear coupler passes an intermediate trackside landmark (white signal/relay cabinet). Under the canonical exit boundary definition (docs/FINAL_GROUND_TRUTH_PROTOCOL.md §2.1 and §2.4), T3 and T4 must denote clearance of the exact same conceptual departure boundary plane. The canonical danger-zone departure boundary plane is the transverse departure boundary plane, which the lead locomotive trailing coupler clears at t=6.00s (Frame 180). Setting T3=6.00s (Frame 180) aligns T3 with canonical exit-plane semantics and resolves the landmark ambiguity from proposal v3.
+  - `T4_tail_clearance`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Unobservable (right-censored): camera_back.mov recording terminates prematurely at t=78.107s (Frame 2342) while trailing passenger coaches 1084 and 1032 are still actively traversing the field of view. The rear buffer of the final rail vehicle never cleared the crossing boundary during recording. Replaces invalid 75.8s candidate from proposal v2.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Unobservable: recording terminates at 78.107s while train actively occupies track.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_006
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_006_proposal_v2.json` SHA-256 `039a65f4fd4dab3b7f52413201969b742dc18e819b92f043c200f24b3a52ac6d`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_006/camera_back.mov` SHA-256 `c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe`
+  - front: `data/raw/layer_b/v2/train_events/event_006/camera_front.mov` SHA-256 `abae4c6f357171fdf972aa49d7fd4590d86c35cb95394e4c88e7274db0664c12`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.5`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.3`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.8`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `125.8`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#24) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_007
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_007_proposal_v2.json` SHA-256 `88ac5f83e7561fb0f308ef143fee023cb27e98edf6ce67b2c110081c5269f785`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_007/camera_back.mov` SHA-256 `24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf`
+  - front: `data/raw/layer_b/v2/train_events/event_007/camera_front.mov` SHA-256 `26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.6`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.4`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.3`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `33.5`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#6) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_008
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_008_proposal_v2.json` SHA-256 `bb29b1848bb8685ba3bf91e393556c16edb0816767586866999587f1c9bf7330`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_008/camera_back.mov` SHA-256 `0ab126213b94d53fc1733658eefdaaf5a5cfe8dd9492d6234a50a19d5e642de2`
+  - front: `data/raw/layer_b/v2/train_events/event_008/camera_front.mov` SHA-256 `5f0151fd09dd35636afc1a641c05426c5483871a44b8ee5883e15dad173b0e16`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.4`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.2`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.2`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `61.2`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#11) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_009
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_009_proposal_v2.json` SHA-256 `b26fb9f09b8b76ec00d942a55994695494f99d9e1d16df7fc6429e7706bcd115`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_009/camera_back.mov` SHA-256 `4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8`
+  - front: `data/raw/layer_b/v2/train_events/event_009/camera_front.mov` SHA-256 `7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `1.5`, camera `front`; First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `4.2`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `5.0`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.6`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `36.4`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#6) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_010
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_010_proposal_v2.json` SHA-256 `315a70fd902de301864c9badf5b70f22f8928a68bb0cab6dfb0c9a1d39528dc7`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_010/camera_back.mov` SHA-256 `566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a`
+  - front: `data/raw/layer_b/v2/train_events/event_010/camera_front.mov` SHA-256 `9967e3666086e1f0f14f20d22bbf36e7eec5a5491622edbfb2f465f247ce1b46`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.7`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.5`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.1`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `22.4`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#4) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_011
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_011_proposal_v2.json` SHA-256 `b93b4743dbec6a618040cdb6285dd17c40ac0736b1969e086e6a71e8b4a611ac`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_011/camera_back.mov` SHA-256 `3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46`
+  - front: `data/raw/layer_b/v2/train_events/event_011/camera_front.mov` SHA-256 `6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.8`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.6`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.3`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `29.4`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `32.5`, camera `back`; Train completely recedes past visible corridor sightlines under viaduct on camera_back.mov.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_012
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_012_proposal_v2.json` SHA-256 `a45da6b905de79b36db6382c5dc80bacf6646cfe3b3529c619479c3b2e6b8227`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_012/camera_back.mov` SHA-256 `d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c`
+  - front: `data/raw/layer_b/v2/train_events/event_012/camera_front.mov` SHA-256 `840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.1`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.9`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.7`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `69.2`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#13) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_013
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_013_proposal_v2.json` SHA-256 `cdb691cbfa415a05ce3dd390a71f6903964a865ee459cdc6d31c6c9edbc679fe`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_013/camera_back.mov` SHA-256 `e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387`
+  - front: `data/raw/layer_b/v2/train_events/event_013/camera_front.mov` SHA-256 `3869d489098aeb5f9251b9c698cb236e8fc0b6ee7be7b3342c14a5dbff140e2d`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.2`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `4.0`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.9`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `70.8`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#13) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_014
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_014_proposal_v2.json` SHA-256 `e6fe8f81e6b59154675b455cb6d20cd1698345d5321c0bb30db9c3f94efd112f`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_014/camera_back.mov` SHA-256 `46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd`
+  - front: `data/raw/layer_b/v2/train_events/event_014/camera_front.mov` SHA-256 `adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.6`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.4`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.6`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `51.2`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_015
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_015_proposal_v2.json` SHA-256 `e698947778110ac5a44102ccc7a6cc81a2a41f423e48a9e9810328043131c86f`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_015/camera_back.mov` SHA-256 `57e827d111540c3c7f9463efaee3461ee6cba6818ab33231745ea9b22024b03a`
+  - front: `data/raw/layer_b/v2/train_events/event_015/camera_front.mov` SHA-256 `309203acd4bdc8ddb6a26e7ecbe97f73267724c9870b202290f0ee1cbaa32e99`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `1.5`, camera `front`; First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `4.2`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `5.0`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.8`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `19.5`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#3) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_016
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_016_proposal_v2.json` SHA-256 `f404feeb5d43513aeeb76804454efd1d2e98f5bc4b264337ab77258d0d5d22ea`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_016/camera_back.mov` SHA-256 `08a9f8695dfe0fd1a1f4c380366ba9e83d11714c1c4ba2da2be4713d580dafff`
+  - front: `data/raw/layer_b/v2/train_events/event_016/camera_front.mov` SHA-256 `3a0d71da27ba66aeb3c76a58cfbf349c136176c3d0425a5b14a4ce1cb30270ff`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `1.5`, camera `front`; First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `4.2`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `5.0`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.4`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `44.1`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_017
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_017_proposal_v2.json` SHA-256 `1a40c8bfc2a289db4a0cfe18edb5563f1ceddc0d24fde8a982420b888ee2ea02`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_017/camera_back.mov` SHA-256 `7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95`
+  - front: `data/raw/layer_b/v2/train_events/event_017/camera_front.mov` SHA-256 `188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.8`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.6`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `4.2`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `82.5`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#15) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_018
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_018_proposal_v2.json` SHA-256 `3ee97a958b356c40a266223dbe78a2018586c9f0d099bc5ca5df0fe0ee23edd1`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_018/camera_back.mov` SHA-256 `a7040a317018132f209b460ffa43d794e1e423cda5b5ce48a789043fe7dc4d27`
+  - front: `data/raw/layer_b/v2/train_events/event_018/camera_front.mov` SHA-256 `ed376931b62de4a18249ed3054b7930ae64ebab9dc322c639538e52760a0f102`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.7`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.5`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.8`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `50.8`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_019
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_019_proposal_v2.json` SHA-256 `0deff3cad109ffd0199577f57a223affa3738d7d2974268e2ea7f7ebb4460908`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_019/camera_back.mov` SHA-256 `f906e43305fcd183ff9e0638a246cc4df84192d7691befd96d35b17d630b9aef`
+  - front: `data/raw/layer_b/v2/train_events/event_019/camera_front.mov` SHA-256 `697f3c9ef9572e4b8be74e4719ec3911a2781837cd3ab08a1c3a663cb8cbd0c3`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.0`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.8`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.3`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `47.2`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_020
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_020_proposal_v2.json` SHA-256 `3b2537abc0bcd5c0c3554bb44e71b9f4b53fc5ab7744a9d64c55bd5f3345cb3c`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_020/camera_back.mov` SHA-256 `ea0f90528bced198f23b24e6006f32aebbb19f8173f7fc78721f8b96286ad2c2`
+  - front: `data/raw/layer_b/v2/train_events/event_020/camera_front.mov` SHA-256 `3b45ba8f056227359d27c4d7da80dfd9ddb202dacdccd9d34797c4f5fbd8ecba`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.3`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.1`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.2`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `28.7`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_021
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_021_proposal_v2.json` SHA-256 `65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_021/camera_back.mov` SHA-256 `4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f`
+  - front: `data/raw/layer_b/v2/train_events/event_021/camera_front.mov` SHA-256 `380dcddbcd4fefab43f27134a5965e2b724b3c3cc707ad2bce514b0defb4c518`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.2`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `4.1`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.6`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `60.1`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#11) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_022
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_022_proposal_v2.json` SHA-256 `29e01ea7bbc866dd4165fd33443ddd3841178d72a4b11773f9d7c53f65a6e857`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_022/camera_back.mov` SHA-256 `1e008a154ecfb4c1c96d03414d4c29042c0a4adaf1ac5cb94d00b7783b58567d`
+  - front: `data/raw/layer_b/v2/train_events/event_022/camera_front.mov` SHA-256 `c5512850372e940ca7e627e2cf28b2becf21ecb5074adbc9679f663c37ed68e2`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.5`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.3`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.4`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `45.1`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.
+
+## train_events/event_023
+
+- Cohort: `train_events`; queue: `INVALID`; Stage-2.1: `NEW_STAGE21_RECORD_REQUIRED`
+- Reasons: `LEGACY_SCHEMA`, `RECORD_INVALIDATED`, `STALE_PROPOSAL_REFERENCE`
+- Active candidate proposal: `data/ground_truth/proposals/train_events/event_023_proposal_v2.json` SHA-256 `cacdace3383b6829060cc4f9c5d3e9c12a76787312e6b5c7c2d1964bfd0b7a38`
+- Source media:
+  - back: `data/raw/layer_b/v2/train_events/event_023/camera_back.mov` SHA-256 `a36d099f479e81bef2cfa31ac4492bf0cd01c97eac5378d85c96a89f58e49766`
+  - front: `data/raw/layer_b/v2/train_events/event_023/camera_front.mov` SHA-256 `cb855aa632bac4a032496a7ccc0a40a28b631807231254775a2a24f85d81564b`
+- Missing Stage-2.1 fields:
+  - `schema_version`
+  - `review_id`
+  - `event_id`
+  - `cohort`
+  - `proposal_reference.proposal_file`
+  - `proposal_reference.proposal_sha256`
+  - `reviewer_metadata.reviewer_id`
+  - `reviewer_metadata.review_session_id`
+  - `reviewer_metadata.review_start_utc`
+  - `reviewer_metadata.review_end_utc`
+  - `reviewer_metadata.inspection_tool`
+  - `model_independence_attestation.attested`
+  - `model_independence_attestation.statement`
+  - `model_independence_attestation.attested_at_utc`
+  - `reviewer_observed_media_hashes.front_sha256`
+  - `reviewer_observed_media_hashes.back_sha256`
+  - `reviewer_observed_media_hashes.observed_at_utc`
+  - `boundary_adjudications.T0_first_visible`
+  - `boundary_adjudications.T1_danger_zone_entry`
+  - `boundary_adjudications.T2_crossing_occupancy_start`
+  - `boundary_adjudications.T3_locomotive_unit_clearance`
+  - `boundary_adjudications.T4_tail_clearance`
+  - `boundary_adjudications.T_scene_clear`
+  - `adjudication_status`
+  - `adjudication_history`
+- Candidate boundary evidence (unapproved):
+  - `T0_first_visible`: `CANDIDATE_AMBIGUOUS`, value `0.0`, camera `front`; Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.
+  - `T1_danger_zone_entry`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `2.8`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.
+  - `T2_crossing_occupancy_start`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.6`, camera `front`; Operational Danger-Zone Annotation Convention (Protocol v7.0.0 §2.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.
+  - `T3_locomotive_unit_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `3.3`, camera `back`; Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.
+  - `T4_tail_clearance`: `CANDIDATE_OBSERVABLE_UNAPPROVED`, value `43.4`, camera `back`; Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.
+  - `T_scene_clear`: `CANDIDATE_CENSORED_RIGHT`, value `None`, camera `back`; Recording terminates while train is still visible receding along departure tracks.
+- Required human actions:
+  - Do not edit or migrate the invalidated legacy review; create a new genuine Stage-2.1 review through the researcher-operated workflow.
+  - Independently inspect the cohort-qualified front and back source media and adjudicate all six canonical boundary states, including censoring, uncertainty, or not-applicable status where evidence supports it.
+  - Inspect the active candidate proposal as a navigation aid only; verify or correct every candidate value from source evidence, not model predictions.
+  - Complete the required human audio/listening check for train-horn evidence when applicable, then record the actually observed result.
+  - Record individually attributable reviewer/session metadata, model-independence attestation, and reviewer-observed live media hashes in the Stage-2.1 workflow.
+  - Resolve any required second review/adjudication under the researcher-approved D1/D3 workflow before promotion.
+- Workflow prerequisites (not resolved by this queue):
+  - `D1 review-duration thresholds`: `PENDING_RESEARCHER_DECISION` — Run a genuine review pilot and let the researcher set the hard floor and fast-session upper threshold from observed timings; do not invent numeric thresholds. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(a) second-review trigger`: `PENDING_RESEARCHER_DECISION` — Researcher selects when an independent second review is mandatory before formal production review. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `D3(c) clear-boundary audit`: `PENDING_RESEARCHER_DECISION` — Researcher specifies the audit mechanism and frequency for boundaries marked clear. Source: `docs/PHASE11_3_RESEARCHER_DECISIONS.md`.
+  - `ADJ-AUTH / production review authorization`: `NOT_RECORDED` — Obtain explicit researcher authorization for genuine Stage-2.1 review/adjudication before producing real records. Source: `docs/PHASE11_12_ADJUDICATION_CLOSURE_REPORT.md`.

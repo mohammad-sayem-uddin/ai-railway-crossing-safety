@@ -1,0 +1,163 @@
+--- ../../FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md	2026-10-16 11:58:32
++++ FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.0_PROPOSED.md	2026-11-01 13:02:12
+@@ -2,9 +2,11 @@
+ 
+ ## Multimodal Railway-Crossing Safety Architecture: Final Evaluation Design
+ 
+-**Document Version:** 9.0.0  
++> **PROPOSED — NOT APPROVED — NOT AUTHORIZED.** Mission 5A proposal derived from the working-tree v9.0.0 (SHA-256 `7c183b323970591b68f0db692e70413e54dcacfc4bf78a358c28f1b1ed68734c`). The in-place file is unchanged. D1 is *selected* by the researcher but **not bound** (`GOV-D1-PROTOCOL-AUTHORITY` is pending); this file is not a decision envelope and has no approval status. Text wrapped in `<!--HISTORICAL-->…<!--/HISTORICAL-->` is historical and non-normative. Entry-landmark, review-tolerance, B7e values and full occupancy duration are **DEFERRED** (RD-006, RD-012, RD-034, RD-018).
++
++**Document Version:** 9.1.0-PROPOSED  
+ **Date:** 2026-10-12  
+-**Status:** FINAL MASTER PROTOCOL SPECIFICATION — AI-Assisted, Human-Verified Canonical Protocol  
++**Status:** PROPOSED REVISION — AI-Assisted, Human-Verified; pending researcher approval; not final  
+ **Authority:** This document supersedes `docs/REAL_WORLD_EXPERIMENT_PLAN.md`, `docs/EXPERIMENT_PROTOCOL_V2.md`, and legacy B0–B7 results in `docs/REAL_WORLD_EXPERIMENT_REPORT.md`.
+ 
+ ---
+@@ -107,8 +109,8 @@
+ | Marker | Canonical Name | Physical Definition | Camera Role | Safety Criticality |
+ |:---:|---|---|:---:|---|
+ | **$T_0$** | **First Visual Appearance** | Earliest frame train is visually identifiable approaching. (If train is already visible at recording start $t=0.00\text{s}$, candidate is recording-relative and excluded from physical latency denominator; see §5.3). | Front (Approach) | Baseline for Detection Latency ($T_{\text{detect}} - T_0$). Subject to left-censoring rules. |
+-| **$T_1$** | **Danger Zone Entry** | Earliest frame locomotive front bumper crosses into road danger zone. | Front (Approach) | Baseline for Warning Lead Time ($T_1 - T_{\text{detect}}$). |
+-| **$T_2$** | **Crossing Occupancy Start** | Earliest frame locomotive fully occupies road danger zone. | Front / Back | Road crossing danger zone is actively blocked. |
++| **$T_1$** | **Danger Zone Entry** | Earliest frame the leading edge of the locomotive reaches the **approach danger-zone line** (turnout switch frog casting / pedestrian approach corridor line observed on `camera_front.mov`), upstream of the roadway. | Front (Approach) | Baseline for Warning Lead Time ($T_1 - T_{\text{detect}}$). |
++| **$T_2$** | **Crossing Occupancy Start** | Earliest frame at which the **leading end** of the first rail vehicle (pilot / cowcatcher / front bumper) crosses the **physical roadway entry boundary** of the crossing conflict area. From this frame the crossing is physically obstructed by rolling stock. The exact entry landmark is **DEFERRED (RD-006)** and is not defined here; a camera lens/image plane is never the reference. Legacy lens-plane annotations are **not** automatically valid T2. | Front (documented landmark camera) | Road lane physically blocked by rolling stock. Prose alias `T_OCC_START` ≡ T2 only after the entry landmark is defined; it is not a schema field. |
+ | **$T_3$** | **Locomotive Unit Clearance (rear end exits danger zone)** | Frame where trailing edge / rear coupler of leading locomotive unit(s) clears danger zone boundary while railcars continue. | Back (Departure) | **Diagnostic Marker:** Tests detector continuity from locomotive to cars. Distinguishes lead unit clearance from intermediate front exit. |
+ | **$T_4$** | **Tail Clearance (Last Vehicle Exit)** | Frame where final railcar trailing edge completely exits danger zone. | Back (Departure) | **Primary Safety Boundary:** End of physical road hazard. Baseline for POR and Clearance Latency. |
+ | **$T_{\text{scene\_clear}}$** | **Scene Clear** | Earliest frame train completely vacates all camera views. | Both Cameras | Scene verification; optical recovery. |
+@@ -119,10 +121,21 @@
+   - When the locomotive traverses the crossing, the front bumper exiting the danger zone is an intermediate crossing state during traversal and does **not** constitute locomotive clearance.
+   - Complete **Locomotive Unit Clearance ($T_3$)** occurs strictly when the *trailing edge / rear coupler* of the leading locomotive unit clears the danger zone.
+   - **Tail Clearance ($T_4$):** Strictly preserved for the trailing edge of the *final vehicle* of the consist.
++- **Approach-to-clearance hazard interval:** The approach hazard begins at $T_1$ and the crossing is clear at $T_4$: $t \in [T_1, T_4]$. This interval is descriptive (used by Excess Closed Duration). Physical obstruction of the crossing conflict area begins at $T_2$ once its entry landmark is defined (RD-006).
++- **Premature Opening (M4) — selected premature-opening profile `first_blocked_to_t4_clearance`.** For a train event with an approved, observable $T_4$ on the replay's own timeline, let $t_{\text{blocked}}$ be the timestamp of the first retained replay step whose passage is blocked. The event is a **premature opening** iff some retained step strictly inside $(t_{\text{blocked}}, T_4)$ has the passage unblocked or a gate state of `OPENING`/`OPEN`. M4 is a per-event yes/no result, **not a duration**. The interval is open at both ends and no timestamp tolerance is applied.
++  - *Replay completeness (RD-016):* a witnessed violation is definite even if the replay ends before $T_4$. Otherwise the replay must reach $T_4$ (`last retained step ≥ T_4`); an empty or short replay, or a protection interval holding no retained step, is **NOT_EVALUABLE** and is never counted as "not premature" and never as M5.
++  - *Never Protected (M5):* a replay that reaches $T_4$ with no blocked step before $T_4$ is reported **separately, as counts only**, and is excluded from the M4 denominator.
++  - *Premature Opening Rate (POR)* = premature events ÷ M4-evaluable events, descriptive, with Wilson 95 % intervals. Events with a missing, censored or uncertain $T_4$ are excluded with a stated reason.
++  - *Diagnostic isolation:* a violation beginning between $T_3$ and $T_4$ on the same timeline indicates detector dropout on trailing cars after the locomotive has departed.
++  - *Timeline:* $T_4$ is a back-camera time; M4/M5 are computed on the **back-stream replay** (primary). A fused replay is exploratory and requires accepted R04 for that event.
++<!--HISTORICAL-->
++> *Historical text from v9.0.0 / v7.0.0 — retained for audit only; NOT normative.*
++
+ - **Physical Hazard Occupancy:** The crossing danger zone is actively blocked during:
+   $$t \in [T_1, T_4]$$
+ - **Premature Opening Rate (POR):** Any gate opening commanded while $t < T_4$ (and $t \ge T_1$).
+   - *Diagnostic Isolation:* Gate opening between $T_3$ and $T_4$ directly measures detector dropout on trailing cars after locomotive departs. Events with unobservable $T_4$ are excluded from the denominator.
++<!--/HISTORICAL-->
+ - **Clearance Latency:** Delay from physical tail clearance to gate opening:
+   $$\text{Clearance Latency} = T_{\text{open}} - T_4$$
+ - **Engine-Only Event ($N=1$):** Because an engine-only train has no trailing railcars:
+@@ -142,16 +155,43 @@
+ Instead, the crossing danger zone is defined using the documented, researcher-defined **Operational Danger-Zone Annotation Convention** (Ground Truth Protocol v7.0.0 §2.4) utilizing verifiable physical track and roadway features observed in source video streams:
+ 1. **Unified Conceptual Exit Boundary Plane:** The conceptual exit boundary of the hazard corridor is defined as the **Level-Crossing Departure Roadway Boundary Plane**—the transverse plane where the road and pedestrian corridor terminates on the departure side of the tracks. The "vendor-stall clearance line" and "departure roadway boundary" are **two descriptive names for this exact same physical exit boundary plane** (stationary vendor stalls line the departure roadway edge). This rule is an operational annotation convention, not an independently surveyed physical geodetic ground truth.
+ 2. **$T_1$ (Danger Zone Entry):** Locomotive front cowcatcher reaches the approach danger-zone line (specifically, the turnout switch frog / pedestrian approach corridor line observed on `camera_front.mov`).
+-3. **$T_2$ (Crossing Occupancy Start):** Locomotive front pilot crosses the transverse camera plane / roadway boundary line on `camera_front.mov`, commencing physical road lane blockage.
++3. **$T_2$ (Crossing Occupancy Start):** The leading end of the first rail vehicle crosses the physical roadway entry boundary of the crossing conflict area. **The entry landmark is DEFERRED (RD-006)** and must be stated by the researcher or established through an authorized step; this document neither invents a landmark nor asserts that the entry boundary mirrors the exit plane.
++   <!--HISTORICAL-->
++> *Historical text from v9.0.0 / v7.0.0 — retained for audit only; NOT normative.*
++
++**$T_2$ (v9.0.0 wording):** Locomotive front pilot crosses the transverse camera plane / roadway boundary line on `camera_front.mov`, commencing physical road lane blockage.
++<!--/HISTORICAL-->
+ 4. **$T_3$ (Locomotive Unit Clearance):** Trailing coupler/buffer of the lead motive power unit clears the unified departure roadway exit boundary plane (vendor-stall clearance line observed on `camera_back.mov`).
+ 5. **$T_4$ (Tail Clearance):** Rear buffer of final rail vehicle clears the unified departure roadway exit boundary plane (vendor-stall clearance line observed on `camera_back.mov`), permitting pedestrian and vehicle ingress.
+ 6. **$T_{\text{scene\_clear}}$ (Scene Clear):** Train recedes completely past visible corridor sightlines under the viaduct on `camera_back.mov`. If recording ends while train is still visible, marked `unobservable: true, value_s: null`.
+ 7. **Left/Right-Censored Stream Handling:** Streams must be evaluated independently without cross-stream assumptions. If an arrival occurs pre-recording (e.g. `event_005` front camera), $T_1$ and $T_2$ are unobservable/left-censored. If a recording ends mid-passage (e.g. `event_005` back camera), $T_4$ is unobservable/right-censored.
++8. **Crossing conflict area (CCA).** The stretch of railway alignment within the road-and-pedestrian crossing corridor, bounded along the direction of travel by an **entry boundary** (landmark DEFERRED, RD-006) and the **exit plane** (Level-Crossing Departure Roadway Boundary Plane, marked by the vendor-stall clearance line on `camera_back.mov`). The train occupies the CCA while any part of any rail vehicle lies between them. No coordinates, distances or survey are implied.
++9. **Direction of travel** is verified per event during future authorized human review (RD-010); it is never inferred from AI-generated candidate metadata.
++10. **Legacy annotations:** candidate or legacy T2 values referenced to a camera lens/image plane are unapproved and are not automatically valid under item 3.
+ 
+ If a specific crossing or recording session still lacks a documented operational convention, the affected boundary markers must be flagged as `provisional` with documented rationale, without blocking unrelated annotation work. Prerequisite R04 (inter-camera temporal offset & camera synchronization) remains strictly preserved and unresolved.
+ 
+ ---
+ 
++### 5.5 Camera Roles and Independent-Camera Analysis (RD-015, RD-028)
++
++- **Independent-camera analysis is primary.** Front-camera-dependent metrics (Missed-Train with lead-in screen, Warning Lead Time) use the **front-stream replay**; $T_4$-dependent metrics (M4, M5) use the **back-stream replay**. Front and back outputs are reported separately and never merged into one score.
++- **Fused (R04) analysis is exploratory only.** R04 remains unresolved; the authorized exploratory scope is the existing 11-event set; no official dual-camera scope exists. The unmet 20/23 calibration requirement is not satisfied and is not claimed. Acoustic synchronization offsets never shift human ground-truth timestamps (RD-027); they may support only explicitly authorized replay fusion.
++- A back-stream M5 is *replay-relative*: "never protected by that replay's sensing".
++
++### 5.6 Metric Scope and Status (RD-017, RD-018, RD-020–RD-024)
++
++| Outcome | Class | Status in this proposal |
++|---|---|---|
++| M4 premature opening | safety (primary) | defined (§5.2); implemented |
++| M5 never protected | safety (companion), counts only | defined; implemented |
++| Missed-train rate (MTR) | safety (secondary) | defined with lead-in feasibility screen (insufficient lead-in ≠ system failure); implemented |
++| Full crossing occupancy duration | operational duration (secondary) | **DEFERRED (RD-018):** no valid same-camera pair; cross-camera alignment not approved; not reported |
++| Warning lead time, clearance latency, excess closed duration | operational / exploratory | as defined in §18; censored events excluded from point estimates |
++| Design-document metrics M1–M3, M6–M10 | — | **unimplemented / out of scope** for this proposal (non-binding reference) |
++
++Engine events are excluded from pooled M4, M5 and train aggregates (separate case study). Per-metric evaluable denominators and explicit exclusion reasons apply; no outcome-dependent global exclusion. Censored events are excluded from point estimates and counted by reason (RD-011). No combined or composite score is defined.
++
+ ## 6. AI-Assisted, Human-Verified Ground Truth Validation
+ 
+ Ground truth creation follows the three-stage lifecycle defined in `docs/FINAL_GROUND_TRUTH_PROTOCOL.md` §1:
+@@ -268,7 +308,12 @@
+ 
+ - **INV-1 (Acoustic Clearance Prohibition):** Gate clearance ($T_{\text{open}}$) shall never occur on audio evidence alone.
+ - **INV-2 (Single-Modality Warning):** Confirmed vision OR confirmed audio can initiate Warning/Closing.
+-- **INV-3 (Zero Premature Clearance):** Gate shall not open while train occupies crossing danger zone ($t \in [T_1, T_4]$).
++- **INV-3 (Zero Premature Clearance — requirement):** Once the barrier has blocked the passage, the gate shall not open or begin opening before $T_4$. *Verification:* the M4 predicate on replay traces and on synthetic harness traces. Timeliness of the first closure is a separate requirement verified by Missed-Train Rate and Never Protected (M5).
++  <!--HISTORICAL-->
++> *Historical text from v9.0.0 / v7.0.0 — retained for audit only; NOT normative.*
++
++**INV-3 (v9.0.0):** Gate shall not open while train occupies crossing danger zone ($t \in [T_1, T_4]$).
++<!--/HISTORICAL-->
+ - **INV-4 (Monotonic State Safety):** State transitions must follow legal directed graph paths.
+ - **INV-5 (Minimum Clearance Hold):** Gate clearance hold-time must satisfy $t_{\text{hold}} \ge 3.0\text{s}$ after $T_4$.
+ - **INV-6 (Dynamic Re-Approach Abort):** Train detection during opening phase must immediately command `CLOSED`.
+@@ -286,19 +331,30 @@
+ ---
+ 
+ ## 18. Primary and Secondary Safety Endpoints
+-- **MTR:** Percentage of evaluable events where gate failed to close by $T_1$. (Goal: 0.0%).
+-- **POR:** Percentage of evaluable events where gate opened while $t < T_4$ (and $t \ge T_1$). (Goal: 0.0%).
++- **MTR:** Percentage of *evaluable* events where the gate failed to close by $T_1$. Events whose physical lead-in is shorter than the frozen policy's minimum block latency are `insufficient_lead_in` — not evaluable, not a system failure. (Descriptive goal: 0.0 %.)
++- **POR (M4):** Percentage of M4-evaluable events with a premature opening (§5.2). (Descriptive goal: 0.0 %.)
++- **Never Protected (M5):** count of train events whose replay reaches $T_4$ with no blocked step before $T_4$; reported beside POR, outside its denominator.
++  <!--HISTORICAL-->
++> *Historical text from v9.0.0 / v7.0.0 — retained for audit only; NOT normative.*
++
++**POR (v9.0.0):** Percentage of evaluable events where gate opened while $t < T_4$ (and $t \ge T_1$). (Goal: 0.0%).
++<!--/HISTORICAL-->
+ - **Detection Latency:** $T_{\text{detect}} - T_0$.
+ - **Warning Lead Time:** $T_1 - T_{\text{detect}}$.
+ - **Clearance Latency:** $T_{\text{open}} - T_4$.
+-- **Excess Closed Duration:** Gate closed time minus physical occupancy time ($T_4 - T_1$).
++- **Excess Closed Duration:** Gate closed time minus approach-to-clearance time ($T_4 - T_1$). *(Renamed: "physical occupancy time" is reserved for the deferred crossing-conflict-area occupancy duration.)*
+ - **Gate Chatter Count:** Open/close reversals per event.
+ 
+ ---
+ 
+ ## 19. Statistical Analysis Plan
+ - Primary analysis unit: train-passage event ($N=23$).
+-- Planned tests: McNemar's exact test for binary proportions; Wilcoxon signed-rank test for latencies. Significance is not guaranteed a priori.
++- **Descriptive statistics only (RD-023).** Event-level counts, Wilson 95 % intervals, and median/range summaries. No inferential p-values and no McNemar, Wilcoxon or Holm analysis are planned or approved.
++  <!--HISTORICAL-->
++> *Historical text from v9.0.0 / v7.0.0 — retained for audit only; NOT normative.*
++
++Planned tests (v9.0.0): McNemar's exact test for binary proportions; Wilcoxon signed-rank test for latencies. Significance is not guaranteed a priori.
++<!--/HISTORICAL-->
+ - Wilson 95% CIs reported with documented site clustering caveat.
+ - Achieving $0/23$ failures yields Wilson 95% CI $[0.0\%, 14.3\%]$ under independence; does not prove 100% safety.
+ 
+@@ -336,7 +392,12 @@
+ 3. Single-Degree-of-Freedom Matrix
+ 4. Primary Endpoints (MTR & POR with Wilson CIs)
+ 5. Timing Metrics (Lead Time, Latencies, Chatter)
+-6. Planned Hypothesis Tests & Effect Sizes
++6. Descriptive paired event-level summaries (no inferential tests)
++<!--HISTORICAL-->
++> *Historical text from v9.0.0 / v7.0.0 — retained for audit only; NOT normative.*
++
++6. Planned Hypothesis Tests & Effect Sizes (v9.0.0)
++<!--/HISTORICAL-->
+ 7. Audio V3 Selectivity on Native Audio
+ 8. No-Train Exposure & Raw Nuisance Counts
+ 9. Engine-Only Case Study Metrics
+@@ -433,3 +494,5 @@
+ | 8.0.0 | 2026-10-09 | Canonical Terminology & Left-Censoring Harmonization Pass: Resolved T3 canonical name as **Locomotive Unit Clearance (rear end exits danger zone)** with explicit physical definition (trailing edge of lead motive power clears danger zone while railcars continue); distinguished locomotive front exit during traversal from complete unit clearance; preserved T4 as tail clearance of final vehicle; established left-censored $T_0$ definition and detection latency denominator exclusion; reinforced provisional status of visual landmarks under Prerequisite R03; preserved proposal draft history v1–v4 with schema compatibility mapping. |
+ | 9.0.0 | 2026-10-12 | Research Methodology Update & Prerequisite R03 Retirement Pass: (1) Formally retired Prerequisite R03 as a separate methodology blocker; replaced external site survey requirement with researcher-defined Operational Danger-Zone Annotation Convention (§5.4). (2) Aligned boundaries T0–T4 with operational physical landmarks. (3) Strictly preserved Prerequisite R04 (independent camera-local clocks enforced). (4) Mandated evidence-based forensic re-verification of all 27 active events, replacing synthetic formula heuristics with dense frame and acoustic measurements. |
+ 
++
++| 9.1.0-PROPOSED | 2026-11-01 | **PROPOSED (not approved)** Mission 5A reconciliation of confirmed researcher decisions: T1/T2 wording (RD-004/005; entry landmark deferred, RD-006); M4/M5 replaces T1-based POR text (RD-008/014/016/017); independent-camera primary, fused exploratory (RD-015/028); censoring (RD-011); lead-in feasibility screen (RD-021); descriptive-only statistics (RD-023); engine excluded (RD-024); full occupancy duration deferred (RD-018). Historical text retained in marked blocks. |

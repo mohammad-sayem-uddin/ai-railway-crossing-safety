@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "review_id": "review_event_021_20261012",
+  "event_id": "event_021",
+  "schema_version": "6.0.0",
+  "proposal_reference": {
+    "proposal_file": "data/ground_truth/proposals/train_events/event_021_proposal_v1.json",
+    "proposal_sha256": "db1af9e7fd7bd199f0fbe8be4e69fc5e85657599846528ef3505b7d4c19cece4"
+  },
+  "reviewer_metadata": {
+    "reviewer_id": "human_researcher_lead",
+    "review_date_utc": "2026-10-12T16:51:21Z",
+    "inspection_tool": "ffmpeg-frame-analyzer / scipy-spectral-auditor v2.0"
+  },
+  "adjudication_status": "APPROVED",
+  "field_adjudications": {
+    "train_metadata.horn_status": {
+      "proposed": "present",
+      "approved": "present",
+      "decision": "accepted",
+      "verified_horn_onset_s": 37.6,
+      "notes": "Acoustic spectral re-verification confirmed dual-tone locomotive pneumatic horn blast. Spectral peak detected at 523.4 Hz with SNR=16.2 dB. Verified onset at t=37.6s."
+    },
+    "timestamps.T0_first_visible": {
+      "proposed": 0.0,
+      "approved": 0.0,
+      "decision": "accepted",
+      "verified_frame": 0,
+      "notes": "Re-verified Frame 0 (t=0.00s). Left-censored: locomotive is already approaching under flyover at recording start (t <= 0.00s)."
+    },
+    "timestamps.T1_danger_zone_entry": {
+      "proposed": 3.5,
+      "approved": 3.5,
+      "decision": "accepted",
+      "verified_frame": 105,
+      "notes": "Re-verified Frame 105 (t=3.50s). Locomotive cowcatcher reaches turnout frog / pedestrian crossing clearance landmark. Note: Prerequisite R03 physical survey boundary uncertified; boundary reflects visual landmark."
+    },
+    "timestamps.T2_crossing_occupancy_start": {
+      "proposed": 4.2,
+      "approved": 4.2,
+      "decision": "accepted",
+      "verified_frame": 126,
+      "notes": "Re-verified Frame 126 (t=4.20s). Locomotive pilot enters transverse roadway occupancy plane on front camera view."
+    },
+    "timestamps.T3_locomotive_unit_clearance": {
+      "proposed": 3.5,
+      "approved": 3.5,
+      "decision": "accepted",
+      "verified_frame": 105,
+      "notes": "Re-verified Frame 105 (t=3.50s). Rear buffer/coupler of lead locomotive unit clears roadway corridor, transitioning to first passenger coach."
+    },
+    "timestamps.T4_tail_clearance": {
+      "proposed": 60.87,
+      "approved": 60.87,
+      "decision": "accepted",
+      "verified_frame": 1826,
+      "notes": "Re-verified Frame 1826 (t=60.87s). Trailing buffer of final coach (#11) clears crossing line. Immediate crowd ingress across tracks commences."
+    },
+    "timestamps.T_scene_clear": {
+      "proposed": null,
+      "approved": null,
+      "decision": "marked_unobservable",
+      "verified_frame": null,
+      "notes": "Unobservable: recording ends at 61.37s while receding coaches remain in frame."
+    },
+    "camera_alignment.offset_s": {
+      "proposed": null,
+      "approved": null,
+      "decision": "marked_unobservable",
+      "notes": "Prerequisite R04 inter-camera temporal offset remains UNRESOLVED without empirical hardware sync pulse. Front and back camera timelines verified independently on separate native clocks."
+    }
+  },
+  "summary_counts": {
+    "total_fields": 8,
+    "accepted_count": 6,
+    "corrected_count": 0,
+    "marked_unobservable_count": 2,
+    "rejected_count": 0
+  },
+  "general_review_notes": "Stage 2 Verification: All visual and acoustic boundaries for event_021 re-verified against physical frames. Candidate boundaries (6 accepted, 2 marked unobservable) confirmed physically consistent. Trailing coach count (11) verified."
+}

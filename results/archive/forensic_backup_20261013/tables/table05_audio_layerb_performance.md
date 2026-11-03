@@ -1,0 +1,9 @@
+### Table 5: Standalone Audio Performance on Real-World Embedded Audio (B1)
+
+| Metric | Empirical Value on Layer B | Evaluation Note |
+| --- | --- | --- |
+| Total Evaluated Audio Streams | 54 (27 front, 27 back) | Extracted 16kHz mono PCM |
+| Total Analyzed Windows (1.0s/0.5s) | 2,600 windows | Sliding Log-Mel windows |
+| Positive Acoustic Horn Windows | 9 detections | T* = 0.3700 (0.3%) |
+| Event-Level Acoustic Recall (train) | 23/23 events (100.0%) | Acoustic detection present in passage |
+| Gate Safety Authorization | 0 opening commands | Verified 100% adherence to INV-1 |

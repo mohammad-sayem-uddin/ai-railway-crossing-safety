@@ -1,0 +1,30 @@
+{
+  "blocker_codes": [
+    "NO_RECORDS"
+  ],
+  "blocker_count": 1,
+  "blockers": [
+    {
+      "code": "NO_RECORDS",
+      "detail": "zero in-scope records supplied",
+      "event_id": null
+    }
+  ],
+  "evidence": [
+    "27 legacy record(s) excluded: each has a verified invalidation notice (never promoted, never ground truth)"
+  ],
+  "exit_code": 2,
+  "ground_truth_approval_authority": "human_researcher_only",
+  "inputs": {
+    "active_proposal_count": 27,
+    "allowlist": "data/ground_truth/authorized_reviewers.json",
+    "inventory": "data/manifests/layer_b_v2_annotation_inventory.json",
+    "inventory_event_count": 27,
+    "proposals_dir": "data/ground_truth/proposals",
+    "reviews_dir": "data/ground_truth/reviews"
+  },
+  "mechanically_valid": false,
+  "ready": false,
+  "researcher_approval_still_required": true,
+  "stage": "stage3_single_camera_baseline"
+}

@@ -1,0 +1,31 @@
+### Table 11: Per-Event Comprehensive Replay Evaluation Summary
+
+| Event ID | Closed Duration | Cohort | B0 Outcome | B4 Outcome | B5 Outcome | B4 Failure Codes |
+| --- | --- | --- | --- | --- | --- | --- |
+| train_events_event_001 | 46.0s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_002 | 28.8s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_003 | 29.6s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_004 | 74.4s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_005 | 75.8s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_006 | 122.4s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_007 | 34.6s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_008 | 59.0s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_009 | 39.2s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_010 | 20.2s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_011 | 34.0s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_012 | 71.4s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_013 | 70.0s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_014 | 51.2s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_015 | 27.4s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_016 | 43.2s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_017 | 80.0s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_018 | 55.2s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_019 | 56.6s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_020 | 26.2s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_021 | 57.6s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_022 | 42.6s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| train_events_event_023 | 42.0s | train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| no_train_events_event_001 | 18.8s | no-train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| no_train_events_event_002 | 9.6s | no-train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| no_train_events_event_003 | 10.6s | no-train | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |
+| engine_events_event_001 | 5.0s | engine | Detection Active | Correct Safe Lifecycle | Safe Degraded Operation | None in B4 |

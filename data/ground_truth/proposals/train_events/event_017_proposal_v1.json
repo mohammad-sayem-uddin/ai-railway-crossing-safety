@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "proposal_id": "proposal_event_017_v1",
+  "event_id": "event_017",
+  "event_type": "REAL_WORLD_TRAIN_EVENT",
+  "proposal_timestamp_utc": "2026-10-12T16:08:39Z",
+  "schema_version": "6.0.0",
+  "ai_assistant_metadata": {
+    "model_name": "antigravity-multimodal-agent",
+    "prompt_template_version": "v1.0.0",
+    "prompt_template_sha256": "8ea581b1453f72b4673642d510acc4a4e0a9aeb9727ae63ff0c0546b65741a5e",
+    "input_media_files": [
+      {
+        "file_name": "camera_front.mov",
+        "duration_s": 81.658,
+        "sha256": "188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3"
+      },
+      {
+        "file_name": "camera_back.mov",
+        "duration_s": 83.773,
+        "sha256": "7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95"
+      }
+    ]
+  },
+  "proposed_site_metadata": {
+    "crossing_id": "crossing_A",
+    "recording_session_id": "session_20260914_morning"
+  },
+  "proposed_environmental_conditions": {
+    "lighting": "day",
+    "weather": "overcast"
+  },
+  "proposed_train_metadata": {
+    "train_present": true,
+    "train_direction": "left_to_right",
+    "train_type": "passenger",
+    "trailing_cars_count": 15,
+    "horn_status": "present",
+    "horn_onset_s": 16.22,
+    "horn_uncertainty_s": 0.16,
+    "horn_reason": null,
+    "confidence_note": "Locomotive pneumatic horn blast detected on embedded audio at t=16.22s (f0=562.5 Hz, max SNR=39.1 dB, duration=0.32s). Mandatory human listening required before certification."
+  },
+  "proposed_timestamps": {
+    "T0_first_visible": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 0.0,
+      "frame_index": 0,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under flyover at recording start, so true physical visual arrival occurred at t <= 0.00s. Excluded from true detection latency calculations.",
+      "ambiguity_flag": true
+    },
+    "T1_danger_zone_entry": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 3.0,
+      "frame_index": 90,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Provisional candidate: locomotive cowcatcher reaches turnout switch frog / pedestrian crossing clearance line. Under Prerequisite R03, physical crossing danger-zone survey boundaries remain uncertified; this timestamp reflects observed frog landmark traversal, not a surveyed road boundary.",
+      "ambiguity_flag": true
+    },
+    "T2_crossing_occupancy_start": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 3.7,
+      "frame_index": 111,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Provisional candidate: locomotive pilot passes front camera transverse lens plane / roadway occupancy line. Under Prerequisite R03, formal road boundary is uncertified; landmark reflects camera plane traversal.",
+      "ambiguity_flag": true
+    },
+    "T3_locomotive_unit_clearance": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 4.5,
+      "frame_index": 135,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Provisional candidate: trailing edge / rear coupler of lead locomotive clears vegetable vendor cart line / roadway hazard corridor, transitioning to first trailing railcar. Retained provisional under R03 geometry.",
+      "ambiguity_flag": true
+    },
+    "T4_tail_clearance": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 83.27,
+      "frame_index": 2498,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Provisional candidate: rear buffer/diaphragm of the final rail vehicle (#15) clears crossing roadway line where pedestrian crowd immediately crosses. Under Prerequisite R03, formal departure roadway boundary is uncertified.",
+      "ambiguity_flag": true
+    },
+    "T_scene_clear": {
+      "applicable": true,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Unobservable: back camera recording terminates at 83.773s while receding train remains visible in frame.",
+      "ambiguity_flag": true
+    }
+  },
+  "proposed_camera_alignment_markers": {
+    "candidate_front_marker": "Locomotive front reaches camera transverse plane at t=3.70s (front timeline)",
+    "candidate_back_marker": "Locomotive nose enters back camera field of view at t~1.70s (back timeline)",
+    "candidate_offset_s": null,
+    "requires_human_empirical_verification": true,
+    "audited_front_stream_exposure_s": 81.658,
+    "audited_back_stream_exposure_s": 83.773,
+    "audited_combined_camera_stream_exposure_s": 165.431,
+    "stream_exposure_note": "Combined camera-stream exposure (165.431s) represents summed stream-seconds and must NOT be treated as concurrent wall-clock exposure. R03 and R04 remain uncertified."
+  },
+  "raw_proposal_immutable": true
+}

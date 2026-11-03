@@ -1,0 +1,530 @@
+{
+  "train_events/event_001": {
+    "dual_camera": {
+      "n": 249,
+      "transitions": 182,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 7.406,
+      "uncertainty_s": 0.05,
+      "front_sha256": "d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b",
+      "back_sha256": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1"
+    },
+    "B0": {
+      "n": 249,
+      "transitions": 165,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 248,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 249,
+      "transitions": 165,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 231,
+      "transitions": 47,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_002": {
+    "dual_camera": {
+      "n": 163,
+      "transitions": 138,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 4.1867,
+      "uncertainty_s": 0.05,
+      "front_sha256": "69811c9e515515e93e25597244d2d1e8b4f1976d874a27cfb794076c5226a161",
+      "back_sha256": "964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b"
+    },
+    "B0": {
+      "n": 163,
+      "transitions": 137,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 161,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 163,
+      "transitions": 137,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 151,
+      "transitions": 122,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_005": {
+    "dual_camera": {
+      "n": 398,
+      "transitions": 372,
+      "final": "CROSSING_OCCUPIED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 6.038,
+      "uncertainty_s": 0.05,
+      "front_sha256": "015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613",
+      "back_sha256": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e"
+    },
+    "B0": {
+      "n": 398,
+      "transitions": 270,
+      "final": "CROSSING_OCCUPIED",
+      "reached_clear": true,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 398,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 398,
+      "transitions": 270,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 391,
+      "transitions": 342,
+      "final": "TRAIN_PRESENT",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_006": {
+    "dual_camera": {
+      "n": 635,
+      "transitions": 589,
+      "final": "CROSSING_OCCUPIED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 4.5124,
+      "uncertainty_s": 0.05,
+      "front_sha256": "abae4c6f357171fdf972aa49d7fd4590d86c35cb95394e4c88e7274db0664c12",
+      "back_sha256": "c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe"
+    },
+    "B0": {
+      "n": 631,
+      "transitions": 247,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": true,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 631,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 631,
+      "transitions": 239,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": true,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 635,
+      "transitions": 569,
+      "final": "CROSSING_OCCUPIED",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_007": {
+    "dual_camera": {
+      "n": 192,
+      "transitions": 165,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 8.8801,
+      "uncertainty_s": 0.05,
+      "front_sha256": "26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c",
+      "back_sha256": "24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf"
+    },
+    "B0": {
+      "n": 192,
+      "transitions": 146,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 191,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 192,
+      "transitions": 146,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 173,
+      "transitions": 132,
+      "final": "TRAIN_PRESENT",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_009": {
+    "dual_camera": {
+      "n": 215,
+      "transitions": 190,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 9.4043,
+      "uncertainty_s": 0.05,
+      "front_sha256": "7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db",
+      "back_sha256": "4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8"
+    },
+    "B0": {
+      "n": 215,
+      "transitions": 190,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 213,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 215,
+      "transitions": 190,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 188,
+      "transitions": 143,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_011": {
+    "dual_camera": {
+      "n": 189,
+      "transitions": 164,
+      "final": "CROSSING_OCCUPIED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 5.2713,
+      "uncertainty_s": 0.05,
+      "front_sha256": "6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0",
+      "back_sha256": "3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46"
+    },
+    "B0": {
+      "n": 189,
+      "transitions": 164,
+      "final": "CROSSING_OCCUPIED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 188,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 189,
+      "transitions": 164,
+      "final": "CROSSING_OCCUPIED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 187,
+      "transitions": 106,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_012": {
+    "dual_camera": {
+      "n": 376,
+      "transitions": 337,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 5.5679,
+      "uncertainty_s": 0.05,
+      "front_sha256": "840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0",
+      "back_sha256": "d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c"
+    },
+    "B0": {
+      "n": 376,
+      "transitions": 257,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": true,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 376,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 376,
+      "transitions": 257,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": true,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 354,
+      "transitions": 270,
+      "final": "TRAIN_DEPARTING",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_013": {
+    "dual_camera": {
+      "n": 369,
+      "transitions": 342,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 3.278,
+      "uncertainty_s": 0.05,
+      "front_sha256": "3869d489098aeb5f9251b9c698cb236e8fc0b6ee7be7b3342c14a5dbff140e2d",
+      "back_sha256": "e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387"
+    },
+    "B0": {
+      "n": 369,
+      "transitions": 319,
+      "final": "TRAIN_PRESENT",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 368,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 369,
+      "transitions": 319,
+      "final": "TRAIN_PRESENT",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 366,
+      "transitions": 295,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_014": {
+    "dual_camera": {
+      "n": 276,
+      "transitions": 250,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 4.0806,
+      "uncertainty_s": 0.05,
+      "front_sha256": "adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5",
+      "back_sha256": "46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd"
+    },
+    "B0": {
+      "n": 275,
+      "transitions": 175,
+      "final": "TRAIN_PRESENT",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 276,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 276,
+      "transitions": 176,
+      "final": "CROSSING_OCCUPIED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 268,
+      "transitions": 238,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  },
+  "train_events/event_017": {
+    "dual_camera": {
+      "n": 419,
+      "transitions": 394,
+      "final": "REAR_CONFIRMED",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "calibration": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 4.5654,
+      "uncertainty_s": 0.05,
+      "front_sha256": "188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3",
+      "back_sha256": "7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95"
+    },
+    "B0": {
+      "n": 408,
+      "transitions": 359,
+      "final": "TRAIN_PRESENT",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B1": {
+      "n": 408,
+      "transitions": 0,
+      "final": "IDLE",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "B2": {
+      "n": 408,
+      "transitions": 359,
+      "final": "TRAIN_PRESENT",
+      "reached_clear": false,
+      "fault_count": 0
+    },
+    "Back_Independent": {
+      "n": 419,
+      "transitions": 354,
+      "final": "TRAIN_PRESENT",
+      "reached_clear": false,
+      "fault_count": 0
+    }
+  }
+}

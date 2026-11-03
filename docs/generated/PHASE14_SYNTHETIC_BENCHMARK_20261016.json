@@ -1,0 +1,178 @@
+{
+  "acceptance": {
+    "claim_permitted": false,
+    "note": "No acceptance criterion is documented; measured values stand alone.",
+    "status": "not_assessed_no_documented_criterion"
+  },
+  "benchmark": "synthetic_event_replay",
+  "derived_per_frame": {
+    "decision_replay_mean_ms_per_frame": 0.010851756659301437,
+    "frames_per_pass": 453,
+    "note": "mean per-event replay time divided by frames per event; not a per-frame sample",
+    "throughput_frames_per_s": 55060.250844027374
+  },
+  "environment": {
+    "accelerators": {
+      "cuda_available": false,
+      "cuda_device_count": 0,
+      "mps_available": true,
+      "torch_importable": true
+    },
+    "code_revision": "d4db94d4a4ea83ae4c510d65dfc99c5d6798304b",
+    "cpu_count": 8,
+    "cpu_model": "Apple M1",
+    "dirty_entry_count": 304,
+    "machine": "arm64",
+    "packages": {
+      "Pillow": "12.3.0",
+      "PyYAML": "6.0.3",
+      "numpy": "2.4.6",
+      "opencv-python": "5.0.0.93",
+      "torch": "2.13.0",
+      "ultralytics": "8.4.121"
+    },
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "python_executable": "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.11.15",
+    "ram_bytes": 8589934592,
+    "system": "Darwin",
+    "worktree_dirty": true
+  },
+  "fingerprints": {
+    "checkpoints": {
+      "audio_v3": {
+        "actual_sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782",
+        "expected_sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782",
+        "matches_frozen_config": true,
+        "path": "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt"
+      },
+      "prohibited_audio_v2_used": false,
+      "vision": {
+        "actual_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+        "expected_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+        "matches_frozen_config": true,
+        "path": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt"
+      }
+    },
+    "decision_policy": {
+      "canonical_sha256": "051c908d4db23687db33cbc8349945b241a0735b362413be876d7017a5eacc9d",
+      "path": "configs/decision_policy_v1.yaml",
+      "raw_sha256": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575"
+    },
+    "frozen_config": {
+      "canonical_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+      "path": "configs/frozen_experiment_v1.yaml",
+      "raw_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a"
+    },
+    "verified": true
+  },
+  "fingerprints_verified": true,
+  "host_matches_declared_target": false,
+  "inputs": {
+    "classification": "synthetic",
+    "description": "deterministic synthetic evidence; not railway footage",
+    "empirical_railway_performance": false,
+    "input_count": 3,
+    "provenance": null
+  },
+  "is_safety_evidence": false,
+  "is_target_hardware_evidence": false,
+  "item_count": 150,
+  "limitations": [
+    "Wall-clock timings of the wrapped callables on the measuring host only.",
+    "Percentiles are sample statistics, not worst-case execution-time bounds.",
+    "Synthetic inputs exercise code paths; they say nothing about railway scenes.",
+    "No safety, real-time or deployment claim follows from this report.",
+    "Process peak RSS is a lifetime high-water mark and includes model loading."
+  ],
+  "memory": {
+    "note": "Process peak RSS is a lifetime high-water mark and includes model loading.",
+    "process_peak_rss_bytes": 33931264
+  },
+  "output_fingerprint_sha256": "80f786a2ba39a7f7086912566384393e42fec49bc1f46a8909bb8e0e34475163",
+  "protocol": {
+    "acceptance_criterion": null,
+    "latency_budget_ms": null,
+    "measured_iterations": 10,
+    "repetitions": 5,
+    "target_platform": null,
+    "warmup_iterations": 3,
+    "workload_label": "synthetic_event_replay_through_frozen_decision_engine"
+  },
+  "real_time_claim_permitted": false,
+  "repetition_wall_ms": [
+    83.82275002077222,
+    81.3246660400182,
+    81.40441705472767,
+    83.66841601673514,
+    81.14729193039238
+  ],
+  "report_type": "phase14_benchmark_report",
+  "schema_version": "phase14-benchmark-report/2",
+  "stage_latency_ms": {
+    "decision_replay": {
+      "max_ms": 5.03633392509073,
+      "mean_ms": 1.638615255554517,
+      "p50_ms": 1.591959036886692,
+      "p95_ms": 2.1645419765263796,
+      "p99_ms": 4.551082965917885,
+      "sample_count": 150
+    },
+    "frame_assembly": {
+      "max_ms": 1.6708330949768424,
+      "mean_ms": 1.0960933690269787,
+      "p50_ms": 1.0671669151633978,
+      "p95_ms": 1.6052500577643514,
+      "p99_ms": 1.626916928216815,
+      "sample_count": 150
+    },
+    "item_total": {
+      "max_ms": 6.616999977268279,
+      "mean_ms": 2.7361082937568426,
+      "p50_ms": 2.6622089790180326,
+      "p95_ms": 3.7740410771220922,
+      "p99_ms": 6.146500003524125,
+      "sample_count": 150
+    }
+  },
+  "target_mismatches": [
+    "no target platform declared"
+  ],
+  "target_platform_declared": false,
+  "throughput_items_per_s": 364.63742280812835,
+  "vision_model_workload": {
+    "fingerprints": {
+      "checkpoints": {
+        "audio_v3": {
+          "actual_sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782",
+          "expected_sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782",
+          "matches_frozen_config": true,
+          "path": "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt"
+        },
+        "prohibited_audio_v2_used": false,
+        "vision": {
+          "actual_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+          "expected_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+          "matches_frozen_config": true,
+          "path": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt"
+        }
+      },
+      "decision_policy": {
+        "canonical_sha256": "051c908d4db23687db33cbc8349945b241a0735b362413be876d7017a5eacc9d",
+        "path": "configs/decision_policy_v1.yaml",
+        "raw_sha256": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575"
+      },
+      "frozen_config": {
+        "canonical_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+        "path": "configs/frozen_experiment_v1.yaml",
+        "raw_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a"
+      },
+      "verified": true
+    },
+    "input_classification": "synthetic",
+    "reason": "ultralytics cannot be imported in this environment: cannot import name 'YOLO' from 'ultralytics' (unknown location)",
+    "status": "unavailable"
+  }
+}

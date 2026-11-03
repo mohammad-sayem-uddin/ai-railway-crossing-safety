@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from railway_detection.data.audio_extractor import extract_audio_from_video
 from railway_detection.data.contracts import EventLabel, LayerBEvent
 from railway_detection.utils.logging import get_logger
 
@@ -19,6 +20,36 @@ logger = get_logger("data.layer_b")
 
 REQUIRED_MEDIA = ("camera_1.mp4", "camera_2.mp4", "audio.wav")
 OPTIONAL_MEDIA = ("camera_1.mov", "camera_2.mov", "audio.m4a")
+
+CAMERA_1_CANDIDATES = (
+    "camera_1.mp4",
+    "camera_1.mov",
+    "camera_front.mp4",
+    "camera_front.mov",
+    "front.mp4",
+    "front.mov",
+)
+CAMERA_2_CANDIDATES = (
+    "camera_2.mp4",
+    "camera_2.mov",
+    "camera_rear.mp4",
+    "camera_rear.mov",
+    "camera_back.mp4",
+    "camera_back.mov",
+    "rear.mp4",
+    "rear.mov",
+    "back.mp4",
+    "back.mov",
+)
+AUDIO_CANDIDATES = (
+    "audio.wav",
+    "audio.m4a",
+    "audio.mp3",
+    "audio_front.wav",
+    "audio_rear.wav",
+    "front_audio.wav",
+    "rear_audio.wav",
+)
 
 
 @dataclass
@@ -32,8 +63,20 @@ class LayerBLoadResult:
         return not self.issues
 
 
-def load_event_bundle(event_dir: str | Path) -> LayerBLoadResult:
-    """Load and validate one Layer B event bundle directory."""
+def load_event_bundle(
+    event_dir: str | Path,
+    strict_metadata: bool = True,
+    extract_audio: bool = False,
+) -> LayerBLoadResult:
+    """Load and validate one Layer B event bundle directory.
+
+    Args:
+        event_dir: Path to the event bundle directory.
+        strict_metadata: If True, missing metadata.json is a blocking issue;
+            if False, it is recorded as a warning with default/None fields.
+        extract_audio: If True and no standalone audio file exists, attempts
+            to extract audio track from camera_1 or camera_front using ffmpeg.
+    """
     event_dir = Path(event_dir)
     result = LayerBLoadResult()
     if not event_dir.is_dir():
@@ -45,15 +88,15 @@ def load_event_bundle(event_dir: str | Path) -> LayerBLoadResult:
     geometry = _read_json(event_dir / "geometry.json")
     labels = _read_json(event_dir / "labels" / "event_labels.json")
 
-    camera_1 = _first_existing(
-        event_dir / "camera_1.mp4", event_dir / "camera_1.mov"
-    )
-    camera_2 = _first_existing(
-        event_dir / "camera_2.mp4", event_dir / "camera_2.mov"
-    )
-    audio = _first_existing(
-        event_dir / "audio.wav", event_dir / "audio.m4a", event_dir / "audio.mp3"
-    )
+    camera_1 = _first_existing(*(event_dir / name for name in CAMERA_1_CANDIDATES))
+    camera_2 = _first_existing(*(event_dir / name for name in CAMERA_2_CANDIDATES))
+    audio = _first_existing(*(event_dir / name for name in AUDIO_CANDIDATES))
+
+    if audio is None and extract_audio and camera_1 is not None and camera_1.exists() and camera_1.stat().st_size > 0:
+        extracted = extract_audio_from_video(camera_1, event_dir / "audio_extracted.wav")
+        if extracted is not None:
+            audio = extracted
+            result.warnings.append(f"audio extracted from {camera_1.name}")
 
     for media_path in (camera_1, camera_2, audio):
         if media_path is None:
@@ -71,7 +114,10 @@ def load_event_bundle(event_dir: str | Path) -> LayerBLoadResult:
         result.warnings.append("audio media not found")
 
     if metadata is None:
-        result.issues.append("metadata.json missing or invalid")
+        if strict_metadata:
+            result.issues.append("metadata.json missing or invalid")
+        else:
+            result.warnings.append("metadata.json missing or invalid")
     if geometry is None:
         result.warnings.append("geometry.json missing or invalid")
     if labels is None:

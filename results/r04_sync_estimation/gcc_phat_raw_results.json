@@ -1,0 +1,488 @@
+{
+  "engine_events/event_001": {
+    "back_wav": "data/processed/layer_b/audio/engine_events/event_001/camera_back.wav",
+    "duration_back_s": 9.812,
+    "duration_front_s": 7.892,
+    "front_wav": "data/processed/layer_b/audio/engine_events/event_001/camera_front.wav",
+    "lag_s": 3.4964,
+    "psr": 1.31,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.7651,
+    "secondary_lag_s": -0.7836,
+    "snr": 12.5,
+    "window_lags_s": [
+      0.1324,
+      0.4814,
+      0.6427
+    ],
+    "window_range_s": 0.5102
+  },
+  "no_train_events/event_001": {
+    "back_wav": "data/processed/layer_b/audio/no_train_events/event_001/camera_back.wav",
+    "duration_back_s": 24.4253,
+    "duration_front_s": 24.6387,
+    "front_wav": "data/processed/layer_b/audio/no_train_events/event_001/camera_front.wav",
+    "lag_s": 1.4277,
+    "psr": 1.26,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.7919,
+    "secondary_lag_s": 1.372,
+    "snr": 15.63,
+    "window_lags_s": [
+      1.4295,
+      1.4295,
+      1.4276
+    ],
+    "window_range_s": 0.0019
+  },
+  "no_train_events/event_002": {
+    "back_wav": "data/processed/layer_b/audio/no_train_events/event_002/camera_back.wav",
+    "duration_back_s": 13.332,
+    "duration_front_s": 11.8813,
+    "front_wav": "data/processed/layer_b/audio/no_train_events/event_002/camera_front.wav",
+    "lag_s": -4.0483,
+    "psr": 1.38,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.727,
+    "secondary_lag_s": -3.9893,
+    "snr": 18.3,
+    "window_lags_s": [
+      -1.0165,
+      -4.0483,
+      1.5564
+    ],
+    "window_range_s": 5.6047
+  },
+  "no_train_events/event_003": {
+    "back_wav": "data/processed/layer_b/audio/no_train_events/event_003/camera_back.wav",
+    "duration_back_s": 22.74,
+    "duration_front_s": 23.8067,
+    "front_wav": "data/processed/layer_b/audio/no_train_events/event_003/camera_front.wav",
+    "lag_s": -0.4022,
+    "psr": 1.96,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.509,
+    "secondary_lag_s": -0.3509,
+    "snr": 21.18,
+    "window_lags_s": [
+      -0.4024,
+      -0.4023,
+      -0.4026
+    ],
+    "window_range_s": 0.0003
+  },
+  "train_events/event_001": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_001/camera_back.wav",
+    "duration_back_s": 46.0787,
+    "duration_front_s": 49.8547,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_001/camera_front.wav",
+    "lag_s": 7.406,
+    "psr": 2.24,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.4465,
+    "secondary_lag_s": 7.1495,
+    "snr": 24.27,
+    "window_lags_s": [
+      7.406,
+      7.406,
+      7.4059
+    ],
+    "window_range_s": 0.0001
+  },
+  "train_events/event_002": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_002/camera_back.wav",
+    "duration_back_s": 30.2067,
+    "duration_front_s": 32.4893,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_002/camera_front.wav",
+    "lag_s": 4.1867,
+    "psr": 2.4,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.4163,
+    "secondary_lag_s": 11.2324,
+    "snr": 21.6,
+    "window_lags_s": [
+      4.1869,
+      4.1867,
+      4.1867
+    ],
+    "window_range_s": 0.0002
+  },
+  "train_events/event_003": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_003/camera_back.wav",
+    "duration_back_s": 32.5533,
+    "duration_front_s": 33.3427,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_003/camera_front.wav",
+    "lag_s": 3.7272,
+    "psr": 1.52,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.6565,
+    "secondary_lag_s": 3.0143,
+    "snr": 18.5,
+    "window_lags_s": [
+      3.7273,
+      3.7272,
+      3.7253
+    ],
+    "window_range_s": 0.0019
+  },
+  "train_events/event_004": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_004/camera_back.wav",
+    "duration_back_s": 78.0787,
+    "duration_front_s": 75.604,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_004/camera_front.wav",
+    "lag_s": 4.9001,
+    "psr": 1.15,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.8729,
+    "secondary_lag_s": 5.1398,
+    "snr": 24.96,
+    "window_lags_s": [
+      5.1395,
+      4.9001,
+      4.9002
+    ],
+    "window_range_s": 0.2394
+  },
+  "train_events/event_005": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_005/camera_back.wav",
+    "duration_back_s": 78.1213,
+    "duration_front_s": 79.572,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_005/camera_front.wav",
+    "lag_s": 6.038,
+    "psr": 2.27,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.4401,
+    "secondary_lag_s": 6.593,
+    "snr": 35.7,
+    "window_lags_s": [
+      6.038,
+      6.0386,
+      6.038
+    ],
+    "window_range_s": 0.0006
+  },
+  "train_events/event_006": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_006/camera_back.wav",
+    "duration_back_s": 126.996,
+    "duration_front_s": 126.2067,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_006/camera_front.wav",
+    "lag_s": 4.5124,
+    "psr": 3.47,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.2882,
+    "secondary_lag_s": 4.4239,
+    "snr": 37.32,
+    "window_lags_s": [
+      4.5124,
+      4.5148,
+      4.5121
+    ],
+    "window_range_s": 0.0027
+  },
+  "train_events/event_007": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_007/camera_back.wav",
+    "duration_back_s": 34.5587,
+    "duration_front_s": 38.2707,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_007/camera_front.wav",
+    "lag_s": 8.8801,
+    "psr": 4.31,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.232,
+    "secondary_lag_s": 8.9319,
+    "snr": 62.44,
+    "window_lags_s": [
+      8.8849,
+      8.8823,
+      8.8801
+    ],
+    "window_range_s": 0.0047
+  },
+  "train_events/event_008": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_008/camera_back.wav",
+    "duration_back_s": 62.719,
+    "duration_front_s": 58.8787,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_008/camera_front.wav",
+    "lag_s": 3.6479,
+    "psr": 1.29,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.7756,
+    "secondary_lag_s": 3.1171,
+    "snr": 14.16,
+    "window_lags_s": [
+      3.6513,
+      3.6501,
+      3.6479
+    ],
+    "window_range_s": 0.0033
+  },
+  "train_events/event_009": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_009/camera_back.wav",
+    "duration_back_s": 37.6093,
+    "duration_front_s": 42.9,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_009/camera_front.wav",
+    "lag_s": 9.4043,
+    "psr": 2.43,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.4121,
+    "secondary_lag_s": 6.4594,
+    "snr": 28.78,
+    "window_lags_s": [
+      9.4037,
+      9.4026,
+      9.4079
+    ],
+    "window_range_s": 0.0054
+  },
+  "train_events/event_010": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_010/camera_back.wav",
+    "duration_back_s": 23.5253,
+    "duration_front_s": 24.02,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_010/camera_front.wav",
+    "lag_s": 2.7158,
+    "psr": 2.14,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.4668,
+    "secondary_lag_s": 1.8612,
+    "snr": 22.34,
+    "window_lags_s": [
+      2.7158,
+      2.7158,
+      2.7157
+    ],
+    "window_range_s": 0.0001
+  },
+  "train_events/event_011": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_011/camera_back.wav",
+    "duration_back_s": 37.3747,
+    "duration_front_s": 37.6947,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_011/camera_front.wav",
+    "lag_s": 5.2713,
+    "psr": 2.83,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.353,
+    "secondary_lag_s": 14.083,
+    "snr": 30.03,
+    "window_lags_s": [
+      5.2717,
+      5.2728,
+      5.2736
+    ],
+    "window_range_s": 0.0019
+  },
+  "train_events/event_012": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_012/camera_back.wav",
+    "duration_back_s": 70.74,
+    "duration_front_s": 75.1987,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_012/camera_front.wav",
+    "lag_s": 5.5679,
+    "psr": 2.13,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.469,
+    "secondary_lag_s": 8.2434,
+    "snr": 23.49,
+    "window_lags_s": [
+      5.569,
+      5.5698,
+      5.5721
+    ],
+    "window_range_s": 0.0031
+  },
+  "train_events/event_013": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_013/camera_back.wav",
+    "duration_back_s": 73.2573,
+    "duration_front_s": 73.7053,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_013/camera_front.wav",
+    "lag_s": 3.278,
+    "psr": 2.8,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.3565,
+    "secondary_lag_s": -10.2384,
+    "snr": 25.64,
+    "window_lags_s": [
+      3.2781,
+      3.2796,
+      3.2778
+    ],
+    "window_range_s": 0.0018
+  },
+  "train_events/event_014": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_014/camera_back.wav",
+    "duration_back_s": 53.524,
+    "duration_front_s": 55.0387,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_014/camera_front.wav",
+    "lag_s": 4.0806,
+    "psr": 2.71,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.3684,
+    "secondary_lag_s": 1.1704,
+    "snr": 26.47,
+    "window_lags_s": [
+      4.0815,
+      4.0808,
+      4.0817
+    ],
+    "window_range_s": 0.0009
+  },
+  "train_events/event_015": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_015/camera_back.wav",
+    "duration_back_s": 22.2493,
+    "duration_front_s": 31.1667,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_015/camera_front.wav",
+    "lag_s": 11.4404,
+    "psr": 1.9,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.526,
+    "secondary_lag_s": 11.6479,
+    "snr": 21.18,
+    "window_lags_s": [
+      11.438,
+      0.949,
+      0.1151
+    ],
+    "window_range_s": 11.3229
+  },
+  "train_events/event_016": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_016/camera_back.wav",
+    "duration_back_s": 45.2893,
+    "duration_front_s": 46.868,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_016/camera_front.wav",
+    "lag_s": 3.2592,
+    "psr": 1.64,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.61,
+    "secondary_lag_s": -1.8996,
+    "snr": 17.07,
+    "window_lags_s": [
+      3.2592,
+      3.2563,
+      3.2592
+    ],
+    "window_range_s": 0.0029
+  },
+  "train_events/event_017": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_017/camera_back.wav",
+    "duration_back_s": 83.7747,
+    "duration_front_s": 81.6627,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_017/camera_front.wav",
+    "lag_s": 4.5654,
+    "psr": 2.72,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.3677,
+    "secondary_lag_s": 4.4919,
+    "snr": 25.83,
+    "window_lags_s": [
+      4.5607,
+      4.5674,
+      4.5674
+    ],
+    "window_range_s": 0.0067
+  },
+  "train_events/event_018": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_018/camera_back.wav",
+    "duration_back_s": 52.6493,
+    "duration_front_s": 58.9427,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_018/camera_front.wav",
+    "lag_s": 7.8752,
+    "psr": 1.41,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.7098,
+    "secondary_lag_s": -1.4126,
+    "snr": 28.49,
+    "window_lags_s": [
+      7.8848,
+      7.8803,
+      7.872
+    ],
+    "window_range_s": 0.0128
+  },
+  "train_events/event_019": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_019/camera_back.wav",
+    "duration_back_s": 51.1347,
+    "duration_front_s": 60.3293,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_019/camera_front.wav",
+    "lag_s": 6.6558,
+    "psr": 1.53,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.6526,
+    "secondary_lag_s": 18.3448,
+    "snr": 15.48,
+    "window_lags_s": [
+      6.6579,
+      6.6609,
+      6.6582
+    ],
+    "window_range_s": 0.003
+  },
+  "train_events/event_020": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_020/camera_back.wav",
+    "duration_back_s": 29.8867,
+    "duration_front_s": 28.564,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_020/camera_front.wav",
+    "lag_s": -0.0284,
+    "psr": 1.01,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.991,
+    "secondary_lag_s": 0.4341,
+    "snr": 9.11,
+    "window_lags_s": [
+      -0.0284,
+      -6.5516,
+      -2.9901
+    ],
+    "window_range_s": 6.5232
+  },
+  "train_events/event_021": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_021/camera_back.wav",
+    "duration_back_s": 61.3747,
+    "duration_front_s": 53.4173,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_021/camera_front.wav",
+    "lag_s": -2.8056,
+    "psr": 1.64,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.6101,
+    "secondary_lag_s": -2.4532,
+    "snr": 18.84,
+    "window_lags_s": [
+      -2.8105,
+      -2.8063,
+      -2.8056
+    ],
+    "window_range_s": 0.0049
+  },
+  "train_events/event_022": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_022/camera_back.wav",
+    "duration_back_s": 46.356,
+    "duration_front_s": 43.6467,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_022/camera_front.wav",
+    "lag_s": 0.9626,
+    "psr": 1.03,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.9735,
+    "secondary_lag_s": -0.0217,
+    "snr": 13.65,
+    "window_lags_s": [
+      0.1698,
+      0.9809,
+      0.9646
+    ],
+    "window_range_s": 0.8111
+  },
+  "train_events/event_023": {
+    "back_wav": "data/processed/layer_b/audio/train_events/event_023/camera_back.wav",
+    "duration_back_s": 45.78,
+    "duration_front_s": 44.8413,
+    "front_wav": "data/processed/layer_b/audio/train_events/event_023/camera_front.wav",
+    "lag_s": 1.2277,
+    "psr": 1.29,
+    "sample_rate": 16000,
+    "secondary_amplitude_ratio": 0.7746,
+    "secondary_lag_s": 0.9698,
+    "snr": 14.4,
+    "window_lags_s": [
+      1.2245,
+      1.2197,
+      1.2197
+    ],
+    "window_range_s": 0.0048
+  }
+}

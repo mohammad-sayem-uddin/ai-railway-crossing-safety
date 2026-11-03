@@ -1,0 +1,18 @@
+{
+  "total_events": 27,
+  "eligible_events": 27,
+  "missed_train_count": 0,
+  "missed_train_rate": 0.0,
+  "missed_train_ci95": [
+    6.938893903907228e-18,
+    0.12455458638850961
+  ],
+  "premature_opening_evaluable_count": 0,
+  "premature_opening_count": 0,
+  "premature_opening_rate": null,
+  "premature_opening_ci95": "not_evaluable",
+  "mean_warning_lead_time_s": null,
+  "mean_excess_closed_s": null,
+  "mean_clearance_latency_s": null,
+  "fault_event_count": 6
+}

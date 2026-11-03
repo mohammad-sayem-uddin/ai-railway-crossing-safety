@@ -1,0 +1,55 @@
+{
+  "manifest_version": "1.0.0",
+  "archived_status": "HISTORICAL — OLD TEST DATASET — RETIRED",
+  "archived_date": "2026-10-07",
+  "video_dataset": {
+    "name": "Layer B Real-World Train Passage Evaluation Dataset (Retired)",
+    "dataset_role": "real_world_evaluation",
+    "location": "data/raw/layer_b/videos",
+    "total_events": 21,
+    "total_video_files": 42,
+    "front_cameras": 21,
+    "back_cameras": 21,
+    "total_duration_s": 2195.2,
+    "container": "mov",
+    "video_codec": "hevc (H.265)",
+    "audio_codec": "aac",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2
+  },
+  "audio_dataset": {
+    "name": "Train Horn Audio Model Development Dataset",
+    "dataset_role": "audio_model_development",
+    "location": "data/raw/audio/train_horn/positive",
+    "negative_location": "data/raw/audio/train_horn/negative",
+    "total_audio_files": 87,
+    "positive_label": "train_horn",
+    "negative_background_status": "currently_missing",
+    "total_duration_s": 297.69,
+    "min_duration_s": 1.0,
+    "max_duration_s": 12.0,
+    "mean_duration_s": 3.42,
+    "sample_rate": 44100,
+    "channels": 2,
+    "codec": "mp3",
+    "extension_anomalies_count": 4,
+    "extension_anomalies_details": [
+      "43.pdf",
+      "44.pdf",
+      "45.pdf",
+      "46.pdf"
+    ],
+    "duplicates_count": 1,
+    "duplicates_details": [
+      "42.mp3 duplicate of 41.mp3"
+    ]
+  },
+  "data_separation_rules": [
+    "Dataset V1 remains the YOLO development/training dataset.",
+    "Train_test_video_new remains an unseen real-world evaluation dataset.",
+    "The standalone horn recordings are for audio-model development.",
+    "Embedded audio from the real-world test videos must not be mixed into audio training before the first evaluation.",
+    "No new real-world test video frames may be added to YOLO training before evaluation.",
+    "No test-event information may leak into training."
+  ]
+}

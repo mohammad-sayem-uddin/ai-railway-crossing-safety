@@ -10,7 +10,6 @@ Provides a multi-threaded HTTP server with REST APIs for:
 
 from __future__ import annotations
 
-import cgi
 import json
 import mimetypes
 import shutil
@@ -20,6 +19,9 @@ import threading
 import time
 import urllib.parse
 import uuid
+from dataclasses import dataclass
+from email import policy
+from email.parser import BytesParser
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler
 from pathlib import Path
@@ -40,6 +42,11 @@ from railway_detection.demo.video_demo import (  # noqa: E402
     process_video,
     resolve_device,
 )
+from railway_detection.safety import path_identity as pid  # noqa: E402
+from railway_detection.safety.media_guard import (  # noqa: E402
+    MediaAccessAuthorizationError,
+    require_media_authorization,
+)
 from railway_detection.utils.logging import configure_logging, get_logger  # noqa: E402
 
 logger = get_logger("demo.server")
@@ -53,6 +60,110 @@ OUTPUTS_DIR = PROJECT_ROOT / "outputs/video_tests"
 active_jobs: dict[str, dict[str, Any]] = {}
 jobs_lock = threading.Lock()
 
+#: File types the dashboard may stream from each allowlisted serving root (Mission 14, F13-05).
+OUTPUT_SERVE_SUFFIXES = (".mp4", ".webm", ".json", ".jpg", ".jpeg", ".png", ".csv", ".txt")
+EXPERIMENT_SERVE_SUFFIXES = (".png", ".jpg", ".jpeg", ".svg", ".json", ".csv", ".txt")
+
+
+def resolve_served_file(url_path: str, *, route: str) -> Path:
+    """Map a request path onto a file inside an explicit allowlisted root, or raise.
+
+    ``route`` is ``"outputs"`` (generated results under ``<project>/outputs``) or ``"experiments"``
+    (evaluation plots under ``<project>/experiments/vision/<run>/evaluation``).  Nothing else under
+    the project root -- raw data, checkpoints, governance records, source -- is ever served.  The
+    rest of the path is fully percent-decoded, backslashes/NUL/``..``/absolute forms are refused,
+    and the canonical (symlink-resolved) file must stay inside the root by filesystem identity.
+    """
+    prefix = f"/{route}/"
+    if not isinstance(url_path, str) or not url_path.startswith(prefix):
+        raise pid.PathIdentityError("PATH_NOT_ALLOWED", "unknown serving route")
+    if route == "outputs":
+        root, suffixes = PROJECT_ROOT / "outputs", OUTPUT_SERVE_SUFFIXES
+    elif route == "experiments":
+        root, suffixes = PROJECT_ROOT / "experiments", EXPERIMENT_SERVE_SUFFIXES
+    else:  # pragma: no cover - programming error
+        raise pid.PathIdentityError("PATH_NOT_ALLOWED", "unknown serving route")
+    candidate = pid.resolve_untrusted_relative(
+        root, url_path[len(prefix) :], allowed_suffixes=suffixes
+    )
+    if route == "experiments":
+        parts = pid.relative_parts(candidate, root) or ()
+        # experiments/vision/<run>/evaluation/<file>: plots and metrics only, never weights.
+        if len(parts) < 4 or parts[0].lower() != "vision" or parts[2].lower() != "evaluation":
+            raise pid.PathIdentityError("PATH_NOT_ALLOWED", "path is outside the served plots")
+    return candidate
+
+
+@dataclass(frozen=True)
+class MultipartField:
+    """One parsed multipart form field, with file bytes kept binary-safe."""
+
+    name: str
+    content: bytes
+    filename: str | None = None
+    content_type: str | None = None
+
+    def text(self) -> str:
+        """Decode a text field using its declared charset or UTF-8."""
+        charset = "utf-8"
+        if self.content_type:
+            message = BytesParser(policy=policy.default).parsebytes(
+                f"Content-Type: {self.content_type}\r\n\r\n".encode("ascii")
+            )
+            charset = message.get_content_charset() or charset
+        return self.content.decode(charset)
+
+
+def parse_multipart_form(content_type: str, body: bytes) -> dict[str, MultipartField]:
+    """Parse a multipart/form-data body without the deprecated ``cgi`` module."""
+    headers = (
+        b"MIME-Version: 1.0\r\nContent-Type: "
+        + content_type.encode("ascii")
+        + b"\r\n\r\n"
+    )
+    message = BytesParser(policy=policy.default).parsebytes(headers + body)
+    if not message.is_multipart():
+        raise ValueError("request body is not valid multipart form data")
+
+    fields: dict[str, MultipartField] = {}
+    for part in message.iter_parts():
+        if part.get_content_disposition() != "form-data":
+            continue
+        name = part.get_param("name", header="content-disposition")
+        if not isinstance(name, str) or not name:
+            raise ValueError("multipart field is missing its name")
+        if name in fields:
+            raise ValueError(f"duplicate multipart field {name!r}")
+        fields[name] = MultipartField(
+            name=name,
+            content=part.get_payload(decode=True) or b"",
+            filename=part.get_filename(),
+            content_type=part.get_content_type() if part.get("Content-Type") else None,
+        )
+    return fields
+
+
+def _read_multipart_form(handler: Any, content_type: str) -> dict[str, MultipartField]:
+    """Read and parse the declared request body, rejecting malformed lengths."""
+    try:
+        content_length = int(handler.headers.get("Content-Length", ""))
+    except (TypeError, ValueError) as exc:
+        raise ValueError("missing or invalid Content-Length") from exc
+    if content_length < 0:
+        raise ValueError("invalid Content-Length")
+    body = handler.rfile.read(content_length)
+    if len(body) != content_length:
+        raise ValueError("incomplete multipart request body")
+    return parse_multipart_form(content_type, body)
+
+
+def _display_path(path: Path) -> str:
+    """Render a project-relative path when possible, otherwise an absolute path."""
+    try:
+        return path.relative_to(PROJECT_ROOT).as_posix()
+    except ValueError:
+        return str(path)
+
 
 class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
     """Custom HTTP handler serving the dashboard SPA and REST APIs."""
@@ -63,6 +174,22 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
     def log_message(self, format: str, *args: Any) -> None:
         # Suppress noisy standard HTTP access logs in console
         pass
+
+    def translate_path(self, path: str) -> str:
+        """Static files only from ``STATIC_WEB_DIR``; symlinks may not lead out of it."""
+        relative = urllib.parse.urlparse(path).path.lstrip("/") or "index.html"
+        try:
+            return str(pid.resolve_untrusted_relative(STATIC_WEB_DIR, relative, must_exist=False))
+        except pid.PathIdentityError:
+            return str(STATIC_WEB_DIR / "__not_found__")
+
+    @staticmethod
+    def _static_asset_exists(path: str) -> bool:
+        try:
+            pid.resolve_untrusted_relative(STATIC_WEB_DIR, path.lstrip("/"))
+        except pid.PathIdentityError:
+            return False
+        return True
 
     def do_GET(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
@@ -81,7 +208,7 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
             self._handle_serve_output_file(path)
         elif path.startswith("/experiments/"):
             self._handle_serve_experiment_file(path)
-        elif path == "/" or not (STATIC_WEB_DIR / path.lstrip("/")).exists():
+        elif path == "/" or not self._static_asset_exists(path):
             # SPA fallback: serve index.html
             self.path = "/index.html"
             return super().do_GET()
@@ -222,11 +349,11 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
             )
             return
 
-        form = cgi.FieldStorage(
-            fp=self.rfile,  # type: ignore[arg-type]
-            headers=self.headers,
-            environ={"REQUEST_METHOD": "POST", "CONTENT_TYPE": content_type},
-        )
+        try:
+            form = _read_multipart_form(self, content_type)
+        except (ValueError, UnicodeError) as exc:
+            self._send_json({"error": str(exc)}, status=HTTPStatus.BAD_REQUEST)
+            return
 
         if "video" not in form:
             self._send_json(
@@ -236,22 +363,19 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
             return
 
         file_item = form["video"]
-        filename = getattr(file_item, "filename", "uploaded_video.mp4")
+        filename = file_item.filename or "uploaded_video.mp4"
         stem = Path(filename).stem.replace(" ", "_")
         suffix = Path(filename).suffix.lower() or ".mp4"
         safe_name = f"{stem}_{int(time.time())}{suffix}"
         dest_path = UPLOAD_TEMP_DIR / safe_name
 
         with open(dest_path, "wb") as f:
-            if hasattr(file_item, "file"):
-                shutil.copyfileobj(file_item.file, f)
-            else:
-                f.write(file_item.value)
+            f.write(file_item.content)
 
         self._send_json({
             "message": "Upload successful",
             "filename": filename,
-            "saved_path": str(dest_path.relative_to(PROJECT_ROOT)),
+            "saved_path": _display_path(dest_path),
             "full_path": str(dest_path),
             "size_bytes": dest_path.stat().st_size,
         })
@@ -274,6 +398,15 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
         input_video = Path(video_path_raw).expanduser()
         if not input_video.is_absolute():
             input_video = (PROJECT_ROOT / input_video).resolve()
+
+        try:
+            require_media_authorization(input_video, "INFERENCE", declared_media=True)
+        except MediaAccessAuthorizationError:
+            self._send_json(
+                {"error": "media access is not authorized for this path"},
+                status=HTTPStatus.FORBIDDEN,
+            )
+            return
 
         if not input_video.exists():
             self._send_json(
@@ -367,11 +500,11 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
             )
             return
 
-        form = cgi.FieldStorage(
-            fp=self.rfile,  # type: ignore[arg-type]
-            headers=self.headers,
-            environ={"REQUEST_METHOD": "POST", "CONTENT_TYPE": content_type},
-        )
+        try:
+            form = _read_multipart_form(self, content_type)
+        except (ValueError, UnicodeError) as exc:
+            self._send_json({"error": str(exc)}, status=HTTPStatus.BAD_REQUEST)
+            return
 
         if "image" not in form:
             self._send_json(
@@ -381,16 +514,24 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
             return
 
         file_item = form["image"]
-        image_bytes = file_item.file.read() if hasattr(file_item, "file") else file_item.value
+        image_bytes = file_item.content
         nparr = np.frombuffer(image_bytes, np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
         if img is None:
             self._send_json({"error": "Could not decode image"}, status=HTTPStatus.BAD_REQUEST)
             return
 
-        conf = float(form.getvalue("conf", 0.25))
-        iou = float(form.getvalue("iou", 0.45))
-        device = resolve_device(form.getvalue("device", "auto"))
+        try:
+            conf = float(form["conf"].text()) if "conf" in form else 0.25
+            iou = float(form["iou"].text()) if "iou" in form else 0.45
+            requested_device = form["device"].text() if "device" in form else "auto"
+        except (UnicodeError, ValueError) as exc:
+            self._send_json(
+                {"error": f"Invalid inference option: {exc}"},
+                status=HTTPStatus.BAD_REQUEST,
+            )
+            return
+        device = resolve_device(requested_device)
 
         model_path = DEFAULT_MODEL_PATH
         if not model_path.exists():
@@ -457,9 +598,9 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
 
     def _handle_serve_output_file(self, path: str) -> None:
         """Serve generated MP4 video files and output artifacts with byte range support."""
-        rel_path = path.lstrip("/")
-        full_path = (PROJECT_ROOT / rel_path).resolve()
-        if not full_path.exists() or not full_path.is_file():
+        try:
+            full_path = resolve_served_file(path, route="outputs")
+        except pid.PathIdentityError:
             self.send_error(HTTPStatus.NOT_FOUND, "File not found")
             return
 
@@ -475,10 +616,14 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
                 parts = range_header.replace("bytes=", "").split("-")
                 start = int(parts[0])
                 end = int(parts[1]) if parts[1] else file_size - 1
+                end = min(end, file_size - 1)
+                if start < 0 or start > end:
+                    raise ValueError("unsatisfiable range")
                 length = end - start + 1
 
                 self.send_response(HTTPStatus.PARTIAL_CONTENT)
                 self.send_header("Content-Type", mime_type)
+                self.send_header("X-Content-Type-Options", "nosniff")
                 self.send_header("Content-Range", f"bytes {start}-{end}/{file_size}")
                 self.send_header("Content-Length", str(length))
                 self.send_header("Accept-Ranges", "bytes")
@@ -493,6 +638,7 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
 
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", mime_type)
+        self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Content-Length", str(file_size))
         self.send_header("Accept-Ranges", "bytes")
         self.end_headers()
@@ -500,16 +646,17 @@ class DashboardHTTPRequestHandler(SimpleHTTPRequestHandler):
             shutil.copyfileobj(f, self.wfile)
 
     def _handle_serve_experiment_file(self, path: str) -> None:
-        """Serve experiment evaluation plots (confusion matrix, PR curves)."""
-        rel_path = path.lstrip("/")
-        full_path = (PROJECT_ROOT / rel_path).resolve()
-        if not full_path.exists() or not full_path.is_file():
+        """Serve experiment evaluation plots (confusion matrix, PR curves) -- never weights."""
+        try:
+            full_path = resolve_served_file(path, route="experiments")
+        except pid.PathIdentityError:
             self.send_error(HTTPStatus.NOT_FOUND, "File not found")
             return
         mime_type, _ = mimetypes.guess_type(str(full_path))
         mime_type = mime_type or "image/png"
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", mime_type)
+        self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Content-Length", str(full_path.stat().st_size))
         self.end_headers()
         with open(full_path, "rb") as f:

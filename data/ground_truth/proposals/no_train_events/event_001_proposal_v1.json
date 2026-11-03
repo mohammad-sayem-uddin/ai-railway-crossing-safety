@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "proposal_id": "proposal_event_001_v1",
+  "event_id": "event_001",
+  "event_type": "REAL_WORLD_NO_TRAIN",
+  "proposal_timestamp_utc": "2026-10-12T16:08:39Z",
+  "schema_version": "6.0.0",
+  "ai_assistant_metadata": {
+    "model_name": "antigravity-multimodal-agent",
+    "prompt_template_version": "v1.0.0",
+    "prompt_template_sha256": "8ea581b1453f72b4673642d510acc4a4e0a9aeb9727ae63ff0c0546b65741a5e",
+    "input_media_files": [
+      {
+        "file_name": "camera_front.mov",
+        "duration_s": 24.635,
+        "sha256": "58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f"
+      },
+      {
+        "file_name": "camera_back.mov",
+        "duration_s": 24.422,
+        "sha256": "5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9"
+      }
+    ]
+  },
+  "proposed_site_metadata": {
+    "crossing_id": "crossing_A",
+    "recording_session_id": "session_20260914_morning"
+  },
+  "proposed_environmental_conditions": {
+    "lighting": "night",
+    "weather": "clear"
+  },
+  "proposed_train_metadata": {
+    "train_present": false,
+    "train_direction": null,
+    "train_type": null,
+    "trailing_cars_count": null,
+    "horn_status": null,
+    "horn_onset_s": null,
+    "horn_uncertainty_s": null,
+    "horn_reason": "No train present in recording. Ambient road traffic horns (CNG/rickshaw) present in audio.",
+    "confidence_note": "Full 24.6s front and 24.4s back recordings inspected. Zero rail vehicles observable on tracks. Road vehicles (buses, CNG auto-rickshaws, rickshaws, motorcycles) and pedestrians continuously traverse the level crossing. Acoustic spectral peaks in 350-750 Hz represent road-traffic beeps and horns as acoustic confounders."
+  },
+  "proposed_timestamps": {
+    "T0_first_visible": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T1_danger_zone_entry": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T2_crossing_occupancy_start": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T3_locomotive_unit_clearance": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T4_tail_clearance": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T_scene_clear": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    }
+  },
+  "proposed_camera_alignment_markers": {
+    "candidate_front_marker": "Continuous background pedestrian and rickshaw flow across roadway",
+    "candidate_back_marker": "Continuous background road traffic under metro viaduct",
+    "candidate_offset_s": null,
+    "requires_human_empirical_verification": true,
+    "audited_front_stream_exposure_s": 24.635,
+    "audited_back_stream_exposure_s": 24.422,
+    "audited_combined_camera_stream_exposure_s": 49.057,
+    "stream_exposure_note": "Combined camera-stream exposure (49.057s) represents summed stream-seconds and must NOT be treated as concurrent wall-clock exposure."
+  },
+  "raw_proposal_immutable": true,
+  "activity_log": [
+    {
+      "interval_s": [
+        0.0,
+        5.0
+      ],
+      "description": "Pedestrians and rickshaws actively crossing level crossing tracks."
+    },
+    {
+      "interval_s": [
+        5.0,
+        15.0
+      ],
+      "description": "CNG auto-rickshaws and motorcycles traversing crossing roadway; brief road-horn beeps recorded."
+    },
+    {
+      "interval_s": [
+        15.0,
+        24.6
+      ],
+      "description": "Continuous road traffic flow; tracks remain fully clear of rail vehicles."
+    }
+  ]
+}

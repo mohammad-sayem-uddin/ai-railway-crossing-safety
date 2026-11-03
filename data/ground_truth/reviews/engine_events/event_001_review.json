@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "review_id": "review_engine_event_001_20261012",
+  "event_id": "event_001",
+  "schema_version": "6.0.0",
+  "proposal_reference": {
+    "proposal_file": "data/ground_truth/proposals/engine_events/event_001_proposal_v1.json",
+    "proposal_sha256": "303a86d1d76e3b438e7ceaae0b1771eee657e7c994b33065928ca7118e935851"
+  },
+  "reviewer_metadata": {
+    "reviewer_id": "human_researcher_lead",
+    "review_date_utc": "2026-10-12T16:51:21Z",
+    "inspection_tool": "ffmpeg-frame-analyzer / scipy-spectral-auditor v2.0"
+  },
+  "adjudication_status": "APPROVED",
+  "field_adjudications": {
+    "train_metadata.train_type": {
+      "proposed": "locomotive_light",
+      "approved": "locomotive_light",
+      "decision": "accepted",
+      "notes": "Single locomotive running light without trailing coaches re-verified on physical frames."
+    },
+    "train_metadata.trailing_cars_count": {
+      "proposed": 0,
+      "approved": 0,
+      "decision": "accepted",
+      "notes": "Zero trailing rail vehicles confirmed."
+    },
+    "train_metadata.horn_status": {
+      "proposed": "absent_observed",
+      "approved": "absent_observed",
+      "decision": "accepted",
+      "notes": "Acoustic re-verification confirms absence of pneumatic horn blast."
+    },
+    "timestamps.T3_coincidence_rule": {
+      "proposed": 6.2,
+      "approved": 6.2,
+      "decision": "accepted",
+      "notes": "Coincidence rule confirmed: for engine-only event, T3 == T4 = 6.20s identically."
+    },
+    "timestamps.T4_tail_clearance": {
+      "proposed": 6.2,
+      "approved": 6.2,
+      "decision": "accepted",
+      "notes": "Rear buffer of single locomotive clears roadway occupancy plane at t=6.20s."
+    },
+    "timestamps.T_scene_clear": {
+      "proposed": 6.2,
+      "approved": 6.2,
+      "decision": "accepted",
+      "notes": "Locomotive clears front camera sightlines completely at t=6.20s."
+    },
+    "camera_alignment.offset_s": {
+      "proposed": null,
+      "approved": null,
+      "decision": "marked_unobservable",
+      "notes": "R04 inter-camera offset uncertified; verified on independent front camera clock."
+    }
+  },
+  "summary_counts": {
+    "total_fields": 7,
+    "accepted_count": 6,
+    "corrected_count": 0,
+    "marked_unobservable_count": 1,
+    "rejected_count": 0
+  },
+  "general_review_notes": "Stage 2 Verification: Re-verified engine_events/event_001. Single locomotive running light with zero trailing railcars. Coincidence rule T3 == T4 = 6.20s physically verified."
+}

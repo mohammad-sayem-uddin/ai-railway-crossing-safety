@@ -1,0 +1,141 @@
+{
+  "authorization_attestation_level": null,
+  "authorization_is_cryptographic": false,
+  "authorization_verification_available": true,
+  "authorization_verified": false,
+  "blocker_codes": [
+    "COHORT_APPROVAL_MISSING",
+    "EVAL_AUTH_NOT_GRANTED",
+    "EVENT_SPLIT_DECISION_MISSING",
+    "MANIFEST_MISSING",
+    "PREMATURE_OPENING_DEFINITION_UNDECIDED",
+    "R04_SCOPE_DECISION_MISSING",
+    "STAGE21_RECORDS_MISSING"
+  ],
+  "blocker_count": 9,
+  "blockers": [
+    {
+      "category": "DERIVED",
+      "cause_class": "derived",
+      "code": "COHORT_APPROVAL_MISSING",
+      "detail": "no approved engine_events record",
+      "insufficient_because": "this follows from another blocker and cannot be cleared on its own",
+      "remedy": "Clears automatically once STAGE21_RECORDS_MISSING is resolved for that cohort.",
+      "required_artifact": "an APPROVED Stage-2.1 record in each of train_events, no_train_events, engine_events",
+      "verification_evidence": "no approved engine_events record"
+    },
+    {
+      "category": "DERIVED",
+      "cause_class": "derived",
+      "code": "COHORT_APPROVAL_MISSING",
+      "detail": "no approved no_train_events record",
+      "insufficient_because": "this follows from another blocker and cannot be cleared on its own",
+      "remedy": "Clears automatically once STAGE21_RECORDS_MISSING is resolved for that cohort.",
+      "required_artifact": "an APPROVED Stage-2.1 record in each of train_events, no_train_events, engine_events",
+      "verification_evidence": "no approved no_train_events record"
+    },
+    {
+      "category": "DERIVED",
+      "cause_class": "derived",
+      "code": "COHORT_APPROVAL_MISSING",
+      "detail": "no approved train_events record",
+      "insufficient_because": "this follows from another blocker and cannot be cleared on its own",
+      "remedy": "Clears automatically once STAGE21_RECORDS_MISSING is resolved for that cohort.",
+      "required_artifact": "an APPROVED Stage-2.1 record in each of train_events, no_train_events, engine_events",
+      "verification_evidence": "no approved train_events record"
+    },
+    {
+      "category": "AUTHORIZATION",
+      "cause_class": "authorization_gap",
+      "code": "EVAL_AUTH_NOT_GRANTED",
+      "detail": "no recorded EVAL-AUTH at data/governance/eval_authorization.json; no authorization can be verified from chat statements or documents",
+      "insufficient_because": "the general authorization was given in conversation; a bindable record needs the split, R04, receipt and manifest that do not exist yet",
+      "remedy": "A recorded EVAL-AUTH bound to the current evidence hashes. `python -m railway_detection evaluation status` prints live_bindings to bind. Chat statements and documents are recorded in docs but cannot be verified here.",
+      "required_artifact": "data/governance/eval_authorization.json",
+      "verification_evidence": "no recorded EVAL-AUTH at data/governance/eval_authorization.json; no authorization can be verified from chat statements or documents"
+    },
+    {
+      "category": "MISSING_RESEARCH_DECISION",
+      "cause_class": "undecided_decision",
+      "code": "EVENT_SPLIT_DECISION_MISSING",
+      "detail": "/Users/sayemuddin/Desktop/Train_automation/data/splits/phase12_event_split_decision.json",
+      "insufficient_because": "no researcher-attributed decision record exists, and the software will not choose a scientific definition or assignment on the researcher's behalf",
+      "remedy": "Researcher-authored event-level train/val/test split decision (R-SPLIT).",
+      "required_artifact": "data/splits/phase12_event_split_decision.json",
+      "verification_evidence": "/Users/sayemuddin/Desktop/Train_automation/data/splits/phase12_event_split_decision.json"
+    },
+    {
+      "category": "MISSING_HUMAN_EVIDENCE",
+      "cause_class": "missing_artifact",
+      "code": "MANIFEST_MISSING",
+      "detail": "manifest does not exist: /Users/sayemuddin/Desktop/Train_automation/data/manifests/phase12_evaluation_inputs.json",
+      "insufficient_because": "the required artifact does not exist; no chat statement or document can substitute for a machine-verifiable record",
+      "remedy": "Hash-bound event input manifest built from the approved split; see evaluation.manifest_builder. Depends on the split decision.",
+      "required_artifact": "data/manifests/phase12_evaluation_inputs.json",
+      "verification_evidence": "manifest does not exist: /Users/sayemuddin/Desktop/Train_automation/data/manifests/phase12_evaluation_inputs.json"
+    },
+    {
+      "category": "MISSING_RESEARCH_DECISION",
+      "cause_class": "undecided_decision",
+      "code": "PREMATURE_OPENING_DEFINITION_UNDECIDED",
+      "detail": "no documented value or researcher choice for ['premature_opening_window']; see docs/PREMATURE_OPENING_DECISION_EVIDENCE.md",
+      "insufficient_because": "protocol v9 and design M4 conflict and neither has a researcher-attributed acceptance",
+      "remedy": "Choose the premature-opening window (protocol v9 T1<=t<T4, implemented; or design M4, not implemented). Evidence: docs/PREMATURE_OPENING_DECISION_EVIDENCE.md.",
+      "required_artifact": "data/manifests/phase12_protocol_decision.json with choices.premature_opening_window",
+      "verification_evidence": "no documented value or researcher choice for ['premature_opening_window']; see docs/PREMATURE_OPENING_DECISION_EVIDENCE.md"
+    },
+    {
+      "category": "MISSING_RESEARCH_DECISION",
+      "cause_class": "undecided_decision",
+      "code": "R04_SCOPE_DECISION_MISSING",
+      "detail": "/Users/sayemuddin/Desktop/Train_automation/data/manifests/phase12_r04_scope_decision.json",
+      "insufficient_because": "no researcher-attributed decision record exists, and the software will not choose a scientific definition or assignment on the researcher's behalf",
+      "remedy": "Researcher-authored camera-scope decision naming accepted-sync events (R-R04SCOPE).",
+      "required_artifact": "data/manifests/phase12_r04_scope_decision.json",
+      "verification_evidence": "/Users/sayemuddin/Desktop/Train_automation/data/manifests/phase12_r04_scope_decision.json"
+    },
+    {
+      "category": "MISSING_HUMAN_EVIDENCE",
+      "cause_class": "missing_artifact",
+      "code": "STAGE21_RECORDS_MISSING",
+      "detail": "no active review records found; 27 legacy record(s) are invalidated by verified notices and are not counted",
+      "insufficient_because": "zero 8.1.0-stage2.1 records exist; the researcher's statement that annotations were approved has no corresponding artifact",
+      "remedy": "Genuine Stage-2.1 records: researcher runs the Stage-2.1 review/adjudication workflow (annotation.review_session / adjudication_session). A statement that annotations were approved is not a record; legacy 6.0.0 files cannot be migrated.",
+      "required_artifact": "data/ground_truth/reviews/**/*_review.json with schema_version 8.1.0-stage2.1",
+      "verification_evidence": "no active review records found; 27 legacy record(s) are invalidated by verified notices and are not counted"
+    }
+  ],
+  "blockers_by_category": {
+    "AUTHORIZATION": [
+      "EVAL_AUTH_NOT_GRANTED"
+    ],
+    "DERIVED": [
+      "COHORT_APPROVAL_MISSING"
+    ],
+    "MISSING_HUMAN_EVIDENCE": [
+      "MANIFEST_MISSING",
+      "STAGE21_RECORDS_MISSING"
+    ],
+    "MISSING_RESEARCH_DECISION": [
+      "EVENT_SPLIT_DECISION_MISSING",
+      "PREMATURE_OPENING_DEFINITION_UNDECIDED",
+      "R04_SCOPE_DECISION_MISSING"
+    ]
+  },
+  "evidence": [
+    "27 legacy review record(s) excluded: each has a verified invalidation notice (record unchanged, legacy schema); they are history, not ground truth, and satisfy no Stage-2.1 requirement",
+    "decision policy SHA-256: c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575",
+    "frozen config canonical SHA-256 verified: 999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e"
+  ],
+  "live_bindings": {
+    "decision_policy_sha256": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575",
+    "event_split_decision_sha256": null,
+    "frozen_config_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+    "input_manifest_sha256": null,
+    "protocol_profile_sha256": null,
+    "r04_scope_decision_sha256": null,
+    "stage21_promotion_receipt_sha256": null
+  },
+  "protocol_profile": null,
+  "ready": false
+}

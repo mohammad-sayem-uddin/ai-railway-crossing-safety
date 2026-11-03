@@ -1,0 +1,104 @@
+[
+  {
+    "adjudication_id": "phase11_5_adj_event_009_T0",
+    "event_id": "train_events/event_009",
+    "boundary": "T0_first_visible",
+    "source_video_path": "data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+    "source_video_sha256": "7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db",
+    "legacy_proposal_file": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+    "legacy_proposal_version": "2",
+    "legacy_claimed_value_s": 1.5,
+    "legacy_claimed_classification": "NOT_LEFT_CENSORED",
+    "legacy_claimed_rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.",
+    "phase_11_4_finding_outcome": "VERIFIED_DISCREPANCY",
+    "phase_11_4_finding_evidence": "Dedicated scan at t=0.0/0.5/1.0/1.5s shows the locomotive ALREADY clearly visible at t=0.0s, in essentially the same position as at the claimed T0=1.5s.",
+    "adjudication_history": [
+      {
+        "event": "status_set_to_flagged_by_audit",
+        "by": "phase_11_4_video_audit",
+        "at_utc": "2026-10-14T18:00:00Z",
+        "status": "FLAGGED_BY_AUDIT"
+      },
+      {
+        "event": "status_set_to_researcher_confirmed_correction",
+        "by": "raihankabirrahu@gmail.com",
+        "at_utc": "2026-10-14T18:00:00Z",
+        "status": "RESEARCHER_CONFIRMED_CORRECTION"
+      }
+    ],
+    "current_status": "RESEARCHER_CONFIRMED_CORRECTION",
+    "corrected_classification": "LEFT_CENSORED",
+    "corrected_value_s": null,
+    "corrected_rationale": "Researcher personally reviewed the Phase 11.4 video evidence and confirmed: the train (locomotive) is already visible at frame zero of the front-camera recording. The true physical arrival/entry time therefore precedes the start of the available recording and is NOT observable from this footage. T0 must be treated as left-censored (recorded at the recording-relative frame-0 value per convention), consistent with the other 20/23 train events, not as a genuine late, non-left-censored arrival at t=1.5s.",
+    "legacy_record_disposition_note": "The legacy candidate proposal and the invalidated Stage-2 review (if any) referencing this event remain unmodified on disk. This record does NOT constitute formal invalidation of any legacy approval -- that is a separate, explicitly researcher-authorized action per docs/PHASE11_3_RESEARCHER_DECISIONS.md Section 3, not executed by this record.",
+    "stage_2_1_completeness_note": "This is a field-level adjudication, not a complete Stage-2.1 review record. It does not satisfy promotion_gate.py's requirements and is not, by itself, sufficient for Stage 3 eligibility."
+  },
+  {
+    "adjudication_id": "phase11_5_adj_event_015_T0",
+    "event_id": "train_events/event_015",
+    "boundary": "T0_first_visible",
+    "source_video_path": "data/raw/layer_b/v2/train_events/event_015/camera_front.mov",
+    "source_video_sha256": "309203acd4bdc8ddb6a26e7ecbe97f73267724c9870b202290f0ee1cbaa32e99",
+    "legacy_proposal_file": "data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+    "legacy_proposal_version": "2",
+    "legacy_claimed_value_s": 1.5,
+    "legacy_claimed_classification": "NOT_LEFT_CENSORED",
+    "legacy_claimed_rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.",
+    "phase_11_4_finding_outcome": "VERIFIED_DISCREPANCY",
+    "phase_11_4_finding_evidence": "Dedicated scan at t=0.0/0.75/1.5s shows the train ALREADY clearly visible at t=0.0s, same position as at claimed T0=1.5s.",
+    "adjudication_history": [
+      {
+        "event": "status_set_to_flagged_by_audit",
+        "by": "phase_11_4_video_audit",
+        "at_utc": "2026-10-14T18:00:00Z",
+        "status": "FLAGGED_BY_AUDIT"
+      },
+      {
+        "event": "status_set_to_researcher_confirmed_correction",
+        "by": "raihankabirrahu@gmail.com",
+        "at_utc": "2026-10-14T18:00:00Z",
+        "status": "RESEARCHER_CONFIRMED_CORRECTION"
+      }
+    ],
+    "current_status": "RESEARCHER_CONFIRMED_CORRECTION",
+    "corrected_classification": "LEFT_CENSORED",
+    "corrected_value_s": null,
+    "corrected_rationale": "Researcher personally reviewed the Phase 11.4 video evidence and confirmed: the train (locomotive) is already visible at frame zero of the front-camera recording. The true physical arrival/entry time therefore precedes the start of the available recording and is NOT observable from this footage. T0 must be treated as left-censored (recorded at the recording-relative frame-0 value per convention), consistent with the other 20/23 train events, not as a genuine late, non-left-censored arrival at t=1.5s.",
+    "legacy_record_disposition_note": "The legacy candidate proposal and the invalidated Stage-2 review (if any) referencing this event remain unmodified on disk. This record does NOT constitute formal invalidation of any legacy approval -- that is a separate, explicitly researcher-authorized action per docs/PHASE11_3_RESEARCHER_DECISIONS.md Section 3, not executed by this record.",
+    "stage_2_1_completeness_note": "This is a field-level adjudication, not a complete Stage-2.1 review record. It does not satisfy promotion_gate.py's requirements and is not, by itself, sufficient for Stage 3 eligibility."
+  },
+  {
+    "adjudication_id": "phase11_5_adj_event_016_T0",
+    "event_id": "train_events/event_016",
+    "boundary": "T0_first_visible",
+    "source_video_path": "data/raw/layer_b/v2/train_events/event_016/camera_front.mov",
+    "source_video_sha256": "3a0d71da27ba66aeb3c76a58cfbf349c136176c3d0425a5b14a4ce1cb30270ff",
+    "legacy_proposal_file": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+    "legacy_proposal_version": "2",
+    "legacy_claimed_value_s": 1.5,
+    "legacy_claimed_classification": "NOT_LEFT_CENSORED",
+    "legacy_claimed_rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.",
+    "phase_11_4_finding_outcome": "VERIFIED_DISCREPANCY",
+    "phase_11_4_finding_evidence": "Dedicated scan at t=0.0/0.75/1.5s shows the train ALREADY clearly visible at t=0.0s, same position as at claimed T0=1.5s.",
+    "adjudication_history": [
+      {
+        "event": "status_set_to_flagged_by_audit",
+        "by": "phase_11_4_video_audit",
+        "at_utc": "2026-10-14T18:00:00Z",
+        "status": "FLAGGED_BY_AUDIT"
+      },
+      {
+        "event": "status_set_to_researcher_confirmed_correction",
+        "by": "raihankabirrahu@gmail.com",
+        "at_utc": "2026-10-14T18:00:00Z",
+        "status": "RESEARCHER_CONFIRMED_CORRECTION"
+      }
+    ],
+    "current_status": "RESEARCHER_CONFIRMED_CORRECTION",
+    "corrected_classification": "LEFT_CENSORED",
+    "corrected_value_s": null,
+    "corrected_rationale": "Researcher personally reviewed the Phase 11.4 video evidence and confirmed: the train (locomotive) is already visible at frame zero of the front-camera recording. The true physical arrival/entry time therefore precedes the start of the available recording and is NOT observable from this footage. T0 must be treated as left-censored (recorded at the recording-relative frame-0 value per convention), consistent with the other 20/23 train events, not as a genuine late, non-left-censored arrival at t=1.5s.",
+    "legacy_record_disposition_note": "The legacy candidate proposal and the invalidated Stage-2 review (if any) referencing this event remain unmodified on disk. This record does NOT constitute formal invalidation of any legacy approval -- that is a separate, explicitly researcher-authorized action per docs/PHASE11_3_RESEARCHER_DECISIONS.md Section 3, not executed by this record.",
+    "stage_2_1_completeness_note": "This is a field-level adjudication, not a complete Stage-2.1 review record. It does not satisfy promotion_gate.py's requirements and is not, by itself, sufficient for Stage 3 eligibility."
+  }
+]

@@ -1,0 +1,6328 @@
+[
+  {
+    "timestamp_s": 0.0,
+    "front_camera_evidence": [
+      {
+        "label": "front",
+        "confidence": 0.9038
+      }
+    ],
+    "back_camera_evidence": [],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.5386,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": false,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_1_APPROACH_TRIGGER",
+      "previous_state": "IDLE",
+      "resulting_state": "TRAIN_APPROACHING",
+      "explanation": "Qualified approach detected; awaiting confirmation"
+    },
+    "crossing_state": "TRAIN_APPROACHING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 0.2,
+    "front_camera_evidence": [
+      {
+        "label": "front",
+        "confidence": 0.9038
+      }
+    ],
+    "back_camera_evidence": [],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.5386,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": false,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_1_APPROACH_TRIGGER",
+      "previous_state": "TRAIN_APPROACHING",
+      "resulting_state": "WARNING",
+      "explanation": "Approach confirmed; initiating warning phase"
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 0.4,
+    "front_camera_evidence": [
+      {
+        "label": "front",
+        "confidence": 0.8817
+      }
+    ],
+    "back_camera_evidence": [],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": false,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 0.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.5754
+      }
+    ],
+    "back_camera_evidence": [],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": false,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 0.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7244
+      }
+    ],
+    "back_camera_evidence": [],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": false,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 1.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7171
+      }
+    ],
+    "back_camera_evidence": [],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": false,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 1.2,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4908
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 1.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.3783
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6302
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 1.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6244
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 1.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4104
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 2.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8224
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4799
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 2.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8111
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7311
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "WARNING",
+      "explanation": null
+    },
+    "crossing_state": "WARNING",
+    "gate_state": {
+      "state": "OPEN",
+      "angle_deg": 90.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 2.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8025
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7958
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "WARNING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": "Warning dwell of 2.0s elapsed; beginning gate closure"
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 84.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 2.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8817
+      }
+    ],
+    "back_camera_evidence": [],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.5235,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": false,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 78.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 2.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8692
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8308
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 72.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 3.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8808
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8251
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 66.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 3.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.857
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8153
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 60.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 3.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.893
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7596
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 54.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 3.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8984
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8052
+      },
+      {
+        "label": "rear",
+        "confidence": 0.5283
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 48.0,
+      "is_passage_blocked": false
+    }
+  },
+  {
+    "timestamp_s": 3.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.9006
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8284
+      },
+      {
+        "label": "rear",
+        "confidence": 0.4267
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 42.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 4.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.9005
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8362
+      },
+      {
+        "label": "rear",
+        "confidence": 0.3596
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 36.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 4.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8876
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8496
+      },
+      {
+        "label": "rear",
+        "confidence": 0.6943
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 30.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 4.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8933
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.84
+      },
+      {
+        "label": "rear",
+        "confidence": 0.5155
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 24.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 4.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8852
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8492
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 18.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 4.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8638
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8796
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 12.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 5.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8795
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8705
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSING",
+      "angle_deg": 6.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 5.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8976
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8095
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "GATE_CLOSING",
+      "explanation": null
+    },
+    "crossing_state": "GATE_CLOSING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 5.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8137
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.781
+      },
+      {
+        "label": "side",
+        "confidence": 0.6813
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "GATE_CLOSING",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "Gate closing elapsed (3.0s); gate fully closed"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 5.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6755
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8245
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 5.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7855
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8571
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 6.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7696
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8301
+      },
+      {
+        "label": "rear",
+        "confidence": 0.5565
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 6.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8487
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8409
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 6.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6726
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8846
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 6.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7631
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.862
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 6.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.828
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "rear",
+        "confidence": 0.8236
+      },
+      {
+        "label": "side",
+        "confidence": 0.7001
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 7.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7826
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8051
+      },
+      {
+        "label": "rear",
+        "confidence": 0.7615
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 7.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7569
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8534
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 7.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.685
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8316
+      },
+      {
+        "label": "rear",
+        "confidence": 0.6756
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 7.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8467
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8444
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 7.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.728
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8814
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 8.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7498
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8345
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 8.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7733
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8194
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 8.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7717
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8126
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 8.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7175
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7052
+      },
+      {
+        "label": "rear",
+        "confidence": 0.5931
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 8.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7189
+      },
+      {
+        "label": "side",
+        "confidence": 0.6158
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.801
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 9.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7589
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8534
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 9.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6602
+      },
+      {
+        "label": "side",
+        "confidence": 0.5378
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8633
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 9.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.728
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8602
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 9.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7387
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8564
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 9.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7794
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8572
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 10.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6147
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8753
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 10.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4746
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8533
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 10.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6077
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7898
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 10.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6634
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8544
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 10.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4437
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7897
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 11.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4379
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8345
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 11.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6944
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7957
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 11.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7557
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6652
+      },
+      {
+        "label": "rear",
+        "confidence": 0.4147
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 11.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7664
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8201
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 11.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7331
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7991
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 12.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6944
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8328
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 12.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.633
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8229
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 12.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.626
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8432
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 12.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7668
+      },
+      {
+        "label": "rear",
+        "confidence": 0.4833
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 12.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7505
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7894
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 13.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8053
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.797
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 13.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8143
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8217
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 13.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7645
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8204
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 13.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7746
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8193
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 13.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7372
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8111
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 14.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7408
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.856
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 14.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6746
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.864
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 14.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.781
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8542
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 14.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7487
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8651
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 14.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8773
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 15.0,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8642
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 15.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4796
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8614
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 15.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6092
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.876
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 15.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.3942
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8795
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 15.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8439
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 16.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.3644
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8478
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 16.2,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8644
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 16.4,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.864
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 16.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.37
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8663
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 16.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6436
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8618
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 17.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.3845
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8756
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 17.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.5141
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8623
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 17.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.616
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8662
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 17.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4777
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8369
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 17.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4157
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8269
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 18.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4622
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8522
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 18.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6829
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8659
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 18.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.3876
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8693
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 18.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.861
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 18.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8533
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 19.0,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8779
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.72,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 19.2,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8521
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.72,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 19.4,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8745
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 19.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8668
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 19.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8522
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 20.0,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8675
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.7872,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 20.2,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8686
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.7872,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 20.4,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8889
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 20.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8529
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.8391,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 20.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8392
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 21.0,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8507
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.7818,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 21.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4641
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8667
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.7818,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 21.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4712
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8042
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 21.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4837
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8375
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.6951,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 21.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4255
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7125
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 22.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.573
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7124
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.534,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 22.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4647
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7363
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.534,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 22.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4249
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.598
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 22.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8017
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 22.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4385
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7944
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 23.0,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8354
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 23.2,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8588
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 23.4,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.855
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 23.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8407
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.6988,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 23.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.3814
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8263
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 24.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6223
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8601
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.5255,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 24.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6844
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8788
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.5255,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 24.4,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8507
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 24.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.5547
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8482
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 24.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.4408
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8367
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 25.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.5707
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8539
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 25.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.649
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8728
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 25.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.47
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8677
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 25.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.5155
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.87
+      },
+      {
+        "label": "side",
+        "confidence": 0.5186
+      },
+      {
+        "label": "side",
+        "confidence": 0.3641
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 25.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6736
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.845
+      },
+      {
+        "label": "side",
+        "confidence": 0.6025
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 26.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7439
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8454
+      },
+      {
+        "label": "side",
+        "confidence": 0.6847
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.6095,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 26.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6462
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8725
+      },
+      {
+        "label": "side",
+        "confidence": 0.7649
+      }
+    ],
+    "audio_evidence": [
+      {
+        "label": "train",
+        "confidence": 0.6095,
+        "safety_role": "supporting_only"
+      }
+    ],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": true
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 26.4,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.7685
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.861
+      },
+      {
+        "label": "side",
+        "confidence": 0.7879
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 26.6,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.5675
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8629
+      },
+      {
+        "label": "side",
+        "confidence": 0.7913
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 26.8,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6742
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8657
+      },
+      {
+        "label": "side",
+        "confidence": 0.8456
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 27.0,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6706
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8611
+      },
+      {
+        "label": "side",
+        "confidence": 0.8472
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 27.2,
+    "front_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.6563
+      }
+    ],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8987
+      },
+      {
+        "label": "side",
+        "confidence": 0.8828
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": true,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 27.4,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.881
+      },
+      {
+        "label": "side",
+        "confidence": 0.8666
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 27.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8877
+      },
+      {
+        "label": "side",
+        "confidence": 0.8692
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 27.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8555
+      },
+      {
+        "label": "side",
+        "confidence": 0.8503
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 28.0,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8698
+      },
+      {
+        "label": "side",
+        "confidence": 0.8535
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 28.2,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.879
+      },
+      {
+        "label": "side",
+        "confidence": 0.8469
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 28.4,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8905
+      },
+      {
+        "label": "side",
+        "confidence": 0.8437
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 28.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8642
+      },
+      {
+        "label": "side",
+        "confidence": 0.8557
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 28.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8824
+      },
+      {
+        "label": "side",
+        "confidence": 0.8392
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 29.0,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8659
+      },
+      {
+        "label": "side",
+        "confidence": 0.8354
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 29.2,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "side",
+        "confidence": 0.8418
+      },
+      {
+        "label": "rear",
+        "confidence": 0.7532
+      },
+      {
+        "label": "side",
+        "confidence": 0.7448
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+      "previous_state": "TRAIN_DEPARTING",
+      "resulting_state": "REAR_CONFIRMED",
+      "explanation": "Positive rear clearance evidence confirmed"
+    },
+    "crossing_state": "REAR_CONFIRMED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 29.4,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "rear",
+        "confidence": 0.8489
+      },
+      {
+        "label": "side",
+        "confidence": 0.8202
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2",
+        "audio_1"
+      ],
+      "missing_sources": [],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+      "previous_state": "REAR_CONFIRMED",
+      "resulting_state": "TRAIN_PRESENT",
+      "explanation": "New train approach detected during rear clearance; returning to TRAIN_PRESENT"
+    },
+    "crossing_state": "TRAIN_PRESENT",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 29.6,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "rear",
+        "confidence": 0.9089
+      },
+      {
+        "label": "side",
+        "confidence": 0.8289
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2"
+      ],
+      "missing_sources": [
+        "audio_1"
+      ],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "TRAIN_PRESENT",
+      "resulting_state": "CROSSING_OCCUPIED",
+      "explanation": "Train occupancy observed at crossing"
+    },
+    "crossing_state": "CROSSING_OCCUPIED",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  },
+  {
+    "timestamp_s": 29.8,
+    "front_camera_evidence": [],
+    "back_camera_evidence": [
+      {
+        "label": "rear",
+        "confidence": 0.8331
+      },
+      {
+        "label": "side",
+        "confidence": 0.8317
+      }
+    ],
+    "audio_evidence": [],
+    "temporal_evidence": {
+      "has_front": false,
+      "has_back": true,
+      "has_audio": false
+    },
+    "fusion_state": {
+      "active_sources": [
+        "camera_1",
+        "camera_2"
+      ],
+      "missing_sources": [
+        "audio_1"
+      ],
+      "fault_status": "none"
+    },
+    "decision": {
+      "rule_id": null,
+      "previous_state": "CROSSING_OCCUPIED",
+      "resulting_state": "TRAIN_DEPARTING",
+      "explanation": "Departure evidence detected on departure camera"
+    },
+    "crossing_state": "TRAIN_DEPARTING",
+    "gate_state": {
+      "state": "CLOSED",
+      "angle_deg": 0.0,
+      "is_passage_blocked": true
+    }
+  }
+]

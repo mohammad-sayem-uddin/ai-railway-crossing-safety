@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "stage21-human-review-timing-pilot/1",
+  "title": "Stage-2.1 human-only timing pilot artifacts",
+  "description": "Exact-shape schemas for unsigned researcher authorization, separate activation, and permanently unapproved timing-only drafts.",
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "unsignedAttestation": {
+      "type": "object",
+      "required": ["type", "signature"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"const": "RECORDED_RESEARCHER_STATEMENT"},
+        "signature": {"type": "null"}
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "authorization_id", "authorized_by", "authorized_at_utc", "expires_at_utc", "authorization_statement", "scope", "attestation", "recorded_by", "record_sha256"],
+      "properties": {
+        "schema_version": {"const": "stage21-human-review-pilot-authorization/1"},
+        "authorization_id": {"type": "string", "minLength": 1},
+        "authorized_by": {"type": "string", "minLength": 1},
+        "authorized_at_utc": {"type": "string", "format": "date-time"},
+        "expires_at_utc": {"type": "string", "format": "date-time"},
+        "authorization_statement": {"type": "string", "minLength": 1},
+        "scope": {"$ref": "#/$defs/scope"},
+        "attestation": {"$ref": "#/$defs/unsignedAttestation"},
+        "recorded_by": {"type": "object", "required": ["identity", "kind"], "properties": {"identity": {"type": "string", "minLength": 1}, "kind": {"enum": ["researcher", "agent_transcription"]}, "transcription_source": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+        "record_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operation", "purpose", "event_keys", "reviewer_ids", "workflow_release_sha256", "permitted_operations", "output_directory", "source_inventory_sha256", "source_media_sha256_by_event", "active_proposal_sha256_by_event", "no_official_approval"],
+      "properties": {
+        "operation": {"const": "stage21_human_review_timing_pilot"},
+        "purpose": {"const": "genuine_review_timing_pilot"},
+        "event_keys": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^(train_events|no_train_events|engine_events)/event_[0-9]{3}$"}},
+        "reviewer_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "workflow_release_sha256": {"$ref": "#/$defs/sha256"},
+        "permitted_operations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["hash_source_media", "open_source_media", "view_source_media", "record_human_timing", "write_unapproved_pilot_draft"]}},
+        "output_directory": {"const": "data/ground_truth/review_pilots"},
+        "source_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "source_media_sha256_by_event": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "object", "required": ["front", "back"], "additionalProperties": false, "properties": {"front": {"$ref": "#/$defs/sha256"}, "back": {"$ref": "#/$defs/sha256"}}}},
+        "active_proposal_sha256_by_event": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/sha256"}},
+        "no_official_approval": {"const": true}
+      }
+    },
+    "activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "activation_id", "activated_by", "activated_at_utc", "expires_at_utc", "authorization_sha256", "workflow_release_sha256", "scope_sha256", "activation_statement", "attestation", "record_sha256"],
+      "properties": {
+        "schema_version": {"const": "stage21-human-review-pilot-activation/1"},
+        "activation_id": {"type": "string", "minLength": 1},
+        "activated_by": {"type": "string", "minLength": 1},
+        "activated_at_utc": {"type": "string", "format": "date-time"},
+        "expires_at_utc": {"type": "string", "format": "date-time"},
+        "authorization_sha256": {"$ref": "#/$defs/sha256"},
+        "workflow_release_sha256": {"$ref": "#/$defs/sha256"},
+        "scope_sha256": {"$ref": "#/$defs/sha256"},
+        "activation_statement": {"type": "string", "minLength": 1},
+        "attestation": {"$ref": "#/$defs/unsignedAttestation"},
+        "record_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "value_s", "reference_camera", "timestamp_basis", "timestamp_uncertainty_s", "rationale", "evidence_status", "missing_evidence_reason", "censoring_direction"],
+      "properties": {
+        "state": {"enum": ["OBSERVABLE", "UNOBSERVABLE_NOT_APPLICABLE", "CENSORED", "UNCERTAIN"]},
+        "value_s": {"type": ["number", "null"], "minimum": 0},
+        "reference_camera": {"enum": ["front", "back", null]},
+        "timestamp_basis": {"enum": ["camera_local_elapsed_seconds", null]},
+        "timestamp_uncertainty_s": {"type": ["number", "null"], "minimum": 0},
+        "rationale": {"type": "string", "minLength": 12},
+        "evidence_status": {"enum": ["PRESENT", "MISSING", "INSUFFICIENT"]},
+        "missing_evidence_reason": {"type": ["string", "null"]},
+        "censoring_direction": {"enum": ["LEFT", "RIGHT", null]}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_inventory_sha256", "source_media_sha256", "source_paths", "active_proposal_sha256", "model_predictions_included", "candidate_boundaries_included"],
+      "properties": {
+        "source_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "source_media_sha256": {"type": "object", "required": ["front", "back"], "additionalProperties": false, "properties": {"front": {"$ref": "#/$defs/sha256"}, "back": {"$ref": "#/$defs/sha256"}}},
+        "source_paths": {"type": "object", "required": ["front", "back"], "additionalProperties": {"type": "string", "minLength": 1}},
+        "active_proposal_sha256": {"$ref": "#/$defs/sha256"},
+        "model_predictions_included": {"const": false},
+        "candidate_boundaries_included": {"const": false}
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_started_at_utc", "review_ended_at_utc", "duration_monotonic_s", "duration_wall_clock_s"],
+      "properties": {
+        "review_started_at_utc": {"type": "string", "format": "date-time"},
+        "review_ended_at_utc": {"type": "string", "format": "date-time"},
+        "duration_monotonic_s": {"type": "number", "exclusiveMinimum": 0},
+        "duration_wall_clock_s": {"type": "number", "minimum": 0}
+      }
+    },
+    "auditEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event", "reviewer_id", "at_utc", "workflow_release_sha256"],
+      "properties": {
+        "event": {"const": "UNAPPROVED_TIMING_PILOT_DRAFT_CREATED"},
+        "reviewer_id": {"type": "string", "minLength": 1},
+        "at_utc": {"type": "string", "format": "date-time"},
+        "workflow_release_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "draft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "record_version", "record_state", "ground_truth_eligible", "official_approval", "purpose", "event_key", "reviewer_id", "session_id", "authorization_sha256", "activation_sha256", "workflow_release_sha256", "provenance", "timing", "human_boundary_observations", "audit_history", "approval_transition", "record_sha256"],
+      "properties": {
+        "schema_version": {"const": "stage21-human-review-timing-pilot-record/1"},
+        "record_version": {"const": 1},
+        "record_state": {"const": "HUMAN_REVIEW_COMPLETED_UNAPPROVED_PILOT"},
+        "ground_truth_eligible": {"const": false},
+        "official_approval": {"const": false},
+        "purpose": {"const": "genuine_review_timing_pilot"},
+        "event_key": {"type": "string", "pattern": "^(train_events|no_train_events|engine_events)/event_[0-9]{3}$"},
+        "reviewer_id": {"type": "string", "minLength": 1},
+        "session_id": {"type": "string", "minLength": 1},
+        "authorization_sha256": {"$ref": "#/$defs/sha256"},
+        "activation_sha256": {"$ref": "#/$defs/sha256"},
+        "workflow_release_sha256": {"$ref": "#/$defs/sha256"},
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "timing": {"$ref": "#/$defs/timing"},
+        "human_boundary_observations": {"type": "object", "required": ["T0_first_visible", "T1_danger_zone_entry", "T2_crossing_occupancy_start", "T3_locomotive_unit_clearance", "T4_tail_clearance", "T_scene_clear"], "additionalProperties": {"$ref": "#/$defs/observation"}},
+        "audit_history": {"type": "array", "minItems": 1, "maxItems": 1, "items": {"$ref": "#/$defs/auditEntry"}},
+        "approval_transition": {"const": "PROHIBITED_IN_TIMING_PILOT"},
+        "record_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

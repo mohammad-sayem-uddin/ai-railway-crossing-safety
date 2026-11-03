@@ -1,8 +1,8 @@
 # Final Experiment Data Flow
 
-**Document Version:** 6.0.0  
-**Date:** 2026-10-09  
-**Status:** REFERENCE ARCHITECTURAL GUIDE — Reconciled with Canonical Boundary Taxonomy & AI-Assisted Ground-Truth Workflow  
+**Document Version:** 7.0.0  
+**Date:** 2026-10-12  
+**Status:** REFERENCE ARCHITECTURAL GUIDE — Reconciled with Canonical Boundary Taxonomy, Operational Danger Zone, & AI-Assisted Ground-Truth Workflow  
 **Authority:** Referenced by `docs/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md`
 
 ---
@@ -276,3 +276,4 @@
 | 4.0.0 | 2026-10-09 | Architectural data flow specification: Established 3-tier safety verification, full SHA-256 for YOLO/Audio V3, hard-blocked Audio V2 checkpoint, and decoupled data flow stages. |
 | 5.0.0 | 2026-10-09 | AI-assisted ground-truth integration: Embedded 3-stage lifecycle into data flow; integrated GroundTruthLoader manifest verification; added multi-level nuisance alarm flow. |
 | 6.0.0 | 2026-10-09 | Canonical Terminology & Left-Censoring Harmonization Pass: Resolved T3 as **Locomotive Unit Clearance (rear end exits danger zone)**; distinguished locomotive front exit from complete unit clearance; preserved T4 as tail clearance; defined left-censored $T_0$ representation and detection latency denominator exclusion; documented schema key compatibility mapping (`T3_locomotive_unit_clearance` / `T3_locomotive_exit`) preserving proposals v1–v4; reinforced R03 visual landmark provisional status. |
+| 7.0.0 | 2026-10-12 | Research Methodology Update & Prerequisite R03 Retirement Pass: (1) Formally retired Prerequisite R03 as a separate methodology blocker; replaced external physical geometry requirement with researcher-defined Operational Danger-Zone Annotation Convention referencing visible physical track and roadway features. (2) Kept canonical boundaries T0–T4 semantically aligned with operational conventions. (3) Strictly preserved Prerequisite R04 (camera synchronization remains unresolved; independent camera-local timelines enforced). (4) Mandated evidence-based forensic re-verification of all 27 active events, replacing synthetic formula heuristics with dense frame and acoustic measurements. |

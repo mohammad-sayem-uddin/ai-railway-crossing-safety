@@ -1,0 +1,267 @@
+{
+  "$id": "phase15-capture-session-2.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "Structure only. Passing this schema, or the validator, is not evidence that site access or a safety case was granted and is not permission to begin any session.",
+  "properties": {
+    "actuator_connections": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "annotation_status": {
+      "const": "UNANNOTATED"
+    },
+    "camera_synchronization": {
+      "type": "object"
+    },
+    "controls_operated": {
+      "const": false
+    },
+    "data_files": {
+      "items": {
+        "properties": {
+          "bytes": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "custody": {
+            "minItems": 1,
+            "type": "array"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "device_id",
+          "custody"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "devices": {
+      "items": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "camera",
+              "microphone"
+            ]
+          },
+          "role": {
+            "enum": [
+              "front",
+              "back"
+            ]
+          }
+        },
+        "required": [
+          "device_id",
+          "kind",
+          "make",
+          "model",
+          "firmware_or_os",
+          "clock_source",
+          "recorded_duration_s",
+          "accounting_tolerance_s",
+          "gaps"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "environment": {
+      "properties": {
+        "light": {
+          "enum": [
+            "daylight",
+            "dusk_dawn",
+            "night_artificial",
+            "night_dark",
+            "unknown"
+          ]
+        },
+        "visibility_m": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "weather": {
+          "enum": [
+            "clear",
+            "overcast",
+            "rain",
+            "fog",
+            "snow",
+            "dust",
+            "other",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "weather",
+        "light",
+        "visibility_m"
+      ],
+      "type": "object"
+    },
+    "identity": {
+      "properties": {
+        "created_utc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "recorded_by": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "session_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "session_id",
+        "recorded_by",
+        "created_utc"
+      ],
+      "type": "object"
+    },
+    "intervention_performed": {
+      "const": false
+    },
+    "labels_from_model_predictions": {
+      "const": false
+    },
+    "mode": {
+      "const": "passive_observation"
+    },
+    "observation": {
+      "properties": {
+        "end_utc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "start_utc": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start_utc",
+        "end_utc"
+      ],
+      "type": "object"
+    },
+    "observer_distance_from_track_m": {
+      "exclusiveMinimum": 0,
+      "type": "number"
+    },
+    "safety_case": {
+      "properties": {
+        "document_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "maximum_clock_drift_s_per_hour": {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "minimum_observer_distance_from_track_m": {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "stop_conditions": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "version",
+        "approved_by_authority",
+        "approved_on_utc",
+        "document_sha256",
+        "minimum_observer_distance_from_track_m",
+        "maximum_clock_drift_s_per_hour",
+        "stop_conditions",
+        "stop_procedure_reference"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "phase15-capture-session/2"
+    },
+    "site_authorization": {
+      "properties": {
+        "document_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "granted_on_utc": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "authority_name",
+        "reference_id",
+        "document_sha256",
+        "granted_on_utc",
+        "scope_covers_session"
+      ],
+      "type": "object"
+    },
+    "software": {
+      "required": [
+        "package_version",
+        "code_revision",
+        "python_version"
+      ],
+      "type": "object"
+    },
+    "stop_conditions_observed": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "terminated_early": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "identity",
+    "mode",
+    "actuator_connections",
+    "controls_operated",
+    "intervention_performed",
+    "labels_from_model_predictions",
+    "annotation_status",
+    "software",
+    "site_authorization",
+    "safety_case",
+    "observer_distance_from_track_m",
+    "environment",
+    "observation",
+    "devices",
+    "stop_conditions_observed",
+    "terminated_early",
+    "data_files"
+  ],
+  "title": "Phase 15 passive-observation capture session (v2)",
+  "type": "object"
+}

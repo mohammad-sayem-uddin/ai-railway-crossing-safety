@@ -1,0 +1,21 @@
+### Table 9: Primary Safety Endpoints Summary Across Benchmark Conditions
+
+| Condition | Description | Eligible Events | Missed-Train Rate (MTR) [95% CI] | Premature-Opening Rate (POR) [95% CI] |
+| --- | --- | --- | --- | --- |
+| B0 | Vision Only (raw frames) | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B1 | Audio Only (no vision) | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B2 | Vision + Audio (stateless) | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B3 | Temporal Evidence (dual vision) | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B4 | Full Proposed Policy | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B5a | Camera 1 Intermittent Dropout | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B5b | Camera 1 Permanent Dropout | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B5c | Camera 1 Temporal Delay | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B6a | Camera 2 Rear Dropout | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B6b | Dual Camera Dropout (Blackout) | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B6c | Camera Rate Asymmetry | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B7a | Audio Loss Robustness | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B7b | Dropped Frames (30% Random) | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B7c | False Detection Noise | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B7d | Timestamp Disorder | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B7e | Stale Timestamps | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |
+| B7f | Combined Stress Faults | 27 | 0.0% [0.0%, 12.5%] | 0.0% [0.0%, 12.5%] |

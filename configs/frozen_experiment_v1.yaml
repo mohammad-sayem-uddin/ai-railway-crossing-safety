@@ -1,0 +1,67 @@
+# Authoritative Frozen Experiment Configuration (v1.0.0)
+# Master Research Specification: docs/EXPERIMENT_DESIGN_FINAL.md §5.1
+# This configuration is immutable, auditable, and hashed for runtime integrity.
+
+experiment:
+  name: "frozen_experiment_v1"
+  version: "1.0.0"
+  description: "Multimodal railway crossing safety system baseline and benchmark policy"
+  seed: 42
+  device: "cpu"
+
+checkpoints:
+  vision:
+    path: "experiments/vision/39f402dfe460/checkpoints/weights/best.pt"
+    expected_sha256: "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd"
+    model_name: "YOLOv8n"
+    class_mapping:
+      0: "front"
+      1: "rear"
+      2: "side"
+  audio_v3:
+    path: "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt"
+    expected_sha256: "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782"
+    model_name: "CompactTrainHornCNN"
+    operating_threshold: 0.3700
+  prohibited:
+    audio_v2:
+      path: "models/audio/best_checkpoint.pt"
+      sha256: "59b0785f73b201dfd2fb335b98f6ddb764c8544d1ca5fc9e8aa326d74ffcf7d5"
+
+audio:
+  sample_rate: 16000
+  window_s: 1.0
+  hop_s: 0.5
+  n_fft: 512
+  hop_length: 256
+  n_mels: 64
+  f_min: 80.0
+  f_max: 8000.0
+  expected_feature_shape: [64, 61]
+  operating_threshold: 0.3700
+  normalization:
+    mean: -1.600999355316162
+    std: 5.1239728927612305
+    source: "checkpoint"
+
+vision:
+  sampling_fps: 5.0
+  image_size: [640, 640]
+  confidence_threshold_approach: 0.35
+  confidence_threshold_departure: 0.35
+
+timing:
+  tick_s: 0.2
+  confirm_frames: 2
+  miss_tolerance_frames: 2
+  warning_dwell_s: 2.0
+  gate_closing_s: 3.0
+  gate_opening_s: 3.0
+  clearance_dwell_s: 3.0
+  source_staleness_s: 2.0
+  fault_confirmation_frames: 2
+  fault_recovery_hold_s: 3.0
+  cross_camera_sync:
+    mode: "independent_or_unverified"
+    status: "R04_UNRESOLVED_REQUIRES_EMPIRICAL_OFFSETS"
+    allow_unverified_zero_offset: false

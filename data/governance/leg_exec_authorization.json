@@ -1,0 +1,24 @@
+{
+  "attestation": {
+    "signature": null,
+    "type": "RECORDED_RESEARCHER_STATEMENT"
+  },
+  "authorization_statement": "I explicitly authorize execution of the Train Gate Automation LEG-EXEC operation against the pinned proposal with SHA-256 `41cbbba3e9d587b9972c3baca1b39f09d478d408d9c60fd538c249c4600113d4`. I authorize processing exactly the 27 legacy review records identified by that proposal and creating exactly the 28 inventoried outputs: one sibling invalidation notice per legacy review record and one directory notice. The original records must never be modified, moved, or deleted. Execution is permitted only if the existing authorization validator, pinned proposal hash, live source-record digest, source inventory, and exact output inventory all pass. If any precondition fails, stop without writing. This authorization does not approve any Stage-2.1 ground-truth labels, scientific decisions, evaluation results, or railway field operations.",
+  "authorized_at_utc": "2026-10-17T07:44:22Z",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "operation": "LEG-EXEC",
+  "record_sha256": "d4002a0a1367e7cd18cfb007eb89c3937583247f77804ff410d650d54a688363",
+  "recorded_by": {
+    "identity": "claude-code engineering agent",
+    "kind": "agent_transcription",
+    "transcription_source": "researcher authorization in this conversation (2026-10-17)"
+  },
+  "schema_version": "leg-exec-authorization/1",
+  "scope": {
+    "output_target_count": 28,
+    "pinned_proposal_sha256": "41cbbba3e9d587b9972c3baca1b39f09d478d408d9c60fd538c249c4600113d4",
+    "source_record_count": 27,
+    "source_records_digest": "b9d10de45dd0849b321e4136ef1a0807e0240f4e4a41efadc90333619786ab0d",
+    "write_operation": "create one sibling invalidation notice per legacy review record and one directory notice; never modify, move or delete an original record"
+  }
+}

@@ -14,6 +14,7 @@ from pathlib import Path
 import numpy as np
 
 from railway_detection.config.exceptions import ConfigError
+from railway_detection.safety.media_guard import require_media_authorization
 from railway_detection.utils.logging import get_logger
 
 logger = get_logger("audio.preprocessor")
@@ -42,6 +43,7 @@ def load_wav(path: str | Path) -> tuple[np.ndarray, int]:
     Samples are float64 in [-1, 1]. Multi-channel audio is averaged to mono.
     """
     path = Path(path)
+    require_media_authorization(path, "FEATURE_EXTRACTION", declared_media=True)
     if not path.exists():
         raise ConfigError(f"audio file not found: {path}")
     try:

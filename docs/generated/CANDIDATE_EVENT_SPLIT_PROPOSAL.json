@@ -1,0 +1,396 @@
+{
+  "algorithm": "sha256(cohort/event_id) ordering with largest-remainder counts",
+  "approval_status": "NOT_APPROVED",
+  "events": [
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json",
+        "sha256": "aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a",
+        "version": 3
+      },
+      "cohort": "engine_events",
+      "event_id": "event_001",
+      "event_key": "engine_events/event_001",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json",
+        "sha256": "6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2",
+        "version": 2
+      },
+      "cohort": "no_train_events",
+      "event_id": "event_001",
+      "event_key": "no_train_events/event_001",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json",
+        "sha256": "0fd3a48a0c30675e46635795c6aacdbaed294a0d21ad510462fd4848db1de956",
+        "version": 2
+      },
+      "cohort": "no_train_events",
+      "event_id": "event_002",
+      "event_key": "no_train_events/event_002",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json",
+        "sha256": "e7619841db2308290bde1cb3267e485a2edcf07bae389a1798c50a5aaabd670f",
+        "version": 2
+      },
+      "cohort": "no_train_events",
+      "event_id": "event_003",
+      "event_key": "no_train_events/event_003",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+        "sha256": "0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703",
+        "version": 6
+      },
+      "cohort": "train_events",
+      "event_id": "event_001",
+      "event_key": "train_events/event_001",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_002_proposal_v2.json",
+        "sha256": "3079950c376a2085d747e9287badd92b3ef3915f305ddd250cb5325cf9e02ea3",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_002",
+      "event_key": "train_events/event_002",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+        "sha256": "8042807536dc178e3c672385c5854336e6cf35c6141ebaf55728d7d9468c3674",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_003",
+      "event_key": "train_events/event_003",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_004_proposal_v2.json",
+        "sha256": "b5f892f737ceec53bcc5b00966107be03031e44d488d71d5dad06f04131301d3",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_004",
+      "event_key": "train_events/event_004",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_005_proposal_v4.json",
+        "sha256": "020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5",
+        "version": 4
+      },
+      "cohort": "train_events",
+      "event_id": "event_005",
+      "event_key": "train_events/event_005",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_006_proposal_v2.json",
+        "sha256": "039a65f4fd4dab3b7f52413201969b742dc18e819b92f043c200f24b3a52ac6d",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_006",
+      "event_key": "train_events/event_006",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+        "sha256": "88ac5f83e7561fb0f308ef143fee023cb27e98edf6ce67b2c110081c5269f785",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_007",
+      "event_key": "train_events/event_007",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+        "sha256": "bb29b1848bb8685ba3bf91e393556c16edb0816767586866999587f1c9bf7330",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_008",
+      "event_key": "train_events/event_008",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+        "sha256": "b26fb9f09b8b76ec00d942a55994695494f99d9e1d16df7fc6429e7706bcd115",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_009",
+      "event_key": "train_events/event_009",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+        "sha256": "315a70fd902de301864c9badf5b70f22f8928a68bb0cab6dfb0c9a1d39528dc7",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_010",
+      "event_key": "train_events/event_010",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+        "sha256": "b93b4743dbec6a618040cdb6285dd17c40ac0736b1969e086e6a71e8b4a611ac",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_011",
+      "event_key": "train_events/event_011",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_012_proposal_v2.json",
+        "sha256": "a45da6b905de79b36db6382c5dc80bacf6646cfe3b3529c619479c3b2e6b8227",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_012",
+      "event_key": "train_events/event_012",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_013_proposal_v2.json",
+        "sha256": "cdb691cbfa415a05ce3dd390a71f6903964a865ee459cdc6d31c6c9edbc679fe",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_013",
+      "event_key": "train_events/event_013",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+        "sha256": "e6fe8f81e6b59154675b455cb6d20cd1698345d5321c0bb30db9c3f94efd112f",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_014",
+      "event_key": "train_events/event_014",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+        "sha256": "e698947778110ac5a44102ccc7a6cc81a2a41f423e48a9e9810328043131c86f",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_015",
+      "event_key": "train_events/event_015",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+        "sha256": "f404feeb5d43513aeeb76804454efd1d2e98f5bc4b264337ab77258d0d5d22ea",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_016",
+      "event_key": "train_events/event_016",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_017_proposal_v2.json",
+        "sha256": "1a40c8bfc2a289db4a0cfe18edb5563f1ceddc0d24fde8a982420b888ee2ea02",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_017",
+      "event_key": "train_events/event_017",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_018_proposal_v2.json",
+        "sha256": "3ee97a958b356c40a266223dbe78a2018586c9f0d099bc5ca5df0fe0ee23edd1",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_018",
+      "event_key": "train_events/event_018",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+        "sha256": "0deff3cad109ffd0199577f57a223affa3738d7d2974268e2ea7f7ebb4460908",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_019",
+      "event_key": "train_events/event_019",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_020_proposal_v2.json",
+        "sha256": "3b2537abc0bcd5c0c3554bb44e71b9f4b53fc5ab7744a9d64c55bd5f3345cb3c",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_020",
+      "event_key": "train_events/event_020",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_021_proposal_v2.json",
+        "sha256": "65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_021",
+      "event_key": "train_events/event_021",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_022_proposal_v2.json",
+        "sha256": "29e01ea7bbc866dd4165fd33443ddd3841178d72a4b11773f9d7c53f65a6e857",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_022",
+      "event_key": "train_events/event_022",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    },
+    {
+      "active_proposal": {
+        "path": "data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+        "sha256": "cacdace3383b6829060cc4f9c5d3e9c12a76787312e6b5c7c2d1964bfd0b7a38",
+        "version": 2
+      },
+      "cohort": "train_events",
+      "event_id": "event_023",
+      "event_key": "train_events/event_023",
+      "group_field": "crossing_id",
+      "group_id": "crossing_A"
+    }
+  ],
+  "grouping": {
+    "events_missing_group_metadata": [],
+    "group_preference": [
+      "crossing_id",
+      "recording_session_id"
+    ],
+    "leakage_safe": false,
+    "overlapping_groups": {
+      "crossing_A": [
+        "test",
+        "train",
+        "val"
+      ]
+    },
+    "warning": "Candidate spans multiple roles for at least one crossing/session; this is not leakage-safe."
+  },
+  "partitions": {
+    "test": [
+      "no_train_events/event_001",
+      "train_events/event_019",
+      "train_events/event_020",
+      "train_events/event_021",
+      "train_events/event_022"
+    ],
+    "train": [
+      "engine_events/event_001",
+      "no_train_events/event_002",
+      "no_train_events/event_003",
+      "train_events/event_001",
+      "train_events/event_002",
+      "train_events/event_004",
+      "train_events/event_006",
+      "train_events/event_007",
+      "train_events/event_009",
+      "train_events/event_010",
+      "train_events/event_012",
+      "train_events/event_013",
+      "train_events/event_015",
+      "train_events/event_016",
+      "train_events/event_017",
+      "train_events/event_018"
+    ],
+    "val": [
+      "train_events/event_003",
+      "train_events/event_005",
+      "train_events/event_008",
+      "train_events/event_011",
+      "train_events/event_014",
+      "train_events/event_023"
+    ]
+  },
+  "proposal_id": "candidate-split-af070c03dcfdfcaf",
+  "proposal_sha256": "eb35208996292debabacf8b6a8188fdf69d12fcd3b37126e4094c3d0f825ab44",
+  "purpose": "Deterministic event-level split proposal for researcher review; not an execution decision.",
+  "ratios": {
+    "test": 0.2,
+    "train": 0.6,
+    "val": 0.2
+  },
+  "researcher_decision": null,
+  "schema_version": "candidate-event-split-proposal/1",
+  "source_inventory": {
+    "path": "data/manifests/layer_b_v2_annotation_inventory.json",
+    "sha256": "5585e22ecc7841e2cca4d8e56b9d61999e252e1efaf5dfa6e57d81471b809a56"
+  },
+  "status": "CANDIDATE_ONLY"
+}

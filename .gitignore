@@ -87,13 +87,17 @@ coverage.xml
 # (Maintained locally on disk for researcher review; excluded from version control)
 scratch
 scratch/
+.commandcode/
+.probe_write_test
 
 # --- Large Raw Media & External Datasets ---
 # Original multi-gigabyte recordings and training corpora
 data/raw/layer_b/
-data/raw/vision/images/
-data/raw/vision/labels/
-data/raw/audio/
+data/raw/audio/*
+!data/raw/audio/.gitkeep
+data/raw/vision/*
+!data/raw/vision/.gitkeep
+data/processed/
 ESC-50-master
 ESC-50-master/
 Unseen_Video
@@ -106,12 +110,15 @@ Unseen_Video/
 !data/metadata/.gitkeep
 !data/splits/.gitkeep
 
-# --- Large Trained Model Weights ---
+# --- Large Trained Model Weights & Training Dumps ---
 *.pt
 *.pth
 *.onnx
 *.tflite
 *.engine
+experiments/**/checkpoints/train_batch*.jpg
+experiments/**/checkpoints/val_batch*.jpg
+experiments/**/checkpoints/test_batch*.jpg
 
 # Preserve model and experiment directory anchors
 !models/.gitkeep

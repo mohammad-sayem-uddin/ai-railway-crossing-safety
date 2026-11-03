@@ -1,0 +1,727 @@
+{
+  "manifest_type": "CANDIDATE_ANNOTATION_BATCH_SNAPSHOT",
+  "disclaimer": "CRITICAL: This is a candidate proposal batch snapshot, NOT approved ground truth. No candidate is approved or ingested into evaluation.",
+  "snapshot_timestamp_utc": "2026-10-12T19:20:55.514036+00:00",
+  "active_cohort_size": 27,
+  "cohort_breakdown": {
+    "train_events": 23,
+    "no_train_events": 3,
+    "engine_events": 1
+  },
+  "historical_duplicates_excluded": [
+    "event_historical_duplicate_010"
+  ],
+  "approval_firewall_status": "ENFORCED_NO_APPROVED_GROUND_TRUTH_GENERATED",
+  "prerequisite_r03_status": "RETIRED_OPERATIONAL_CONVENTION_ADOPTED",
+  "prerequisite_r04_status": "UNRESOLVED_CAMERA_LOCAL_CLOCKS_PRESERVED",
+  "acoustic_listening_status": "ALL_54_TRACKS_NOT_LISTENED_SPECTRAL_ONLY",
+  "events": [
+    {
+      "event_id": "event_001",
+      "cohort": "train_events",
+      "active_proposal_version": "v6",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+      "proposal_sha256": "0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_001_review_sheet.md",
+      "review_sheet_sha256": "6d039e31d60aab3eaf397c5e749190b922b2c81d031746c833c596a3b25ea6f3",
+      "prior_versions_count": 4,
+      "prior_versions": [
+        "event_001_proposal_v2.json",
+        "event_001_proposal_v3.json",
+        "event_001_proposal_v4.json",
+        "event_001_proposal_v5.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 7,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 5.8,
+        "T2_crossing_occupancy_start": 6.5,
+        "T3_locomotive_unit_clearance": 3.6,
+        "T4_tail_clearance": 45.0,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_002",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_002_proposal_v2.json",
+      "proposal_sha256": "3079950c376a2085d747e9287badd92b3ef3915f305ddd250cb5325cf9e02ea3",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_002_review_sheet.md",
+      "review_sheet_sha256": "93b60832b2acde8a3a79b94f86dde3d8ea80260712b4e63338e5c9fe72b78ae3",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_002_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 5,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.9,
+        "T2_crossing_occupancy_start": 3.6,
+        "T3_locomotive_unit_clearance": 3.4,
+        "T4_tail_clearance": 28.8,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_003",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+      "proposal_sha256": "8042807536dc178e3c672385c5854336e6cf35c6141ebaf55728d7d9468c3674",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_003_review_sheet.md",
+      "review_sheet_sha256": "da4b97d729c2cb65d9a8056e3fc7dae9ca9553734d97440449ad469519406910",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_003_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 5,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.1,
+        "T2_crossing_occupancy_start": 2.8,
+        "T3_locomotive_unit_clearance": 3.2,
+        "T4_tail_clearance": 30.5,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_004",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_004_proposal_v2.json",
+      "proposal_sha256": "b5f892f737ceec53bcc5b00966107be03031e44d488d71d5dad06f04131301d3",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_004_review_sheet.md",
+      "review_sheet_sha256": "99779ef655c3956f3bd808f97c9f4f1f2b874d8b3c6db754047ee2ac2075a889",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_004_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 14,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.1,
+        "T2_crossing_occupancy_start": 2.9,
+        "T3_locomotive_unit_clearance": 3.1,
+        "T4_tail_clearance": 76.8,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_005",
+      "cohort": "train_events",
+      "active_proposal_version": "v4",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_005_proposal_v4.json",
+      "proposal_sha256": "020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_005_review_sheet.md",
+      "review_sheet_sha256": "fe47f2ee0b58962acb9f51b7b7a9b77983693ae8191f9621efb0048d6cdc0429",
+      "prior_versions_count": 3,
+      "prior_versions": [
+        "event_005_proposal_v1.json",
+        "event_005_proposal_v2.json",
+        "event_005_proposal_v3.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 14,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": null,
+        "T2_crossing_occupancy_start": null,
+        "T3_locomotive_unit_clearance": 6.0,
+        "T4_tail_clearance": null,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_006",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_006_proposal_v2.json",
+      "proposal_sha256": "039a65f4fd4dab3b7f52413201969b742dc18e819b92f043c200f24b3a52ac6d",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_006_review_sheet.md",
+      "review_sheet_sha256": "c77f8a3b3b91e122cb34c8c5426bf8740df333c66aa1793d8774ce0b63b43a36",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_006_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 24,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.5,
+        "T2_crossing_occupancy_start": 3.3,
+        "T3_locomotive_unit_clearance": 3.8,
+        "T4_tail_clearance": 125.8,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_007",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+      "proposal_sha256": "88ac5f83e7561fb0f308ef143fee023cb27e98edf6ce67b2c110081c5269f785",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_007_review_sheet.md",
+      "review_sheet_sha256": "ceba7e8e3afe6801912eb65451455f8280eba44a5c8be5830abd5ac1d2de3c49",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_007_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 6,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.6,
+        "T2_crossing_occupancy_start": 3.4,
+        "T3_locomotive_unit_clearance": 3.3,
+        "T4_tail_clearance": 33.5,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_008",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+      "proposal_sha256": "bb29b1848bb8685ba3bf91e393556c16edb0816767586866999587f1c9bf7330",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_008_review_sheet.md",
+      "review_sheet_sha256": "b96cbbf64f265fb6c2cb654d3a67ddf0af31bb1041607337591cb5ca730d7008",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_008_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 11,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.4,
+        "T2_crossing_occupancy_start": 3.2,
+        "T3_locomotive_unit_clearance": 3.2,
+        "T4_tail_clearance": 61.2,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_009",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+      "proposal_sha256": "b26fb9f09b8b76ec00d942a55994695494f99d9e1d16df7fc6429e7706bcd115",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_009_review_sheet.md",
+      "review_sheet_sha256": "b7e9abbb4ab79af9f28b6ad77528a8620f340e441feab194c714e41e511a5d83",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_009_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 6,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 1.5,
+        "T1_danger_zone_entry": 4.2,
+        "T2_crossing_occupancy_start": 5.0,
+        "T3_locomotive_unit_clearance": 3.6,
+        "T4_tail_clearance": 36.4,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_010",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+      "proposal_sha256": "315a70fd902de301864c9badf5b70f22f8928a68bb0cab6dfb0c9a1d39528dc7",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_010_review_sheet.md",
+      "review_sheet_sha256": "b8f6718433721c37825eda4c4904a53f41a561d542391c41cda049f104bd53a5",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_010_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 4,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.7,
+        "T2_crossing_occupancy_start": 3.5,
+        "T3_locomotive_unit_clearance": 3.1,
+        "T4_tail_clearance": 22.4,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_011",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+      "proposal_sha256": "b93b4743dbec6a618040cdb6285dd17c40ac0736b1969e086e6a71e8b4a611ac",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_011_review_sheet.md",
+      "review_sheet_sha256": "2fd69e48bc1b8ccaebb41021cd9c66e20f1afb8014c134214e2a380729b046d6",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_011_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 5,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.8,
+        "T2_crossing_occupancy_start": 3.6,
+        "T3_locomotive_unit_clearance": 3.3,
+        "T4_tail_clearance": 29.4,
+        "T_scene_clear": 32.5
+      }
+    },
+    {
+      "event_id": "event_012",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_012_proposal_v2.json",
+      "proposal_sha256": "a45da6b905de79b36db6382c5dc80bacf6646cfe3b3529c619479c3b2e6b8227",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_012_review_sheet.md",
+      "review_sheet_sha256": "f07ff58ed2e73e62d2bb4dd2e72d20cfb43fd7022046c17d1b07794f9cf676a3",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_012_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 13,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 3.1,
+        "T2_crossing_occupancy_start": 3.9,
+        "T3_locomotive_unit_clearance": 3.7,
+        "T4_tail_clearance": 69.2,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_013",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_013_proposal_v2.json",
+      "proposal_sha256": "cdb691cbfa415a05ce3dd390a71f6903964a865ee459cdc6d31c6c9edbc679fe",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_013_review_sheet.md",
+      "review_sheet_sha256": "a0cec189b89e564c56ea2d887af66c6499d8751db43b642e03f4d4f9ebe4820d",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_013_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 13,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 3.2,
+        "T2_crossing_occupancy_start": 4.0,
+        "T3_locomotive_unit_clearance": 3.9,
+        "T4_tail_clearance": 70.8,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_014",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+      "proposal_sha256": "e6fe8f81e6b59154675b455cb6d20cd1698345d5321c0bb30db9c3f94efd112f",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_014_review_sheet.md",
+      "review_sheet_sha256": "515616fc74559558d889edf5ab15d84cbb6902f9c2ceac923ee58bc5158298fb",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_014_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 9,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.6,
+        "T2_crossing_occupancy_start": 3.4,
+        "T3_locomotive_unit_clearance": 3.6,
+        "T4_tail_clearance": 51.2,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_015",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+      "proposal_sha256": "e698947778110ac5a44102ccc7a6cc81a2a41f423e48a9e9810328043131c86f",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_015_review_sheet.md",
+      "review_sheet_sha256": "de43068dc44cedd00240a1d9b458b681b85ece1e5361bfadee97b0d6539a9942",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_015_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 3,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 1.5,
+        "T1_danger_zone_entry": 4.2,
+        "T2_crossing_occupancy_start": 5.0,
+        "T3_locomotive_unit_clearance": 3.8,
+        "T4_tail_clearance": 19.5,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_016",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+      "proposal_sha256": "f404feeb5d43513aeeb76804454efd1d2e98f5bc4b264337ab77258d0d5d22ea",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_016_review_sheet.md",
+      "review_sheet_sha256": "3126567dae3fee62ca43083799fe098198bb760e72ec1653f3d33346f2f22bd6",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_016_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 8,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 1.5,
+        "T1_danger_zone_entry": 4.2,
+        "T2_crossing_occupancy_start": 5.0,
+        "T3_locomotive_unit_clearance": 3.4,
+        "T4_tail_clearance": 44.1,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_017",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_017_proposal_v2.json",
+      "proposal_sha256": "1a40c8bfc2a289db4a0cfe18edb5563f1ceddc0d24fde8a982420b888ee2ea02",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_017_review_sheet.md",
+      "review_sheet_sha256": "b22feac1d3f090b2f19e6e9a2d0f45fdb07ad8a8ffc580638ff4e9e90dcf4142",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_017_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 15,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.8,
+        "T2_crossing_occupancy_start": 3.6,
+        "T3_locomotive_unit_clearance": 4.2,
+        "T4_tail_clearance": 82.5,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_018",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_018_proposal_v2.json",
+      "proposal_sha256": "3ee97a958b356c40a266223dbe78a2018586c9f0d099bc5ca5df0fe0ee23edd1",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_018_review_sheet.md",
+      "review_sheet_sha256": "87635f40be21e62cdd6d96158aa498a6a7f205b88cecf998e90c66f605781a57",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_018_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 9,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.7,
+        "T2_crossing_occupancy_start": 3.5,
+        "T3_locomotive_unit_clearance": 3.8,
+        "T4_tail_clearance": 50.8,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_019",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+      "proposal_sha256": "0deff3cad109ffd0199577f57a223affa3738d7d2974268e2ea7f7ebb4460908",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_019_review_sheet.md",
+      "review_sheet_sha256": "2829b9176cf8fdaf221c9f27ae8583f2e7737233375ad5d8c62a88760aebac38",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_019_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 9,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 3.0,
+        "T2_crossing_occupancy_start": 3.8,
+        "T3_locomotive_unit_clearance": 3.3,
+        "T4_tail_clearance": 47.2,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_020",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_020_proposal_v2.json",
+      "proposal_sha256": "3b2537abc0bcd5c0c3554bb44e71b9f4b53fc5ab7744a9d64c55bd5f3345cb3c",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_020_review_sheet.md",
+      "review_sheet_sha256": "daea9bea544747740760460bb90d738b13161a0ae55aa21522e5da8da47a8c97",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_020_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 5,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.3,
+        "T2_crossing_occupancy_start": 3.1,
+        "T3_locomotive_unit_clearance": 3.2,
+        "T4_tail_clearance": 28.7,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_021",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_021_proposal_v2.json",
+      "proposal_sha256": "65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_021_review_sheet.md",
+      "review_sheet_sha256": "5b391d04c5150139db6c4603577dbbdb82402f0123b5911221ee18e2c52628c4",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_021_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 11,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 3.2,
+        "T2_crossing_occupancy_start": 4.1,
+        "T3_locomotive_unit_clearance": 3.6,
+        "T4_tail_clearance": 60.1,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_022",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_022_proposal_v2.json",
+      "proposal_sha256": "29e01ea7bbc866dd4165fd33443ddd3841178d72a4b11773f9d7c53f65a6e857",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_022_review_sheet.md",
+      "review_sheet_sha256": "04c94f85601877bf9288bdf226db6d99026b27dbe6126743fa8f30345174739d",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_022_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 8,
+      "horn_status": "present",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.5,
+        "T2_crossing_occupancy_start": 3.3,
+        "T3_locomotive_unit_clearance": 3.4,
+        "T4_tail_clearance": 45.1,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_023",
+      "cohort": "train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+      "proposal_sha256": "cacdace3383b6829060cc4f9c5d3e9c12a76787312e6b5c7c2d1964bfd0b7a38",
+      "review_sheet_file": "data/ground_truth/proposals/train_events/event_023_review_sheet.md",
+      "review_sheet_sha256": "d3aa45a13955c12715a16a3bea69ccc31866f7015b355179e2795edd065810f8",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_023_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 8,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 2.8,
+        "T2_crossing_occupancy_start": 3.6,
+        "T3_locomotive_unit_clearance": 3.3,
+        "T4_tail_clearance": 43.4,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_001",
+      "cohort": "no_train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json",
+      "proposal_sha256": "6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2",
+      "review_sheet_file": "data/ground_truth/proposals/no_train_events/event_001_review_sheet.md",
+      "review_sheet_sha256": "0e7175df42c9c218b6a385d73fb4c6daf8dd891c4121e2a97227922eb17147ab",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_001_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": false,
+      "cars_count": null,
+      "horn_status": null,
+      "timestamps": {
+        "T0_first_visible": null,
+        "T1_danger_zone_entry": null,
+        "T2_crossing_occupancy_start": null,
+        "T3_locomotive_unit_clearance": null,
+        "T4_tail_clearance": null,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_002",
+      "cohort": "no_train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json",
+      "proposal_sha256": "0fd3a48a0c30675e46635795c6aacdbaed294a0d21ad510462fd4848db1de956",
+      "review_sheet_file": "data/ground_truth/proposals/no_train_events/event_002_review_sheet.md",
+      "review_sheet_sha256": "8104c5cd5107bc51d6b5d4a5c02268f09d9f6eda496396c77fb5099119a42fb2",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_002_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": false,
+      "cars_count": null,
+      "horn_status": null,
+      "timestamps": {
+        "T0_first_visible": null,
+        "T1_danger_zone_entry": null,
+        "T2_crossing_occupancy_start": null,
+        "T3_locomotive_unit_clearance": null,
+        "T4_tail_clearance": null,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_003",
+      "cohort": "no_train_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json",
+      "proposal_sha256": "e7619841db2308290bde1cb3267e485a2edcf07bae389a1798c50a5aaabd670f",
+      "review_sheet_file": "data/ground_truth/proposals/no_train_events/event_003_review_sheet.md",
+      "review_sheet_sha256": "f02b4c12d2643b6b8720639c7cc263f9ccca3aec3cd246e46b2e2ee3a8050b72",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_003_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": false,
+      "cars_count": null,
+      "horn_status": null,
+      "timestamps": {
+        "T0_first_visible": null,
+        "T1_danger_zone_entry": null,
+        "T2_crossing_occupancy_start": null,
+        "T3_locomotive_unit_clearance": null,
+        "T4_tail_clearance": null,
+        "T_scene_clear": null
+      }
+    },
+    {
+      "event_id": "event_001",
+      "cohort": "engine_events",
+      "active_proposal_version": "v2",
+      "active_proposal_file": "data/ground_truth/proposals/engine_events/event_001_proposal_v2.json",
+      "proposal_sha256": "c72f555b8a12ece3110d94dfc64eea50e234cf084bdfcd8cea22f156e02ff54d",
+      "review_sheet_file": "data/ground_truth/proposals/engine_events/event_001_review_sheet.md",
+      "review_sheet_sha256": "b0780dd070c3c985b27ff9e1d2bfa37443002d60b35d96ec105e6310d8af1ae3",
+      "prior_versions_count": 1,
+      "prior_versions": [
+        "event_001_proposal_v1.json"
+      ],
+      "approval_status": "UNAPPROVED_CANDIDATE_PROPOSAL",
+      "acoustic_listening_status": "NOT_LISTENED",
+      "train_present": true,
+      "cars_count": 0,
+      "horn_status": "absent_observed",
+      "timestamps": {
+        "T0_first_visible": 0.0,
+        "T1_danger_zone_entry": 0.0,
+        "T2_crossing_occupancy_start": 0.0,
+        "T3_locomotive_unit_clearance": 6.2,
+        "T4_tail_clearance": 6.2,
+        "T_scene_clear": 6.2
+      }
+    }
+  ]
+}

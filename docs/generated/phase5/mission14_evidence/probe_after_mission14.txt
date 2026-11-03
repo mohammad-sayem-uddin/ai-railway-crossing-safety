@@ -1,0 +1,74 @@
+## probe_m02
+1 forged _OfficialPermit -> run(REAL) | expected=refused | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+2a forged _VerifiedOfficialAuthorization -> run() | expected=refused | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+2b forged ctx -> run_from_manifest() | expected=refused | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+2c forged ctx (wrong token) -> _run_from_manifest_verified() | expected=refused | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+3 matching manifest digest/permit -> run_from_manifest(REAL) | expected=refused | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+3-trips | expected=[] | actual=[]
+5 REAL via run() | expected=refused | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+6 REAL via run_from_manifest() (explicit kwarg) | expected=refused | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+6-trips | expected=[] | actual=[]
+6b REAL manifest, kwarg omitted -> run_from_manifest() | expected=refused before ANY source read | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+6b-trips (source reads before refusal) | expected=[] | actual=[]
+6c kwarg=SYNTHETIC, manifest=real | expected=refused before source read | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+6c-trips | expected=[] | actual=[]
+7 permit on synthetic -> run_from_manifest | expected=refused | actual=EvaluationRefused:OFFICIAL_AUTHORIZATION_CONTEXT_REQUIRED
+12b EvaluationProvenance(official_authorization_verified=True) constructible | expected=(ideal) not forgeable | actual=constructible=True
+R1 residual: private token imported by name + private method | expected=(same-process limitation) gate passes -> later refusal | actual=EvaluationRefused:EVALUATION_REFUSED
+DONE
+## probe_media
+A1 synthetic tmp image | expected=ALLOWED | actual=ALLOWED(no exception)
+A2 synthetic tmp video | expected=ALLOWED | actual=ALLOWED(no exception)
+B1 repo video (fake path) | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+B2 repo image (fake path) | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+C1 non-temp, non-repo existing media (system sound; guard does not open it) | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+C2 non-temp, non-repo ABSENT media | expected=ALLOWED by design (no bytes) | actual=ALLOWED(no exception)
+D1 tmp symlink with media suffix -> repo media | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+D2 tmp symlink with NON-media suffix -> repo media | expected=DENIED (ideal) | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+D3 tmp symlink with no suffix -> repo media | expected=DENIED (ideal) | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+E1 ../ traversal into repo | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+E2 relative repo path | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+E3 '~' expansion/odd normalization (//, ./) | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+F1 env overrides set | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+F2 repo_root override to tmp for in-repo path | expected=DENIED | actual=DENIED:AUTH_MEDIA_ACCESS_ROOT_OVERRIDE_REFUSED
+G suffix '.m2ts' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.ts' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.3gp' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.wmv' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.flv' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.gif' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.heic' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.mxf' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.dng' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.MOV' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.mov.bak' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '.bin' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+G suffix '' (repo fake path) | expected=DENIED for any media bytes | actual=DENIED:AUTH_MEDIA_ACCESS_NOT_GRANTED
+Traceback (most recent call last):
+  File "/Users/sayemuddin/Desktop/Train_automation/docs/generated/phase5/mission13_probes/probe_media.py", line 57, in <module>
+    r=V._check_image(fake_jpg); rec("H1 validator._check_image(repo fake jpg) result", "denial surfaced as authorization error", repr(r)[:160])
+      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sayemuddin/Desktop/Train_automation/src/railway_detection/data/validator.py", line 191, in _check_image
+    require_media_authorization(path, "READ_RAW_MEDIA", declared_media=True)
+  File "/Users/sayemuddin/Desktop/Train_automation/src/railway_detection/safety/media_guard.py", line 596, in require_media_authorization
+    verify_authorization_record(root, operation=operation, media_path=real, event_id=event_id)
+  File "/Users/sayemuddin/Desktop/Train_automation/src/railway_detection/safety/media_guard.py", line 360, in verify_authorization_record
+    raise MediaAccessAuthorizationError(
+railway_detection.safety.media_guard.MediaAccessAuthorizationError: [AUTH_MEDIA_ACCESS_NOT_GRANTED] no recorded AUTH-MEDIA-ACCESS at /Users/sayemuddin/Desktop/Train_automation/data/governance/AUTH-MEDIA-ACCESS.json. Opening, hashing, probing, decoding, extracting from, or running inference on raw media is prohibited without it.
+## probe_case
+REAL_REPO_ROOT /Users/sayemuddin/Desktop/Train_automation
+alt exists (case-insensitive FS?): True | alt.resolve() == REAL: False | resolved: /Users/sayemuddin/Desktop/train_automation
+descriptive gate, canonical root : DescriptiveExecutionNotAuthorized: [AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED] no recorded AUTH-DESCRIPTIVE-EVAL-EXEC at data/governance/A
+descriptive gate, case-variant   : DescriptiveExecutionNotAuthorized: [AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED] no recorded AUTH-DESCRIPTIVE-EVAL-EXEC at data/governance/A
+media guard, case-variant FAKE path: MediaAccessAuthorizationError: [AUTH_MEDIA_ACCESS_NOT_GRANTED] no recorded AUTH-MEDIA-ACCESS at /Users/sayemuddin/Desktop/Train_aut
+media guard, is_synthetic_location(case-variant): False
+## probe_outdir
+canonical protected: REFUSED OUTPUT_DIR_PROTECTED
+case-variant protected dir: REFUSED OUTPUT_DIR_PROTECTED
+case-variant repo prefix: REFUSED OUTPUT_DIR_PROTECTED
+## probe_server
+/outputs/ok.mp4                            status=200 body=b'OK'
+/outputs/../data/raw/ds/secret.mov         status=('error', <HTTPStatus.NOT_FOUND: 404>) body=b''
+/outputs/../configs/c.yaml                 status=('error', <HTTPStatus.NOT_FOUND: 404>) body=b''
+/experiments/../data/raw/ds/secret.mov     status=('error', <HTTPStatus.NOT_FOUND: 404>) body=b''
+DONE

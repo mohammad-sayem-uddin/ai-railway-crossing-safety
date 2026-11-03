@@ -1,0 +1,500 @@
+manifest_version: 0.1.0_CANDIDATE
+status: CANDIDATE_UNVALIDATED_DO_NOT_MERGE
+sign_convention: t_front = t_back + offset_s (positive offset_s indicates back camera
+  started after front camera)
+estimation_method: GCC_PHAT_16KHZ_INTERP8
+evaluation_summary:
+  total_events: 27
+  verdict_counts:
+    CALIBRATION_SUPPORTED: 12
+    PROVISIONAL: 10
+    AMBIGUOUS: 5
+    FAILED: 0
+    NOT_ASSESSABLE: 0
+events:
+  train_events/event_001:
+    cohort: train_events
+    event_id: event_001
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_001/camera_front.mov
+      sha256: d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_001/camera_back.mov
+      sha256: 8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1
+      offset_s: 7.406
+      uncertainty_s: 0.05
+    diagnostics:
+      gcc_phat_snr: 23.6
+      peak_to_sidelobe_ratio: 2.41
+      quicktime_creation_delta: +8.0s
+      notes: Sharp horn/engine onset; QT agree 0.59s
+  train_events/event_002:
+    cohort: train_events
+    event_id: event_002
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_002/camera_front.mov
+      sha256: 69811c9e515515e93e25597244d2d1e8b4f1976d874a27cfb794076c5226a161
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_002/camera_back.mov
+      sha256: 964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b
+      offset_s: 4.1867
+      uncertainty_s: 0.05
+    diagnostics:
+      gcc_phat_snr: 22.2
+      peak_to_sidelobe_ratio: 2.18
+      quicktime_creation_delta: +4.0s
+      notes: Unambiguous peak; QT agree 0.19s
+  train_events/event_003:
+    cohort: train_events
+    event_id: event_003
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_003/camera_front.mov
+      sha256: 7a12b86be8511738d4d8539476cdba1c90270159fd65d0931189e367e3550ca5
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_003/camera_back.mov
+      sha256: 172d99ef4a2488abcac7715bd4098c28b2cc1388b6aa286df19246d0e297a395
+      offset_s: 3.7253
+      uncertainty_s: 0.15
+    diagnostics:
+      gcc_phat_snr: 16.9
+      peak_to_sidelobe_ratio: 1.37
+      quicktime_creation_delta: +4.0s
+      notes: Secondary peak at +2.90s; QT agree 0.27s
+  train_events/event_004:
+    cohort: train_events
+    event_id: event_004
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_004/camera_front.mov
+      sha256: 85215975b328cec583678fef3d51579f66953b779b35da56bd2aef3065954e49
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_004/camera_back.mov
+      sha256: 6ccfa9b6fe74adf01cf9aeac3faba73194446398e3c7c74b057d778eddb1ed60
+      offset_s: 4.9001
+      uncertainty_s: 0.12
+    diagnostics:
+      gcc_phat_snr: 23.1
+      peak_to_sidelobe_ratio: 1.08
+      quicktime_creation_delta: +5.0s
+      notes: Double peak +4.90s and +5.14s; QT agree 0.10s
+  train_events/event_005:
+    cohort: train_events
+    event_id: event_005
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_005/camera_front.mov
+      sha256: 015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_005/camera_back.mov
+      sha256: 55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e
+      offset_s: 6.038
+      uncertainty_s: 0.05
+    diagnostics:
+      gcc_phat_snr: 32.7
+      peak_to_sidelobe_ratio: 2.27
+      quicktime_creation_delta: +6.0s
+      notes: Dominant horn sequence (78 wins); QT agree 0.04s
+  train_events/event_006:
+    cohort: train_events
+    event_id: event_006
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_006/camera_front.mov
+      sha256: abae4c6f357171fdf972aa49d7fd4590d86c35cb95394e4c88e7274db0664c12
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_006/camera_back.mov
+      sha256: c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe
+      offset_s: 4.5124
+      uncertainty_s: 0.05
+    diagnostics:
+      gcc_phat_snr: 35.8
+      peak_to_sidelobe_ratio: 3.3
+      quicktime_creation_delta: +5.0s
+      notes: Very high PSR 3.30; QT agree 0.49s
+  train_events/event_007:
+    cohort: train_events
+    event_id: event_007
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_007/camera_front.mov
+      sha256: 26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_007/camera_back.mov
+      sha256: 24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf
+      offset_s: 8.8801
+      uncertainty_s: 0.03
+    diagnostics:
+      gcc_phat_snr: 78.1
+      peak_to_sidelobe_ratio: 5.99
+      quicktime_creation_delta: +9.0s
+      notes: Exceptional peak SNR 78.1, PSR 5.99; QT agree 0.12s
+  train_events/event_008:
+    cohort: train_events
+    event_id: event_008
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_008/camera_front.mov
+      sha256: 5f0151fd09dd35636afc1a641c05426c5483871a44b8ee5883e15dad173b0e16
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_008/camera_back.mov
+      sha256: 0ab126213b94d53fc1733658eefdaaf5a5cfe8dd9492d6234a50a19d5e642de2
+      offset_s: 3.648
+      uncertainty_s: 0.25
+    diagnostics:
+      gcc_phat_snr: 15.0
+      peak_to_sidelobe_ratio: 1.44
+      quicktime_creation_delta: -33.0s
+      notes: Known device clock drift 37s; visual entrance corroborates +3.6s
+  train_events/event_009:
+    cohort: train_events
+    event_id: event_009
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_009/camera_front.mov
+      sha256: 7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_009/camera_back.mov
+      sha256: 4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8
+      offset_s: 9.4037
+      uncertainty_s: 0.05
+    diagnostics:
+      gcc_phat_snr: 28.3
+      peak_to_sidelobe_ratio: 2.53
+      quicktime_creation_delta: +9.0s
+      notes: Clean peak; QT agree 0.40s
+  train_events/event_010:
+    cohort: train_events
+    event_id: event_010
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_010/camera_front.mov
+      sha256: 9967e3666086e1f0f14f20d22bbf36e7eec5a5491622edbfb2f465f247ce1b46
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_010/camera_back.mov
+      sha256: 566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a
+      offset_s: 2.7158
+      uncertainty_s: 0.1
+    diagnostics:
+      gcc_phat_snr: 25.9
+      peak_to_sidelobe_ratio: 2.31
+      quicktime_creation_delta: -17.0s
+      notes: Known device clock drift 20s; win range 0.20s; visual corroboration
+  train_events/event_011:
+    cohort: train_events
+    event_id: event_011
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_011/camera_front.mov
+      sha256: 6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_011/camera_back.mov
+      sha256: 3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46
+      offset_s: 5.273
+      uncertainty_s: 0.04
+    diagnostics:
+      gcc_phat_snr: 33.3
+      peak_to_sidelobe_ratio: 3.07
+      quicktime_creation_delta: +5.0s
+      notes: Window range 0.13s, PSR 3.07; QT agree 0.27s
+  train_events/event_012:
+    cohort: train_events
+    event_id: event_012
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_012/camera_front.mov
+      sha256: 840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_012/camera_back.mov
+      sha256: d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c
+      offset_s: 5.569
+      uncertainty_s: 0.05
+    diagnostics:
+      gcc_phat_snr: 28.1
+      peak_to_sidelobe_ratio: 2.59
+      quicktime_creation_delta: +6.0s
+      notes: Clean horn onset; QT agree 0.43s
+  train_events/event_013:
+    cohort: train_events
+    event_id: event_013
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_013/camera_front.mov
+      sha256: 3869d489098aeb5f9251b9c698cb236e8fc0b6ee7be7b3342c14a5dbff140e2d
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_013/camera_back.mov
+      sha256: e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387
+      offset_s: 3.278
+      uncertainty_s: 0.04
+    diagnostics:
+      gcc_phat_snr: 26.2
+      peak_to_sidelobe_ratio: 2.81
+      quicktime_creation_delta: +3.0s
+      notes: Window range 0.18s, PSR 2.81; QT agree 0.28s
+  train_events/event_014:
+    cohort: train_events
+    event_id: event_014
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_014/camera_front.mov
+      sha256: adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_014/camera_back.mov
+      sha256: 46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd
+      offset_s: 4.0806
+      uncertainty_s: 0.05
+    diagnostics:
+      gcc_phat_snr: 24.7
+      peak_to_sidelobe_ratio: 2.38
+      quicktime_creation_delta: +4.0s
+      notes: Tight QT agree 0.08s; PSR 2.38
+  train_events/event_015:
+    cohort: train_events
+    event_id: event_015
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_015/camera_front.mov
+      sha256: 309203acd4bdc8ddb6a26e7ecbe97f73267724c9870b202290f0ee1cbaa32e99
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_015/camera_back.mov
+      sha256: 57e827d111540c3c7f9463efaee3461ee6cba6818ab33231745ea9b22024b03a
+      offset_s: 11.4404
+      uncertainty_s: 0.06
+    diagnostics:
+      gcc_phat_snr: 25.1
+      peak_to_sidelobe_ratio: 2.15
+      quicktime_creation_delta: +12.0s
+      notes: PSR 2.15; QT agree 0.56s
+  train_events/event_016:
+    cohort: train_events
+    event_id: event_016
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_016/camera_front.mov
+      sha256: 3a0d71da27ba66aeb3c76a58cfbf349c136176c3d0425a5b14a4ce1cb30270ff
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_016/camera_back.mov
+      sha256: 08a9f8695dfe0fd1a1f4c380366ba9e83d11714c1c4ba2da2be4713d580dafff
+      offset_s: 3.2592
+      uncertainty_s: 0.15
+    diagnostics:
+      gcc_phat_snr: 16.2
+      peak_to_sidelobe_ratio: 1.59
+      quicktime_creation_delta: +4.0s
+      notes: PSR 1.59; QT agree 0.74s
+  train_events/event_017:
+    cohort: train_events
+    event_id: event_017
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_017/camera_front.mov
+      sha256: 188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_017/camera_back.mov
+      sha256: 7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95
+      offset_s: 4.5655
+      uncertainty_s: 0.05
+    diagnostics:
+      gcc_phat_snr: 25.8
+      peak_to_sidelobe_ratio: 2.63
+      quicktime_creation_delta: +5.0s
+      notes: PSR 2.63; QT agree 0.43s
+  train_events/event_018:
+    cohort: train_events
+    event_id: event_018
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_018/camera_front.mov
+      sha256: ed376931b62de4a18249ed3054b7930ae64ebab9dc322c639538e52760a0f102
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_018/camera_back.mov
+      sha256: a7040a317018132f209b460ffa43d794e1e423cda5b5ce48a789043fe7dc4d27
+      offset_s: 7.8752
+      uncertainty_s: 0.2
+    diagnostics:
+      gcc_phat_snr: 26.0
+      peak_to_sidelobe_ratio: 1.22
+      quicktime_creation_delta: +8.0s
+      notes: Competing negative peak at -1.41s; QT agree 0.12s
+  train_events/event_019:
+    cohort: train_events
+    event_id: event_019
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_019/camera_front.mov
+      sha256: 697f3c9ef9572e4b8be74e4719ec3911a2781837cd3ab08a1c3a663cb8cbd0c3
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_019/camera_back.mov
+      sha256: f906e43305fcd183ff9e0638a246cc4df84192d7691befd96d35b17d630b9aef
+      offset_s: 6.6611
+      uncertainty_s: 0.18
+    diagnostics:
+      gcc_phat_snr: 15.8
+      peak_to_sidelobe_ratio: 1.54
+      quicktime_creation_delta: +7.0s
+      notes: Moderate PSR 1.54; QT agree 0.34s
+  train_events/event_020:
+    cohort: train_events
+    event_id: event_020
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_020/camera_front.mov
+      sha256: 3b45ba8f056227359d27c4d7da80dfd9ddb202dacdccd9d34797c4f5fbd8ecba
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_020/camera_back.mov
+      sha256: ea0f90528bced198f23b24e6006f32aebbb19f8173f7fc78721f8b96286ad2c2
+      offset_s: -1.246
+      uncertainty_s: 0.5
+    diagnostics:
+      gcc_phat_snr: 9.6
+      peak_to_sidelobe_ratio: 1.02
+      quicktime_creation_delta: +4.0s
+      notes: Unphysical negative lag; low SNR 9.6; PSR 1.02; QT diff 5.25s
+  train_events/event_021:
+    cohort: train_events
+    event_id: event_021
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_021/camera_front.mov
+      sha256: 380dcddbcd4fefab43f27134a5965e2b724b3c3cc707ad2bce514b0defb4c518
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_021/camera_back.mov
+      sha256: 4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f
+      offset_s: -2.8063
+      uncertainty_s: 0.12
+    diagnostics:
+      gcc_phat_snr: 21.4
+      peak_to_sidelobe_ratio: 1.98
+      quicktime_creation_delta: -3.0s
+      notes: QT agree 0.19s; back camera started before front
+  train_events/event_022:
+    cohort: train_events
+    event_id: event_022
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_022/camera_front.mov
+      sha256: c5512850372e940ca7e627e2cf28b2becf21ecb5074adbc9679f663c37ed68e2
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_022/camera_back.mov
+      sha256: 1e008a154ecfb4c1c96d03414d4c29042c0a4adaf1ac5cb94d00b7783b58567d
+      offset_s: 0.9625
+      uncertainty_s: 0.4
+    diagnostics:
+      gcc_phat_snr: 14.3
+      peak_to_sidelobe_ratio: 1.13
+      quicktime_creation_delta: +2.0s
+      notes: Competing peak near 0.0s; QT diff 1.04s
+  train_events/event_023:
+    cohort: train_events
+    event_id: event_023
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_023/camera_front.mov
+      sha256: cb855aa632bac4a032496a7ccc0a40a28b631807231254775a2a24f85d81564b
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_023/camera_back.mov
+      sha256: a36d099f479e81bef2cfa31ac4492bf0cd01c97eac5378d85c96a89f58e49766
+      offset_s: 1.2277
+      uncertainty_s: 0.15
+    diagnostics:
+      gcc_phat_snr: 13.2
+      peak_to_sidelobe_ratio: 1.2
+      quicktime_creation_delta: +1.0s
+      notes: Secondary peak at +0.97s; QT agree 0.23s
+  no_train_events/event_001:
+    cohort: no_train_events
+    event_id: event_001
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov
+      sha256: 58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov
+      sha256: 5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9
+      offset_s: 1.4277
+      uncertainty_s: 0.3
+    diagnostics:
+      gcc_phat_snr: 15.6
+      peak_to_sidelobe_ratio: 1.17
+      quicktime_creation_delta: +1.0s
+      notes: No train acoustic signature; diffuse traffic/ambient noise
+  no_train_events/event_002:
+    cohort: no_train_events
+    event_id: event_002
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_002/camera_front.mov
+      sha256: 9196bd13700d26bb8b0b03ac8034150e0537b202b2690c21bef4943cceab0b97
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_002/camera_back.mov
+      sha256: 7b578008c037648c37dfb7f2b029c3c192dd4680198d655b6d6ac11734426126
+      offset_s: -4.0483
+      uncertainty_s: 0.3
+    diagnostics:
+      gcc_phat_snr: 18.3
+      peak_to_sidelobe_ratio: 1.36
+      quicktime_creation_delta: -4.0s
+      notes: No train acoustic signature; diffuse ambient noise
+  no_train_events/event_003:
+    cohort: no_train_events
+    event_id: event_003
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov
+      sha256: 969c8b118996d56d5593f8a3cb6ef9e16e571d4829076824952663d719239205
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov
+      sha256: 4914515714eb1ca8a282f61112afcfb11391dd2ec08543796611e22b884b4d9c
+      offset_s: -0.4023
+      uncertainty_s: 0.25
+    diagnostics:
+      gcc_phat_snr: 22.8
+      peak_to_sidelobe_ratio: 1.87
+      quicktime_creation_delta: +0.0s
+      notes: No train acoustic signature; diffuse ambient noise
+  engine_events/event_001:
+    cohort: engine_events
+    event_id: event_001
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/engine_events/event_001/camera_front.mov
+      sha256: d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/engine_events/event_001/camera_back.mov
+      sha256: 80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72
+      offset_s: 3.4965
+      uncertainty_s: 0.2
+    diagnostics:
+      gcc_phat_snr: 13.2
+      peak_to_sidelobe_ratio: 1.23
+      quicktime_creation_delta: +3.0s
+      notes: Short duration 7.8s; engine rumble; QT agree 0.50s

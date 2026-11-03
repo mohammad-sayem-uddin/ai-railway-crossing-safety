@@ -1,0 +1,134 @@
+{
+  "run_mode": "dry_run",
+  "timestamp_utc": "2026-10-13T19:47:53.648972+00:00",
+  "exploratory_config_path": "configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml",
+  "exploratory_config_canonical_hash": "ca07cd0f36527ef2296f2483dd39243b0b72db3672eddd17f31d817aa58a9b39",
+  "exploratory_config_version": "1.1.0",
+  "base_frozen_config_canonical_hash": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+  "calibration_manifest_path": "data/manifests/camera_sync_offsets_candidate.yaml",
+  "calibration_manifest_version": "0.2.0_CANDIDATE",
+  "included_event_count": 11,
+  "events": {
+    "train_events/event_001": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 7.406,
+      "uncertainty_s": 0.05,
+      "front_sha256": "d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b",
+      "back_sha256": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1"
+    },
+    "train_events/event_002": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 4.1867,
+      "uncertainty_s": 0.05,
+      "front_sha256": "69811c9e515515e93e25597244d2d1e8b4f1976d874a27cfb794076c5226a161",
+      "back_sha256": "964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b"
+    },
+    "train_events/event_005": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 6.038,
+      "uncertainty_s": 0.05,
+      "front_sha256": "015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613",
+      "back_sha256": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e"
+    },
+    "train_events/event_006": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 4.5124,
+      "uncertainty_s": 0.05,
+      "front_sha256": "abae4c6f357171fdf972aa49d7fd4590d86c35cb95394e4c88e7274db0664c12",
+      "back_sha256": "c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe"
+    },
+    "train_events/event_007": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 8.8801,
+      "uncertainty_s": 0.05,
+      "front_sha256": "26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c",
+      "back_sha256": "24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf"
+    },
+    "train_events/event_009": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 9.4043,
+      "uncertainty_s": 0.05,
+      "front_sha256": "7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db",
+      "back_sha256": "4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8"
+    },
+    "train_events/event_011": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 5.2713,
+      "uncertainty_s": 0.05,
+      "front_sha256": "6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0",
+      "back_sha256": "3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46"
+    },
+    "train_events/event_012": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 5.5679,
+      "uncertainty_s": 0.05,
+      "front_sha256": "840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0",
+      "back_sha256": "d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c"
+    },
+    "train_events/event_013": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 3.278,
+      "uncertainty_s": 0.05,
+      "front_sha256": "3869d489098aeb5f9251b9c698cb236e8fc0b6ee7be7b3342c14a5dbff140e2d",
+      "back_sha256": "e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387"
+    },
+    "train_events/event_014": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 4.0806,
+      "uncertainty_s": 0.05,
+      "front_sha256": "adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5",
+      "back_sha256": "46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd"
+    },
+    "train_events/event_017": {
+      "verdict": "CALIBRATION_SUPPORTED",
+      "manifest_version": "0.2.0_CANDIDATE",
+      "front_source_id": "camera_1",
+      "back_source_id": "camera_2",
+      "front_offset_s": 0.0,
+      "back_offset_s": 4.5654,
+      "uncertainty_s": 0.05,
+      "front_sha256": "188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3",
+      "back_sha256": "7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95"
+    }
+  }
+}

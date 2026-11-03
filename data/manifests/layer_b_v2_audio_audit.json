@@ -1,0 +1,1596 @@
+{
+  "train_events/event_001": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 49.855,
+      "rms": 0.1174,
+      "horn_bursts": [
+        {
+          "start_s": 1.5,
+          "end_s": 1.82,
+          "dur_s": 0.32,
+          "freq_hz": 290.4,
+          "max_snr": 27.4
+        },
+        {
+          "start_s": 5.06,
+          "end_s": 6.08,
+          "dur_s": 1.02,
+          "freq_hz": 302.4,
+          "max_snr": 30.4
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 46.079,
+      "rms": 0.0959,
+      "horn_bursts": [
+        {
+          "start_s": 2.3,
+          "end_s": 2.56,
+          "dur_s": 0.26,
+          "freq_hz": 283.2,
+          "max_snr": 23.5
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_002": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 32.489,
+      "rms": 0.1274,
+      "horn_bursts": [
+        {
+          "start_s": 2.4,
+          "end_s": 3.49,
+          "dur_s": 1.09,
+          "freq_hz": 369.4,
+          "max_snr": 87.9
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 30.207,
+      "rms": 0.0899,
+      "horn_bursts": [],
+      "horn_present": false
+    }
+  },
+  "train_events/event_003": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 33.343,
+      "rms": 0.1516,
+      "horn_bursts": [
+        {
+          "start_s": 2.75,
+          "end_s": 3.01,
+          "dur_s": 0.26,
+          "freq_hz": 306.0,
+          "max_snr": 25.4
+        },
+        {
+          "start_s": 28.54,
+          "end_s": 28.83,
+          "dur_s": 0.29,
+          "freq_hz": 369.1,
+          "max_snr": 24.3
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 32.553,
+      "rms": 0.1167,
+      "horn_bursts": [],
+      "horn_present": false
+    }
+  },
+  "train_events/event_004": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 75.604,
+      "rms": 0.1329,
+      "horn_bursts": [
+        {
+          "start_s": 0.8,
+          "end_s": 2.02,
+          "dur_s": 1.22,
+          "freq_hz": 417.5,
+          "max_snr": 96.2
+        },
+        {
+          "start_s": 4.7,
+          "end_s": 5.02,
+          "dur_s": 0.32,
+          "freq_hz": 466.6,
+          "max_snr": 34.0
+        },
+        {
+          "start_s": 29.63,
+          "end_s": 29.98,
+          "dur_s": 0.35,
+          "freq_hz": 334.8,
+          "max_snr": 31.5
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 78.079,
+      "rms": 0.1367,
+      "horn_bursts": [
+        {
+          "start_s": 41.31,
+          "end_s": 41.57,
+          "dur_s": 0.26,
+          "freq_hz": 609.4,
+          "max_snr": 29.2
+        },
+        {
+          "start_s": 63.46,
+          "end_s": 63.84,
+          "dur_s": 0.38,
+          "freq_hz": 641.4,
+          "max_snr": 24.9
+        },
+        {
+          "start_s": 77.5,
+          "end_s": 77.89,
+          "dur_s": 0.38,
+          "freq_hz": 431.1,
+          "max_snr": 65.7
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_005": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 79.572,
+      "rms": 0.096,
+      "horn_bursts": [
+        {
+          "start_s": 38.75,
+          "end_s": 39.07,
+          "dur_s": 0.32,
+          "freq_hz": 497.7,
+          "max_snr": 29.9
+        },
+        {
+          "start_s": 53.66,
+          "end_s": 53.92,
+          "dur_s": 0.26,
+          "freq_hz": 689.2,
+          "max_snr": 31.1
+        },
+        {
+          "start_s": 56.42,
+          "end_s": 56.67,
+          "dur_s": 0.26,
+          "freq_hz": 496.5,
+          "max_snr": 38.1
+        },
+        {
+          "start_s": 70.11,
+          "end_s": 70.46,
+          "dur_s": 0.35,
+          "freq_hz": 612.5,
+          "max_snr": 51.5
+        },
+        {
+          "start_s": 77.06,
+          "end_s": 77.44,
+          "dur_s": 0.38,
+          "freq_hz": 403.6,
+          "max_snr": 50.9
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 78.121,
+      "rms": 0.1139,
+      "horn_bursts": [
+        {
+          "start_s": 8.32,
+          "end_s": 11.65,
+          "dur_s": 3.33,
+          "freq_hz": 619.3,
+          "max_snr": 32.1
+        },
+        {
+          "start_s": 11.9,
+          "end_s": 12.16,
+          "dur_s": 0.26,
+          "freq_hz": 617.2,
+          "max_snr": 23.1
+        },
+        {
+          "start_s": 64.03,
+          "end_s": 64.51,
+          "dur_s": 0.48,
+          "freq_hz": 546.4,
+          "max_snr": 67.6
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_006": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 126.207,
+      "rms": 0.1348,
+      "horn_bursts": [
+        {
+          "start_s": 25.82,
+          "end_s": 26.24,
+          "dur_s": 0.42,
+          "freq_hz": 413.4,
+          "max_snr": 43.6
+        },
+        {
+          "start_s": 29.7,
+          "end_s": 30.27,
+          "dur_s": 0.58,
+          "freq_hz": 358.7,
+          "max_snr": 27.9
+        },
+        {
+          "start_s": 40.64,
+          "end_s": 41.15,
+          "dur_s": 0.51,
+          "freq_hz": 311.2,
+          "max_snr": 35.0
+        },
+        {
+          "start_s": 63.36,
+          "end_s": 64.13,
+          "dur_s": 0.77,
+          "freq_hz": 452.8,
+          "max_snr": 48.4
+        },
+        {
+          "start_s": 71.49,
+          "end_s": 71.81,
+          "dur_s": 0.32,
+          "freq_hz": 531.2,
+          "max_snr": 32.8
+        },
+        {
+          "start_s": 73.12,
+          "end_s": 73.38,
+          "dur_s": 0.26,
+          "freq_hz": 401.6,
+          "max_snr": 23.2
+        },
+        {
+          "start_s": 80.99,
+          "end_s": 81.57,
+          "dur_s": 0.58,
+          "freq_hz": 422.3,
+          "max_snr": 39.0
+        },
+        {
+          "start_s": 81.79,
+          "end_s": 82.43,
+          "dur_s": 0.64,
+          "freq_hz": 421.9,
+          "max_snr": 35.6
+        },
+        {
+          "start_s": 82.59,
+          "end_s": 83.17,
+          "dur_s": 0.58,
+          "freq_hz": 421.9,
+          "max_snr": 31.0
+        },
+        {
+          "start_s": 113.22,
+          "end_s": 113.57,
+          "dur_s": 0.35,
+          "freq_hz": 379.9,
+          "max_snr": 30.6
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 126.996,
+      "rms": 0.1432,
+      "horn_bursts": [
+        {
+          "start_s": 36.03,
+          "end_s": 36.38,
+          "dur_s": 0.35,
+          "freq_hz": 288.2,
+          "max_snr": 35.1
+        },
+        {
+          "start_s": 48.45,
+          "end_s": 48.7,
+          "dur_s": 0.26,
+          "freq_hz": 472.7,
+          "max_snr": 38.9
+        },
+        {
+          "start_s": 58.98,
+          "end_s": 59.46,
+          "dur_s": 0.48,
+          "freq_hz": 524.9,
+          "max_snr": 33.8
+        },
+        {
+          "start_s": 63.9,
+          "end_s": 64.16,
+          "dur_s": 0.26,
+          "freq_hz": 421.9,
+          "max_snr": 39.5
+        },
+        {
+          "start_s": 66.53,
+          "end_s": 67.26,
+          "dur_s": 0.74,
+          "freq_hz": 578.1,
+          "max_snr": 65.7
+        },
+        {
+          "start_s": 67.78,
+          "end_s": 68.06,
+          "dur_s": 0.29,
+          "freq_hz": 607.1,
+          "max_snr": 29.1
+        },
+        {
+          "start_s": 86.08,
+          "end_s": 86.34,
+          "dur_s": 0.26,
+          "freq_hz": 699.2,
+          "max_snr": 62.1
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_007": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 38.271,
+      "rms": 0.1125,
+      "horn_bursts": [
+        {
+          "start_s": 2.75,
+          "end_s": 3.17,
+          "dur_s": 0.42,
+          "freq_hz": 414.1,
+          "max_snr": 39.6
+        },
+        {
+          "start_s": 4.26,
+          "end_s": 4.7,
+          "dur_s": 0.45,
+          "freq_hz": 414.1,
+          "max_snr": 36.8
+        },
+        {
+          "start_s": 8.67,
+          "end_s": 9.06,
+          "dur_s": 0.38,
+          "freq_hz": 414.1,
+          "max_snr": 27.7
+        },
+        {
+          "start_s": 16.06,
+          "end_s": 16.67,
+          "dur_s": 0.61,
+          "freq_hz": 414.1,
+          "max_snr": 33.9
+        },
+        {
+          "start_s": 24.1,
+          "end_s": 24.42,
+          "dur_s": 0.32,
+          "freq_hz": 457.0,
+          "max_snr": 38.3
+        },
+        {
+          "start_s": 27.58,
+          "end_s": 27.94,
+          "dur_s": 0.35,
+          "freq_hz": 550.8,
+          "max_snr": 55.7
+        },
+        {
+          "start_s": 32.32,
+          "end_s": 33.76,
+          "dur_s": 1.44,
+          "freq_hz": 623.5,
+          "max_snr": 60.3
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 34.559,
+      "rms": 0.1435,
+      "horn_bursts": [
+        {
+          "start_s": 6.02,
+          "end_s": 6.3,
+          "dur_s": 0.29,
+          "freq_hz": 614.1,
+          "max_snr": 28.3
+        },
+        {
+          "start_s": 17.25,
+          "end_s": 17.73,
+          "dur_s": 0.48,
+          "freq_hz": 587.7,
+          "max_snr": 46.6
+        },
+        {
+          "start_s": 23.46,
+          "end_s": 24.77,
+          "dur_s": 1.31,
+          "freq_hz": 576.9,
+          "max_snr": 43.9
+        },
+        {
+          "start_s": 31.58,
+          "end_s": 31.84,
+          "dur_s": 0.26,
+          "freq_hz": 298.4,
+          "max_snr": 27.4
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_008": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 58.879,
+      "rms": 0.1421,
+      "horn_bursts": [],
+      "horn_present": false
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 62.719,
+      "rms": 0.1378,
+      "horn_bursts": [],
+      "horn_present": false
+    }
+  },
+  "train_events/event_009": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 42.9,
+      "rms": 0.142,
+      "horn_bursts": [],
+      "horn_present": false
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 37.609,
+      "rms": 0.129,
+      "horn_bursts": [
+        {
+          "start_s": 32.29,
+          "end_s": 32.54,
+          "dur_s": 0.26,
+          "freq_hz": 436.6,
+          "max_snr": 26.5
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_010": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 24.02,
+      "rms": 0.1719,
+      "horn_bursts": [
+        {
+          "start_s": 4.29,
+          "end_s": 4.58,
+          "dur_s": 0.29,
+          "freq_hz": 311.4,
+          "max_snr": 29.7
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 23.525,
+      "rms": 0.1485,
+      "horn_bursts": [],
+      "horn_present": false
+    }
+  },
+  "train_events/event_011": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 37.695,
+      "rms": 0.1422,
+      "horn_bursts": [],
+      "horn_present": false
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 37.375,
+      "rms": 0.1242,
+      "horn_bursts": [],
+      "horn_present": false
+    }
+  },
+  "train_events/event_012": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 75.199,
+      "rms": 0.1302,
+      "horn_bursts": [
+        {
+          "start_s": 0.74,
+          "end_s": 0.99,
+          "dur_s": 0.26,
+          "freq_hz": 399.7,
+          "max_snr": 28.4
+        },
+        {
+          "start_s": 13.02,
+          "end_s": 13.76,
+          "dur_s": 0.74,
+          "freq_hz": 424.3,
+          "max_snr": 30.8
+        },
+        {
+          "start_s": 15.36,
+          "end_s": 15.78,
+          "dur_s": 0.42,
+          "freq_hz": 404.1,
+          "max_snr": 38.8
+        },
+        {
+          "start_s": 16.03,
+          "end_s": 17.41,
+          "dur_s": 1.38,
+          "freq_hz": 476.6,
+          "max_snr": 42.0
+        },
+        {
+          "start_s": 18.08,
+          "end_s": 18.91,
+          "dur_s": 0.83,
+          "freq_hz": 388.8,
+          "max_snr": 47.8
+        },
+        {
+          "start_s": 20.19,
+          "end_s": 22.02,
+          "dur_s": 1.82,
+          "freq_hz": 531.6,
+          "max_snr": 43.7
+        },
+        {
+          "start_s": 22.4,
+          "end_s": 23.68,
+          "dur_s": 1.28,
+          "freq_hz": 340.8,
+          "max_snr": 61.7
+        },
+        {
+          "start_s": 23.87,
+          "end_s": 24.42,
+          "dur_s": 0.54,
+          "freq_hz": 531.7,
+          "max_snr": 51.5
+        },
+        {
+          "start_s": 24.61,
+          "end_s": 25.82,
+          "dur_s": 1.22,
+          "freq_hz": 493.8,
+          "max_snr": 46.5
+        },
+        {
+          "start_s": 26.18,
+          "end_s": 26.66,
+          "dur_s": 0.48,
+          "freq_hz": 514.4,
+          "max_snr": 49.5
+        },
+        {
+          "start_s": 33.89,
+          "end_s": 34.27,
+          "dur_s": 0.38,
+          "freq_hz": 596.0,
+          "max_snr": 25.2
+        },
+        {
+          "start_s": 35.81,
+          "end_s": 36.8,
+          "dur_s": 0.99,
+          "freq_hz": 566.4,
+          "max_snr": 50.1
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 70.74,
+      "rms": 0.1203,
+      "horn_bursts": [
+        {
+          "start_s": 12.9,
+          "end_s": 13.15,
+          "dur_s": 0.26,
+          "freq_hz": 349.8,
+          "max_snr": 35.3
+        },
+        {
+          "start_s": 16.93,
+          "end_s": 17.92,
+          "dur_s": 0.99,
+          "freq_hz": 339.7,
+          "max_snr": 52.0
+        },
+        {
+          "start_s": 19.1,
+          "end_s": 19.36,
+          "dur_s": 0.26,
+          "freq_hz": 523.4,
+          "max_snr": 27.3
+        },
+        {
+          "start_s": 20.03,
+          "end_s": 20.35,
+          "dur_s": 0.32,
+          "freq_hz": 609.4,
+          "max_snr": 25.4
+        },
+        {
+          "start_s": 20.54,
+          "end_s": 20.9,
+          "dur_s": 0.35,
+          "freq_hz": 522.6,
+          "max_snr": 29.3
+        },
+        {
+          "start_s": 30.53,
+          "end_s": 31.01,
+          "dur_s": 0.48,
+          "freq_hz": 446.9,
+          "max_snr": 35.1
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_013": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 73.705,
+      "rms": 0.1565,
+      "horn_bursts": [
+        {
+          "start_s": 2.08,
+          "end_s": 2.43,
+          "dur_s": 0.35,
+          "freq_hz": 426.3,
+          "max_snr": 29.2
+        },
+        {
+          "start_s": 3.97,
+          "end_s": 4.29,
+          "dur_s": 0.32,
+          "freq_hz": 517.0,
+          "max_snr": 36.6
+        },
+        {
+          "start_s": 6.18,
+          "end_s": 6.5,
+          "dur_s": 0.32,
+          "freq_hz": 321.1,
+          "max_snr": 31.1
+        },
+        {
+          "start_s": 6.75,
+          "end_s": 7.33,
+          "dur_s": 0.58,
+          "freq_hz": 335.3,
+          "max_snr": 30.0
+        },
+        {
+          "start_s": 7.49,
+          "end_s": 8.13,
+          "dur_s": 0.64,
+          "freq_hz": 321.0,
+          "max_snr": 36.0
+        },
+        {
+          "start_s": 11.55,
+          "end_s": 11.9,
+          "dur_s": 0.35,
+          "freq_hz": 289.1,
+          "max_snr": 25.2
+        },
+        {
+          "start_s": 38.11,
+          "end_s": 38.43,
+          "dur_s": 0.32,
+          "freq_hz": 311.4,
+          "max_snr": 29.6
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 73.257,
+      "rms": 0.1256,
+      "horn_bursts": [
+        {
+          "start_s": 1.82,
+          "end_s": 3.1,
+          "dur_s": 1.28,
+          "freq_hz": 366.0,
+          "max_snr": 32.9
+        },
+        {
+          "start_s": 3.39,
+          "end_s": 4.8,
+          "dur_s": 1.41,
+          "freq_hz": 342.9,
+          "max_snr": 46.6
+        },
+        {
+          "start_s": 6.4,
+          "end_s": 6.72,
+          "dur_s": 0.32,
+          "freq_hz": 289.1,
+          "max_snr": 40.4
+        },
+        {
+          "start_s": 9.82,
+          "end_s": 10.27,
+          "dur_s": 0.45,
+          "freq_hz": 652.3,
+          "max_snr": 46.1
+        },
+        {
+          "start_s": 10.56,
+          "end_s": 10.91,
+          "dur_s": 0.35,
+          "freq_hz": 591.4,
+          "max_snr": 38.4
+        },
+        {
+          "start_s": 20.86,
+          "end_s": 21.63,
+          "dur_s": 0.77,
+          "freq_hz": 621.3,
+          "max_snr": 45.3
+        },
+        {
+          "start_s": 21.79,
+          "end_s": 22.21,
+          "dur_s": 0.42,
+          "freq_hz": 612.5,
+          "max_snr": 36.2
+        },
+        {
+          "start_s": 25.82,
+          "end_s": 27.17,
+          "dur_s": 1.34,
+          "freq_hz": 574.9,
+          "max_snr": 53.9
+        },
+        {
+          "start_s": 27.39,
+          "end_s": 27.65,
+          "dur_s": 0.26,
+          "freq_hz": 640.6,
+          "max_snr": 41.8
+        },
+        {
+          "start_s": 39.2,
+          "end_s": 39.65,
+          "dur_s": 0.45,
+          "freq_hz": 297.7,
+          "max_snr": 37.2
+        },
+        {
+          "start_s": 40.83,
+          "end_s": 41.25,
+          "dur_s": 0.42,
+          "freq_hz": 289.1,
+          "max_snr": 46.0
+        },
+        {
+          "start_s": 49.06,
+          "end_s": 49.31,
+          "dur_s": 0.26,
+          "freq_hz": 294.6,
+          "max_snr": 33.5
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_014": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 55.039,
+      "rms": 0.1634,
+      "horn_bursts": [
+        {
+          "start_s": 24.74,
+          "end_s": 25.12,
+          "dur_s": 0.38,
+          "freq_hz": 298.2,
+          "max_snr": 28.7
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 53.524,
+      "rms": 0.1287,
+      "horn_bursts": [
+        {
+          "start_s": 42.21,
+          "end_s": 42.78,
+          "dur_s": 0.58,
+          "freq_hz": 498.6,
+          "max_snr": 43.2
+        },
+        {
+          "start_s": 43.04,
+          "end_s": 43.33,
+          "dur_s": 0.29,
+          "freq_hz": 314.2,
+          "max_snr": 35.4
+        },
+        {
+          "start_s": 44.83,
+          "end_s": 45.44,
+          "dur_s": 0.61,
+          "freq_hz": 630.2,
+          "max_snr": 46.0
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_015": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 31.167,
+      "rms": 0.1374,
+      "horn_bursts": [
+        {
+          "start_s": 10.05,
+          "end_s": 10.4,
+          "dur_s": 0.35,
+          "freq_hz": 479.2,
+          "max_snr": 38.8
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 22.249,
+      "rms": 0.1494,
+      "horn_bursts": [
+        {
+          "start_s": 21.47,
+          "end_s": 22.05,
+          "dur_s": 0.58,
+          "freq_hz": 438.0,
+          "max_snr": 58.0
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_016": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 46.868,
+      "rms": 0.1602,
+      "horn_bursts": [
+        {
+          "start_s": 32.29,
+          "end_s": 32.58,
+          "dur_s": 0.29,
+          "freq_hz": 630.9,
+          "max_snr": 29.4
+        },
+        {
+          "start_s": 33.09,
+          "end_s": 33.47,
+          "dur_s": 0.38,
+          "freq_hz": 506.6,
+          "max_snr": 35.5
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 45.289,
+      "rms": 0.1317,
+      "horn_bursts": [
+        {
+          "start_s": 27.1,
+          "end_s": 28.9,
+          "dur_s": 1.79,
+          "freq_hz": 593.4,
+          "max_snr": 76.6
+        },
+        {
+          "start_s": 29.12,
+          "end_s": 29.5,
+          "dur_s": 0.38,
+          "freq_hz": 312.5,
+          "max_snr": 47.4
+        },
+        {
+          "start_s": 29.86,
+          "end_s": 30.5,
+          "dur_s": 0.64,
+          "freq_hz": 461.7,
+          "max_snr": 43.2
+        },
+        {
+          "start_s": 44.61,
+          "end_s": 45.12,
+          "dur_s": 0.51,
+          "freq_hz": 631.9,
+          "max_snr": 58.1
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_017": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 81.663,
+      "rms": 0.1136,
+      "horn_bursts": [
+        {
+          "start_s": 42.27,
+          "end_s": 42.62,
+          "dur_s": 0.35,
+          "freq_hz": 653.9,
+          "max_snr": 40.6
+        },
+        {
+          "start_s": 43.04,
+          "end_s": 43.39,
+          "dur_s": 0.35,
+          "freq_hz": 593.8,
+          "max_snr": 30.1
+        },
+        {
+          "start_s": 64.83,
+          "end_s": 65.82,
+          "dur_s": 0.99,
+          "freq_hz": 564.5,
+          "max_snr": 64.7
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 83.775,
+      "rms": 0.1094,
+      "horn_bursts": [
+        {
+          "start_s": 16.22,
+          "end_s": 16.54,
+          "dur_s": 0.32,
+          "freq_hz": 562.5,
+          "max_snr": 39.1
+        },
+        {
+          "start_s": 60.26,
+          "end_s": 60.74,
+          "dur_s": 0.48,
+          "freq_hz": 468.8,
+          "max_snr": 37.8
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_018": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 58.943,
+      "rms": 0.1688,
+      "horn_bursts": [
+        {
+          "start_s": 5.38,
+          "end_s": 6.37,
+          "dur_s": 0.99,
+          "freq_hz": 580.8,
+          "max_snr": 70.6
+        },
+        {
+          "start_s": 8.74,
+          "end_s": 9.34,
+          "dur_s": 0.61,
+          "freq_hz": 492.2,
+          "max_snr": 27.1
+        },
+        {
+          "start_s": 14.66,
+          "end_s": 15.36,
+          "dur_s": 0.7,
+          "freq_hz": 613.1,
+          "max_snr": 43.7
+        },
+        {
+          "start_s": 42.59,
+          "end_s": 42.94,
+          "dur_s": 0.35,
+          "freq_hz": 401.0,
+          "max_snr": 30.1
+        },
+        {
+          "start_s": 51.42,
+          "end_s": 52.51,
+          "dur_s": 1.09,
+          "freq_hz": 347.5,
+          "max_snr": 170.3
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 52.649,
+      "rms": 0.1607,
+      "horn_bursts": [
+        {
+          "start_s": 6.82,
+          "end_s": 7.68,
+          "dur_s": 0.86,
+          "freq_hz": 515.0,
+          "max_snr": 51.4
+        },
+        {
+          "start_s": 43.55,
+          "end_s": 44.64,
+          "dur_s": 1.09,
+          "freq_hz": 364.7,
+          "max_snr": 143.6
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_019": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 60.329,
+      "rms": 0.1538,
+      "horn_bursts": [
+        {
+          "start_s": 5.5,
+          "end_s": 5.76,
+          "dur_s": 0.26,
+          "freq_hz": 398.4,
+          "max_snr": 24.8
+        },
+        {
+          "start_s": 8.51,
+          "end_s": 8.99,
+          "dur_s": 0.48,
+          "freq_hz": 336.7,
+          "max_snr": 35.6
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 51.135,
+      "rms": 0.1147,
+      "horn_bursts": [
+        {
+          "start_s": 13.47,
+          "end_s": 13.82,
+          "dur_s": 0.35,
+          "freq_hz": 302.7,
+          "max_snr": 32.8
+        },
+        {
+          "start_s": 14.27,
+          "end_s": 14.66,
+          "dur_s": 0.38,
+          "freq_hz": 284.5,
+          "max_snr": 35.9
+        },
+        {
+          "start_s": 15.26,
+          "end_s": 15.52,
+          "dur_s": 0.26,
+          "freq_hz": 293.8,
+          "max_snr": 35.9
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_020": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 28.564,
+      "rms": 0.1488,
+      "horn_bursts": [
+        {
+          "start_s": 0.38,
+          "end_s": 0.8,
+          "dur_s": 0.42,
+          "freq_hz": 315.8,
+          "max_snr": 52.6
+        },
+        {
+          "start_s": 1.28,
+          "end_s": 1.79,
+          "dur_s": 0.51,
+          "freq_hz": 337.2,
+          "max_snr": 39.6
+        },
+        {
+          "start_s": 2.46,
+          "end_s": 3.07,
+          "dur_s": 0.61,
+          "freq_hz": 305.7,
+          "max_snr": 64.3
+        },
+        {
+          "start_s": 3.26,
+          "end_s": 3.62,
+          "dur_s": 0.35,
+          "freq_hz": 304.7,
+          "max_snr": 33.7
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 29.887,
+      "rms": 0.1218,
+      "horn_bursts": [
+        {
+          "start_s": 1.63,
+          "end_s": 2.14,
+          "dur_s": 0.51,
+          "freq_hz": 312.0,
+          "max_snr": 55.9
+        },
+        {
+          "start_s": 2.34,
+          "end_s": 2.82,
+          "dur_s": 0.48,
+          "freq_hz": 308.6,
+          "max_snr": 34.8
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_021": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 53.417,
+      "rms": 0.1281,
+      "horn_bursts": [
+        {
+          "start_s": 35.04,
+          "end_s": 35.33,
+          "dur_s": 0.29,
+          "freq_hz": 500.0,
+          "max_snr": 24.7
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 61.375,
+      "rms": 0.1356,
+      "horn_bursts": [
+        {
+          "start_s": 37.6,
+          "end_s": 38.24,
+          "dur_s": 0.64,
+          "freq_hz": 606.6,
+          "max_snr": 62.2
+        },
+        {
+          "start_s": 49.5,
+          "end_s": 50.75,
+          "dur_s": 1.25,
+          "freq_hz": 617.6,
+          "max_snr": 87.3
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_022": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 43.647,
+      "rms": 0.1211,
+      "horn_bursts": [
+        {
+          "start_s": 9.7,
+          "end_s": 10.02,
+          "dur_s": 0.32,
+          "freq_hz": 337.9,
+          "max_snr": 30.5
+        },
+        {
+          "start_s": 10.91,
+          "end_s": 11.33,
+          "dur_s": 0.42,
+          "freq_hz": 335.9,
+          "max_snr": 36.4
+        },
+        {
+          "start_s": 11.97,
+          "end_s": 12.29,
+          "dur_s": 0.32,
+          "freq_hz": 332.0,
+          "max_snr": 30.5
+        },
+        {
+          "start_s": 22.56,
+          "end_s": 22.91,
+          "dur_s": 0.35,
+          "freq_hz": 300.8,
+          "max_snr": 23.9
+        },
+        {
+          "start_s": 23.23,
+          "end_s": 23.55,
+          "dur_s": 0.32,
+          "freq_hz": 286.5,
+          "max_snr": 30.1
+        },
+        {
+          "start_s": 26.5,
+          "end_s": 26.75,
+          "dur_s": 0.26,
+          "freq_hz": 390.6,
+          "max_snr": 24.9
+        },
+        {
+          "start_s": 28.16,
+          "end_s": 28.74,
+          "dur_s": 0.58,
+          "freq_hz": 417.7,
+          "max_snr": 35.0
+        },
+        {
+          "start_s": 29.15,
+          "end_s": 29.44,
+          "dur_s": 0.29,
+          "freq_hz": 329.7,
+          "max_snr": 21.9
+        },
+        {
+          "start_s": 34.43,
+          "end_s": 35.2,
+          "dur_s": 0.77,
+          "freq_hz": 337.2,
+          "max_snr": 48.1
+        },
+        {
+          "start_s": 35.65,
+          "end_s": 36.61,
+          "dur_s": 0.96,
+          "freq_hz": 332.0,
+          "max_snr": 49.1
+        },
+        {
+          "start_s": 37.12,
+          "end_s": 37.63,
+          "dur_s": 0.51,
+          "freq_hz": 317.3,
+          "max_snr": 37.8
+        },
+        {
+          "start_s": 38.53,
+          "end_s": 38.88,
+          "dur_s": 0.35,
+          "freq_hz": 289.1,
+          "max_snr": 34.3
+        },
+        {
+          "start_s": 40.19,
+          "end_s": 40.96,
+          "dur_s": 0.77,
+          "freq_hz": 436.7,
+          "max_snr": 48.8
+        },
+        {
+          "start_s": 41.18,
+          "end_s": 41.57,
+          "dur_s": 0.38,
+          "freq_hz": 342.5,
+          "max_snr": 51.0
+        },
+        {
+          "start_s": 42.94,
+          "end_s": 43.42,
+          "dur_s": 0.48,
+          "freq_hz": 484.9,
+          "max_snr": 49.1
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 46.356,
+      "rms": 0.1423,
+      "horn_bursts": [
+        {
+          "start_s": 30.78,
+          "end_s": 31.26,
+          "dur_s": 0.48,
+          "freq_hz": 593.8,
+          "max_snr": 58.3
+        },
+        {
+          "start_s": 31.42,
+          "end_s": 32.26,
+          "dur_s": 0.83,
+          "freq_hz": 527.5,
+          "max_snr": 60.9
+        },
+        {
+          "start_s": 33.34,
+          "end_s": 33.6,
+          "dur_s": 0.26,
+          "freq_hz": 463.2,
+          "max_snr": 60.5
+        },
+        {
+          "start_s": 34.69,
+          "end_s": 34.94,
+          "dur_s": 0.26,
+          "freq_hz": 334.8,
+          "max_snr": 33.3
+        },
+        {
+          "start_s": 35.52,
+          "end_s": 36.42,
+          "dur_s": 0.9,
+          "freq_hz": 549.9,
+          "max_snr": 47.5
+        },
+        {
+          "start_s": 37.38,
+          "end_s": 37.82,
+          "dur_s": 0.45,
+          "freq_hz": 554.0,
+          "max_snr": 39.0
+        },
+        {
+          "start_s": 38.75,
+          "end_s": 39.07,
+          "dur_s": 0.32,
+          "freq_hz": 391.6,
+          "max_snr": 38.9
+        },
+        {
+          "start_s": 39.55,
+          "end_s": 39.84,
+          "dur_s": 0.29,
+          "freq_hz": 435.3,
+          "max_snr": 38.3
+        },
+        {
+          "start_s": 40.22,
+          "end_s": 40.7,
+          "dur_s": 0.48,
+          "freq_hz": 341.6,
+          "max_snr": 35.9
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "train_events/event_023": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 44.841,
+      "rms": 0.1169,
+      "horn_bursts": [
+        {
+          "start_s": 2.59,
+          "end_s": 3.9,
+          "dur_s": 1.31,
+          "freq_hz": 496.4,
+          "max_snr": 62.5
+        },
+        {
+          "start_s": 27.94,
+          "end_s": 28.22,
+          "dur_s": 0.29,
+          "freq_hz": 356.8,
+          "max_snr": 26.1
+        },
+        {
+          "start_s": 40.86,
+          "end_s": 41.25,
+          "dur_s": 0.38,
+          "freq_hz": 339.8,
+          "max_snr": 32.8
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 45.78,
+      "rms": 0.1212,
+      "horn_bursts": [
+        {
+          "start_s": 2.3,
+          "end_s": 2.94,
+          "dur_s": 0.64,
+          "freq_hz": 553.5,
+          "max_snr": 68.7
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "no_train_events/event_001": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 24.639,
+      "rms": 0.0544,
+      "horn_bursts": [
+        {
+          "start_s": 22.46,
+          "end_s": 22.78,
+          "dur_s": 0.32,
+          "freq_hz": 662.1,
+          "max_snr": 30.9
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 24.425,
+      "rms": 0.0545,
+      "horn_bursts": [
+        {
+          "start_s": 11.74,
+          "end_s": 12.03,
+          "dur_s": 0.29,
+          "freq_hz": 535.6,
+          "max_snr": 46.4
+        }
+      ],
+      "horn_present": true
+    }
+  },
+  "no_train_events/event_002": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 11.881,
+      "rms": 0.0871,
+      "horn_bursts": [
+        {
+          "start_s": 2.05,
+          "end_s": 2.34,
+          "dur_s": 0.29,
+          "freq_hz": 367.2,
+          "max_snr": 41.7
+        },
+        {
+          "start_s": 2.66,
+          "end_s": 2.91,
+          "dur_s": 0.26,
+          "freq_hz": 366.3,
+          "max_snr": 45.7
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 13.332,
+      "rms": 0.0691,
+      "horn_bursts": [],
+      "horn_present": false
+    }
+  },
+  "no_train_events/event_003": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 23.807,
+      "rms": 0.0881,
+      "horn_bursts": [
+        {
+          "start_s": 4.22,
+          "end_s": 4.48,
+          "dur_s": 0.26,
+          "freq_hz": 669.3,
+          "max_snr": 30.3
+        },
+        {
+          "start_s": 7.81,
+          "end_s": 8.06,
+          "dur_s": 0.26,
+          "freq_hz": 713.2,
+          "max_snr": 40.3
+        },
+        {
+          "start_s": 12.61,
+          "end_s": 12.96,
+          "dur_s": 0.35,
+          "freq_hz": 389.1,
+          "max_snr": 41.1
+        }
+      ],
+      "horn_present": true
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 22.74,
+      "rms": 0.0896,
+      "horn_bursts": [],
+      "horn_present": false
+    }
+  },
+  "engine_events/event_001": {
+    "front": {
+      "has_audio": true,
+      "duration_s": 7.892,
+      "rms": 0.1515,
+      "horn_bursts": [],
+      "horn_present": false
+    },
+    "back": {
+      "has_audio": true,
+      "duration_s": 9.812,
+      "rms": 0.1456,
+      "horn_bursts": [],
+      "horn_present": false
+    }
+  }
+}

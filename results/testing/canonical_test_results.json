@@ -1,0 +1,400 @@
+{
+  "execution_timestamp_utc": "2026-10-25T15:14:55.978092+00:00",
+  "total_tests": 49,
+  "passed": 49,
+  "failed": 0,
+  "results": [
+    {
+      "layer": "Layer F",
+      "name": "vision_checkpoint_sha256",
+      "passed": true,
+      "duration_ms": 13.39,
+      "detail": "SHA256: 3f5bb5b23f82f5d9... Match: True",
+      "error": ""
+    },
+    {
+      "layer": "Layer F",
+      "name": "vision_checkpoint_size",
+      "passed": true,
+      "duration_ms": 13.39,
+      "detail": "Size: 24493159 bytes Match: True",
+      "error": ""
+    },
+    {
+      "layer": "Layer F",
+      "name": "audio_v3_checkpoint_sha256",
+      "passed": true,
+      "duration_ms": 0.28,
+      "detail": "SHA256: ea1bb81d74230af7... Match: True",
+      "error": ""
+    },
+    {
+      "layer": "Layer F",
+      "name": "audio_v3_checkpoint_size",
+      "passed": true,
+      "duration_ms": 0.28,
+      "detail": "Size: 329497 bytes Match: True",
+      "error": ""
+    },
+    {
+      "layer": "Layer F",
+      "name": "audio_v3_operating_threshold",
+      "passed": true,
+      "duration_ms": 0.28,
+      "detail": "Threshold verified at 0.37",
+      "error": ""
+    },
+    {
+      "layer": "Layer F",
+      "name": "prohibited_audio_v2_hard_blocked",
+      "passed": true,
+      "duration_ms": 0.24,
+      "detail": "Prohibited Audio V2 detected (59b0785f73b201df...) and HARD-BLOCKED from active execution",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_engine_only_coincidence_rule",
+      "passed": true,
+      "duration_ms": 0.11,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_full_train_event_proposal_schema",
+      "passed": true,
+      "duration_ms": 0.63,
+      "detail": "Fixture tmp_path",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_full_train_rejects_t4_less_than_t3",
+      "passed": true,
+      "duration_ms": 0.07,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_horn_states_validation",
+      "passed": true,
+      "duration_ms": 0.11,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_immutable_proposal_storage",
+      "passed": true,
+      "duration_ms": 1.56,
+      "detail": "Fixture tmp_path",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_mandatory_approval_firewall",
+      "passed": true,
+      "duration_ms": 0.24,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_no_train_event_rules",
+      "passed": true,
+      "duration_ms": 0.08,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_prompt_template_sha256_dynamic_computation",
+      "passed": true,
+      "duration_ms": 0.07,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_review_reporter_generation",
+      "passed": true,
+      "duration_ms": 0.29,
+      "detail": "Fixture tmp_path",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_sha256_validation_passes_valid_hex",
+      "passed": true,
+      "duration_ms": 0.01,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A",
+      "name": "test_sha256_validation_rejects_invalid",
+      "passed": true,
+      "duration_ms": 0.14,
+      "detail": "Parametrized (6 cases)",
+      "error": ""
+    },
+    {
+      "layer": "Layer A (Regression)",
+      "name": "test_regression_canonical_exit_boundary_congruence",
+      "passed": true,
+      "duration_ms": 0.01,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A (Regression)",
+      "name": "test_regression_detects_hardcoded_fallback_patterns",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A (Regression)",
+      "name": "test_regression_prevents_unsynchronized_camera_exposure_pooling",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer A (Regression)",
+      "name": "test_regression_snr_linear_to_decibel_conversion",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer B",
+      "name": "active_cohort_size_is_27",
+      "passed": true,
+      "duration_ms": 0.17,
+      "detail": "Total active events: 27 (23 train, 3 no-train, 1 engine)",
+      "error": ""
+    },
+    {
+      "layer": "Layer B",
+      "name": "historical_duplicate_strictly_excluded",
+      "passed": true,
+      "duration_ms": 0.46,
+      "detail": "event_historical_duplicate_010 strictly excluded from active cohort",
+      "error": ""
+    },
+    {
+      "layer": "Layer B",
+      "name": "raw_media_files_existence",
+      "passed": true,
+      "duration_ms": 2.23,
+      "detail": "All 54 stream media files exist on disk (Missing: 0)",
+      "error": ""
+    },
+    {
+      "layer": "Layer B",
+      "name": "timestamp_frame_index_native_fps_math",
+      "passed": true,
+      "duration_ms": 1.4,
+      "detail": "Timestamp math verified across all observable markers (Errors: 0)",
+      "error": ""
+    },
+    {
+      "layer": "Layer B",
+      "name": "all_candidates_schema_v7",
+      "passed": true,
+      "duration_ms": 1.27,
+      "detail": "All 27 active proposals adhere to schema 7.0.0",
+      "error": ""
+    },
+    {
+      "layer": "Layer B",
+      "name": "all_candidates_marked_immutable",
+      "passed": true,
+      "duration_ms": 1.27,
+      "detail": "All 27 proposals declare raw_proposal_immutable: true",
+      "error": ""
+    },
+    {
+      "layer": "Layer B",
+      "name": "approval_firewall_strictly_enforced",
+      "passed": true,
+      "duration_ms": 1.27,
+      "detail": "Zero approved ground truth files exist; no approved manifest generated",
+      "error": ""
+    },
+    {
+      "layer": "Layer B",
+      "name": "master_review_index_synchrony",
+      "passed": true,
+      "duration_ms": 0.18,
+      "detail": "All active proposal filenames matched in ANNOTATION_BATCH_REVIEW_INDEX.md",
+      "error": ""
+    },
+    {
+      "layer": "Layer C",
+      "name": "video_stream_decoding_pipeline",
+      "passed": true,
+      "duration_ms": 1000.19,
+      "detail": "Verified frame decoding across 3 raw video containers",
+      "error": ""
+    },
+    {
+      "layer": "Layer C",
+      "name": "audio_stream_demuxing_pipeline",
+      "passed": true,
+      "duration_ms": 262.89,
+      "detail": "Verified embedded AAC audio extraction across 3 containers",
+      "error": ""
+    },
+    {
+      "layer": "Layer C",
+      "name": "crossing_fsm_lifecycle_integration",
+      "passed": true,
+      "duration_ms": 0.92,
+      "detail": "Full 10-step crossing lifecycle transitions executed successfully",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_01_train_present_frame_zero",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_02_crossing_occupied_at_recording_start",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_03_video_truncated_before_tail_clearance",
+      "passed": true,
+      "duration_ms": 0.08,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_04_locomotive_only_traversal",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_05_road_traffic_horns_in_no_train_recording",
+      "passed": true,
+      "duration_ms": 0.01,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_06_engine_rumble_without_horn",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_07_missing_or_corrupted_media",
+      "passed": true,
+      "duration_ms": 0.02,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_08_asymmetric_camera_start_offsets",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_09_repeated_timestamps_bad_fallback_formula",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_10_out_of_order_event_markers",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_11_optical_detection_dropout_hangover_timer",
+      "passed": true,
+      "duration_ms": 0.01,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer D",
+      "name": "test_scenario_12_degraded_scene_conditions",
+      "passed": true,
+      "duration_ms": 0.0,
+      "detail": "",
+      "error": ""
+    },
+    {
+      "layer": "Layer E",
+      "name": "replay_train_event_001_media_stream",
+      "passed": true,
+      "duration_ms": 30.86,
+      "detail": "Duration: 49.835s (Container healthy; no GT ingested)",
+      "error": ""
+    },
+    {
+      "layer": "Layer E",
+      "name": "replay_train_event_005_media_stream",
+      "passed": true,
+      "duration_ms": 29.63,
+      "detail": "Duration: 78.107s (Container healthy; no GT ingested)",
+      "error": ""
+    },
+    {
+      "layer": "Layer E",
+      "name": "replay_no_train_event_001_media_stream",
+      "passed": true,
+      "duration_ms": 57.77,
+      "detail": "Duration: 24.635s (Container healthy; no GT ingested)",
+      "error": ""
+    },
+    {
+      "layer": "Layer E",
+      "name": "replay_engine_event_001_media_stream",
+      "passed": true,
+      "duration_ms": 33.91,
+      "detail": "Duration: 7.873s (Container healthy; no GT ingested)",
+      "error": ""
+    },
+    {
+      "layer": "Layer E",
+      "name": "replay_evaluation_firewall_preserved",
+      "passed": true,
+      "duration_ms": 0.1,
+      "detail": "Zero ground-truth performance claims derived; unapproved proposals isolated",
+      "error": ""
+    }
+  ]
+}

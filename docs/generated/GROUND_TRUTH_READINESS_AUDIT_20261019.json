@@ -1,0 +1,555 @@
+{
+  "cohorts": {
+    "engine_events": {
+      "eligible_pending_media_rehash": 0,
+      "missing_requirement": "at least one approved, valid Stage-2.1 record with an allowlisted reviewer",
+      "records": 1,
+      "stage21_records": 0
+    },
+    "no_train_events": {
+      "eligible_pending_media_rehash": 0,
+      "missing_requirement": "at least one approved, valid Stage-2.1 record with an allowlisted reviewer",
+      "records": 3,
+      "stage21_records": 0
+    },
+    "train_events": {
+      "eligible_pending_media_rehash": 0,
+      "missing_requirement": "at least one approved, valid Stage-2.1 record with an allowlisted reviewer",
+      "records": 23,
+      "stage21_records": 0
+    }
+  },
+  "leg_exec_preflight": {
+    "actual_proposal_sha256": "41cbbba3e9d587b9972c3baca1b39f09d478d408d9c60fd538c249c4600113d4",
+    "authorization_basis": "recorded unsigned researcher statement bound to the pinned hash, the 27 sources and the 28 outputs (record d4002a0a1367\u2026)",
+    "directory_notice_status": "WOULD_SKIP_ALREADY_DONE_MATCHING",
+    "execution_authorized": true,
+    "expected_output_targets": 28,
+    "expected_source_records": 27,
+    "inputs_verified": true,
+    "operation": "LEG-EXEC",
+    "pinned_proposal_sha256": "41cbbba3e9d587b9972c3baca1b39f09d478d408d9c60fd538c249c4600113d4",
+    "planned_output_targets": 28,
+    "planned_source_records": 27,
+    "planned_statuses": {
+      "WOULD_SKIP_ALREADY_DONE_MATCHING": 27
+    },
+    "proposal_hash_matches_pin": true,
+    "writes_performed": 0
+  },
+  "legacy": {
+    "duplicate_review_timestamps": {
+      "2026-10-12T16:51:21Z": 27
+    },
+    "summary": {
+      "blocklisted_reviewer_count": 27,
+      "distinct_review_timestamps": 1,
+      "migratable_count": 0,
+      "proposal_hash_stale_count": 27,
+      "record_count": 27,
+      "reviewer_ids": {
+        "human_researcher_lead": 27
+      },
+      "schema_versions": {
+        "6.0.0": 27
+      },
+      "stage21_record_count": 0
+    },
+    "superseded_proposal_references": 27
+  },
+  "notes": [
+    "Eligibility is metadata-only: live media re-hashing (Decision 4) is performed only by the readiness CLI, never here.",
+    "No record is promoted, invalidated, approved or migrated by this audit."
+  ],
+  "promotion_receipt": {
+    "code": "STAGE21_PROMOTION_RECEIPT_MISSING",
+    "detail": "/Users/sayemuddin/Desktop/Train_automation/data/governance/stage21_promotion_receipt.json",
+    "status": "absent_or_invalid"
+  },
+  "read_only": true,
+  "records": [
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "engine_events",
+      "event_id": "event_001",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "engine_events/event_001_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "3493e125e86c7642d47dca13ddfe3a91fad926b6e6d0fd9e9662968d1bca3edd",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "no_train_events",
+      "event_id": "event_001",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "no_train_events/event_001_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "7387acbf17e6ca2eda6b814e3d9f30683aecffe863b14637cc4ff4bf51015243",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "no_train_events",
+      "event_id": "event_002",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "no_train_events/event_002_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "619efd3ec467f0f23f0b70ef885fd7771fb84dcd052b1175c4c9fca4745ace95",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "no_train_events",
+      "event_id": "event_003",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "no_train_events/event_003_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "8f163c525e32ddf4623718093b2909bcaf1b20b320d8a75985fd7310ee19ce2b",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_001",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_001_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "a0edd4a670e1706391309392661559e93a310d5c9f39d17cf094173cfb5e1cc6",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_002",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_002_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "437e0d2dec08179aa5194633bcca56bb2cb37c464048566fbe09b2745dcaa239",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_003",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_003_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "308d22669e2bee899c3d621c66388e4753e0c0ba5d656a56d497ddf23944ab5b",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_004",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_004_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "d47aabda3fa81f7c530e1603a89f8c5fb26ffe8103edd33ead00bfe7bd237f4d",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_005",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_005_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "d79c5a4b4a3d6e0139ce300e6de4a6d34250fdef1495a69c3c60badc3d829af9",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_006",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_006_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "d7f1d5594d4d1d6d8675e9f97140139d8a400d7081d315832a5b15c6195a6b5e",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_007",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_007_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "ba40869a4abc7d9db8295782a15c5bd2c380f8d9c31afa9bfc3e07dfddb8a536",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_008",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_008_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "d97bcc8d68630d9e886e34577c3622b83f5115c682c0d8dc5edfc5521cbf54cf",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_009",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_009_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "06660001cfa9299eb5d299b64089413c96df99284171648e0d0e0f43b0dd860e",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_010",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_010_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "f64bbe72f11b17910f3d3cc98d08a7303b77ef37cdf2a2ca9b97509aae6c85b4",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_011",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_011_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "28fcf1f5c8824a42782d964e012552e46e245bce67fb64c72a421276ef6ebb4c",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_012",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_012_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "b369f6863f00212cbc9a988c5d42035fe540f150793f60b058731abeaf69eeba",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_013",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_013_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "8d5dfc1f03b7bc2dd9bbc42199fda6c2935e60c9c1292de19d5df31bab7cce76",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_014",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_014_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "2717a61b0a6d328ab6977aa9320a2c78990d76f4b6887203e675445844ab7d5a",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_015",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_015_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "9a90a1a6ed1eb77801b1250d2368ee6916508c38c08fb86f951682cf55bd9c8a",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_016",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_016_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "c25a8e4bb4f9667927a2c2e88d76aa40e09612baffd75a8bb8171ff4381db1af",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_017",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_017_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "f2ee23c67348984283e30f18735d57feb1cedbd822056bfec12a5466eee8d859",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_018",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_018_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "a954c637fc7430ba5fcaf1de98c3407f6f8a9f2cd984f7cb5fadaeef3e60efaf",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_019",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_019_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "278b49f9c241b10189274c19a9634e58a5c8dfc4e45530239d2778f662fe29f2",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_020",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_020_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "b98c257804fd2ba0acb21a10de90c9dc4595fc3a898ce1c41a86beedc3ccf9e9",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_021",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_021_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "c6e689b00b5001191660b4b71c8df43d205b84f1b7d23af066298152d85b563f",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_022",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_022_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "30f0ec6c8f2825a6644bebe3ce8ab97a9352cfeabb8a721da30a235403f134c4",
+      "stage21_schema_valid": false
+    },
+    {
+      "adjudication_status": "APPROVED",
+      "cohort": "train_events",
+      "event_id": "event_023",
+      "ineligibility_reasons": [
+        "LEGACY_OR_UNKNOWN_SCHEMA",
+        "REVIEWER_BLOCKLISTED",
+        "REVIEWER_NOT_ON_ALLOWLIST"
+      ],
+      "path": "train_events/event_023_review.json",
+      "promotion_eligible_pending_media_rehash": false,
+      "readable": true,
+      "reviewer_id": "human_researcher_lead",
+      "schema_version": "6.0.0",
+      "sha256": "e19f917c28920161535e9322a984fa35fecd8fba552557a017062b727b3854d6",
+      "stage21_schema_valid": false
+    }
+  ],
+  "reviewer_allowlist": {
+    "entries": [
+      "raihankabirrahu@gmail.com"
+    ],
+    "error": null,
+    "loaded": true,
+    "records_with_blocklisted_reviewer": 27,
+    "records_with_reviewer_not_on_allowlist": 27
+  },
+  "schema_version": "ground-truth-readiness-audit/1",
+  "summary": {
+    "bare_event_ids_shared_across_cohorts": [
+      "event_001",
+      "event_002",
+      "event_003"
+    ],
+    "duplicate_cohort_event_identities": [],
+    "promotion_eligible_pending_media_rehash": 0,
+    "record_count": 27,
+    "schema_versions": {
+      "6.0.0": 27
+    },
+    "stage21_records": 0
+  }
+}

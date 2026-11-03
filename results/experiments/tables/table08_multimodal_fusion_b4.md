@@ -1,0 +1,31 @@
+### Table 8: Event-by-Event Safety Replay Outcomes Under B4 Proposed Policy
+
+| Event ID | Detected | Premature Opening | Gate Closed Duration | Lifecycle Completed | Failure Codes |
+| --- | --- | --- | --- | --- | --- |
+| train_events_event_001 | Yes | Blocked (GT Unapproved) | 46.0s | Yes | None |
+| train_events_event_002 | Yes | Blocked (GT Unapproved) | 28.8s | Yes | None |
+| train_events_event_003 | Yes | Blocked (GT Unapproved) | 29.6s | Yes | None |
+| train_events_event_004 | Yes | Blocked (GT Unapproved) | 74.4s | Yes | None |
+| train_events_event_005 | Yes | Blocked (GT Unapproved) | 75.8s | Yes | None |
+| train_events_event_006 | Yes | Blocked (GT Unapproved) | 122.4s | Yes | None |
+| train_events_event_007 | Yes | Blocked (GT Unapproved) | 34.6s | Yes | None |
+| train_events_event_008 | Yes | Blocked (GT Unapproved) | 59.0s | Yes | None |
+| train_events_event_009 | Yes | Blocked (GT Unapproved) | 39.2s | Yes | None |
+| train_events_event_010 | Yes | Blocked (GT Unapproved) | 20.2s | Yes | None |
+| train_events_event_011 | Yes | Blocked (GT Unapproved) | 34.0s | Yes | None |
+| train_events_event_012 | Yes | Blocked (GT Unapproved) | 71.4s | Yes | None |
+| train_events_event_013 | Yes | Blocked (GT Unapproved) | 70.0s | Yes | None |
+| train_events_event_014 | Yes | Blocked (GT Unapproved) | 51.2s | Yes | None |
+| train_events_event_015 | Yes | Blocked (GT Unapproved) | 27.4s | Yes | None |
+| train_events_event_016 | Yes | Blocked (GT Unapproved) | 43.2s | Yes | None |
+| train_events_event_017 | Yes | Blocked (GT Unapproved) | 80.0s | Yes | None |
+| train_events_event_018 | Yes | Blocked (GT Unapproved) | 55.2s | Yes | None |
+| train_events_event_019 | Yes | Blocked (GT Unapproved) | 56.6s | Yes | None |
+| train_events_event_020 | Yes | Blocked (GT Unapproved) | 26.2s | Yes | None |
+| train_events_event_021 | Yes | Blocked (GT Unapproved) | 57.6s | Yes | None |
+| train_events_event_022 | Yes | Blocked (GT Unapproved) | 42.6s | Yes | None |
+| train_events_event_023 | Yes | Blocked (GT Unapproved) | 42.0s | Yes | None |
+| no_train_events_event_001 | Yes (False Alarm) | N/A (No Train) | 18.8s | N/A (Nuisance) | F18 (Clutter FP) |
+| no_train_events_event_002 | Yes (False Alarm) | N/A (No Train) | 9.6s | N/A (Nuisance) | F18 (Clutter FP) |
+| no_train_events_event_003 | Yes (False Alarm) | N/A (No Train) | 10.6s | N/A (Nuisance) | F18 (Clutter FP) |
+| engine_events_event_001 | Yes | Blocked (GT Unapproved - Censored) | 5.0s | Yes | None |

@@ -1,0 +1,85 @@
+1c1
+< """Synchronization alignment for Layer B event streams.
+---
+> """Inter-sensor temporal alignment and master-clock synchronization."""
+3,7d2
+< Normalizes source timestamps to a master clock using the recorded offset and
+< applies a configurable alignment-uncertainty guard. Events exceeding the
+< uncertainty tolerance are flagged and excluded from primary timing analyses.
+< """
+< 
+10d4
+< from dataclasses import dataclass, field
+14d7
+< @dataclass
+16c9
+<     """Applies per-source offsets to produce master-clock timestamps."""
+---
+>     """Manages master-clock transformation and synchronization uncertainty for multi-sensor streams."""
+18,20c11,14
+<     offsets_s: dict[str, float] = field(default_factory=dict)
+<     uncertainty_s: dict[str, float] = field(default_factory=dict)
+<     tolerance_s: float = 0.5
+---
+>     def __init__(self, tolerance_s: float = 0.5) -> None:
+>         self.tolerance_s = float(tolerance_s)
+>         self.offsets_s: dict[str, float] = {}
+>         self.uncertainties_s: dict[str, float] = {}
+23c17,20
+<         self, source_id: str, offset_s: float, uncertainty_s: float = 0.0
+---
+>         self,
+>         source_id: str,
+>         offset_s: float = 0.0,
+>         uncertainty_s: float = 0.0,
+25,28c22,26
+<         if uncertainty_s < 0:
+<             raise ValueError("uncertainty_s must be non-negative")
+<         self.offsets_s[source_id] = offset_s
+<         self.uncertainty_s[source_id] = uncertainty_s
+---
+>         """Register a source stream with its master clock offset and calibration uncertainty."""
+>         if uncertainty_s < 0.0:
+>             raise ValueError(f"Uncertainty must be non-negative, got {uncertainty_s}")
+>         self.offsets_s[source_id] = float(offset_s)
+>         self.uncertainties_s[source_id] = float(uncertainty_s)
+30,31c28,29
+<     def to_master(self, source_id: str, source_timestamp_s: float) -> float:
+<         """Convert a source timestamp to master clock time."""
+---
+>     def to_master(self, source_id: str, timestamp_s: float) -> float:
+>         """Convert a local sensor timestamp to the aligned master clock time."""
+33,36c31,34
+<             raise ValueError(f"unknown source: {source_id}")
+<         if source_timestamp_s < 0:
+<             raise ValueError("source_timestamp_s must be non-negative")
+<         return source_timestamp_s + self.offsets_s[source_id]
+---
+>             raise ValueError(f"Unknown source stream: {source_id}")
+>         if timestamp_s < 0.0:
+>             raise ValueError(f"Local timestamp must be non-negative, got {timestamp_s}")
+>         return timestamp_s + self.offsets_s[source_id]
+39,40c37,40
+<         """Whether this source's alignment uncertainty is within tolerance."""
+<         return self.uncertainty_s.get(source_id, 0.0) <= self.tolerance_s
+---
+>         """True if the source uncertainty is within the allowed sync tolerance."""
+>         if source_id not in self.uncertainties_s:
+>             return False
+>         return self.uncertainties_s[source_id] <= self.tolerance_s
+42a43
+>         """Summary of all registered sensor streams and alignment states."""
+46,49c47,50
+<                 source_id: {
+<                     "offset_s": self.offsets_s[source_id],
+<                     "uncertainty_s": self.uncertainty_s.get(source_id, 0.0),
+<                     "aligned": self.is_aligned(source_id),
+---
+>                 src: {
+>                     "offset_s": self.offsets_s[src],
+>                     "uncertainty_s": self.uncertainties_s[src],
+>                     "aligned": self.is_aligned(src),
+51c52
+<                 for source_id in self.offsets_s
+---
+>                 for src in self.offsets_s

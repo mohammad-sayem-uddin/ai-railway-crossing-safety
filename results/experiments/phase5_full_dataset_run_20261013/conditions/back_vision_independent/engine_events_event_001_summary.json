@@ -1,0 +1,8 @@
+{
+  "event_id": "engine_events_event_001",
+  "condition": "Back_Independent",
+  "step_count": 49,
+  "total_duration_s": 9.6,
+  "closed_duration_s": 2.4,
+  "fault_occurred": false
+}

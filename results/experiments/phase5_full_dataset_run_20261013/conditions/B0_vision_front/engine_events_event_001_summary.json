@@ -1,0 +1,8 @@
+{
+  "event_id": "engine_events_event_001",
+  "condition": "B0",
+  "step_count": 40,
+  "total_duration_s": 7.8,
+  "closed_duration_s": 3.2,
+  "fault_occurred": false
+}

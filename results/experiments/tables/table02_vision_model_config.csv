@@ -1,0 +1,7 @@
+Parameter,Specification / Value,Methodological Rationale
+Architecture,YOLOv8n (nano),Edge deployment efficiency
+Image Dimensions,640 x 640 pixels,Standard high-resolution feature grid
+Frozen Checkpoint Path,experiments/vision/39f402dfe460/checkpoints/weights/best.pt,Preserved pre-evaluation weights
+Checkpoint SHA-256,3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd,Cryptographic immutability verified
+Operating Threshold,"0.35 (approach), 0.35 (departure)",Frozen development-data calibration
+Inference FPS,5.0 frames/second,Standard temporal sampling stride

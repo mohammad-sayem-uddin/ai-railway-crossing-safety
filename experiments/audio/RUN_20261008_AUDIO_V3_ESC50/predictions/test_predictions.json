@@ -1,0 +1,1853 @@
+{
+  "threshold": 0.37,
+  "test_windows": [
+    {
+      "window_id": "pos_13_w000",
+      "source_file": "13.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.97967,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_13_w001",
+      "source_file": "13.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99458,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_13_w002",
+      "source_file": "13.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.9991,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_13_w003",
+      "source_file": "13.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99464,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w000",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.06567,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w001",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.04707,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w002",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.49764,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w003",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.83391,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w004",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.78852,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w005",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.79565,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w006",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.75519,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w007",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.71094,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w008",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.73862,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w009",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.86729,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1_w010",
+      "source_file": "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.86176,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-4_w000",
+      "source_file": "Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-4.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98851,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_19_w000",
+      "source_file": "19.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.92413,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_19_w001",
+      "source_file": "19.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.9834,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_19_w002",
+      "source_file": "19.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99828,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_19_w003",
+      "source_file": "19.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99422,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_19_w004",
+      "source_file": "19.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98744,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-11_w000",
+      "source_file": "Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-11.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99792,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-11_w001",
+      "source_file": "Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-11.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99926,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-11_w002",
+      "source_file": "Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-11.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99764,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_20_w000",
+      "source_file": "20.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.55001,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_20_w001",
+      "source_file": "20.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98213,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_20_w002",
+      "source_file": "20.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.97729,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_24_w000",
+      "source_file": "24.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.9281,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_24_w001",
+      "source_file": "24.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99466,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_24_w002",
+      "source_file": "24.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99723,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_24_w003",
+      "source_file": "24.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99024,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_24_w004",
+      "source_file": "24.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99567,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_34_w000",
+      "source_file": "34.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.80587,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w000",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99404,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w001",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.993,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w002",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.9927,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w003",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.97394,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w004",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.97286,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w005",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98818,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w006",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.96989,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w007",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98103,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w008",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.97633,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w009",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98932,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_37_w010",
+      "source_file": "37.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.97815,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_41_w000",
+      "source_file": "41.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99629,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_41_w001",
+      "source_file": "41.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99804,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_41_w002",
+      "source_file": "41.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99311,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_41_w003",
+      "source_file": "41.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98285,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_41_w004",
+      "source_file": "41.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99025,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_12_w000",
+      "source_file": "12.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99608,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_12_w001",
+      "source_file": "12.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99802,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_12_w002",
+      "source_file": "12.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99461,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_12_w003",
+      "source_file": "12.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98439,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_12_w004",
+      "source_file": "12.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99543,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_12_w005",
+      "source_file": "12.mp3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99386,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_21_w000",
+      "source_file": "21.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.96657,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_21_w001",
+      "source_file": "21.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99077,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_21_w002",
+      "source_file": "21.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.98647,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_21_w003",
+      "source_file": "21.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.994,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_21_w004",
+      "source_file": "21.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99789,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_21_w005",
+      "source_file": "21.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.99617,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_21_w006",
+      "source_file": "21.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.88936,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128_w000",
+      "source_file": "Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.7949,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128_w001",
+      "source_file": "Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.81906,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "pos_Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128_w002",
+      "source_file": "Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128.MP3",
+      "class_name": "train_horn",
+      "category": "train_horn",
+      "ground_truth": 1,
+      "predicted_probability": 0.39252,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w000",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.00365,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w001",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.00524,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w002",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.0081,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w003",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.00669,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w004",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.00792,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w005",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.00698,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w006",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.00944,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w007",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.00739,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-215445-A-47_w008",
+      "source_file": "5-215445-A-47.wav",
+      "class_name": "non_train_sound",
+      "category": "airplane",
+      "ground_truth": 0,
+      "predicted_probability": 0.00699,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w000",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.07192,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w001",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.05963,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w002",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.06443,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w003",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.0316,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w004",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.08923,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w005",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.08923,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w006",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.08923,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w007",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.08923,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-179860-A-43_w008",
+      "source_file": "5-179860-A-43.wav",
+      "class_name": "non_train_sound",
+      "category": "car_horn",
+      "ground_truth": 0,
+      "predicted_probability": 0.08923,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w000",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.20405,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w001",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.14715,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w002",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.53171,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w003",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.98224,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w004",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.84922,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w005",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.19017,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w006",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.27019,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w007",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.41748,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-201170-A-46_w008",
+      "source_file": "5-201170-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.61718,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w000",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.16505,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w001",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.14862,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w002",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.12839,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w003",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.13192,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w004",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.22096,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w005",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.28114,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w006",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.28417,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w007",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.50544,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-201172-A-46_w008",
+      "source_file": "5-201172-A-46.wav",
+      "class_name": "non_train_sound",
+      "category": "church_bells",
+      "ground_truth": 0,
+      "predicted_probability": 0.39151,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w000",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 5e-05,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w001",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 7e-05,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w002",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 0.00014,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w003",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 2e-05,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w004",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 0.00013,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w005",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 3e-05,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w006",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 0.00016,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w007",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 3e-05,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-210612-A-37_w008",
+      "source_file": "5-210612-A-37.wav",
+      "class_name": "non_train_sound",
+      "category": "clock_alarm",
+      "ground_truth": 0,
+      "predicted_probability": 0.0001,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w000",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.85168,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w001",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.92098,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w002",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.87466,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w003",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.90301,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w004",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.9143,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w005",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.82519,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w006",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.93087,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w007",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.92995,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-240671-A-44_w008",
+      "source_file": "5-240671-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.7564,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w000",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.05231,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w001",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.03562,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w002",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.0496,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w003",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.04736,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w004",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.04414,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w005",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.0918,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w006",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.05778,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w007",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.04228,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243783-A-44_w008",
+      "source_file": "5-243783-A-44.wav",
+      "class_name": "non_train_sound",
+      "category": "engine",
+      "ground_truth": 0,
+      "predicted_probability": 0.05484,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w000",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.0069,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w001",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.02201,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w002",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.0236,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w003",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.01312,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w004",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.03844,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w005",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.04405,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w006",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.01622,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w007",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.02198,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-243025-A-25_w008",
+      "source_file": "5-243025-A-25.wav",
+      "class_name": "non_train_sound",
+      "category": "footsteps",
+      "ground_truth": 0,
+      "predicted_probability": 0.02709,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w000",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.09135,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w001",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.12928,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w002",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.0575,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w003",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.16982,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w004",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.141,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w005",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.13757,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w006",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.15093,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w007",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.08552,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-177957-B-40_w008",
+      "source_file": "5-177957-B-40.wav",
+      "class_name": "non_train_sound",
+      "category": "helicopter",
+      "ground_truth": 0,
+      "predicted_probability": 0.26561,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w000",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.02348,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w001",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.02674,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w002",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.03839,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w003",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.01783,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w004",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.01088,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w005",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.01784,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w006",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.0244,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w007",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.03122,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-195710-A-10_w008",
+      "source_file": "5-195710-A-10.wav",
+      "class_name": "non_train_sound",
+      "category": "rain",
+      "ground_truth": 0,
+      "predicted_probability": 0.09511,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w000",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.94062,
+      "predicted_label": 1
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w001",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.15036,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w002",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.01047,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w003",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.01045,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w004",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.01957,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w005",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.01467,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w006",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.00834,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w007",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.00875,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-117120-A-42_w008",
+      "source_file": "5-117120-A-42.wav",
+      "class_name": "non_train_sound",
+      "category": "siren",
+      "ground_truth": 0,
+      "predicted_probability": 0.01573,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w000",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.01727,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w001",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.00975,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w002",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.011,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w003",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.02629,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w004",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.05479,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w005",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.1224,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w006",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.22106,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w007",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.21888,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-156999-D-19_w008",
+      "source_file": "5-156999-D-19.wav",
+      "class_name": "non_train_sound",
+      "category": "thunderstorm",
+      "ground_truth": 0,
+      "predicted_probability": 0.31265,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w000",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.04213,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w001",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.02207,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w002",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.02446,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w003",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.04322,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w004",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.02672,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w005",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.05347,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w006",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.04216,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w007",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.02868,
+      "predicted_label": 0
+    },
+    {
+      "window_id": "esc50_5-217186-B-16_w008",
+      "source_file": "5-217186-B-16.wav",
+      "class_name": "non_train_sound",
+      "category": "wind",
+      "ground_truth": 0,
+      "predicted_probability": 0.03205,
+      "predicted_label": 0
+    }
+  ],
+  "test_recordings": [
+    {
+      "recording_id": "non_train_sound/5-117120-A-42.wav",
+      "ground_truth": 0,
+      "category": "siren",
+      "max_probability": 0.94062,
+      "mean_probability": 0.13099,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "non_train_sound/5-156999-D-19.wav",
+      "ground_truth": 0,
+      "category": "thunderstorm",
+      "max_probability": 0.31265,
+      "mean_probability": 0.11045,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "non_train_sound/5-177957-B-40.wav",
+      "ground_truth": 0,
+      "category": "helicopter",
+      "max_probability": 0.26561,
+      "mean_probability": 0.13651,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "non_train_sound/5-179860-A-43.wav",
+      "ground_truth": 0,
+      "category": "car_horn",
+      "max_probability": 0.08923,
+      "mean_probability": 0.07486,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "non_train_sound/5-195710-A-10.wav",
+      "ground_truth": 0,
+      "category": "rain",
+      "max_probability": 0.09511,
+      "mean_probability": 0.03176,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "non_train_sound/5-201170-A-46.wav",
+      "ground_truth": 0,
+      "category": "church_bells",
+      "max_probability": 0.98224,
+      "mean_probability": 0.46771,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "non_train_sound/5-201172-A-46.wav",
+      "ground_truth": 0,
+      "category": "church_bells",
+      "max_probability": 0.50544,
+      "mean_probability": 0.2508,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "non_train_sound/5-210612-A-37.wav",
+      "ground_truth": 0,
+      "category": "clock_alarm",
+      "max_probability": 0.00016,
+      "mean_probability": 8e-05,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "non_train_sound/5-215445-A-47.wav",
+      "ground_truth": 0,
+      "category": "airplane",
+      "max_probability": 0.00944,
+      "mean_probability": 0.00693,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "non_train_sound/5-217186-B-16.wav",
+      "ground_truth": 0,
+      "category": "wind",
+      "max_probability": 0.05347,
+      "mean_probability": 0.03499,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "non_train_sound/5-240671-A-44.wav",
+      "ground_truth": 0,
+      "category": "engine",
+      "max_probability": 0.93087,
+      "mean_probability": 0.87856,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "non_train_sound/5-243025-A-25.wav",
+      "ground_truth": 0,
+      "category": "footsteps",
+      "max_probability": 0.04405,
+      "mean_probability": 0.02371,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "non_train_sound/5-243783-A-44.wav",
+      "ground_truth": 0,
+      "category": "engine",
+      "max_probability": 0.0918,
+      "mean_probability": 0.05286,
+      "predicted_label": 0
+    },
+    {
+      "recording_id": "train_horn/12.mp3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.99802,
+      "mean_probability": 0.99373,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/13.mp3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.9991,
+      "mean_probability": 0.992,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/19.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.99828,
+      "mean_probability": 0.97749,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/20.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.98213,
+      "mean_probability": 0.83648,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/21.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.99789,
+      "mean_probability": 0.97446,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/24.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.99723,
+      "mean_probability": 0.98118,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/34.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.80587,
+      "mean_probability": 0.80587,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/37.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.99404,
+      "mean_probability": 0.98268,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/41.mp3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.99804,
+      "mean_probability": 0.99211,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels - 128-1.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.86729,
+      "mean_probability": 0.63293,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-11.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.99926,
+      "mean_probability": 0.99827,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128-4.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.98851,
+      "mean_probability": 0.98851,
+      "predicted_label": 1
+    },
+    {
+      "recording_id": "train_horn/Whistle of New EMD Locomotive  Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30 - 128.MP3",
+      "ground_truth": 1,
+      "category": "train_horn",
+      "max_probability": 0.81906,
+      "mean_probability": 0.66883,
+      "predicted_label": 1
+    }
+  ]
+}

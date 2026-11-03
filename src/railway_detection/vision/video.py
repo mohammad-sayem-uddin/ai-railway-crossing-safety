@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from railway_detection.config.exceptions import ConfigError
+from railway_detection.safety.media_guard import require_media_authorization
 from railway_detection.utils.logging import get_logger
 
 logger = get_logger("vision.video")
@@ -76,6 +77,7 @@ def frame_generator(
 ) -> Iterator[VideoFrame]:
     """Yield sampled ``VideoFrame`` records from a video file."""
     path = Path(video_path)
+    require_media_authorization(path, "READ_RAW_MEDIA", declared_media=True)
     if not path.exists():
         raise ConfigError(f"video file not found: {path}")
     if path.suffix.lower() not in VIDEO_EXTENSIONS:
@@ -106,10 +108,19 @@ def frame_generator(
             stride=stride,
         )
         timestamps = timestamps_for_frames(indices, native_fps)
+        current_frame = -1
         for frame_idx, timestamp_s in zip(indices, timestamps, strict=True):
-            capture.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
-            ok, image = capture.read()
-            if not ok:
+            while current_frame < frame_idx:
+                if not capture.grab():
+                    break
+                current_frame += 1
+            if current_frame != frame_idx:
+                logger.warning(
+                    "failed to advance to frame %d from %s; skipping", frame_idx, path
+                )
+                continue
+            ok, image = capture.retrieve()
+            if not ok or image is None:
                 logger.warning(
                     "failed to read frame %d from %s; skipping", frame_idx, path
                 )

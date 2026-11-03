@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "proposal_id": "proposal_event_005_v4",
+  "event_id": "event_005",
+  "event_type": "REAL_WORLD_TRAIN_EVENT",
+  "proposal_timestamp_utc": "2026-10-12T19:25:00Z",
+  "schema_version": "7.0.0",
+  "ai_assistant_metadata": {
+    "model_name": "antigravity-multimodal-agent",
+    "prompt_template_version": "v1.0.0",
+    "prompt_template_sha256": "8ea581b1453f72b4673642d510acc4a4e0a9aeb9727ae63ff0c0546b65741a5e",
+    "input_media_files": [
+      {
+        "file_name": "camera_front.mov",
+        "duration_s": 79.557,
+        "sha256": "015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613"
+      },
+      {
+        "file_name": "camera_back.mov",
+        "duration_s": 78.107,
+        "sha256": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e"
+      }
+    ]
+  },
+  "proposed_site_metadata": {
+    "crossing_id": "crossing_A",
+    "recording_session_id": "session_20260914_morning"
+  },
+  "proposed_environmental_conditions": {
+    "lighting": "day",
+    "weather": "overcast"
+  },
+  "proposed_train_metadata": {
+    "train_present": true,
+    "train_direction": "left_to_right",
+    "train_type": "passenger",
+    "trailing_cars_count": 14,
+    "horn_status": "present",
+    "horn_onset_s": 1.28,
+    "horn_uncertainty_s": 0.25,
+    "horn_reason": null,
+    "confidence_note": "Candidate horn spectral prominence peak detected on front camera at 1.28s (dimensionless linear peak-to-median ratio 156.7, corresponding to 22.0 dB, fundamental freq 500.0 Hz; back camera spectral prominence peak at 64.13s, linear ratio 17.0, 12.3 dB). Unverified by listening (NOT_LISTENED); mandatory human auditory listening check required before certification. Active coaches in view: 14 coaches observed before back recording cutoff."
+  },
+  "proposed_timestamps": {
+    "T0_first_visible": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 0.0,
+      "frame_index": 0,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Left-censored stream arrival on camera_front.mov (Frame 0): mid-consist passenger vehicle (Dining Car 1402) occupies full frame at t=0.00s. Locomotive arrival occurred before front recording start (t < 0.00s); excluded from detection-latency denominator. On independent camera_back.mov stream, locomotive pilot is observed entering at t=0.50s (Frame 15).",
+      "ambiguity_flag": true
+    },
+    "T1_danger_zone_entry": {
+      "applicable": true,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Unobservable: Locomotive entered danger zone prior to camera_front.mov recording start (mid-consist vehicle occupies Frame 0).",
+      "ambiguity_flag": false
+    },
+    "T2_crossing_occupancy_start": {
+      "applicable": true,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Unobservable: Locomotive occupied crossing lens plane prior to camera_front.mov recording start.",
+      "ambiguity_flag": false
+    },
+    "T3_locomotive_unit_clearance": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 6.0,
+      "frame_index": 180,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Operational Danger-Zone Exit Boundary Convention: Lead locomotive enters camera_back.mov at t=0.50s (Frame 15). At t=5.60s (Frame 168), the locomotive rear coupler passes an intermediate trackside landmark (white signal/relay cabinet). Under the canonical exit boundary definition (docs/FINAL_GROUND_TRUTH_PROTOCOL.md §2.1 and §2.4), T3 and T4 must denote clearance of the exact same conceptual departure boundary plane. The canonical danger-zone departure boundary plane is the transverse departure boundary plane, which the lead locomotive trailing coupler clears at t=6.00s (Frame 180). Setting T3=6.00s (Frame 180) aligns T3 with canonical exit-plane semantics and resolves the landmark ambiguity from proposal v3.",
+      "ambiguity_flag": false
+    },
+    "T4_tail_clearance": {
+      "applicable": true,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Unobservable (right-censored): camera_back.mov recording terminates prematurely at t=78.107s (Frame 2342) while trailing passenger coaches 1084 and 1032 are still actively traversing the field of view. The rear buffer of the final rail vehicle never cleared the crossing boundary during recording. Replaces invalid 75.8s candidate from proposal v2.",
+      "ambiguity_flag": false
+    },
+    "T_scene_clear": {
+      "applicable": true,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Unobservable: recording terminates at 78.107s while train actively occupies track.",
+      "ambiguity_flag": false
+    }
+  },
+  "proposed_camera_alignment_markers": {
+    "candidate_front_marker": "turnout_frog_boundary",
+    "candidate_back_marker": "vendor_stall_clearance_line",
+    "candidate_offset_s": null,
+    "requires_human_empirical_verification": true,
+    "audited_front_stream_exposure_s": 79.557,
+    "audited_back_stream_exposure_s": 78.107,
+    "audited_combined_camera_stream_exposure_s": 157.664,
+    "stream_exposure_note": "Combined camera-stream exposure (157.664s) represents summed stream-seconds and must NOT be treated as concurrent wall-clock exposure."
+  },
+  "raw_proposal_immutable": true,
+  "prior_proposal_ref": "data/ground_truth/proposals/train_events/event_005_proposal_v3.json"
+}

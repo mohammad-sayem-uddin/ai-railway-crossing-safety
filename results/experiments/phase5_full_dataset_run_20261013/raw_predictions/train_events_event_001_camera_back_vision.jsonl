@@ -1,0 +1,231 @@
+{"timestamp_s": 0.0, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 0}}
+{"timestamp_s": 0.2001375814627082, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 12}}
+{"timestamp_s": 0.4002751629254164, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 24}}
+{"timestamp_s": 0.6004127443881245, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 36}}
+{"timestamp_s": 0.8005503258508327, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 48}}
+{"timestamp_s": 1.0006879073135408, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 60}}
+{"timestamp_s": 1.200825488776249, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 72}}
+{"timestamp_s": 1.4009630702389573, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 84}}
+{"timestamp_s": 1.6011006517016655, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 96}}
+{"timestamp_s": 1.8012382331643735, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 108}}
+{"timestamp_s": 2.0013758146270817, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 120}}
+{"timestamp_s": 2.20151339608979, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 132}}
+{"timestamp_s": 2.401650977552498, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 144}}
+{"timestamp_s": 2.601788559015206, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 156}}
+{"timestamp_s": 2.8019261404779146, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 168}}
+{"timestamp_s": 3.0020637219406225, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 180}}
+{"timestamp_s": 3.202201303403331, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 192}}
+{"timestamp_s": 3.402338884866039, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 204}}
+{"timestamp_s": 3.602476466328747, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 216}}
+{"timestamp_s": 3.8026140477914554, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.42856696248054504, "bbox_xyxy": [33.4566650390625, 1494.4320068359375, 1463.611572265625, 2900.321044921875], "metadata": {}}], "metadata": {"frame_index": 228}}
+{"timestamp_s": 4.002751629254163, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 240}}
+{"timestamp_s": 4.202889210716871, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 252}}
+{"timestamp_s": 4.40302679217958, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.4205189645290375, "bbox_xyxy": [30.489944458007812, 1355.21044921875, 1494.0823974609375, 2809.947509765625], "metadata": {}}], "metadata": {"frame_index": 264}}
+{"timestamp_s": 4.603164373642288, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 276}}
+{"timestamp_s": 4.803301955104996, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 288}}
+{"timestamp_s": 5.003439536567704, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 300}}
+{"timestamp_s": 5.203577118030412, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 312}}
+{"timestamp_s": 5.403714699493121, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.594432532787323, "bbox_xyxy": [18.3109130859375, 1141.597412109375, 1480.0313720703125, 2826.334716796875], "metadata": {}}], "metadata": {"frame_index": 324}}
+{"timestamp_s": 5.603852280955829, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.745639443397522, "bbox_xyxy": [11.983062744140625, 1464.6968994140625, 1424.2115478515625, 2816.552734375], "metadata": {}}, {"label": "side", "confidence": 0.37645798921585083, "bbox_xyxy": [14.767044067382812, 812.793701171875, 1422.3804931640625, 2829.798583984375], "metadata": {}}], "metadata": {"frame_index": 336}}
+{"timestamp_s": 5.803989862418537, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.540144145488739, "bbox_xyxy": [16.06732177734375, 1402.84423828125, 1452.212890625, 2942.515380859375], "metadata": {}}], "metadata": {"frame_index": 348}}
+{"timestamp_s": 6.004127443881245, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.512281596660614, "bbox_xyxy": [19.67138671875, 820.1451416015625, 1559.571533203125, 3178.6640625], "metadata": {}}], "metadata": {"frame_index": 360}}
+{"timestamp_s": 6.204265025343953, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5914673805236816, "bbox_xyxy": [21.7225341796875, 1093.6180419921875, 1483.1815185546875, 3055.293212890625], "metadata": {}}], "metadata": {"frame_index": 372}}
+{"timestamp_s": 6.404402606806662, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.6736443638801575, "bbox_xyxy": [22.3758544921875, 1108.910400390625, 1583.096923828125, 2846.844970703125], "metadata": {}}], "metadata": {"frame_index": 384}}
+{"timestamp_s": 6.60454018826937, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5558185577392578, "bbox_xyxy": [26.0716552734375, 1134.958740234375, 1487.966796875, 2828.135986328125], "metadata": {}}], "metadata": {"frame_index": 396}}
+{"timestamp_s": 6.804677769732078, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.4292992949485779, "bbox_xyxy": [11.44757080078125, 1240.4146728515625, 1510.31298828125, 2843.302978515625], "metadata": {}}], "metadata": {"frame_index": 408}}
+{"timestamp_s": 7.004815351194786, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5553305745124817, "bbox_xyxy": [18.21075439453125, 1295.6192626953125, 1506.702392578125, 2813.12841796875], "metadata": {}}], "metadata": {"frame_index": 420}}
+{"timestamp_s": 7.204952932657494, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.7118657827377319, "bbox_xyxy": [23.43603515625, 1243.8739013671875, 1447.2099609375, 2962.916015625], "metadata": {}}, {"label": "side", "confidence": 0.5745888948440552, "bbox_xyxy": [19.8570556640625, 793.5938110351562, 1490.0501708984375, 3212.757568359375], "metadata": {}}], "metadata": {"frame_index": 432}}
+{"timestamp_s": 7.405090514120203, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.809364378452301, "bbox_xyxy": [46.21220397949219, 1595.8223876953125, 1544.843994140625, 2849.963623046875], "metadata": {}}], "metadata": {"frame_index": 444}}
+{"timestamp_s": 7.605228095582911, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.4419133961200714, "bbox_xyxy": [35.212646484375, 1147.222412109375, 1595.2474365234375, 2833.962890625], "metadata": {}}], "metadata": {"frame_index": 456}}
+{"timestamp_s": 7.805365677045619, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.4155154228210449, "bbox_xyxy": [17.501953125, 810.08740234375, 1579.8870849609375, 2877.652099609375], "metadata": {}}], "metadata": {"frame_index": 468}}
+{"timestamp_s": 8.005503258508327, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 480}}
+{"timestamp_s": 8.205640839971036, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 492}}
+{"timestamp_s": 8.405778421433743, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 504}}
+{"timestamp_s": 8.605916002896452, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5579548478126526, "bbox_xyxy": [25.9105224609375, 1332.49951171875, 1564.755615234375, 2798.56640625], "metadata": {}}], "metadata": {"frame_index": 516}}
+{"timestamp_s": 8.80605358435916, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.4688807725906372, "bbox_xyxy": [21.7906494140625, 784.6915283203125, 1604.0533447265625, 2712.9375], "metadata": {}}], "metadata": {"frame_index": 528}}
+{"timestamp_s": 9.006191165821868, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 540}}
+{"timestamp_s": 9.206328747284577, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 552}}
+{"timestamp_s": 9.406466328747284, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 564}}
+{"timestamp_s": 9.606603910209992, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 576}}
+{"timestamp_s": 9.806741491672701, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5136045813560486, "bbox_xyxy": [10.15228271484375, 1368.0032958984375, 1586.1966552734375, 3095.3994140625], "metadata": {}}], "metadata": {"frame_index": 588}}
+{"timestamp_s": 10.006879073135408, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 600}}
+{"timestamp_s": 10.207016654598117, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 612}}
+{"timestamp_s": 10.407154236060824, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 624}}
+{"timestamp_s": 10.607291817523533, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 636}}
+{"timestamp_s": 10.807429398986242, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 648}}
+{"timestamp_s": 11.00756698044895, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 660}}
+{"timestamp_s": 11.207704561911658, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 672}}
+{"timestamp_s": 11.407842143374365, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 684}}
+{"timestamp_s": 11.607979724837074, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 696}}
+{"timestamp_s": 11.808117306299783, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 708}}
+{"timestamp_s": 12.00825488776249, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 720}}
+{"timestamp_s": 12.208392469225199, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 732}}
+{"timestamp_s": 12.408530050687906, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 744}}
+{"timestamp_s": 12.608667632150615, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 756}}
+{"timestamp_s": 12.808805213613324, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 768}}
+{"timestamp_s": 13.008942795076031, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 780}}
+{"timestamp_s": 13.20908037653874, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 792}}
+{"timestamp_s": 13.409217958001447, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 804}}
+{"timestamp_s": 13.609355539464156, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 816}}
+{"timestamp_s": 13.809493120926865, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 828}}
+{"timestamp_s": 14.009630702389572, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 840}}
+{"timestamp_s": 14.20976828385228, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 852}}
+{"timestamp_s": 14.409905865314988, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 864}}
+{"timestamp_s": 14.610043446777697, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.635601282119751, "bbox_xyxy": [32.3126220703125, 1281.4654541015625, 1521.668701171875, 3478.335205078125], "metadata": {}}], "metadata": {"frame_index": 876}}
+{"timestamp_s": 14.810181028240406, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 888}}
+{"timestamp_s": 15.010318609703113, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 900}}
+{"timestamp_s": 15.210456191165822, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.494016170501709, "bbox_xyxy": [23.99212646484375, 940.0977783203125, 1613.626953125, 2780.069091796875], "metadata": {}}], "metadata": {"frame_index": 912}}
+{"timestamp_s": 15.410593772628529, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 924}}
+{"timestamp_s": 15.610731354091238, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 936}}
+{"timestamp_s": 15.810868935553946, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 948}}
+{"timestamp_s": 16.011006517016654, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 960}}
+{"timestamp_s": 16.211144098479362, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.44854849576950073, "bbox_xyxy": [13.2242431640625, 817.0554809570312, 1625.4422607421875, 2813.76708984375], "metadata": {}}], "metadata": {"frame_index": 972}}
+{"timestamp_s": 16.41128167994207, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.429625928401947, "bbox_xyxy": [24.03094482421875, 832.2166137695312, 1619.847412109375, 2684.969970703125], "metadata": {}}], "metadata": {"frame_index": 984}}
+{"timestamp_s": 16.61141926140478, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5218344926834106, "bbox_xyxy": [21.18841552734375, 982.6416015625, 1619.017578125, 2662.176513671875], "metadata": {}}, {"label": "side", "confidence": 0.3749007284641266, "bbox_xyxy": [19.65472412109375, 1484.0238037109375, 1613.696533203125, 2661.258544921875], "metadata": {}}], "metadata": {"frame_index": 996}}
+{"timestamp_s": 16.811556842867486, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1008}}
+{"timestamp_s": 17.011694424330194, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.410077840089798, "bbox_xyxy": [23.83941650390625, 873.2600708007812, 1624.93115234375, 2876.863037109375], "metadata": {}}], "metadata": {"frame_index": 1020}}
+{"timestamp_s": 17.211832005792903, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.35072052478790283, "bbox_xyxy": [18.89007568359375, 1312.4989013671875, 1628.829833984375, 3356.09326171875], "metadata": {}}], "metadata": {"frame_index": 1032}}
+{"timestamp_s": 17.411969587255612, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1044}}
+{"timestamp_s": 17.61210716871832, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1056}}
+{"timestamp_s": 17.812244750181026, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1068}}
+{"timestamp_s": 18.012382331643735, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1080}}
+{"timestamp_s": 18.212519913106444, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1092}}
+{"timestamp_s": 18.412657494569153, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1104}}
+{"timestamp_s": 18.612795076031862, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1116}}
+{"timestamp_s": 18.812932657494567, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1128}}
+{"timestamp_s": 19.013070238957276, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.39297038316726685, "bbox_xyxy": [17.44775390625, 964.3152465820312, 1620.6727294921875, 2740.99365234375], "metadata": {}}], "metadata": {"frame_index": 1140}}
+{"timestamp_s": 19.213207820419985, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1152}}
+{"timestamp_s": 19.413345401882694, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1164}}
+{"timestamp_s": 19.613482983345403, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1176}}
+{"timestamp_s": 19.813620564808108, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5650373101234436, "bbox_xyxy": [12.18017578125, 1340.820556640625, 1631.6414794921875, 2875.32861328125], "metadata": {}}], "metadata": {"frame_index": 1188}}
+{"timestamp_s": 20.013758146270817, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1200}}
+{"timestamp_s": 20.213895727733526, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5228321552276611, "bbox_xyxy": [22.23248291015625, 1306.779052734375, 1632.2252197265625, 3615.0791015625], "metadata": {}}], "metadata": {"frame_index": 1212}}
+{"timestamp_s": 20.414033309196235, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1224}}
+{"timestamp_s": 20.614170890658944, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1236}}
+{"timestamp_s": 20.81430847212165, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1248}}
+{"timestamp_s": 21.014446053584358, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1260}}
+{"timestamp_s": 21.214583635047067, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1272}}
+{"timestamp_s": 21.414721216509776, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1284}}
+{"timestamp_s": 21.614858797972484, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.4394463002681732, "bbox_xyxy": [21.74615478515625, 1623.030029296875, 1612.2119140625, 3144.922119140625], "metadata": {}}], "metadata": {"frame_index": 1296}}
+{"timestamp_s": 21.81499637943519, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1308}}
+{"timestamp_s": 22.0151339608979, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1320}}
+{"timestamp_s": 22.215271542360608, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1332}}
+{"timestamp_s": 22.415409123823316, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1344}}
+{"timestamp_s": 22.615546705286025, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.6335409879684448, "bbox_xyxy": [8.94891357421875, 1451.171630859375, 1654.95458984375, 3368.563720703125], "metadata": {}}], "metadata": {"frame_index": 1356}}
+{"timestamp_s": 22.81568428674873, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1368}}
+{"timestamp_s": 23.01582186821144, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1380}}
+{"timestamp_s": 23.21595944967415, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1392}}
+{"timestamp_s": 23.416097031136857, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1404}}
+{"timestamp_s": 23.616234612599566, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.35354214906692505, "bbox_xyxy": [22.3963623046875, 1111.2867431640625, 1679.805908203125, 2964.665771484375], "metadata": {}}], "metadata": {"frame_index": 1416}}
+{"timestamp_s": 23.81637219406227, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1428}}
+{"timestamp_s": 24.01650977552498, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5343877673149109, "bbox_xyxy": [21.03955078125, 846.9589233398438, 1655.0899658203125, 2745.6640625], "metadata": {}}], "metadata": {"frame_index": 1440}}
+{"timestamp_s": 24.21664735698769, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1452}}
+{"timestamp_s": 24.416784938450398, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.4052993059158325, "bbox_xyxy": [18.07196044921875, 872.7841186523438, 1641.9281005859375, 2734.127685546875], "metadata": {}}], "metadata": {"frame_index": 1464}}
+{"timestamp_s": 24.616922519913107, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.36505329608917236, "bbox_xyxy": [12.357421875, 799.62890625, 1651.52783203125, 2987.66259765625], "metadata": {}}], "metadata": {"frame_index": 1476}}
+{"timestamp_s": 24.817060101375812, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5020080208778381, "bbox_xyxy": [18.91241455078125, 986.3001708984375, 1656.3121337890625, 3441.193603515625], "metadata": {}}], "metadata": {"frame_index": 1488}}
+{"timestamp_s": 25.01719768283852, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5907660722732544, "bbox_xyxy": [24.48779296875, 1364.502685546875, 1644.358154296875, 3367.016845703125], "metadata": {}}], "metadata": {"frame_index": 1500}}
+{"timestamp_s": 25.21733526430123, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5375036597251892, "bbox_xyxy": [8.94451904296875, 1450.3604736328125, 1675.4276123046875, 3282.95654296875], "metadata": {}}], "metadata": {"frame_index": 1512}}
+{"timestamp_s": 25.41747284576394, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1524}}
+{"timestamp_s": 25.617610427226648, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1536}}
+{"timestamp_s": 25.817748008689353, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1548}}
+{"timestamp_s": 26.017885590152062, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1560}}
+{"timestamp_s": 26.21802317161477, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1572}}
+{"timestamp_s": 26.41816075307748, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1584}}
+{"timestamp_s": 26.61829833454019, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1596}}
+{"timestamp_s": 26.818435916002894, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1608}}
+{"timestamp_s": 27.018573497465603, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1620}}
+{"timestamp_s": 27.21871107892831, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1632}}
+{"timestamp_s": 27.41884866039102, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1644}}
+{"timestamp_s": 27.61898624185373, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.4909709692001343, "bbox_xyxy": [12.8800048828125, 1330.885986328125, 1625.1533203125, 3601.79443359375], "metadata": {}}], "metadata": {"frame_index": 1656}}
+{"timestamp_s": 27.819123823316435, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.3640812933444977, "bbox_xyxy": [18.935302734375, 1402.6474609375, 1627.184326171875, 3369.2734375], "metadata": {}}], "metadata": {"frame_index": 1668}}
+{"timestamp_s": 28.019261404779144, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1680}}
+{"timestamp_s": 28.219398986241853, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1692}}
+{"timestamp_s": 28.41953656770456, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1704}}
+{"timestamp_s": 28.61967414916727, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1716}}
+{"timestamp_s": 28.819811730629976, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1728}}
+{"timestamp_s": 29.019949312092685, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1740}}
+{"timestamp_s": 29.220086893555393, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5523074269294739, "bbox_xyxy": [17.9619140625, 898.546142578125, 1648.2454833984375, 2805.197998046875], "metadata": {}}], "metadata": {"frame_index": 1752}}
+{"timestamp_s": 29.420224475018102, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1764}}
+{"timestamp_s": 29.62036205648081, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.36613428592681885, "bbox_xyxy": [20.3851318359375, 875.5638427734375, 1622.6986083984375, 2766.594970703125], "metadata": {}}], "metadata": {"frame_index": 1776}}
+{"timestamp_s": 29.820499637943517, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1788}}
+{"timestamp_s": 30.020637219406225, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1800}}
+{"timestamp_s": 30.220774800868934, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1812}}
+{"timestamp_s": 30.420912382331643, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1824}}
+{"timestamp_s": 30.621049963794352, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.3852449357509613, "bbox_xyxy": [26.1983642578125, 1155.0084228515625, 1669.106689453125, 3443.742919921875], "metadata": {}}], "metadata": {"frame_index": 1836}}
+{"timestamp_s": 30.821187545257057, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1848}}
+{"timestamp_s": 31.021325126719766, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1860}}
+{"timestamp_s": 31.221462708182475, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1872}}
+{"timestamp_s": 31.421600289645184, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1884}}
+{"timestamp_s": 31.621737871107893, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1896}}
+{"timestamp_s": 31.8218754525706, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1908}}
+{"timestamp_s": 32.02201303403331, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1920}}
+{"timestamp_s": 32.22215061549602, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.39461472630500793, "bbox_xyxy": [28.371826171875, 728.5457153320312, 1659.097412109375, 2622.608642578125], "metadata": {}}], "metadata": {"frame_index": 1932}}
+{"timestamp_s": 32.422288196958725, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1944}}
+{"timestamp_s": 32.62242577842143, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1956}}
+{"timestamp_s": 32.82256335988414, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1968}}
+{"timestamp_s": 33.02270094134685, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 1980}}
+{"timestamp_s": 33.22283852280956, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5995581150054932, "bbox_xyxy": [17.9241943359375, 1221.2259521484375, 1636.9013671875, 3248.726806640625], "metadata": {}}], "metadata": {"frame_index": 1992}}
+{"timestamp_s": 33.422976104272266, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2004}}
+{"timestamp_s": 33.62311368573497, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2016}}
+{"timestamp_s": 33.82325126719768, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2028}}
+{"timestamp_s": 34.02338884866039, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2040}}
+{"timestamp_s": 34.2235264301231, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2052}}
+{"timestamp_s": 34.42366401158581, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2064}}
+{"timestamp_s": 34.62380159304851, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2076}}
+{"timestamp_s": 34.823939174511224, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2088}}
+{"timestamp_s": 35.02407675597393, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2100}}
+{"timestamp_s": 35.22421433743664, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2112}}
+{"timestamp_s": 35.42435191889935, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2124}}
+{"timestamp_s": 35.62448950036205, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5056002736091614, "bbox_xyxy": [17.3287353515625, 1135.1810302734375, 1786.9493408203125, 3276.7353515625], "metadata": {}}], "metadata": {"frame_index": 2136}}
+{"timestamp_s": 35.824627081824765, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.49036240577697754, "bbox_xyxy": [305.86138916015625, 1281.2137451171875, 1745.3350830078125, 3119.848388671875], "metadata": {}}], "metadata": {"frame_index": 2148}}
+{"timestamp_s": 36.02476466328747, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2160}}
+{"timestamp_s": 36.22490224475018, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.37620022892951965, "bbox_xyxy": [34.83782958984375, 670.6307983398438, 1821.3795166015625, 2707.843017578125], "metadata": {}}], "metadata": {"frame_index": 2172}}
+{"timestamp_s": 36.42503982621289, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.3599454164505005, "bbox_xyxy": [28.6651611328125, 985.2006225585938, 1790.1278076171875, 2685.672119140625], "metadata": {}}], "metadata": {"frame_index": 2184}}
+{"timestamp_s": 36.625177407675594, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2196}}
+{"timestamp_s": 36.825314989138306, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2208}}
+{"timestamp_s": 37.02545257060101, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2220}}
+{"timestamp_s": 37.225590152063724, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2232}}
+{"timestamp_s": 37.42572773352643, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2244}}
+{"timestamp_s": 37.625865314989134, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2256}}
+{"timestamp_s": 37.82600289645185, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2268}}
+{"timestamp_s": 38.02614047791455, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2280}}
+{"timestamp_s": 38.226278059377265, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5758675932884216, "bbox_xyxy": [19.9830322265625, 1120.383544921875, 1778.356201171875, 2842.878173828125], "metadata": {}}], "metadata": {"frame_index": 2292}}
+{"timestamp_s": 38.42641564083997, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.6917100548744202, "bbox_xyxy": [14.75555419921875, 1233.5185546875, 1796.302490234375, 3201.194091796875], "metadata": {}}], "metadata": {"frame_index": 2304}}
+{"timestamp_s": 38.626553222302675, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2316}}
+{"timestamp_s": 38.82669080376539, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2328}}
+{"timestamp_s": 39.02682838522809, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2340}}
+{"timestamp_s": 39.226965966690805, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2352}}
+{"timestamp_s": 39.42710354815351, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2364}}
+{"timestamp_s": 39.627241129616216, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2376}}
+{"timestamp_s": 39.82737871107893, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2388}}
+{"timestamp_s": 40.027516292541634, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2400}}
+{"timestamp_s": 40.227653874004346, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2412}}
+{"timestamp_s": 40.42779145546705, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2424}}
+{"timestamp_s": 40.62792903692976, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2436}}
+{"timestamp_s": 40.82806661839247, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2448}}
+{"timestamp_s": 41.028204199855175, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.3763090670108795, "bbox_xyxy": [7.15887451171875, 1243.6724853515625, 1820.385986328125, 3409.330322265625], "metadata": {}}], "metadata": {"frame_index": 2460}}
+{"timestamp_s": 41.22834178131789, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.3514676094055176, "bbox_xyxy": [19.858154296875, 918.879638671875, 1862.3074951171875, 3215.95751953125], "metadata": {}}], "metadata": {"frame_index": 2472}}
+{"timestamp_s": 41.42847936278059, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2484}}
+{"timestamp_s": 41.6286169442433, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.45578253269195557, "bbox_xyxy": [27.3072509765625, 757.8825073242188, 1832.0306396484375, 2691.482666015625], "metadata": {}}], "metadata": {"frame_index": 2496}}
+{"timestamp_s": 41.82875452570601, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.5871792435646057, "bbox_xyxy": [26.321044921875, 1075.487060546875, 1749.4625244140625, 2689.62255859375], "metadata": {}}], "metadata": {"frame_index": 2508}}
+{"timestamp_s": 42.028892107168716, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2520}}
+{"timestamp_s": 42.22902968863143, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2532}}
+{"timestamp_s": 42.42916727009413, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2544}}
+{"timestamp_s": 42.62930485155684, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2556}}
+{"timestamp_s": 42.82944243301955, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.35768917202949524, "bbox_xyxy": [27.006591796875, 607.6875, 1869.917724609375, 2539.083984375], "metadata": {}}], "metadata": {"frame_index": 2568}}
+{"timestamp_s": 43.029580014482256, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2580}}
+{"timestamp_s": 43.22971759594497, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2592}}
+{"timestamp_s": 43.429855177407674, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2604}}
+{"timestamp_s": 43.62999275887038, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.6021292209625244, "bbox_xyxy": [25.0587158203125, 1183.2454833984375, 1725.6829833984375, 3440.677734375], "metadata": {}}], "metadata": {"frame_index": 2616}}
+{"timestamp_s": 43.83013034033309, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [{"label": "side", "confidence": 0.41663849353790283, "bbox_xyxy": [31.04168701171875, 1279.53662109375, 1809.3365478515625, 2709.860107421875], "metadata": {}}], "metadata": {"frame_index": 2628}}
+{"timestamp_s": 44.0302679217958, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2640}}
+{"timestamp_s": 44.23040550325851, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2652}}
+{"timestamp_s": 44.430543084721215, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2664}}
+{"timestamp_s": 44.63068066618392, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2676}}
+{"timestamp_s": 44.83081824764663, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2688}}
+{"timestamp_s": 45.03095582910934, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2700}}
+{"timestamp_s": 45.23109341057205, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2712}}
+{"timestamp_s": 45.431230992034756, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2724}}
+{"timestamp_s": 45.63136857349746, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2736}}
+{"timestamp_s": 45.831506154960174, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2748}}
+{"timestamp_s": 46.03164373642288, "source_id": "camera_2", "modality": "vision", "available": true, "detections": [], "metadata": {"frame_index": 2760}}

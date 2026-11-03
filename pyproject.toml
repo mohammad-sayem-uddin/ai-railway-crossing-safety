@@ -10,8 +10,13 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Proprietary research prototype" }
 dependencies = [
+    "numpy>=1.26",
     "PyYAML>=6.0",
     "Pillow>=10.0",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "ultralytics>=8.0.0",
+    "opencv-python>=4.8.0",
 ]
 
 [project.optional-dependencies]
@@ -22,12 +27,13 @@ dev = [
     "types-PyYAML>=6.0",
 ]
 eval = [
-    "numpy>=1.26",
     "matplotlib>=3.8",
+    "scipy>=1.10.0",
 ]
 
 [project.scripts]
 railway-detection = "railway_detection.cli.main:main"
+railway-readiness = "railway_detection.annotation.readiness_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -36,7 +42,7 @@ where = ["src"]
 testpaths = ["tests"]
 pythonpath = ["src", "."]
 addopts = "-ra"
-norecursedirs = [".venv", "data", "experiments", "models", "results"]
+norecursedirs = [".venv", "venv", "data", "experiments", "models", "results"]
 
 [tool.ruff]
 line-length = 100

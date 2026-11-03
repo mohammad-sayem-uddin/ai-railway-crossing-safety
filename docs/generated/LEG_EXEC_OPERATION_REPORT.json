@@ -1,0 +1,308 @@
+{
+  "authorization_attestation": "recorded_statement_unsigned",
+  "authorization_record_sha256": "d4002a0a1367e7cd18cfb007eb89c3937583247f77804ff410d650d54a688363",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "completed": true,
+  "executed_at_utc": "2026-10-17T07:44:53Z",
+  "expected_output_inventory": [
+    "_INTEGRITY_NOTICE.md",
+    "engine_events/event_001_review.INVALIDATION_NOTICE.json",
+    "no_train_events/event_001_review.INVALIDATION_NOTICE.json",
+    "no_train_events/event_002_review.INVALIDATION_NOTICE.json",
+    "no_train_events/event_003_review.INVALIDATION_NOTICE.json",
+    "train_events/event_001_review.INVALIDATION_NOTICE.json",
+    "train_events/event_002_review.INVALIDATION_NOTICE.json",
+    "train_events/event_003_review.INVALIDATION_NOTICE.json",
+    "train_events/event_004_review.INVALIDATION_NOTICE.json",
+    "train_events/event_005_review.INVALIDATION_NOTICE.json",
+    "train_events/event_006_review.INVALIDATION_NOTICE.json",
+    "train_events/event_007_review.INVALIDATION_NOTICE.json",
+    "train_events/event_008_review.INVALIDATION_NOTICE.json",
+    "train_events/event_009_review.INVALIDATION_NOTICE.json",
+    "train_events/event_010_review.INVALIDATION_NOTICE.json",
+    "train_events/event_011_review.INVALIDATION_NOTICE.json",
+    "train_events/event_012_review.INVALIDATION_NOTICE.json",
+    "train_events/event_013_review.INVALIDATION_NOTICE.json",
+    "train_events/event_014_review.INVALIDATION_NOTICE.json",
+    "train_events/event_015_review.INVALIDATION_NOTICE.json",
+    "train_events/event_016_review.INVALIDATION_NOTICE.json",
+    "train_events/event_017_review.INVALIDATION_NOTICE.json",
+    "train_events/event_018_review.INVALIDATION_NOTICE.json",
+    "train_events/event_019_review.INVALIDATION_NOTICE.json",
+    "train_events/event_020_review.INVALIDATION_NOTICE.json",
+    "train_events/event_021_review.INVALIDATION_NOTICE.json",
+    "train_events/event_022_review.INVALIDATION_NOTICE.json",
+    "train_events/event_023_review.INVALIDATION_NOTICE.json"
+  ],
+  "failures": [],
+  "ground_truth_created": false,
+  "invalid_notices": [],
+  "missing_outputs": [],
+  "new_files_this_run": [
+    "_INTEGRITY_NOTICE.md",
+    "engine_events/event_001_review.INVALIDATION_NOTICE.json",
+    "no_train_events/event_001_review.INVALIDATION_NOTICE.json",
+    "no_train_events/event_002_review.INVALIDATION_NOTICE.json",
+    "no_train_events/event_003_review.INVALIDATION_NOTICE.json",
+    "train_events/event_001_review.INVALIDATION_NOTICE.json",
+    "train_events/event_002_review.INVALIDATION_NOTICE.json",
+    "train_events/event_003_review.INVALIDATION_NOTICE.json",
+    "train_events/event_004_review.INVALIDATION_NOTICE.json",
+    "train_events/event_005_review.INVALIDATION_NOTICE.json",
+    "train_events/event_006_review.INVALIDATION_NOTICE.json",
+    "train_events/event_007_review.INVALIDATION_NOTICE.json",
+    "train_events/event_008_review.INVALIDATION_NOTICE.json",
+    "train_events/event_009_review.INVALIDATION_NOTICE.json",
+    "train_events/event_010_review.INVALIDATION_NOTICE.json",
+    "train_events/event_011_review.INVALIDATION_NOTICE.json",
+    "train_events/event_012_review.INVALIDATION_NOTICE.json",
+    "train_events/event_013_review.INVALIDATION_NOTICE.json",
+    "train_events/event_014_review.INVALIDATION_NOTICE.json",
+    "train_events/event_015_review.INVALIDATION_NOTICE.json",
+    "train_events/event_016_review.INVALIDATION_NOTICE.json",
+    "train_events/event_017_review.INVALIDATION_NOTICE.json",
+    "train_events/event_018_review.INVALIDATION_NOTICE.json",
+    "train_events/event_019_review.INVALIDATION_NOTICE.json",
+    "train_events/event_020_review.INVALIDATION_NOTICE.json",
+    "train_events/event_021_review.INVALIDATION_NOTICE.json",
+    "train_events/event_022_review.INVALIDATION_NOTICE.json",
+    "train_events/event_023_review.INVALIDATION_NOTICE.json"
+  ],
+  "note": "Invalidation notices are not Stage-2.1 records and approve nothing.",
+  "operation": "LEG-EXEC",
+  "originals_byte_identical": true,
+  "output_sha256": {
+    "_INTEGRITY_NOTICE.md": "342c56719c141dc15c8509d1088c8a6baf0535a0a56a3202d75135c5d6fa7e99",
+    "engine_events/event_001_review.INVALIDATION_NOTICE.json": "a36abc84f6e870516ac7028084b9401af11bcf2edb5bd15077499d2e767f63a0",
+    "no_train_events/event_001_review.INVALIDATION_NOTICE.json": "a93765bd21297ac189cc3598463bfc0c65418f7d9ccf149f1b01b3fd24eb3404",
+    "no_train_events/event_002_review.INVALIDATION_NOTICE.json": "e49f953087049c60b05be12336ddb30f1a1e29bda09c3aae8dad87dff63fb132",
+    "no_train_events/event_003_review.INVALIDATION_NOTICE.json": "8cdaf133d6bc296996bb459ac71e3d06ba076428b69f0a7f3f5d13096b1fee49",
+    "train_events/event_001_review.INVALIDATION_NOTICE.json": "a8dc487476c5a472012155847c14fe9db6c1066d2f7408b1f190cbf8dfd3af29",
+    "train_events/event_002_review.INVALIDATION_NOTICE.json": "bfb6ee106bd81baeff1d09e05877f19054ca75cffad354b64daba851695f16f1",
+    "train_events/event_003_review.INVALIDATION_NOTICE.json": "04c1072d214d05d91c12cd39305acb17767a7e002b1d1c0581924128820f5c54",
+    "train_events/event_004_review.INVALIDATION_NOTICE.json": "af5c76687c41927312eedecfe92f901184aaf09e5f60b69c6b3a28cbced8a60b",
+    "train_events/event_005_review.INVALIDATION_NOTICE.json": "9c84dbaa36f567ae4f38cfadc19e4921b4856da904ede1b2a8c72d96e665c279",
+    "train_events/event_006_review.INVALIDATION_NOTICE.json": "74fadd43ef4b6ff417971b7e74b5d1b3c9aae0c11902fce03ca016854c0efb52",
+    "train_events/event_007_review.INVALIDATION_NOTICE.json": "2a9c876aa109add8a62e4668a09913de88f7d1df5717f8180203fba5a09a08b1",
+    "train_events/event_008_review.INVALIDATION_NOTICE.json": "de888d27cc99610fa7d648b9f033d36dd4d2f9bee869d86bfde5206ab27644cd",
+    "train_events/event_009_review.INVALIDATION_NOTICE.json": "cb8172d2bd331fd7abe2cf52cb7ce1cbd941d2f21c1973879cbc110a1672de28",
+    "train_events/event_010_review.INVALIDATION_NOTICE.json": "a23ef564ea73886d778771dbf8f5b12965fa56b6504d14baf130239d0750f237",
+    "train_events/event_011_review.INVALIDATION_NOTICE.json": "3e05bf17b3a1573014a60319f2aa5e954f2f38444e21906f75913f8a9e3c25e1",
+    "train_events/event_012_review.INVALIDATION_NOTICE.json": "a1b7ad2ca4ad6b23d117fa9f698e72b553a44dd2851f60d2d0e37b3d972f5eb3",
+    "train_events/event_013_review.INVALIDATION_NOTICE.json": "01ef5ef43ee6b0caa1cb22f507f4bbc78cc51c99278a1b2569ced24b7ef7f69e",
+    "train_events/event_014_review.INVALIDATION_NOTICE.json": "758ee83762ae4fa5a8efdeda28e1530466a47037ef1f4a3f1620f7871fb36ddb",
+    "train_events/event_015_review.INVALIDATION_NOTICE.json": "f8af8db91ee5cdb0aae124b7dd73d165c5507ed278e855c093a24b154c42e338",
+    "train_events/event_016_review.INVALIDATION_NOTICE.json": "a40b98f1227cc0f0c6c82ae01842f21d56c525c534ab170937ff25eddf2f1b93",
+    "train_events/event_017_review.INVALIDATION_NOTICE.json": "8542c9d35d07fa3555e86415632bc89b2ad91eb4e715753aef3a54cea4d7f4d9",
+    "train_events/event_018_review.INVALIDATION_NOTICE.json": "6422229fe02797ce6c08d28d48fc1772c1dc6036103c84898806b721b320bf25",
+    "train_events/event_019_review.INVALIDATION_NOTICE.json": "ac86eb5cb36617c1a1c1e58ec46ac0150923a3a0e53835d3e7610d86ec0df357",
+    "train_events/event_020_review.INVALIDATION_NOTICE.json": "5d433d1d06ed79c44eca62532cc5c6cbff256e953b5edccdeb92f3b0564a8332",
+    "train_events/event_021_review.INVALIDATION_NOTICE.json": "bc998b38cd8b8c581aba1766628a5111502913c1885563ea02502213a5727119",
+    "train_events/event_022_review.INVALIDATION_NOTICE.json": "6403347e97094f820258dbfed3f4d428af4dd2a6b65692b58bf1a8a11a3b034d",
+    "train_events/event_023_review.INVALIDATION_NOTICE.json": "dd4fc1f7e424465e1cc3c69fd12c9dd515a708bcf83ede237ee9bb92a44a1f1e"
+  },
+  "pinned_proposal_sha256": "41cbbba3e9d587b9972c3baca1b39f09d478d408d9c60fd538c249c4600113d4",
+  "result_statuses": {
+    "directory_notice": {
+      "detail": "directory notice written successfully",
+      "event_id": "_DIRECTORY_NOTICE_",
+      "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/_INTEGRITY_NOTICE.md",
+      "status": "WRITTEN"
+    },
+    "records": [
+      {
+        "detail": "notice written successfully",
+        "event_id": "engine_events/event_001",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "no_train_events/event_001",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "no_train_events/event_002",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/no_train_events/event_002_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "no_train_events/event_003",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/no_train_events/event_003_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_001",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_002",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_002_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_003",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_003_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_004",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_004_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_005",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_006",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_006_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_007",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_007_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_008",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_008_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_009",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_009_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_010",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_010_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_011",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_011_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_012",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_012_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_013",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_013_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_014",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_014_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_015",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_015_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_016",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_016_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_017",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_017_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_018",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_018_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_019",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_019_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_020",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_020_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_021",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_021_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_022",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_022_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      },
+      {
+        "detail": "notice written successfully",
+        "event_id": "train_events/event_023",
+        "output_path": "/Users/sayemuddin/Desktop/Train_automation/data/ground_truth/reviews/train_events/event_023_review.INVALIDATION_NOTICE.json",
+        "status": "WRITTEN"
+      }
+    ]
+  },
+  "schema_version": "leg-exec-operation-report/1",
+  "source_record_count": 27,
+  "source_record_sha256": {
+    "data/ground_truth/reviews/engine_events/event_001_review.json": "3493e125e86c7642d47dca13ddfe3a91fad926b6e6d0fd9e9662968d1bca3edd",
+    "data/ground_truth/reviews/no_train_events/event_001_review.json": "7387acbf17e6ca2eda6b814e3d9f30683aecffe863b14637cc4ff4bf51015243",
+    "data/ground_truth/reviews/no_train_events/event_002_review.json": "619efd3ec467f0f23f0b70ef885fd7771fb84dcd052b1175c4c9fca4745ace95",
+    "data/ground_truth/reviews/no_train_events/event_003_review.json": "8f163c525e32ddf4623718093b2909bcaf1b20b320d8a75985fd7310ee19ce2b",
+    "data/ground_truth/reviews/train_events/event_001_review.json": "a0edd4a670e1706391309392661559e93a310d5c9f39d17cf094173cfb5e1cc6",
+    "data/ground_truth/reviews/train_events/event_002_review.json": "437e0d2dec08179aa5194633bcca56bb2cb37c464048566fbe09b2745dcaa239",
+    "data/ground_truth/reviews/train_events/event_003_review.json": "308d22669e2bee899c3d621c66388e4753e0c0ba5d656a56d497ddf23944ab5b",
+    "data/ground_truth/reviews/train_events/event_004_review.json": "d47aabda3fa81f7c530e1603a89f8c5fb26ffe8103edd33ead00bfe7bd237f4d",
+    "data/ground_truth/reviews/train_events/event_005_review.json": "d79c5a4b4a3d6e0139ce300e6de4a6d34250fdef1495a69c3c60badc3d829af9",
+    "data/ground_truth/reviews/train_events/event_006_review.json": "d7f1d5594d4d1d6d8675e9f97140139d8a400d7081d315832a5b15c6195a6b5e",
+    "data/ground_truth/reviews/train_events/event_007_review.json": "ba40869a4abc7d9db8295782a15c5bd2c380f8d9c31afa9bfc3e07dfddb8a536",
+    "data/ground_truth/reviews/train_events/event_008_review.json": "d97bcc8d68630d9e886e34577c3622b83f5115c682c0d8dc5edfc5521cbf54cf",
+    "data/ground_truth/reviews/train_events/event_009_review.json": "06660001cfa9299eb5d299b64089413c96df99284171648e0d0e0f43b0dd860e",
+    "data/ground_truth/reviews/train_events/event_010_review.json": "f64bbe72f11b17910f3d3cc98d08a7303b77ef37cdf2a2ca9b97509aae6c85b4",
+    "data/ground_truth/reviews/train_events/event_011_review.json": "28fcf1f5c8824a42782d964e012552e46e245bce67fb64c72a421276ef6ebb4c",
+    "data/ground_truth/reviews/train_events/event_012_review.json": "b369f6863f00212cbc9a988c5d42035fe540f150793f60b058731abeaf69eeba",
+    "data/ground_truth/reviews/train_events/event_013_review.json": "8d5dfc1f03b7bc2dd9bbc42199fda6c2935e60c9c1292de19d5df31bab7cce76",
+    "data/ground_truth/reviews/train_events/event_014_review.json": "2717a61b0a6d328ab6977aa9320a2c78990d76f4b6887203e675445844ab7d5a",
+    "data/ground_truth/reviews/train_events/event_015_review.json": "9a90a1a6ed1eb77801b1250d2368ee6916508c38c08fb86f951682cf55bd9c8a",
+    "data/ground_truth/reviews/train_events/event_016_review.json": "c25a8e4bb4f9667927a2c2e88d76aa40e09612baffd75a8bb8171ff4381db1af",
+    "data/ground_truth/reviews/train_events/event_017_review.json": "f2ee23c67348984283e30f18735d57feb1cedbd822056bfec12a5466eee8d859",
+    "data/ground_truth/reviews/train_events/event_018_review.json": "a954c637fc7430ba5fcaf1de98c3407f6f8a9f2cd984f7cb5fadaeef3e60efaf",
+    "data/ground_truth/reviews/train_events/event_019_review.json": "278b49f9c241b10189274c19a9634e58a5c8dfc4e45530239d2778f662fe29f2",
+    "data/ground_truth/reviews/train_events/event_020_review.json": "b98c257804fd2ba0acb21a10de90c9dc4595fc3a898ce1c41a86beedc3ccf9e9",
+    "data/ground_truth/reviews/train_events/event_021_review.json": "c6e689b00b5001191660b4b71c8df43d205b84f1b7d23af066298152d85b563f",
+    "data/ground_truth/reviews/train_events/event_022_review.json": "30f0ec6c8f2825a6644bebe3ce8ab97a9352cfeabb8a721da30a235403f134c4",
+    "data/ground_truth/reviews/train_events/event_023_review.json": "e19f917c28920161535e9322a984fa35fecd8fba552557a017062b727b3854d6"
+  }
+}

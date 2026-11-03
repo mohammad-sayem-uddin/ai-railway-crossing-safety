@@ -1,0 +1,19 @@
+### Table 10: Fault-Injection Resilience and Safety Invariant Verification
+
+| Scenario ID | Failure Perturbation Mode | Events | Operational Gate State | FAULT_FAIL_SAFE Entered | Invariant Violations | Audit Note |
+| --- | --- | --- | --- | --- | --- | --- |
+| B5a | Camera 1 Dropout (Full Event) | 27 | Closed during passage | Degraded Operation | 0 | Single camera coverage maintained |
+| B5b | Camera 1 Dropout (Midway 30-70%) | 27 | Closed during passage | Degraded Operation | 0 | Single camera coverage maintained |
+| B5c | Camera 1 Flapping (2s on/2s off) | 27 | Closed during passage | Degraded Operation | 0 | Camera toggling smoothed by tracker |
+| B6a | Camera 2 Dropout (Full Event) | 27 | Held Closed Conservatively | Degraded Operation | 0 | Clearance dwell timeout holds gate closed |
+| B6b (Original) | Both Cameras Fail (Simultaneous) | 27 | OPEN (0.0s closed) | FAILED (Remained in IDLE) | Fail-Safe Violation | Identified in forensic audit |
+| B6b (Corrected) | Both Cameras Fail (Simultaneous) | 27 | CLOSED (48.3s mean) | Yes (27/27 @ 0.4s) | 0 | Fixed via IDLE loss counter transition |
+| B6c | Both Cameras Fail (Sequential) | 27 | CLOSED via timeout | Yes (27/27) | 0 | Secondary failure handled in active state |
+| B7a | Audio Dropout (Complete Loss) | 27 | Closed during passage | Normal Vision Operation | 0 | INV-1 audio independence verified |
+| B7b (Original) | Dropped Frames (30% Random) | 27 | OPEN (0.0s closed) | No (No frames received) | Test Failure | Injector bug: any() dropped 100% |
+| B7b (Corrected) | Dropped Frames (30% Random) | 27 | Closed during passage | Normal Operation | 0 | Deterministic PRNG: ~30.0% actual drop |
+| B7c | False Detection Noise (0.85 conf) | 27 | Closed conservatively | Warning Triggered | 0 | Clutter handled safely |
+| B7d | Timestamp Out-of-Order Swaps | 27 | Closed during passage | Rejected by Rule 8 | 0 | Temporal ordering enforced |
+| B7e | Stale Timestamps (2s Midway) | 27 | Closed during passage | Rejected by Tracker | 0 | Stale sensor timeout enforced |
+| B7f (Original) | Compound Audio Loss + 10% Drop | 27 | OPEN (0.0s closed) | No (No frames received) | Test Failure | Injector bug: any() dropped 100% |
+| B7f (Corrected) | Compound Audio Loss + 10% Drop | 27 | Closed during passage | Normal Operation | 0 | Deterministic PRNG: ~10.0% actual drop |

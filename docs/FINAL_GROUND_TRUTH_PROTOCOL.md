@@ -1,7 +1,7 @@
 # Final Ground Truth Annotation Protocol
 
-**Document Version:** 6.0.0  
-**Date:** 2026-10-09  
+**Document Version:** 7.0.0  
+**Date:** 2026-10-12  
 **Status:** PREREQUISITE SPECIFICATION — AI-Assisted, Human-Verified Canonical Ground Truth Protocol  
 **Authority:** Referenced by `docs/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md` §6
 
@@ -138,12 +138,28 @@ When an approaching train is already visible in the camera field of view in fram
    - **Mandatory Rule:** Left-censored events **MUST BE EXCLUDED** from the true physical detection-latency calculation denominator, marked as `not_evaluable` / `left_censored`.
    - **Exploratory Lower-Bound Exception:** If an evaluation report presents an observed recording-relative detection latency ($T_{\text{detect}} - 0.00\,\text{s}$), it must be reported in a dedicated exploratory lower-bound column with explicit left-censoring disclosure and NEVER pooled into unadjusted physical detection latency averages.
 
-### 2.4 Crossing Geometry & Landmark Separation Under Prerequisite R03
+### 2.4 Operational Danger-Zone Annotation Convention (Retirement of R03)
 
-Under **Prerequisite R03**, the repository currently contains **no surveyed geometry sheets, road line measurements, gate coordinates, or physical crossing boundary documentation** for Crossing A or Crossing B.
-1. **Provisional Visual Landmarks:** Visible track features (e.g., turnout frog for $T_1$, camera lens transverse plane for $T_2$, vegetable vendor cart line / pedestrian surge line for $T_4$) represent **provisional visual landmarks**.
-2. **Prohibition on Premature Designation:** Researchers and automated agents are strictly forbidden from designating visible landmarks as certified physical danger-zone boundaries without surveyed empirical evidence.
-3. **Provisional Status:** In candidate proposals and reviews, $T_1$, $T_2$, and $T_4$ must carry `ambiguity_flag: true` and remain provisional until R03 crossing geometry is documented and certified. Acoustic engine-rumble peaks are rejected as substitutes for physical visual danger-zone boundaries.
+Under research methodology update (Protocol v7.0.0), **Prerequisite R03 (external site survey / measured physical geometry) is formally RETIRED as a separate methodology blocker**. An external geometric site survey is no longer required to complete the annotation workflow.
+
+Instead, the crossing danger zone is defined using a documented, researcher-defined **Operational Danger-Zone Annotation Convention** based on verifiable physical track and roadway features observed in the source recordings:
+
+1. **Unified Conceptual Exit Boundary Definition:**
+   - **Unified Conceptual Exit Boundary Plane:** The conceptual exit boundary of the level-crossing hazard corridor is defined as the **Level-Crossing Departure Roadway Boundary Plane**—the transverse plane where the vehicular road and pedestrian crossing corridor terminates on the departure side of the tracks.
+   - **Single Unified Physical Boundary for $T_3$ and $T_4$:** The "vendor-stall clearance line" and the "departure roadway boundary" are **two descriptive names for the exact same physical exit boundary plane**. The stationary vendor stalls and pedestrian waiting crowds line the departure edge of the level-crossing roadway.
+   - **$T_3$ Tracking Point:** The tracking point on the train is the **trailing coupler / rear buffer of the lead motive power unit**. When this point clears the vendor-stall departure line on `camera_back.mov`, the locomotive unit has cleared the danger zone.
+   - **$T_4$ Tracking Point:** The tracking point on the train is the **rear buffer / diaphragm of the final rail vehicle**. When this point clears the **identical** vendor-stall departure line on `camera_back.mov`, the entire train has cleared the danger zone and roadway traffic resumes.
+   - **Operational Convention Disclosure:** This rule is an operational researcher-defined annotation convention based on verifiable source-media visual landmarks, not an independently surveyed physical geodetic ground truth.
+
+2. **Operational Landmarks for Level-Crossing A:**
+   - **$T_1$ (Danger Zone Entry):** Locomotive front cowcatcher/pilot reaches the approach danger-zone line (specifically, the turnout switch frog casting / pedestrian approach corridor line observed on `camera_front.mov`).
+   - **$T_2$ (Crossing Occupancy Start):** Locomotive front pilot crosses the transverse camera plane / roadway boundary line on `camera_front.mov`, commencing physical road lane blockage.
+   - **$T_3$ (Locomotive Unit Clearance):** Trailing coupler/buffer of the lead motive power unit clears the unified departure roadway exit boundary plane (marked by the vendor-stall clearance line on `camera_back.mov`).
+   - **$T_4$ (Tail Clearance):** Rear buffer of the final rail vehicle clears the unified departure roadway exit boundary plane (marked by the vendor-stall clearance line on `camera_back.mov`), permitting pedestrian and road vehicle ingress.
+   - **$T_{\text{scene\_clear}}$ (Scene Clear):** Train completely recedes past visible corridor sightlines under the viaduct on `camera_back.mov`. If recording ends while train is still visible, marked `unobservable: true, value_s: null`.
+3. **Handling Left-Censored and Right-Censored Passage Events:** For events where the train was already occupying the crossing or the locomotive passed prior to recording start (e.g. `event_005` on `camera_front.mov`), automated assignment of synthetic arrival timestamps is strictly prohibited. $T_1$ and $T_2$ must be explicitly marked `observable: false, value_s: null` with documented rationale (`"Locomotive entered danger zone prior to recording start"`). Conversely, independent streams (such as `camera_back.mov`) must be audited independently without inferring unobservability from front camera frame 0. If a stream ends while coaches are still traversing (e.g. `event_005` on `camera_back.mov`), $T_4$ must be marked right-censored (`observable: false, value_s: null`).
+4. **Provisional Flagging on Missing Conventions:** If a specific recording session or crossing lacks a documented operational convention, the affected boundary markers must be flagged as `provisional` with documented rationale, without blocking unrelated annotation work.
+5. **Preservation of Camera-Local Clocks (R04 Limitation):** Retiring R03 does not affect Prerequisite R04. Front and back cameras remain on independent media-local clocks until empirical hardware synchronization is certified. Acoustic engine-rumble peaks are rejected as substitutes for physical visual danger-zone boundaries.
 
 ---
 
@@ -768,25 +784,27 @@ A single physical road object (e.g., a passing delivery truck) can trigger both 
 
 ---
 
-## 7. Researcher Prerequisite Verification (R01 through R04) — All Currently INCOMPLETE (NO-GO)
+## 7. Researcher Prerequisite Verification (R01 through R04) — Status Post-Protocol v7.0.0 Revision
 
-Every evaluation run requires formal verification that all real-world research prerequisites have been met. Based on repository inspection, all four prerequisites are currently unmet:
+Every evaluation run requires formal verification that all real-world research prerequisites have been met. Under Protocol v7.0.0, the prerequisite status is:
 
-1. **Prerequisite R01 (AI-Assisted Annotation & Human Approval) — INCOMPLETE:**
-   - Candidate proposals must be generated by Gemini into `data/ground_truth/proposals/`.
-   - The human researcher must perform manual frame-by-frame and audio inspection of all 27 events, log decisions in `data/ground_truth/reviews/`, correct errors, and write approved files (`approval_status: "APPROVED"`) into `data/ground_truth/`.
-   - *Current Repository Status:* **INCOMPLETE.** Directory `data/ground_truth/` does not exist; no ground-truth files exist.
-2. **Prerequisite R02 (Cryptographic Ground Truth Manifest Freeze) — INCOMPLETE:**
-   - The researcher must generate `data/ground_truth/ground_truth_manifest.json` locking the 64-character SHA-256 hashes of all 27 approved ground-truth JSON files, 27 review logs, and 27 raw proposals.
-   - *Current Repository Status:* **INCOMPLETE.** No manifest file exists.
-3. **Prerequisite R03 (Crossing Geographic & Landmark Documentation) — INCOMPLETE:**
-   - Researcher must document physical crossing boundaries, road width, visual approach/departure landmarks, and camera mounting geometry for each crossing site (Crossing A and Crossing B).
-   - *Current Repository Status:* **INCOMPLETE.** No geometry sheets, landmark annotations, or surveyed boundary documents exist in the repository.
-4. **Prerequisite R04 (Inter-Camera Offset for No-Train Events) — INCOMPLETE:**
-   - Researcher must measure inter-camera temporal offset ($\Delta t$) for each no-train event using audio cross-correlation, visual landmark, or other justified method. Until R04 is completed, concurrent overlap denominators remain unresolved and must not be used.
-   - *Current Repository Status:* **INCOMPLETE.** Container creation timestamps show different dates across cameras (unusable for synchronization); no empirical offset measurements exist.
+1. **Prerequisite R01 (AI-Assisted Annotation & Human Approval) — IN PROGRESS (Firewall Enforced):**
+   - Candidate proposals are generated into `data/ground_truth/proposals/` and review logs in `data/ground_truth/reviews/`.
+   - The human researcher performs manual frame-by-frame and audio inspection of all 27 active events, logs decisions, and approves certified ground-truth files (`approval_status: "APPROVED"`) into `data/ground_truth/`.
+   - *Current Status:* Candidate proposals (v2/v6) generated and awaiting human researcher manual adjudication; no approved ground-truth files exist yet.
+2. **Prerequisite R02 (Cryptographic Ground Truth Manifest Freeze) — PENDING (Awaiting Human Approval):**
+   - After manual approval, the researcher generates `data/ground_truth/ground_truth_manifest.json` locking the 64-character SHA-256 hashes of all 27 approved ground-truth JSON files, 27 review logs, and 27 raw proposals.
+   - *Current Status:* Pending human approval of Stage 2 review records.
+3. **Prerequisite R03 (Crossing Geographic & Landmark Documentation) — RETIRED AS SEPARATE METHODOLOGY BLOCKER:**
+   - Under Protocol v7.0.0, external physical site surveys and independent measured physical geometry are no longer required as prerequisites for completing the annotation workflow.
+   - Replaced by the documented, researcher-defined **Operational Danger-Zone Annotation Convention** (§2.4) utilizing verifiable physical track and roadway features observed in source video streams (turnout switch frog, transverse roadway boundary plane, vendor clearance line).
+   - *Current Status:* **RETIRED.** Operational convention formally adopted.
+4. **Prerequisite R04 (Inter-Camera Temporal Offset & Hardware Synchronization) — UNRESOLVED / PRESERVED:**
+   - Inter-camera temporal offset ($\Delta t$) remains unmeasured; front and back cameras operate on independent media-local clocks.
+   - Concurrent overlap denominators remain unresolved and must not be used until empirical synchronization is established.
+   - *Current Status:* **UNRESOLVED.** Camera-local timelines strictly preserved.
 5. **Automated Enforcement:**
-   - The evaluation runner will call `GroundTruthLoader.validate_all()`.
+   - The evaluation runner calls `GroundTruthLoader.validate_all()`.
    - If any required file is missing, unapproved, fails SHA-256 validation against `ground_truth_manifest.json`, contains ellipses, placeholders, or unauthorized `null`s, evaluation halts immediately with exit code 1.
 
 ---
@@ -826,3 +844,4 @@ Every evaluation run requires formal verification that all real-world research p
 | 4.0.0 | 2026-10-09 | AI-Assisted Annotation Amendment: Formally replaced human-only annotation policy with 3-stage lifecycle (AI proposal → human review → approved ground truth); established immutable proposal repository and audit log schemas; enforced anti-leakage firewall separating annotator from runtime models; created prerequisites R01 and R02. |
 | 5.0.0 | 2026-10-09 | Methodology Implementation Pass: Defined canonical boundary taxonomy with T3 as Locomotive Head Exit and T4 as Tail Clearance; integrated full 64-character SHA-256 validation; added full JSON schema templates for proposals, reviews, and ground truth; reinforced R01–R04 prerequisite enforcement. |
 | 6.0.0 | 2026-10-09 | Canonical Terminology & Left-Censoring Harmonization Pass: (1) Resolved T3 canonical name as **Locomotive Unit Clearance (rear end exits danger zone)** with explicit physical definition (trailing edge of lead motive power unit clears danger zone while trailing cars continue); distinguished front exit during traversal from complete unit clearance. (2) Preserved T4 strictly as Tail Clearance (final vehicle clears danger zone). (3) Harmonized schema key to `T3_locomotive_unit_clearance` with backward-compatibility alias mapping for legacy `T3_locomotive_exit` (preserving draft proposals v1–v4). (4) Defined left-censored $T_0$ representation (recording-relative 0.00s candidate; mandatory exclusion from physical detection-latency denominator). (5) Explicitly distinguished provisional visual landmarks from certified danger-zone boundaries pending Prerequisite R03 crossing geometry survey. |
+| 7.0.0 | 2026-10-12 | Research Methodology Update & Prerequisite R03 Retirement Pass: (1) Formally retired Prerequisite R03 as a separate methodology blocker; replaced external physical site survey requirement with researcher-defined Operational Danger-Zone Annotation Convention (§2.4) referencing visible physical track and roadway features. (2) Kept canonical boundaries T0–T4 semantically aligned with operational conventions. (3) Strictly preserved Prerequisite R04 (camera synchronization remains unresolved; independent camera-local timelines enforced). (4) Mandated evidence-based forensic re-verification of all 27 active events, replacing synthetic formula heuristics with dense frame and acoustic measurements. |

@@ -1,0 +1,314 @@
+{
+  "run_mode": "phase10_candidate_vs_frozen_replay",
+  "timestamp_utc": "2026-10-14T05:32:00.751296+00:00",
+  "purpose": "Compare the frozen decision policy against the Phase 10 candidate policy on Phase 8's cached real evidence. No new model inference. Does not use any synchronization mechanism beyond what load_validated_sync_aligner already validates per event.",
+  "frozen_policy_doc": "configs/decision_policy_v1.yaml",
+  "candidate_policy_doc": "configs/decision_policy_v2_candidate.yaml",
+  "candidate_policy_version": "2.0.0-candidate",
+  "frozen_experiment_config_canonical_hash_at_run_time": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+  "events": {
+    "train_events/event_001": {
+      "back_offset_s": 7.406,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 249,
+        "reached_crossing_clear": false,
+        "final_state": "REAR_CONFIRMED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 50,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 44
+        }
+      },
+      "candidate": {
+        "tick_count": 249,
+        "reached_crossing_clear": true,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 19,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 19,
+          "RULE_3_POSITIVE_CLEARANCE": 1
+        }
+      }
+    },
+    "train_events/event_002": {
+      "back_offset_s": 4.1867,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 163,
+        "reached_crossing_clear": false,
+        "final_state": "REAR_CONFIRMED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 34,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 33
+        }
+      },
+      "candidate": {
+        "tick_count": 163,
+        "reached_crossing_clear": false,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 1,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 1
+        }
+      }
+    },
+    "train_events/event_005": {
+      "back_offset_s": 6.038,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 398,
+        "reached_crossing_clear": false,
+        "final_state": "CROSSING_OCCUPIED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 93,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 92
+        }
+      },
+      "candidate": {
+        "tick_count": 398,
+        "reached_crossing_clear": false,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 3,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 23,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 3
+        }
+      }
+    },
+    "train_events/event_006": {
+      "back_offset_s": 4.5124,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 635,
+        "reached_crossing_clear": false,
+        "final_state": "CROSSING_OCCUPIED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 156,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 146
+        }
+      },
+      "candidate": {
+        "tick_count": 635,
+        "reached_crossing_clear": false,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 2,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 2
+        }
+      }
+    },
+    "train_events/event_007": {
+      "back_offset_s": 8.8801,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 192,
+        "reached_crossing_clear": false,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 40,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 40
+        }
+      },
+      "candidate": {
+        "tick_count": 192,
+        "reached_crossing_clear": false,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 2,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 2
+        }
+      }
+    },
+    "train_events/event_009": {
+      "back_offset_s": 9.4043,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 215,
+        "reached_crossing_clear": false,
+        "final_state": "REAR_CONFIRMED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 47,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 46
+        }
+      },
+      "candidate": {
+        "tick_count": 215,
+        "reached_crossing_clear": true,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 2,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 1
+        }
+      }
+    },
+    "train_events/event_011": {
+      "back_offset_s": 5.2713,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 189,
+        "reached_crossing_clear": false,
+        "final_state": "CROSSING_OCCUPIED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 40,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 40
+        }
+      },
+      "candidate": {
+        "tick_count": 189,
+        "reached_crossing_clear": true,
+        "final_state": "GATE_CLOSING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 4,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 2
+        }
+      }
+    },
+    "train_events/event_012": {
+      "back_offset_s": 5.5679,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 376,
+        "reached_crossing_clear": false,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 85,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 83
+        }
+      },
+      "candidate": {
+        "tick_count": 376,
+        "reached_crossing_clear": true,
+        "final_state": "TRAIN_PRESENT",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 8,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 9,
+          "RULE_3B_DEPARTURE_CONFIRMED_UNAMBIGUOUS_REAR": 1,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 6,
+          "RULE_3_POSITIVE_CLEARANCE": 2
+        }
+      }
+    },
+    "train_events/event_013": {
+      "back_offset_s": 3.278,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 369,
+        "reached_crossing_clear": false,
+        "final_state": "REAR_CONFIRMED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 85,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 84
+        }
+      },
+      "candidate": {
+        "tick_count": 369,
+        "reached_crossing_clear": true,
+        "final_state": "REAR_CONFIRMED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 7,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 14,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 6,
+          "RULE_3_POSITIVE_CLEARANCE": 2
+        }
+      }
+    },
+    "train_events/event_014": {
+      "back_offset_s": 4.0806,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 276,
+        "reached_crossing_clear": false,
+        "final_state": "REAR_CONFIRMED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 62,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 61
+        }
+      },
+      "candidate": {
+        "tick_count": 276,
+        "reached_crossing_clear": true,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 1,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 1,
+          "RULE_3_POSITIVE_CLEARANCE": 1,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 2,
+          "RULE_3B_DEPARTURE_CONFIRMED_UNAMBIGUOUS_REAR": 1
+        }
+      }
+    },
+    "train_events/event_017": {
+      "back_offset_s": 4.5654,
+      "trajectory_changed": true,
+      "frozen": {
+        "tick_count": 419,
+        "reached_crossing_clear": false,
+        "final_state": "REAR_CONFIRMED",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 98,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 97
+        }
+      },
+      "candidate": {
+        "tick_count": 419,
+        "reached_crossing_clear": false,
+        "final_state": "TRAIN_DEPARTING",
+        "rejected_observations": 0,
+        "rule_counts": {
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 5,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 5
+        }
+      }
+    }
+  },
+  "summary": {
+    "total_events": 11,
+    "events_with_changed_trajectory": 11,
+    "frozen_reached_clear_count": 0,
+    "candidate_reached_clear_count": 6
+  }
+}

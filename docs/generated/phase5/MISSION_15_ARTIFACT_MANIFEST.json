@@ -1,0 +1,77 @@
+{
+  "schema_version": "mission15-artifact-manifest/1",
+  "mission": 15,
+  "date": "2026-11-02",
+  "auditor": "Independent Principal Security Auditor and Research Reproducibility Auditor",
+  "baseline_head": "d4db94d4a4ea83ae4c510d65dfc99c5d6798304b",
+  "disposition": "PHASE_5_ENGINEERING_RECOVERY_VERIFIED",
+  "real_data_execution_authorized": false,
+  "total_artifacts": 13,
+  "artifacts": [
+    {
+      "path": "docs/generated/phase5/MISSION_15_INITIAL_BASELINE.md",
+      "sha256": "5628bf28d9b12e2c67dbacf2f08465aee32bdc80b9f81b5a516ae8a9a1de1fc2",
+      "size_bytes": 5048
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_MEDIA_SECURITY_AUDIT.md",
+      "sha256": "6611a81c7a97b8a454055218c8eba30ac5c3baf9f74d4910f0ad7a618f62379d",
+      "size_bytes": 11729
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_14_FINDINGS_CROSSWALK.md",
+      "sha256": "9c70b1fa935d79273949eefd24a3fea4c945cc562ea439dc37369a9b3f73bfcf",
+      "size_bytes": 21588
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_EVALUATION_AUTHORIZATION_AUDIT.md",
+      "sha256": "2c3e5bebb08e126212432eb3e66d2c7a4a799fe7afb9c4b93319b6d654d21246",
+      "size_bytes": 9723
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_DASHBOARD_SCRATCH_AUDIT.md",
+      "sha256": "4f9a5d7c2aaf32c68f9460e7d4ad0b99538d09f6d9963d5777b2fab29d206cc4",
+      "size_bytes": 7791
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_SAFE_RUNNER_AUDIT.md",
+      "sha256": "26e08cd5f8de4eaad5d33559bad617e8829481a766077d771b556ac3843922dd",
+      "size_bytes": 7737
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_MISSION12_INCIDENT_REASSESSMENT.md",
+      "sha256": "39d28671d299f2fa20a48c50c91235e7b752640563f242ce4a9f419475ab68b8",
+      "size_bytes": 8395
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_PRESERVATION_AUDIT.md",
+      "sha256": "fbec11d89db9f39a37db7e11cfc5a752d0f127862c1310aba34066217efa4894",
+      "size_bytes": 7053
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_REMAINING_FINDINGS_AUDIT.md",
+      "sha256": "8f8253e5a6f85498bad2ff456e2ad750b526904b28f983e505eef10e1d38741c",
+      "size_bytes": 7611
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_RESEARCHER_DECISION_REGISTER.md",
+      "sha256": "06e0b26def7cd98776f6dabb9a6fa3c8ccae05a77ea8842b0a22c5f884870096",
+      "size_bytes": 10154
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_REPRODUCIBILITY_AND_DOCUMENTATION_AUDIT.md",
+      "sha256": "2721af1d1e6589ea5cce1aac5310a1a1e3ad02495557c9f5743d3be86051cc49",
+      "size_bytes": 7348
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_FINAL_FINDING_REGISTER.json",
+      "sha256": "dc335170b962b97252fb459a8e054540e9923ed6ef4c6ed7670935d4bb13c96a",
+      "size_bytes": 32625
+    },
+    {
+      "path": "docs/generated/phase5/MISSION_15_INDEPENDENT_AUDIT_REPORT.md",
+      "sha256": "a0009ef791dd4de04877946ee1161a0d6cc6232e407a7a270856fc38ceb32f0f",
+      "size_bytes": 15736
+    }
+  ]
+}

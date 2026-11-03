@@ -27,10 +27,12 @@ The core framework integrates:
 | Milestone / Component | Current Status | Description |
 |---|---|---|
 | **Perception Foundation** | **Completed** | YOLOv8n fine-tuned on train visual classes; Audio V3 CNN trained on train horns & ESC-50. |
-| **Methodology Protocols** | **Frozen (v8.0.0 / v6.0.0)** | Authoritative specifications in [`docs/`](docs/): [`FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md`](docs/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md), [`FINAL_GROUND_TRUTH_PROTOCOL.md`](docs/FINAL_GROUND_TRUTH_PROTOCOL.md), [`FINAL_EXPERIMENT_DATA_FLOW.md`](docs/FINAL_EXPERIMENT_DATA_FLOW.md), and [`FINAL_ABLATION_MATRIX.md`](docs/FINAL_ABLATION_MATRIX.md). |
-| **Annotation Infrastructure** | **Operational** | Offline AI proposal tooling (`railway_detection.annotation`) with schema validation. |
-| **Ground-Truth Calibration** | **In Review (`event_001`)** | Candidate proposals v1–v4 generated; researcher review sheet active. **Pending final human sign-off.** |
-| **Real-World Layer B Evaluation** | **NOT AUTHORIZED** | Final batch replay across the Layer B evaluation cohort (27 events: 23 full-train, 3 no-train, 1 engine-only) is strictly locked out until ground truth is certified. |
+| **Methodology Protocols** | **v7.1.1-PROPOSED** | Ground Truth Protocol v7.1.1-PROPOSED prepared in [`docs/generated/phase2/`](docs/generated/phase2/) to resolve legacy $T_1$ premature opening definitions; pending PI hash binding. |
+| **Master Reaudit Series** | **Completed (M16A–M17A)** | Comprehensive 35-report forensic audit completed in [`docs/generated/master_reaudit/`](docs/generated/master_reaudit/), establishing mathematical closure on simulation timing and resolving researcher directions (RD-001 through RD-055). |
+| **Kinematic Stepping Proof** | **Proven ($\Delta T = -0.20\,\text{s}$)** | Analytical proof that forward-causal Convention B stepping reduces historical B4 closed durations by exactly $-0.2000\,\text{s}$ across all 27 events ($\Delta T = -\Delta t \cdot b_N$). |
+| **Lead-In Feasibility & Censoring** | **Disclosed (20/23 Left-Censored)**| 86.9% of train events are left-censored ($T_0 \le 0.0\,\text{s}$); physical MTR is not estimable. Historical 3.6s threshold is an engineering parameter ($0.2 + 2.0 + 1.5 - 0.1\,\text{s}$), not a railway regulatory standard. |
+| **Historical Safety Metrics** | **Non-Computable ($T_4 = \text{null}$)** | Rear-camera departure landmark $T_4$ was null across all 23 historical train passes; M4 (POR) and M5 (Never Protected) were non-computable, not zero violations. |
+| **Real-World Layer B Evaluation** | **STRICTLY NOT AUTHORIZED** | Final batch replay across the Layer B evaluation cohort (27 events) remains fail-closed and locked out until Gate 1–3 governance authorizations are formally issued. |
 
 ---
 
@@ -162,30 +164,26 @@ The `docs/` directory is organized into active, governing methodology documents 
 
 ## 5. Installation & Environment Setup
 
-Supported Python Version: **Python 3.11 or newer** (tested on Python 3.11.15).
+Supported Python Version: **Python 3.11 or newer**. The verified local validation environment is `venv/` (Python 3.11.15); `.venv/` is not the canonical environment because its package set differs from `requirements.lock`.
 
 ```bash
-# 1. Clone repository
-git clone https://github.com/mohammad-sayem-uddin/ai-railway-crossing-safety.git
-cd ai-railway-crossing-safety
+# 1. From the repository root, create a clean environment (Python 3.11 recommended)
+python3.11 -m venv venv
+source venv/bin/activate
 
-# 2. Create and activate a clean virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+# 2. Install this package and development tools from the declared project metadata
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -e ".[dev]"
 
-# 3. Upgrade pip and build tools
-pip install --upgrade pip setuptools wheel
-
-# 4. Install package in editable mode with development dependencies
-pip install -e ".[dev]"
+# 3. For an environment matching the recorded validation run, install the pinned lock file
+# (the editable project line in requirements.lock points at this repository/HEAD).
+python -m pip install -r requirements.lock
 ```
 
-### Core Dependencies
-* **Core & Configuration:** `PyYAML`, `pydantic` (>=2.0), `pillow`
-* **Deep Learning & Computer Vision:** `torch`, `torchvision`, `torchaudio`, `ultralytics`
-* **Signal Processing & Analysis:** `numpy`, `scipy`, `matplotlib`
-* **AI-Assisted Annotation:** `google-genai` (or compatible Gemini API client)
-* **Testing & Linting:** `pytest`, `ruff`, `mypy`
+### Declared Dependencies
+The authoritative dependency declarations are `pyproject.toml` and `requirements.lock`; do not infer additional packages from historical reports. The project declares `numpy`, `PyYAML`, `Pillow`, `torch`, `torchvision`, `ultralytics`, and `opencv-python`; optional development tools are `pytest`, `ruff`, `mypy`, and `types-PyYAML`; optional evaluation tools are `matplotlib` and `scipy`. `pydantic`, `torchaudio`, and `google-genai` are mentioned in historical documentation but are not declared or imported by the current package and are not required by the bounded verification reported here.
+
+The lock file records the verified local environment, including Python 3.11-compatible versions. Package installation and model/data availability are environment-dependent; a successful install does not constitute research validation.
 
 ---
 

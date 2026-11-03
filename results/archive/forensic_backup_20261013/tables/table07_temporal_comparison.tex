@@ -1,0 +1,15 @@
+\begin{table*}[t]
+\centering
+\caption{Table 7: Impact of Temporal Evidence Filtering on Detection Jitter}
+\label{tab:table07_temporal_comparison}
+\begin{tabular}{llll}
+\hline
+Temporal Metric & Raw Independent Frames (B0) & Temporal Filtering (B3) & Delta / Gain \\
+\hline
+Mean Detection Continuity & 76.4\% & 91.8\% & +15.4\% continuity \\
+Transient False Dropping Events & 9 events & 1 event & -88.9\% chattering \\
+Mean Warning Confirmation Latency & 0.20s & 0.40s & +0.20s (confirm\_frames=2) \\
+Premature Openings Caused by Dropouts & 9 events & 0 events (in B4) & 100\% elimination \\
+\hline
+\end{tabular}
+\end{table*}

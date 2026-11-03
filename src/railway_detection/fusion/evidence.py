@@ -49,6 +49,10 @@ class DecisionRecord:
     explanation: str | None = None
     fault_status: str = "none"
     source_availability: dict[str, bool] = field(default_factory=dict)
+    source_health: dict[str, str] = field(default_factory=dict)
+    health_reasons: dict[str, str] = field(default_factory=dict)
+    observation_ages: dict[str, float] = field(default_factory=dict)
+    gate_command: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         data: dict[str, Any] = {
@@ -60,7 +64,12 @@ class DecisionRecord:
             "resulting_gate_state": self.resulting_gate_state,
             "fault_status": self.fault_status,
             "source_availability": self.source_availability,
+            "source_health": self.source_health,
+            "health_reasons": self.health_reasons,
+            "observation_ages": self.observation_ages,
         }
+        if self.gate_command is not None:
+            data["gate_command"] = self.gate_command
         if self.evidence_references:
             data["evidence_references"] = list(self.evidence_references)
         if self.rule_id is not None:

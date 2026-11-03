@@ -1,0 +1,84 @@
+{
+  "metric_comparison": {
+    "negative_source": {
+      "V2": "Custom Field Environmental (97 MP3s)",
+      "V3": "Official ESC-50 (86 WAVs)"
+    },
+    "calibrated_threshold": {
+      "V2": 0.28,
+      "V3": 0.37
+    },
+    "window_accuracy": {
+      "V2": 1.0,
+      "V3": 0.8956
+    },
+    "window_precision": {
+      "V2": 1.0,
+      "V3": 0.7875
+    },
+    "window_recall": {
+      "V2": 1.0,
+      "V3": 0.9692
+    },
+    "window_specificity": {
+      "V2": 1.0,
+      "V3": 0.8547
+    },
+    "window_f1_score": {
+      "V2": 1.0,
+      "V3": 0.869
+    },
+    "window_auc_roc": {
+      "V2": 1.0,
+      "V3": 0.9613
+    },
+    "window_pr_auc": {
+      "V2": 1.0,
+      "V3": 0.9415
+    },
+    "window_brier_score": {
+      "V2": 0.0008,
+      "V3": 0.082
+    },
+    "window_ece": {
+      "V2": 0.0012,
+      "V3": 0.0817
+    },
+    "window_tp": {
+      "V2": 65,
+      "V3": 63
+    },
+    "window_fp": {
+      "V2": 0,
+      "V3": 17
+    },
+    "window_fn": {
+      "V2": 0,
+      "V3": 2
+    },
+    "window_tn": {
+      "V2": 156,
+      "V3": 100
+    },
+    "recording_accuracy": {
+      "V2": 1.0,
+      "V3": 0.8462
+    },
+    "recording_precision": {
+      "V2": 1.0,
+      "V3": 0.7647
+    },
+    "recording_recall": {
+      "V2": 1.0,
+      "V3": 1.0
+    },
+    "recording_specificity": {
+      "V2": 1.0,
+      "V3": 0.6923
+    },
+    "recording_f1_score": {
+      "V2": 1.0,
+      "V3": 0.8667
+    }
+  }
+}

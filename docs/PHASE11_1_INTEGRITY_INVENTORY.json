@@ -1,0 +1,446 @@
+{
+  "generated_by": "scripts/run_phase11_1_integrity_audit.py",
+  "purpose": "Read-only integrity audit of the 27 existing Stage-2 review records. Does not modify, approve, or reject any record.",
+  "total_review_records_examined": 27,
+  "batch_integrity_violations": [
+    {
+      "event_id": "event_001",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_001",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_002",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_003",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_001",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_002",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_003",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_004",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_005",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_006",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_007",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_008",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_009",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_010",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_011",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_012",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_013",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_014",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_015",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_016",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_017",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_018",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_019",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_020",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_021",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_022",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_023",
+      "code": "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION",
+      "message": "review_date_utc '2026-10-12T16:51:21Z' is shared by 27 records (['event_001', 'event_001', 'event_001', 'event_002', 'event_002', 'event_003', 'event_003', 'event_004', 'event_005', 'event_006', 'event_007', 'event_008', 'event_009', 'event_010', 'event_011', 'event_012', 'event_013', 'event_014', 'event_015', 'event_016', 'event_017', 'event_018', 'event_019', 'event_020', 'event_021', 'event_022', 'event_023']) with no individually-plausible review_duration_s (>= 30.0s) to distinguish genuinely separate review sessions."
+    },
+    {
+      "event_id": "event_001",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_001",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_002",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_003",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_001",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_002",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_003",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_004",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_005",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_006",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_007",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_008",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_009",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_010",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_011",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_012",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_013",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_014",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_015",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_016",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_017",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_018",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_019",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_020",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_021",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_022",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    },
+    {
+      "event_id": "event_023",
+      "code": "APPROVED_WITHOUT_PROVENANCE",
+      "message": "Record claims APPROVED status but has neither a plausible review_duration_s nor a review_session_id to evidence a genuine, individually-attributable review action."
+    }
+  ],
+  "violation_counts_by_code": {
+    "APPROVED_WITHOUT_PROVENANCE": 27,
+    "IDENTICAL_TIMESTAMP_NO_PLAUSIBLE_DURATION": 27
+  },
+  "stale_proposal_references": [
+    {
+      "event_id": "event_001",
+      "referenced_proposal_file": "data/ground_truth/proposals/engine_events/event_001_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_001",
+      "referenced_proposal_file": "data/ground_truth/proposals/no_train_events/event_001_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_002",
+      "referenced_proposal_file": "data/ground_truth/proposals/no_train_events/event_002_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_003",
+      "referenced_proposal_file": "data/ground_truth/proposals/no_train_events/event_003_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_001",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_001_proposal_v5.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_002",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_002_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_002_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_003",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_003_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_004",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_004_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_004_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_005",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_005_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_005_proposal_v4.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_006",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_006_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_006_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_007",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_007_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_008",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_008_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_009",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_009_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_010",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_010_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_011",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_011_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_012",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_012_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_012_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_013",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_013_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_013_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_014",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_014_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_015",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_015_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_016",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_016_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_017",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_017_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_017_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_018",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_018_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_018_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_019",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_019_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_020",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_020_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_020_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_021",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_021_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_021_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_022",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_022_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_022_proposal_v2.json",
+      "is_stale_reference": true
+    },
+    {
+      "event_id": "event_023",
+      "referenced_proposal_file": "data/ground_truth/proposals/train_events/event_023_proposal_v1.json",
+      "active_proposal_file": "data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+      "is_stale_reference": true
+    }
+  ],
+  "stale_reference_count": 27
+}

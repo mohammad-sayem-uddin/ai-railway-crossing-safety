@@ -1,0 +1,2629 @@
+{
+  "generated_by": "scripts/run_phase11_annotation_inventory.py",
+  "purpose": "Independent, structurally-verified event-level annotation inventory (Phase 11, Tasks 2 & 5). Candidate proposal T0-T4/T_scene_clear values are AI-generated drafts, NOT approved ground truth. All 27 existing review records claiming APPROVED status are INVALID (see fabrication_flag) and require genuine human re-review before any use as ground truth.",
+  "total_events": 27,
+  "integrity_findings": {
+    "distinct_review_timestamps_across_all_27_records": [
+      "2026-10-12T16:51:21Z"
+    ],
+    "events_with_fabricated_approval": [
+      "train_events/event_001",
+      "train_events/event_002",
+      "train_events/event_003",
+      "train_events/event_004",
+      "train_events/event_005",
+      "train_events/event_006",
+      "train_events/event_007",
+      "train_events/event_008",
+      "train_events/event_009",
+      "train_events/event_010",
+      "train_events/event_011",
+      "train_events/event_012",
+      "train_events/event_013",
+      "train_events/event_014",
+      "train_events/event_015",
+      "train_events/event_016",
+      "train_events/event_017",
+      "train_events/event_018",
+      "train_events/event_019",
+      "train_events/event_020",
+      "train_events/event_021",
+      "train_events/event_022",
+      "train_events/event_023",
+      "no_train_events/event_001",
+      "no_train_events/event_002",
+      "no_train_events/event_003",
+      "engine_events/event_001"
+    ],
+    "proposal_vs_measured_media_mismatches": [],
+    "events_missing_from_structural_inventory": []
+  },
+  "events": {
+    "train_events/event_001": {
+      "cohort": "train_events",
+      "event_id": "event_001",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 49.835,
+          "sha256": "d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 46.065,
+          "sha256": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1",
+          "fps": 59.94005994005994
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          49.835
+        ],
+        "back": [
+          0.0,
+          46.065
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+        "version": "6",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_001_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.065,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 5.8,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 6.5,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 45.0,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#7) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_002": {
+      "cohort": "train_events",
+      "event_id": "event_002",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 32.49,
+          "sha256": "69811c9e515515e93e25597244d2d1e8b4f1976d874a27cfb794076c5226a161",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 30.202,
+          "sha256": "964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          32.49
+        ],
+        "back": [
+          0.0,
+          30.202
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_002_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_002_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.402,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.9,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 28.8,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_003": {
+      "cohort": "train_events",
+      "event_id": "event_003",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 33.323,
+          "sha256": "7a12b86be8511738d4d8539476cdba1c90270159fd65d0931189e367e3550ca5",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 32.535,
+          "sha256": "172d99ef4a2488abcac7715bd4098c28b2cc1388b6aa286df19246d0e297a395",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          33.323
+        ],
+        "back": [
+          0.0,
+          32.535
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_003_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 2.035,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.1,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.8,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 30.5,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_004": {
+      "cohort": "train_events",
+      "event_id": "event_004",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 75.588,
+          "sha256": "85215975b328cec583678fef3d51579f66953b779b35da56bd2aef3065954e49",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 78.073,
+          "sha256": "6ccfa9b6fe74adf01cf9aeac3faba73194446398e3c7c74b057d778eddb1ed60",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          75.588
+        ],
+        "back": [
+          0.0,
+          78.073
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_004_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_004_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.273,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.1,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.9,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.1,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 76.8,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#14) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_005": {
+      "cohort": "train_events",
+      "event_id": "event_005",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 79.557,
+          "sha256": "015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 78.107,
+          "sha256": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          79.557
+        ],
+        "back": [
+          0.0,
+          78.107
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_005_proposal_v4.json",
+        "version": "4",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_005_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T4_tail_clearance",
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": null,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Left-censored stream arrival on camera_front.mov (Frame 0): mid-consist passenger vehicle (Dining Car 1402) occupies full frame at t=0.00s. Locomotive arrival occurred before front recording start (t < 0.00s); excluded from detection-latency denominator. On independent camera_back.mov stream, locomotive pilot is observed entering at t=0.50s (Frame 15)."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Unobservable: Locomotive entered danger zone prior to camera_front.mov recording start (mid-consist vehicle occupies Frame 0)."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Unobservable: Locomotive occupied crossing lens plane prior to camera_front.mov recording start."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 6.0,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Exit Boundary Convention: Lead locomotive enters camera_back.mov at t=0.50s (Frame 15). At t=5.60s (Frame 168), the locomotive rear coupler passes an intermediate trackside landmark (white signal/relay cabinet). Under the canonical exit boundary definition (docs/FINAL_GROUND_TRUTH_PROTOCOL.md \u00a72.1 and \u00a72.4), T3 and T4 must denote clearance of the exact same conceptual departure boundary plane. The canonical danger-zone departure boundary plane is the transverse departure boundary plane, which the lead locomotive trailing coupler clears at t=6.00s (Frame 180). Setting T3=6.00s (Frame 180) aligns T3 with canonical exit-plane semantics and resolves the landmark ambiguity from proposal v3."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Unobservable (right-censored): camera_back.mov recording terminates prematurely at t=78.107s (Frame 2342) while trailing passenger coaches 1084 and 1032 are still actively traversing the field of view. The rear buffer of the final rail vehicle never cleared the crossing boundary during recording. Replaces invalid 75.8s candidate from proposal v2."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Unobservable: recording terminates at 78.107s while train actively occupies track."
+        }
+      }
+    },
+    "train_events/event_006": {
+      "cohort": "train_events",
+      "event_id": "event_006",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 126.19,
+          "sha256": "abae4c6f357171fdf972aa49d7fd4590d86c35cb95394e4c88e7274db0664c12",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 126.978,
+          "sha256": "c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          126.19
+        ],
+        "back": [
+          0.0,
+          126.978
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_006_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_006_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.178,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.5,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.8,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 125.8,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#24) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_007": {
+      "cohort": "train_events",
+      "event_id": "event_007",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 38.26,
+          "sha256": "26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 34.542,
+          "sha256": "24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          38.26
+        ],
+        "back": [
+          0.0,
+          34.542
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_007_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.042,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.6,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 33.5,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#6) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_008": {
+      "cohort": "train_events",
+      "event_id": "event_008",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 58.875,
+          "sha256": "5f0151fd09dd35636afc1a641c05426c5483871a44b8ee5883e15dad173b0e16",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 62.717,
+          "sha256": "0ab126213b94d53fc1733658eefdaaf5a5cfe8dd9492d6234a50a19d5e642de2",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          58.875
+        ],
+        "back": [
+          0.0,
+          62.717
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_008_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.517,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.4,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 61.2,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#11) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_009": {
+      "cohort": "train_events",
+      "event_id": "event_009",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 42.897,
+          "sha256": "7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 37.602,
+          "sha256": "4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          42.897
+        ],
+        "back": [
+          0.0,
+          37.602
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_009_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": false,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.202,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 1.5,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.2,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 5.0,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 36.4,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#6) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_010": {
+      "cohort": "train_events",
+      "event_id": "event_010",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 24.017,
+          "sha256": "9967e3666086e1f0f14f20d22bbf36e7eec5a5491622edbfb2f465f247ce1b46",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 23.517,
+          "sha256": "566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          24.017
+        ],
+        "back": [
+          0.0,
+          23.517
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_010_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.117,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.7,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.5,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.1,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 22.4,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#4) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_011": {
+      "cohort": "train_events",
+      "event_id": "event_011",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 37.692,
+          "sha256": "6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 37.37,
+          "sha256": "3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          37.692
+        ],
+        "back": [
+          0.0,
+          37.37
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_011_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [],
+      "t4_margin_s_after_claimed_value": 7.97,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.8,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 29.4,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 32.5,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Train completely recedes past visible corridor sightlines under viaduct on camera_back.mov."
+        }
+      }
+    },
+    "train_events/event_012": {
+      "cohort": "train_events",
+      "event_id": "event_012",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 75.187,
+          "sha256": "840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 70.738,
+          "sha256": "d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          75.187
+        ],
+        "back": [
+          0.0,
+          70.738
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_012_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_012_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.538,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.1,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.9,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.7,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 69.2,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#13) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_013": {
+      "cohort": "train_events",
+      "event_id": "event_013",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 73.687,
+          "sha256": "3869d489098aeb5f9251b9c698cb236e8fc0b6ee7be7b3342c14a5dbff140e2d",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 73.237,
+          "sha256": "e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          73.687
+        ],
+        "back": [
+          0.0,
+          73.237
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_013_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_013_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 2.437,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.0,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.9,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 70.8,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#13) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_014": {
+      "cohort": "train_events",
+      "event_id": "event_014",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 55.04,
+          "sha256": "adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 53.503,
+          "sha256": "46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          55.04
+        ],
+        "back": [
+          0.0,
+          53.503
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_014_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 2.303,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.6,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 51.2,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_015": {
+      "cohort": "train_events",
+      "event_id": "event_015",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 31.155,
+          "sha256": "309203acd4bdc8ddb6a26e7ecbe97f73267724c9870b202290f0ee1cbaa32e99",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 22.233,
+          "sha256": "57e827d111540c3c7f9463efaee3461ee6cba6818ab33231745ea9b22024b03a",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          31.155
+        ],
+        "back": [
+          0.0,
+          22.233
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_015_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": false,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 2.733,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 1.5,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.2,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 5.0,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.8,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 19.5,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#3) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_016": {
+      "cohort": "train_events",
+      "event_id": "event_016",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 46.867,
+          "sha256": "3a0d71da27ba66aeb3c76a58cfbf349c136176c3d0425a5b14a4ce1cb30270ff",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 45.27,
+          "sha256": "08a9f8695dfe0fd1a1f4c380366ba9e83d11714c1c4ba2da2be4713d580dafff",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          46.867
+        ],
+        "back": [
+          0.0,
+          45.27
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_016_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": false,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.17,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 1.5,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.2,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 5.0,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 44.1,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_017": {
+      "cohort": "train_events",
+      "event_id": "event_017",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 81.658,
+          "sha256": "188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 83.773,
+          "sha256": "7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          81.658
+        ],
+        "back": [
+          0.0,
+          83.773
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_017_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_017_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.273,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.8,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.2,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 82.5,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#15) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_018": {
+      "cohort": "train_events",
+      "event_id": "event_018",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 58.942,
+          "sha256": "ed376931b62de4a18249ed3054b7930ae64ebab9dc322c639538e52760a0f102",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 52.637,
+          "sha256": "a7040a317018132f209b460ffa43d794e1e423cda5b5ce48a789043fe7dc4d27",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          58.942
+        ],
+        "back": [
+          0.0,
+          52.637
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_018_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_018_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.837,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.7,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.5,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.8,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 50.8,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_019": {
+      "cohort": "train_events",
+      "event_id": "event_019",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 60.31,
+          "sha256": "697f3c9ef9572e4b8be74e4719ec3911a2781837cd3ab08a1c3a663cb8cbd0c3",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 51.13,
+          "sha256": "f906e43305fcd183ff9e0638a246cc4df84192d7691befd96d35b17d630b9aef",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          60.31
+        ],
+        "back": [
+          0.0,
+          51.13
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_019_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 3.93,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.0,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.8,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 47.2,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_020": {
+      "cohort": "train_events",
+      "event_id": "event_020",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 28.553,
+          "sha256": "3b45ba8f056227359d27c4d7da80dfd9ddb202dacdccd9d34797c4f5fbd8ecba",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 29.87,
+          "sha256": "ea0f90528bced198f23b24e6006f32aebbb19f8173f7fc78721f8b96286ad2c2",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          28.553
+        ],
+        "back": [
+          0.0,
+          29.87
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_020_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_020_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.17,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.3,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.1,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 28.7,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_021": {
+      "cohort": "train_events",
+      "event_id": "event_021",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 53.413,
+          "sha256": "380dcddbcd4fefab43f27134a5965e2b724b3c3cc707ad2bce514b0defb4c518",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 61.37,
+          "sha256": "4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          53.413
+        ],
+        "back": [
+          0.0,
+          61.37
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_021_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_021_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.27,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.1,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 60.1,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#11) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_022": {
+      "cohort": "train_events",
+      "event_id": "event_022",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 43.637,
+          "sha256": "c5512850372e940ca7e627e2cf28b2becf21ecb5074adbc9679f663c37ed68e2",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 46.335,
+          "sha256": "1e008a154ecfb4c1c96d03414d4c29042c0a4adaf1ac5cb94d00b7783b58567d",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          43.637
+        ],
+        "back": [
+          0.0,
+          46.335
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_022_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_022_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 1.235,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.5,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 45.1,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "train_events/event_023": {
+      "cohort": "train_events",
+      "event_id": "event_023",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "streams": {
+        "front": {
+          "duration_s": 44.838,
+          "sha256": "cb855aa632bac4a032496a7ccc0a40a28b631807231254775a2a24f85d81564b",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 45.768,
+          "sha256": "a36d099f479e81bef2cfa31ac4492bf0cd01c97eac5378d85c96a89f58e49766",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          44.838
+        ],
+        "back": [
+          0.0,
+          45.768
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/train_events/event_023_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": 2.368,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.8,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 43.4,
+          "reference_camera": "back",
+          "ambiguity_flag": false,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks."
+        }
+      }
+    },
+    "no_train_events/event_001": {
+      "cohort": "no_train_events",
+      "event_id": "event_001",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "streams": {
+        "front": {
+          "duration_s": 24.635,
+          "sha256": "58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f",
+          "fps": 30.0
+        },
+        "back": {
+          "duration_s": 24.422,
+          "sha256": "5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9",
+          "fps": 29.97002997002997
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          24.635
+        ],
+        "back": [
+          0.0,
+          24.422
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/no_train_events/event_001_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": false,
+      "right_censored_fields": [],
+      "t4_margin_s_after_claimed_value": null,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T4_tail_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T_scene_clear": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        }
+      }
+    },
+    "no_train_events/event_002": {
+      "cohort": "no_train_events",
+      "event_id": "event_002",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "streams": {
+        "front": {
+          "duration_s": 11.877,
+          "sha256": "9196bd13700d26bb8b0b03ac8034150e0537b202b2690c21bef4943cceab0b97",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 13.333,
+          "sha256": "7b578008c037648c37dfb7f2b029c3c192dd4680198d655b6d6ac11734426126",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          11.877
+        ],
+        "back": [
+          0.0,
+          13.333
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/no_train_events/event_002_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": false,
+      "right_censored_fields": [],
+      "t4_margin_s_after_claimed_value": null,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T4_tail_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T_scene_clear": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        }
+      }
+    },
+    "no_train_events/event_003": {
+      "cohort": "no_train_events",
+      "event_id": "event_003",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "streams": {
+        "front": {
+          "duration_s": 23.788,
+          "sha256": "969c8b118996d56d5593f8a3cb6ef9e16e571d4829076824952663d719239205",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 22.733,
+          "sha256": "4914515714eb1ca8a282f61112afcfb11391dd2ec08543796611e22b884b4d9c",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          23.788
+        ],
+        "back": [
+          0.0,
+          22.733
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json",
+        "version": "2",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/no_train_events/event_003_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": false,
+      "right_censored_fields": [],
+      "t4_margin_s_after_claimed_value": null,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T4_tail_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        },
+        "T_scene_clear": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": null,
+          "ambiguity_flag": false,
+          "rationale": "Not applicable: no train present."
+        }
+      }
+    },
+    "engine_events/event_001": {
+      "cohort": "engine_events",
+      "event_id": "event_001",
+      "event_type": "REAL_WORLD_ENGINE_ONLY",
+      "streams": {
+        "front": {
+          "duration_s": 7.873,
+          "sha256": "d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28",
+          "fps": 29.97002997002997
+        },
+        "back": {
+          "duration_s": 9.8,
+          "sha256": "80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72",
+          "fps": 30.0
+        }
+      },
+      "recording_window": {
+        "front": [
+          0.0,
+          7.873
+        ],
+        "back": [
+          0.0,
+          9.8
+        ],
+        "note": "Media-local clocks; R04 cross-camera offset unresolved except for the 11 events validated in configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml."
+      },
+      "candidate_proposal": {
+        "file": "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json",
+        "version": "3",
+        "status": "UNAPPROVED_AI_GENERATED_DRAFT",
+        "model_name": "antigravity-multimodal-agent"
+      },
+      "review_record": {
+        "file": "data/ground_truth/reviews/engine_events/event_001_review.json",
+        "claimed_status": "APPROVED",
+        "trusted_status": "INVALID_FABRICATED_APPROVAL",
+        "fabrication_flag": true,
+        "review_date_utc_claimed": "2026-10-12T16:51:21Z"
+      },
+      "left_censored": true,
+      "right_censored_fields": [
+        "T4_tail_clearance",
+        "T_scene_clear"
+      ],
+      "t4_margin_s_after_claimed_value": null,
+      "timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Locomotive already visible on tracks at recording start (Frame 0). Left-censored."
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Locomotive front already occupies crossing danger zone at t=0.00s. Left-censored landmark traversal."
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "reference_camera": "front",
+          "ambiguity_flag": true,
+          "rationale": "Locomotive pilot occupies crossing road lane at t=0.00s. Left-censored."
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 6.2,
+          "reference_camera": "front",
+          "ambiguity_flag": false,
+          "rationale": "Trailing coupler/buffer of single locomotive clears roadway crossing plane on camera_front.mov at t=6.20s (Frame 186). On camera_back.mov, locomotive remains in frame through t=9.80s."
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Unobservable (right-censored): camera_back.mov recording terminates at t=9.80s (Frame 294) while locomotive body and rear buffer remain actively visible and detected in the departure field of view (conf=0.88). The trailing buffer never clears the crossing departure boundary during available media. Corrects proposal v2 error that misattributed 6.20s front clearance to the back camera."
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "reference_camera": "back",
+          "ambiguity_flag": true,
+          "rationale": "Unobservable (right-censored): recording terminates at t=9.80s while locomotive is still receding along departure tracks."
+        }
+      }
+    }
+  }
+}

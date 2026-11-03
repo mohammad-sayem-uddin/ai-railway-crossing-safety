@@ -1,0 +1,30 @@
+{
+  "schema": "mission12-artifact-manifest/1",
+  "date": "2026-11-02",
+  "disposition": "PHASE_5_ENGINEERING_REMEDIATION_COMPLETE_PENDING_INDEPENDENT_AUDIT",
+  "repository_head": "d4db94d4a4ea83ae4c510d65dfc99c5d6798304b",
+  "governance_created": false,
+  "real_data_accessed": false,
+  "staged_files": 0,
+  "artifacts": [
+    "docs/generated/phase5/MISSION_12_REMEDIATION_REPORT.md",
+    "docs/generated/phase5/MISSION_12_M02_SECURITY_DESIGN.md",
+    "docs/generated/phase5/MISSION_12_MEDIA_READER_COVERAGE.md",
+    "docs/generated/phase5/MISSION_12_REPRODUCIBILITY_PROVENANCE.md",
+    "docs/generated/phase5/MISSION_12_MANUSCRIPT_CORRECTIONS.md",
+    "docs/generated/phase5/MISSION_12_BACKUP_COVERAGE.md",
+    "docs/generated/phase5/MISSION_12_ADVERSARIAL_TEST_REPORT.md",
+    "docs/generated/phase5/MISSION_12_ARTIFACT_MANIFEST.json"
+  ],
+  "validation": {
+    "focused_security_tests_passed": 300,
+    "promotion_second_review_cache_regression_tests_passed": 151,
+    "safe_runner": "REFUSED_STALE_MANIFEST; no tests executed",
+    "protected_tests_executed": 0,
+    "ruff_check": "PASS_CHANGED_IMPLEMENTATION_FILES",
+    "ruff_format_check": "PRE_EXISTING_DIFFERENCES_REPORTED"
+  },
+  "protected_hash_policy": "Raw media and protected checkpoints were not hashed; checkpoint hashes remain NOT_VERIFIED — REQUIRES AUTHORIZED ACCESS.",
+  "trust_boundary": "Python-level public API and operation-boundary guards; not cryptographic authorization or OS sandbox.",
+  "independent_audit_required": true
+}

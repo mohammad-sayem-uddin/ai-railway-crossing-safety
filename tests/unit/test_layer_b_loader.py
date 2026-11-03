@@ -76,11 +76,17 @@ def test_sync_aligner_rejects_unknown_and_invalid():
     aligner = SyncAligner()
     with pytest.raises(ValueError):
         aligner.to_master("unknown", 1.0)
-    aligner.add_source("camera_1", offset_s=0.0)
+    aligner.add_source("camera_1", offset_s=0.0, uncertainty_s=0.0)
     with pytest.raises(ValueError):
         aligner.to_master("camera_1", -1.0)
     with pytest.raises(ValueError):
         aligner.add_source("bad", offset_s=0.0, uncertainty_s=-0.1)
+    with pytest.raises(ValueError, match="must both be explicit"):
+        aligner.add_source("missing_offset", uncertainty_s=0.0)
+    with pytest.raises(ValueError, match="must both be explicit"):
+        aligner.add_source("missing_uncertainty", offset_s=0.0)
+    with pytest.raises(ValueError, match="finite"):
+        aligner.add_source("non_finite", offset_s=float("nan"), uncertainty_s=0.0)
 
 
 def test_alignment_summary():
@@ -90,3 +96,60 @@ def test_alignment_summary():
     summary = aligner.alignment_summary()
     assert summary["sources"]["camera_1"]["aligned"] is True
     assert summary["sources"]["audio"]["aligned"] is False
+
+
+def test_load_bundle_with_camera_front_rear_aliases(tmp_path):
+    event_dir = tmp_path / "event_aliases"
+    event_dir.mkdir()
+    (event_dir / "camera_front.mp4").write_bytes(b"video1")
+    (event_dir / "camera_rear.mp4").write_bytes(b"video2")
+    (event_dir / "audio.wav").write_bytes(b"audio1")
+
+    result = load_event_bundle(event_dir, strict_metadata=False)
+    assert result.ok, result.issues
+    assert result.event is not None
+    assert result.event.camera_1_path == str(event_dir / "camera_front.mp4")
+    assert result.event.camera_2_path == str(event_dir / "camera_rear.mp4")
+    assert result.event.audio_source == str(event_dir / "audio.wav")
+    assert any("metadata.json missing" in w for w in result.warnings)
+
+
+def test_load_bundle_strict_metadata_toggle(tmp_path):
+    event_dir = tmp_path / "event_min_toggle"
+    event_dir.mkdir()
+    (event_dir / "camera_1.mp4").write_bytes(b"video1")
+    (event_dir / "camera_2.mp4").write_bytes(b"video2")
+    (event_dir / "audio.wav").write_bytes(b"audio1")
+
+    # Strict: metadata missing is an issue
+    res_strict = load_event_bundle(event_dir, strict_metadata=True)
+    assert not res_strict.ok
+    assert any("metadata.json" in i for i in res_strict.issues)
+
+    # Non-strict: metadata missing is a warning, ok is True
+    res_lenient = load_event_bundle(event_dir, strict_metadata=False)
+    assert res_lenient.ok
+    assert any("metadata.json" in w for w in res_lenient.warnings)
+
+
+def test_load_bundle_audio_extraction_fallback(tmp_path, monkeypatch):
+    event_dir = tmp_path / "event_extract_audio"
+    event_dir.mkdir()
+    (event_dir / "camera_front.mp4").write_bytes(b"video1")
+    (event_dir / "camera_rear.mp4").write_bytes(b"video2")
+
+    def mock_extract(video_path, output_wav):
+        output_wav.write_bytes(b"extracted_wav_data")
+        return output_wav
+
+    monkeypatch.setattr(
+        "railway_detection.data.layer_b.extract_audio_from_video",
+        mock_extract,
+    )
+
+    result = load_event_bundle(event_dir, strict_metadata=False, extract_audio=True)
+    assert result.ok, result.issues
+    assert result.event is not None
+    assert result.event.audio_source == str(event_dir / "audio_extracted.wav")
+    assert any("audio extracted from" in w for w in result.warnings)
+

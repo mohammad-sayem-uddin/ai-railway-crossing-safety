@@ -1,0 +1,9 @@
+### Table 6: Cross-Modality Benchmark Comparison (B0 through B4)
+
+| Condition ID | Sensory Modalities | Temporal / State Policy | Actuation Rate (Train) | Actuation Rate (No-Train) | MTR [95% CI] | POR [95% CI] |
+| --- | --- | --- | --- | --- | --- | --- |
+| B0 | Front Vision Only | Stateless 1-frame threshold | 100.0% (23/23) | 100.0% (3/3)* | Blocked (GT Unapproved) | Blocked (GT Unapproved) |
+| B1 | Audio Only | Stateless horn detection | 0.0% (0/23)** | 0.0% (0/3) | Blocked (GT Unapproved) | Blocked (GT Unapproved) |
+| B2 | Dual Vision + Audio | Stateless 3-frame persistence | 100.0% (23/23) | 100.0% (3/3)* | Blocked (GT Unapproved) | Blocked (GT Unapproved) |
+| B3 | Dual Vision Only | Temporal filtering, stateless | 100.0% (23/23) | 100.0% (3/3)* | Blocked (GT Unapproved) | Blocked (GT Unapproved) |
+| B4 | Dual Vision + Audio | Temporal + State Machine | 100.0% (23/23) | 100.0% (3/3)* | Blocked (GT Unapproved) | Blocked (GT Unapproved) |

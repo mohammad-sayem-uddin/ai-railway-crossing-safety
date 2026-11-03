@@ -1,0 +1,10 @@
+### Table 12: Failure Mode Taxonomy (F01–F18) Distribution and Root Causes
+
+| Failure Code | Category Description | Total Occurrences | Primary Condition | Root Cause Analysis |
+| --- | --- | --- | --- | --- |
+| F01 | Missed Approach | 0 in B0, B2..B7 | None | Robust visual and acoustic coverage across events |
+| F08 | Detection Dropout | Mitigated by buffer | B0 (Stateless) | Compensated by dual-camera and temporal smoothing in B3/B4 |
+| F10 | Incorrect Clearance | 0 in B4..B7 | B0, B2 (Stateless) | Prevented 100% by positive rear confirmation and clearance dwell |
+| F14 | Camera Failure Undetected | 0 occurrences | None | SourceTracker correctly detected 100% of heartbeat timeouts |
+| F16 | Timestamp Disorder | 27 occurrences in B7d | B7d (Perturbation) | Intentionally injected out-of-order frames, safely rejected by Rule 8 |
+| F17 | Premature Opening | 0 in B4..B7 | None in Full Policy | Eliminated by deterministic state machine latching and dwell timers |

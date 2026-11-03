@@ -1,0 +1,6 @@
+{
+  "_comment": "Phase 11.7, Decision 2: the maintained reviewer allowlist, loaded by promotion_gate.load_authorized_reviewers() and enforced in validate_for_promotion(). Do not add an identity here without the researcher's own explicit instruction -- see docs/PHASE11_3_RESEARCHER_DECISIONS.md Decision 2.",
+  "authorized_reviewers": [
+    "raihankabirrahu@gmail.com"
+  ]
+}

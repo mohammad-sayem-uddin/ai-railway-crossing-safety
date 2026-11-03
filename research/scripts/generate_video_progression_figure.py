@@ -15,21 +15,25 @@ import matplotlib.pyplot as plt
 import numpy as np
 from ultralytics import YOLO
 
+from railway_detection.safety.media_guard import require_media_authorization
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 MODEL_PATH = PROJECT_ROOT / "experiments/vision/39f402dfe460/checkpoints/weights/best.pt"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "figures/qualitative"
 
 
 def setup_matplotlib_style() -> None:
-    plt.rcParams.update({
-        "font.family": "sans-serif",
-        "font.sans-serif": ["DejaVu Sans", "Helvetica", "Arial"],
-        "mathtext.fontset": "dejavusans",
-        "figure.autolayout": False,
-        "savefig.dpi": 300,
-        "savefig.bbox": "tight",
-        "savefig.pad_inches": 0.1,
-    })
+    plt.rcParams.update(
+        {
+            "font.family": "sans-serif",
+            "font.sans-serif": ["DejaVu Sans", "Helvetica", "Arial"],
+            "mathtext.fontset": "dejavusans",
+            "figure.autolayout": False,
+            "savefig.dpi": 300,
+            "savefig.bbox": "tight",
+            "savefig.pad_inches": 0.1,
+        }
+    )
 
 
 def normalize_class_name(raw_name: str | int) -> str:
@@ -81,6 +85,7 @@ def generate_video_progression_figure(
     frames: list[tuple[str, str, np.ndarray]] = []
 
     if video_path and video_path.exists() and model is not None:
+        require_media_authorization(video_path, "INFERENCE", declared_media=True)
         cap = cv2.VideoCapture(str(video_path))
         total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         if total > 0:
@@ -114,6 +119,7 @@ def generate_video_progression_figure(
         test_dir = PROJECT_ROOT / "data/raw/vision/v1/baler.v1i.yolov8/test/images"
         if test_dir.exists() and model is not None:
             from research.scripts.generate_qualitative_figures import find_representative_images
+
             reps = find_representative_images(model, test_dir)
             cls_order = [
                 ("front", "(a) State 1: Approach Phase (FRONT Detected)"),
@@ -124,6 +130,7 @@ def generate_video_progression_figure(
                 items = reps.get(c_name, [])
                 if items:
                     p, dets = items[0]
+                    require_media_authorization(p, "READ_RAW_MEDIA", declared_media=True)
                     bgr = cv2.imread(str(p))
                     if bgr is None:
                         continue
@@ -143,7 +150,9 @@ def generate_video_progression_figure(
 
     fig.suptitle(
         "Temporal Passage Progression Across Railway Crossing Detection Zones",
-        fontsize=12, fontweight="bold", y=0.98
+        fontsize=12,
+        fontweight="bold",
+        y=0.98,
     )
 
     output_dir.mkdir(parents=True, exist_ok=True)

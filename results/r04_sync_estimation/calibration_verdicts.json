@@ -1,0 +1,391 @@
+[
+  {
+    "event_key": "engine_events/event_001",
+    "verdict": "PROVISIONAL",
+    "lag_s": 3.4964,
+    "qt_delta_s": 3.0,
+    "qt_disagreement_s": 0.49639999999999995,
+    "psr": 1.31,
+    "snr": 12.5,
+    "window_range_s": 0.5102,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.31 in [1.3,2.0) or window_range_s=0.510 in (0.2,1.0] or snr=12.5 in [10.0,15.0); does not meet full SUPPORTED criteria",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/engine_events/event_001/review_record.json] (candidate=3.4964s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "no_train_events/event_001",
+    "verdict": "AMBIGUOUS",
+    "lag_s": 1.4277,
+    "qt_delta_s": 1.0,
+    "qt_disagreement_s": 0.42769999999999997,
+    "psr": 1.26,
+    "snr": 15.63,
+    "window_range_s": 0.0019,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.26<1.3 or window_range_s=0.002>1.0 or snr=15.6<10.0 or qt_disagreement_s=0.42769999999999997>5.0",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/no_train_events/event_001/review_record.json] (candidate=1.4277s, delta=0.000s<=0.05s)"
+    ]
+  },
+  {
+    "event_key": "no_train_events/event_002",
+    "verdict": "AMBIGUOUS",
+    "lag_s": -4.0483,
+    "qt_delta_s": -4.0,
+    "qt_disagreement_s": 0.04830000000000023,
+    "psr": 1.38,
+    "snr": 18.3,
+    "window_range_s": 5.6047,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.38<1.3 or window_range_s=5.605>1.0 or snr=18.3<10.0 or qt_disagreement_s=0.04830000000000023>5.0"
+    ]
+  },
+  {
+    "event_key": "no_train_events/event_003",
+    "verdict": "PROVISIONAL",
+    "lag_s": -0.4022,
+    "qt_delta_s": 0.0,
+    "qt_disagreement_s": 0.4022,
+    "psr": 1.96,
+    "snr": 21.18,
+    "window_range_s": 0.0003,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.96 in [1.3,2.0) or window_range_s=0.000 in (0.2,1.0] or snr=21.2 in [10.0,15.0); does not meet full SUPPORTED criteria",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/no_train_events/event_003/review_record.json] (candidate=-0.4022s, delta=0.000s<=0.05s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_001",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 7.406,
+    "qt_delta_s": 8.0,
+    "qt_disagreement_s": 0.5940000000000003,
+    "psr": 2.24,
+    "snr": 24.27,
+    "window_range_s": 0.0001,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.24>=2.0, window_range_s=0.000<=0.2, snr=24.3>=15.0, qt_disagreement_s=0.59<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_002",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 4.1867,
+    "qt_delta_s": 4.0,
+    "qt_disagreement_s": 0.1867000000000001,
+    "psr": 2.4,
+    "snr": 21.6,
+    "window_range_s": 0.0002,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.40>=2.0, window_range_s=0.000<=0.2, snr=21.6>=15.0, qt_disagreement_s=0.19<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_003",
+    "verdict": "PROVISIONAL",
+    "lag_s": 3.7272,
+    "qt_delta_s": 4.0,
+    "qt_disagreement_s": 0.27280000000000015,
+    "psr": 1.52,
+    "snr": 18.5,
+    "window_range_s": 0.0019,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.52 in [1.3,2.0) or window_range_s=0.002 in (0.2,1.0] or snr=18.5 in [10.0,15.0); does not meet full SUPPORTED criteria",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_003/review_record.json] (candidate=3.7272s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_004",
+    "verdict": "AMBIGUOUS",
+    "lag_s": 4.9001,
+    "qt_delta_s": 5.0,
+    "qt_disagreement_s": 0.09989999999999988,
+    "psr": 1.15,
+    "snr": 24.96,
+    "window_range_s": 0.2394,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.15<1.3 or window_range_s=0.239>1.0 or snr=25.0<10.0 or qt_disagreement_s=0.09989999999999988>5.0",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_004/review_record.json] (candidate=4.9001s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_005",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 6.038,
+    "qt_delta_s": 6.0,
+    "qt_disagreement_s": 0.038000000000000256,
+    "psr": 2.27,
+    "snr": 35.7,
+    "window_range_s": 0.0006,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.27>=2.0, window_range_s=0.001<=0.2, snr=35.7>=15.0, qt_disagreement_s=0.04<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_006",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 4.5124,
+    "qt_delta_s": 5.0,
+    "qt_disagreement_s": 0.4875999999999996,
+    "psr": 3.47,
+    "snr": 37.32,
+    "window_range_s": 0.0027,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=3.47>=2.0, window_range_s=0.003<=0.2, snr=37.3>=15.0, qt_disagreement_s=0.49<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_007",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 8.8801,
+    "qt_delta_s": 9.0,
+    "qt_disagreement_s": 0.11989999999999945,
+    "psr": 4.31,
+    "snr": 62.44,
+    "window_range_s": 0.0047,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=4.31>=2.0, window_range_s=0.005<=0.2, snr=62.4>=15.0, qt_disagreement_s=0.12<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_008",
+    "verdict": "AMBIGUOUS",
+    "lag_s": 3.6479,
+    "qt_delta_s": -33.0,
+    "qt_disagreement_s": 36.6479,
+    "psr": 1.29,
+    "snr": 14.16,
+    "window_range_s": 0.0033,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.29<1.3 or window_range_s=0.003>1.0 or snr=14.2<10.0 or qt_disagreement_s=36.6479>5.0",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_008/review_record.json] (candidate=3.6479s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_009",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 9.4043,
+    "qt_delta_s": 9.0,
+    "qt_disagreement_s": 0.4042999999999992,
+    "psr": 2.43,
+    "snr": 28.78,
+    "window_range_s": 0.0054,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.43>=2.0, window_range_s=0.005<=0.2, snr=28.8>=15.0, qt_disagreement_s=0.40<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_010",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 2.7158,
+    "qt_delta_s": -17.0,
+    "qt_disagreement_s": 19.7158,
+    "psr": 2.14,
+    "snr": 22.34,
+    "window_range_s": 0.0001,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.14>=2.0, window_range_s=0.000<=0.2, snr=22.3>=15.0, external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_010/review_record.json] (candidate=2.7158s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_011",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 5.2713,
+    "qt_delta_s": 5.0,
+    "qt_disagreement_s": 0.2713000000000001,
+    "psr": 2.83,
+    "snr": 30.03,
+    "window_range_s": 0.0019,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.83>=2.0, window_range_s=0.002<=0.2, snr=30.0>=15.0, qt_disagreement_s=0.27<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_012",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 5.5679,
+    "qt_delta_s": 6.0,
+    "qt_disagreement_s": 0.43210000000000015,
+    "psr": 2.13,
+    "snr": 23.49,
+    "window_range_s": 0.0031,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.13>=2.0, window_range_s=0.003<=0.2, snr=23.5>=15.0, qt_disagreement_s=0.43<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_013",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 3.278,
+    "qt_delta_s": 3.0,
+    "qt_disagreement_s": 0.278,
+    "psr": 2.8,
+    "snr": 25.64,
+    "window_range_s": 0.0018,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.80>=2.0, window_range_s=0.002<=0.2, snr=25.6>=15.0, qt_disagreement_s=0.28<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_014",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 4.0806,
+    "qt_delta_s": 4.0,
+    "qt_disagreement_s": 0.08059999999999956,
+    "psr": 2.71,
+    "snr": 26.47,
+    "window_range_s": 0.0009,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.71>=2.0, window_range_s=0.001<=0.2, snr=26.5>=15.0, qt_disagreement_s=0.08<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_015",
+    "verdict": "AMBIGUOUS",
+    "lag_s": 11.4404,
+    "qt_delta_s": 12.0,
+    "qt_disagreement_s": 0.5595999999999997,
+    "psr": 1.9,
+    "snr": 21.18,
+    "window_range_s": 11.3229,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.90<1.3 or window_range_s=11.323>1.0 or snr=21.2<10.0 or qt_disagreement_s=0.5595999999999997>5.0"
+    ]
+  },
+  {
+    "event_key": "train_events/event_016",
+    "verdict": "PROVISIONAL",
+    "lag_s": 3.2592,
+    "qt_delta_s": 4.0,
+    "qt_disagreement_s": 0.7408000000000001,
+    "psr": 1.64,
+    "snr": 17.07,
+    "window_range_s": 0.0029,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.64 in [1.3,2.0) or window_range_s=0.003 in (0.2,1.0] or snr=17.1 in [10.0,15.0); does not meet full SUPPORTED criteria",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_016/review_record.json] (candidate=3.2592s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_017",
+    "verdict": "CALIBRATION_SUPPORTED",
+    "lag_s": 4.5654,
+    "qt_delta_s": 5.0,
+    "qt_disagreement_s": 0.43459999999999965,
+    "psr": 2.72,
+    "snr": 25.83,
+    "window_range_s": 0.0067,
+    "uncertainty_s": 0.05,
+    "reasons": [
+      "psr=2.72>=2.0, window_range_s=0.007<=0.2, snr=25.8>=15.0, qt_disagreement_s=0.43<=1.5"
+    ]
+  },
+  {
+    "event_key": "train_events/event_018",
+    "verdict": "PROVISIONAL",
+    "lag_s": 7.8752,
+    "qt_delta_s": 8.0,
+    "qt_disagreement_s": 0.12479999999999958,
+    "psr": 1.41,
+    "snr": 28.49,
+    "window_range_s": 0.0128,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.41 in [1.3,2.0) or window_range_s=0.013 in (0.2,1.0] or snr=28.5 in [10.0,15.0); does not meet full SUPPORTED criteria",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_018/review_record.json] (candidate=7.8752s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_019",
+    "verdict": "PROVISIONAL",
+    "lag_s": 6.6558,
+    "qt_delta_s": 7.0,
+    "qt_disagreement_s": 0.34419999999999984,
+    "psr": 1.53,
+    "snr": 15.48,
+    "window_range_s": 0.003,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.53 in [1.3,2.0) or window_range_s=0.003 in (0.2,1.0] or snr=15.5 in [10.0,15.0); does not meet full SUPPORTED criteria",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_019/review_record.json] (candidate=6.6558s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_020",
+    "verdict": "AMBIGUOUS",
+    "lag_s": -0.0284,
+    "qt_delta_s": 4.0,
+    "qt_disagreement_s": 4.0284,
+    "psr": 1.01,
+    "snr": 9.11,
+    "window_range_s": 6.5232,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.01<1.3 or window_range_s=6.523>1.0 or snr=9.1<10.0 or qt_disagreement_s=4.0284>5.0"
+    ]
+  },
+  {
+    "event_key": "train_events/event_021",
+    "verdict": "PROVISIONAL",
+    "lag_s": -2.8056,
+    "qt_delta_s": -3.0,
+    "qt_disagreement_s": 0.1943999999999999,
+    "psr": 1.64,
+    "snr": 18.84,
+    "window_range_s": 0.0049,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.64 in [1.3,2.0) or window_range_s=0.005 in (0.2,1.0] or snr=18.8 in [10.0,15.0); does not meet full SUPPORTED criteria",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_021/review_record.json] (candidate=-2.8056s, delta=0.000s<=0.10s)"
+    ]
+  },
+  {
+    "event_key": "train_events/event_022",
+    "verdict": "AMBIGUOUS",
+    "lag_s": 0.9626,
+    "qt_delta_s": 2.0,
+    "qt_disagreement_s": 1.0373999999999999,
+    "psr": 1.03,
+    "snr": 13.65,
+    "window_range_s": 0.8111,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.03<1.3 or window_range_s=0.811>1.0 or snr=13.7<10.0 or qt_disagreement_s=1.0373999999999999>5.0"
+    ]
+  },
+  {
+    "event_key": "train_events/event_023",
+    "verdict": "AMBIGUOUS",
+    "lag_s": 1.2277,
+    "qt_delta_s": 1.0,
+    "qt_disagreement_s": 0.2277,
+    "psr": 1.29,
+    "snr": 14.4,
+    "window_range_s": 0.0048,
+    "uncertainty_s": "unknown",
+    "reasons": [
+      "psr=1.29<1.3 or window_range_s=0.005>1.0 or snr=14.4<10.0 or qt_disagreement_s=0.2277>5.0",
+      "external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_023/review_record.json] (candidate=1.2277s, delta=0.000s<=0.10s)"
+    ]
+  }
+]

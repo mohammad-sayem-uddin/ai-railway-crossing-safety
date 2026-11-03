@@ -1,0 +1,18 @@
+{
+  "execution_timestamp": "2026-10-13T18:07:22.297913+00:00",
+  "canonical_config_hash": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+  "vision_checkpoint_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+  "audio_v3_checkpoint_sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782",
+  "audio_operating_threshold": 0.37,
+  "vision_confidence_threshold": 0.35,
+  "vision_sampling_fps": 5.0,
+  "timing_tick_s": 0.2,
+  "r04_cross_camera_status": "R04_UNRESOLVED_REQUIRES_EMPIRICAL_OFFSETS",
+  "total_active_events": 27,
+  "completed_events": 27,
+  "total_frames_processed": 13086,
+  "total_audio_windows_processed": 2600,
+  "total_wall_clock_s": 912.56,
+  "overall_fps": 14.34,
+  "evaluation_firewall": "STRICT_ACTIVE: Unapproved ground truth isolated; no accuracy/MTR/POR metrics claimed"
+}

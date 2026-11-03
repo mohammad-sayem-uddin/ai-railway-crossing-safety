@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "review_id": "review_event_002_20261012",
+  "event_id": "event_002",
+  "schema_version": "6.0.0",
+  "proposal_reference": {
+    "proposal_file": "data/ground_truth/proposals/no_train_events/event_002_proposal_v1.json",
+    "proposal_sha256": "d550396dee73d49a05a2e6bcecf076ffd3724ba24240e0d62273d01fbea50e09"
+  },
+  "reviewer_metadata": {
+    "reviewer_id": "human_researcher_lead",
+    "review_date_utc": "2026-10-12T16:51:21Z",
+    "inspection_tool": "ffmpeg-frame-analyzer / scipy-spectral-auditor v2.0"
+  },
+  "adjudication_status": "APPROVED",
+  "field_adjudications": {
+    "train_metadata.train_present": {
+      "proposed": false,
+      "approved": false,
+      "decision": "accepted",
+      "notes": "Re-verified full recording: zero rail vehicles present on tracks throughout entire duration."
+    },
+    "train_metadata.horn_status": {
+      "proposed": null,
+      "approved": null,
+      "decision": "accepted",
+      "notes": "No railway horn. Ambient road-traffic horns (CNG auto-rickshaws, buses) present in 350-750 Hz range as confounders."
+    },
+    "timestamps.all": {
+      "proposed": "not_applicable",
+      "approved": "not_applicable",
+      "decision": "accepted",
+      "notes": "All boundary timestamps (T0-T4, T_sc) confirmed not applicable for negative control event."
+    }
+  },
+  "summary_counts": {
+    "total_fields": 3,
+    "accepted_count": 3,
+    "corrected_count": 0,
+    "marked_unobservable_count": 0,
+    "rejected_count": 0
+  },
+  "general_review_notes": "Stage 2 Verification: Re-verified no_train_events/event_002. Continuous roadway traffic and pedestrians occupy the level crossing. No rail vehicles present. Serves as negative evaluation control."
+}

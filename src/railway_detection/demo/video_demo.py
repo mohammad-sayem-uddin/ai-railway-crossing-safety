@@ -23,6 +23,7 @@ from typing import Any
 
 from railway_detection.config.exceptions import ConfigError
 from railway_detection.fusion.evidence import Detection, EvidenceRecord, Modality
+from railway_detection.safety.media_guard import require_media_authorization
 from railway_detection.utils.logging import get_logger
 from railway_detection.vision.temporal import TemporalConfig, TemporalEvidenceBuffer
 
@@ -427,6 +428,7 @@ def process_video(
     logger.info("loading YOLO model from %s on %s...", model_path, resolved_device)
     model = YOLO(str(model_path.resolve()))
 
+    require_media_authorization(input_path, "INFERENCE", declared_media=True)
     cap = cv2.VideoCapture(str(input_path.resolve()))
     if not cap.isOpened():
         raise ConfigError(f"Failed to open video file with OpenCV: {input_path}")

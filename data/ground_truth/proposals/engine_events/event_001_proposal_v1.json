@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "proposal_id": "proposal_event_001_v1",
+  "event_id": "event_001",
+  "event_type": "REAL_WORLD_ENGINE_ONLY",
+  "proposal_timestamp_utc": "2026-10-12T16:08:39Z",
+  "schema_version": "6.0.0",
+  "ai_assistant_metadata": {
+    "model_name": "antigravity-multimodal-agent",
+    "prompt_template_version": "v1.0.0",
+    "prompt_template_sha256": "8ea581b1453f72b4673642d510acc4a4e0a9aeb9727ae63ff0c0546b65741a5e",
+    "input_media_files": [
+      {
+        "file_name": "camera_front.mov",
+        "duration_s": 7.873,
+        "sha256": "d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28"
+      },
+      {
+        "file_name": "camera_back.mov",
+        "duration_s": 9.8,
+        "sha256": "80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72"
+      }
+    ]
+  },
+  "proposed_site_metadata": {
+    "crossing_id": "crossing_A",
+    "recording_session_id": "session_20260914_morning"
+  },
+  "proposed_environmental_conditions": {
+    "lighting": "night",
+    "weather": "clear"
+  },
+  "proposed_train_metadata": {
+    "train_present": true,
+    "train_direction": "left_to_right",
+    "train_type": "locomotive_light",
+    "trailing_cars_count": 0,
+    "horn_status": "absent_observed",
+    "horn_onset_s": null,
+    "horn_uncertainty_s": null,
+    "horn_reason": null,
+    "confidence_note": "Front (7.87s) and back (9.80s) media inspected. Single Class 2600/2900 diesel-electric locomotive running light with ZERO trailing cars. Engine low-frequency rumble and track crew voices recorded; no locomotive pneumatic horn blast observed. T3 and T4 coincide identically due to single-unit traversal."
+  },
+  "proposed_timestamps": {
+    "T0_first_visible": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 0.0,
+      "frame_index": 0,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Candidate first observed locomotive frame in available recording (Frame 0). Left-censored: locomotive #2301/2901 is already visible occupying track zone at recording start.",
+      "ambiguity_flag": true
+    },
+    "T1_danger_zone_entry": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 0.0,
+      "frame_index": 0,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Locomotive front already occupies crossing danger zone at start of recording (t=0.00s). Left-censored landmark traversal.",
+      "ambiguity_flag": true
+    },
+    "T2_crossing_occupancy_start": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 0.0,
+      "frame_index": 0,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Locomotive pilot already occupies crossing road lane at start of recording (t=0.00s). Left-censored.",
+      "ambiguity_flag": true
+    },
+    "T3_locomotive_unit_clearance": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 6.2,
+      "frame_index": 186,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Trailing coupler/buffer of single locomotive clears crossing roadway plane on front camera view. Coincident with T4.",
+      "ambiguity_flag": true
+    },
+    "T4_tail_clearance": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 6.2,
+      "frame_index": 186,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Single locomotive with zero trailing cars: tail clearance coincides identically with locomotive unit clearance (T4 == T3 = 6.20s).",
+      "ambiguity_flag": true
+    },
+    "T_scene_clear": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 6.2,
+      "frame_index": 186,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Locomotive clears front camera sightlines completely at t=6.20s. On back camera, locomotive remains in frame until recording terminates at 9.80s.",
+      "ambiguity_flag": true
+    }
+  },
+  "proposed_camera_alignment_markers": {
+    "candidate_front_marker": "Locomotive rear passes front camera plane at t=6.20s",
+    "candidate_back_marker": "Locomotive nose passes back camera line at t~3.50s (back timeline)",
+    "candidate_offset_s": null,
+    "requires_human_empirical_verification": true,
+    "audited_front_stream_exposure_s": 7.873,
+    "audited_back_stream_exposure_s": 9.8,
+    "audited_combined_camera_stream_exposure_s": 17.673,
+    "stream_exposure_note": "Combined camera-stream exposure (17.673s) represents summed stream-seconds and must NOT be treated as concurrent wall-clock exposure."
+  },
+  "raw_proposal_immutable": true
+}

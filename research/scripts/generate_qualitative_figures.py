@@ -15,6 +15,8 @@ import cv2
 import matplotlib.pyplot as plt
 from ultralytics import YOLO
 
+from railway_detection.safety.media_guard import require_media_authorization
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 MODEL_PATH = PROJECT_ROOT / "experiments/vision/39f402dfe460/checkpoints/weights/best.pt"
 TEST_IMG_DIR = PROJECT_ROOT / "data/raw/vision/v1/baler.v1i.yolov8/test/images"
@@ -22,15 +24,17 @@ OUTPUT_DIR = Path(__file__).resolve().parent.parent / "figures/qualitative"
 
 
 def setup_matplotlib_style() -> None:
-    plt.rcParams.update({
-        "font.family": "sans-serif",
-        "font.sans-serif": ["DejaVu Sans", "Helvetica", "Arial"],
-        "mathtext.fontset": "dejavusans",
-        "figure.autolayout": False,
-        "savefig.dpi": 300,
-        "savefig.bbox": "tight",
-        "savefig.pad_inches": 0.1,
-    })
+    plt.rcParams.update(
+        {
+            "font.family": "sans-serif",
+            "font.sans-serif": ["DejaVu Sans", "Helvetica", "Arial"],
+            "mathtext.fontset": "dejavusans",
+            "figure.autolayout": False,
+            "savefig.dpi": 300,
+            "savefig.bbox": "tight",
+            "savefig.pad_inches": 0.1,
+        }
+    )
 
 
 def normalize_class_name(raw_name: str | int) -> str:
@@ -55,9 +59,9 @@ def draw_annotation_box(
     y1, y2 = max(0, min(h - 1, y1)), max(0, min(h - 1, y2))
 
     color_map = {
-        "front": (249, 115, 22),   # Vibrant Amber
-        "rear": (217, 70, 239),    # Magenta / Purple
-        "side": (14, 165, 233),    # Azure Sky Blue
+        "front": (249, 115, 22),  # Vibrant Amber
+        "rear": (217, 70, 239),  # Magenta / Purple
+        "side": (14, 165, 233),  # Azure Sky Blue
     }
     color = color_map.get(label, (34, 197, 94))
 
@@ -80,11 +84,14 @@ def find_representative_images(
 ) -> dict[str, list[tuple[Path, list[Any]]]]:
     """Scan available images and group detections by primary class."""
     results_by_class: dict[str, list[tuple[Path, list[Any]]]] = {
-        "front": [], "side": [], "rear": []
+        "front": [],
+        "side": [],
+        "rear": [],
     }
 
     img_paths = sorted(list(img_dir.glob("*.jpg")))
     for p in img_paths:
+        require_media_authorization(p, "INFERENCE", declared_media=True)
         raw_res: Any = model.predict(source=str(p), conf=0.40, verbose=False)
         res_list: list[Any] = list(raw_res) if raw_res is not None else []
         if res_list:
@@ -129,6 +136,7 @@ def generate_figure_14_qualitative_detections(output_dir: Path = OUTPUT_DIR) -> 
             if len(selected_items) >= 6:
                 break
             if not any(p == item[1] for item in selected_items):
+                require_media_authorization(p, "INFERENCE", declared_media=True)
                 raw_res: Any = model.predict(source=str(p), conf=0.30, verbose=False)
                 res_list: list[Any] = list(raw_res) if raw_res is not None else []
                 if res_list:
@@ -145,6 +153,7 @@ def generate_figure_14_qualitative_detections(output_dir: Path = OUTPUT_DIR) -> 
     axes_flat = axes.flatten()
 
     for idx, (label, img_path, dets) in enumerate(selected_items[:6]):
+        require_media_authorization(img_path, "READ_RAW_MEDIA", declared_media=True)
         bgr = cv2.imread(str(img_path))
         if bgr is None:
             continue
@@ -155,13 +164,17 @@ def generate_figure_14_qualitative_detections(output_dir: Path = OUTPUT_DIR) -> 
         axes_flat[idx].imshow(rgb)
         axes_flat[idx].set_title(
             f"({chr(97 + idx)}) {label.upper()} Viewpoint Detection",
-            fontsize=9.5, fontweight="bold", pad=6
+            fontsize=9.5,
+            fontweight="bold",
+            pad=6,
         )
         axes_flat[idx].axis("off")
 
     fig.suptitle(
         "Qualitative Object Detection Examples on Railway Crossing Scenes",
-        fontsize=12, fontweight="bold", y=0.98
+        fontsize=12,
+        fontweight="bold",
+        y=0.98,
     )
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -171,9 +184,7 @@ def generate_figure_14_qualitative_detections(output_dir: Path = OUTPUT_DIR) -> 
     print(f"Generated Figure 14 -> {output_dir / 'fig14_qualitative_detections.png'}")
 
 
-def generate_figure_15_failure_examples(
-    output_dir: Path = OUTPUT_DIR / "failures"
-) -> None:
+def generate_figure_15_failure_examples(output_dir: Path = OUTPUT_DIR / "failures") -> None:
     """Generate Figure 15: 1x2 Visual Failure & Edge Case Panel from empirical failures."""
     if not MODEL_PATH.exists():
         return
@@ -194,33 +205,36 @@ def generate_figure_15_failure_examples(
                 conf = float(c.get("confidence", 0.3))
                 pred_lbl = normalize_class_name(c.get("predicted_label", "front"))
 
-                if (
-                    f_code == "low_confidence_detection"
-                    and not any(e[0].startswith("Low-Confidence") for e in edge_cases)
+                if f_code == "low_confidence_detection" and not any(
+                    e[0].startswith("Low-Confidence") for e in edge_cases
                 ):
-                    edge_cases.append((
-                        f"Low-Confidence Detection (conf = {conf:.2f} < 0.50)",
-                        cand,
-                        [(pred_lbl, conf, (50.0, 50.0, 550.0, 450.0))]
-                    ))
-                elif (
-                    f_code == "false_train_detection"
-                    and not any(e[0].startswith("False Train") for e in edge_cases)
+                    edge_cases.append(
+                        (
+                            f"Low-Confidence Detection (conf = {conf:.2f} < 0.50)",
+                            cand,
+                            [(pred_lbl, conf, (50.0, 50.0, 550.0, 450.0))],
+                        )
+                    )
+                elif f_code == "false_train_detection" and not any(
+                    e[0].startswith("False Train") for e in edge_cases
                 ):
-                    edge_cases.append((
-                        "False Train Detection (Trackside Clutter FP)",
-                        cand,
-                        [(pred_lbl, conf, (80.0, 100.0, 480.0, 420.0))]
-                    ))
-                elif (
-                    f_code == "front_side_confusion"
-                    and not any(e[0].startswith("Viewpoint Confusion") for e in edge_cases)
+                    edge_cases.append(
+                        (
+                            "False Train Detection (Trackside Clutter FP)",
+                            cand,
+                            [(pred_lbl, conf, (80.0, 100.0, 480.0, 420.0))],
+                        )
+                    )
+                elif f_code == "front_side_confusion" and not any(
+                    e[0].startswith("Viewpoint Confusion") for e in edge_cases
                 ):
-                    edge_cases.append((
-                        "Viewpoint Confusion (Front vs Side Boundary)",
-                        cand,
-                        [(pred_lbl, conf, (100.0, 80.0, 520.0, 460.0))]
-                    ))
+                    edge_cases.append(
+                        (
+                            "Viewpoint Confusion (Front vs Side Boundary)",
+                            cand,
+                            [(pred_lbl, conf, (100.0, 80.0, 520.0, 460.0))],
+                        )
+                    )
 
             if len(edge_cases) >= 2:
                 break
@@ -230,11 +244,13 @@ def generate_figure_15_failure_examples(
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10.0, 4.8), dpi=300)
     for ax, (desc, p, _dets) in zip((ax1, ax2), edge_cases[:2], strict=True):
+        require_media_authorization(p, "READ_RAW_MEDIA", declared_media=True)
         bgr = cv2.imread(str(p))
         if bgr is None:
             continue
         rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
         model = YOLO(str(MODEL_PATH))
+        require_media_authorization(p, "INFERENCE", declared_media=True)
         raw_res: Any = model.predict(source=str(p), conf=0.10, verbose=False)
         res_list: list[Any] = list(raw_res) if raw_res is not None else []
         if res_list:
@@ -253,8 +269,7 @@ def generate_figure_15_failure_examples(
         ax.axis("off")
 
     fig.suptitle(
-        "Qualitative Failure & Boundary Case Analysis",
-        fontsize=11.5, fontweight="bold", y=0.98
+        "Qualitative Failure & Boundary Case Analysis", fontsize=11.5, fontweight="bold", y=0.98
     )
 
     output_dir.mkdir(parents=True, exist_ok=True)

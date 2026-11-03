@@ -1,0 +1,223 @@
+{
+  "mission10_artifacts": [
+    {
+      "bytes": 14589,
+      "path": "src/railway_detection/annotation/second_review.py",
+      "sha256": "2d368727a76d12239b39d2180a5c27633083f1875e0b6e3ee9c90b1b0419bd54"
+    },
+    {
+      "bytes": 9184,
+      "path": "src/railway_detection/annotation/phase5_review_tooling.py",
+      "sha256": "74cb15e3fb54e44434b58c4f2ef61f10c4bbdb995a6c8e98e45d23b7a5ca2c10"
+    },
+    {
+      "bytes": 2125,
+      "path": "src/railway_detection/annotation/media_authorization.py",
+      "sha256": "1ca8230bb8f74326a57acb205c481d6a7aaa8411be7f3ba58178c4c7f1faf1c9"
+    },
+    {
+      "bytes": 15382,
+      "path": "src/railway_detection/annotation/evaluation_readiness_gate.py",
+      "sha256": "57bcb485790cb5275394b41040f22f7bd68d9e25a9086433aa02fef78784291e"
+    },
+    {
+      "bytes": 17419,
+      "path": "src/railway_detection/annotation/readiness_cli.py",
+      "sha256": "2740cd412ea2eb218f08572cfde2bb80feb81cfc9712f6afd0a217ef84ffcc9a"
+    },
+    {
+      "bytes": 30868,
+      "path": "src/railway_detection/annotation/promotion_gate.py",
+      "sha256": "905d1082d22eb650a73fb3e5d08e71838dfdc569012731a8a7eb6f256c77c1e1"
+    },
+    {
+      "bytes": 4009,
+      "path": "src/railway_detection/annotation/receipt.py",
+      "sha256": "b42f5084f192e0fc4c25a5b65acc4b7c5c2ad4d618ab5d34d0e44ee40401a983"
+    },
+    {
+      "bytes": 42891,
+      "path": "src/railway_detection/evaluation/execution_gate.py",
+      "sha256": "e8973e7497d1018cf7be9f535ee4be6d424cc0ad96a855ccba58a659b520ac0d"
+    },
+    {
+      "bytes": 10623,
+      "path": "src/railway_detection/evaluation/ground_truth_loader.py",
+      "sha256": "5e836bd20ff0c284875a946e72bb00e13e5db68f9afe53c7888b4a8193f1ff82"
+    },
+    {
+      "bytes": 12098,
+      "path": "src/railway_detection/evaluation/descriptive_exec_gate.py",
+      "sha256": "644f3ea672a9f42237baadee4e7d264e18d9a85c9b4ea958c3702d48ccac3734"
+    },
+    {
+      "bytes": 36604,
+      "path": "src/railway_detection/evaluation/cache_only_engine.py",
+      "sha256": "3641ffafb3c4b77290011fcab1c802c17d6da6d899e232b9b6b3bf4be602cf43"
+    },
+    {
+      "bytes": 57,
+      "path": "src/railway_detection/safety/__init__.py",
+      "sha256": "8b0f64553c62a844f624264961907bd7eaf9c3b750a4f96368635e611123f59f"
+    },
+    {
+      "bytes": 20234,
+      "path": "src/railway_detection/safety/media_guard.py",
+      "sha256": "4cf9fb9ceda60c9ceb5485ec14820ab2bc277fe67ecc5d3a01940672f37fae55"
+    },
+    {
+      "bytes": 12474,
+      "path": "src/railway_detection/safety/access_guard_plugin.py",
+      "sha256": "850f203b68fc598e5b8d924f4493124fb01a26d8818df02b6e74d54b7b817b0b"
+    },
+    {
+      "bytes": 6234,
+      "path": "src/railway_detection/safety/access_manifest.py",
+      "sha256": "59cf022339e38f80ff61877d1f27c2538e41323d5c429421d131ab5d03cf0a7d"
+    },
+    {
+      "bytes": 12389,
+      "path": "scripts/classify_test_access.py",
+      "sha256": "22ee5e3b97e512cd48380c71c2260ca80b076646dee95370f44f0aa5c9d65c0f"
+    },
+    {
+      "bytes": 8560,
+      "path": "scripts/run_synthetic_tests.py",
+      "sha256": "058893c16471e98d5b58bcd445b15446833c5135ec5400a39e9a8578404dfafb"
+    },
+    {
+      "bytes": 3813,
+      "path": "scripts/mission10_artifact_manifest.py",
+      "sha256": "cf327e8f1aa89c9d562d30b7f67dd7b498016e85bfee2f1298c785c8f33c9d8a"
+    },
+    {
+      "bytes": 109402,
+      "path": "tests/test_access_classification.yaml",
+      "sha256": "c98db6676df88afd8e45371c231f17abeb255f1cdb37580ed568b5f25f0d8a72"
+    },
+    {
+      "bytes": 2433,
+      "path": "tests/second_review_support.py",
+      "sha256": "1c9e7058247e4499ab9eabac89018a2df78ec639288f349f57e26641031eeea2"
+    },
+    {
+      "bytes": 15649,
+      "path": "tests/test_mission10_second_review.py",
+      "sha256": "d2815256a21851c2f78694dfbeb6379367a77b21fd2233802f46607cdcf7678c"
+    },
+    {
+      "bytes": 13823,
+      "path": "tests/unit/test_phase5_review_tooling.py",
+      "sha256": "26b76613e931111f8f8e616e56ea420b9b68f3d81f37d479070e1c15f5947eba"
+    },
+    {
+      "bytes": 18366,
+      "path": "tests/unit/test_media_authorization.py",
+      "sha256": "4b191af6bbcd93cc9a47801247bff7b4e9d73f754c3ee1920be2981172c574e8"
+    },
+    {
+      "bytes": 7621,
+      "path": "tests/unit/test_media_opener_coverage.py",
+      "sha256": "08c877a7383e1ae59236aff839c597a0afd4bd9f44115e78450a0775bef6ed00"
+    },
+    {
+      "bytes": 11064,
+      "path": "tests/unit/test_descriptive_exec_gate.py",
+      "sha256": "6cb1fdecd4e0d70c980da41bfd3b8afbb0b2c9c1416a39c25eacc0e7d782b3c9"
+    },
+    {
+      "bytes": 23090,
+      "path": "tests/unit/test_access_classification_tools.py",
+      "sha256": "f0d4489039f0ecac279ffae0328ecd1d9e2e768721ac36a894fdb189da02783c"
+    },
+    {
+      "bytes": 7868,
+      "path": "tests/unit/test_mission10_m4_m5_differential.py",
+      "sha256": "62cc73d66dcf25ecd775147f2aa1489edf55fb156495341cd0178f9336194410"
+    },
+    {
+      "bytes": 2754,
+      "path": "tests/unit/test_mission10_back_stream_scope.py",
+      "sha256": "9ac980148273b7194fd0a2d76158a4a38ea74aae8041d318812bfc5bf9d3d4de"
+    },
+    {
+      "bytes": 8060,
+      "path": "docs/generated/phase5/MISSION_10_FINDING_REGISTER.md",
+      "sha256": "6ebeb992d5331415bd8d2438e3bccfd8306abf51e32c2a9450d4d886fbc2d429"
+    },
+    {
+      "bytes": 7079,
+      "path": "docs/generated/phase5/MISSION_10_RECOVERY_REPORT.md",
+      "sha256": "c92a9d1a93717ceebd6e6f24455112ba5a2caabe4a9bbe06de8be64fdb138dfb"
+    },
+    {
+      "bytes": 3498,
+      "path": "docs/generated/phase5/MISSION_10_TEST_CLASSIFICATION_AND_SAFE_RUNNER.md",
+      "sha256": "a2adeaa2a9621f3d63320faaa64a5fd0a4b3d6584a73956dd061298446995f2d"
+    },
+    {
+      "bytes": 2720,
+      "path": "docs/generated/phase5/MISSION_10_DOCUMENT_RECONCILIATION.md",
+      "sha256": "84bf23ddc43826fa03c3c0b1d75b46f4778ddcc83da58c91516934b16b060412"
+    },
+    {
+      "bytes": 2306,
+      "path": "docs/generated/phase5/MISSION_10_CONDITION_MAPPING.md",
+      "sha256": "80ced4f9911b697425788c6da21d5e1ea4d3d1e487d024467face903297a6b94"
+    },
+    {
+      "bytes": 3070,
+      "path": "docs/generated/phase5/MISSION_10_REBUILD_READINESS.md",
+      "sha256": "603880d5d870da1e41ae2a004f91ff7d03c16bbac35800aa9c99fd1c696205f6"
+    },
+    {
+      "bytes": 4072,
+      "path": "docs/generated/phase5/MISSION_10_ADVERSARIAL_SELF_AUDIT.md",
+      "sha256": "c3b59fc1b74b5f07c89566f277a37bc2ae9c32ff83b3e4dadc18bcdd0a961fe0"
+    }
+  ],
+  "note": "hashes are of the working tree at generation time; nothing here is committed",
+  "preserved_inputs_expected_unchanged": [
+    {
+      "bytes": 36908,
+      "path": "docs/generated/phase5/SONNET_PHASE5_INDEPENDENT_AUDIT_REPORT.md",
+      "sha256": "965bfeab938272016bfcaec36cb859e934ec5fe2a731dd2f99b114b166303074"
+    },
+    {
+      "bytes": 37752,
+      "path": "docs/generated/phase5/SONNET_PHASE5_REMEDIATION_REAUDIT_REPORT.md",
+      "sha256": "371727d92cdbce69025b9d0d76879c8278c0568e0284cd42efb4dd606937394c"
+    },
+    {
+      "bytes": 35008,
+      "path": "docs/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md",
+      "sha256": "7c183b323970591b68f0db692e70413e54dcacfc4bf78a358c28f1b1ed68734c"
+    },
+    {
+      "bytes": 54092,
+      "path": "docs/FINAL_GROUND_TRUTH_PROTOCOL.md",
+      "sha256": "d100c1e6a63280c375f94e297416efb0cf7dd3c15c9aa8df076ede052d49ecf4"
+    },
+    {
+      "bytes": 2944,
+      "path": "configs/decision_policy_v1.yaml",
+      "sha256": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575"
+    },
+    {
+      "bytes": 1898,
+      "path": "configs/frozen_experiment_v1.yaml",
+      "sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a"
+    },
+    {
+      "bytes": 375,
+      "path": "data/ground_truth/authorized_reviewers.json",
+      "sha256": "e5df40b175a548a5bc92c4d30c16b93708dfec240cdd6daa3e114e22179c7957"
+    },
+    {
+      "bytes": 1856,
+      "path": "data/governance/leg_exec_authorization.json",
+      "sha256": "77933986b42b44d340723227c8319a4fb90687a9d6dbe00133de39780bd9cb7e"
+    }
+  ],
+  "schema": "mission10-artifact-manifest/1"
+}

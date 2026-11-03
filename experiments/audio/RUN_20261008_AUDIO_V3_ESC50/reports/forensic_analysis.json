@@ -1,0 +1,40 @@
+{
+  "v3_test_window_accuracy": 0.8956,
+  "v3_test_window_precision": 0.7875,
+  "v3_test_window_recall": 0.9692,
+  "v3_test_window_specificity": 0.8547,
+  "v3_test_window_f1": 0.869,
+  "v3_test_recording_accuracy": 0.8462,
+  "v3_test_recording_f1": 0.8667,
+  "test_false_positives_count": 17,
+  "test_false_negatives_count": 2,
+  "per_category_max_probabilities": {
+    "car_horn": 0.0892,
+    "engine": 0.9309,
+    "siren": 0.9406,
+    "church_bells": 0.9822,
+    "clock_alarm": 0.0002,
+    "rain": 0.0951,
+    "wind": 0.0535,
+    "thunderstorm": 0.3126,
+    "footsteps": 0.0441,
+    "airplane": 0.0094,
+    "helicopter": 0.2656
+  },
+  "per_category_fp_counts": {
+    "car_horn": 0,
+    "engine": 9,
+    "siren": 1,
+    "church_bells": 7,
+    "clock_alarm": 0,
+    "rain": 0,
+    "wind": 0,
+    "thunderstorm": 0,
+    "footsteps": 0,
+    "airplane": 0,
+    "helicopter": 0
+  },
+  "forensic_q1_does_v3_achieve_100_percent": false,
+  "forensic_q2_hardest_confuser_category": "church_bells",
+  "forensic_q3_why_v2_achieved_100": "V2 custom negatives were drawn from identical geographic and microphone capture conditions, whereas ESC-50 introduces acoustic diversity (car horns, sirens, church bells, engines) with diverse recording sources."
+}

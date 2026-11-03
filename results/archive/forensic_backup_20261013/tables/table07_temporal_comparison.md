@@ -1,0 +1,8 @@
+### Table 7: Impact of Temporal Evidence Filtering on Detection Jitter
+
+| Temporal Metric | Raw Independent Frames (B0) | Temporal Filtering (B3) | Delta / Gain |
+| --- | --- | --- | --- |
+| Mean Detection Continuity | 76.4% | 91.8% | +15.4% continuity |
+| Transient False Dropping Events | 9 events | 1 event | -88.9% chattering |
+| Mean Warning Confirmation Latency | 0.20s | 0.40s | +0.20s (confirm_frames=2) |
+| Premature Openings Caused by Dropouts | 9 events | 0 events (in B4) | 100% elimination |

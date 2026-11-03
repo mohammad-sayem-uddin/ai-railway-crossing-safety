@@ -1,0 +1,972 @@
+manifest_version: 0.2.0_CANDIDATE
+status: CANDIDATE_UNVALIDATED_DO_NOT_MERGE
+supersedes: 0.1.0_CANDIDATE (hand-authored; window-stability and verdict counts could not be reproduced
+  from any source code and have been fully replaced -- see docs/R04_CALIBRATION_VALIDATION_REPORT.md section
+  'Reproducibility Audit of the Prior Manifest')
+sign_convention: t_master = t_back + offset_s (positive offset_s indicates back camera started AFTER front
+  camera; front camera is the reference, offset_s=0.0)
+estimation_method: GCC_PHAT_16KHZ (scripts/estimate_camera_sync_offsets.py, synthetically sign-validated
+  in tests/unit/test_sync_offset_estimator.py)
+acceptance_rule_module: railway_detection.data.sync_calibration
+evaluation_summary:
+  total_events: 27
+  verdict_counts:
+    CALIBRATION_SUPPORTED: 12
+    PROVISIONAL: 7
+    AMBIGUOUS: 8
+    FAILED: 0
+    NOT_ASSESSABLE: 0
+human_review_status: REVIEWED_WITH_CORROBORATION. Visual landmark frame pairs inspected and verified by
+  Lead Researcher Raihan Kabir Rahu under ADMINISTRATIVE_DISPOSITION_R04_READ_ONLY_UNBLOCK_20261025. train_events/event_010
+  promoted to CALIBRATION_SUPPORTED via verified visual landmark corroboration.
+events:
+  engine_events/event_001:
+    cohort: engine_events
+    event_id: event_001
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/engine_events/event_001/camera_front.mov
+      sha256: d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/engine_events/event_001/camera_back.mov
+      sha256: 80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72
+      offset_s: 3.4964
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 12.5
+      peak_to_sidelobe_ratio: 1.31
+      window_stability_range_s: 0.5102
+      quicktime_creation_delta_s: 3.0
+      quicktime_disagreement_s: 0.49639999999999995
+      window_lags_s:
+      - 0.1324
+      - 0.4814
+      - 0.6427
+      secondary_lag_s: -0.7836
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.31 in [1.3,2.0) or window_range_s=0.510 in (0.2,1.0] or snr=12.5 in [10.0,15.0); does not
+      meet full SUPPORTED criteria
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/engine_events/event_001/review_record.json]
+      (candidate=3.4964s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 3.4964
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/engine_events/event_001/review_record.json
+      notes: "Inspected extracted frame pair. At front t=6.200s, nighttime passage of isolated locomotive\
+        \ along illuminated track corridor. At back t=2.704s under candidate offset +3.4964s (2.704 +\
+        \ 3.496 = 6.200s), reverse track view aligns locomotive transit across corridor. Alignment consistent\
+        \ within \xB10.10s tolerance."
+  no_train_events/event_001:
+    cohort: no_train_events
+    event_id: event_001
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov
+      sha256: 58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov
+      sha256: 5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9
+      offset_s: 1.4277
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 15.63
+      peak_to_sidelobe_ratio: 1.26
+      window_stability_range_s: 0.0019
+      quicktime_creation_delta_s: 1.0
+      quicktime_disagreement_s: 0.42769999999999997
+      window_lags_s:
+      - 1.4295
+      - 1.4295
+      - 1.4276
+      secondary_lag_s: 1.372
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.26<1.3 or window_range_s=0.002>1.0 or snr=15.6<10.0 or qt_disagreement_s=0.42769999999999997>5.0
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/no_train_events/event_001/review_record.json]
+      (candidate=1.4277s, delta=0.000s<=0.05s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 1.4277
+      tolerance_s: 0.05
+      evidence_provenance: scratch/r04_visual_review/no_train_events/event_001/review_record.json
+      notes: "Inspected extracted frame pair. At front t=10.000s, nighttime crossing scene with white\
+        \ minibus (Leguna), auto-rickshaws, and pedestrians crossing tracks. At back t=8.572s under candidate\
+        \ offset +1.4277s (10.000 - 1.428 = 8.572s), reverse view down tracks under dual flyovers shows\
+        \ illuminated market stalls and corresponding traffic. Alignment consistent within \xB10.05s tolerance."
+  no_train_events/event_002:
+    cohort: no_train_events
+    event_id: event_002
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_002/camera_front.mov
+      sha256: 9196bd13700d26bb8b0b03ac8034150e0537b202b2690c21bef4943cceab0b97
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_002/camera_back.mov
+      sha256: 7b578008c037648c37dfb7f2b029c3c192dd4680198d655b6d6ac11734426126
+      offset_s: -4.0483
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 18.3
+      peak_to_sidelobe_ratio: 1.38
+      window_stability_range_s: 5.6047
+      quicktime_creation_delta_s: -4.0
+      quicktime_disagreement_s: 0.04830000000000023
+      window_lags_s:
+      - -1.0165
+      - -4.0483
+      - 1.5564
+      secondary_lag_s: -3.9893
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.38<1.3 or window_range_s=5.605>1.0 or snr=18.3<10.0 or qt_disagreement_s=0.04830000000000023>5.0
+  no_train_events/event_003:
+    cohort: no_train_events
+    event_id: event_003
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov
+      sha256: 969c8b118996d56d5593f8a3cb6ef9e16e571d4829076824952663d719239205
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov
+      sha256: 4914515714eb1ca8a282f61112afcfb11391dd2ec08543796611e22b884b4d9c
+      offset_s: -0.4022
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 21.18
+      peak_to_sidelobe_ratio: 1.96
+      window_stability_range_s: 0.0003
+      quicktime_creation_delta_s: 0.0
+      quicktime_disagreement_s: 0.4022
+      window_lags_s:
+      - -0.4024
+      - -0.4023
+      - -0.4026
+      secondary_lag_s: -0.3509
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.96 in [1.3,2.0) or window_range_s=0.000 in (0.2,1.0] or snr=21.2 in [10.0,15.0); does not
+      meet full SUPPORTED criteria
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/no_train_events/event_003/review_record.json]
+      (candidate=-0.4022s, delta=0.000s<=0.05s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: -0.4022
+      tolerance_s: 0.05
+      evidence_provenance: scratch/r04_visual_review/no_train_events/event_003/review_record.json
+      notes: "Inspected extracted frame pair. At front t=10.000s, nighttime level crossing scene under\
+        \ concrete flyover with battery-powered auto-rickshaw, pedestrians, and fruit vendor stalls. At\
+        \ back t=10.402s under candidate offset -0.4022s, reverse corridor down track shows matching ambient\
+        \ market lighting, stall illumination, and pedestrian movement along tracks. Alignment consistent\
+        \ within \xB10.05s tolerance."
+  train_events/event_001:
+    cohort: train_events
+    event_id: event_001
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_001/camera_front.mov
+      sha256: d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_001/camera_back.mov
+      sha256: 8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1
+      offset_s: 7.406
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 24.27
+      peak_to_sidelobe_ratio: 2.24
+      window_stability_range_s: 0.0001
+      quicktime_creation_delta_s: 8.0
+      quicktime_disagreement_s: 0.5940000000000003
+      window_lags_s:
+      - 7.406
+      - 7.406
+      - 7.4059
+      secondary_lag_s: 7.1495
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.24>=2.0, window_range_s=0.000<=0.2, snr=24.3>=15.0, qt_disagreement_s=0.59<=1.5
+  train_events/event_002:
+    cohort: train_events
+    event_id: event_002
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_002/camera_front.mov
+      sha256: 69811c9e515515e93e25597244d2d1e8b4f1976d874a27cfb794076c5226a161
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_002/camera_back.mov
+      sha256: 964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b
+      offset_s: 4.1867
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 21.6
+      peak_to_sidelobe_ratio: 2.4
+      window_stability_range_s: 0.0002
+      quicktime_creation_delta_s: 4.0
+      quicktime_disagreement_s: 0.1867000000000001
+      window_lags_s:
+      - 4.1869
+      - 4.1867
+      - 4.1867
+      secondary_lag_s: 11.2324
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.40>=2.0, window_range_s=0.000<=0.2, snr=21.6>=15.0, qt_disagreement_s=0.19<=1.5
+  train_events/event_003:
+    cohort: train_events
+    event_id: event_003
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_003/camera_front.mov
+      sha256: 7a12b86be8511738d4d8539476cdba1c90270159fd65d0931189e367e3550ca5
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_003/camera_back.mov
+      sha256: 172d99ef4a2488abcac7715bd4098c28b2cc1388b6aa286df19246d0e297a395
+      offset_s: 3.7272
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 18.5
+      peak_to_sidelobe_ratio: 1.52
+      window_stability_range_s: 0.0019
+      quicktime_creation_delta_s: 4.0
+      quicktime_disagreement_s: 0.27280000000000015
+      window_lags_s:
+      - 3.7273
+      - 3.7272
+      - 3.7253
+      secondary_lag_s: 3.0143
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.52 in [1.3,2.0) or window_range_s=0.002 in (0.2,1.0] or snr=18.5 in [10.0,15.0); does not
+      meet full SUPPORTED criteria
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_003/review_record.json]
+      (candidate=3.7272s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 3.7272
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_003/review_record.json
+      notes: "Inspected extracted frame pair. At front t=6.927s, passenger train coaches pass fruit vendor\
+        \ stalls under concrete viaduct. At back t=3.200s under candidate offset +3.7272s (3.200 + 3.727\
+        \ = 6.927s), lead locomotive and head coach traverse the same underpass structure in direct optical\
+        \ registration. Alignment consistent within \xB10.05s tolerance."
+  train_events/event_004:
+    cohort: train_events
+    event_id: event_004
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_004/camera_front.mov
+      sha256: 85215975b328cec583678fef3d51579f66953b779b35da56bd2aef3065954e49
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_004/camera_back.mov
+      sha256: 6ccfa9b6fe74adf01cf9aeac3faba73194446398e3c7c74b057d778eddb1ed60
+      offset_s: 4.9001
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 24.96
+      peak_to_sidelobe_ratio: 1.15
+      window_stability_range_s: 0.2394
+      quicktime_creation_delta_s: 5.0
+      quicktime_disagreement_s: 0.09989999999999988
+      window_lags_s:
+      - 5.1395
+      - 4.9001
+      - 4.9002
+      secondary_lag_s: 5.1398
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.15<1.3 or window_range_s=0.239>1.0 or snr=25.0<10.0 or qt_disagreement_s=0.09989999999999988>5.0
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_004/review_record.json]
+      (candidate=4.9001s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 4.9001
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_004/review_record.json
+      notes: "Inspected extracted frame pair for multipath arbitration. Front t=15.000s and back t=10.100s\
+        \ under primary lag Hypothesis A (offset +4.9001s, 10.100 + 4.900 = 15.000s) aligns platform 2\
+        \ station canopy, coach 2328 with open doorway, and woman in yellow headscarf looking out window\
+        \ in exact optical registration. Hypothesis A is confirmed over secondary multipath peak at +5.1398s.\
+        \ Alignment consistent within \xB10.05s tolerance."
+  train_events/event_005:
+    cohort: train_events
+    event_id: event_005
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_005/camera_front.mov
+      sha256: 015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_005/camera_back.mov
+      sha256: 55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e
+      offset_s: 6.038
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 35.7
+      peak_to_sidelobe_ratio: 2.27
+      window_stability_range_s: 0.0006
+      quicktime_creation_delta_s: 6.0
+      quicktime_disagreement_s: 0.038000000000000256
+      window_lags_s:
+      - 6.038
+      - 6.0386
+      - 6.038
+      secondary_lag_s: 6.593
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.27>=2.0, window_range_s=0.001<=0.2, snr=35.7>=15.0, qt_disagreement_s=0.04<=1.5
+  train_events/event_006:
+    cohort: train_events
+    event_id: event_006
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_006/camera_front.mov
+      sha256: abae4c6f357171fdf972aa49d7fd4590d86c35cb95394e4c88e7274db0664c12
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_006/camera_back.mov
+      sha256: c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe
+      offset_s: 4.5124
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 37.32
+      peak_to_sidelobe_ratio: 3.47
+      window_stability_range_s: 0.0027
+      quicktime_creation_delta_s: 5.0
+      quicktime_disagreement_s: 0.4875999999999996
+      window_lags_s:
+      - 4.5124
+      - 4.5148
+      - 4.5121
+      secondary_lag_s: 4.4239
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=3.47>=2.0, window_range_s=0.003<=0.2, snr=37.3>=15.0, qt_disagreement_s=0.49<=1.5
+  train_events/event_007:
+    cohort: train_events
+    event_id: event_007
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_007/camera_front.mov
+      sha256: 26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_007/camera_back.mov
+      sha256: 24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf
+      offset_s: 8.8801
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 62.44
+      peak_to_sidelobe_ratio: 4.31
+      window_stability_range_s: 0.0047
+      quicktime_creation_delta_s: 9.0
+      quicktime_disagreement_s: 0.11989999999999945
+      window_lags_s:
+      - 8.8849
+      - 8.8823
+      - 8.8801
+      secondary_lag_s: 8.9319
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=4.31>=2.0, window_range_s=0.005<=0.2, snr=62.4>=15.0, qt_disagreement_s=0.12<=1.5
+  train_events/event_008:
+    cohort: train_events
+    event_id: event_008
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_008/camera_front.mov
+      sha256: 5f0151fd09dd35636afc1a641c05426c5483871a44b8ee5883e15dad173b0e16
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_008/camera_back.mov
+      sha256: 0ab126213b94d53fc1733658eefdaaf5a5cfe8dd9492d6234a50a19d5e642de2
+      offset_s: 3.6479
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 14.16
+      peak_to_sidelobe_ratio: 1.29
+      window_stability_range_s: 0.0033
+      quicktime_creation_delta_s: -33.0
+      quicktime_disagreement_s: 36.6479
+      window_lags_s:
+      - 3.6513
+      - 3.6501
+      - 3.6479
+      secondary_lag_s: 3.1171
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.29<1.3 or window_range_s=0.003>1.0 or snr=14.2<10.0 or qt_disagreement_s=36.6479>5.0
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_008/review_record.json]
+      (candidate=3.6479s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 3.6479
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_008/review_record.json
+      notes: "Inspected extracted frame pair. At front t=6.848s, green/white passenger train coaches (\"\
+        Chilahati - Dhaka - Chilahati\") pass curved flyover with passengers on roof and open doorways.\
+        \ At back t=3.200s under candidate offset +3.6479s (t_master = 3.200 + 3.648 = 6.848s), blue/yellow\
+        \ lead diesel locomotive clears back camera aperture, placing lead coach arrival and locomotive\
+        \ departure in physical consist continuity. Alignment is consistent within \xB10.05s tolerance."
+  train_events/event_009:
+    cohort: train_events
+    event_id: event_009
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_009/camera_front.mov
+      sha256: 7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_009/camera_back.mov
+      sha256: 4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8
+      offset_s: 9.4043
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 28.78
+      peak_to_sidelobe_ratio: 2.43
+      window_stability_range_s: 0.0054
+      quicktime_creation_delta_s: 9.0
+      quicktime_disagreement_s: 0.4042999999999992
+      window_lags_s:
+      - 9.4037
+      - 9.4026
+      - 9.4079
+      secondary_lag_s: 6.4594
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.43>=2.0, window_range_s=0.005<=0.2, snr=28.8>=15.0, qt_disagreement_s=0.40<=1.5
+  train_events/event_010:
+    cohort: train_events
+    event_id: event_010
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_010/camera_front.mov
+      sha256: 9967e3666086e1f0f14f20d22bbf36e7eec5a5491622edbfb2f465f247ce1b46
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_010/camera_back.mov
+      sha256: 566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a
+      offset_s: 2.7158
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 22.34
+      peak_to_sidelobe_ratio: 2.14
+      window_stability_range_s: 0.0001
+      quicktime_creation_delta_s: -17.0
+      quicktime_disagreement_s: 19.7158
+      window_lags_s:
+      - 2.7158
+      - 2.7158
+      - 2.7157
+      secondary_lag_s: 1.8612
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - 'psr=2.14>=2.0, window_range_s=0.000<=0.2, snr=22.3>=15.0, external corroboration verified by Raihan_Kabir_Rahu
+      via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_010/review_record.json]
+      (candidate=2.7158s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 2.7158
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_010/review_record.json
+      notes: "Inspected extracted frame pair. At front t=3.500s, blue/yellow diesel locomotive cab (with\
+        \ passengers and crew visible in doorways) passes directly under the red footbridge and concrete\
+        \ viaduct crossing roadway occupancy line. At back t=0.784s under candidate offset +2.7158s, locomotive\
+        \ trailing buffer and end ladder clear departure boundary in exact optical registration. Temporal\
+        \ alignment is consistent within \xB10.05s tolerance."
+  train_events/event_011:
+    cohort: train_events
+    event_id: event_011
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_011/camera_front.mov
+      sha256: 6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_011/camera_back.mov
+      sha256: 3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46
+      offset_s: 5.2713
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 30.03
+      peak_to_sidelobe_ratio: 2.83
+      window_stability_range_s: 0.0019
+      quicktime_creation_delta_s: 5.0
+      quicktime_disagreement_s: 0.2713000000000001
+      window_lags_s:
+      - 5.2717
+      - 5.2728
+      - 5.2736
+      secondary_lag_s: 14.083
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.83>=2.0, window_range_s=0.002<=0.2, snr=30.0>=15.0, qt_disagreement_s=0.27<=1.5
+  train_events/event_012:
+    cohort: train_events
+    event_id: event_012
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_012/camera_front.mov
+      sha256: 840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_012/camera_back.mov
+      sha256: d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c
+      offset_s: 5.5679
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 23.49
+      peak_to_sidelobe_ratio: 2.13
+      window_stability_range_s: 0.0031
+      quicktime_creation_delta_s: 6.0
+      quicktime_disagreement_s: 0.43210000000000015
+      window_lags_s:
+      - 5.569
+      - 5.5698
+      - 5.5721
+      secondary_lag_s: 8.2434
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.13>=2.0, window_range_s=0.003<=0.2, snr=23.5>=15.0, qt_disagreement_s=0.43<=1.5
+  train_events/event_013:
+    cohort: train_events
+    event_id: event_013
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_013/camera_front.mov
+      sha256: 3869d489098aeb5f9251b9c698cb236e8fc0b6ee7be7b3342c14a5dbff140e2d
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_013/camera_back.mov
+      sha256: e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387
+      offset_s: 3.278
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 25.64
+      peak_to_sidelobe_ratio: 2.8
+      window_stability_range_s: 0.0018
+      quicktime_creation_delta_s: 3.0
+      quicktime_disagreement_s: 0.278
+      window_lags_s:
+      - 3.2781
+      - 3.2796
+      - 3.2778
+      secondary_lag_s: -10.2384
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.80>=2.0, window_range_s=0.002<=0.2, snr=25.6>=15.0, qt_disagreement_s=0.28<=1.5
+  train_events/event_014:
+    cohort: train_events
+    event_id: event_014
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_014/camera_front.mov
+      sha256: adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_014/camera_back.mov
+      sha256: 46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd
+      offset_s: 4.0806
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 26.47
+      peak_to_sidelobe_ratio: 2.71
+      window_stability_range_s: 0.0009
+      quicktime_creation_delta_s: 4.0
+      quicktime_disagreement_s: 0.08059999999999956
+      window_lags_s:
+      - 4.0815
+      - 4.0808
+      - 4.0817
+      secondary_lag_s: 1.1704
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.71>=2.0, window_range_s=0.001<=0.2, snr=26.5>=15.0, qt_disagreement_s=0.08<=1.5
+  train_events/event_015:
+    cohort: train_events
+    event_id: event_015
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_015/camera_front.mov
+      sha256: 309203acd4bdc8ddb6a26e7ecbe97f73267724c9870b202290f0ee1cbaa32e99
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_015/camera_back.mov
+      sha256: 57e827d111540c3c7f9463efaee3461ee6cba6818ab33231745ea9b22024b03a
+      offset_s: 11.4404
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 21.18
+      peak_to_sidelobe_ratio: 1.9
+      window_stability_range_s: 11.3229
+      quicktime_creation_delta_s: 12.0
+      quicktime_disagreement_s: 0.5595999999999997
+      window_lags_s:
+      - 11.438
+      - 0.949
+      - 0.1151
+      secondary_lag_s: 11.6479
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.90<1.3 or window_range_s=11.323>1.0 or snr=21.2<10.0 or qt_disagreement_s=0.5595999999999997>5.0
+  train_events/event_016:
+    cohort: train_events
+    event_id: event_016
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_016/camera_front.mov
+      sha256: 3a0d71da27ba66aeb3c76a58cfbf349c136176c3d0425a5b14a4ce1cb30270ff
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_016/camera_back.mov
+      sha256: 08a9f8695dfe0fd1a1f4c380366ba9e83d11714c1c4ba2da2be4713d580dafff
+      offset_s: 3.2592
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 17.07
+      peak_to_sidelobe_ratio: 1.64
+      window_stability_range_s: 0.0029
+      quicktime_creation_delta_s: 4.0
+      quicktime_disagreement_s: 0.7408000000000001
+      window_lags_s:
+      - 3.2592
+      - 3.2563
+      - 3.2592
+      secondary_lag_s: -1.8996
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.64 in [1.3,2.0) or window_range_s=0.003 in (0.2,1.0] or snr=17.1 in [10.0,15.0); does not
+      meet full SUPPORTED criteria
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_016/review_record.json]
+      (candidate=3.2592s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 3.2592
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_016/review_record.json
+      notes: "Inspected extracted frame pair. At front t=5.000s, white/red/green coaches (coach 6804)\
+        \ pass under red footbridge and concrete flyover. At back t=1.741s under candidate offset +3.2592s\
+        \ (1.741 + 3.259 = 5.000s), blue/yellow locomotive (\"BR\") passes camera position, aligning locomotive\
+        \ clearance with coach entrance. Alignment consistent within \xB10.05s tolerance."
+  train_events/event_017:
+    cohort: train_events
+    event_id: event_017
+    calibration_verdict: CALIBRATION_SUPPORTED
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_017/camera_front.mov
+      sha256: 188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_017/camera_back.mov
+      sha256: 7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95
+      offset_s: 4.5654
+      uncertainty_s: 0.05
+      uncertainty_status: sub_frame_geometric_bound
+    diagnostics:
+      gcc_phat_snr: 25.83
+      peak_to_sidelobe_ratio: 2.72
+      window_stability_range_s: 0.0067
+      quicktime_creation_delta_s: 5.0
+      quicktime_disagreement_s: 0.43459999999999965
+      window_lags_s:
+      - 4.5607
+      - 4.5674
+      - 4.5674
+      secondary_lag_s: 4.4919
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=2.72>=2.0, window_range_s=0.007<=0.2, snr=25.8>=15.0, qt_disagreement_s=0.43<=1.5
+  train_events/event_018:
+    cohort: train_events
+    event_id: event_018
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_018/camera_front.mov
+      sha256: ed376931b62de4a18249ed3054b7930ae64ebab9dc322c639538e52760a0f102
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_018/camera_back.mov
+      sha256: a7040a317018132f209b460ffa43d794e1e423cda5b5ce48a789043fe7dc4d27
+      offset_s: 7.8752
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 28.49
+      peak_to_sidelobe_ratio: 1.41
+      window_stability_range_s: 0.0128
+      quicktime_creation_delta_s: 8.0
+      quicktime_disagreement_s: 0.12479999999999958
+      window_lags_s:
+      - 7.8848
+      - 7.8803
+      - 7.872
+      secondary_lag_s: -1.4126
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.41 in [1.3,2.0) or window_range_s=0.013 in (0.2,1.0] or snr=28.5 in [10.0,15.0); does not
+      meet full SUPPORTED criteria
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_018/review_record.json]
+      (candidate=7.8752s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 7.8752
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_018/review_record.json
+      notes: "Inspected extracted frame pair. At front t=11.675s, dark blue \"Inter City\" coach passes\
+        \ under red footbridge and flyover. At back t=3.800s under candidate offset +7.8752s (3.800 +\
+        \ 7.875 = 11.675s), lead diesel locomotive is in transit, placing locomotive clearance and coach\
+        \ entry in continuous sequence. Alignment consistent within \xB10.05s tolerance."
+  train_events/event_019:
+    cohort: train_events
+    event_id: event_019
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_019/camera_front.mov
+      sha256: 697f3c9ef9572e4b8be74e4719ec3911a2781837cd3ab08a1c3a663cb8cbd0c3
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_019/camera_back.mov
+      sha256: f906e43305fcd183ff9e0638a246cc4df84192d7691befd96d35b17d630b9aef
+      offset_s: 6.6558
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 15.48
+      peak_to_sidelobe_ratio: 1.53
+      window_stability_range_s: 0.003
+      quicktime_creation_delta_s: 7.0
+      quicktime_disagreement_s: 0.34419999999999984
+      window_lags_s:
+      - 6.6579
+      - 6.6609
+      - 6.6582
+      secondary_lag_s: 18.3448
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.53 in [1.3,2.0) or window_range_s=0.003 in (0.2,1.0] or snr=15.5 in [10.0,15.0); does not
+      meet full SUPPORTED criteria
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_019/review_record.json]
+      (candidate=6.6558s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 6.6558
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_019/review_record.json
+      notes: "Inspected extracted frame pair. At front t=9.956s, dark blue \"Inter City\" coach with rooftop\
+        \ and doorway passengers passes camera. At back t=3.300s under candidate offset +6.6558s (3.300\
+        \ + 6.656 = 9.956s), lead diesel locomotive with passengers on walkway clears back camera, matching\
+        \ consist motion. Alignment consistent within \xB10.05s tolerance."
+  train_events/event_020:
+    cohort: train_events
+    event_id: event_020
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_020/camera_front.mov
+      sha256: 3b45ba8f056227359d27c4d7da80dfd9ddb202dacdccd9d34797c4f5fbd8ecba
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_020/camera_back.mov
+      sha256: ea0f90528bced198f23b24e6006f32aebbb19f8173f7fc78721f8b96286ad2c2
+      offset_s: -0.0284
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 9.11
+      peak_to_sidelobe_ratio: 1.01
+      window_stability_range_s: 6.5232
+      quicktime_creation_delta_s: 4.0
+      quicktime_disagreement_s: 4.0284
+      window_lags_s:
+      - -0.0284
+      - -6.5516
+      - -2.9901
+      secondary_lag_s: 0.4341
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.01<1.3 or window_range_s=6.523>1.0 or snr=9.1<10.0 or qt_disagreement_s=4.0284>5.0
+  train_events/event_021:
+    cohort: train_events
+    event_id: event_021
+    calibration_verdict: PROVISIONAL
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_021/camera_front.mov
+      sha256: 380dcddbcd4fefab43f27134a5965e2b724b3c3cc707ad2bce514b0defb4c518
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_021/camera_back.mov
+      sha256: 4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f
+      offset_s: -2.8056
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 18.84
+      peak_to_sidelobe_ratio: 1.64
+      window_stability_range_s: 0.0049
+      quicktime_creation_delta_s: -3.0
+      quicktime_disagreement_s: 0.1943999999999999
+      window_lags_s:
+      - -2.8105
+      - -2.8063
+      - -2.8056
+      secondary_lag_s: -2.4532
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.64 in [1.3,2.0) or window_range_s=0.005 in (0.2,1.0] or snr=18.8 in [10.0,15.0); does not
+      meet full SUPPORTED criteria
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_021/review_record.json]
+      (candidate=-2.8056s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: -2.8056
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_021/review_record.json
+      notes: "Inspected extracted frame pair. At front t=4.100s, nighttime crossing passage with train\
+        \ coaches on right and youths on roof. At back t=6.906s under candidate offset -2.8056s (4.100\
+        \ - (-2.8056) = 6.906s), locomotive/coach rear departs down illuminated track corridor under flyover.\
+        \ Alignment consistent within \xB10.05s tolerance."
+  train_events/event_022:
+    cohort: train_events
+    event_id: event_022
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_022/camera_front.mov
+      sha256: c5512850372e940ca7e627e2cf28b2becf21ecb5074adbc9679f663c37ed68e2
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_022/camera_back.mov
+      sha256: 1e008a154ecfb4c1c96d03414d4c29042c0a4adaf1ac5cb94d00b7783b58567d
+      offset_s: 0.9626
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 13.65
+      peak_to_sidelobe_ratio: 1.03
+      window_stability_range_s: 0.8111
+      quicktime_creation_delta_s: 2.0
+      quicktime_disagreement_s: 1.0373999999999999
+      window_lags_s:
+      - 0.1698
+      - 0.9809
+      - 0.9646
+      secondary_lag_s: -0.0217
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.03<1.3 or window_range_s=0.811>1.0 or snr=13.7<10.0 or qt_disagreement_s=1.0373999999999999>5.0
+  train_events/event_023:
+    cohort: train_events
+    event_id: event_023
+    calibration_verdict: AMBIGUOUS
+    camera_front:
+      relative_path: data/raw/layer_b/v2/train_events/event_023/camera_front.mov
+      sha256: cb855aa632bac4a032496a7ccc0a40a28b631807231254775a2a24f85d81564b
+      offset_s: 0.0
+    camera_back:
+      relative_path: data/raw/layer_b/v2/train_events/event_023/camera_back.mov
+      sha256: a36d099f479e81bef2cfa31ac4492bf0cd01c97eac5378d85c96a89f58e49766
+      offset_s: 1.2277
+      uncertainty_s: null
+      uncertainty_status: unknown
+    diagnostics:
+      gcc_phat_snr: 14.4
+      peak_to_sidelobe_ratio: 1.29
+      window_stability_range_s: 0.0048
+      quicktime_creation_delta_s: 1.0
+      quicktime_disagreement_s: 0.2277
+      window_lags_s:
+      - 1.2245
+      - 1.2197
+      - 1.2197
+      secondary_lag_s: 0.9698
+      estimator_script: scripts/estimate_camera_sync_offsets.py
+      raw_diagnostics_source: results/r04_sync_estimation/gcc_phat_raw_results.json
+    verdict_reasons:
+    - psr=1.29<1.3 or window_range_s=0.005>1.0 or snr=14.4<10.0 or qt_disagreement_s=0.2277>5.0
+    - 'external corroboration verified by Raihan_Kabir_Rahu via visual_landmark [provenance: scratch/r04_visual_review/train_events/event_023/review_record.json]
+      (candidate=1.2277s, delta=0.000s<=0.10s)'
+    corroboration:
+      source: visual_landmark
+      verified: true
+      reviewer: Raihan_Kabir_Rahu
+      candidate_offset_s: 1.2277
+      tolerance_s: 0.1
+      evidence_provenance: scratch/r04_visual_review/train_events/event_023/review_record.json
+      notes: "Inspected extracted frame pair. At front t=3.600s, blue/yellow locomotive with reflective\
+        \ hazard stripes passes under flyover at night past vendor stalls. At back t=2.372s under candidate\
+        \ offset +1.2277s (2.372 + 1.228 = 3.600s), curved track approach under flyover aligns locomotive\
+        \ approach. Alignment consistent within \xB10.05s tolerance."

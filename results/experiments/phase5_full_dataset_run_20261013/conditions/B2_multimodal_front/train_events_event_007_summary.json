@@ -1,0 +1,8 @@
+{
+  "event_id": "train_events_event_007",
+  "condition": "B2",
+  "step_count": 192,
+  "total_duration_s": 38.2,
+  "closed_duration_s": 34.6,
+  "fault_occurred": false
+}
