@@ -4,7 +4,7 @@
 **Subsystem:** Computer Vision Data Partitioning & Leakage Prevention
 **Target Architecture:** Stratified Event-Grouped Cross-Validation (Stratified GroupKFold)
 **Document ID:** `MISSION-17B-DELIV-03`
-**Execution Authority:** NONE (Implementation Pending PI Approval of Decision D-07)
+**Execution Authority:** NONE (Implementation Pending PI Approval of Decision D-07) **17C-0: corrected requirements are in the appended correction history; original body retained.**
 **Governance Invariants:** RD-006, RD-024, RD-025, RD-032, RD-033, RD-037
 **Audited Sources:** [`split_summary.json`](file:///Users/sayemuddin/Desktop/Train_automation/data/splits/705d388743ea/split_summary.json), [`split.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/data/split.py), [`test_split.py`](file:///Users/sayemuddin/Desktop/Train_automation/tests/unit/test_split.py), Missions 16E, 16F, 17A
 **Date:** 2026-11-03
@@ -268,3 +268,41 @@ The future CV partitioning workflow must satisfy:
 
 ---
 *End of Mission 17B Deliverable 3.*
+
+---
+
+## Mission 17C-0 correction history — superseding split requirements
+
+**2026-11-03; documentation correction only; D-07 remains PENDING.** Original §§1–7 are retained as historical wording. This appendix supersedes their conflicting corpus/ID claims, pseudocode, equations, schema and test expectations. Evidence: `MISSION_17C0_VERIFICATION_MATRIX.md` C034–C045; F05–F10. No real split manifest, training or evaluation is authorized or generated.
+
+### Correct corpus and leakage evidence
+
+- Split 705d388743ea concerns3,157 V1 Roboflow development images. The preserved summary contains 1,315 `source:*` group assignments, partitions2218/467/472 and no warnings; the `crossing_id` label does not prove that grouping collapsed to one crossing group. `generate_group_split` uses each sample's `split_group_id`, not lookup of the group_field string. Grouping hints are source-image names with augmentation suffixes removed.
+- `leakage_risk:true`, `development_fallback` and `allow_ungrouped_fallback:true` are real summary fields. They qualify scientific claims but do not prove per-image random fallback actually occurred, shared physical-event frame leakage, duplicate content or model memorization. Metadata source-name inspection finds zero cross-partition identical source hints. This is not proof of event independence or absence of near-duplicates; raw images were not inspected/hashed.
+- Historical artifact `experiments/vision/39f402dfe460/evaluation/metrics.json` records mAP50=.9946. The original .98 quotation has no identified matching source here. Report historical diagnostic provenance only; no metric is re-evaluated or certified.
+- The27-event LayerB v2 video corpus is a separate descriptive evaluation cohort, not an established training source for these V1 images. No verified image-to-physical-event join was located. Do not construct a CV dataset from held-out evaluation footage, infer event IDs from file-name numerals, or treat this document as approval to change RD-039's full-cohort evaluation design.
+
+### Cohort identity and grouping invariants
+
+- Canonical identities are `train_events/event_001` through `train_events/event_023`, `no_train_events/event_001` through `no_train_events/event_003`, and `engine_events/event_001`. In particular, train_events/event_021 is not the engine and train_events/event_003/009/016 are not no-train controls.
+- Bare event ID is not globally unique. Define an approved development physical-event key with source-dataset/version/cohort provenance; multiple camera views, segments, re-exports, crops and augmented derivatives of the same physical recording/pass must share a group. The engine's versions/historical duplicate must not become independent groups. Larger session/duplicate-lineage connected components may be required where the same physical event is represented more than once.
+- For each outer fold require pairwise train∩validation=empty, train∩test=empty, validation∩test=empty where these roles exist. Empty triple intersection is insufficient. Across outer validation folds require pairwise group disjointness and exactly-once coverage of every eligible group. Training sets naturally overlap across CV iterations; do not require all folds' training sets to be mutually disjoint.
+- **No ungrouped random fallback under any flag.** Reject construction/configuration with fallback=True. Reject absent/blank/unknown/ambiguous group identities, inconsistent cohort/type joins, orphan annotations, duplicate IDs with conflicting provenance, missing eligible coverage and cross-role derivative leakage. Fold-event disjointness alone cannot validate image assignments; verify the complete source-image/annotation/derivative-to-group join.
+- Use already authorized metadata/content fingerprints if available. A prohibited media hash is not required or performed by this audit; absence of trustworthy identity must block claims of verified identity. Cross-event exact duplicates or unresolved same-source lineage must block certified splitting or be merged into an approved common group; a warning alone cannot establish leakage safety.
+- RD-024 excludes engine-only events from pooled M4/M5/occupancy/train aggregates. It does not by itself mandate a detector-training prohibition or establish zero-shot out-of-distribution evaluation. Any reserved-case-study/training policy needs an explicit corpus-specific PI decision. RD-025 requires confirmed no-train status and event/exposure reporting, not an hourly-rate or training approval.
+
+### Feasible cross-validation, calibration and reporting
+
+- Five folds are a proposal.23 verified eligible physical groups could have validation sizes5,5,5,4,4 (training18/19), but23 is not established as the development corpus's number of groups. No complete weather/lighting/direction labels were found in the available V1 summary; none of those keys exists at top level of the 27-event inventory. Speed strata are also not established. Unknown/unverified metadata must remain unknown.
+- For a required joint stratum to appear in every validation fold, at least K distinct eligible groups must carry that stratum; this is a necessary count condition, not general proof of feasible balanced bin packing with mixed labels/unequal frames. Singleton engine or three controls cannot cover five folds. Do not assert environmental coverage that data do not support. Publish counts and constraints before choosing K; if infeasible, stop for PI choice of fewer folds/coarser strata or a different grouped design. Group disjointness is never relaxed.
+- Build aligned group/label records in one deterministic sort before labeling/allocation. Specify actual deterministic allocation, tie breaking, frame/group weighting objective and library/version; the ellipsis in the original algorithm is not an implemented StratifiedGroupKFold procedure. Model-class balance and nuisance environmental stratification are different objectives. Check label support and actual output invariants even when using a library.
+- Negative controls cannot be both tuned-on calibration material and independent evaluation controls. Choose disjoint calibration/development and held-out control roles prospectively; reuse must be disclosed as exploratory. Three short control recordings do not justify FAR/hour or a permanent train-free claim. Keep event counts, blocked seconds, episodes and per-camera exposure under the adopted profile.
+- Outer-fold validation/evaluation must not select thresholds, early stopping, hyperparameters or model checkpoints. Use group-disjoint inner validation or a prospectively frozen tuning rule; fit preprocessing only on training data. Record fresh-training/initialization provenance and any prior exposure of pretrained models to held-out groups. A valid partition cannot undo historical training exposure.
+- Event grouping limits direct event leakage; same-session/site background still limits independence. Report within-site descriptive performance and denominators, not cross-site generalization. Fold mean/SD and pooled OOF metrics answer different aggregation questions; define weighting and never call SD a confidence interval or inferential validation under RD-023.
+
+### Manifest contract and corrected verification requirements
+
+- Original §4 is an illustrative JSON instance, not a validating JSON Schema. Its timestamps/counts/hashes/folds are placeholders, not actual results. No `leakage_risk:false` declaration proves leakage absence. Build an actual typed/required-key schema before implementation acceptance.
+- Manifest requirements: approved corpus and version; physical-group mapping/derivative lineage; source/label/eligibility/metadata/code/config digests; approved operation and decision references; algorithm/library version, deterministic tie break and seed; stable sorted assignments; train/inner-validation/outer-test roles; all image/annotation/group counts; class and nuisance-stratum distributions including unknown; reserved/calibration roles and exclusion reasons; pairwise/coverage/join verification receipts; limitations and prior model exposure.
+- Define canonical serialization and self hash over the payload excluding the self-hash field (and explicitly defined nondeterministic receipt fields), or use a detached digest. Keep deterministic assignment content separate from generated-time receipt so reproducibility assertions are meaningful. Full 64-hex digests only; no fabricated hash or generation time.
+- TEST-SPLIT06 may demand a stratum in every fold only after group-count feasibility is proven. TEST-SPLIT07 must fail closed on unresolved cross-group duplicate identity; no claim of duplicate checking from a warning-only stub. Add fallback=True rejection, unknown/cohort-colliding IDs, missing coverage, orphan annotations, camera/version derivatives, rare joint strata, input-order permutation, calibration reuse and inner/outer leakage checks. Eight proposed cases are not eight executed tests.

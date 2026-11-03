@@ -4,7 +4,7 @@
 **Subsystem:** Discrete-Time Simulation Engine & Physical Gate Actuation
 **Target Architecture:** Forward-Causal Execution Semantics (Convention B)
 **Document ID:** `MISSION-17B-DELIV-02`
-**Execution Authority:** NONE (Implementation Pending PI Approval of Decision D-09 / Simulation Refactoring)
+**Execution Authority:** NONE (Implementation Pending PI Approval of Decision D-09 / Simulation Refactoring) **17C-0: corrected requirements are in the appended correction history; original body retained.**
 **Governance Invariants:** RD-019, RD-031, RD-036
 **Audited Sources:** [`runner.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/simulation/runner.py#L187-L229), [`gate_model.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/simulation/gate_model.py#L47-L75), [`state_machine.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/simulation/state_machine.py), Missions 16D, 16G, 16H
 **Date:** 2026-11-03
@@ -311,3 +311,51 @@ The future software implementation of Convention B must satisfy:
 
 ---
 *End of Mission 17B Deliverable 2.*
+
+---
+
+## Mission 17C-0 correction history — superseding causal contract
+
+**2026-11-03; documentation correction only; implementation remains PENDING.** Original §§1–7 are retained as historical wording. This appendix supersedes conflicting pseudocode, equations, parameter defaults, claims and test oracles. Independent evidence: `MISSION_17C0_VERIFICATION_MATRIX.md` C046–C059; full proof/counterexamples and 27-file ledger in the 17C-0 audit.
+
+### State, command and interval semantics
+
+1. Set the initial state at the first valid timestamp; do not integrate before the recording origin. Evaluate observation y0 to issue u0 with zero elapsed actuation. For each subsequent valid boundary tk: validate the timestamp first; propagate the preceding active command u(k-1) across (t(k-1),tk]; account for that interval; then obtain/use the endpoint state and evaluate yk to issue uk for future time. This fixes §2.1's ambiguous instruction to observe theta_k before computing it. Controller access to physical state must be an explicit future interface, not an assumed existing argument.
+2. Preserve frozen parity parameters: closing 3.0s/opening 3.0s, speed 30°/s, initial 90°. The original6.0s defaults and 3°/tick examples are a changed synthetic scenario, not the historical baseline (historical displacement is 6° per0.2s). Parameter changes need approval.
+3. Existing `GateState.CLOSED` and `CLOSING` both lower until0; `OPEN` and `OPENING` both raise until90. The new HOLD/LOWER/RAISE mapping must preserve that target-state behavior; HOLD must not freeze a partly moving arm merely because a controller state became CLOSED/OPEN. Reset, rejected-frame and fault transitions need explicit mapping.
+4. Log interval start/end, elapsed duration, state before/after propagation, actual applied command and effective time, endpoint observation/decision ID, newly issued command and activation time, blocked predicate and accumulated estimator. Keep rejected arrivals and watchdog events separate. Existing SimulationStep lacks an explicit applied-command field; logging a resulting controller/gate state alone does not prove interval command provenance.
+
+### Correct mathematical relationship
+
+For unchanged dynamics F, a common externally fixed command sequence and uniform interval h:
+
+`theta_A[k] = F(theta_A[k-1], u[k], h)`
+
+`theta_B[k] = F(theta_B[k-1], u[k-1], h)`
+
+If the initial command leaves the initial state unchanged (`F(theta0,u0,h)=theta0`), induction gives `theta_B[k]=theta_A[k-1]`. With one identical blocked predicate and endpoint-weighted accumulation:
+
+`T_B - T_A = h * (b_A[0] - b_A[N])`.
+
+For the historical initially open case `b_A[0]=0`, this becomes `-h*b_A[N]`. No one-closure condition or symmetric opening/closing rates are needed for this shift proof; identical dynamics and command sequence are needed. Recomputed feedback commands, changed parameters/classifiers, initially active LOWER, irregular timing, different origins or cutoffs invalidate use of this shortcut without further proof. The “three necessary and sufficient conditions” claim in §5.2 is withdrawn.
+
+For arbitrary intervals, the valid general comparison is `sum(dt[k]*(b_B[k]-b_A[k]))`. There is no general `-dt_final` rule. Counterexample: initial 90°, speed 30°/s, u0=OPEN then LOWER, ten0.2s intervals followed by 0.1 s: A=.7s, B=.5s, difference=-.2s although final interval=.1s. Initial u0=LOWER with uniform 0.2s and terminal closure gives difference0, refuting terminal-state/cadence sufficiency alone. Irregular dt=[1,2] with u=[OPEN,LOWER,RAISE] gives A=0s, B=2s.
+
+An endpoint sum credits an entire interval from its final blocked state; it is not the continuous physical integral. If exact within-interval blockage is desired for constant-speed motion, calculate threshold-crossing time explicitly (including reversals/timer segments) and report a separate estimator/convention. Causality of actuation does not remove right-endpoint quadrature error. No microsecond timestamp grid implies microsecond physical-duration accuracy.
+
+### Timestamps, faults, final horizon and numerical classification
+
+- Declare offline chronological preprocessing or arrival-order simulation explicitly. Offline sorting cannot test arrival-order rejection. Arrival mode must not sort before order checks. Validate numeric finite nonnegative timestamps and a declared canonical comparison grid; reject missing/NaN/infinite timestamps without fabricating dt. Compare endpoints on that grid before taking their difference; do not clamp negative elapsed time into zero or conflate tiny intervals with duplicate input silently.
+- Duplicate/out-of-order arrivals cannot advance the last accepted sensor clock or issue a replacement command. Record the rejected arrival and reason. If independent wall-clock/watchdog events continue, that separate timebase and its physical propagation must be explicit. This is not the unreachable `elif dt<0` branch in the withdrawn pseudocode.
+- A missing-sensor watchdog is a prospective controller policy. Either schedule an explicit timer event at last-seen+approved_timeout and integrate old/new commands in their proper subintervals, or detect the gap at the next observation and make the new command effective only then. Never apply a newly discovered LOWER retroactively across the whole gap. The original pseudocode contains neither option. The2s source-staleness default is not scientific approval of a new timeout policy.
+- State the observation horizon separately from media duration. Default sampled ledger ends at the last valid timestamp, with no extrapolation. A supplied cutoff after that timestamp needs an explicitly authorized terminal propagation interval using the still-active command (and any timer events), no fabricated sensor frame. A cutoff inside an interval is truncated at that cutoff; no complete-interval theorem automatically applies. Missing terminal time is not silently guessed.
+- Use one documented internal angle predicate for blocked status. Original `theta<=45`, `round(theta,4)<=45` and `theta<=45.000001` are different definitions. Existing model uses45 exactly, fully closed<=.05, fully open>=89.95. Preserve those for historical reproduction; future numerical changes need explicit provenance, consistent classification and boundary tests, not display rounding. A tolerance-based numerical comparison does not prove physical accuracy.
+
+### Historical reporting and corrected test oracles
+
+- All27 canonical CSV grids have uniform Decimal0.2s, initial 90°, one blocked episode, terminal 0°, and sums matching Table 11/JSON. Actual totals are 6,737 rows and 6,710 intervals, not16H's6,681/6,654. Use cohort-qualified IDs to avoid counting21 extra bare-name timeline aliases as new events.
+- Table 11 first two historical values are 46.0s and 28.8s, not38.4/42.6. Under the explicitly stated fixed-command lag model the respective derived values are 45.8/28.6. Preserve historical values and identify analytical assumptions/provenance, full input artifact, origin, cutoff, parameters and classifier. No corrected causal implementation was executed on real data here. A later documentation baseline commit does not prove the original run's source commit.
+- TC-SIM01 is a valid causal first-command test with u0=LOWER; it must not be reused to assume the lag theorem's initial fixed-point condition. TC-SIM03/04 use the existing frozen 3s baseline or explicitly label6s alternate parameters and compute expectations accordingly. Endpoint blocked time must not be equated to an analytical continuous integral.
+- TC-SIM05 must supply a complete explicit irregular timestamp sequence summing to its stated horizon (the listed four intervals total 1.0s, not5.0s). TC-SIM06/07/08 require identical command sequences, dynamics, classifier and initial fixed-point condition before using the boundary identity; multiple episodes do not compound the uniform boundary term.
+- TC-SIM09's universal `-dt_final` expectation is withdrawn; use the counterexample and general formula. TC-SIM10/11 exercise declared preprocessing/arrival modes separately. TC-SIM12 must include actual timer semantics. TC-SIM13 must assert the chosen classifier consistently and report quantization limits; its1µs duration guarantee is withdrawn. TC-SIM14 establishes repeatability only for specified environment/serialization and fixed inputs, not physical correctness.
+- Add missing/nonfinite timestamps, zero/negative durations, empty/single frame, cutoff before/after last observation, initial active command, different command sequences, threshold straddling and applied-versus-issued log checks before any implementation acceptance. A list of 14 proposed cases is not a passing suite.

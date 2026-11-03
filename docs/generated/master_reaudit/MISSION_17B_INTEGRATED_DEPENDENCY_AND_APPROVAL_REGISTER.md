@@ -3,7 +3,7 @@
 **Project:** Train Gate Automation — Bangladesh
 **Subsystem:** Project Governance, Technical Roadmapping & Security Architecture
 **Document ID:** `MISSION-17B-DELIV-04`
-**Execution Authority:** NONE (All Roadmap Actions and PI Decisions Marked PROPOSED / PENDING)
+**Execution Authority:** NONE (All Roadmap Actions and PI Decisions Marked PROPOSED / PENDING) **17C-0: corrected requirements are in the appended correction history; original body retained.**
 **Governance Invariants:** RD-001 through RD-055
 **Audited Sources:** [`MISSION_17A_PI_DECISION_RECONCILIATION.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/master_reaudit/MISSION_17A_PI_DECISION_RECONCILIATION.md), [`MISSION_17A_PI_APPROVAL_REGISTER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/master_reaudit/MISSION_17A_PI_APPROVAL_REGISTER.md), [`MISSION_17_PI_DECISION_BRIEFING.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/master_reaudit/MISSION_17_PI_DECISION_BRIEFING.md), [`MISSION_17_MASTER_ACTION_AND_DEPENDENCY_REGISTER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/master_reaudit/MISSION_17_MASTER_ACTION_AND_DEPENDENCY_REGISTER.md), Missions 16E, 16F, 16G, 16H
 **Date:** 2026-11-03
@@ -204,3 +204,33 @@ Upon conclusion of Mission 17B, the following actions are recommended to the Pri
 
 ---
 *End of Mission 17B Deliverable 4.*
+
+---
+
+## Mission 17C-0 correction history — superseding dependency and approval status
+
+**2026-11-03; documentation correction only.** Original §§1–7 remain visible as historical specification wording. This appendix and the 17C-0 PI register supersede conflicting labels, mandates, gates, examples and recommendations. No protocol, reviewer, token or implementation is approved here.
+
+### Correct scope and decision status
+
+1. The diagram lists **five tracks A–E**. Synthetic engineering in B/C and some CLI work can be technically independent of real-media review, but “fully unblocked” is only technical feasibility. D-01–D-10 remain **PENDING** formal researcher action. Track implementation must not start from this register; 17C-0 explicitly stops before 17C-B/C or other implementation.
+2. Existing directions and code behavior are not “pre-approved” execution artifacts. AD rows must be read as recorded directions with formal adoption/ratification pending where required. D-09's “PROVEN_READY_TO_REPORT” is withdrawn as approval/readiness: its mathematical result is conditional and reporting remains a PI decision.
+3. M4 means premature opening, M5 means never protected (counts only). They require approved observable T4 on the replay clock and appropriate retained replay evidence, not a duration/safety-buffer substitution. MTR is an outcome metric with a separate eligibility screen. The front-only M1–M3/T2 expansion is not adopted; RD-020 scope and RD-006 deferral remain.
+4. Preserve independent-camera primary analysis: front-stream approach outcomes and back-stream M4/M5. Back-local replay plus back-local T4 does not require inter-camera R04 synchronization. A current software/cache pathway gap is a missing implementation, not proof that the research must become front-only. The existing cache-only engine supports front B0/B1/B2 in evaluation/cache_only_engine.py; the 17A simulation/ path is wrong. No protected cache existence/completeness or bytes were verified here.
+5. Option C front-only V1/dual-camera V2 remains a proposal requiring explicit researcher amendment of affected RD014/015/020/022/028/035/052 directions. Independent-back analysis remains a competing option. The11-event R04 scope is exploratory; no new formal physical-sync certification exists, and event_010 is not permanently barred from a future authorized amendment. No silent scope expansion or shifting of human GT clocks is permitted.
+6. Cohort identities: engine_events/event_001 and no_train_events/event_001..003, not engine event_021 or controls003/009/016 from the train cohort. 27=23+3+1 is inventory metadata, with formal sign-off pending. RD024 pooled exclusion does not dictate model-training eligibility. No-train policy is event-level counts, blockage/episodes and per-stream exposure; FAR/hour is not adopted.
+7. The V1 still-image development corpus must not be replaced by the 27-event evaluation cohort. D-07 requires verified development physical-event lineage and label/stratum feasibility before choosing K or generating any actual split. Future out-of-fold performance requires disjoint tuning/evaluation and model exposure controls. No real split is generated here.
+
+### Correct security and human-review dependencies
+
+- SEC01's “OS-open boundary” guarantee is false: media_guard.py is a Python operation-boundary guard, explicitly not an OS sandbox. SEC02 nonce locking, SEC03 token tiers, SEC04 runtime hashing, SEC05 identity authentication and SEC06/07 ledger/signature verification are proposed requirements or incomplete mitigations, not existing verified enforcement. The current promoter does not verify PI cryptographic tokens/JSONL chains. Consult corrected CLI appendix for threat limitations and required durable state.
+- Model/checkpoint, raw read/probe/hash, protected-cache read/replay, human review, promotion, real evaluation and split-generation privileges must be separately mapped; review cannot authorize promotion/evaluation, and promotion cannot authorize evaluation. Existing EVAL-AUTH and media records are unsigned recorded statements, not cryptographic credentials. A future incompatible token needs a versioned approved contract. Expiry/revocation require checks at use, and host trust limitations must remain explicit.
+- Reviewer handle allowlisting is not authentication or qualification. One identity currently exists. RD043 is risk-based mandatory second review; a universal27-event two-rater policy is not established. Adopted triggers, reviewer appointment and schema/adjudication interoperability remain prerequisites. Do not weaken the synthetic harness to create a real-review path.
+- Five-event pilot, tolerance ranges and session caps are proposals. The active 30 s floor is a software plausibility check, not scientific review-duration approval. RD045 requires immutable original observations, separate adjudication and unresolved UNCERTAIN. “Zero disagreements” cannot require inventing consensus or excluding inconvenient cases without metric-specific reasons.
+- Gate 1 cannot treat the 14/8/10 test plans as already executed or sufficient evidence of complete security. They require corrected oracles, additional negative/concurrency cases and actual synthetic-only implementation results in a later authorized mission.
+- Human review needs scoped media authorization before its own promotion receipt exists. Promotion later needs applicable promotion authority plus raw hash permission and a vetted ledger/schema adapter. Evaluation later needs its own canonical authorization, promoted evidence and code/config/protocol/split/condition bindings; an AUTH-PROMOTION alone is insufficient. Technical gate completion does not issue any capability.
+- Publication readiness is pending researcher-owned RQs/claims, correct human author roster, accurate AI disclosure, venue selection and actual authorized results. The current manuscript still names an agent; venue is undecided; no publication dates are evidenced. Future code/approved-annotation release requires privacy/license review and excludes raw media. No raw-media anonymization/release policy or venue is adopted here.
+
+### Correct acceptance disposition
+
+Read the four 17C-0 audit documents and corrected companion specifications before any approval. All material production changes, scientific tolerances, protocol promotion, camera amendment, reviewer appointment, actual split generation and real-data operations remain pending. The only completed actions in 17C-0 are safe independent checks and authorized documentation corrections, followed by the requested documentation-only commit/push workflow. **STOP for researcher review.**
