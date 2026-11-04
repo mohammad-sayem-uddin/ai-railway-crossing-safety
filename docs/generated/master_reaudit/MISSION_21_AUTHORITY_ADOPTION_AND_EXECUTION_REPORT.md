@@ -70,9 +70,22 @@ Files: `src/railway_detection/evaluation/metrics.py`, `tests/synthetic_metric_co
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_metric_contracts -p no:cacheprovider --import-mode=importlib tests/synthetic_metric_contracts -q --junitxml=/tmp/mission21_wp05.xml`: 15 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp05.xml`.
 
 Static analysis: Ruff on entire modified metrics module and new tests passes; Python3.11.15.
-Commit: None; push/local/tracking/live verified: False.
+Commit: fa6c0020934ddb0003b6b38df57bcd64b87b0aa2; push/local/tracking/live verified: True.
 Limitations: No empirical values, real GT, changed thresholds or protocol definitions; point classifications remain sampled-trajectory evidence, not continuous safety. Real reporting requires actual authorized inputs and per-metric human evidence.
 Next: WP06 constructed independent-camera descriptive orchestration.
+
+### WP06 — PARTIAL_CONSTRUCTED_ORCHESTRATOR_REAL_PATH_GATED
+
+Implemented pure constructed independent-camera condition orchestration using the actual frozen controller and Convention B integration, with separate A/B duration receipts. M4/M5 classify unchanged A trajectory only; no invented B-angle to legacy state mapping. Per-camera/per-condition denominators, explicit unavailable boundaries and audio-perceptual-only output are enforced. Existing official and synthetic-only gates remain unchanged.
+
+Files: `src/railway_detection/evaluation/descriptive_constructed.py`, `tests/synthetic_evaluation_pipeline/conftest.py`, `tests/synthetic_evaluation_pipeline/test_orchestration.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_wp06.xml`: 8 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp06.xml`.
+
+Static analysis: Scoped Ruff passes; isolated imports and runtime exercised.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: Real path explicitly denied pending canonical resource grants, authentic GT and live adapter verification. B2_back lacks actual audio evidence/configuration. B0_back_stateless remains unavailable: no exact memoryless transition rule supplied; the condition label alone cannot define it. No fusion or official results.
+Next: WP07 constructed source/derived manifest provenance.
 
 ## Execution boundaries
 

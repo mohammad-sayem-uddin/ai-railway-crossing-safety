@@ -52,7 +52,7 @@ Next phase: WP05–WP07 constructed methodology/reporting and guarded evidence i
 
 ## WP05
 
-Status: PASS_DESCRIPTIVE_REPORTING_CONTRACT. Parent: `54efc28317c735745385c2d74e7103e778a9ae01`. Commit: `None`. Remote verified: False.
+Status: PASS_DESCRIPTIVE_REPORTING_CONTRACT. Parent: `54efc28317c735745385c2d74e7103e778a9ae01`. Commit: `fa6c0020934ddb0003b6b38df57bcd64b87b0aa2`. Remote verified: True.
 
 Added pure typed descriptive metric rows and stratified cohort/camera/condition/metric reporting, exact M5 integer indicators, explicit null/exclusion handling, duplicate rejection, finite continuous values, observed denominators and event identities. New API omits CI/population inference by default. Existing classify_m4 and screen definitions unchanged; independent positive-witness/incomplete/no-interior/late-origin/M5/censored/missing cases and screen-provenance retention execute.
 
@@ -61,3 +61,15 @@ Tests: [{"xml": "/tmp/mission21_wp05.xml", "command": "PYTHONPATH=src PYTEST_DIS
 Static: Ruff on entire modified metrics module and new tests passes; Python3.11.15
 Remaining: No empirical values, real GT, changed thresholds or protocol definitions; point classifications remain sampled-trajectory evidence, not continuous safety. Real reporting requires actual authorized inputs and per-metric human evidence.
 Next phase: WP06 constructed independent-camera descriptive orchestration
+
+## WP06
+
+Status: PARTIAL_CONSTRUCTED_ORCHESTRATOR_REAL_PATH_GATED. Parent: `fa6c0020934ddb0003b6b38df57bcd64b87b0aa2`. Commit: `None`. Remote verified: False.
+
+Implemented pure constructed independent-camera condition orchestration using the actual frozen controller and Convention B integration, with separate A/B duration receipts. M4/M5 classify unchanged A trajectory only; no invented B-angle to legacy state mapping. Per-camera/per-condition denominators, explicit unavailable boundaries and audio-perceptual-only output are enforced. Existing official and synthetic-only gates remain unchanged.
+
+Exact files: src/railway_detection/evaluation/descriptive_constructed.py, tests/synthetic_evaluation_pipeline/conftest.py, tests/synthetic_evaluation_pipeline/test_orchestration.py
+Tests: [{"xml": "/tmp/mission21_wp06.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_wp06.xml", "tests": 8, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Scoped Ruff passes; isolated imports and runtime exercised
+Remaining: Real path explicitly denied pending canonical resource grants, authentic GT and live adapter verification. B2_back lacks actual audio evidence/configuration. B0_back_stateless remains unavailable: no exact memoryless transition rule supplied; the condition label alone cannot define it. No fusion or official results.
+Next phase: WP07 constructed source/derived manifest provenance

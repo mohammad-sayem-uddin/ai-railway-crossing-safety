@@ -35959,6 +35959,38 @@
           "tests/synthetic_metric_contracts/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
           "tests/synthetic_metric_contracts/test_reporting.py": "8e06301fdb0dcf7908ebb9637e8b5e5a3aa173270f88d23dd6c412a514447aef"
         },
+        "commit": "fa6c0020934ddb0003b6b38df57bcd64b87b0aa2",
+        "push_verified": true
+      },
+      {
+        "id": "WP06",
+        "status": "PARTIAL_CONSTRUCTED_ORCHESTRATOR_REAL_PATH_GATED",
+        "files": [
+          "src/railway_detection/evaluation/descriptive_constructed.py",
+          "tests/synthetic_evaluation_pipeline/conftest.py",
+          "tests/synthetic_evaluation_pipeline/test_orchestration.py"
+        ],
+        "message": "feat: orchestrate constructed camera-local descriptive conditions",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp06.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_wp06.xml",
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Implemented pure constructed independent-camera condition orchestration using the actual frozen controller and Convention B integration, with separate A/B duration receipts. M4/M5 classify unchanged A trajectory only; no invented B-angle to legacy state mapping. Per-camera/per-condition denominators, explicit unavailable boundaries and audio-perceptual-only output are enforced. Existing official and synthetic-only gates remain unchanged.",
+        "static": "Scoped Ruff passes; isolated imports and runtime exercised",
+        "limitations": "Real path explicitly denied pending canonical resource grants, authentic GT and live adapter verification. B2_back lacks actual audio evidence/configuration. B0_back_stateless remains unavailable: no exact memoryless transition rule supplied; the condition label alone cannot define it. No fusion or official results.",
+        "next": "WP07 constructed source/derived manifest provenance",
+        "parent": "fa6c0020934ddb0003b6b38df57bcd64b87b0aa2",
+        "source_sha256": {
+          "src/railway_detection/evaluation/descriptive_constructed.py": "79fe8a12c596f210df9f0d10d82966422241ffd95c895f05b2385c48208a1d6b",
+          "tests/synthetic_evaluation_pipeline/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+          "tests/synthetic_evaluation_pipeline/test_orchestration.py": "f09b826d429990193772e9273a6be20f13f613c7913185be70dfb884750b721f"
+        },
         "commit": null,
         "push_verified": false
       }
