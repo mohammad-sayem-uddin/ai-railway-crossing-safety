@@ -1,0 +1,41 @@
+# Mission 17E — Authorization and security implementation blueprint
+
+Date: 2026-11-04, America/New_York. Phase baseline: `fbc60aa1e54f7fa69c824e6a73d2d52e3c7a1375`; branch main. Scope: blueprint/readiness preparation only. No human-review CLI, authorization service, identity enrollment, token, observation, adjudication or promotion is implemented or executed here. Technical requirements are candidate specifications; researcher/governance/protected-execution decisions remain pending. The user authorized these six documents and normal exact-path Git delivery, not protected operations or a future17F mission.
+
+Companions: [human workflow](MISSION_17E_HUMAN_REVIEW_IMPLEMENTATION_BLUEPRINT.md), [security architecture](MISSION_17E_AUTHORIZATION_SECURITY_IMPLEMENTATION_BLUEPRINT.md), [synthetic security plan](MISSION_17E_SYNTHETIC_SECURITY_ACCEPTANCE_TEST_PLAN.md), [dependencies](MISSION_17E_IMPLEMENTATION_DEPENDENCY_REGISTER.md), [researcher gate](MISSION_17E_RESEARCHER_RELEASE_GATE_CHECKLIST.md), [readiness](MISSION_17E_READINESS_REPORT.md).
+
+<a id="security"></a>
+## 1. Current enforcement and design boundaries
+
+Existing media_guard is explicitly a Python-level software guard, not an OS sandbox. Current recorded media/evaluation statements are unsigned; the media issuer currently consults the reviewer allowlist. Current promoter validates one active8.1 record with caller-supplied state/live hashes and writes bare event_id.json. None of the proposed authority, trusted anchors, role registries, strict grant schemas or atomic batch publication is therefore claimed already enforced. No existing guard is changed/bypassed in this phase.
+
+The future implementation must select COOPERATIVE_LOCAL with explicit hostile-user/rollback limits, or PROTECTED_BROKER with independently administered broker/authority/trusted runtime. A second writable local file cannot serve as a protected trust root. Privileged administrator/anchor compromise invalidates authenticity/rollback assumptions until independent approved recovery. Hashes do not establish human identity, truth or approval; denial on unavailable authority sacrifices availability explicitly.
+
+## 2. Proposed components and ownership
+
+| Future component | Contract / trust responsibility | Acceptance evidence before reliance |
+|---|---|---|
+| Identity/appointment provider | AB02/AB08: stable human principal, independently approved role appointment/elevation, qualification, aliases, delegation and conflict/recusal. PI approval and issuance/publication responsibilities remain distinct. | Genuine enrollment/trust and role policy; forged handle/alias/onboarding/self-elevation negatives. No actual identities created now. |
+| Approval/project resolver | AB03/AB04: closed authentic ApprovalRecord plus project/repository/deployment and expected protected execution manifest. | Wrong approval/project/delegation/subject/version and post-authorization source/runtime changes deny; no trust from hashing arbitrary local state. |
+| Grant/session authority | AB05–AB08/RC04–RC06: exact scope subset, authoritative time/revocation, one-session durable reservation, quota and phase operation checks, monotone owner fence. | Atomic contention/duplicate init/expiry/revocation/replay/quota/lease tests. Same active session may repeat only explicitly permitted operations. |
+| Resource broker | AB01/AB06/AB16: scoped canonical resource identity and check-and-use boundary; distinct read/probe/hash/model/cache/promotion/evaluation operations. | Selected-profile alternate-opener/symlink/runtime boundary and unavailable-authority tests; actual host isolation cannot be inferred from a Python unit test. |
+| Review knowledge service | AB09–AB14: stable actor/event phase across sessions and immutable independent observation/exposure/correction/adjudication provenance. | Re-entry/alias/exposure/correction and seal-before-comparison transactional tests; external human exposure limitation disclosed. |
+| Canonical codec/attestation adapter | RC01–RC03: closed body/kind types, genesis predecessor null, canonical bytes, detached body attestation/envelope digest and protected anchor. | Cross-language golden bytes, strict unknown/duplicate/Unicode/numeric rejection and no hash/receipt self-cycle; adopted mechanism and real trust roots still required. |
+| Protected payload/transaction store | RC04–RC09: journal→local fsync→authority commit→ACK, head/count/length/fence, exact outcome query, revocation/finalize ordering and trusted recovery. | Every crash cut/interleaving, lost ACK, stale owner, missing body/journal, rollback/truncation and unknown external effect quarantine. |
+| Publication adapter | AB15/RC08: exact content-bound approved batch, schema compatibility, required source proofs, staged create-only qualified outputs plus one atomic visible manifest/receipt. | Wrong batch/schema/role/anchor, cross-cohort collision, partial staging visibility, crash/retry/same-ID-different-bytes negatives; real publication still X03. |
+
+Future file/module names are design placeholders. No code or registry under those names is created in 17E. Prefer small pure domain/codec modules and injected test transports/stores first, under a separately authorized future engineering instruction; keep OS/broker integration as a distinct evidence gate. Existing production code must not import an unapproved human-review adapter by default.
+
+## 3. Concrete lifecycle and race semantics
+
+Grant preparation is a draft until genuine issuer/approval/protocol/project/role/scope/time bindings validate. Reservation is one atomic durable unique grant/nonce→session mapping before any resource use. ACTIVE operations recheck exact actor/role/approval/purpose/resource/case/quota/phase/fence/current revocation/authority time/expected execution bindings. A fresh operation ID cannot turn a one-case grant into unlimited work. Terminal sessions never release consumed state for a new session.
+
+PREPARED is not success. RC05 requires recoverable protected payload journal, stable-inode local append/fsync/directory durability, then authority CAS with fresh checks, then ACK. Authoritative COMMITTED receipt/head/count/byte length prevents local rechain/truncate from resetting truth. Local locks coordinate only cooperating writers. Revoke linearizes first→later commit aborts; commit first→historical commit remains but future use denies. Finalize with PREPARED/UNKNOWN_EXTERNAL returnsBUSY; terminal completion forbids later prepare/commit. Body terminal content refers to the prior committed head; the new terminal digest is in the external receipt to avoid self-reference.
+
+Recovery requires same principal/session/bindings, fresh fence and current permitted authority; revoked/expired client permissions cannot resume. ACK-lost COMMITTED returns the same receipt, never repeats. PREPARED exact journal bytes can finish only with authorized current recovery checks. Unknown local suffix/quota state, missing protected body or authoritative mismatch quarantines. Unknown external effect remains UNKNOWN_EXTERNAL; local logs cannot supply global exactly-once IO. Independently authorized authority audit may record abort/revocation without using a revoked client's resource privilege.
+
+## 4. Permissions and researcher adoption
+
+The blueprint issues no approvals or capability records. X01 review read/probe/hash, X02 checkpoint, X03 promotion, X04 real evaluation, X05 protected cache, X06 real split/training and X07 pilot remain separate and unauthorized.17D's in-memory helpers/test results do not satisfy any of these. T01 deployment/lifetime/entropy/trust mechanism, R05 appointment/overlap/conflict policy, R01 exact adopted schema/protocol, and relevant R08/T04 human acceptance remain pending. Synthetic placeholders must never be copied into governance.
+
+Sources: [C4 authority](MISSION_17C4_AUTHORIZATION_AND_BLINDING_ACCEPTANCE_SPEC.md#authority), [C4 recovery](MISSION_17C4_RECOVERY_AND_CV_LINEAGE_ACCEPTANCE_SPEC.md#recovery); `src/railway_detection/safety/media_guard.py:48-54`; `src/railway_detection/safety/media_guard.py:389-456`; `src/railway_detection/evaluation/governance.py:487-501`; `src/railway_detection/annotation/promotion_gate.py:540-567`.
