@@ -79,6 +79,12 @@ class EventSimulationRunner:
             self.gate_model = PhysicalGateModel()
         self.last_profile_report: dict[str, Any] | None = None
 
+    def run_frames_convention_b(self, request):
+        """Explicit constructed-only B path; historical run_frames remains A."""
+        from railway_detection.synthetic.convention_b_pipeline import run_pipeline
+
+        return run_pipeline(request, self.decision_engine)
+
     def run_frames(
         self,
         frames: list[MultimodalFrame],

@@ -1,7 +1,7 @@
 {
   "schema_version": "mission20-authorization-and-execution-register/1",
   "mission": "20",
-  "mission_state": "RESPONSE_RECORDING_COMPLETE_ENGINEERING_GATES_BLOCKED",
+  "mission_state": "MISSION21_ENGINEERING_IN_PROGRESS",
   "baseline": "46ed0d6999cb04ce7be6d48bc2b3476641f86b94",
   "branch": "main",
   "preparation_date_local": "2026-11-04",
@@ -248,6 +248,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -333,6 +340,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -418,6 +432,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -503,6 +524,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -588,6 +616,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -673,6 +708,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -758,6 +800,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -843,6 +892,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -928,6 +984,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1013,6 +1076,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1098,6 +1168,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1183,6 +1260,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1268,6 +1352,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1353,6 +1444,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1438,6 +1536,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1523,6 +1628,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1608,6 +1720,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1693,6 +1812,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1778,6 +1904,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1863,6 +1996,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -1948,6 +2088,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2033,6 +2180,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2118,6 +2272,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2203,6 +2364,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2288,6 +2456,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2373,6 +2548,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2458,6 +2640,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2543,6 +2732,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2628,6 +2824,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2713,6 +2916,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2798,6 +3008,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2883,6 +3100,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -2968,6 +3192,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3053,6 +3284,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3138,6 +3376,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3223,6 +3468,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3308,6 +3560,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3393,6 +3652,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3478,6 +3744,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3563,6 +3836,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3648,6 +3928,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3733,6 +4020,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3818,6 +4112,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3903,6 +4204,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -3988,6 +4296,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4073,6 +4388,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4158,6 +4480,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4243,6 +4572,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4328,6 +4664,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4413,6 +4756,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4498,6 +4848,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4583,6 +4940,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4668,6 +5032,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4753,6 +5124,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4838,6 +5216,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -4945,6 +5330,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5047,6 +5439,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5154,6 +5553,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5256,6 +5662,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5358,6 +5771,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5460,6 +5880,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5562,6 +5989,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5669,6 +6103,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5771,6 +6212,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5873,6 +6321,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -5975,6 +6430,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6077,6 +6539,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6179,6 +6648,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6281,6 +6757,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6394,6 +6877,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6506,6 +6996,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6609,6 +7106,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6721,6 +7225,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6835,6 +7346,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -6935,6 +7453,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -7037,6 +7562,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -7228,6 +7760,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -7344,6 +7883,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -7466,6 +8012,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -7591,6 +8144,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -7705,6 +8265,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -7839,6 +8406,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -7956,6 +8530,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8060,6 +8641,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8172,6 +8760,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8287,6 +8882,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8399,6 +9001,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8501,6 +9110,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8603,6 +9219,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8705,6 +9328,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8843,6 +9473,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -8945,6 +9582,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -9047,6 +9691,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -9149,6 +9800,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -9328,14 +9986,12 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-GOV-02"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-GOV-02"
@@ -9350,6 +10006,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -9520,15 +10183,13 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-METH-05",
           "M19-METH-06"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-METH-05",
@@ -9544,6 +10205,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -9727,16 +10395,14 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-METH-01",
           "M19-HUM-02",
           "M19-GOV-03"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-METH-01",
@@ -9753,6 +10419,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -9936,15 +10609,13 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-GOV-03",
           "M19-GOV-04"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-GOV-03",
@@ -9960,6 +10631,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -10120,16 +10798,14 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-METH-03",
           "M19-METH-07",
           "M19-METH-09"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-METH-03",
@@ -10146,6 +10822,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -10369,7 +11052,7 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-METH-01",
@@ -10377,9 +11060,7 @@
           "M19-GOV-04",
           "M19-WP-05"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-METH-01",
@@ -10397,6 +11078,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -10624,15 +11312,13 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-METH-05",
           "M19-METH-06"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-METH-05",
@@ -10648,6 +11334,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -10820,14 +11513,12 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-GOV-07"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-GOV-07"
@@ -10842,6 +11533,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -11030,16 +11728,14 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01",
           "M19-PUB-02",
           "M19-METH-09",
           "M19-METH-11"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01",
           "M19-PUB-02",
@@ -11056,6 +11752,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -11192,13 +11895,11 @@
         "selection_status": "SUBMITTED_PENDING_ADOPTION",
         "formal_adoption": false,
         "authorization_verified": false,
-        "status": "BLOCKED",
+        "status": "AUTHORIZED_PENDING_TECHNICAL_ACCEPTANCE",
         "direct_dependencies": [
           "M19-GOV-01"
         ],
-        "root_blockers": [
-          "M19-GOV-01"
-        ],
+        "root_blockers": [],
         "prerequisites_missing": [
           "M19-GOV-01"
         ],
@@ -11212,6 +11913,13 @@
         "lint": "NOT_RUN_PACKAGE_GATE",
         "mypy": "NOT_RUN_PACKAGE_GATE",
         "not_run_is_not_a_pass_or_skip": true
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -11368,6 +12076,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -11524,6 +12239,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -11680,6 +12402,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -11836,6 +12565,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -11992,6 +12728,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -12148,6 +12891,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -12304,6 +13054,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -12460,6 +13217,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -12616,6 +13380,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -12772,6 +13543,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -12928,6 +13706,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -13075,6 +13860,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "B",
+        "engineering_application": "DENIED_DEFERRED",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -13222,6 +14014,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "B",
+        "engineering_application": "DENIED_DEFERRED",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -13379,6 +14178,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -13536,6 +14342,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -13681,6 +14494,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "B",
+        "engineering_application": "DENIED_DEFERRED",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -13837,6 +14657,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -13984,6 +14811,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "B",
+        "engineering_application": "DENIED_DEFERRED",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -14142,6 +14976,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -14300,6 +15141,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -14459,6 +15307,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -14618,6 +15473,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -14777,6 +15639,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -14925,6 +15794,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "B",
+        "engineering_application": "DENIED_DEFERRED",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15069,6 +15945,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "B",
+        "engineering_application": "DENIED_DEFERRED",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15227,6 +16110,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15327,6 +16217,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15427,6 +16324,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15527,6 +16431,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15635,6 +16546,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15735,6 +16653,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15835,6 +16760,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -15935,6 +16867,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16053,6 +16992,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16161,6 +17107,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16263,6 +17216,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16353,6 +17313,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16442,6 +17409,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16536,6 +17510,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16630,6 +17611,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16724,6 +17712,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16818,6 +17813,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -16912,6 +17914,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17006,6 +18015,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17109,6 +18125,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17212,6 +18235,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17326,6 +18356,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17431,6 +18468,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17539,6 +18583,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17646,6 +18697,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17749,6 +18807,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17852,6 +18917,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -17956,6 +19028,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18056,6 +19135,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18161,6 +19247,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18271,6 +19364,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18376,6 +19476,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18475,6 +19582,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18574,6 +19688,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18673,6 +19794,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18772,6 +19900,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18864,6 +19999,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -18973,6 +20115,13 @@
         },
         "operation_token_created": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19084,6 +20233,13 @@
         },
         "operation_token_created": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19194,6 +20350,13 @@
         },
         "operation_token_created": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19304,6 +20467,13 @@
         },
         "operation_token_created": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19416,6 +20586,13 @@
         },
         "operation_token_created": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19501,6 +20678,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19586,6 +20770,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19671,6 +20862,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19756,6 +20954,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -19854,6 +21059,13 @@
         "external_approval_created": false,
         "new_live_permission_issued": false,
         "executable": false
+      },
+      "mission21_state": {
+        "selected_option": "KEEP",
+        "engineering_application": "ADOPTED_FOR_BOUNDED_CONSTRUCTED_ENGINEERING",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     },
     {
@@ -20006,6 +21218,13 @@
         "resource_bytes_accessed": 0,
         "executable": false,
         "human_or_external_evidence_satisfied": false
+      },
+      "mission21_state": {
+        "selected_option": "A",
+        "engineering_application": "CONDITIONAL_NON_EXECUTABLE",
+        "basis": "Mission21 current user declaration and explicit execution scope",
+        "externally_authenticated_identity": false,
+        "live_resource_grant": false
       }
     }
   ],
@@ -34559,5 +35778,65 @@
     "Applicable actual external policy/license/owner evidence; no universal new external approval requirement",
     "Technical implementation and guarded synthetic acceptance after the applicable package gate is satisfied"
   ],
-  "future_task_rule": "Consult this Mission20 overlay first, then pinned Mission19 definitions and genuine adoption evidence. Do not ask for RD directions,14 A options,20 policy recommendations,10 WP selections,5 standing levels or27 resource recommendations again. Reassess only missing facts/current bindings or genuinely changed scope/definition/rights."
+  "future_task_rule": "Consult this Mission20 overlay first, then pinned Mission19 definitions and genuine adoption evidence. Do not ask for RD directions,14 A options,20 policy recommendations,10 WP selections,5 standing levels or27 resource recommendations again. Reassess only missing facts/current bindings or genuinely changed scope/definition/rights.",
+  "mission21": {
+    "declaration": "I hold the authority.",
+    "source": "/Users/sayemuddin/.codex/attachments/93c64d69-b437-430d-8769-2457e255e392/Pasted text.txt",
+    "source_sha256": "ae5746acb10a2851e811ee24b7d59dc1934e26b3c0e33b27e46c63d1d8bf95e2",
+    "complete_instruction": "# MISSION 21 — AUTONOMOUS OVERNIGHT EXECUTION: AUTHORITY ADOPTION, IMPLEMENTATION AND PHASE COMPLETION\n\n**Recommended model:** GPT-6.1 Sol — Extra High  \n**Execution mode:** Autonomous, continuous, multi-phase execution  \n**Repository:** `/Users/sayemuddin/Desktop/Train_automation`  \n**Branch:** `main`  \n**Previous commit:** `e72f248d42668f7d33eaac439c91cd73dc91432a`\n\n## 1. PRIMARY DIRECTIVE\n\nThe researcher has explicitly declared:\n\n**\"I hold the authority.\"**\n\nThe researcher is now going offline to sleep and expects the next eligible engineering phases to be implemented before returning.\n\nThis is not a request for another audit, planning document, authorization questionnaire, or list of recommendations.\n\n**Your responsibility is to execute the already selected and authorized engineering work autonomously.**\n\nDo not stop after recording the authority declaration.\n\nDo not stop after updating Mission 20.\n\nDo not stop after completing Mission 21 documentation.\n\nContinue into implementation, testing, remediation, and subsequent eligible phases automatically.\n\nThe desired result when the researcher returns is a repository containing actual implemented, tested, committed, and pushed engineering deliverables—not merely plans for future work.\n\n## 2. RESEARCHER AUTHORITY DECLARATION\n\nRecord the exact declaration:\n\n\"I hold the authority.\"\n\nUse the existing project governance mechanism and actual supported schemas.\n\nPreserve the distinction between:\n- Researcher declaration.\n- Formal adoption.\n- Engineering authorization.\n- Protected-resource permission.\n- External rights and approvals.\n- Human-review authority.\n\nDo not invent institutional appointments, supervisor delegations, signatures, dates, identities, or third-party permissions.\n\nWhere the existing governance mechanism legitimately permits adoption based on the researcher's declaration, complete it.\n\nDo not leave independent engineering work blocked by a generic authority dependency after the declaration has been recorded.\n\n## 3. PRESERVE ALL PREVIOUS DECISIONS\n\nLoad and preserve the Mission 19 and Mission 20 records.\n\nThe following decisions are already selected. Do not ask the researcher to select them again:\n\n- RD-001 through RD-055.\n- All 14 Mission 18A Option A decisions.\n- All 20 policy recommendations.\n- All 10 engineering work packages.\n- All five standing-authority selections.\n- All 21 conditionally selected resource operations.\n- All six denied/deferred resource operations.\n\nApply the existing decisions without silently changing their meaning or scope.\n\n## 4. CONTINUOUS AUTONOMOUS EXECUTION\n\nThis section is the most important instruction.\n\nOperate as a continuous engineering execution process.\n\nFollow this cycle:\n\n1. Identify the next approved and technically executable work package.\n2. Inspect its dependencies and exact scope.\n3. Implement the work.\n4. Add or update automated tests.\n5. Run all permitted validation.\n6. Fix failures caused by your implementation.\n7. Review the complete diff.\n8. Update technical documentation and the execution register.\n9. Commit the exact deliverables.\n10. Push normally to `origin/main`.\n11. Verify local, tracking, and live remote HEAD.\n12. Move automatically to the next eligible work package.\n\n**Do not wait for the researcher to wake up or approve the next routine engineering phase.**\n\nThe consolidated researcher authorization is the standing instruction for the selected engineering scope.\n\nDo not ask for confirmation between phases.\n\nDo not stop after a successful commit.\n\nDo not send a completion message after every small task and wait for a response.\n\nContinue until all currently eligible approved work is implemented and validated.\n\nIf one work package is blocked, record the exact reason and continue with independent packages.\n\nIf a technical defect is discovered, fix it within the approved scope rather than merely reporting it.\n\nIf a test fails, investigate and remediate it. Never hide, skip, or weaken a test to obtain a passing result.\n\n## 5. EXECUTION ORDER\n\nExecute the following work packages in dependency-aware order. Reorder only when a genuine dependency requires it.\n\n### WP01 — Convention B synthetic integration\n\nPriority: Highest.\n\nImplement the complete Mission 18A design using the researcher's 14 adopted Option A decisions.\n\nExpected areas include:\n\n- `src/railway_detection/simulation/runner.py`\n- `src/railway_detection/synthetic/convention_b.py`\n- `src/railway_detection/synthetic/convention_b_pipeline.py`\n- `tests/synthetic_mission18a/`\n\nImplement:\n- Explicit `run_frames_convention_b(...)` entry point.\n- Forward-causal actuator timing.\n- Exact timestamp normalization and validation.\n- ARRIVAL and OFFLINE input modes.\n- Actuator state and command separation.\n- Initial angle, closing/opening duration, and blocked-state semantics.\n- Event-grid and continuous-time reporting.\n- Watchdog NONE baseline.\n- Incomplete-prefix handling and cutoff behavior.\n- Canonical snapshots and deterministic replay.\n- Independent numerical oracle.\n- All CB01–CB12 and A01–A07 acceptance tests.\n\nPreserve the existing Convention A behavior.\n\nDo not start Mission 18B until Mission 18A acceptance criteria pass.\n\n### WP02 — Grouped-CV provenance and development tooling\n\nImplement the approved grouped-CV and provenance improvements.\n\nVerify:\n- Group isolation.\n- No unintended event leakage.\n- Reproducible grouping.\n- Correct source and policy binding.\n- Accurate reporting of limitations.\n- Separation between development fallback results and official evaluation claims.\n\n### WP03 — Human-review workflow infrastructure\n\nImplement the approved human-review infrastructure.\n\nDo not perform actual human annotation, adjudication, or reviewer qualification.\n\nPreserve original observations and disagreement records.\n\nUnresolved disagreements must remain `UNCERTAIN`.\n\n### WP04 — Authorization and security infrastructure\n\nImplement the approved authorization, security, ledger, recovery, and publication infrastructure.\n\nAddress known weaknesses without bypassing existing validators.\n\nDo not treat a local JSON statement as cryptographic proof of identity.\n\nPreserve resource-specific permission checks and revocation requirements.\n\n### WP05–WP07 — Methodology, evidence and experiment support\n\nImplement all selected, in-scope methodology and evidence improvements.\n\nPreserve:\n- M4 as the primary premature-opening metric.\n- M5 as the companion `NEVER_PROTECTED_M5` integer failure indicator.\n- MTR feasibility screening and censoring limitations.\n- Per-metric evaluable denominators.\n- Descriptive-only scientific scope.\n- Independent-camera primary analysis.\n- Fused analysis as exploratory only.\n- Historical versus newly derived results.\n- No unsupported safety or performance claims.\n\n### WP08 — Reproducibility and safe snapshot tooling\n\nImplement safe reproducibility, deterministic snapshot, configuration, and provenance tooling.\n\nDo not access protected media or production checkpoints.\n\n### WP09 — Manuscript and reporting preparation\n\nPrepare the approved descriptive benchmark methodology, implementation documentation, provenance tables, limitations, and manuscript-supporting materials.\n\nDo not invent experimental results or claim completed real-data evaluation.\n\nKeep venue selection undecided.\n\n### WP10 — Static-analysis and engineering environment\n\nRepair the bounded static-analysis environment where authorized.\n\nInvestigate the existing Mypy installation issue.\n\nResolve Ruff diagnostics.\n\nDo not introduce unnecessary dependencies or alter the environment beyond the selected scope.\n\n## 6. AUTOMATIC NEXT-PHASE RULE\n\nAfter completing each package, inspect the dependency register and automatically select the next eligible package.\n\nWhen Mission 18A passes, proceed to the next eligible engineering phase.\n\nWhen a package passes, do not wait for another user message to begin the next package.\n\nWhen all ten packages are complete, perform an integrated engineering audit and regression test.\n\nIf the audit finds defects, fix them and rerun validation.\n\nThen prepare the next implementation phase based on the existing approved register.\n\nContinue implementing any already selected and sufficiently authorized engineering work.\n\nDo not invent new scientific decisions or expand into unapproved work merely to keep the agent busy.\n\n## 7. PROTECTED OPERATIONS — STRICT SEPARATION\n\nThe general authority declaration does not automatically grant:\n\n- Raw-media access.\n- Production checkpoint access.\n- Protected cache access.\n- Training.\n- Real inference.\n- Real-data replay or evaluation.\n- Official dataset split creation.\n- Human annotation or adjudication.\n- Ground-truth promotion.\n- Public raw-data release.\n- Physical railway deployment.\n\nKeep all 27 resource-operation records individually scoped.\n\nThe 21 selected operations remain conditional until their specific permission requirements are genuinely satisfied.\n\nThe six denied/deferred operations remain denied/deferred.\n\nDo not let these restrictions unnecessarily block independent synthetic engineering, code implementation, documentation, or permitted automated tests.\n\n## 8. TESTING AND ACCEPTANCE\n\nFor every phase:\n\n- Run its focused tests.\n- Run relevant regression tests.\n- Run existing synthetic isolation tests.\n- Run static analysis where available.\n- Check import and syntax integrity.\n- Check that governance restrictions remain enforced.\n- Check that no protected resources were accessed.\n- Review the complete staged diff.\n- Record exact test counts and failures.\n\nDo not report a test as passed if it was not actually executed.\n\nDo not claim production readiness merely because synthetic tests pass.\n\nDo not weaken validators or remove failing tests.\n\n## 9. GIT — AUTOMATIC COMMIT AND PUSH AFTER EVERY PHASE\n\nAfter each completed and validated phase:\n\n1. Stage only exact files belonging to that phase.\n2. Review the full staged diff.\n3. Confirm no unrelated files are included.\n4. Commit with a descriptive message.\n5. Push normally to `origin/main`.\n6. Verify local HEAD.\n7. Verify tracking branch HEAD.\n8. Verify live remote HEAD.\n9. Confirm they match.\n\nNever use:\n- `git add -A`\n- `git add .`\n- Force push.\n- Reset.\n- Clean.\n- Amend.\n- Rebase.\n- History rewriting.\n\nPreserve the seven pre-existing work files from Mission 20.\n\nIf unrelated work or branch divergence prevents safe delivery, preserve it and continue only with work that can safely proceed.\n\n## 10. OVERNIGHT EXECUTION REPORT\n\nMaintain:\n\n`docs/generated/master_reaudit/MISSION_21_AUTHORITY_ADOPTION_AND_EXECUTION_REPORT.md`\n\nUpdate:\n\n`docs/generated/master_reaudit/MISSION_20_AUTHORIZATION_AND_EXECUTION_REGISTER.json`\n\nAlso maintain a detailed phase execution log showing:\n\n- Phase and work-package identifier.\n- Implementation completed.\n- Files created or changed.\n- Tests executed and exact results.\n- Defects found and fixed.\n- Commit hash.\n- Push verification.\n- Remaining dependencies.\n- Next phase selected.\n\nCreate a final overnight summary:\n\n`docs/generated/master_reaudit/OVERNIGHT_AUTONOMOUS_EXECUTION_SUMMARY.md`\n\nThis must clearly distinguish:\n- Completed implementation.\n- Tested implementation.\n- Committed and pushed implementation.\n- Partially completed work.\n- Blocked work.\n- Work deliberately not attempted due to governance restrictions.\n\n## 11. STOP CONDITIONS\n\nStop only the affected operation or package when:\n\n- A genuine external permission is required.\n- A protected resource is involved.\n- A human judgment or appointment is required.\n- A material scientific decision is not covered by the existing decisions.\n- A security boundary would need to be bypassed.\n- An unrelated repository change prevents safe delivery.\n- A genuine technical issue cannot be safely resolved within scope.\n\nRecord the exact blocker and continue independent work.\n\nDo not stop the entire execution because one package is blocked.\n\nDo not fabricate a result to make the overnight report look complete.\n\n## 12. FINAL SUCCESS CONDITION\n\nWhen the researcher returns, the repository should contain the maximum amount of genuinely completed work possible within the existing authorization and safety boundaries.\n\nThe expected outcome is:\n\n- Authority declaration recorded.\n- Existing decisions formally adopted wherever legitimately permitted.\n- Mission 18A implemented and tested if prerequisites permit.\n- Other independent engineering packages implemented.\n- Regression tests passing or failures transparently documented.\n- Documentation and registers updated.\n- Completed phases committed and pushed.\n- Remote repository verified.\n- Remaining blockers clearly isolated.\n\n**Do not spend the night preparing another plan for implementation. Implement the approved work.**\n\n**Do not wait for the researcher between routine phases. Continue autonomously until all eligible work is completed or a genuine blocker remains.**",
+    "basis": "Current user explicitly declares project authority and authorizes selected bounded engineering; accepted as a recorded unsigned self-declaration for engineering. Not cryptographic identity verification or institutional appointment.",
+    "decision_maker_name": null,
+    "institutional_role": null,
+    "signature": null,
+    "original_decision_date": null,
+    "engineering_authorized": true,
+    "protected_permissions_activated": false,
+    "phases": [
+      {
+        "id": "WP01",
+        "status": "PASS_SYNTHETIC_INTEGRATION",
+        "files": [
+          "src/railway_detection/simulation/runner.py",
+          "src/railway_detection/synthetic/convention_b_pipeline.py",
+          "tests/synthetic_mission18a/conftest.py",
+          "tests/synthetic_mission18a/test_convention_b_integration.py",
+          "tests/synthetic_mission18a/test_isolation.py"
+        ],
+        "message": "feat: integrate Convention B with constructed controller evidence",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp01.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_wp01.xml",
+            "tests": 62,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_wp01_legacy.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission17d -p no:cacheprovider --import-mode=importlib tests/synthetic_mission17d -q --junitxml=/tmp/mission21_wp01_legacy.xml",
+            "tests": 238,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "static": "Python3.11.15; AST parsed5 files; scoped Ruff passes; no Mypy pass claimed, R14-A limited synthetic-stage disposition retained",
+        "notes": "Implemented explicit EventSimulationRunner.run_frames_convention_b, typed constructed snapshot/request/result, real existing-controller and scripted numerical fixtures, native rejection correspondence, ARRIVAL/OFFLINE ordering, exact clock/angle, cutoffs/prefixes, NONE watchdog, exact event/continuous/fixed estimators via existing actuator, full deterministic detached-candidate replay and8192-frame envelope. Existing A implementation unchanged. Initial run44 passed/3 failed because native missing-sensor age infinity could not be canonicalized; explicit nonfinite-age sentinel fixed that production adapter bug. Final62 integration cases and238 original cases pass; original suite emits5 existing JUnit record_property warnings.",
+        "limitations": "Constructed-origin envelope and code_identity are retained caller assertions, not external authentication. Full replay shares producer logic and is supplemented by exact independent geometric tests. No hardware clock, protected controller data, scientific GT, operational safety or OS sandbox claim. Missing/future/caller-substituted trusted expectations are outside cooperative trust. Historical two18A blocker reports among the seven preserved files remain unchanged; this current report supplies superseding engineering acceptance.",
+        "next": "WP02 grouped-CV fitted-artifact and OOF provenance",
+        "parent": "e72f248d42668f7d33eaac439c91cd73dc91432a",
+        "source_sha256": {
+          "src/railway_detection/simulation/runner.py": "b3ddc5c71f42ef87115b591c6232aab328b1828f38f51ae78e6b803c6957ce5d",
+          "src/railway_detection/synthetic/convention_b_pipeline.py": "f0e6fecb325e1967c705e2ad37c428e7264d8b23ba921e86950a8819abf5a216",
+          "tests/synthetic_mission18a/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+          "tests/synthetic_mission18a/test_convention_b_integration.py": "cedebf17a6bd0e3029baa7ecfcf3a37fae33dde3974c63c3e3c16812ef88ee31",
+          "tests/synthetic_mission18a/test_isolation.py": "bc8ef206b442012f6b5655403326a9ce1c542f48d932ed37b39f6d23016d163f"
+        },
+        "commit": null,
+        "push_verified": false
+      }
+    ],
+    "formal_research_adoption": "No canonical protected decision/schema/protocol promotion performed; exact selected definitions adopted for constructed engineering only."
+  }
 }
