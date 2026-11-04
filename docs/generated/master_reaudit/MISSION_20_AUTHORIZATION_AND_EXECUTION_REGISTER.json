@@ -36351,6 +36351,42 @@
           "src/railway_detection/synthetic/convention_b_pipeline.py": "609e76b127bc41d0d16ab9f935584f6c817d01bd3cc671663a65b82b05b32458",
           "tests/synthetic_mission18a/test_convention_b_integration.py": "9cd2cb037269347f982e65f8dc81d05d636c7439e96dec2d79a0ae595cf3ad47"
         },
+        "commit": "b136d0a1acfd68f46547d165b06d5570a13472f3",
+        "push_verified": true
+      },
+      {
+        "id": "WP04B",
+        "status": "PASS_CONSTRUCTED_POINT_OF_USE_BROKER_AND_COMPOSED_FLOW",
+        "files": [
+          "src/railway_detection/safety/constructed_authority.py",
+          "src/railway_detection/safety/constructed_broker.py",
+          "tests/synthetic_security/test_transactions.py",
+          "tests/synthetic_security/test_broker.py",
+          "tests/synthetic_security/test_composed_workflow.py"
+        ],
+        "message": "feat: enforce constructed byte use through scoped transactional broker",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp04_broker.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04_broker.xml",
+            "tests": 46,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Added exact constructed immutable byte registry and READ/PROBE/HASH broker with scope/purpose/role/time/fence/version checks, quota and atomic ledger receipt before returning a result. No paths/arbitrary callbacks/real model-cache loaders. Fixture-time digest retained so READ does not implicitly perform HASH; HASH requires its own grant operation. Retry verifies acknowledged body against receipt/ledger; modified historical body or missing entry denies. Composed test crosses broker, neutral player, durable review, lossless schema projection, lineage, actual controller/B, missing-GT metric exclusion, constructed draft and mock batch publisher; revocation and real evaluation remain denied. Security suite46 cases passes.",
+        "static": "Ruff passes; Mypy no issues in authority/broker; executed composed runtime uses in-memory SQLite and constructed bytes only",
+        "limitations": "No live grant or actual protected use. Constructed consistency, hashes and role strings do not prove human identity, real resource provenance, OS isolation or cryptographic authority. Atomic SQLite result handling has no arbitrary external side effects and is not a global exactly-once IO guarantee. Historical ES deployment acceptance remains partial.",
+        "next": "Final integrated regression, preservation/scope audit and overnight summary",
+        "parent": "b136d0a1acfd68f46547d165b06d5570a13472f3",
+        "source_sha256": {
+          "src/railway_detection/safety/constructed_authority.py": "9d8d4d71fafd24fbc0544b670e3be917460c07fe4d5a5dd5f7e4f61a9f758a82",
+          "src/railway_detection/safety/constructed_broker.py": "fc7906b67b634ece39263d34732bb63ef8f41ddb25579fa375e6223918d39955",
+          "tests/synthetic_security/test_transactions.py": "b4f5abda2f76d9ccf80a6223d1d69f19a221138630325202abfbc50180ef54e9",
+          "tests/synthetic_security/test_broker.py": "f3d430a8aebfe2451a55a24362f08ae41cde601614b4a776109c3b96509d26c2",
+          "tests/synthetic_security/test_composed_workflow.py": "b1314dc95a62b8dfca94fb7fb513fad22f113c5a359b6917ac605835ec67f34f"
+        },
         "commit": null,
         "push_verified": false
       }

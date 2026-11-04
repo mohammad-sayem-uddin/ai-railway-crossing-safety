@@ -160,7 +160,7 @@ Next phase: WP01 exact-clock normalization/provenance correction from final audi
 
 ## WP01R
 
-Status: PASS_SINGLE_NORMALIZATION_AND_ORDER_PROVENANCE. Parent: `c22c5cf02fd8f04be8039c8e37cdc8a255bc8aac`. Commit: `None`. Remote verified: False.
+Status: PASS_SINGLE_NORMALIZATION_AND_ORDER_PROVENANCE. Parent: `c22c5cf02fd8f04be8039c8e37cdc8a255bc8aac`. Commit: `b136d0a1acfd68f46547d165b06d5570a13472f3`. Remote verified: True.
 
 Audit corrected repeated normalization of original clocks: ARRIVAL normalizes once when encountered; OFFLINE retains each prevalidated clock/frame and sorts by that exact value. Failed OFFLINE prevalidation no longer reports reordered execution when no sort/controller execution occurred. Added call-count and provenance cases;65 integration/isolation cases pass. Initial new test invocations used the helper signature incorrectly; corrected fixtures, no assertions weakened.
 
@@ -169,3 +169,15 @@ Tests: [{"xml": "/tmp/mission21_wp01_clock.xml", "command": "PYTHONPATH=src PYTE
 Static: Ruff and Mypy pass for coordinator;65 isolated integration cases pass
 Remaining: No controller policy, Convention A timing or historical results changed. Exact arithmetic does not establish real source clock accuracy.
 Next phase: WP04 constructed point-of-use byte broker closure followed by integrated audit
+
+## WP04B
+
+Status: PASS_CONSTRUCTED_POINT_OF_USE_BROKER_AND_COMPOSED_FLOW. Parent: `b136d0a1acfd68f46547d165b06d5570a13472f3`. Commit: `None`. Remote verified: False.
+
+Added exact constructed immutable byte registry and READ/PROBE/HASH broker with scope/purpose/role/time/fence/version checks, quota and atomic ledger receipt before returning a result. No paths/arbitrary callbacks/real model-cache loaders. Fixture-time digest retained so READ does not implicitly perform HASH; HASH requires its own grant operation. Retry verifies acknowledged body against receipt/ledger; modified historical body or missing entry denies. Composed test crosses broker, neutral player, durable review, lossless schema projection, lineage, actual controller/B, missing-GT metric exclusion, constructed draft and mock batch publisher; revocation and real evaluation remain denied. Security suite46 cases passes.
+
+Exact files: src/railway_detection/safety/constructed_authority.py, src/railway_detection/safety/constructed_broker.py, tests/synthetic_security/test_transactions.py, tests/synthetic_security/test_broker.py, tests/synthetic_security/test_composed_workflow.py
+Tests: [{"xml": "/tmp/mission21_wp04_broker.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04_broker.xml", "tests": 46, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Ruff passes; Mypy no issues in authority/broker; executed composed runtime uses in-memory SQLite and constructed bytes only
+Remaining: No live grant or actual protected use. Constructed consistency, hashes and role strings do not prove human identity, real resource provenance, OS isolation or cryptographic authority. Atomic SQLite result handling has no arbitrary external side effects and is not a global exactly-once IO guarantee. Historical ES deployment acceptance remains partial.
+Next phase: Final integrated regression, preservation/scope audit and overnight summary

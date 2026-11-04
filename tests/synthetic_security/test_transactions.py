@@ -392,3 +392,13 @@ def test_unknown_effect_cannot_quarantine_a_different_prepared_operation(service
             "synthetic:session", "synthetic:tx", fence=fence, **(args() | {"operation": "HASH"})
         )
     assert a.db.execute("SELECT state FROM tx").fetchone()[0] == "PREPARED"
+
+
+def test_historical_receipt_retrieval_refuses_missing_acknowledged_entry(service):
+    a, g, _ = service
+    fence = start(a, g)
+    a.prepare("synthetic:session", "synthetic:t", encode_payload({}), fence=fence, **args())
+    a.commit("synthetic:session", "synthetic:t", fence=fence, **args())
+    a.db.execute("DELETE FROM entries")
+    with pytest.raises(ValueError, match="receipt ledger"):
+        a.commit("synthetic:session", "synthetic:t", fence=fence, **args())

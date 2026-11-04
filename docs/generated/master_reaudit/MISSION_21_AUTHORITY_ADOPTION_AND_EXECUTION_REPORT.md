@@ -197,9 +197,22 @@ Files: `src/railway_detection/synthetic/convention_b_pipeline.py`, `tests/synthe
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_wp01_clock.xml`: 65 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp01_clock.xml`.
 
 Static analysis: Ruff and Mypy pass for coordinator;65 isolated integration cases pass.
-Commit: None; push/local/tracking/live verified: False.
+Commit: b136d0a1acfd68f46547d165b06d5570a13472f3; push/local/tracking/live verified: True.
 Limitations: No controller policy, Convention A timing or historical results changed. Exact arithmetic does not establish real source clock accuracy.
 Next: WP04 constructed point-of-use byte broker closure followed by integrated audit.
+
+### WP04B — PASS_CONSTRUCTED_POINT_OF_USE_BROKER_AND_COMPOSED_FLOW
+
+Added exact constructed immutable byte registry and READ/PROBE/HASH broker with scope/purpose/role/time/fence/version checks, quota and atomic ledger receipt before returning a result. No paths/arbitrary callbacks/real model-cache loaders. Fixture-time digest retained so READ does not implicitly perform HASH; HASH requires its own grant operation. Retry verifies acknowledged body against receipt/ledger; modified historical body or missing entry denies. Composed test crosses broker, neutral player, durable review, lossless schema projection, lineage, actual controller/B, missing-GT metric exclusion, constructed draft and mock batch publisher; revocation and real evaluation remain denied. Security suite46 cases passes.
+
+Files: `src/railway_detection/safety/constructed_authority.py`, `src/railway_detection/safety/constructed_broker.py`, `tests/synthetic_security/test_transactions.py`, `tests/synthetic_security/test_broker.py`, `tests/synthetic_security/test_composed_workflow.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04_broker.xml`: 46 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp04_broker.xml`.
+
+Static analysis: Ruff passes; Mypy no issues in authority/broker; executed composed runtime uses in-memory SQLite and constructed bytes only.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: No live grant or actual protected use. Constructed consistency, hashes and role strings do not prove human identity, real resource provenance, OS isolation or cryptographic authority. Atomic SQLite result handling has no arbitrary external side effects and is not a global exactly-once IO guarantee. Historical ES deployment acceptance remains partial.
+Next: Final integrated regression, preservation/scope audit and overnight summary.
 
 ## Execution boundaries
 

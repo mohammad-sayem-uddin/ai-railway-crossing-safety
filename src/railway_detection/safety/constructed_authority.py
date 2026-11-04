@@ -312,6 +312,30 @@ class ConstructedAuthority:
             self.db.execute("UPDATE sessions SET uses=uses+1 WHERE id=?", (session,))
             return "PREPARED"
 
+    def _historical_receipt(self, session, transaction, body, serialized):
+        decode_payload(body)
+        receipt = Receipt(**json.loads(serialized))
+        if (
+            canonical(asdict(receipt)) != serialized
+            or type(receipt.sequence) is not int
+            or receipt.sequence < 1
+            or receipt.session != session
+            or receipt.transaction != transaction
+            or receipt.body_digest != sha(body)
+        ):
+            raise ValueError("historical receipt/body mismatch")
+        entry = self.db.execute(
+            "SELECT body,prev,head FROM entries WHERE seq=?", (receipt.sequence,)
+        ).fetchone()
+        if (
+            entry is None
+            or entry[0] != body
+            or entry[2] != receipt.head
+            or entry[2] != sha(canonical({"seq": receipt.sequence, "prev": entry[1], "body": body}))
+        ):
+            raise ValueError("historical receipt ledger mismatch")
+        return receipt
+
     def commit(
         self, session, transaction, *, fence, actor, operation, resource, context, purpose, now
     ):
@@ -338,7 +362,7 @@ class ConstructedAuthority:
                 ).fetchone()[0]
                 if actor != stored_actor:
                     raise ValueError("receipt owner mismatch")
-                return Receipt(**json.loads(existing[2]))
+                return self._historical_receipt(session, transaction, existing[0], existing[2])
             self._session(
                 session,
                 fence,
