@@ -83,11 +83,12 @@ def run_constructed_descriptive(
                 if job.camera not in evidence.source_id:
                     raise ValueError("camera/source mismatch; no cross-camera clock merge")
         body = json.dumps(asdict(job), sort_keys=True, separators=(",", ":"), allow_nan=False)
+        input_digest = hashlib.sha256(body.encode()).hexdigest()
         receipt = {
             "event_key": job.event_key,
             "camera": job.camera,
             "condition": job.condition,
-            "input_digest": hashlib.sha256(body.encode()).hexdigest(),
+            "input_digest": input_digest,
             "classification": "CONSTRUCTED_ONLY_NOT_REAL_EVALUATION",
             "B_status": b.status,
             "B_endpoint_seconds": str(b.causal.endpoint_seconds),
@@ -101,6 +102,7 @@ def run_constructed_descriptive(
             receipt["supplied_audio_records"] = sum(len(x["frame"]["audio_records"]) for x in rows)
             receipts.append(receipt)
             continue
+        reason: str | None
         if b.status not in ("EMPTY", "COMPLETE"):
             m4 = m5 = None
             reason = "incomplete_constructed_replay"
@@ -123,7 +125,7 @@ def run_constructed_descriptive(
                 "M4",
                 m4,
                 reason or ("never_protected_companion" if m4 is None else None),
-                "synthetic:descriptive:" + receipt["input_digest"],
+                "synthetic:descriptive:" + input_digest,
             )
         )
         metric_rows.append(
@@ -134,7 +136,7 @@ def run_constructed_descriptive(
                 "M5",
                 None if m5 is None else int(m5),
                 reason if m5 is None else None,
-                "synthetic:descriptive:" + receipt["input_digest"],
+                "synthetic:descriptive:" + input_digest,
             )
         )
         receipts.append(receipt)

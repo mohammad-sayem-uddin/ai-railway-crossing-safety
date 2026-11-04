@@ -205,7 +205,7 @@ def validate_registry(registry: Registry, *, expected: ExpectedRegistry) -> Regi
         if not set(a.fit_events) <= allowed_fit or not set(a.selection_events) <= allowed_select:
             raise ValueError("direct fit/selection violates frozen role plan")
         artifacts[a.artifact_id] = a
-    exposure = {}
+    exposure: dict[str, set[str]] = {}
     pending = set(artifacts)
     while pending:
         ready = sorted(k for k in pending if set(artifacts[k].parents) <= exposure.keys())
@@ -244,14 +244,14 @@ def validate_registry(registry: Registry, *, expected: ExpectedRegistry) -> Regi
             raise ValueError("duplicate/repeated OOF score")
         seen.add(score.prediction_id)
         scored.add(score.event_id)
-        split = splits.get(score.inner_id)
+        prediction_split = splits.get(score.inner_id)
         producer = artifacts.get(score.producer)
         if (
-            split is None
+            prediction_split is None
             or producer is None
             or producer.kind != "BASE_MODEL"
             or producer.inner_id != score.inner_id
-            or score.event_id not in split.heldout
+            or score.event_id not in prediction_split.heldout
             or score.outer_fold != c.outer_fold
             or type(score.outer_fold) is not int
             or assets.get(score.asset_id) != score.event_id

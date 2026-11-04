@@ -115,7 +115,7 @@ class ConstructedAuthority:
             raise ValueError("explicit constructed service/profile/context required")
         self.db = connection
         self.context = expected_context
-        self.roles = {}
+        self.roles: dict[str, tuple[str, ...]] = {}
         for actor, roles in appointments:
             identity(actor)
             if (
@@ -167,8 +167,8 @@ class ConstructedAuthority:
             identity(x)
         if grant.actor not in self.roles or grant.context != self.context or not grant.purpose:
             raise ValueError("actor/purpose/expected runtime mismatch")
-        for x in (grant.valid_from, grant.expires, grant.max_uses):
-            exact_time(x)
+        for numeric in (grant.valid_from, grant.expires, grant.max_uses):
+            exact_time(numeric)
         if (
             grant.expires <= grant.valid_from
             or grant.max_uses < 1

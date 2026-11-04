@@ -135,7 +135,7 @@ class ReviewWorkflow:
     def __init__(
         self, reviewers: tuple[SyntheticReviewer, ...], *, aliases: tuple[tuple[str, str], ...] = ()
     ):
-        self._roles = {}
+        self._roles: dict[str, tuple[str, ...]] = {}
         for person in reviewers:
             if (
                 type(person) is not SyntheticReviewer
@@ -157,9 +157,9 @@ class ReviewWorkflow:
             _id(target)
             if a in self._roles or target in self._aliases:
                 raise ValueError("ambiguous/chained principal alias")
-        self._seals = {}
-        self._exposed = set()
-        self._history = ()
+        self._seals: dict[tuple[str, str], Seal] = {}
+        self._exposed: set[tuple[str, str]] = set()
+        self._history: tuple[Seal | tuple[object, ...], ...] = ()
 
     @property
     def history(self):

@@ -294,6 +294,7 @@ def classify_m4(
         return result(
             M4_STATUS_NOT_EVALUABLE, None, None, M4_REASON_REPLAY_EMPTY, False, None, None, 0, None
         )
+    first_step = timestamps[0]  # nonempty replay; narrows the optional metadata value
     last = timestamps[-1]
     covered = last >= t4
     t_blocked = next((t for t, s in observed if s.is_passage_blocked), None)

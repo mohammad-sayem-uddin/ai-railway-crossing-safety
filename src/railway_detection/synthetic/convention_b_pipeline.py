@@ -278,7 +278,8 @@ def run_pipeline(request: IntegrationRequest, controller=None) -> IntegrationRes
         except (ValueError, TypeError, KeyError) as exc:
             error = str(exc)
             indexed = []
-    events, links = [], []
+    events: list[SyntheticEvent] = []
+    links: list[DecisionLink] = []
     calls = 0
     last = None
     seen = set()
@@ -301,7 +302,7 @@ def run_pipeline(request: IntegrationRequest, controller=None) -> IntegrationRes
             else:
                 command = c.commands[calls]
                 calls += 1
-                rule = (
+                rule: str | None = (
                     (REJECT[1] if t == last else REJECT[0])
                     if last is not None and t <= last
                     else None
@@ -336,6 +337,8 @@ def run_pipeline(request: IntegrationRequest, controller=None) -> IntegrationRes
             if accepted:
                 if last is not None and t <= last:
                     raise ValueError("controller accepted a rejected exact timestamp")
+                if cmd is None:
+                    raise ValueError("accepted command must be explicit")
                 events.append(SyntheticEvent(row["event_id"], t, cmd))
                 last = t
                 seen.add(row["event_id"])

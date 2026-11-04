@@ -36093,6 +36093,138 @@
           "tests/synthetic_reporting/test_drafts.py": "805290c1a6f15664f9c45307770bdceeee9f4c47e048e2585e40a529368b3865",
           "docs/generated/master_reaudit/MISSION_21_DESCRIPTIVE_MANUSCRIPT_SUPPORT_DRAFT.md": "b95ef9186a528df03352a47c2d04ad81b0aa3b4b7c6e63c0bf19695844c38ae5"
         },
+        "commit": "938a2d7d3de0df8ab97f75add034f482b2fcf180",
+        "push_verified": true
+      },
+      {
+        "id": "WP10",
+        "status": "PASS_LOCKED_TOOL_REPAIR_SCOPED_TYPING_BASELINE_LIMITS",
+        "files": [
+          "src/railway_detection/synthetic/convention_b_pipeline.py",
+          "src/railway_detection/experiments/provenance_registry.py",
+          "src/railway_detection/annotation/human_review_domain.py",
+          "src/railway_detection/safety/constructed_authority.py",
+          "src/railway_detection/evaluation/descriptive_constructed.py",
+          "src/railway_detection/data/constructed_manifest.py",
+          "src/railway_detection/evaluation/metrics.py",
+          "scripts/generate_publication_figures.py",
+          "scripts/generate_report_figures.py",
+          "scripts/build_research_report_doc.py",
+          "tests/synthetic_tooling/test_restored_mypy.py",
+          "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_AND_STATIC_ANALYSIS.md",
+          "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_RECEIPT.json"
+        ],
+        "message": "fix: restore locked Mypy tooling and close scoped static diagnostics",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_final_synthetic_mission18a.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_final_synthetic_mission18a.xml",
+            "tests": 62,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_mission18b.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18b -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18b -q --junitxml=/tmp/mission21_final_synthetic_mission18b.xml",
+            "tests": 26,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_human_review.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_final_synthetic_human_review.xml",
+            "tests": 15,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_security.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_final_synthetic_security.xml",
+            "tests": 24,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_metric_contracts.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_metric_contracts -p no:cacheprovider --import-mode=importlib tests/synthetic_metric_contracts -q --junitxml=/tmp/mission21_final_synthetic_metric_contracts.xml",
+            "tests": 15,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_evaluation_pipeline.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_final_synthetic_evaluation_pipeline.xml",
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_data_provenance.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_data_provenance -p no:cacheprovider --import-mode=importlib tests/synthetic_data_provenance -q --junitxml=/tmp/mission21_final_synthetic_data_provenance.xml",
+            "tests": 21,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_preservation.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_preservation -p no:cacheprovider --import-mode=importlib tests/synthetic_preservation -q --junitxml=/tmp/mission21_final_synthetic_preservation.xml",
+            "tests": 18,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_reporting.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_reporting -p no:cacheprovider --import-mode=importlib tests/synthetic_reporting -q --junitxml=/tmp/mission21_final_synthetic_reporting.xml",
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_tooling.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_tooling -p no:cacheprovider --import-mode=importlib tests/synthetic_tooling -q --junitxml=/tmp/mission21_final_synthetic_tooling.xml",
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          {
+            "xml": "/tmp/mission21_final_synthetic_mission17d.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission17d -p no:cacheprovider --import-mode=importlib tests/synthetic_mission17d -q --junitxml=/tmp/mission21_final_synthetic_mission17d.xml",
+            "tests": 238,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Repaired six partial active-Python3.11 tool packages to exact existing lock versions with staged execution, namespace rollback inventory and wheel digests; no dependency spec/global changes. Restored module/CLI Mypy2.4.0. Fixed19 new-component type diagnostics and metric optional narrowing. Legacy generator refusals now explicit entrypoints before third-party imports; formatted unreachable bodies and preserved historical value strings. Scoped9-source Mypy passes; fresh original238 and all10 new isolated suites total443 passing cases.",
+        "static": "Mypy no issues9 source files; Ruff30 changed/new Python files passes; AST31 including preserved A runner parses. Exact commands/results in tooling report/receipts.",
+        "limitations": "A instrumentation has pre-existing Mypy diagnostics and one Ruff E501; R02-A permits only B delegation in runner, so A code preserved. Disabled legacy report bodies still reference optional missing docx/pandas typing; no unnecessary packages installed. No repository-wide type or production readiness claim.",
+        "next": "WP03 durable constructed actor/event knowledge closure, then final integrated audit",
+        "parent": "938a2d7d3de0df8ab97f75add034f482b2fcf180",
+        "source_sha256": {
+          "src/railway_detection/synthetic/convention_b_pipeline.py": "6d846a866841613bb1c5138fe18852a862d5fba846f30070a46d920c7aa85ea3",
+          "src/railway_detection/experiments/provenance_registry.py": "5c2af13d0c49e6f96ced88b05df8afe04c18285e99e317d748bf55df3dad70ec",
+          "src/railway_detection/annotation/human_review_domain.py": "3779eeabf79a826d3283739d3e8b1a649bafb1a6a6c63018338f2416c6cb2c56",
+          "src/railway_detection/safety/constructed_authority.py": "f60defff9a42cac2799535e5ea384bdf61d73b2314c8bf95ba1eec063b22811f",
+          "src/railway_detection/evaluation/descriptive_constructed.py": "db8d32f6f7fa2aa67754a8dc4e1342a9005d0ff719976a723b4094b07ffe5998",
+          "src/railway_detection/data/constructed_manifest.py": "0b56e0d38a4bf4e7aeab1f0ebe9b2ff845b801997a022a90baf971a7e0f20d3f",
+          "src/railway_detection/evaluation/metrics.py": "0c1cad5ccfd4288853435674b79cda891e2d3e1a3513aebe77415393745032eb",
+          "scripts/generate_publication_figures.py": "90bccab909cc330f3ab70c6e2a98c3c9e5ecd737417557ea1c4fc21ba20f864d",
+          "scripts/generate_report_figures.py": "5adb8984511fc2d91ce712432bf76857e7817975087ed2f3a3272aafda089de7",
+          "scripts/build_research_report_doc.py": "5a331ef1977d29602aaf00db9c24fbeb19b8533667782945023ac506fd30e5c0",
+          "tests/synthetic_tooling/test_restored_mypy.py": "337d5b1c03432e6479795857832aed6abc19d1d3992e53bfa179c0427e403891",
+          "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_AND_STATIC_ANALYSIS.md": "5ca054a5537b8356666eb9501b3a22ce0c779418888fe45e616e63c6004a9506",
+          "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_RECEIPT.json": "bfb5f4930583a18021a21b2cffb9380678a74e5477355af8e60031bf583428f9"
+        },
         "commit": null,
         "push_verified": false
       }

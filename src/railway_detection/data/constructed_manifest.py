@@ -67,7 +67,8 @@ def validate_manifest(manifest: ConstructedManifest, *, expected_digest: str):
         raise ValueError("previous content digest malformed")
     if manifest_digest(manifest) != expected_digest:
         raise ValueError("independent retained metadata binding mismatch")
-    by_id, event_roles = {}, {}
+    by_id: dict[str, ManifestRecord] = {}
+    event_roles: dict[str, str] = {}
     for record in manifest.records:
         if type(record) is not ManifestRecord:
             raise ValueError("typed immutable record required")
@@ -115,7 +116,8 @@ def validate_manifest(manifest: ConstructedManifest, *, expected_digest: str):
             if parent not in by_id or by_id[parent].physical_event != record.physical_event:
                 raise ValueError("missing parent or cross-event source join")
     # Topological validation also accumulates transitive fitted producer exposure.
-    pending, exposure = set(by_id), {}
+    pending = set(by_id)
+    exposure: dict[str, tuple[str, ...]] = {}
     while pending:
         ready = sorted(k for k in pending if set(by_id[k].parents) <= exposure.keys())
         if not ready:
