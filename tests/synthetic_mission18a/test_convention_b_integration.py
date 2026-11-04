@@ -343,3 +343,27 @@ def test_future_evidence_never_retimed():
     )
     r = run_pipeline(q)
     assert r.status == "INCOMPLETE" and r.controller_calls == 0
+
+
+@pytest.mark.parametrize("mode", ["ARRIVAL", "OFFLINE"])
+def test_original_exact_clock_normalized_once_per_supplied_row(monkeypatch, mode):
+    import railway_detection.synthetic.convention_b_pipeline as pipeline
+
+    observed = []
+    original = pipeline.timestamp_us
+
+    def counted(value):
+        observed.append(value)
+        return original(value)
+
+    monkeypatch.setattr(pipeline, "timestamp_us", counted)
+    q = request([0, 500000, 1000000], ["LOWER"] * 3, mode=mode)
+    assert run_pipeline(q).status == "COMPLETE"
+    assert observed == [0, 500000, 1000000]
+
+
+def test_offline_prevalidation_failure_does_not_claim_reordered_execution():
+    q = request([1000000, None], ["LOWER"] * 2, mode="OFFLINE")
+    result = run_pipeline(q)
+    assert result.status == "INCOMPLETE" and result.controller_calls == 0
+    assert result.reordered is False

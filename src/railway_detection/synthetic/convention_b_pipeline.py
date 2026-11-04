@@ -211,6 +211,10 @@ def _decision_json(decision):
 
 def _validate_row(row):
     t = timestamp_us(row["timestamp"])
+    return _validate_at_time(row, t)
+
+
+def _validate_at_time(row, t):
     if t > 3_600_000_000:
         raise ValueError("unsupported clock beyond one-hour envelope")
     _identity(row["event_id"])
@@ -270,11 +274,14 @@ def run_pipeline(request: IntegrationRequest, controller=None) -> IntegrationRes
         raise ValueError("controller settings differ from retained request")
     indexed = list(enumerate(rows))
     error = None
+    reordered = False
+    offline_rows = {}
     if request.mode == "OFFLINE":
         try:
-            for _, row in indexed:
-                _validate_row(row)
-            indexed.sort(key=lambda x: (timestamp_us(x[1]["timestamp"]), x[0]))
+            for index, row in indexed:
+                offline_rows[index] = _validate_row(row)
+            indexed.sort(key=lambda x: (offline_rows[x[0]][0], x[0]))
+            reordered = [i for i, _ in indexed] != list(range(len(rows)))
         except (ValueError, TypeError, KeyError) as exc:
             error = str(exc)
             indexed = []
@@ -286,10 +293,16 @@ def run_pipeline(request: IntegrationRequest, controller=None) -> IntegrationRes
     for index, row in indexed:
         try:
             # ARRIVAL must parse the next time before cutoff, without evaluating it.
-            t = timestamp_us(row["timestamp"])
+            t = (
+                offline_rows[index][0]
+                if request.mode == "OFFLINE"
+                else timestamp_us(row["timestamp"])
+            )
             if events and cutoff is not None and t > cutoff:
                 break
-            t, frame = _validate_row(row)
+            t, frame = (
+                offline_rows[index] if request.mode == "OFFLINE" else _validate_at_time(row, t)
+            )
             if not events and cutoff is not None and cutoff < t:
                 raise ValueError("cutoff precedes origin")
             if last is not None and t > last and row["event_id"] in seen:
@@ -384,7 +397,7 @@ def run_pipeline(request: IntegrationRequest, controller=None) -> IntegrationRes
         tuple(links),
         calls,
         request.mode,
-        [i for i, _ in indexed] != list(range(len(rows))),
+        reordered,
     )
 
 

@@ -184,9 +184,22 @@ Files: `src/railway_detection/safety/constructed_authority.py`, `tests/synthetic
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04_harden.xml`: 32 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp04_harden.xml`.
 
 Static analysis: Ruff and scoped Mypy pass;32 isolated security cases pass.
-Commit: None; push/local/tracking/live verified: False.
+Commit: c22c5cf02fd8f04be8039c8e37cdc8a255bc8aac; push/local/tracking/live verified: True.
 Limitations: These32 pytest cases are not a claim that all32 historical ES scenarios or all process-crash/host-security conditions were executed. Cooperative fixture store only, no cryptographic identity, live authority/resource broker or production GT publication.
 Next: WP01 exact-clock normalization/provenance correction from final audit.
+
+### WP01R — PASS_SINGLE_NORMALIZATION_AND_ORDER_PROVENANCE
+
+Audit corrected repeated normalization of original clocks: ARRIVAL normalizes once when encountered; OFFLINE retains each prevalidated clock/frame and sorts by that exact value. Failed OFFLINE prevalidation no longer reports reordered execution when no sort/controller execution occurred. Added call-count and provenance cases;65 integration/isolation cases pass. Initial new test invocations used the helper signature incorrectly; corrected fixtures, no assertions weakened.
+
+Files: `src/railway_detection/synthetic/convention_b_pipeline.py`, `tests/synthetic_mission18a/test_convention_b_integration.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_wp01_clock.xml`: 65 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp01_clock.xml`.
+
+Static analysis: Ruff and Mypy pass for coordinator;65 isolated integration cases pass.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: No controller policy, Convention A timing or historical results changed. Exact arithmetic does not establish real source clock accuracy.
+Next: WP04 constructed point-of-use byte broker closure followed by integrated audit.
 
 ## Execution boundaries
 

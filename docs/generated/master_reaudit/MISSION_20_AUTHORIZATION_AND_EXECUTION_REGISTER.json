@@ -36321,6 +36321,36 @@
           "src/railway_detection/safety/constructed_authority.py": "792afe4cd4feda2ebae2122d15cf02ca6eab0518e7d06840b1915adab15982ed",
           "tests/synthetic_security/test_transactions.py": "eab8f55ae17bd65649587832cd7cc5883b1f41fc4d3bfd96b1b1abc65fb6b285"
         },
+        "commit": "c22c5cf02fd8f04be8039c8e37cdc8a255bc8aac",
+        "push_verified": true
+      },
+      {
+        "id": "WP01R",
+        "status": "PASS_SINGLE_NORMALIZATION_AND_ORDER_PROVENANCE",
+        "files": [
+          "src/railway_detection/synthetic/convention_b_pipeline.py",
+          "tests/synthetic_mission18a/test_convention_b_integration.py"
+        ],
+        "message": "fix: normalize constructed input clocks once and preserve ordering provenance",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp01_clock.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_wp01_clock.xml",
+            "tests": 65,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Audit corrected repeated normalization of original clocks: ARRIVAL normalizes once when encountered; OFFLINE retains each prevalidated clock/frame and sorts by that exact value. Failed OFFLINE prevalidation no longer reports reordered execution when no sort/controller execution occurred. Added call-count and provenance cases;65 integration/isolation cases pass. Initial new test invocations used the helper signature incorrectly; corrected fixtures, no assertions weakened.",
+        "static": "Ruff and Mypy pass for coordinator;65 isolated integration cases pass",
+        "limitations": "No controller policy, Convention A timing or historical results changed. Exact arithmetic does not establish real source clock accuracy.",
+        "next": "WP04 constructed point-of-use byte broker closure followed by integrated audit",
+        "parent": "c22c5cf02fd8f04be8039c8e37cdc8a255bc8aac",
+        "source_sha256": {
+          "src/railway_detection/synthetic/convention_b_pipeline.py": "609e76b127bc41d0d16ab9f935584f6c817d01bd3cc671663a65b82b05b32458",
+          "tests/synthetic_mission18a/test_convention_b_integration.py": "9cd2cb037269347f982e65f8dc81d05d636c7439e96dec2d79a0ae595cf3ad47"
+        },
         "commit": null,
         "push_verified": false
       }

@@ -148,7 +148,7 @@ Next phase: WP04 purpose, appointment and recovery/finalization fence checks fou
 
 ## WP04R
 
-Status: PASS_CONSTRUCTED_PURPOSE_ROLE_AND_OWNER_FENCES. Parent: `fd7c974d253c9083290619e2cf24802e099093bd`. Commit: `None`. Remote verified: False.
+Status: PASS_CONSTRUCTED_PURPOSE_ROLE_AND_OWNER_FENCES. Parent: `fd7c974d253c9083290619e2cf24802e099093bd`. Commit: `c22c5cf02fd8f04be8039c8e37cdc8a255bc8aac`. Remote verified: True.
 
 Audit found lifecycle metadata could advance without current purpose/clock checks or a fresh owner fence. Added exact purpose to reserve/prepare/commit bindings, appointment-role checks at issuance and every new use, current scope/time checks at recovery, and fresh fences for finalization/unknown-effect quarantine. Exact pending operation binding required before quarantine; no issuer self-grant of an unappointed review role. Eight additional negatives bring the security suite to32 passing pytest cases. Historical committed receipt retrieval stays idempotent and creates no new operation.
 
@@ -157,3 +157,15 @@ Tests: [{"xml": "/tmp/mission21_wp04_harden.xml", "command": "PYTHONPATH=src PYT
 Static: Ruff and scoped Mypy pass;32 isolated security cases pass
 Remaining: These32 pytest cases are not a claim that all32 historical ES scenarios or all process-crash/host-security conditions were executed. Cooperative fixture store only, no cryptographic identity, live authority/resource broker or production GT publication.
 Next phase: WP01 exact-clock normalization/provenance correction from final audit
+
+## WP01R
+
+Status: PASS_SINGLE_NORMALIZATION_AND_ORDER_PROVENANCE. Parent: `c22c5cf02fd8f04be8039c8e37cdc8a255bc8aac`. Commit: `None`. Remote verified: False.
+
+Audit corrected repeated normalization of original clocks: ARRIVAL normalizes once when encountered; OFFLINE retains each prevalidated clock/frame and sorts by that exact value. Failed OFFLINE prevalidation no longer reports reordered execution when no sort/controller execution occurred. Added call-count and provenance cases;65 integration/isolation cases pass. Initial new test invocations used the helper signature incorrectly; corrected fixtures, no assertions weakened.
+
+Exact files: src/railway_detection/synthetic/convention_b_pipeline.py, tests/synthetic_mission18a/test_convention_b_integration.py
+Tests: [{"xml": "/tmp/mission21_wp01_clock.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_wp01_clock.xml", "tests": 65, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Ruff and Mypy pass for coordinator;65 isolated integration cases pass
+Remaining: No controller policy, Convention A timing or historical results changed. Exact arithmetic does not establish real source clock accuracy.
+Next phase: WP04 constructed point-of-use byte broker closure followed by integrated audit
