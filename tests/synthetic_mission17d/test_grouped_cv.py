@@ -122,15 +122,27 @@ def test_orphan_cyclic_and_multi_event_derivatives_are_rejected(dataset_factory)
 def test_conflicting_content_annotation_capture_and_transform_identity_reject(dataset_factory):
     d = dataset_factory()
     content = "synthetic:content:shared"
-    cross_duplicate = replace(d, assets=(replace(d.assets[0], content_identity=content),
-                                         replace(d.assets[1], content_identity=content))+d.assets[2:])
+    cross_duplicate = replace(
+        d,
+        assets=(
+            replace(d.assets[0], content_identity=content),
+            replace(d.assets[1], content_identity=content),
+        )
+        + d.assets[2:],
+    )
     missing_annotation = replace(d, annotations=d.annotations[1:])
     wrong_annotation = replace(d, annotations=(replace(d.annotations[0],
                                       asset_id=d.assets[1].asset_id),)+d.annotations[1:])
     wrong_capture = replace(d, assets=(replace(d.assets[0],
                                    capture_id=d.captures[1].capture_id),)+d.assets[1:])
     invented_label = replace(d, events=(replace(d.events[0], labels=("invented",)),)+d.events[1:])
-    for broken in (cross_duplicate, missing_annotation, wrong_annotation, wrong_capture, invented_label):
+    for broken in (
+        cross_duplicate,
+        missing_annotation,
+        wrong_annotation,
+        wrong_capture,
+        invented_label,
+    ):
         with pytest.raises(ValueError):
             allocate(broken, k=3)
     derivative = add_derivative(d)
@@ -227,7 +239,9 @@ def test_greedy_failure_can_find_a_feasible_bounded_search_candidate(dataset_fac
 def test_budget_and_size_limits_never_claim_infeasible_or_accept_manifest(dataset_factory):
     triangle = (('a', 'b'), ('a', 'c'), ('b', 'c'))
     support = (("a", 1), ("b", 1), ("c", 1))
-    budget = allocate(dataset_factory(labels=triangle), k=2, required_support=support, node_budget=1)
+    budget = allocate(
+        dataset_factory(labels=triangle), k=2, required_support=support, node_budget=1
+    )
     size = allocate(dataset_factory(labels=triangle+((),)*17), k=2, required_support=support)
     assert budget.status == "UNDETERMINED_BUDGET" and budget.visited_nodes == 1
     assert size.status == "UNDETERMINED_SIZE" and size.visited_nodes == 0
@@ -256,13 +270,15 @@ def test_fold_count_has_no_unpublished_32_fold_cap(dataset_factory):
 def test_forged_assignment_objective_input_role_and_status_are_rejected(dataset_factory):
     d = dataset_factory()
     result = allocate(d, k=3)
-    for bad in [replace(result, assignments=result.assignments[:-1]),
-                replace(result, assignments=result.assignments+(result.assignments[0],)),
-                replace(result, objective=(0, 0, -1)),
-                replace(result, input_digest="0"*64),
-                replace(result, status="INFEASIBLE_EXHAUSTIVE"),
-                replace(result, status="OPTIMAL"),
-                replace(result, assignments=((result.assignments[0][0], True),)+result.assignments[1:])]:
+    for bad in [
+        replace(result, assignments=result.assignments[:-1]),
+        replace(result, assignments=result.assignments + (result.assignments[0],)),
+        replace(result, objective=(0, 0, -1)),
+        replace(result, input_digest="0" * 64),
+        replace(result, status="INFEASIBLE_EXHAUSTIVE"),
+        replace(result, status="OPTIMAL"),
+        replace(result, assignments=((result.assignments[0][0], True),) + result.assignments[1:]),
+    ]:
         with pytest.raises(ValueError):
             verify_allocation(d, bad, expected_policy=allocation_policy(k=3))
 
@@ -295,8 +311,13 @@ def test_reserved_roles_and_training_calibration_selection_boundaries(dataset_fa
             with pytest.raises(ValueError):
                 validate_fit_membership(plan, operation, forbidden, expected_context=context)
     with pytest.raises(ValueError):
-        validate_fit_membership(plan, "FEATURE_CACHE", plan.training,
-                                producing_fit_events=plan.outer_evaluation, expected_context=context)
+        validate_fit_membership(
+            plan,
+            "FEATURE_CACHE",
+            plan.training,
+            producing_fit_events=plan.outer_evaluation,
+            expected_context=context,
+        )
     with pytest.raises(ValueError):
         validate_fit_membership(plan, "BASE_MODEL_FIT", plan.training,
                                 selection_events=plan.outer_evaluation, expected_context=context)

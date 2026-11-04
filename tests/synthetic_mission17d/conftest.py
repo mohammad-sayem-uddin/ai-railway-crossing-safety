@@ -43,7 +43,8 @@ def dataset_factory():
         roles = roles or (DatasetRole.DEVELOPMENT_POOL,)*len(labels)
         counts = counts or (1,)*len(labels)
         events, captures, assets, annotations = [], [], [], []
-        known = lambda v: MetadataValue(v, None, "synthetic:metadata:constructed")
+        def known(v):
+            return MetadataValue(v, None, "synthetic:metadata:constructed")
         for i, (event_labels, role, count) in enumerate(zip(labels, roles, counts, strict=True)):
             event_id, capture_id = f"synthetic:event:{i:04}", f"synthetic:capture:{i:04}"
             events.append(PhysicalEvent(event_id, role, tuple(event_labels),

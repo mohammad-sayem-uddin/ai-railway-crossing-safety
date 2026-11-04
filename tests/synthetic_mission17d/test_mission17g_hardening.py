@@ -1,12 +1,16 @@
 """Focused synthetic regression hardening for the five 17F findings."""
 
+import json
+import random
+import sys
+from collections import Counter
 from dataclasses import FrozenInstanceError, replace
 from fractions import Fraction as Q
-import random
 
 import pytest
 
 from railway_detection.synthetic import convention_b as sim
+from railway_detection.synthetic import grouped_cv as cv
 from railway_detection.synthetic.grouped_cv import (
     Annotation,
     Asset,
@@ -204,7 +208,9 @@ def test_complete_receipt_contract_for_every_status(dataset_factory, labels, k, 
     result = allocate(dataset, k=k, required_support=support, node_budget=budget)
     policy = allocation_policy(k=k, required_support=support, node_budget=budget)
     assert result.status == status
-    assert verify_allocation(dataset, result, expected_policy=policy) == status.startswith('FEASIBLE_')
+    assert verify_allocation(dataset, result, expected_policy=policy) == status.startswith(
+        "FEASIBLE_"
+    )
     assert result.policy_digest == policy.digest
     assert result.canonical_json() == allocate(
         dataset, k=k, required_support=support, node_budget=budget).canonical_json()
@@ -287,7 +293,9 @@ def test_missing_mismatched_or_substituted_configuration_rejects():
     ([sim.SyntheticEvent('synthetic:g:bad', None, 'L')], 'OFFLINE', 'INCOMPLETE'),
 ])
 def test_empty_partial_and_complete_runs_all_log_actual_settings(source, mode, status):
-    result = sim.CausalRunner(closing_seconds=7).run(source, fixture_id='synthetic:g:status', mode=mode)
+    result = sim.CausalRunner(closing_seconds=7).run(
+        source, fixture_id="synthetic:g:status", mode=mode
+    )
     expected = sim.RunConfiguration(Q(90), Q(7), Q(3), sim.Watchdog(), mode, None, None)
     assert result.status == status
     sim.verify_run_configuration(result, expected_configuration=expected)
@@ -315,7 +323,9 @@ def test_run_consumes_one_snapshot_even_if_runner_is_reconfigured_during_motion(
 
 
 @pytest.mark.parametrize('n,multiplier', [(16, 1), (32, 4), (128, 1), (512, 4), (2048, 1)])
-def test_fixed_report_grid_uses_linear_interval_accesses(n, multiplier, monkeypatch, record_property):
+def test_fixed_report_grid_uses_linear_interval_accesses(
+    n, multiplier, monkeypatch, record_property
+):
     original = sim._report_endpoint_seconds
     reads = 0
 
@@ -347,7 +357,9 @@ def test_fixed_report_grid_uses_linear_interval_accesses(n, multiplier, monkeypa
     record_property('report_intervals', r)
     record_property('interval_sequence_accesses', reads)
     # Inclusive threshold at1.5s, only when the declared horizon reaches it.
-    expected = sum(Q(b-a, 1000000) for a, b in zip(report, report[1:]) if b >= 1500000)
+    expected = sum(
+        Q(b - a, 1000000) for a, b in zip(report, report[1:], strict=False) if b >= 1500000
+    )
     assert result.report_endpoint_seconds == expected
 
 
@@ -362,11 +374,13 @@ def test_fixed_grid_merge_matches_separate_slow_geometric_lookup():
         result = sim.CausalRunner(initial_angle='45', closing_seconds=3, opening_seconds=6).run(
             events(times, commands), fixture_id='synthetic:g:report-oracle', report_times=report)
         expected = Q(0)
-        for start, end in zip(report, report[1:]):
+        for start, end in zip(report, report[1:], strict=False):
             segment = next(i for i in result.intervals if i.start_us <= end <= i.end_us)
             velocity = {sim.Command.HOLD: Q(0), sim.Command.LOWER: Q(-30),
                         sim.Command.RAISE: Q(15)}[segment.applied_command]
-            angle = min(Q(90), max(Q(0), segment.pre_angle+velocity*Q(end-segment.start_us, 1000000)))
+            angle = min(
+                Q(90), max(Q(0), segment.pre_angle + velocity * Q(end - segment.start_us, 1000000))
+            )
             expected += Q(end-start, 1000000)*int(angle <= 45)
         assert result.report_endpoint_seconds == expected
 
@@ -374,9 +388,146 @@ def test_fixed_grid_merge_matches_separate_slow_geometric_lookup():
 def test_report_grid_failure_and_single_point_semantics_are_preserved():
     for report in ((), (0, 0), (0, 500000), (1000000, 2000000)):
         with pytest.raises(ValueError):
-            sim.CausalRunner().run(events(), fixture_id='synthetic:g:invalid-grid', report_times=report)
+            sim.CausalRunner().run(
+                events(), fixture_id="synthetic:g:invalid-grid", report_times=report
+            )
     one = sim.CausalRunner().run(events((500000,), 'L'), fixture_id='synthetic:g:one',
                                 report_times=(500000,))
     assert one.report_endpoint_seconds == 0
     with pytest.raises(ValueError):
         sim.CausalRunner().run([], fixture_id='synthetic:g:empty-grid', report_times=(0,))
+
+
+# Mission 17I: bounded-memory traversal and call-local verification reuse.
+@pytest.mark.parametrize('count', [0, 1, 32, 8192])
+def test_17i_report_traversal_never_copies_or_indexes_report_grid(count):
+    class IterationOnlyGrid(tuple):
+        def __getitem__(self, key):
+            raise AssertionError('report traversal must not index or slice its input')
+
+    report = IterationOnlyGrid(range(count + 1)) if count else IterationOnlyGrid()
+    interval = sim.Interval(0, count, sim.Command.HOLD, 0, 'synthetic:i:origin',
+                            Q(45), Q(45), True, Q(count, 1000000), 'SENSOR')
+    assert sim._report_endpoint_seconds([interval], report, Q(30), Q(30)) == Q(count, 1000000)
+
+
+@pytest.mark.parametrize('report', [(), (0, 0, 2000000), (0, 2000000, 1000000),
+                                   (3000000, 4000000), (0, 3000000), (500000, 2000000)])
+def test_17i_duplicate_disjoint_overlapping_and_unmatched_report_horizons_reject(report):
+    with pytest.raises(ValueError, match='report grid'):
+        sim.CausalRunner().run(events((0, 2000000), 'LL'),
+                               fixture_id='synthetic:i:bad-grid', report_times=report)
+
+
+def test_17i_missing_records_and_unmatched_interior_endpoints():
+    runner = sim.CausalRunner()
+    empty = runner.run([], fixture_id='synthetic:i:empty')
+    assert empty.status == 'EMPTY' and empty.report_endpoint_seconds == 0
+    single = runner.run(events((7,), 'L'), fixture_id='synthetic:i:one', report_times=(7,))
+    assert single.status == 'COMPLETE' and single.report_endpoint_seconds == 0
+    source = events((0, 2000000), 'LL')
+    result = runner.run(source, fixture_id='synthetic:i:interior',
+                        report_times=(0, 100000, 1700000, 2000000))
+    assert result.report_endpoint_seconds == Q('1.9')
+    assert result.continuous_seconds == Q('0.5')
+    missing = runner.run([source[0], sim.SyntheticEvent('synthetic:i:missing', None, 'L')],
+                         fixture_id='synthetic:i:missing', report_times=(0, 2000000))
+    assert missing.status == 'INCOMPLETE' and missing.report_endpoint_seconds is None
+    with pytest.raises(ValueError, match='outside trajectory'):
+        sim._report_endpoint_seconds([], (0, 1), Q(30), Q(30))
+
+
+def test_17i_duplicate_arrivals_order_and_default_totals_reset(monkeypatch):
+    def forbidden(*args):
+        raise AssertionError('default totals must be reused')
+
+    monkeypatch.setattr(sim, '_report_endpoint_seconds', forbidden)
+    runner = sim.CausalRunner()
+    source = events((0, 1000000, 1000000, 500000, 2000000), 'LLRRL')
+    first = runner.run(source, fixture_id='synthetic:i:ordering')
+    assert tuple(r.reason for r in first.rejections) == ('DUPLICATE', 'OUT_OF_ORDER')
+    assert first.accepted_event_ids == tuple(source[i].event_id for i in (0, 1, 4))
+    assert first.event_grid_us == (0, 1000000, 2000000)
+    assert first.endpoint_seconds == first.report_endpoint_seconds == 1
+    hold = runner.run(events((0, 2000000), 'HH'), fixture_id='synthetic:i:hold')
+    assert hold.endpoint_seconds == hold.report_endpoint_seconds == 0
+    assert (
+        runner.run(source, fixture_id='synthetic:i:ordering').canonical_json()
+        == first.canonical_json()
+    )
+
+
+@pytest.mark.parametrize('enum_type', [sim.Command, DatasetRole])
+def test_17i_enum_modernization_preserves_display_value_and_serialization(enum_type):
+    for member in enum_type:
+        display = f'{enum_type.__name__}.{member.name}'
+        assert str(member) == display and f'{member}' == display
+        assert format(member, '>40') == format(display, '>40')
+        assert json.dumps(member) == json.dumps(member.value)
+        assert member == member.value and enum_type(member.value) is member
+        assert repr(member) == f'<{enum_type.__name__}.{member.name}: {member.value!r}>'
+
+
+@pytest.mark.parametrize('size', [24, 1536])
+def test_17i_each_public_cv_operation_validates_once_and_recomputes(dataset_factory, size):
+    dataset = dataset_factory(labels=(('a', 'b'),) * size)
+    policy = allocation_policy(k=4)
+    receipt = allocate(dataset, k=4)
+    tune = (next(e for e, f in receipt.assignments if f != 0),)
+    context = RoleContext(dataset, receipt, policy, 0, tune)
+    plan = role_plan(dataset, receipt, expected_policy=policy, outer_fold=0,
+                     validation_events=tune)
+    operations = (
+        lambda: allocate(dataset, k=4),
+        lambda: verify_allocation(dataset, receipt, expected_policy=policy),
+        lambda: role_plan(dataset, receipt, expected_policy=policy, outer_fold=0,
+                          validation_events=tune),
+        lambda: validate_fit_membership(plan, 'BASE_MODEL_FIT', plan.training,
+                                        expected_context=context),
+    )
+    for operation in operations:
+        counts = Counter()
+
+        def profile(frame, event, arg, counts=counts):
+            if event == 'call' and frame.f_code.co_filename == cv.__file__:
+                counts[frame.f_code.co_name] += 1
+
+        prior = sys.getprofile()
+        try:
+            sys.setprofile(profile)
+            for _ in range(2):
+                operation()
+        finally:
+            sys.setprofile(prior)
+        assert counts['validate_dataset'] == counts['_allocate_validated'] == 2
+        assert counts['cost'] == 2 * size * 4
+
+
+@pytest.mark.parametrize('mutation', ['version', 'annotation', 'policy', 'receipt', 'roles'])
+def test_17i_repeated_fit_calls_do_not_reuse_stale_context(dataset_factory, mutation):
+    context, plan = context_and_plan(dataset_factory)
+    validate_fit_membership(plan, 'BASE_MODEL_FIT', plan.training, expected_context=context)
+    if mutation == 'version':
+        context.dataset.__dict__['version'] = 'changed'
+    elif mutation == 'annotation':
+        context.dataset.__dict__['annotations'] = context.dataset.annotations[1:]
+    elif mutation == 'policy':
+        context.policy.__dict__['node_budget'] = 1
+    elif mutation == 'receipt':
+        context.allocation.__dict__['greedy_choices'] += 1
+    else:
+        context.dataset.events[-1].__dict__['role'] = DatasetRole.DEVELOPMENT_POOL
+    with pytest.raises(InvalidInput):
+        validate_fit_membership(plan, 'BASE_MODEL_FIT', plan.training, expected_context=context)
+
+
+def test_17i_prevalidated_caller_object_is_not_a_public_trust_shortcut(dataset_factory):
+    dataset = dataset_factory()
+    receipt = allocate(dataset, k=3)
+    registry = validate_dataset(dataset)
+    for operation in (
+        lambda: allocate(registry, k=3),
+        lambda: verify_allocation(registry, receipt, expected_policy=allocation_policy(k=3)),
+    ):
+        with pytest.raises(InvalidInput, match='explicit SyntheticDataset'):
+            operation()

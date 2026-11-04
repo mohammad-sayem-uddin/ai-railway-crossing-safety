@@ -13,7 +13,7 @@ import json
 import re
 from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass, field
-from enum import Enum
+from enum import Enum, StrEnum
 from typing import Any
 
 PROFILE = "SYNTHETIC_GROUPED_V1"
@@ -35,7 +35,11 @@ class InvalidInput(ValueError):
     status = "INVALID_INPUT"
 
 
-class DatasetRole(str, Enum):
+class DatasetRole(StrEnum):
+    # Preserve existing display/format strings and canonical enum values.
+    __str__ = Enum.__str__
+    __format__ = Enum.__format__
+
     DEVELOPMENT_POOL = "DEVELOPMENT_POOL"
     CALIBRATION_ONLY = "CALIBRATION_ONLY"
     RESERVED_CONTROL = "RESERVED_CONTROL"
@@ -248,11 +252,19 @@ def validate_dataset(dataset: SyntheticDataset) -> ValidatedDataset:
             t = a.transform
             _identity(t.transform_id)
             _identity(t.provenance_ref)
-            if type(t.version) is not str or not t.version.strip() or type(t.parameters) is not tuple:
+            if (
+                type(t.version) is not str
+                or not t.version.strip()
+                or type(t.parameters) is not tuple
+            ):
                 raise InvalidInput("transform version/parameters required")
             keys = []
             for pair in t.parameters:
-                if type(pair) is not tuple or len(pair) != 2 or any(type(v) is not str for v in pair):
+                if (
+                    type(pair) is not tuple
+                    or len(pair) != 2
+                    or any(type(v) is not str for v in pair)
+                ):
                     raise InvalidInput("transform parameters are exact string key/value pairs")
                 if not pair[0]:
                     raise InvalidInput("blank transform parameter key")
@@ -265,7 +277,9 @@ def validate_dataset(dataset: SyntheticDataset) -> ValidatedDataset:
                 raise InvalidInput("conflicting transform identity/version")
             transform_versions[t.transform_id] = transform_key
         elif a.parent_ids or a.transform is not None or a.capture_id is None:
-            raise InvalidInput("original asset requires capture and no derivative parents/transform")
+            raise InvalidInput(
+                "original asset requires capture and no derivative parents/transform"
+            )
         else:
             if a.kind == "ORIGINAL_FRAME" and captures[a.capture_id].kind != "VIDEO":
                 raise InvalidInput("video frame must reference a VIDEO capture")
@@ -480,6 +494,17 @@ def allocate(dataset: SyntheticDataset, *, k: int,
     registry = validate_dataset(dataset)
     policy = allocation_policy(k=k, required_support=required_support, node_budget=node_budget,
                                allow_ungrouped_fallback=allow_ungrouped_fallback)
+    return _allocate_validated(registry, policy)
+
+
+def _allocate_validated(registry: ValidatedDataset, policy: AllocationPolicy) -> Allocation:
+    """Private call-local solver; only freshly validated public-entry inputs qualify.
+
+    Never accept a caller-supplied ValidatedDataset as verification evidence.
+    Nothing is cached or retained between public calls.
+    """
+    dataset = registry.dataset
+    k, node_budget = policy.k, policy.node_budget
     support = policy.required_support
     groups = tuple(g for g in registry.groups if g.role == DatasetRole.DEVELOPMENT_POOL)
     ordered = tuple(sorted(groups, key=lambda g: (-g.original_asset_count, g.event_id)))
@@ -508,7 +533,9 @@ def allocate(dataset: SyntheticDataset, *, k: int,
     label_totals = dict.fromkeys(labels, 0)
     for g in ordered:
         present = set(g.labels)
-        def cost(fold: int) -> tuple[int, int, int, int]:
+        def cost(fold: int, *, g: Group = g, present: set[str] = present,
+                 event_squares: int = event_squares, frame_squares: int = frame_squares,
+                 frame_total: int = frame_total) -> tuple[int, int, int, int]:
             event_score = k*k*(event_squares + 2*ec[fold] + 1) - k*(len(assignment)+1)**2
             frame_score = (k*k*(frame_squares + 2*fc[fold]*g.original_asset_count
                                       + g.original_asset_count**2)
@@ -534,7 +561,9 @@ def allocate(dataset: SyntheticDataset, *, k: int,
     if _valid(groups, assignment, k, support):
         return result("FEASIBLE_GREEDY", assignment)
     if len(groups) > MAX_SEARCH_EVENTS:
-        return result("UNDETERMINED_SIZE", reason="greedy failed; bounded exact search limited to18")
+        return result(
+            "UNDETERMINED_SIZE", reason="greedy failed; bounded exact search limited to18"
+        )
     assignment = {}
     exhausted_budget = False
     solution = None
@@ -594,7 +623,10 @@ def _validate_receipt_shape(allocation: Allocation) -> AllocationPolicy:
     _digest(allocation.policy_digest)
     policy = allocation_policy(k=allocation.k, required_support=allocation.required_support,
                                node_budget=allocation.node_budget)
-    if allocation.required_support != policy.required_support or allocation.policy_digest != policy.digest:
+    if (
+        allocation.required_support != policy.required_support
+        or allocation.policy_digest != policy.digest
+    ):
         raise InvalidInput("missing/inconsistent allocation policy binding")
     if (type(allocation.visited_nodes) is not int
             or not 0 <= allocation.visited_nodes <= allocation.node_budget
@@ -647,6 +679,13 @@ def verify_allocation(dataset: SyntheticDataset, allocation: Allocation, *,
     This establishes reproducibility under that request, not authenticated execution
     or scientific truth. Expected policy must never be reconstructed from a candidate.
     """
+    _, feasible = _verify_allocation(dataset, allocation, expected_policy)
+    return feasible
+
+
+def _verify_allocation(dataset: SyntheticDataset, allocation: Allocation,
+                       expected_policy: AllocationPolicy | None) -> tuple[ValidatedDataset, bool]:
+    """Return the fresh registry only for reuse within this public verification call."""
     if type(expected_policy) is not AllocationPolicy:
         raise InvalidInput("independent expected allocation policy required")
     expected_policy.__post_init__()
@@ -654,16 +693,17 @@ def verify_allocation(dataset: SyntheticDataset, allocation: Allocation, *,
     if policy != expected_policy or allocation.policy_digest != expected_policy.digest:
         raise InvalidInput("allocation contradicts expected policy")
     registry = validate_dataset(dataset)
-    if allocation.input_digest != registry.input_digest or allocation.dataset_id != dataset.dataset_id:
+    if (
+        allocation.input_digest != registry.input_digest
+        or allocation.dataset_id != dataset.dataset_id
+    ):
         raise InvalidInput("allocation inputs do not match original synthetic registry")
-    recomputed = allocate(dataset, k=expected_policy.k,
-                          required_support=expected_policy.required_support,
-                          node_budget=expected_policy.node_budget)
+    recomputed = _allocate_validated(registry, expected_policy)
     # Shape checks above exclude equal-valued bool/float substitutions. Recompute
     # every status, assignment, objective, reason and deterministic work counter.
     if allocation != recomputed:
         raise InvalidInput("receipt contradicts deterministic allocation operation")
-    return allocation.status.startswith("FEASIBLE_")
+    return registry, allocation.status.startswith("FEASIBLE_")
 
 
 @dataclass(frozen=True)
@@ -704,7 +744,8 @@ def role_plan(dataset: SyntheticDataset, allocation: Allocation, *, outer_fold: 
               validation_events: tuple[str, ...] = (), calibration_mode: str = "NONE",
               frozen_rule_id: str | None = None,
               expected_policy: AllocationPolicy | None = None) -> RolePlan:
-    if not verify_allocation(dataset, allocation, expected_policy=expected_policy):
+    registry, feasible = _verify_allocation(dataset, allocation, expected_policy)
+    if not feasible:
         raise InvalidInput("no accepted allocation for role plan")
     if type(outer_fold) is not int or not 0 <= outer_fold < allocation.k:
         raise InvalidInput("invalid outer fold")
@@ -713,7 +754,6 @@ def role_plan(dataset: SyntheticDataset, allocation: Allocation, *, outer_fold: 
         raise InvalidInput("unknown calibration operation policy")
     if frozen_rule_id is not None:
         _identity(frozen_rule_id)
-    registry = validate_dataset(dataset)
     by_role = {r: {g.event_id for g in registry.groups if g.role == r} for r in DatasetRole}
     dev = by_role[DatasetRole.DEVELOPMENT_POOL]
     evaluation = {e for e, f in allocation.assignments if f == outer_fold}
@@ -728,15 +768,25 @@ def role_plan(dataset: SyntheticDataset, allocation: Allocation, *, outer_fold: 
     calibration = by_role[DatasetRole.CALIBRATION_ONLY]
     if calibration_mode == "RESERVED_CALIBRATION" and not calibration:
         raise InvalidInput("reserved calibration mode requires calibration-only events")
-    return RolePlan(tuple(sorted(dev)), tuple(sorted(evaluation)),
-                    tuple(sorted(complement-validation)), tuple(sorted(validation)),
-                    tuple(sorted(calibration)), tuple(sorted(by_role[DatasetRole.RESERVED_CONTROL])),
-                    tuple(sorted(by_role[DatasetRole.CASE_STUDY])),
-                    tuple(sorted(by_role[DatasetRole.FINAL_DESCRIPTIVE])),
-                    calibration_mode, frozen_rule_id, dataset.dataset_id, dataset.version,
-                    registry.input_digest, allocation.policy_digest,
-                    hashlib.sha256(allocation.canonical_json().encode()).hexdigest(),
-                    tuple((g.event_id, g.role) for g in registry.groups), outer_fold)
+    return RolePlan(
+        tuple(sorted(dev)),
+        tuple(sorted(evaluation)),
+        tuple(sorted(complement - validation)),
+        tuple(sorted(validation)),
+        tuple(sorted(calibration)),
+        tuple(sorted(by_role[DatasetRole.RESERVED_CONTROL])),
+        tuple(sorted(by_role[DatasetRole.CASE_STUDY])),
+        tuple(sorted(by_role[DatasetRole.FINAL_DESCRIPTIVE])),
+        calibration_mode,
+        frozen_rule_id,
+        dataset.dataset_id,
+        dataset.version,
+        registry.input_digest,
+        allocation.policy_digest,
+        hashlib.sha256(allocation.canonical_json().encode()).hexdigest(),
+        tuple((g.event_id, g.role) for g in registry.groups),
+        outer_fold,
+    )
 
 
 def validate_fit_membership(plan: RolePlan, operation: str, fit_events: tuple[str, ...], *,

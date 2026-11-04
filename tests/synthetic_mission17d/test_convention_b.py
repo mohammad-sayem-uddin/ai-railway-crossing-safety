@@ -197,7 +197,13 @@ def test_executed_watchdog_profiles_match_conditional_oracles():
     a = scheduled.run(source, fixture_id="synthetic:watchdog")
     b = detect.run(source, fixture_id="synthetic:watchdog")
     assert (a.final_angle, b.final_angle) == (60, 90)
-    assert a.endpoint_seconds == b.endpoint_seconds == a.continuous_seconds == b.continuous_seconds == 0
+    assert (
+        a.endpoint_seconds
+        == b.endpoint_seconds
+        == a.continuous_seconds
+        == b.continuous_seconds
+        == 0
+    )
     assert any(issue.kind == "TIMER" and issue.timestamp_us == 3200000 for issue in a.issues)
     assert b.issues[-1].kind == "GAP_DETECTED"
 
@@ -230,7 +236,9 @@ def test_100_fresh_runs_are_byte_deterministic():
     source = events(VECTORS[4][1], VECTORS[4][2])
     expected = CausalRunner().run(source, fixture_id="synthetic:repeat").canonical_json()
     for _ in range(100):
-        assert CausalRunner().run(source, fixture_id="synthetic:repeat").canonical_json() == expected
+        assert (
+            CausalRunner().run(source, fixture_id="synthetic:repeat").canonical_json() == expected
+        )
 
 
 @pytest.mark.parametrize("times,commands,initial,opening,delta", [

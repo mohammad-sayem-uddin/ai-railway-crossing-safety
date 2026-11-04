@@ -12,8 +12,9 @@ import math
 import re
 from dataclasses import asdict, dataclass, replace
 from decimal import Decimal
-from enum import Enum
+from enum import Enum, StrEnum
 from fractions import Fraction
+from itertools import pairwise
 from typing import Any
 
 PROFILE = "SYNTHETIC_CONVENTION_B_V1"
@@ -22,7 +23,11 @@ _DECIMAL = re.compile(r"(?:0|[1-9][0-9]*)(?:\.[0-9]+)?\Z")
 _ID = re.compile(r"synthetic:[A-Za-z0-9][A-Za-z0-9._:-]*\Z")
 
 
-class Command(str, Enum):
+class Command(StrEnum):
+    # Keep the established public display/format contract while using StrEnum.
+    __str__ = Enum.__str__
+    __format__ = Enum.__format__
+
     HOLD = "HOLD"
     LOWER = "LOWER"
     RAISE = "RAISE"
@@ -153,7 +158,7 @@ class RunConfiguration:
         if self.report_times_us is not None:
             if (type(self.report_times_us) is not tuple or not self.report_times_us
                     or any(type(t) is not int or t < 0 for t in self.report_times_us)
-                    or any(b <= a for a, b in zip(self.report_times_us, self.report_times_us[1:]))):
+                    or any(b <= a for a, b in pairwise(self.report_times_us))):
                 raise ValueError("configuration report grid must be increasing integer us")
         for actual, expected in (
             (self.profile, PROFILE), (self.schema_version, "SYNTHETIC_RUN_CONFIGURATION_V1"),
@@ -258,10 +263,13 @@ def verify_run_configuration(result: RunResult, *,
     if result.profile != config.profile or result.mode != config.mode:
         raise ValueError("result contradicts configured profile/mode")
     if result.origin_us is not None and (
-            type(result.initial_angle) is not Fraction or result.initial_angle != config.initial_angle):
+        type(result.initial_angle) is not Fraction or result.initial_angle != config.initial_angle
+    ):
         raise ValueError("result contradicts configured initial angle")
     expected_grid_kind = "EVENT_GRID" if config.report_times_us is None else "FIXED_GRID"
-    expected_grid = result.event_grid_us if config.report_times_us is None else config.report_times_us
+    expected_grid = (
+        result.event_grid_us if config.report_times_us is None else config.report_times_us
+    )
     if result.report_grid_kind != expected_grid_kind or result.report_grid_us != expected_grid:
         raise ValueError("result contradicts configured report grid")
 
@@ -282,10 +290,14 @@ def _motion(q: Fraction, command: Command, seconds: Fraction,
 
 def _report_endpoint_seconds(intervals: list[Interval], report: tuple[int, ...],
                              down: Fraction, up: Fraction) -> Fraction:
-    """Merge two ordered grids; each interval/report boundary is visited O(1) times."""
+    """Merge producer-contiguous intervals and increasing report endpoints.
+
+    O(S+R) arithmetic work and O(1) auxiliary objects; inputs are already stored.
+    This private helper is not an arbitrary interval-geometry validator.
+    """
     index = 0
     total = Fraction(0)
-    for start, end in zip(report, report[1:]):
+    for start, end in pairwise(report):
         while index < len(intervals) and intervals[index].end_us < end:
             index += 1
         if index == len(intervals):
@@ -340,7 +352,7 @@ class CausalRunner:
             raise ValueError("events must be an in-memory list/tuple and mode explicit")
         cutoff_us = None if cutoff is None else timestamp_us(cutoff)
         fixed = None if report_times is None else tuple(timestamp_us(t) for t in report_times)
-        if fixed is not None and (not fixed or any(b <= a for a, b in zip(fixed, fixed[1:]))):
+        if fixed is not None and (not fixed or any(b <= a for a, b in pairwise(fixed))):
             raise ValueError("report grid must be nonempty and strictly increasing")
         config = replace(self._configuration, mode=mode, cutoff_us=cutoff_us,
                          report_times_us=fixed)
