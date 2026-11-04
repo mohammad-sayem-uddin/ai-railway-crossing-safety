@@ -124,7 +124,7 @@ Next phase: WP03 durable constructed actor/event knowledge closure, then final i
 
 ## WP03R
 
-Status: PASS_DURABLE_CONSTRUCTED_REVIEW_AND_BOUNDARY_PROJECTIONS. Parent: `4b88f546d9d9281d33e1abf1a464bd18e0dc2cdc`. Commit: `None`. Remote verified: False.
+Status: PASS_DURABLE_CONSTRUCTED_REVIEW_AND_BOUNDARY_PROJECTIONS. Parent: `4b88f546d9d9281d33e1abf1a464bd18e0dc2cdc`. Commit: `71229e55ca52557cb13dc29e54c19f677bfd99db`. Remote verified: True.
 
 Closed a further eligible engineering gap: injected temporary SQLite review journal persists actor/event knowledge, first seals, comparison exposure and informed corrections across restart/aliases. Fixed event registry prevents fresh-assignment alias bypass; exact idempotent request receipts never move current anchor backwards. Transactions preserve no seal on injected insert failure. Retained typed anchors, immutable context and full replay detect rollback/corruption/result substitution. Added active8.1/proposed8.2 boundary projections with exact source sidecar for censoring/PTS/uncertainty; never fill human/approval/proposal fields or claim a complete active record. Thirty cases pass including original15 plus durable/projection tests. Initial tmp_path allocation hit existing IO tripwires; fixture now allocates its explicit temporary store before component guards, with no guard weakening.
 
@@ -133,3 +133,15 @@ Tests: [{"xml": "/tmp/mission21_wp03_durable.xml", "command": "PYTHONPATH=src PY
 Static: Ruff domain/store/adapter and suite passes; Mypy no issues3 source files
 Remaining: Cooperative constructed backend only: no live UI/player invocation, identity authority, genuine human observations or GT promotion. Retained anchor must be separately maintained; same-user replacement of DB plus anchor is not prevented. Projections are partial boundary views, not vetted complete human-review records; live use still requires authentic metadata, rights and schema/protocol evidence.
 Next phase: WP06 input-source binding hardening discovered during integrated audit
+
+## WP06R
+
+Status: PASS_EXACT_CONSTRUCTED_SOURCE_CONDITION_BINDING. Parent: `71229e55ca52557cb13dc29e54c19f677bfd99db`. Commit: `None`. Remote verified: False.
+
+Audit found camera-name substring checking could accept misleading aliases or out-of-condition health metadata. Replaced inference with explicit fixture source IDs and exact vision/audio modality checks across records and all source metadata before controller execution. Audio-only receipts now also enforce qualified documentary27-event IDs. No physical source identity is inferred from names. Eighteen tests pass including10 new source/metadata/modality/cohort negatives.
+
+Exact files: src/railway_detection/evaluation/descriptive_constructed.py, tests/synthetic_evaluation_pipeline/test_orchestration.py
+Tests: [{"xml": "/tmp/mission21_wp06_binding.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_wp06_binding.xml", "tests": 18, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Ruff and Mypy on modified orchestrator pass; isolated runtime suite18 passes
+Remaining: Bindings are explicit constructed assertions, not real camera identity verification. No real pathway enabled; stateless/back-audio/fused scientific limits retained.
+Next phase: WP04 purpose, appointment and recovery/finalization fence checks found during audit

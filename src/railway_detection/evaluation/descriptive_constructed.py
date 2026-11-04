@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from dataclasses import asdict, dataclass
 
 from railway_detection.evaluation.metrics import (
@@ -40,6 +41,8 @@ class ConstructedDescriptiveJob:
     request: IntegrationRequest
     constructed_t4_us: int | None
     boundary_evidence: str = "CONSTRUCTED_EXPECTED_CLOCK"
+    vision_source_id: str | None = None
+    audio_source_id: str | None = None
 
 
 def run_constructed_descriptive(
@@ -57,6 +60,26 @@ def run_constructed_descriptive(
         condition = CONDITIONS.get(job.condition)
         if condition is None or condition[0] != job.camera:
             raise ValueError("unadopted/deferred/stateless/fused condition; no silent legacy label")
+        cohort, separator, identifier = job.event_key.partition("/")
+        limits = {"train_events": 23, "no_train_events": 3, "engine_events": 1}
+        if (
+            cohort not in limits
+            or separator != "/"
+            or not re.fullmatch(r"event_[0-9]{3}", identifier)
+            or not 1 <= int(identifier[6:]) <= limits[cohort]
+        ):
+            raise ValueError("qualified documented cohort event required")
+        for source in (job.vision_source_id, job.audio_source_id):
+            if source is not None and (
+                type(source) is not str or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_:.-]*", source)
+            ):
+                raise ValueError("explicit neutral constructed source identity required")
+        if job.vision_source_id is not None and job.vision_source_id == job.audio_source_id:
+            raise ValueError("vision/audio source identities must be distinct")
+        if (condition[1] == "VISION" and job.audio_source_id is not None) or (
+            condition[1] == "AUDIO_PERCEPTUAL_ONLY" and job.vision_source_id is not None
+        ):
+            raise ValueError("source binding outside selected modality scope")
         key = (job.event_key, job.camera, job.condition)
         if key in seen:
             raise ValueError("duplicate event/camera/condition")
@@ -71,7 +94,6 @@ def run_constructed_descriptive(
             raise ValueError("frozen controller settings mismatch")
         if json.loads(expected_controller_json)["kind"] != "CURRENT_ENGINE":
             raise ValueError("actual current decision engine required for condition replay")
-        b = run_pipeline(job.request)
         rows = json.loads(job.request.batch.inputs_json)
         for raw in rows:
             f = _frame(raw)
@@ -79,9 +101,29 @@ def run_constructed_descriptive(
                 raise ValueError("audio in vision-only condition")
             if condition[1] == "AUDIO_PERCEPTUAL_ONLY" and f.vision_records:
                 raise ValueError("vision in audio-only condition")
+            permitted_sources = {
+                x for x in (job.vision_source_id, job.audio_source_id) if x is not None
+            }
             for evidence in f.vision_records:
-                if job.camera not in evidence.source_id:
-                    raise ValueError("camera/source mismatch; no cross-camera clock merge")
+                if (
+                    evidence.source_id != job.vision_source_id
+                    or evidence.modality.value != "vision"
+                ):
+                    raise ValueError("exact vision source/modality binding mismatch")
+            for evidence in f.audio_records:
+                if evidence.source_id != job.audio_source_id or evidence.modality.value != "audio":
+                    raise ValueError("exact audio source/modality binding mismatch")
+            for name in (
+                "source_availability",
+                "active_sources",
+                "missing_sources",
+                "source_health",
+                "health_reasons",
+                "observation_ages",
+            ):
+                if not set(getattr(f, name)) <= permitted_sources:
+                    raise ValueError("source metadata outside exact condition binding")
+        b = run_pipeline(job.request)
         body = json.dumps(asdict(job), sort_keys=True, separators=(",", ":"), allow_nan=False)
         input_digest = hashlib.sha256(body.encode()).hexdigest()
         receipt = {

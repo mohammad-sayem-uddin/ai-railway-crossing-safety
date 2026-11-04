@@ -36261,6 +36261,36 @@
           "tests/synthetic_human_review/test_persistence.py": "367906b22d6e69342f7d9efe8d6042fa3fb4d3c1c523c44a0052f2068d6186f4",
           "tests/synthetic_human_review/test_adapters.py": "6d6b9591efa865f7fb73ec5d67efaec72479106b91bc8ab1d679faf93e8b3e12"
         },
+        "commit": "71229e55ca52557cb13dc29e54c19f677bfd99db",
+        "push_verified": true
+      },
+      {
+        "id": "WP06R",
+        "status": "PASS_EXACT_CONSTRUCTED_SOURCE_CONDITION_BINDING",
+        "files": [
+          "src/railway_detection/evaluation/descriptive_constructed.py",
+          "tests/synthetic_evaluation_pipeline/test_orchestration.py"
+        ],
+        "message": "fix: require exact constructed source and condition bindings",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp06_binding.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_wp06_binding.xml",
+            "tests": 18,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Audit found camera-name substring checking could accept misleading aliases or out-of-condition health metadata. Replaced inference with explicit fixture source IDs and exact vision/audio modality checks across records and all source metadata before controller execution. Audio-only receipts now also enforce qualified documentary27-event IDs. No physical source identity is inferred from names. Eighteen tests pass including10 new source/metadata/modality/cohort negatives.",
+        "static": "Ruff and Mypy on modified orchestrator pass; isolated runtime suite18 passes",
+        "limitations": "Bindings are explicit constructed assertions, not real camera identity verification. No real pathway enabled; stateless/back-audio/fused scientific limits retained.",
+        "next": "WP04 purpose, appointment and recovery/finalization fence checks found during audit",
+        "parent": "71229e55ca52557cb13dc29e54c19f677bfd99db",
+        "source_sha256": {
+          "src/railway_detection/evaluation/descriptive_constructed.py": "9b05d9348c65c57cf3200935613a8a76e8d9ecd91eea162fd9fe9d85caea77df",
+          "tests/synthetic_evaluation_pipeline/test_orchestration.py": "ddeea2e6902b4a13af1425cad19bb560b196b7bb89708f8d2df6d377bbf41804"
+        },
         "commit": null,
         "push_verified": false
       }

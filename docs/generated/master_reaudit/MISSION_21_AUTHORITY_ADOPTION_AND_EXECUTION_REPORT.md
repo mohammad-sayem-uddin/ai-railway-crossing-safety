@@ -158,9 +158,22 @@ Files: `src/railway_detection/annotation/human_review_domain.py`, `src/railway_d
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_wp03_durable.xml`: 30 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp03_durable.xml`.
 
 Static analysis: Ruff domain/store/adapter and suite passes; Mypy no issues3 source files.
-Commit: None; push/local/tracking/live verified: False.
+Commit: 71229e55ca52557cb13dc29e54c19f677bfd99db; push/local/tracking/live verified: True.
 Limitations: Cooperative constructed backend only: no live UI/player invocation, identity authority, genuine human observations or GT promotion. Retained anchor must be separately maintained; same-user replacement of DB plus anchor is not prevented. Projections are partial boundary views, not vetted complete human-review records; live use still requires authentic metadata, rights and schema/protocol evidence.
 Next: WP06 input-source binding hardening discovered during integrated audit.
+
+### WP06R — PASS_EXACT_CONSTRUCTED_SOURCE_CONDITION_BINDING
+
+Audit found camera-name substring checking could accept misleading aliases or out-of-condition health metadata. Replaced inference with explicit fixture source IDs and exact vision/audio modality checks across records and all source metadata before controller execution. Audio-only receipts now also enforce qualified documentary27-event IDs. No physical source identity is inferred from names. Eighteen tests pass including10 new source/metadata/modality/cohort negatives.
+
+Files: `src/railway_detection/evaluation/descriptive_constructed.py`, `tests/synthetic_evaluation_pipeline/test_orchestration.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_wp06_binding.xml`: 18 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp06_binding.xml`.
+
+Static analysis: Ruff and Mypy on modified orchestrator pass; isolated runtime suite18 passes.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: Bindings are explicit constructed assertions, not real camera identity verification. No real pathway enabled; stateless/back-audio/fused scientific limits retained.
+Next: WP04 purpose, appointment and recovery/finalization fence checks found during audit.
 
 ## Execution boundaries
 
