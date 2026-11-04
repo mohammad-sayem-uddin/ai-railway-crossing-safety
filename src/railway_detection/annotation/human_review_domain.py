@@ -231,7 +231,7 @@ class ReviewWorkflow:
 
     def correct(self, actor, event, observations, *, reason):
         actor = self._actor(actor, "REVIEWER")
-        if (actor, event) not in self._exposed or not reason:
+        if (actor, event) not in self._exposed or type(reason) is not str or not reason.strip():
             raise ValueError("informed correction requires exposure and reason")
         original = self._seals[actor, event]
         body = self._body(observations)
@@ -249,7 +249,7 @@ class ReviewWorkflow:
             or tuple(sorted(source_digests)) != tuple(sorted(s.digest for s in sources))
         ):
             raise ValueError("separate adjudicator and exact independent sources required")
-        if state != "UNCERTAIN" or not rationale:
+        if state != "UNCERTAIN" or type(rationale) is not str or not rationale.strip():
             raise ValueError(
                 "numeric dispute resolution needs actual human/versioned adapter evidence"
             )

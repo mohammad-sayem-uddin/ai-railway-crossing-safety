@@ -36225,6 +36225,42 @@
           "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_AND_STATIC_ANALYSIS.md": "5ca054a5537b8356666eb9501b3a22ce0c779418888fe45e616e63c6004a9506",
           "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_RECEIPT.json": "bfb5f4930583a18021a21b2cffb9380678a74e5477355af8e60031bf583428f9"
         },
+        "commit": "4b88f546d9d9281d33e1abf1a464bd18e0dc2cdc",
+        "push_verified": true
+      },
+      {
+        "id": "WP03R",
+        "status": "PASS_DURABLE_CONSTRUCTED_REVIEW_AND_BOUNDARY_PROJECTIONS",
+        "files": [
+          "src/railway_detection/annotation/human_review_domain.py",
+          "src/railway_detection/annotation/human_review_store.py",
+          "src/railway_detection/annotation/human_review_adapter.py",
+          "tests/synthetic_human_review/test_persistence.py",
+          "tests/synthetic_human_review/test_adapters.py"
+        ],
+        "message": "feat: persist constructed review exposure and preserve schema projection evidence",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp03_durable.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_wp03_durable.xml",
+            "tests": 30,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Closed a further eligible engineering gap: injected temporary SQLite review journal persists actor/event knowledge, first seals, comparison exposure and informed corrections across restart/aliases. Fixed event registry prevents fresh-assignment alias bypass; exact idempotent request receipts never move current anchor backwards. Transactions preserve no seal on injected insert failure. Retained typed anchors, immutable context and full replay detect rollback/corruption/result substitution. Added active8.1/proposed8.2 boundary projections with exact source sidecar for censoring/PTS/uncertainty; never fill human/approval/proposal fields or claim a complete active record. Thirty cases pass including original15 plus durable/projection tests. Initial tmp_path allocation hit existing IO tripwires; fixture now allocates its explicit temporary store before component guards, with no guard weakening.",
+        "static": "Ruff domain/store/adapter and suite passes; Mypy no issues3 source files",
+        "limitations": "Cooperative constructed backend only: no live UI/player invocation, identity authority, genuine human observations or GT promotion. Retained anchor must be separately maintained; same-user replacement of DB plus anchor is not prevented. Projections are partial boundary views, not vetted complete human-review records; live use still requires authentic metadata, rights and schema/protocol evidence.",
+        "next": "WP06 input-source binding hardening discovered during integrated audit",
+        "parent": "4b88f546d9d9281d33e1abf1a464bd18e0dc2cdc",
+        "source_sha256": {
+          "src/railway_detection/annotation/human_review_domain.py": "20cec136dfaf0fc175ae536523ba70a1ac0d8369cc5efa611f0f7d6ad54c0043",
+          "src/railway_detection/annotation/human_review_store.py": "021e2ef9b519922afa17d74175bc8a4034ebb919a347dee99c57f3721e4e55da",
+          "src/railway_detection/annotation/human_review_adapter.py": "f9877ba0cde751715cdfec49abb60748af444457135d07610560f2a9b183b93a",
+          "tests/synthetic_human_review/test_persistence.py": "367906b22d6e69342f7d9efe8d6042fa3fb4d3c1c523c44a0052f2068d6186f4",
+          "tests/synthetic_human_review/test_adapters.py": "6d6b9591efa865f7fb73ec5d67efaec72479106b91bc8ab1d679faf93e8b3e12"
+        },
         "commit": null,
         "push_verified": false
       }

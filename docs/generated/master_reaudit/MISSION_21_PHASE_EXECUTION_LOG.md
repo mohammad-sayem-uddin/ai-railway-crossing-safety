@@ -112,7 +112,7 @@ Next phase: WP10 bounded locked static-analysis repair and integrated regression
 
 ## WP10
 
-Status: PASS_LOCKED_TOOL_REPAIR_SCOPED_TYPING_BASELINE_LIMITS. Parent: `938a2d7d3de0df8ab97f75add034f482b2fcf180`. Commit: `None`. Remote verified: False.
+Status: PASS_LOCKED_TOOL_REPAIR_SCOPED_TYPING_BASELINE_LIMITS. Parent: `938a2d7d3de0df8ab97f75add034f482b2fcf180`. Commit: `4b88f546d9d9281d33e1abf1a464bd18e0dc2cdc`. Remote verified: True.
 
 Repaired six partial active-Python3.11 tool packages to exact existing lock versions with staged execution, namespace rollback inventory and wheel digests; no dependency spec/global changes. Restored module/CLI Mypy2.4.0. Fixed19 new-component type diagnostics and metric optional narrowing. Legacy generator refusals now explicit entrypoints before third-party imports; formatted unreachable bodies and preserved historical value strings. Scoped9-source Mypy passes; fresh original238 and all10 new isolated suites total443 passing cases.
 
@@ -121,3 +121,15 @@ Tests: [{"xml": "/tmp/mission21_final_synthetic_mission18a.xml", "command": "PYT
 Static: Mypy no issues9 source files; Ruff30 changed/new Python files passes; AST31 including preserved A runner parses. Exact commands/results in tooling report/receipts.
 Remaining: A instrumentation has pre-existing Mypy diagnostics and one Ruff E501; R02-A permits only B delegation in runner, so A code preserved. Disabled legacy report bodies still reference optional missing docx/pandas typing; no unnecessary packages installed. No repository-wide type or production readiness claim.
 Next phase: WP03 durable constructed actor/event knowledge closure, then final integrated audit
+
+## WP03R
+
+Status: PASS_DURABLE_CONSTRUCTED_REVIEW_AND_BOUNDARY_PROJECTIONS. Parent: `4b88f546d9d9281d33e1abf1a464bd18e0dc2cdc`. Commit: `None`. Remote verified: False.
+
+Closed a further eligible engineering gap: injected temporary SQLite review journal persists actor/event knowledge, first seals, comparison exposure and informed corrections across restart/aliases. Fixed event registry prevents fresh-assignment alias bypass; exact idempotent request receipts never move current anchor backwards. Transactions preserve no seal on injected insert failure. Retained typed anchors, immutable context and full replay detect rollback/corruption/result substitution. Added active8.1/proposed8.2 boundary projections with exact source sidecar for censoring/PTS/uncertainty; never fill human/approval/proposal fields or claim a complete active record. Thirty cases pass including original15 plus durable/projection tests. Initial tmp_path allocation hit existing IO tripwires; fixture now allocates its explicit temporary store before component guards, with no guard weakening.
+
+Exact files: src/railway_detection/annotation/human_review_domain.py, src/railway_detection/annotation/human_review_store.py, src/railway_detection/annotation/human_review_adapter.py, tests/synthetic_human_review/test_persistence.py, tests/synthetic_human_review/test_adapters.py
+Tests: [{"xml": "/tmp/mission21_wp03_durable.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_wp03_durable.xml", "tests": 30, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Ruff domain/store/adapter and suite passes; Mypy no issues3 source files
+Remaining: Cooperative constructed backend only: no live UI/player invocation, identity authority, genuine human observations or GT promotion. Retained anchor must be separately maintained; same-user replacement of DB plus anchor is not prevented. Projections are partial boundary views, not vetted complete human-review records; live use still requires authentic metadata, rights and schema/protocol evidence.
+Next phase: WP06 input-source binding hardening discovered during integrated audit

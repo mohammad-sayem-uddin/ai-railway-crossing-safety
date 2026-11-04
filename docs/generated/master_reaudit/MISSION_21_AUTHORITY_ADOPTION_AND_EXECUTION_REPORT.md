@@ -145,9 +145,22 @@ Files: `src/railway_detection/synthetic/convention_b_pipeline.py`, `src/railway_
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission17d -p no:cacheprovider --import-mode=importlib tests/synthetic_mission17d -q --junitxml=/tmp/mission21_final_synthetic_mission17d.xml`: 238 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_final_synthetic_mission17d.xml`.
 
 Static analysis: Mypy no issues9 source files; Ruff30 changed/new Python files passes; AST31 including preserved A runner parses. Exact commands/results in tooling report/receipts..
-Commit: None; push/local/tracking/live verified: False.
+Commit: 4b88f546d9d9281d33e1abf1a464bd18e0dc2cdc; push/local/tracking/live verified: True.
 Limitations: A instrumentation has pre-existing Mypy diagnostics and one Ruff E501; R02-A permits only B delegation in runner, so A code preserved. Disabled legacy report bodies still reference optional missing docx/pandas typing; no unnecessary packages installed. No repository-wide type or production readiness claim.
 Next: WP03 durable constructed actor/event knowledge closure, then final integrated audit.
+
+### WP03R — PASS_DURABLE_CONSTRUCTED_REVIEW_AND_BOUNDARY_PROJECTIONS
+
+Closed a further eligible engineering gap: injected temporary SQLite review journal persists actor/event knowledge, first seals, comparison exposure and informed corrections across restart/aliases. Fixed event registry prevents fresh-assignment alias bypass; exact idempotent request receipts never move current anchor backwards. Transactions preserve no seal on injected insert failure. Retained typed anchors, immutable context and full replay detect rollback/corruption/result substitution. Added active8.1/proposed8.2 boundary projections with exact source sidecar for censoring/PTS/uncertainty; never fill human/approval/proposal fields or claim a complete active record. Thirty cases pass including original15 plus durable/projection tests. Initial tmp_path allocation hit existing IO tripwires; fixture now allocates its explicit temporary store before component guards, with no guard weakening.
+
+Files: `src/railway_detection/annotation/human_review_domain.py`, `src/railway_detection/annotation/human_review_store.py`, `src/railway_detection/annotation/human_review_adapter.py`, `tests/synthetic_human_review/test_persistence.py`, `tests/synthetic_human_review/test_adapters.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_wp03_durable.xml`: 30 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp03_durable.xml`.
+
+Static analysis: Ruff domain/store/adapter and suite passes; Mypy no issues3 source files.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: Cooperative constructed backend only: no live UI/player invocation, identity authority, genuine human observations or GT promotion. Retained anchor must be separately maintained; same-user replacement of DB plus anchor is not prevented. Projections are partial boundary views, not vetted complete human-review records; live use still requires authentic metadata, rights and schema/protocol evidence.
+Next: WP06 input-source binding hardening discovered during integrated audit.
 
 ## Execution boundaries
 
