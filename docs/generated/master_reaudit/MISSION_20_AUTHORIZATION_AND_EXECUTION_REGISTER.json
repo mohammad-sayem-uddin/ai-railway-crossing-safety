@@ -35991,6 +35991,38 @@
           "tests/synthetic_evaluation_pipeline/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
           "tests/synthetic_evaluation_pipeline/test_orchestration.py": "f09b826d429990193772e9273a6be20f13f613c7913185be70dfb884750b721f"
         },
+        "commit": "4313a456fedba8a340e3cf46027405fa6f4c5a1a",
+        "push_verified": true
+      },
+      {
+        "id": "WP07",
+        "status": "PASS_CONSTRUCTED_IMMUTABLE_MANIFEST_CONTRACT",
+        "files": [
+          "src/railway_detection/data/constructed_manifest.py",
+          "tests/synthetic_data_provenance/conftest.py",
+          "tests/synthetic_data_provenance/test_manifest.py"
+        ],
+        "message": "feat: validate immutable constructed source and derivative lineage",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp07.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_data_provenance -p no:cacheprovider --import-mode=importlib tests/synthetic_data_provenance -q --junitxml=/tmp/mission21_wp07.xml",
+            "tests": 21,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Added typed source/derived/annotation metadata, exact parent/source joins, immutable append-only versions with predecessor digests, physical-event role consistency, DAG validation and transitive fitted exposure. Independent retained digest detects substitution; aliases cannot cross development/evaluation roles. Every real backend invocation fails closed; synthetic annotation fixtures never claim human origin.",
+        "static": "Ruff on new module/tests passes; isolated import/runtime under file/network/process IO tripwires",
+        "limitations": "Metadata consistency does not verify genuine physical identity, byte provenance, rights or scientific exposure. No preprocessing, raw/cache reads, training, calibration or official split performed. Existing guarded live scripts unchanged; live adapter still needs exact grants and genuine registry.",
+        "next": "WP08 deterministic source/docs snapshot tooling",
+        "parent": "4313a456fedba8a340e3cf46027405fa6f4c5a1a",
+        "source_sha256": {
+          "src/railway_detection/data/constructed_manifest.py": "f920f1f61cc19a4634ec503c49310be413880456c940383061bde100c13e3778",
+          "tests/synthetic_data_provenance/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+          "tests/synthetic_data_provenance/test_manifest.py": "b2a5248d975bdb24d01599c50f3737d04b50c1c7e848c7b83cd30c809bae88c9"
+        },
         "commit": null,
         "push_verified": false
       }

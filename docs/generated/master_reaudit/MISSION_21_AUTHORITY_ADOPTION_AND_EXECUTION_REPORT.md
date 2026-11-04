@@ -83,9 +83,22 @@ Files: `src/railway_detection/evaluation/descriptive_constructed.py`, `tests/syn
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_wp06.xml`: 8 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp06.xml`.
 
 Static analysis: Scoped Ruff passes; isolated imports and runtime exercised.
-Commit: None; push/local/tracking/live verified: False.
+Commit: 4313a456fedba8a340e3cf46027405fa6f4c5a1a; push/local/tracking/live verified: True.
 Limitations: Real path explicitly denied pending canonical resource grants, authentic GT and live adapter verification. B2_back lacks actual audio evidence/configuration. B0_back_stateless remains unavailable: no exact memoryless transition rule supplied; the condition label alone cannot define it. No fusion or official results.
 Next: WP07 constructed source/derived manifest provenance.
+
+### WP07 — PASS_CONSTRUCTED_IMMUTABLE_MANIFEST_CONTRACT
+
+Added typed source/derived/annotation metadata, exact parent/source joins, immutable append-only versions with predecessor digests, physical-event role consistency, DAG validation and transitive fitted exposure. Independent retained digest detects substitution; aliases cannot cross development/evaluation roles. Every real backend invocation fails closed; synthetic annotation fixtures never claim human origin.
+
+Files: `src/railway_detection/data/constructed_manifest.py`, `tests/synthetic_data_provenance/conftest.py`, `tests/synthetic_data_provenance/test_manifest.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_data_provenance -p no:cacheprovider --import-mode=importlib tests/synthetic_data_provenance -q --junitxml=/tmp/mission21_wp07.xml`: 21 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp07.xml`.
+
+Static analysis: Ruff on new module/tests passes; isolated import/runtime under file/network/process IO tripwires.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: Metadata consistency does not verify genuine physical identity, byte provenance, rights or scientific exposure. No preprocessing, raw/cache reads, training, calibration or official split performed. Existing guarded live scripts unchanged; live adapter still needs exact grants and genuine registry.
+Next: WP08 deterministic source/docs snapshot tooling.
 
 ## Execution boundaries
 
