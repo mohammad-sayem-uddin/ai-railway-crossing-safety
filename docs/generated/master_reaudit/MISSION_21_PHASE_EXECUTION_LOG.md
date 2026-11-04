@@ -28,7 +28,7 @@ Next phase: WP03 blind human-review domain and synthetic player
 
 ## WP03
 
-Status: PARTIAL_DOMAIN_TESTED_LIVE_WORKFLOW_GATED. Parent: `7cfa08dca342a409f596a8a2b537f513e05e1ee8`. Commit: `None`. Remote verified: False.
+Status: PARTIAL_DOMAIN_TESTED_LIVE_WORKFLOW_GATED. Parent: `7cfa08dca342a409f596a8a2b537f513e05e1ee8`. Commit: `794c8c5fd1090cd0351b8f8c960687d654d98ab9`. Remote verified: True.
 
 Implemented typed six-boundary local-clock/PTS/censor/uncertainty validation, deferred-landmark rejection, explicit constructed reviewer roles/principal aliases, consumed immutable blind seals, six-risk comparison gate, monotone exposure, append-only informed corrections, exact source-linked unresolved adjudication and neutral PTS player. No predictions/media paths accepted by player. Known uncertainty cannot be self-declared risk-free.
 
@@ -37,3 +37,15 @@ Tests: [{"xml": "/tmp/mission21_wp03.xml", "command": "PYTHONPATH=src PYTEST_DIS
 Static: Scoped Ruff passes; all new Python AST/runtime imports covered by isolated suite; standard-library only
 Remaining: Partial overall infrastructure: constructed in-process domain is tested; real player/CLI, appointed/qualified human identities, independently persistent actor/event exposure, active8.1/proposed8.2 promotion adapter and actual observations are not activated. A constructed draft explicitly cannot satisfy the active schema. Genuine observations/appointments, protocol/schema promotion and exact media grants remain external prerequisites. No full AB/RC/security acceptance or real human workflow completion claimed.
 Next phase: WP04 cooperative security codec, scoped broker, ledger and recovery services
+
+## WP04
+
+Status: PARTIAL_COOPERATIVE_SQLITE_CORE_TESTED. Parent: `794c8c5fd1090cd0351b8f8c960687d654d98ab9`. Commit: `None`. Remote verified: False.
+
+Implemented strict canonical envelope/Unicode/duplicate-key/number/schema codec; synthetic issuer/reviewer separation; exact context/operation/resource/time/quota checks; durable unique reservation, payload-before-ACK SQLite transactions, execution binding, hash-linked ledger, independent retained anchor audit, durable revocation/abort, monotone clock, recovery fence, terminal/unknown-effect refusal, idempotent committed receipts and atomic create-only qualified constructed batch publication. Tests include two-connection reservation race, reopen after PREPARED/COMMITTED, injected failure before ACK, loss of journal body, changed operation between prepare/commit and collision rollback. SQLite is injected by explicitly constructed temporary-file fixtures; no production DB or protected resource touched.
+
+Exact files: src/railway_detection/safety/constructed_authority.py, tests/synthetic_security/test_transactions.py
+Tests: [{"xml": "/tmp/mission21_wp04.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04.xml", "tests": 24, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Scoped Ruff passes; Python3.11.15 standard-library SQLite;24 exact synthetic cases; no claim all32 ES deployment cases executed
+Remaining: Partial overall security infrastructure. CONSTRUCTED_ONLY profile cannot issue live grants or satisfy active GT schema. Identity/appointments are test fixtures, context/approval/anchor are independently retained caller expectations, and local SQLite is not independently protected authority/OS isolation or root-compromise resistance. Real broker/identity/time/revocation/backup service, external anchor trust, actual appointed roles and active-schema publication remain gated. ES28/29 protected deployment/compromised-root guarantees, service integration and all32-case acceptance are not claimed. No live AUTH/EVAL/GT receipt changed.
+Next phase: WP05–WP07 constructed methodology/reporting and guarded evidence interfaces

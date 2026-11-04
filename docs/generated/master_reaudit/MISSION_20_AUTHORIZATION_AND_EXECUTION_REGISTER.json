@@ -35897,6 +35897,36 @@
           "tests/synthetic_human_review/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
           "tests/synthetic_human_review/test_domain.py": "d4346b6a01451f6c07cee94e8af723bc039b5c0a44ef13284f09e72d1778d24e"
         },
+        "commit": "794c8c5fd1090cd0351b8f8c960687d654d98ab9",
+        "push_verified": true
+      },
+      {
+        "id": "WP04",
+        "status": "PARTIAL_COOPERATIVE_SQLITE_CORE_TESTED",
+        "files": [
+          "src/railway_detection/safety/constructed_authority.py",
+          "tests/synthetic_security/test_transactions.py"
+        ],
+        "message": "feat: add constructed scoped authority and transactional recovery store",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp04.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04.xml",
+            "tests": 24,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Implemented strict canonical envelope/Unicode/duplicate-key/number/schema codec; synthetic issuer/reviewer separation; exact context/operation/resource/time/quota checks; durable unique reservation, payload-before-ACK SQLite transactions, execution binding, hash-linked ledger, independent retained anchor audit, durable revocation/abort, monotone clock, recovery fence, terminal/unknown-effect refusal, idempotent committed receipts and atomic create-only qualified constructed batch publication. Tests include two-connection reservation race, reopen after PREPARED/COMMITTED, injected failure before ACK, loss of journal body, changed operation between prepare/commit and collision rollback. SQLite is injected by explicitly constructed temporary-file fixtures; no production DB or protected resource touched.",
+        "static": "Scoped Ruff passes; Python3.11.15 standard-library SQLite;24 exact synthetic cases; no claim all32 ES deployment cases executed",
+        "limitations": "Partial overall security infrastructure. CONSTRUCTED_ONLY profile cannot issue live grants or satisfy active GT schema. Identity/appointments are test fixtures, context/approval/anchor are independently retained caller expectations, and local SQLite is not independently protected authority/OS isolation or root-compromise resistance. Real broker/identity/time/revocation/backup service, external anchor trust, actual appointed roles and active-schema publication remain gated. ES28/29 protected deployment/compromised-root guarantees, service integration and all32-case acceptance are not claimed. No live AUTH/EVAL/GT receipt changed.",
+        "next": "WP05–WP07 constructed methodology/reporting and guarded evidence interfaces",
+        "parent": "794c8c5fd1090cd0351b8f8c960687d654d98ab9",
+        "source_sha256": {
+          "src/railway_detection/safety/constructed_authority.py": "7fc3ba71b7a484cedd30af13764e7e94c3ab71efe3a2464d6014987a51439d7f",
+          "tests/synthetic_security/test_transactions.py": "f90be3512acf296dcefa226c1e280a667b177bc5115c894720671b5f466183f3"
+        },
         "commit": null,
         "push_verified": false
       }
