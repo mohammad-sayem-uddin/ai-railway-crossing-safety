@@ -12075,9 +12075,10 @@
         "current_validation": {
           "status": "CONSTRUCTED_ENGINEERING_IMPLEMENTED_TESTED_COMMITTED_PUSHED",
           "phases": [
-            "WP10"
+            "WP10",
+            "WP10R"
           ],
-          "runtime_tests": 8,
+          "runtime_tests": 15,
           "failures": 0,
           "errors": 0,
           "skipped": 0,
@@ -22243,9 +22244,10 @@
       "mission21_state": {
         "status": "CONSTRUCTED_ENGINEERING_IMPLEMENTED_TESTED_COMMITTED_PUSHED",
         "phases": [
-          "WP10"
+          "WP10",
+          "WP10R"
         ],
-        "runtime_tests": 8,
+        "runtime_tests": 15,
         "failures": 0,
         "errors": 0,
         "skipped": 0,
@@ -36719,6 +36721,36 @@
           "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_RECEIPT.json": "2f7e0f8a88f9ad6d8ce1c62903dfe01f2c26a2f5b0aeff3d815a343d79722ded",
           "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_AND_STATIC_ANALYSIS.md": "2ef5f087248df98cd12553b222d45cb0d859b970c6a48bf45b32cf6079a7ddde"
         },
+        "commit": "7de31f32ad56d5b3e894af28a513a7c87cd0f946",
+        "push_verified": true
+      },
+      {
+        "id": "WP01L",
+        "status": "PASS_MAXIMUM_DECLARED_18A_WORKLOAD_AND_TRACEABILITY",
+        "files": [
+          "tests/synthetic_mission18a/test_convention_b_integration.py",
+          "docs/generated/master_reaudit/MISSION_21_18A_ACCEPTANCE_TRACEABILITY.md"
+        ],
+        "message": "test: verify full selected Convention B workload boundaries",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp01_limits.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_wp01_limits.xml",
+            "tests": 65,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Completed explicit acceptance traceability for CB01–CB12/A01–A07. Expanded the scale case to execute8192 supplied frames/emitted intervals,32768 fixed-report intervals and the exact one-hour horizon, with independent constant45-degree duration expectations and over-limit refusal. Explicitly checked NONE/no timeout/no timer issues in native and maximum fixtures. The65-case suite passes; no implementation or scientific parameter changed.",
+        "static": "Ruff on integration suite passes; existing12-source Mypy receipt remains applicable because application code unchanged",
+        "limitations": "Finite synthetic envelope acceptance only; no real clock accuracy, occupancy, empirical safety or integrated non-NONE timer policy claim.",
+        "next": "Final regression and exact documentation delivery",
+        "parent": "7de31f32ad56d5b3e894af28a513a7c87cd0f946",
+        "source_sha256": {
+          "tests/synthetic_mission18a/test_convention_b_integration.py": "236d4e2255fa12ddd02f7172bda9438d20cecdc5b21d6c5b96fc5cf065d19eab",
+          "docs/generated/master_reaudit/MISSION_21_18A_ACCEPTANCE_TRACEABILITY.md": "0c00bb3721cec01e881abf1332aff8f1d5ff99606cdb322abd19f355d743c032"
+        },
         "commit": null,
         "push_verified": false
       }
@@ -36850,9 +36882,10 @@
       "WP10": {
         "status": "CONSTRUCTED_ENGINEERING_IMPLEMENTED_TESTED_COMMITTED_PUSHED",
         "phases": [
-          "WP10"
+          "WP10",
+          "WP10R"
         ],
-        "runtime_tests": 8,
+        "runtime_tests": 15,
         "failures": 0,
         "errors": 0,
         "skipped": 0,
@@ -36863,10 +36896,10 @@
     },
     "final_validation": {
       "path": "docs/generated/master_reaudit/MISSION_21_FINAL_ENGINEERING_VALIDATION.json",
-      "sha256": "8cfb332d9981d8001cf8445209c863f109d5cbcf09b0f18797b2b01326b904e0",
-      "tested_source_commit": "5398af3cd1b13fbbc19868fe0bd6ca62a54eeddd",
-      "tests": 493,
-      "new_cases": 255,
+      "sha256": "21b8a1231ee5f4056f7c463836e6155123fe8055a051aea51a86173b2d58fdfd",
+      "tested_source_commit": "7de31f32ad56d5b3e894af28a513a7c87cd0f946",
+      "tests": 500,
+      "new_cases": 262,
       "original_cases": 238,
       "failures": 0,
       "errors": 0,

@@ -184,7 +184,7 @@ Next phase: Final integrated regression, preservation/scope audit and overnight 
 
 ## WP10R
 
-Status: PASS_EXACT_TOOL_ENTRYPOINT_AND_RECORD_INTEGRITY. Parent: `5398af3cd1b13fbbc19868fe0bd6ca62a54eeddd`. Commit: `None`. Remote verified: False.
+Status: PASS_EXACT_TOOL_ENTRYPOINT_AND_RECORD_INTEGRITY. Parent: `5398af3cd1b13fbbc19868fe0bd6ca62a54eeddd`. Commit: `7de31f32ad56d5b3e894af28a513a7c87cd0f946`. Remote verified: True.
 
 Final environment integrity check found copied RECORD entries pointed at the temporary target layout for5 CLIs. Restored the5 exact staged wheel wrappers and corrected active-runtime relative paths, hashes and sizes, preserving rollback copies. Added6 package-record completeness cases and one5-CLI integrity case; also exercised CLI type-error exit. All15 tooling cases pass. No dependency versions/specifications or global/other-Python environment changed.
 
@@ -193,3 +193,15 @@ Tests: [{"xml": "/tmp/mission21_wp10_record.xml", "command": "PYTHONPATH=src PYT
 Static: Ruff on tooling suite passes; actual module/CLI/type-error runtime and all6 package RECORD inventories validated
 Remaining: Same scoped analysis and preserved A/disabled optional dependency limits; environment integrity does not establish application production readiness.
 Next phase: Regenerate final integrated receipts and deliver the overnight summary
+
+## WP01L
+
+Status: PASS_MAXIMUM_DECLARED_18A_WORKLOAD_AND_TRACEABILITY. Parent: `7de31f32ad56d5b3e894af28a513a7c87cd0f946`. Commit: `None`. Remote verified: False.
+
+Completed explicit acceptance traceability for CB01–CB12/A01–A07. Expanded the scale case to execute8192 supplied frames/emitted intervals,32768 fixed-report intervals and the exact one-hour horizon, with independent constant45-degree duration expectations and over-limit refusal. Explicitly checked NONE/no timeout/no timer issues in native and maximum fixtures. The65-case suite passes; no implementation or scientific parameter changed.
+
+Exact files: tests/synthetic_mission18a/test_convention_b_integration.py, docs/generated/master_reaudit/MISSION_21_18A_ACCEPTANCE_TRACEABILITY.md
+Tests: [{"xml": "/tmp/mission21_wp01_limits.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_wp01_limits.xml", "tests": 65, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Ruff on integration suite passes; existing12-source Mypy receipt remains applicable because application code unchanged
+Remaining: Finite synthetic envelope acceptance only; no real clock accuracy, occupancy, empirical safety or integrated non-NONE timer policy claim.
+Next phase: Final regression and exact documentation delivery

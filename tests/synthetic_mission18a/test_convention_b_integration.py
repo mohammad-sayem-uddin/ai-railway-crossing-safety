@@ -231,6 +231,7 @@ def test_actual_controller_a_compatibility_and_different_motion():
     a_before = runner.run_frames(frames)
     out = runner.run_frames_convention_b(q)
     a_after = runner.run_frames(frames)
+    assert out.causal.configuration.watchdog.mode == "NONE"
     assert a_before == a_after
     assert [x.decision.resulting_gate_state for x in a_before.steps] == [
         json.loads(x.decision_json)["resulting_gate_state"] for x in out.decisions
@@ -250,14 +251,28 @@ def test_exact_threshold_and_noop_subdivision():
     assert a.causal.report_endpoint_seconds == b.causal.report_endpoint_seconds
 
 
-def test_8192_frames_scale_and_limits():
-    q = request([i * 200000 for i in range(8192)])
+def test_declared_maximum_workloads_and_clock_boundaries():
+    q = request([i * 200000 for i in range(8192)], cutoff=8192 * 200000)
     r = run_pipeline(q)
-    assert r.controller_calls == 8192 and len(r.causal.intervals) == 8191
+    assert r.controller_calls == 8192 and len(r.causal.intervals) == 8192
     with pytest.raises(ValueError, match="report workload"):
         run_pipeline(replace(q, report_step_us=1))
     with pytest.raises(ValueError):
         batch([0] * 8193)
+    grid = tuple(range(32768)) + (3_600_000_000,)
+    maximum = replace(
+        request([0, 3_600_000_000], ["HOLD", "HOLD"]), initial_angle="45", report_times=grid
+    )
+    full = run_pipeline(maximum)
+    assert full.status == "COMPLETE" and len(full.causal.report_grid_us) - 1 == 32768
+    assert full.causal.endpoint_seconds == full.causal.continuous_seconds == 3600
+    assert full.causal.report_endpoint_seconds == 3600
+    assert full.causal.horizon_us == 3_600_000_000
+    assert full.causal.configuration.watchdog.mode == "NONE"
+    assert full.causal.configuration.watchdog.timeout_us is None
+    assert all(issue.kind == "SENSOR" for issue in full.causal.issues)
+    with pytest.raises(ValueError, match="report grid"):
+        run_pipeline(replace(maximum, report_times=tuple(range(32769)) + (3_600_000_000,)))
 
 
 @pytest.mark.parametrize("times", [[2000000, 0, 1000000], [0, 0, 1000000]])

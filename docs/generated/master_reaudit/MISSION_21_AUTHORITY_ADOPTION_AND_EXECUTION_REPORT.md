@@ -223,9 +223,22 @@ Files: `tests/synthetic_tooling/test_restored_mypy.py`, `docs/generated/master_r
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_tooling -p no:cacheprovider --import-mode=importlib tests/synthetic_tooling -q --junitxml=/tmp/mission21_wp10_record.xml`: 15 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp10_record.xml`.
 
 Static analysis: Ruff on tooling suite passes; actual module/CLI/type-error runtime and all6 package RECORD inventories validated.
-Commit: None; push/local/tracking/live verified: False.
+Commit: 7de31f32ad56d5b3e894af28a513a7c87cd0f946; push/local/tracking/live verified: True.
 Limitations: Same scoped analysis and preserved A/disabled optional dependency limits; environment integrity does not establish application production readiness.
 Next: Regenerate final integrated receipts and deliver the overnight summary.
+
+### WP01L — PASS_MAXIMUM_DECLARED_18A_WORKLOAD_AND_TRACEABILITY
+
+Completed explicit acceptance traceability for CB01–CB12/A01–A07. Expanded the scale case to execute8192 supplied frames/emitted intervals,32768 fixed-report intervals and the exact one-hour horizon, with independent constant45-degree duration expectations and over-limit refusal. Explicitly checked NONE/no timeout/no timer issues in native and maximum fixtures. The65-case suite passes; no implementation or scientific parameter changed.
+
+Files: `tests/synthetic_mission18a/test_convention_b_integration.py`, `docs/generated/master_reaudit/MISSION_21_18A_ACCEPTANCE_TRACEABILITY.md`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_wp01_limits.xml`: 65 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp01_limits.xml`.
+
+Static analysis: Ruff on integration suite passes; existing12-source Mypy receipt remains applicable because application code unchanged.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: Finite synthetic envelope acceptance only; no real clock accuracy, occupancy, empirical safety or integrated non-NONE timer policy claim.
+Next: Final regression and exact documentation delivery.
 
 ## Execution boundaries
 
