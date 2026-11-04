@@ -136,7 +136,7 @@ Next phase: WP06 input-source binding hardening discovered during integrated aud
 
 ## WP06R
 
-Status: PASS_EXACT_CONSTRUCTED_SOURCE_CONDITION_BINDING. Parent: `71229e55ca52557cb13dc29e54c19f677bfd99db`. Commit: `None`. Remote verified: False.
+Status: PASS_EXACT_CONSTRUCTED_SOURCE_CONDITION_BINDING. Parent: `71229e55ca52557cb13dc29e54c19f677bfd99db`. Commit: `fd7c974d253c9083290619e2cf24802e099093bd`. Remote verified: True.
 
 Audit found camera-name substring checking could accept misleading aliases or out-of-condition health metadata. Replaced inference with explicit fixture source IDs and exact vision/audio modality checks across records and all source metadata before controller execution. Audio-only receipts now also enforce qualified documentary27-event IDs. No physical source identity is inferred from names. Eighteen tests pass including10 new source/metadata/modality/cohort negatives.
 
@@ -145,3 +145,15 @@ Tests: [{"xml": "/tmp/mission21_wp06_binding.xml", "command": "PYTHONPATH=src PY
 Static: Ruff and Mypy on modified orchestrator pass; isolated runtime suite18 passes
 Remaining: Bindings are explicit constructed assertions, not real camera identity verification. No real pathway enabled; stateless/back-audio/fused scientific limits retained.
 Next phase: WP04 purpose, appointment and recovery/finalization fence checks found during audit
+
+## WP04R
+
+Status: PASS_CONSTRUCTED_PURPOSE_ROLE_AND_OWNER_FENCES. Parent: `fd7c974d253c9083290619e2cf24802e099093bd`. Commit: `None`. Remote verified: False.
+
+Audit found lifecycle metadata could advance without current purpose/clock checks or a fresh owner fence. Added exact purpose to reserve/prepare/commit bindings, appointment-role checks at issuance and every new use, current scope/time checks at recovery, and fresh fences for finalization/unknown-effect quarantine. Exact pending operation binding required before quarantine; no issuer self-grant of an unappointed review role. Eight additional negatives bring the security suite to32 passing pytest cases. Historical committed receipt retrieval stays idempotent and creates no new operation.
+
+Exact files: src/railway_detection/safety/constructed_authority.py, tests/synthetic_security/test_transactions.py
+Tests: [{"xml": "/tmp/mission21_wp04_harden.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04_harden.xml", "tests": 32, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Ruff and scoped Mypy pass;32 isolated security cases pass
+Remaining: These32 pytest cases are not a claim that all32 historical ES scenarios or all process-crash/host-security conditions were executed. Cooperative fixture store only, no cryptographic identity, live authority/resource broker or production GT publication.
+Next phase: WP01 exact-clock normalization/provenance correction from final audit

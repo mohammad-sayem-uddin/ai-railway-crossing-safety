@@ -15,6 +15,7 @@ from dataclasses import asdict, dataclass
 
 PROFILE = "CONSTRUCTED_ONLY"
 OPERATIONS = ("READ", "PROBE", "HASH", "MODEL", "CACHE", "REVIEW", "PUBLISH", "EVALUATE")
+OPERATION_ROLE = {op: "PROMOTER" if op == "PUBLISH" else "REVIEWER" for op in OPERATIONS}
 
 
 def _strings(value):
@@ -77,7 +78,7 @@ def sha(value):
 
 
 def identity(value):
-    if type(value) is not str or not value.startswith("synthetic:"):
+    if type(value) is not str or not value.startswith("synthetic:") or len(value) <= 10:
         raise ValueError("synthetic fixture identity required")
 
 
@@ -165,7 +166,12 @@ class ConstructedAuthority:
             raise ValueError("typed constructed grant required")
         for x in (grant.grant_id, grant.actor, grant.event, *grant.resources):
             identity(x)
-        if grant.actor not in self.roles or grant.context != self.context or not grant.purpose:
+        if (
+            grant.actor not in self.roles
+            or grant.context != self.context
+            or type(grant.purpose) is not str
+            or not grant.purpose.strip()
+        ):
             raise ValueError("actor/purpose/expected runtime mismatch")
         for numeric in (grant.valid_from, grant.expires, grant.max_uses):
             exact_time(numeric)
@@ -176,13 +182,18 @@ class ConstructedAuthority:
             or len(set(grant.operations)) != len(grant.operations)
             or not set(grant.operations) <= set(OPERATIONS)
             or not grant.resources
+            or type(grant.operations) is not tuple
+            or type(grant.resources) is not tuple
+            or len(set(grant.resources)) != len(grant.resources)
         ):
             raise ValueError("invalid exact operation/time/quota scope")
+        for operation in grant.operations:
+            self._role(grant.actor, OPERATION_ROLE[operation])
         self.db.execute(
             "INSERT INTO grants VALUES(?,?,0)", (grant.grant_id, canonical(asdict(grant)))
         )
 
-    def _check(self, grant_id, *, actor, operation, resource, context, now):
+    def _check(self, grant_id, *, actor, operation, resource, context, purpose, now):
         exact_time(now)
         row = self.db.execute("SELECT body,revoked FROM grants WHERE id=?", (grant_id,)).fetchone()
         if row is None or row[1]:
@@ -196,6 +207,8 @@ class ConstructedAuthority:
             or grant["context"] != context
             or actor != grant["actor"]
             or actor not in self.roles
+            or purpose != grant["purpose"]
+            or OPERATION_ROLE.get(operation) not in self.roles.get(actor, ())
             or operation not in grant["operations"]
             or resource not in grant["resources"]
         ):
@@ -203,7 +216,9 @@ class ConstructedAuthority:
         self.db.execute("UPDATE metadata SET value=? WHERE id='clock'", (now,))
         return grant
 
-    def reserve(self, grant_id, *, session, actor, initial_body, operation, resource, context, now):
+    def reserve(
+        self, grant_id, *, session, actor, initial_body, operation, resource, context, purpose, now
+    ):
         identity(session)
         decode_payload(initial_body)
         with self._transaction():
@@ -213,6 +228,7 @@ class ConstructedAuthority:
                 operation=operation,
                 resource=resource,
                 context=context,
+                purpose=purpose,
                 now=now,
             )
             row = self.db.execute(
@@ -228,19 +244,36 @@ class ConstructedAuthority:
             )
             return 1
 
-    def _session(self, session, fence, *, actor, operation, resource, context, now):
+    def _session(self, session, fence, *, actor, operation, resource, context, purpose, now):
         row = self.db.execute(
             "SELECT grant_id,actor,fence,state,uses FROM sessions WHERE id=?", (session,)
         ).fetchone()
         if row is None or type(fence) is not int or row[1:4] != (actor, fence, "ACTIVE"):
             raise ValueError("stale fence/owner/terminal session")
         grant = self._check(
-            row[0], actor=actor, operation=operation, resource=resource, context=context, now=now
+            row[0],
+            actor=actor,
+            operation=operation,
+            resource=resource,
+            context=context,
+            purpose=purpose,
+            now=now,
         )
         return row, grant
 
     def prepare(
-        self, session, transaction, body, *, fence, actor, operation, resource, context, now
+        self,
+        session,
+        transaction,
+        body,
+        *,
+        fence,
+        actor,
+        operation,
+        resource,
+        context,
+        purpose,
+        now,
     ):
         identity(transaction)
         decode_payload(body)
@@ -252,12 +285,20 @@ class ConstructedAuthority:
                 operation=operation,
                 resource=resource,
                 context=context,
+                purpose=purpose,
                 now=now,
             )
             existing = self.db.execute(
                 "SELECT body,state,binding FROM tx WHERE session=? AND id=?", (session, transaction)
             ).fetchone()
-            binding = canonical({"operation": operation, "resource": resource, "context": context})
+            binding = canonical(
+                {
+                    "operation": operation,
+                    "resource": resource,
+                    "context": context,
+                    "purpose": purpose,
+                }
+            )
             if existing:
                 if existing[0] != body or existing[2] != binding:
                     raise ValueError("transaction payload substitution")
@@ -271,7 +312,9 @@ class ConstructedAuthority:
             self.db.execute("UPDATE sessions SET uses=uses+1 WHERE id=?", (session,))
             return "PREPARED"
 
-    def commit(self, session, transaction, *, fence, actor, operation, resource, context, now):
+    def commit(
+        self, session, transaction, *, fence, actor, operation, resource, context, purpose, now
+    ):
         with self._transaction():
             existing = self.db.execute(
                 "SELECT body,state,receipt,binding FROM tx WHERE session=? AND id=?",
@@ -280,7 +323,12 @@ class ConstructedAuthority:
             if existing is None:
                 raise ValueError("no prepared body")
             if existing[3] != canonical(
-                {"operation": operation, "resource": resource, "context": context}
+                {
+                    "operation": operation,
+                    "resource": resource,
+                    "context": context,
+                    "purpose": purpose,
+                }
             ):
                 raise ValueError("transaction execution binding changed")
             if existing[1] == "COMMITTED":
@@ -298,6 +346,7 @@ class ConstructedAuthority:
                 operation=operation,
                 resource=resource,
                 context=context,
+                purpose=purpose,
                 now=now,
             )
             if existing[1] != "PREPARED":
@@ -329,29 +378,70 @@ class ConstructedAuthority:
                 (grant_id,),
             )
 
-    def recover(self, session, *, actor):
+    def recover(self, session, *, actor, operation, resource, context, purpose, now):
         with self._transaction():
             row = self.db.execute(
-                "SELECT actor,fence,state FROM sessions WHERE id=?", (session,)
+                "SELECT actor,fence,state,grant_id FROM sessions WHERE id=?", (session,)
             ).fetchone()
             if row is None or row[0] != actor or row[2] != "ACTIVE":
                 raise ValueError("same permitted principal/session recovery only")
+            self._check(
+                row[3],
+                actor=actor,
+                operation=operation,
+                resource=resource,
+                context=context,
+                purpose=purpose,
+                now=now,
+            )
             self.db.execute("UPDATE sessions SET fence=fence+1 WHERE id=?", (session,))
             return row[1] + 1
 
-    def mark_unknown(self, session, transaction):
-        self.db.execute(
-            "UPDATE tx SET state='UNKNOWN_EXTERNAL' WHERE session=? AND id=? AND state='PREPARED'",
-            (session, transaction),
-        )
-
-    def finalize(self, session, *, actor):
+    def mark_unknown(
+        self, session, transaction, *, fence, actor, operation, resource, context, purpose, now
+    ):
         with self._transaction():
-            row = self.db.execute(
-                "SELECT actor,state FROM sessions WHERE id=?", (session,)
+            self._session(
+                session,
+                fence,
+                actor=actor,
+                operation=operation,
+                resource=resource,
+                context=context,
+                purpose=purpose,
+                now=now,
+            )
+            pending = self.db.execute(
+                "SELECT state,binding FROM tx WHERE session=? AND id=?", (session, transaction)
             ).fetchone()
-            if row != (actor, "ACTIVE"):
-                raise ValueError("wrong owner/terminal session")
+            binding = canonical(
+                {
+                    "operation": operation,
+                    "resource": resource,
+                    "context": context,
+                    "purpose": purpose,
+                }
+            )
+            if pending != ("PREPARED", binding):
+                raise ValueError("unknown effect must bind exact prepared operation")
+            self.db.execute(
+                "UPDATE tx SET state='UNKNOWN_EXTERNAL' "
+                "WHERE session=? AND id=? AND state='PREPARED'",
+                (session, transaction),
+            )
+
+    def finalize(self, session, *, fence, actor, operation, resource, context, purpose, now):
+        with self._transaction():
+            self._session(
+                session,
+                fence,
+                actor=actor,
+                operation=operation,
+                resource=resource,
+                context=context,
+                purpose=purpose,
+                now=now,
+            )
             if self.db.execute(
                 "SELECT 1 FROM tx WHERE session=? AND state IN ('PREPARED','UNKNOWN_EXTERNAL')",
                 (session,),

@@ -171,9 +171,22 @@ Files: `src/railway_detection/evaluation/descriptive_constructed.py`, `tests/syn
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_wp06_binding.xml`: 18 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp06_binding.xml`.
 
 Static analysis: Ruff and Mypy on modified orchestrator pass; isolated runtime suite18 passes.
-Commit: None; push/local/tracking/live verified: False.
+Commit: fd7c974d253c9083290619e2cf24802e099093bd; push/local/tracking/live verified: True.
 Limitations: Bindings are explicit constructed assertions, not real camera identity verification. No real pathway enabled; stateless/back-audio/fused scientific limits retained.
 Next: WP04 purpose, appointment and recovery/finalization fence checks found during audit.
+
+### WP04R — PASS_CONSTRUCTED_PURPOSE_ROLE_AND_OWNER_FENCES
+
+Audit found lifecycle metadata could advance without current purpose/clock checks or a fresh owner fence. Added exact purpose to reserve/prepare/commit bindings, appointment-role checks at issuance and every new use, current scope/time checks at recovery, and fresh fences for finalization/unknown-effect quarantine. Exact pending operation binding required before quarantine; no issuer self-grant of an unappointed review role. Eight additional negatives bring the security suite to32 passing pytest cases. Historical committed receipt retrieval stays idempotent and creates no new operation.
+
+Files: `src/railway_detection/safety/constructed_authority.py`, `tests/synthetic_security/test_transactions.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04_harden.xml`: 32 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp04_harden.xml`.
+
+Static analysis: Ruff and scoped Mypy pass;32 isolated security cases pass.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: These32 pytest cases are not a claim that all32 historical ES scenarios or all process-crash/host-security conditions were executed. Cooperative fixture store only, no cryptographic identity, live authority/resource broker or production GT publication.
+Next: WP01 exact-clock normalization/provenance correction from final audit.
 
 ## Execution boundaries
 

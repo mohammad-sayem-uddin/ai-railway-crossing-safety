@@ -36291,6 +36291,36 @@
           "src/railway_detection/evaluation/descriptive_constructed.py": "9b05d9348c65c57cf3200935613a8a76e8d9ecd91eea162fd9fe9d85caea77df",
           "tests/synthetic_evaluation_pipeline/test_orchestration.py": "ddeea2e6902b4a13af1425cad19bb560b196b7bb89708f8d2df6d377bbf41804"
         },
+        "commit": "fd7c974d253c9083290619e2cf24802e099093bd",
+        "push_verified": true
+      },
+      {
+        "id": "WP04R",
+        "status": "PASS_CONSTRUCTED_PURPOSE_ROLE_AND_OWNER_FENCES",
+        "files": [
+          "src/railway_detection/safety/constructed_authority.py",
+          "tests/synthetic_security/test_transactions.py"
+        ],
+        "message": "fix: bind constructed authority lifecycle to purpose roles and fresh fences",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp04_harden.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04_harden.xml",
+            "tests": 32,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Audit found lifecycle metadata could advance without current purpose/clock checks or a fresh owner fence. Added exact purpose to reserve/prepare/commit bindings, appointment-role checks at issuance and every new use, current scope/time checks at recovery, and fresh fences for finalization/unknown-effect quarantine. Exact pending operation binding required before quarantine; no issuer self-grant of an unappointed review role. Eight additional negatives bring the security suite to32 passing pytest cases. Historical committed receipt retrieval stays idempotent and creates no new operation.",
+        "static": "Ruff and scoped Mypy pass;32 isolated security cases pass",
+        "limitations": "These32 pytest cases are not a claim that all32 historical ES scenarios or all process-crash/host-security conditions were executed. Cooperative fixture store only, no cryptographic identity, live authority/resource broker or production GT publication.",
+        "next": "WP01 exact-clock normalization/provenance correction from final audit",
+        "parent": "fd7c974d253c9083290619e2cf24802e099093bd",
+        "source_sha256": {
+          "src/railway_detection/safety/constructed_authority.py": "792afe4cd4feda2ebae2122d15cf02ca6eab0518e7d06840b1915adab15982ed",
+          "tests/synthetic_security/test_transactions.py": "eab8f55ae17bd65649587832cd7cc5883b1f41fc4d3bfd96b1b1abc65fb6b285"
+        },
         "commit": null,
         "push_verified": false
       }

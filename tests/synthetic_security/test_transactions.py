@@ -51,6 +51,7 @@ def args(now=1):
         operation="READ",
         resource="synthetic:neutral",
         context="synthetic:execution:exact",
+        purpose="constructed only",
         now=now,
     )
 
@@ -125,7 +126,7 @@ def test_reservation_quota_retry_and_terminal_consumption(service):
         a.commit("synthetic:session", tx, fence=f, **args())
     with pytest.raises(ValueError):
         a.prepare("synthetic:session", "synthetic:third", encode_payload({}), fence=f, **args())
-    a.finalize("synthetic:session", actor=g.actor)
+    a.finalize("synthetic:session", fence=f, **args())
     with pytest.raises(ValueError):
         start(a, g)
 
@@ -153,8 +154,8 @@ def test_clock_rollback_and_recovery_fence(service):
     with pytest.raises(ValueError):
         a.prepare("synthetic:session", "synthetic:other", encode_payload({}), fence=f, **args(2))
     with pytest.raises(ValueError):
-        a.recover("synthetic:session", actor="synthetic:other")
-    new = a.recover("synthetic:session", actor=g.actor)
+        a.recover("synthetic:session", **(args(10) | {"actor": "synthetic:other"}))
+    new = a.recover("synthetic:session", **args(10))
     with pytest.raises(ValueError):
         a.commit("synthetic:session", "synthetic:tx", fence=f, **args(10))
     assert a.commit("synthetic:session", "synthetic:tx", fence=new, **args(10))
@@ -165,12 +166,12 @@ def test_unknown_effect_blocks_commit_and_finalization(service):
     f = start(a, g)
     a.prepare("synthetic:session", "synthetic:tx", encode_payload({}), fence=f, **args())
     with pytest.raises(ValueError, match="BUSY"):
-        a.finalize("synthetic:session", actor=g.actor)
-    a.mark_unknown("synthetic:session", "synthetic:tx")
+        a.finalize("synthetic:session", fence=f, **args())
+    a.mark_unknown("synthetic:session", "synthetic:tx", fence=f, **args())
     with pytest.raises(ValueError):
         a.commit("synthetic:session", "synthetic:tx", fence=f, **args())
     with pytest.raises(ValueError, match="BUSY"):
-        a.finalize("synthetic:session", actor=g.actor)
+        a.finalize("synthetic:session", fence=f, **args())
 
 
 @pytest.mark.parametrize(
@@ -317,3 +318,77 @@ def test_constructed_service_rejects_real_profile_and_real_principal(service):
         )
     with pytest.raises(ValueError):
         a.issue("synthetic:issuer", replace(g, grant_id="real:grant"))
+
+
+def test_purpose_is_exact_at_every_use_boundary(service):
+    a, g, _ = service
+    wrong = args() | {"purpose": "unrelated analysis"}
+    with pytest.raises(ValueError, match="scope/runtime"):
+        a.reserve(g.grant_id, session="synthetic:session", initial_body=encode_payload({}), **wrong)
+    fence = start(a, g)
+    with pytest.raises(ValueError, match="scope/runtime"):
+        a.prepare("synthetic:session", "synthetic:tx", encode_payload({}), fence=fence, **wrong)
+    a.prepare("synthetic:session", "synthetic:tx", encode_payload({}), fence=fence, **args())
+    with pytest.raises(ValueError, match="binding changed"):
+        a.commit("synthetic:session", "synthetic:tx", fence=fence, **wrong)
+    with pytest.raises(ValueError):
+        a.recover("synthetic:session", **wrong)
+    with pytest.raises(ValueError):
+        a.mark_unknown("synthetic:session", "synthetic:tx", fence=fence, **wrong)
+
+
+def test_issuer_cannot_grant_own_unappointed_review_role(service):
+    a, g, _ = service
+    with pytest.raises(ValueError, match="role unavailable"):
+        a.issue("synthetic:issuer", replace(g, actor="synthetic:issuer"))
+    g = replace(g, grant_id="synthetic:publish", operations=("PUBLISH",))
+    with pytest.raises(ValueError, match="role unavailable"):
+        a.issue("synthetic:issuer", g)
+
+
+@pytest.mark.parametrize(
+    "change", [{"now": 100}, {"now": None}, {"context": "synthetic:runtime:other"}]
+)
+def test_recovery_requires_current_scope_and_clock(service, change):
+    a, g, _ = service
+    start(a, g)
+    with pytest.raises(ValueError):
+        a.recover("synthetic:session", **(args() | change))
+    assert a.db.execute("SELECT fence FROM sessions").fetchone()[0] == 1
+
+
+def test_fresh_recovery_fences_finalization_and_unknown_effect(service):
+    a, g, _ = service
+    old = start(a, g)
+    fresh = a.recover("synthetic:session", **args())
+    with pytest.raises(ValueError, match="stale fence"):
+        a.finalize("synthetic:session", fence=old, **args())
+    a.prepare("synthetic:session", "synthetic:tx", encode_payload({}), fence=fresh, **args())
+    with pytest.raises(ValueError, match="stale fence"):
+        a.mark_unknown("synthetic:session", "synthetic:tx", fence=old, **args())
+    a.commit("synthetic:session", "synthetic:tx", fence=fresh, **args())
+    a.finalize("synthetic:session", fence=fresh, **args())
+    with pytest.raises(ValueError, match="recovery only"):
+        a.recover("synthetic:session", **args())
+
+
+def test_operation_roles_rechecked_after_appointment_change(service):
+    a, g, _ = service
+    fence = start(a, g)
+    a.roles[g.actor] = ("ISSUER",)
+    with pytest.raises(ValueError, match="scope/runtime"):
+        a.prepare("synthetic:session", "synthetic:tx", encode_payload({}), fence=fence, **args())
+    assert a.audit(expected_head=None, expected_count=0)
+
+
+def test_unknown_effect_cannot_quarantine_a_different_prepared_operation(service):
+    a, g, _ = service
+    g = replace(g, operations=("READ", "HASH"), grant_id="synthetic:both")
+    a.issue("synthetic:issuer", g)
+    fence = start(a, g)
+    a.prepare("synthetic:session", "synthetic:tx", encode_payload({}), fence=fence, **args())
+    with pytest.raises(ValueError, match="exact prepared operation"):
+        a.mark_unknown(
+            "synthetic:session", "synthetic:tx", fence=fence, **(args() | {"operation": "HASH"})
+        )
+    assert a.db.execute("SELECT state FROM tx").fetchone()[0] == "PREPARED"
