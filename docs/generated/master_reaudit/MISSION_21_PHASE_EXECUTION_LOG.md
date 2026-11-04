@@ -16,7 +16,7 @@ Next phase: WP02 grouped-CV fitted-artifact and OOF provenance
 
 ## WP02
 
-Status: PASS_CONSTRUCTED_REGISTRY_ADAPTER. Parent: `79fa0ce5af2e5ada1dbc7e38efe4740c2f3b2496`. Commit: `None`. Remote verified: False.
+Status: PASS_CONSTRUCTED_REGISTRY_ADAPTER. Parent: `79fa0ce5af2e5ada1dbc7e38efe4740c2f3b2496`. Commit: `7cfa08dca342a409f596a8a2b537f513e05e1ee8`. Remote verified: True.
 
 Added immutable versioned registry/expected-context/receipt interfaces, existing physical-event/allocation/role recomputation, complete iterative artifact ancestry, FIT/SELECT/initialization and fitted asset-producer exposure, exact event/asset/vocabulary/fold/score binding, coverage/duplicate and unresolved-near-duplicate denial, NONE/inner-OOF/reserved-calibration/frozen-refit compositions and detached receipt verification. Existing helper APIs and their unverified-OOF denial remain unchanged; no live splitter/backend is wired. Strict boolean receipt rejection prevents Python True==1 equality laundering. Corrected WP01 lint receipt: the new pipeline/tests pass Ruff, while the legacy runner has one baseline E501 outside the allowed B-only change.
 
@@ -25,3 +25,15 @@ Tests: [{"xml": "/tmp/mission21_wp02.xml", "command": "PYTHONPATH=src PYTEST_DIS
 Static: Ruff new module/new tests passes; Python3.11.15; standard-library+existing pure grouped_cv imports; no Mypy pass yet
 Remaining: Pure constructed metadata verifier, not authentication, actual fit/prediction/calibration, official split, real corpus eligibility, provenance discovery or model independence certification. Actual scientific registry/exposure evidence remains missing; no real backend adapter activated. Synthetic expected-context ownership remains cooperative.
 Next phase: WP03 blind human-review domain and synthetic player
+
+## WP03
+
+Status: PARTIAL_DOMAIN_TESTED_LIVE_WORKFLOW_GATED. Parent: `7cfa08dca342a409f596a8a2b537f513e05e1ee8`. Commit: `None`. Remote verified: False.
+
+Implemented typed six-boundary local-clock/PTS/censor/uncertainty validation, deferred-landmark rejection, explicit constructed reviewer roles/principal aliases, consumed immutable blind seals, six-risk comparison gate, monotone exposure, append-only informed corrections, exact source-linked unresolved adjudication and neutral PTS player. No predictions/media paths accepted by player. Known uncertainty cannot be self-declared risk-free.
+
+Exact files: src/railway_detection/annotation/human_review_domain.py, tests/synthetic_human_review/conftest.py, tests/synthetic_human_review/test_domain.py
+Tests: [{"xml": "/tmp/mission21_wp03.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_wp03.xml", "tests": 15, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Scoped Ruff passes; all new Python AST/runtime imports covered by isolated suite; standard-library only
+Remaining: Partial overall infrastructure: constructed in-process domain is tested; real player/CLI, appointed/qualified human identities, independently persistent actor/event exposure, active8.1/proposed8.2 promotion adapter and actual observations are not activated. A constructed draft explicitly cannot satisfy the active schema. Genuine observations/appointments, protocol/schema promotion and exact media grants remain external prerequisites. No full AB/RC/security acceptance or real human workflow completion claimed.
+Next phase: WP04 cooperative security codec, scoped broker, ledger and recovery services

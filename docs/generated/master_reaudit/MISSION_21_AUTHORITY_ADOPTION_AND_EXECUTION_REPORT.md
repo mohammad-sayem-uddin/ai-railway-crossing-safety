@@ -31,9 +31,22 @@ Files: `src/railway_detection/experiments/provenance_registry.py`, `tests/synthe
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18b -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18b -q --junitxml=/tmp/mission21_wp02.xml`: 26 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp02.xml`.
 
 Static analysis: Ruff new module/new tests passes; Python3.11.15; standard-library+existing pure grouped_cv imports; no Mypy pass yet.
-Commit: None; push/local/tracking/live verified: False.
+Commit: 7cfa08dca342a409f596a8a2b537f513e05e1ee8; push/local/tracking/live verified: True.
 Limitations: Pure constructed metadata verifier, not authentication, actual fit/prediction/calibration, official split, real corpus eligibility, provenance discovery or model independence certification. Actual scientific registry/exposure evidence remains missing; no real backend adapter activated. Synthetic expected-context ownership remains cooperative.
 Next: WP03 blind human-review domain and synthetic player.
+
+### WP03 — PARTIAL_DOMAIN_TESTED_LIVE_WORKFLOW_GATED
+
+Implemented typed six-boundary local-clock/PTS/censor/uncertainty validation, deferred-landmark rejection, explicit constructed reviewer roles/principal aliases, consumed immutable blind seals, six-risk comparison gate, monotone exposure, append-only informed corrections, exact source-linked unresolved adjudication and neutral PTS player. No predictions/media paths accepted by player. Known uncertainty cannot be self-declared risk-free.
+
+Files: `src/railway_detection/annotation/human_review_domain.py`, `tests/synthetic_human_review/conftest.py`, `tests/synthetic_human_review/test_domain.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_wp03.xml`: 15 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp03.xml`.
+
+Static analysis: Scoped Ruff passes; all new Python AST/runtime imports covered by isolated suite; standard-library only.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: Partial overall infrastructure: constructed in-process domain is tested; real player/CLI, appointed/qualified human identities, independently persistent actor/event exposure, active8.1/proposed8.2 promotion adapter and actual observations are not activated. A constructed draft explicitly cannot satisfy the active schema. Genuine observations/appointments, protocol/schema promotion and exact media grants remain external prerequisites. No full AB/RC/security acceptance or real human workflow completion claimed.
+Next: WP04 cooperative security codec, scoped broker, ledger and recovery services.
 
 ## Execution boundaries
 

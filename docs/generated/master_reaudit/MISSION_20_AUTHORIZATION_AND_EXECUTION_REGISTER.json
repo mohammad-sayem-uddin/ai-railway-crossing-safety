@@ -35865,6 +35865,38 @@
           "tests/synthetic_mission18b/conftest.py": "a92fcf1d86b890effcd1380e6354a08b01099bbea728cc8ecc3afd436fec509a",
           "tests/synthetic_mission18b/test_provenance.py": "8010ba783b4a351c1888b08905f8b0031d090cea0724c47245b01cfafdb59044"
         },
+        "commit": "7cfa08dca342a409f596a8a2b537f513e05e1ee8",
+        "push_verified": true
+      },
+      {
+        "id": "WP03",
+        "status": "PARTIAL_DOMAIN_TESTED_LIVE_WORKFLOW_GATED",
+        "files": [
+          "src/railway_detection/annotation/human_review_domain.py",
+          "tests/synthetic_human_review/conftest.py",
+          "tests/synthetic_human_review/test_domain.py"
+        ],
+        "message": "feat: implement constructed blind review domain and neutral player",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp03.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_wp03.xml",
+            "tests": 15,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Implemented typed six-boundary local-clock/PTS/censor/uncertainty validation, deferred-landmark rejection, explicit constructed reviewer roles/principal aliases, consumed immutable blind seals, six-risk comparison gate, monotone exposure, append-only informed corrections, exact source-linked unresolved adjudication and neutral PTS player. No predictions/media paths accepted by player. Known uncertainty cannot be self-declared risk-free.",
+        "static": "Scoped Ruff passes; all new Python AST/runtime imports covered by isolated suite; standard-library only",
+        "limitations": "Partial overall infrastructure: constructed in-process domain is tested; real player/CLI, appointed/qualified human identities, independently persistent actor/event exposure, active8.1/proposed8.2 promotion adapter and actual observations are not activated. A constructed draft explicitly cannot satisfy the active schema. Genuine observations/appointments, protocol/schema promotion and exact media grants remain external prerequisites. No full AB/RC/security acceptance or real human workflow completion claimed.",
+        "next": "WP04 cooperative security codec, scoped broker, ledger and recovery services",
+        "parent": "7cfa08dca342a409f596a8a2b537f513e05e1ee8",
+        "source_sha256": {
+          "src/railway_detection/annotation/human_review_domain.py": "ab8bcfe8e901977251a156862277b858ddc2e109f7fdc11a3c738f2594795a49",
+          "tests/synthetic_human_review/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+          "tests/synthetic_human_review/test_domain.py": "d4346b6a01451f6c07cee94e8af723bc039b5c0a44ef13284f09e72d1778d24e"
+        },
         "commit": null,
         "push_verified": false
       }
