@@ -33,5 +33,18 @@
     "pathspec": "1.1.1"
   },
   "dependency_specifications_changed": false,
-  "mypy_scoped": "Success: no issues found in 9 source files\n"
+  "mypy_scoped": "Success: no issues found in 9 source files\n",
+  "entrypoint_record_repair": {
+    "names": [
+      "mypy",
+      "dmypy",
+      "mypyc",
+      "stubgen",
+      "stubtest"
+    ],
+    "relocated_record_prefix": "../../../bin/",
+    "source": "staged exact wheel entrypoints; active interpreter shebang verified",
+    "rollback": "/tmp/mission21_tooling_rollback",
+    "record_sha256": "6fe45937f5f10a25732bba131d0cedd56ab73444595988364a5a0fa9836f09be"
+  }
 }

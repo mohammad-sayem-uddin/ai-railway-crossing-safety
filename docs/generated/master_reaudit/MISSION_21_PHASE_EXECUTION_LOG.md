@@ -172,7 +172,7 @@ Next phase: WP04 constructed point-of-use byte broker closure followed by integr
 
 ## WP04B
 
-Status: PASS_CONSTRUCTED_POINT_OF_USE_BROKER_AND_COMPOSED_FLOW. Parent: `b136d0a1acfd68f46547d165b06d5570a13472f3`. Commit: `None`. Remote verified: False.
+Status: PASS_CONSTRUCTED_POINT_OF_USE_BROKER_AND_COMPOSED_FLOW. Parent: `b136d0a1acfd68f46547d165b06d5570a13472f3`. Commit: `5398af3cd1b13fbbc19868fe0bd6ca62a54eeddd`. Remote verified: True.
 
 Added exact constructed immutable byte registry and READ/PROBE/HASH broker with scope/purpose/role/time/fence/version checks, quota and atomic ledger receipt before returning a result. No paths/arbitrary callbacks/real model-cache loaders. Fixture-time digest retained so READ does not implicitly perform HASH; HASH requires its own grant operation. Retry verifies acknowledged body against receipt/ledger; modified historical body or missing entry denies. Composed test crosses broker, neutral player, durable review, lossless schema projection, lineage, actual controller/B, missing-GT metric exclusion, constructed draft and mock batch publisher; revocation and real evaluation remain denied. Security suite46 cases passes.
 
@@ -181,3 +181,15 @@ Tests: [{"xml": "/tmp/mission21_wp04_broker.xml", "command": "PYTHONPATH=src PYT
 Static: Ruff passes; Mypy no issues in authority/broker; executed composed runtime uses in-memory SQLite and constructed bytes only
 Remaining: No live grant or actual protected use. Constructed consistency, hashes and role strings do not prove human identity, real resource provenance, OS isolation or cryptographic authority. Atomic SQLite result handling has no arbitrary external side effects and is not a global exactly-once IO guarantee. Historical ES deployment acceptance remains partial.
 Next phase: Final integrated regression, preservation/scope audit and overnight summary
+
+## WP10R
+
+Status: PASS_EXACT_TOOL_ENTRYPOINT_AND_RECORD_INTEGRITY. Parent: `5398af3cd1b13fbbc19868fe0bd6ca62a54eeddd`. Commit: `None`. Remote verified: False.
+
+Final environment integrity check found copied RECORD entries pointed at the temporary target layout for5 CLIs. Restored the5 exact staged wheel wrappers and corrected active-runtime relative paths, hashes and sizes, preserving rollback copies. Added6 package-record completeness cases and one5-CLI integrity case; also exercised CLI type-error exit. All15 tooling cases pass. No dependency versions/specifications or global/other-Python environment changed.
+
+Exact files: tests/synthetic_tooling/test_restored_mypy.py, docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_RECEIPT.json, docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_AND_STATIC_ANALYSIS.md
+Tests: [{"xml": "/tmp/mission21_wp10_record.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_tooling -p no:cacheprovider --import-mode=importlib tests/synthetic_tooling -q --junitxml=/tmp/mission21_wp10_record.xml", "tests": 15, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Ruff on tooling suite passes; actual module/CLI/type-error runtime and all6 package RECORD inventories validated
+Remaining: Same scoped analysis and preserved A/disabled optional dependency limits; environment integrity does not establish application production readiness.
+Next phase: Regenerate final integrated receipts and deliver the overnight summary

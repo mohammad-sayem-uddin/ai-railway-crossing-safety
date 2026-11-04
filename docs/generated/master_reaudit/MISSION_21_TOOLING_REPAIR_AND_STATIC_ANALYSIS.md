@@ -68,3 +68,19 @@ Fresh isolated regression: **443 tests, zero failures/errors/skips** across ten
 new suites plus the original238 suite in a separate process. Original suite has
 five existing record_property/JUnit warnings. Exact phase XML counts/commands
 are in the execution register; these are engineering tests, not real-data results.
+
+## Final integrated receipt
+
+After subsequent audit fixes,493 tests pass (255 new plus238 original), 37 Python files pass Ruff, all38 parse, and12 source files pass scoped Mypy. The original five JUnit warnings and documented baseline/optional dependency limits remain. Full commands/case IDs/source hashes are committed in MISSION_21_FINAL_ENGINEERING_VALIDATION.json.
+
+## Entrypoint RECORD integrity correction
+
+Final file-integrity inspection found Mypy's copied RECORD still listed five
+entrypoints relative to the temporary target layout (`../../bin`). Restored all
+five exact staged wheel wrappers (mypy, dmypy, mypyc, stubgen, stubtest), verified
+the active-interpreter shebang, and corrected RECORD to `../../../bin` with
+current SHA256/size. Rollback copies and the updated repair receipt are retained.
+No package version, dependency rule or global installation changed. Fifteen
+focused tooling tests now pass, including all six package RECORD file-existence
+checks, five CLI hash/location checks and the CLI's nonzero type-error exit.
+The final integrated packet is regenerated after this correction.
