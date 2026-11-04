@@ -1,7 +1,7 @@
 {
   "schema_version": "mission20-authorization-and-execution-register/1",
   "mission": "20",
-  "mission_state": "MISSION21_ENGINEERING_IN_PROGRESS",
+  "mission_state": "MISSION21_CONSTRUCTED_ENGINEERING_DELIVERED_LIVE_GATES_RETAINED",
   "baseline": "46ed0d6999cb04ce7be6d48bc2b3476641f86b94",
   "branch": "main",
   "preparation_date_local": "2026-11-04",
@@ -10020,7 +10020,8 @@
           "status": "CONSTRUCTED_ENGINEERING_IMPLEMENTED_TESTED_COMMITTED_PUSHED",
           "phases": [
             "WP01",
-            "WP01R"
+            "WP01R",
+            "WP01L"
           ],
           "runtime_tests": 65,
           "failures": 0,
@@ -21465,7 +21466,8 @@
         "status": "CONSTRUCTED_ENGINEERING_IMPLEMENTED_TESTED_COMMITTED_PUSHED",
         "phases": [
           "WP01",
-          "WP01R"
+          "WP01R",
+          "WP01L"
         ],
         "runtime_tests": 65,
         "failures": 0,
@@ -36751,8 +36753,8 @@
           "tests/synthetic_mission18a/test_convention_b_integration.py": "236d4e2255fa12ddd02f7172bda9438d20cecdc5b21d6c5b96fc5cf065d19eab",
           "docs/generated/master_reaudit/MISSION_21_18A_ACCEPTANCE_TRACEABILITY.md": "0c00bb3721cec01e881abf1332aff8f1d5ff99606cdb322abd19f355d743c032"
         },
-        "commit": null,
-        "push_verified": false
+        "commit": "6021cf3a2f60be756f0979120b9522a932402e34",
+        "push_verified": true
       }
     ],
     "formal_research_adoption": "No canonical protected decision/schema/protocol promotion performed; exact selected definitions adopted for constructed engineering only.",
@@ -36761,7 +36763,8 @@
         "status": "CONSTRUCTED_ENGINEERING_IMPLEMENTED_TESTED_COMMITTED_PUSHED",
         "phases": [
           "WP01",
-          "WP01R"
+          "WP01R",
+          "WP01L"
         ],
         "runtime_tests": 65,
         "failures": 0,
@@ -36896,8 +36899,8 @@
     },
     "final_validation": {
       "path": "docs/generated/master_reaudit/MISSION_21_FINAL_ENGINEERING_VALIDATION.json",
-      "sha256": "21b8a1231ee5f4056f7c463836e6155123fe8055a051aea51a86173b2d58fdfd",
-      "tested_source_commit": "7de31f32ad56d5b3e894af28a513a7c87cd0f946",
+      "sha256": "17afad0b052a3bdb953bc1f1537311f163b0dbdb4fdf06946e02ca3f3e96788f",
+      "tested_source_commit": "6021cf3a2f60be756f0979120b9522a932402e34",
       "tests": 500,
       "new_cases": 262,
       "original_cases": 238,

@@ -1,0 +1,2900 @@
+{
+  "schema": "MISSION21_ENGINEERING_VALIDATION_V1",
+  "generated_local": "2026-11-04T17:09:14.394173-05:00",
+  "tested_source_commit": "6021cf3a2f60be756f0979120b9522a932402e34",
+  "original_item_fields_equal_mission20": true,
+  "original_item_count": 177,
+  "preserved_work_sha256": {
+    "docs/generated/master_reaudit/MISSION_17I_MISSION18_ACCEPTANCE_AND_DEPENDENCY_REGISTER.md": "e97f7918ad315bbf8e72417f9cfa4ab84c37d8ab037013c1dc6e09faa4130181",
+    "docs/generated/master_reaudit/MISSION_18A_CONVENTION_B_SYNTHETIC_INTEGRATION_REPORT.md": "5d970d46de0839b0dc5eb479fdb32b2bda1ad3bdde3dbb98e9ec719b2db83d83",
+    "docs/generated/master_reaudit/MISSION_18A_INTEGRATION_ACCEPTANCE_RECORD.md": "94c4e6638b5241f17170d0f7380e7bb4233b4857622e6e59643989115ee7cbea",
+    "docs/generated/master_reaudit/MISSION_18A_R2_RESEARCHER_SELECTION_AND_ADOPTION_RECORD.md": "faeae344008a835159b39cd02562e91f58a7f65ebb107f0caa1fbdccd5710643",
+    "docs/generated/master_reaudit/MISSION_18A_R_RESEARCHER_DECISION_PREPARATION.md": "8584586d6457c37d41227ceb5191306440bff55657dba133e753f730cf8408e8",
+    "docs/generated/master_reaudit/MISSION_19_MASTER_PROJECT_AUTHORIZATION_AND_RESEARCH_DECISION_PACKET.md": "48dc86935d60f8837ff517137b2b596417759e5cd61ce37f6257292400d42c5b",
+    "docs/generated/master_reaudit/MISSION_19_MASTER_AUTHORIZATION_REGISTER.json": "919cbfdd0ddac07adb96ac9e8f3a98f12344cabab25e6662a7200d235b7b33d5"
+  },
+  "source_sha256": {
+    "scripts/build_research_report_doc.py": "5a331ef1977d29602aaf00db9c24fbeb19b8533667782945023ac506fd30e5c0",
+    "scripts/generate_publication_figures.py": "90bccab909cc330f3ab70c6e2a98c3c9e5ecd737417557ea1c4fc21ba20f864d",
+    "scripts/generate_publication_tables.py": "60be6cde98d174549f3bd98aee19fd180309758d494588f6e487a78766f893d8",
+    "scripts/generate_report_figures.py": "5adb8984511fc2d91ce712432bf76857e7817975087ed2f3a3272aafda089de7",
+    "scripts/prepare_researcher_snapshot.py": "61634750db7e0c960de8477b3bbba351829792d838eb4956052f7e0dc73be2d5",
+    "src/railway_detection/annotation/human_review_adapter.py": "f9877ba0cde751715cdfec49abb60748af444457135d07610560f2a9b183b93a",
+    "src/railway_detection/annotation/human_review_domain.py": "20cec136dfaf0fc175ae536523ba70a1ac0d8369cc5efa611f0f7d6ad54c0043",
+    "src/railway_detection/annotation/human_review_store.py": "021e2ef9b519922afa17d74175bc8a4034ebb919a347dee99c57f3721e4e55da",
+    "src/railway_detection/data/constructed_manifest.py": "0b56e0d38a4bf4e7aeab1f0ebe9b2ff845b801997a022a90baf971a7e0f20d3f",
+    "src/railway_detection/evaluation/descriptive_constructed.py": "9b05d9348c65c57cf3200935613a8a76e8d9ecd91eea162fd9fe9d85caea77df",
+    "src/railway_detection/evaluation/metrics.py": "0c1cad5ccfd4288853435674b79cda891e2d3e1a3513aebe77415393745032eb",
+    "src/railway_detection/experiments/provenance_registry.py": "5c2af13d0c49e6f96ced88b05df8afe04c18285e99e317d748bf55df3dad70ec",
+    "src/railway_detection/safety/constructed_authority.py": "9d8d4d71fafd24fbc0544b670e3be917460c07fe4d5a5dd5f7e4f61a9f758a82",
+    "src/railway_detection/safety/constructed_broker.py": "fc7906b67b634ece39263d34732bb63ef8f41ddb25579fa375e6223918d39955",
+    "src/railway_detection/simulation/runner.py": "b3ddc5c71f42ef87115b591c6232aab328b1828f38f51ae78e6b803c6957ce5d",
+    "src/railway_detection/synthetic/convention_b_pipeline.py": "609e76b127bc41d0d16ab9f935584f6c817d01bd3cc671663a65b82b05b32458",
+    "tests/synthetic_data_provenance/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+    "tests/synthetic_data_provenance/test_manifest.py": "b2a5248d975bdb24d01599c50f3737d04b50c1c7e848c7b83cd30c809bae88c9",
+    "tests/synthetic_evaluation_pipeline/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+    "tests/synthetic_evaluation_pipeline/test_orchestration.py": "ddeea2e6902b4a13af1425cad19bb560b196b7bb89708f8d2df6d377bbf41804",
+    "tests/synthetic_human_review/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+    "tests/synthetic_human_review/test_adapters.py": "6d6b9591efa865f7fb73ec5d67efaec72479106b91bc8ab1d679faf93e8b3e12",
+    "tests/synthetic_human_review/test_domain.py": "d4346b6a01451f6c07cee94e8af723bc039b5c0a44ef13284f09e72d1778d24e",
+    "tests/synthetic_human_review/test_persistence.py": "367906b22d6e69342f7d9efe8d6042fa3fb4d3c1c523c44a0052f2068d6186f4",
+    "tests/synthetic_metric_contracts/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+    "tests/synthetic_metric_contracts/test_reporting.py": "8e06301fdb0dcf7908ebb9637e8b5e5a3aa173270f88d23dd6c412a514447aef",
+    "tests/synthetic_mission18a/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+    "tests/synthetic_mission18a/test_convention_b_integration.py": "236d4e2255fa12ddd02f7172bda9438d20cecdc5b21d6c5b96fc5cf065d19eab",
+    "tests/synthetic_mission18a/test_isolation.py": "bc8ef206b442012f6b5655403326a9ce1c542f48d932ed37b39f6d23016d163f",
+    "tests/synthetic_mission18b/conftest.py": "a92fcf1d86b890effcd1380e6354a08b01099bbea728cc8ecc3afd436fec509a",
+    "tests/synthetic_mission18b/test_provenance.py": "8010ba783b4a351c1888b08905f8b0031d090cea0724c47245b01cfafdb59044",
+    "tests/synthetic_preservation/test_snapshot.py": "09aecea3dff47298dad46810c7b6daf786f61cb010a53256fd9249a78cf14dcf",
+    "tests/synthetic_reporting/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+    "tests/synthetic_reporting/test_drafts.py": "805290c1a6f15664f9c45307770bdceeee9f4c47e048e2585e40a529368b3865",
+    "tests/synthetic_security/test_broker.py": "f3d430a8aebfe2451a55a24362f08ae41cde601614b4a776109c3b96509d26c2",
+    "tests/synthetic_security/test_composed_workflow.py": "b1314dc95a62b8dfca94fb7fb513fad22f113c5a359b6917ac605835ec67f34f",
+    "tests/synthetic_security/test_transactions.py": "b4f5abda2f76d9ccf80a6223d1d69f19a221138630325202abfbc50180ef54e9",
+    "tests/synthetic_tooling/test_restored_mypy.py": "a9d02f3566ef1b6d492972278222d4da2b708b192495dd8768074da5c7cefd9b"
+  },
+  "unchanged_frozen_source_sha256": {
+    "src/railway_detection/fusion/decision_engine.py": "3f5e3521e5b0b78e4ea2090855712cd36c0d91420ec125c09001382b1f0fcf40",
+    "src/railway_detection/simulation/gate_model.py": "b712d1c07030a43f03827ac3788954da17664546313a1e8cd3ba54204860ad4e",
+    "src/railway_detection/safety/media_guard.py": "65098c8a486bc9814f2a21c3e5f7dc1e1e7e4602ee769bd9534d479a93d55635",
+    "src/railway_detection/evaluation/governance.py": "d5ba144046a82c42ec144072526c839f8f161d8d53d27218fd3f77344b22bea9",
+    "src/railway_detection/annotation/promotion_gate.py": "905d1082d22eb650a73fb3e5d08e71838dfdc569012731a8a7eb6f256c77c1e1",
+    "src/railway_detection/annotation/adjudication_session.py": "f8d94e148f3d9777a48a1228d8dd691737dfe035a373bd18f5bf19fed3f0da9f",
+    "src/railway_detection/annotation/stage2_1_schema.py": "9ef0dc1d7ba400437d3592820376d08c5ff5d59d8bb471c88864363e0e7ce509",
+    "src/railway_detection/annotation/stage2_1_schema_proposed.py": "5068f66023c8694ddbd58e2a70fff4ac61f865382c010bf8116f0a846f9f4592",
+    "src/railway_detection/synthetic/convention_b.py": "345b0b89c988224855caa1208078d4eb6de4384e2090c1e27c75d1fdfbec5d10",
+    "src/railway_detection/synthetic/grouped_cv.py": "38b315fc94e27bfa9aee21ac0d32ebabac6ed90081ac2af570fd2d1321841a74",
+    "src/railway_detection/data/split.py": "62ef61a6ed59df914b5cf6ab20637d05bd60cb9e302c4afc8fc806b8ed817c84",
+    "src/railway_detection/experiments/preflight_validator.py": "0e6d69617a58fc5687ee1eba78b82f3e658f6831c38bf3917848a778e7706078",
+    "docs/generated/phase2/FINAL_GROUND_TRUTH_PROTOCOL_v7.1.1_PROPOSED.md": "23b383b89c57e97852f60e320c8e4feb25d99ac6492e399db281abb126b92a6d",
+    "docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md": "8386c2b295166eb01da644251f1eb5f0d584e207d6dac33f0dcd7849ef56168e"
+  },
+  "test_total": 500,
+  "new_test_total": 262,
+  "original_test_total": 238,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "original_suite_warnings": 5,
+  "test_receipts": [
+    {
+      "folder": "tests/synthetic_mission18a",
+      "xml": "/tmp/mission21_final_synthetic_mission18a.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18a -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18a -q --junitxml=/tmp/mission21_final_synthetic_mission18a.xml",
+      "tests": 65,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "5a4b72a3eb9b97d4e716e6f1b424e32a1967c9b5ec36723bc0f6d4f72d25345e",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_causal_oracle_and_three_estimators[1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_causal_oracle_and_three_estimators[200000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_causal_oracle_and_three_estimators[500000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_causal_oracle_and_three_estimators[1500000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_causal_oracle_and_three_estimators[3000000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_causal_oracle_and_three_estimators[4000000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_new_command_never_applies_retroactively",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_native_rejections_and_original_indices[ARRIVAL]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_native_rejections_and_original_indices[OFFLINE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_horizon_empty_single_partial_extended[times0-None-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_horizon_empty_single_partial_extended[times1-None-0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_horizon_empty_single_partial_extended[times2-1000000-1000000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_horizon_empty_single_partial_extended[times3-500000-500000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_horizon_empty_single_partial_extended[times4-2000000-2000000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_cutoff_before_origin_rejects_and_no_future_decision",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_future_clock_mode_failure_prefix[ARRIVAL]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_future_clock_mode_failure_prefix[OFFLINE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_exact_clocks[None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_exact_clocks[True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_exact_clocks[-1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_exact_clocks[0.2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_exact_clocks[0.0000001]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_float_boundary_mismatch",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_configuration[mode-AUTO]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_configuration[closing_seconds-0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_configuration[initial_angle-91]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_configuration[report_times-value3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_configuration[report_times-value4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_configuration[report_step_us-True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_configuration[cutoff-3600000001]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_incomplete_command_prefix_not_success",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_full_detached_result_substitutions[status-EMPTY]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_full_detached_result_substitutions[controller_calls-12]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_full_detached_result_substitutions[code_identity-synthetic:code:swapped]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_full_detached_result_substitutions[reason-invented]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_full_detached_result_substitutions[decisions-value4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_swapped_trajectory_and_request_fail_verification",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_input_nested_mutation_and_effective_settings_reset",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_actual_controller_a_compatibility_and_different_motion",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_exact_threshold_and_noop_subdivision",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_declared_maximum_workloads_and_clock_boundaries",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_offline_reorder_and_stable_duplicate_priority[times0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_offline_reorder_and_stable_duplicate_priority[times1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_fixed_grid_exact_spanning[fixed0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_fixed_grid_exact_spanning[fixed1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_fixed_grid_exact_spanning[fixed2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_fixed_grid_exact_spanning[fixed3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_asymmetric_motion_oracle[0-3-6]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_asymmetric_motion_oracle[45-6-3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_asymmetric_motion_oracle[90-6-3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_effective_controller_settings[confirm_frames-True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_effective_controller_settings[fault_confirm_frames-0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_effective_controller_settings[audio_threshold-1.1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_invalid_effective_controller_settings[source_staleness_s--1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_engine_reset_once_per_production_run",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_future_evidence_never_retimed",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_original_exact_clock_normalized_once_per_supplied_row[ARRIVAL]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_original_exact_clock_normalized_once_per_supplied_row[OFFLINE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_convention_b_integration",
+          "name": "test_offline_prevalidation_failure_does_not_claim_reordered_execution",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_isolation",
+          "name": "test_no_model_decoder_cli_or_split_imports",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_isolation",
+          "name": "test_isolation_guards[<lambda>0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_isolation",
+          "name": "test_isolation_guards[<lambda>1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_isolation",
+          "name": "test_isolation_guards[<lambda>2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_isolation",
+          "name": "test_isolation_guards[<lambda>3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18a.test_isolation",
+          "name": "test_ordinary_frames_cannot_enter_pipeline",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_mission18b",
+      "xml": "/tmp/mission21_final_synthetic_mission18b.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission18b -p no:cacheprovider --import-mode=importlib tests/synthetic_mission18b -q --junitxml=/tmp/mission21_final_synthetic_mission18b.xml",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "575c94291215c8b020dbaae1e43dcaecaae8e0c14442764331f101fbc93ba228",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_valid_registry_roundtrip_receipt_and_stale_request",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[self_fit]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[self_select]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[unknown]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[orphan]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[cycle]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[outer_fit]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[foreign_inner]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[duplicate]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[vocabulary]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[float_score]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[missing]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[wrong_asset]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[foreign_fold]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[parent_select]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[unfrozen_refit]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_transitive_and_exact_oof_negatives[none_calibrator]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_inner_oof_calibration_and_final_refit",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_context_policy_and_coherent_role_swap_denied",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_registry_source_transform_and_duplicate_binding[dataset]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_registry_source_transform_and_duplicate_binding[excluded]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_registry_source_transform_and_duplicate_binding[near_duplicate]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_registry_source_transform_and_duplicate_binding[asset_parent]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_registry_source_transform_and_duplicate_binding[bool_receipt]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_pure_verifier_has_no_loader_or_fit_api",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission18b.test_provenance",
+          "name": "test_reserved_calibration_composition",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_human_review",
+      "xml": "/tmp/mission21_final_synthetic_human_review.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_human_review -p no:cacheprovider --import-mode=importlib tests/synthetic_human_review -q --junitxml=/tmp/mission21_final_synthetic_human_review.xml",
+      "tests": 30,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "158bf54304015e0849567a8496f97592c92e85ba0f951ba195bc90571582847f",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_human_review.test_adapters",
+          "name": "test_lossless_sidecar_and_four_states_without_fabricated_metadata[8.1.0-stage2.1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_adapters",
+          "name": "test_lossless_sidecar_and_four_states_without_fabricated_metadata[8.2.0-stage2.1-proposed]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_adapters",
+          "name": "test_schema_identity_and_binding_cannot_be_coerced",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_adapters",
+          "name": "test_proposed_missing_reasons_or_false_evidence_denied",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_adapters",
+          "name": "test_large_clocks_not_silently_overflowed",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_blind_seals_exposure_alias_and_informed_append",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_all_six_risk_subjects_and_missing_second[EXPLICIT_REVIEWER_FLAG]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_all_six_risk_subjects_and_missing_second[UNCERTAIN_BOUNDARY]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_all_six_risk_subjects_and_missing_second[ENGINE_T3_T4_INTERPRETATION]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_all_six_risk_subjects_and_missing_second[FRONT_BACK_CONFLICT]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_all_six_risk_subjects_and_missing_second[MEDIA_HASH_MISSING_OR_INCONSISTENT]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_all_six_risk_subjects_and_missing_second[CORRECTED_FROM_CANDIDATE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_unknown_trigger_and_hash_identity_fail_closed",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_no_second_required_and_uncertain_adjudication",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_boundary_no_point_or_landmark_invention[changes0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_boundary_no_point_or_landmark_invention[changes1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_boundary_no_point_or_landmark_invention[changes2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_boundary_no_point_or_landmark_invention[changes3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_boundary_no_point_or_landmark_invention[changes4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_domain",
+          "name": "test_pts_player_and_cross_camera_clocks",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_exit_restart_alias_and_assignment_cannot_reset_blindness",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_stale_restart_anchor_and_mutated_history_deny",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_two_sessions_cannot_advance_from_stale_knowledge",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_registry_role_substitution_and_unmapped_event_deny",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_commit_failure_leaves_no_seal_or_consumption",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_anchor_types_cannot_launder_sequence[anchor0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_anchor_types_cannot_launder_sequence[anchor1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_anchor_types_cannot_launder_sequence[anchor2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_anchor_types_cannot_launder_sequence[anchor3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_human_review.test_persistence",
+          "name": "test_corrupt_result_and_missing_context_refuse_without_reset",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_security",
+      "xml": "/tmp/mission21_final_synthetic_security.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_final_synthetic_security.xml",
+      "tests": 46,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "6320f5c2b8c996267158a89c594b6d3c73976a374b1c1b1c8463bcb139ce2816",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_distinct_use_results_exact_binding_quota_and_receipt_retry",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_missing_operation_or_current_scope_never_reaches_byte_use[change0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_missing_operation_or_current_scope_never_reaches_byte_use[change1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_missing_operation_or_current_scope_never_reaches_byte_use[change2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_missing_operation_or_current_scope_never_reaches_byte_use[change3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_missing_operation_or_current_scope_never_reaches_byte_use[change4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_missing_operation_or_current_scope_never_reaches_byte_use[change5]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_version_substitution_revocation_and_stale_owner_deny",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_no_ambient_path_or_real_provenance_route",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_failure_at_publication_keeps_bytes_unacknowledged_and_quota_unused",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_read_does_not_implicitly_perform_hash_and_hash_needs_own_scope",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_broker",
+          "name": "test_retry_validates_acknowledged_body_not_only_request_binding",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_composed_workflow",
+          "name": "test_constructed_authority_review_lineage_controller_metric_and_draft_path",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_durable_payload_receipt_reopen_and_idempotence",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_wrong_scope_denies_before_reservation[actor-synthetic:alias]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_wrong_scope_denies_before_reservation[operation-HASH]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_wrong_scope_denies_before_reservation[resource-synthetic:other]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_wrong_scope_denies_before_reservation[context-synthetic:changed-runtime]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_wrong_scope_denies_before_reservation[now-100]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_wrong_scope_denies_before_reservation[now-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_no_self_elevation_or_mixed_reviewer_issuer",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_reservation_quota_retry_and_terminal_consumption",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_revoke_commit_linearization[revoke_before_commit]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_revoke_commit_linearization[commit_before_revoke]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_clock_rollback_and_recovery_fence",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_unknown_effect_blocks_commit_and_finalization",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_strict_codec_negatives[{\"schema\":\"CONSTRUCTED_ONLY\",\"kind\":\"CONSTRUCTED_PAYLOAD\",\"payload\":0,\"payload\":1}]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_strict_codec_negatives[{\"schema\":\"CONSTRUCTED_ONLY\",\"kind\":\"CONSTRUCTED_PAYLOAD\",\"payload\":1.0}]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_strict_codec_negatives[{\"schema\":\"CONSTRUCTED_ONLY\",\"kind\":\"CONSTRUCTED_PAYLOAD\",\"payload\":\"\\\\ud800\"}]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_strict_codec_negatives[{\"schema\":\"CONSTRUCTED_ONLY\",\"kind\":\"CONSTRUCTED_PAYLOAD\",\"payload\":\"\\\\u0000\"}]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_strict_codec_negatives[{\"schema\":\"APPROVED\",\"kind\":\"CONSTRUCTED_PAYLOAD\",\"payload\":{}}]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_anchor_truncation_and_recomputed_chain_quarantined",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_atomic_create_only_qualified_publication_and_retry",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_prepare_crash_reopen_and_failure_before_ack",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_transaction_scope_cannot_change_between_prepare_and_commit",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_two_connections_one_reservation_winner",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_constructed_service_rejects_real_profile_and_real_principal",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_purpose_is_exact_at_every_use_boundary",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_issuer_cannot_grant_own_unappointed_review_role",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_recovery_requires_current_scope_and_clock[change0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_recovery_requires_current_scope_and_clock[change1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_recovery_requires_current_scope_and_clock[change2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_fresh_recovery_fences_finalization_and_unknown_effect",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_operation_roles_rechecked_after_appointment_change",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_unknown_effect_cannot_quarantine_a_different_prepared_operation",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_security.test_transactions",
+          "name": "test_historical_receipt_retrieval_refuses_missing_acknowledged_entry",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_metric_contracts",
+      "xml": "/tmp/mission21_final_synthetic_metric_contracts.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_metric_contracts -p no:cacheprovider --import-mode=importlib tests/synthetic_metric_contracts -q --junitxml=/tmp/mission21_final_synthetic_metric_contracts.xml",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "b5e0e29f1e4b91253cdc68dccb02072a4c5a1a4fd6c4c221db6e3aa899f5ace0",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_six_case_and_edge_oracles[steps0-4-NOT_EVALUABLE-None-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_six_case_and_edge_oracles[steps1-4-NEVER_PROTECTED_M5-None-True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_six_case_and_edge_oracles[steps2-4-EVALUABLE-True-False]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_six_case_and_edge_oracles[steps3-4-NOT_EVALUABLE-None-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_six_case_and_edge_oracles[steps4-4-NOT_EVALUABLE-None-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_six_case_and_edge_oracles[steps5-4-EVALUABLE-False-False]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_six_case_and_edge_oracles[steps6-4-NOT_EVALUABLE-None-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_six_case_and_edge_oracles[steps7-None-NOT_EVALUABLE-None-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_per_metric_denominators_camera_cohort_and_nulls",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_reporting_rejects_ambiguous_or_false_denominators[bad0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_reporting_rejects_ambiguous_or_false_denominators[bad1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_reporting_rejects_ambiguous_or_false_denominators[bad2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_reporting_rejects_ambiguous_or_false_denominators[bad3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_reporting_rejects_ambiguous_or_false_denominators[bad4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_metric_contracts.test_reporting",
+          "name": "test_duplicate_and_lead_in_provenance",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_evaluation_pipeline",
+      "xml": "/tmp/mission21_final_synthetic_evaluation_pipeline.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_evaluation_pipeline -p no:cacheprovider --import-mode=importlib tests/synthetic_evaluation_pipeline -q --junitxml=/tmp/mission21_final_synthetic_evaluation_pipeline.xml",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "c53f9a9bf7cfa5f5b09b0051523c6de9e6f276a2d27465d70e8e7fda642a1884",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_independent_camera_denominators_and_determinism",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_unmapped_deferred_conditions_not_silently_reused[B0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_unmapped_deferred_conditions_not_silently_reused[B2_back]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_unmapped_deferred_conditions_not_silently_reused[B0_back_stateless]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_unmapped_deferred_conditions_not_silently_reused[R04_fused]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_incomplete_or_missing_human_boundary_never_becomes_zero",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_no_real_path_authorized_by_a_constructed_pass",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_audio_perceptual_only_and_duplicate_denominator_rejection",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_exact_source_mapping_accepts_declared_evidence_without_name_inference",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_camera_substring_does_not_establish_identity[camera_front]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_camera_substring_does_not_establish_identity[back_and_front]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_camera_substring_does_not_establish_identity[camera_back_shadow]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_modality_swap_and_hidden_source_metadata_denied",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_audio_only_rows_also_require_qualified_documented_cohort[event_001]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_audio_only_rows_also_require_qualified_documented_cohort[train_events/event_999]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_audio_only_rows_also_require_qualified_documented_cohort[engine_events/event_002]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_audio_only_rows_also_require_qualified_documented_cohort[no_train_events/event_004]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_evaluation_pipeline.test_orchestration",
+          "name": "test_audio_only_rows_also_require_qualified_documented_cohort[train_events/event_000]",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_data_provenance",
+      "xml": "/tmp/mission21_final_synthetic_data_provenance.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_data_provenance -p no:cacheprovider --import-mode=importlib tests/synthetic_data_provenance -q --junitxml=/tmp/mission21_final_synthetic_data_provenance.xml",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "a95c9ce67fc04e4d3c67c4807b7213fbaf6a2192da974ea2e587c8c98cfb65a5",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_exact_join_transitive_exposure_and_determinism",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[physical_event-data/raw/event.mov]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[kind-PREDICTION]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[role-UNKNOWN]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[parents-value3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[parents-value4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[parents-value5]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[transform_id-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[fitted_exposure-value7]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[fitted_exposure-value8]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[parents-value9]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[source_digest-3333333333333333333333333333333333333333333333333333333333333333]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_derived_substitution_denied[observation_origin-HUMAN]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_aliases_cannot_launder_roles_or_source_identity",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_append_only_version_chain",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_implementation_never_invokes_real_resources[TRAIN_MODEL]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_implementation_never_invokes_real_resources[FIT_CALIBRATOR]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_implementation_never_invokes_real_resources[READ_RAW_MEDIA]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_implementation_never_invokes_real_resources[READ_CACHE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_implementation_never_invokes_real_resources[CREATE_OFFICIAL_SPLIT]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_data_provenance.test_manifest",
+          "name": "test_implementation_never_invokes_real_resources[CREATE_MANIFEST]",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_preservation",
+      "xml": "/tmp/mission21_final_synthetic_preservation.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_preservation -p no:cacheprovider --import-mode=importlib tests/synthetic_preservation -q --junitxml=/tmp/mission21_final_synthetic_preservation.xml",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "9851f0ca175fc907ecd4746fc4021c5e6cd6640e6299c3c04f8fdf4c4347f43d",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_deterministic_explicit_source_only_with_protected_enumeration_tripwire",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[data/raw/a.json]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[data/processed/a.txt]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[experiments/c.txt]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[models/a.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[results/cache/a.json]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[docs/cache/a.json]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[src/model.pt]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[../a.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[/tmp/a.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[src/./a.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[src//a.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[src/../a.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[src/a\\n.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_denial_precedes_stat_read_or_enumeration[src\\\\a.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_symlink_directory_and_binary_disguised_as_text",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_input_selection_identity_and_changed_worktree",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_preservation.test_snapshot",
+          "name": "test_nul_payload_refused",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_reporting",
+      "xml": "/tmp/mission21_final_synthetic_reporting.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_reporting -p no:cacheprovider --import-mode=importlib tests/synthetic_reporting -q --junitxml=/tmp/mission21_final_synthetic_reporting.xml",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "3c094247beada2ec17f467bd41df31f8d9318ac1c0303819ace1af7840810305",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_reporting.test_drafts",
+          "name": "test_absent_results_do_not_become_empirical_numbers_or_authors",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_reporting.test_drafts",
+          "name": "test_constructed_rows_bound_and_stratified_without_imputation",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_reporting.test_drafts",
+          "name": "test_markup_cannot_insert_claims",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_reporting.test_drafts",
+          "name": "test_table_entrypoint_never_reads_legacy_cache_or_writes_claims",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_reporting.test_drafts",
+          "name": "test_legacy_generators_refuse_before_third_party_import_or_io[build_research_report_doc.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_reporting.test_drafts",
+          "name": "test_legacy_generators_refuse_before_third_party_import_or_io[generate_publication_figures.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_reporting.test_drafts",
+          "name": "test_legacy_generators_refuse_before_third_party_import_or_io[generate_report_figures.py]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_reporting.test_drafts",
+          "name": "test_private_historical_templates_also_fail_closed",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_tooling",
+      "xml": "/tmp/mission21_final_synthetic_tooling.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_tooling -p no:cacheprovider --import-mode=importlib tests/synthetic_tooling -q --junitxml=/tmp/mission21_final_synthetic_tooling.xml",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "c51147ade647396dfea034c39227795f5e526e7715fe4d874860ea885bdbe843",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_exact_locked_tool_packages_have_complete_metadata[mypy-2.4.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_exact_locked_tool_packages_have_complete_metadata[mypy_extensions-1.1.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_exact_locked_tool_packages_have_complete_metadata[typing_extensions-4.16.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_exact_locked_tool_packages_have_complete_metadata[librt-0.16.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_exact_locked_tool_packages_have_complete_metadata[ast_serialize-0.13.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_exact_locked_tool_packages_have_complete_metadata[pathspec-1.1.1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_typecheck_accepts_valid_code_and_rejects_real_defect",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_cli_and_module_share_the_active_interpreter",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_repaired_package_record_contains_no_missing_files[mypy]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_repaired_package_record_contains_no_missing_files[mypy_extensions]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_repaired_package_record_contains_no_missing_files[typing_extensions]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_repaired_package_record_contains_no_missing_files[librt]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_repaired_package_record_contains_no_missing_files[ast_serialize]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_repaired_package_record_contains_no_missing_files[pathspec]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_tooling.test_restored_mypy",
+          "name": "test_mypy_record_entrypoints_match_active_cli_hashes",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "folder": "tests/synthetic_mission17d",
+      "xml": "/tmp/mission21_final_synthetic_mission17d.xml",
+      "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission17d -p no:cacheprovider --import-mode=importlib tests/synthetic_mission17d -q --junitxml=/tmp/mission21_final_synthetic_mission17d.xml",
+      "tests": 238,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "6b97b9d69f20b74bdbd084edbf2a3655564e39aa0d5146343c90bdf35a215417",
+      "executed_cases": [
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[01]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[02]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[03]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[04]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[05]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[06]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[07]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[08]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[09]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[10-prefix]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[11-prefix]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[12-W1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[12-W2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[13-above]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[13-equal]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[13-below]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[16]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[17]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[18]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[20-CLOSED]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_all_21_exact_reference_vectors[20-OPEN]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_delayed_issue_has_distinct_interval_provenance",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[False]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[-1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[nan]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[inf]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[0.2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[-0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[NaN]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[1e-6]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[0.0000001]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[raw11]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_bad_timestamp_aborts_before_propagation_and_preserves_prefix[]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_timestamp_units_and_explicit_legacy_adapter",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_invalid_or_binary_float_initial_angle_rejected[45.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_invalid_or_binary_float_initial_angle_rejected[True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_invalid_or_binary_float_initial_angle_rejected[NaN]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_invalid_or_binary_float_initial_angle_rejected[-1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_invalid_or_binary_float_initial_angle_rejected[91]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_rejected_arrivals_cannot_replace_command_or_advance_accepted_clock",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_offline_sort_is_explicit_and_prevalidates_before_actuation",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_empty_single_and_cutoff_boundaries",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_report_grid_and_event_grid_have_different_semantics",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[H-0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[H-30]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[H-45]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[H-90]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[L-0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[L-30]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[L-45]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[L-90]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[R-0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[R-30]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[R-45]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_continuous_integral_and_fixed_reporting_invariant_to_noop_subdivision[R-90]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_command_conflict_and_identity_errors_are_incomplete_not_completed_runs",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_executed_watchdog_profiles_match_conditional_oracles",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_watchdog_equal_time_sensor_priority_cancellation_and_one_shot",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_watchdog_detect_response_overrides_only_future_command",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_100_fresh_runs_are_byte_deterministic",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_fixed_command_boundary_identity_and_limits[times0-HLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR-90-3-delta0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_fixed_command_boundary_identity_and_limits[times1-HLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL-90-3-delta1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_fixed_command_boundary_identity_and_limits[times2-HLLLLLLLLLLLLLLLLLLLLRRRRRRRRRRRRRRRRRRRRHHHHHHHHHHHHHHHHHHHHLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL-90-3-delta2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_fixed_command_boundary_identity_and_limits[times3-HLLLLLLLLLLLLLLLLLLLLRRRRRRRRRRRRRRRRRRRR-90-6-delta3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_fixed_command_boundary_identity_and_limits[times4-HRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR-0-3-delta4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_fixed_command_boundary_identity_and_limits[times5-LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL-90-3-delta5]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_fixed_command_boundary_identity_and_limits[times6-HLR-90-3-delta6]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_convention_b",
+          "name": "test_fixed_command_boundary_identity_and_limits[times7-HLLLLLLLLLLL-90-3-delta7]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_alias_camera_versions_and_derivatives_stay_in_one_event_group",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_input_permutation_and_label_parameter_alignment_are_deterministic",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_missing_or_nonsynthetic_event_identity_denies_before_allocation[None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_missing_or_nonsynthetic_event_identity_denies_before_allocation[]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_missing_or_nonsynthetic_event_identity_denies_before_allocation[event_001]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_missing_or_nonsynthetic_event_identity_denies_before_allocation[train_events/event_001]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_missing_or_nonsynthetic_event_identity_denies_before_allocation[True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_duplicate_identity_and_alias_collision_fail_closed",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_input_has_explicit_status_and_no_allocation",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_orphan_cyclic_and_multi_event_derivatives_are_rejected",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_conflicting_content_annotation_capture_and_transform_identity_reject",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_explicit_empty_negative_and_video_timing_evidence",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_every_fallback_flag_except_exact_false_is_denied[True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_every_fallback_flag_except_exact_false_is_denied[None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_every_fallback_flag_except_exact_false_is_denied[false]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_every_fallback_flag_except_exact_false_is_denied[0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_configuration_is_not_silently_relaxed[True-10-support0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_configuration_is_not_silently_relaxed[1-10-support1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_configuration_is_not_silently_relaxed[-3-10-support2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_configuration_is_not_silently_relaxed[3-0-support3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_configuration_is_not_silently_relaxed[3-True-support4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_configuration_is_not_silently_relaxed[3-10-support5]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_configuration_is_not_silently_relaxed[3-10-support6]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_invalid_configuration_is_not_silently_relaxed[3-10-support7]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_necessary_infeasibility_and_exact_mixed_label_triangle",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_feasibility_agrees_with_independent_tiny_brute_force[labels0-2-support0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_feasibility_agrees_with_independent_tiny_brute_force[labels1-2-support1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_feasibility_agrees_with_independent_tiny_brute_force[labels2-2-support2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_feasibility_agrees_with_independent_tiny_brute_force[labels3-2-support3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_feasibility_agrees_with_independent_tiny_brute_force[labels4-3-support4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_greedy_failure_can_find_a_feasible_bounded_search_candidate",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_budget_and_size_limits_never_claim_infeasible_or_accept_manifest",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_large_constructed_metadata_stays_on_polynomial_greedy_path",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_fold_count_has_no_unpublished_32_fold_cap",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_forged_assignment_objective_input_role_and_status_are_rejected",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_reserved_roles_and_training_calibration_selection_boundaries",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_inner_validation_frozen_refit_and_unverified_oof_fail_closed",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_grouped_cv",
+          "name": "test_rd024_rd025_not_reinterpreted_as_training_or_confirmation",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_isolation",
+          "name": "test_production_modules_and_model_decoders_not_imported",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_isolation",
+          "name": "test_fixture_guard_denies_file_network_and_process_calls[<lambda>0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_isolation",
+          "name": "test_fixture_guard_denies_file_network_and_process_calls[<lambda>1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_isolation",
+          "name": "test_fixture_guard_denies_file_network_and_process_calls[<lambda>2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_isolation",
+          "name": "test_fixture_guard_denies_file_network_and_process_calls[<lambda>3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_isolation",
+          "name": "test_fixture_guard_denies_file_network_and_process_calls[<lambda>4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_independent_geometric_oracle_200_trajectories",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_small_cv_exhaustive_oracle_2704_inputs",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_known_feasible_inputs_can_legitimately_remain_undetermined[4-1-UNDETERMINED_BUDGET]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_known_feasible_inputs_can_legitimately_remain_undetermined[20-100000-UNDETERMINED_SIZE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_incremental_greedy_scores_match_dense_recomputation_50_inputs",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_context_bound_fit_gate_should_reject_coherent_control_to_train_swap",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_context_bound_allocation_gate_should_reject_weakened_request",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_receipt_validator_should_reject_invalid_types_and_work_semantics[bool_objective]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_receipt_validator_should_reject_invalid_types_and_work_semantics[float_objective]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_receipt_validator_should_reject_invalid_types_and_work_semantics[negative_work]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_receipt_validator_should_reject_invalid_types_and_work_semantics[search_without_nodes]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_result_configuration_binding_distinguishes_unchanged_path[actuator_rate]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_result_configuration_binding_distinguishes_unchanged_path[watchdog_profile]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_default_reporting_reuses_event_total_without_interval_lookup[16]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_default_reporting_reuses_event_total_without_interval_lookup[32]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_default_reporting_reuses_event_total_without_interval_lookup[64]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_default_reporting_reuses_event_total_without_interval_lookup[128]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_legacy_float_policy_exposes_common_tick_migration_problem",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_propagated_incomplete_prefix_and_offline_lookahead_are_explicit",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_rejected_older_arrival_cannot_reschedule_watchdog[SCHEDULED-84]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_rejected_older_arrival_cannot_reschedule_watchdog[DETECT_ON_ARRIVAL-90]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17f_regressions",
+          "name": "test_no_production_or_model_modules_loaded",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_role_plan_requires_complete_original_bindings[dataset_id-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_role_plan_requires_complete_original_bindings[dataset_version-]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_role_plan_requires_complete_original_bindings[input_digest-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_role_plan_requires_complete_original_bindings[policy_digest-]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_role_plan_requires_complete_original_bindings[allocation_digest-0000000000000000000000000000000000000000000000000000000000000000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_role_plan_requires_complete_original_bindings[original_roles-value5]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_role_plan_requires_complete_original_bindings[original_roles-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_role_plan_requires_complete_original_bindings[outer_fold-False]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_missing_original_context_and_changed_original_registry_reject",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_alias_and_multigeneration_derivatives_inherit_original_role",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_policy_binding_requires_expected_request_and_rejects_substitution",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_policy_normalization_is_deterministic_without_weakening_constraints",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[profile-OTHER]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[receipt_version-V1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[dataset_id-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[input_digest-not-a-digest]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[k-True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[k-3.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[required_support-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[required_support-value7]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[required_support-value8]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[node_budget-False]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[node_budget-1.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[visited_nodes-True]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[visited_nodes-0.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[visited_nodes--1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[visited_nodes-100001]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[visited_nodes-1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[greedy_choices-False]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[greedy_choices-18.0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[greedy_choices--1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[greedy_choices-19]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[status-OPTIMAL]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[status-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[status-INFEASIBLE_EXHAUSTIVE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[status-UNDETERMINED_SIZE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[status-FEASIBLE_SEARCH]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[assignments-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[assignments-value26]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[assignments-value27]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[objective-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[objective-value29]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[objective-value30]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[objective-value31]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[objective-value32]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[objective-value33]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[reason-]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[reason-caller says accepted]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[policy_digest-None]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[policy_digest-0000000000000000000000000000000000000000000000000000000000000000]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[limitations-value38]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_every_receipt_field_is_checked[limitations-value39]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_duplicate_noncanonical_and_coherently_forged_receipts_reject",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_complete_receipt_contract_for_every_status[labels0-3-support0-100000-FEASIBLE_GREEDY]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_complete_receipt_contract_for_every_status[labels1-2-support1-100000-INFEASIBLE_NECESSARY]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_complete_receipt_contract_for_every_status[labels2-2-support2-100000-INFEASIBLE_EXHAUSTIVE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_complete_receipt_contract_for_every_status[labels3-2-support3-100000-FEASIBLE_SEARCH]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_complete_receipt_contract_for_every_status[labels4-2-support4-1-UNDETERMINED_BUDGET]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_complete_receipt_contract_for_every_status[labels5-2-support5-100000-UNDETERMINED_SIZE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_material_configuration_is_distinguishable_on_identical_trajectory[runner0-kwargs0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_material_configuration_is_distinguishable_on_identical_trajectory[runner1-kwargs1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_material_configuration_is_distinguishable_on_identical_trajectory[runner2-kwargs2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_material_configuration_is_distinguishable_on_identical_trajectory[runner3-kwargs3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_material_configuration_is_distinguishable_on_identical_trajectory[runner4-kwargs4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_material_configuration_is_distinguishable_on_identical_trajectory[runner5-kwargs5]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_material_configuration_is_distinguishable_on_identical_trajectory[runner6-kwargs6]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_complete_configuration_snapshot_and_equivalent_representations",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_missing_mismatched_or_substituted_configuration_rejects",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_empty_partial_and_complete_runs_all_log_actual_settings[source0-ARRIVAL-EMPTY]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_empty_partial_and_complete_runs_all_log_actual_settings[source1-ARRIVAL-COMPLETE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_empty_partial_and_complete_runs_all_log_actual_settings[source2-ARRIVAL-INCOMPLETE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_empty_partial_and_complete_runs_all_log_actual_settings[source3-OFFLINE-INCOMPLETE]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_run_consumes_one_snapshot_even_if_runner_is_reconfigured_during_motion",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_fixed_report_grid_uses_linear_interval_accesses[16-1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_fixed_report_grid_uses_linear_interval_accesses[32-4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_fixed_report_grid_uses_linear_interval_accesses[128-1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_fixed_report_grid_uses_linear_interval_accesses[512-4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_fixed_report_grid_uses_linear_interval_accesses[2048-1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_fixed_grid_merge_matches_separate_slow_geometric_lookup",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_report_grid_failure_and_single_point_semantics_are_preserved",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_report_traversal_never_copies_or_indexes_report_grid[0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_report_traversal_never_copies_or_indexes_report_grid[1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_report_traversal_never_copies_or_indexes_report_grid[32]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_report_traversal_never_copies_or_indexes_report_grid[8192]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_duplicate_disjoint_overlapping_and_unmatched_report_horizons_reject[report0]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_duplicate_disjoint_overlapping_and_unmatched_report_horizons_reject[report1]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_duplicate_disjoint_overlapping_and_unmatched_report_horizons_reject[report2]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_duplicate_disjoint_overlapping_and_unmatched_report_horizons_reject[report3]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_duplicate_disjoint_overlapping_and_unmatched_report_horizons_reject[report4]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_duplicate_disjoint_overlapping_and_unmatched_report_horizons_reject[report5]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_missing_records_and_unmatched_interior_endpoints",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_duplicate_arrivals_order_and_default_totals_reset",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_enum_modernization_preserves_display_value_and_serialization[Command]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_enum_modernization_preserves_display_value_and_serialization[DatasetRole]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_each_public_cv_operation_validates_once_and_recomputes[24]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_each_public_cv_operation_validates_once_and_recomputes[1536]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_repeated_fit_calls_do_not_reuse_stale_context[version]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_repeated_fit_calls_do_not_reuse_stale_context[annotation]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_repeated_fit_calls_do_not_reuse_stale_context[policy]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_repeated_fit_calls_do_not_reuse_stale_context[receipt]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_repeated_fit_calls_do_not_reuse_stale_context[roles]",
+          "result": "PASS"
+        },
+        {
+          "class": "tests.synthetic_mission17d.test_mission17g_hardening",
+          "name": "test_17i_prevalidated_caller_object_is_not_a_public_trust_shortcut",
+          "result": "PASS"
+        }
+      ]
+    }
+  ],
+  "static": {
+    "ruff_command": [
+      ".venv/bin/ruff",
+      "check",
+      "scripts/build_research_report_doc.py",
+      "scripts/generate_publication_figures.py",
+      "scripts/generate_publication_tables.py",
+      "scripts/generate_report_figures.py",
+      "scripts/prepare_researcher_snapshot.py",
+      "src/railway_detection/annotation/human_review_adapter.py",
+      "src/railway_detection/annotation/human_review_domain.py",
+      "src/railway_detection/annotation/human_review_store.py",
+      "src/railway_detection/data/constructed_manifest.py",
+      "src/railway_detection/evaluation/descriptive_constructed.py",
+      "src/railway_detection/evaluation/metrics.py",
+      "src/railway_detection/experiments/provenance_registry.py",
+      "src/railway_detection/safety/constructed_authority.py",
+      "src/railway_detection/safety/constructed_broker.py",
+      "src/railway_detection/synthetic/convention_b_pipeline.py",
+      "tests/synthetic_data_provenance/conftest.py",
+      "tests/synthetic_data_provenance/test_manifest.py",
+      "tests/synthetic_evaluation_pipeline/conftest.py",
+      "tests/synthetic_evaluation_pipeline/test_orchestration.py",
+      "tests/synthetic_human_review/conftest.py",
+      "tests/synthetic_human_review/test_adapters.py",
+      "tests/synthetic_human_review/test_domain.py",
+      "tests/synthetic_human_review/test_persistence.py",
+      "tests/synthetic_metric_contracts/conftest.py",
+      "tests/synthetic_metric_contracts/test_reporting.py",
+      "tests/synthetic_mission18a/conftest.py",
+      "tests/synthetic_mission18a/test_convention_b_integration.py",
+      "tests/synthetic_mission18a/test_isolation.py",
+      "tests/synthetic_mission18b/conftest.py",
+      "tests/synthetic_mission18b/test_provenance.py",
+      "tests/synthetic_preservation/test_snapshot.py",
+      "tests/synthetic_reporting/conftest.py",
+      "tests/synthetic_reporting/test_drafts.py",
+      "tests/synthetic_security/test_broker.py",
+      "tests/synthetic_security/test_composed_workflow.py",
+      "tests/synthetic_security/test_transactions.py",
+      "tests/synthetic_tooling/test_restored_mypy.py"
+    ],
+    "ruff_result": "All checks passed!\n",
+    "syntax_files": [
+      "scripts/build_research_report_doc.py",
+      "scripts/generate_publication_figures.py",
+      "scripts/generate_publication_tables.py",
+      "scripts/generate_report_figures.py",
+      "scripts/prepare_researcher_snapshot.py",
+      "src/railway_detection/annotation/human_review_adapter.py",
+      "src/railway_detection/annotation/human_review_domain.py",
+      "src/railway_detection/annotation/human_review_store.py",
+      "src/railway_detection/data/constructed_manifest.py",
+      "src/railway_detection/evaluation/descriptive_constructed.py",
+      "src/railway_detection/evaluation/metrics.py",
+      "src/railway_detection/experiments/provenance_registry.py",
+      "src/railway_detection/safety/constructed_authority.py",
+      "src/railway_detection/safety/constructed_broker.py",
+      "src/railway_detection/simulation/runner.py",
+      "src/railway_detection/synthetic/convention_b_pipeline.py",
+      "tests/synthetic_data_provenance/conftest.py",
+      "tests/synthetic_data_provenance/test_manifest.py",
+      "tests/synthetic_evaluation_pipeline/conftest.py",
+      "tests/synthetic_evaluation_pipeline/test_orchestration.py",
+      "tests/synthetic_human_review/conftest.py",
+      "tests/synthetic_human_review/test_adapters.py",
+      "tests/synthetic_human_review/test_domain.py",
+      "tests/synthetic_human_review/test_persistence.py",
+      "tests/synthetic_metric_contracts/conftest.py",
+      "tests/synthetic_metric_contracts/test_reporting.py",
+      "tests/synthetic_mission18a/conftest.py",
+      "tests/synthetic_mission18a/test_convention_b_integration.py",
+      "tests/synthetic_mission18a/test_isolation.py",
+      "tests/synthetic_mission18b/conftest.py",
+      "tests/synthetic_mission18b/test_provenance.py",
+      "tests/synthetic_preservation/test_snapshot.py",
+      "tests/synthetic_reporting/conftest.py",
+      "tests/synthetic_reporting/test_drafts.py",
+      "tests/synthetic_security/test_broker.py",
+      "tests/synthetic_security/test_composed_workflow.py",
+      "tests/synthetic_security/test_transactions.py",
+      "tests/synthetic_tooling/test_restored_mypy.py"
+    ],
+    "syntax_result": "all parsed with ast.parse",
+    "mypy_command": "PYTHONPATH=src .venv/bin/python -m mypy --no-incremental --cache-dir=/tmp/mission21_mypy_cache src/railway_detection/synthetic/convention_b_pipeline.py src/railway_detection/experiments/provenance_registry.py src/railway_detection/annotation/human_review_domain.py src/railway_detection/safety/constructed_authority.py src/railway_detection/evaluation/descriptive_constructed.py src/railway_detection/data/constructed_manifest.py src/railway_detection/evaluation/metrics.py scripts/prepare_researcher_snapshot.py scripts/generate_publication_tables.py src/railway_detection/annotation/human_review_store.py src/railway_detection/annotation/human_review_adapter.py src/railway_detection/safety/constructed_broker.py",
+    "mypy_result": "Success: no issues found in 12 source files\n",
+    "initial_broader_diagnostics": "scripts/build_research_report_doc.py:8: error: Cannot find implementation or library stub for module named \"docx\"  [import-not-found]\nscripts/build_research_report_doc.py:9: error: Cannot find implementation or library stub for module named \"docx.enum.table\"  [import-not-found]\nscripts/build_research_report_doc.py:10: error: Cannot find implementation or library stub for module named \"docx.enum.text\"  [import-not-found]\nscripts/build_research_report_doc.py:11: error: Cannot find implementation or library stub for module named \"docx.oxml\"  [import-not-found]\nscripts/build_research_report_doc.py:12: error: Cannot find implementation or library stub for module named \"docx.oxml.ns\"  [import-not-found]\nscripts/build_research_report_doc.py:13: error: Cannot find implementation or library stub for module named \"docx.shared\"  [import-not-found]\nsrc/railway_detection/simulation/runner.py:175: error: Argument 2 to \"stage\" has incompatible type \"Callable[[], list[MultimodalFrame]]\"; expected \"Callable[[], _T]\"  [arg-type]\nsrc/railway_detection/simulation/runner.py:175: error: Incompatible return value type (got \"list[MultimodalFrame]\", expected \"_T\")  [return-value]\nsrc/railway_detection/simulation/runner.py:179: error: Argument 2 to \"stage\" has incompatible type \"Callable[[], None]\"; expected \"Callable[[], _T]\"  [arg-type]\nsrc/railway_detection/simulation/runner.py:179: error: Incompatible return value type (got \"None\", expected \"_T\")  [return-value]\nsrc/railway_detection/simulation/runner.py:179: error: Value of type \"list[MultimodalFrame] | _T\" is not indexable  [index]\nsrc/railway_detection/simulation/runner.py:181: error: Argument 2 to \"stage\" has incompatible type \"Callable[[], None]\"; expected \"Callable[[], _T]\"  [arg-type]\nsrc/railway_detection/simulation/runner.py:181: error: Incompatible return value type (got \"None\", expected \"_T\")  [return-value]\nsrc/railway_detection/simulation/runner.py:185: error: Value of type \"list[MultimodalFrame] | _T\" is not indexable  [index]\nsrc/railway_detection/simulation/runner.py:191: error: Item \"object\" of \"list[MultimodalFrame] | _T\" has no attribute \"__iter__\" (not iterable)  [union-attr]\nsrc/railway_detection/simulation/runner.py:198: error: Cannot infer type of lambda  [misc]\nsrc/railway_detection/simulation/runner.py:198: error: Argument 2 to \"stage\" has incompatible type \"Callable[[Any], DecisionRecord]\"; expected \"Callable[[], _T]\"  [arg-type]\nsrc/railway_detection/simulation/runner.py:205: error: \"_T\" has no attribute \"rule_id\"  [attr-defined]\nsrc/railway_detection/simulation/runner.py:213: error: Cannot infer type of lambda  [misc]\nsrc/railway_detection/simulation/runner.py:213: error: Argument 2 to \"stage\" has incompatible type \"Callable[[Any, Any, Any], None]\"; expected \"Callable[[], _T]\"  [arg-type]\nsrc/railway_detection/simulation/runner.py:227: error: \"_T\" has no attribute \"resulting_gate_state\"  [attr-defined]\nsrc/railway_detection/simulation/runner.py:232: error: Cannot infer type of lambda  [misc]\nsrc/railway_detection/simulation/runner.py:232: error: Argument 2 to \"stage\" has incompatible type \"Callable[[Any, Any], float]\"; expected \"Callable[[], _T]\"  [arg-type]\nsrc/railway_detection/simulation/runner.py:242: error: \"_T\" has no attribute \"resulting_state\"  [attr-defined]\nsrc/railway_detection/simulation/runner.py:247: error: \"_T\" has no attribute \"fault_status\"  [attr-defined]\nsrc/railway_detection/simulation/runner.py:262: error: Cannot infer type of lambda  [misc]\nsrc/railway_detection/simulation/runner.py:262: error: Argument 2 to \"stage\" has incompatible type \"Callable[[Any, Any, Any], None]\"; expected \"Callable[[], _T]\"  [arg-type]\nsrc/railway_detection/simulation/runner.py:280: error: Value of type \"list[MultimodalFrame] | _T\" is not indexable  [index]\nsrc/railway_detection/simulation/runner.py:308: error: Argument 2 to \"stage\" has incompatible type \"Callable[[], SimulationRunResult]\"; expected \"Callable[[], _T]\"  [arg-type]\nsrc/railway_detection/simulation/runner.py:309: error: Incompatible return value type (got \"_T\", expected \"SimulationRunResult\")  [return-value]\nsrc/railway_detection/simulation/runner.py:420: error: Assignment to variable \"simulation_exc\" outside except: block  [misc]\nsrc/railway_detection/evaluation/metrics.py:330: error: Unsupported operand types for <= (\"float\" and \"None\")  [operator]\nsrc/railway_detection/evaluation/metrics.py:330: note: Left operand is of type \"float | None\"\nsrc/railway_detection/evaluation/metrics.py:335: error: Unsupported operand types for < (\"float\" and \"None\")  [operator]\nsrc/railway_detection/evaluation/metrics.py:335: note: Left operand is of type \"float | None\"\nscripts/generate_report_figures.py:11: error: Library stubs not installed for \"pandas\"  [import-untyped]\nscripts/generate_publication_figures.py:24: error: Library stubs not installed for \"pandas\"  [import-untyped]\nscripts/generate_publication_figures.py:24: note: Hint: \"python3 -m pip install pandas-stubs\"\nscripts/generate_publication_figures.py:24: note: (or run \"mypy --install-types\" to install all missing stub packages)\nscripts/generate_publication_figures.py:24: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports\nFound 35 errors in 5 files (checked 7 source files)\n",
+    "limitations": "Preserved A instrumentation typing and one E501 remain; optional docx/pandas typing is not installed for disabled legacy bodies. Two initial metric narrowing errors fixed. No full-repository static acceptance."
+  },
+  "audit_fixes": [
+    "persist review knowledge across session/event/principal aliases",
+    "preserve exact boundary sidecars without manufacturing active records",
+    "replace camera substrings with exact source/modality/metadata bindings",
+    "bind purpose and current roles at use; fence recovery/finalization/quarantine",
+    "normalize each original clock once and correct failed-sort provenance",
+    "construct byte broker with separate READ/PROBE/HASH and verified retry bodies"
+  ],
+  "protected_operations_activated": 0,
+  "historical_ES_matrix_fully_executed": false,
+  "security_limit": "cooperative constructed fixtures, not identity proof/OS isolation/live authority",
+  "source_phase_commits": [
+    {
+      "phase": "WP01",
+      "commit": "79fa0ce5af2e5ada1dbc7e38efe4740c2f3b2496",
+      "push_verified": true
+    },
+    {
+      "phase": "WP02",
+      "commit": "7cfa08dca342a409f596a8a2b537f513e05e1ee8",
+      "push_verified": true
+    },
+    {
+      "phase": "WP03",
+      "commit": "794c8c5fd1090cd0351b8f8c960687d654d98ab9",
+      "push_verified": true
+    },
+    {
+      "phase": "WP04",
+      "commit": "54efc28317c735745385c2d74e7103e778a9ae01",
+      "push_verified": true
+    },
+    {
+      "phase": "WP05",
+      "commit": "fa6c0020934ddb0003b6b38df57bcd64b87b0aa2",
+      "push_verified": true
+    },
+    {
+      "phase": "WP06",
+      "commit": "4313a456fedba8a340e3cf46027405fa6f4c5a1a",
+      "push_verified": true
+    },
+    {
+      "phase": "WP07",
+      "commit": "ac4fcc8ad31a8c45028e39fcb502645791753408",
+      "push_verified": true
+    },
+    {
+      "phase": "WP08",
+      "commit": "e4e6ed6a4af3e5388566f7fba371f70e9148e7dc",
+      "push_verified": true
+    },
+    {
+      "phase": "WP09",
+      "commit": "938a2d7d3de0df8ab97f75add034f482b2fcf180",
+      "push_verified": true
+    },
+    {
+      "phase": "WP10",
+      "commit": "4b88f546d9d9281d33e1abf1a464bd18e0dc2cdc",
+      "push_verified": true
+    },
+    {
+      "phase": "WP03R",
+      "commit": "71229e55ca52557cb13dc29e54c19f677bfd99db",
+      "push_verified": true
+    },
+    {
+      "phase": "WP06R",
+      "commit": "fd7c974d253c9083290619e2cf24802e099093bd",
+      "push_verified": true
+    },
+    {
+      "phase": "WP04R",
+      "commit": "c22c5cf02fd8f04be8039c8e37cdc8a255bc8aac",
+      "push_verified": true
+    },
+    {
+      "phase": "WP01R",
+      "commit": "b136d0a1acfd68f46547d165b06d5570a13472f3",
+      "push_verified": true
+    },
+    {
+      "phase": "WP04B",
+      "commit": "5398af3cd1b13fbbc19868fe0bd6ca62a54eeddd",
+      "push_verified": true
+    },
+    {
+      "phase": "WP10R",
+      "commit": "7de31f32ad56d5b3e894af28a513a7c87cd0f946",
+      "push_verified": true
+    },
+    {
+      "phase": "WP01L",
+      "commit": "6021cf3a2f60be756f0979120b9522a932402e34",
+      "push_verified": true
+    }
+  ]
+}

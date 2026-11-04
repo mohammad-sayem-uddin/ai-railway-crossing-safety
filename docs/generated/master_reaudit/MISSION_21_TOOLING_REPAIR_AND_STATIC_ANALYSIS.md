@@ -1,9 +1,9 @@
 # Mission21 — Bounded tooling repair and static analysis
 
-The active runtime is `.venv/bin/python` (Python3.11.15). Initial Mypy execution
+The active runtime is `.venv/bin/python` (Python 3.11.15). Initial Mypy execution
 failed: `No module named mypy.__main__`. The local 2.3.1 dist-info has only RECORD
 and licenses; installed native/source files are partial. `pip show mypy` also
-fails because Metadata-Version is absent. The inactive Python3.14 tree is left
+fails because Metadata-Version is absent. The inactive Python 3.14 tree is left
 unchanged. No global environment is changed.
 
 Repair plan (recorded before mutation): use exact existing requirements.lock
@@ -30,7 +30,7 @@ pathspec1.1.1; retain the failed staging receipt and rerun before promotion.
 The six exact locked packages were staged without dependency resolution; Mypy
 2.4.0 executed successfully there, then the named active-runtime package trees
 were replaced. Previous partial namespaces are retained in
-`/tmp/mission21_tooling_rollback`; no Python3.14/global files were changed.
+`/tmp/mission21_tooling_rollback`; no Python 3.14/global files were changed.
 Wheel SHA256 and changed namespace inventory are in the companion repair receipt.
 No requirements.lock or pyproject change was required.
 
@@ -45,7 +45,7 @@ Focused tooling tests verify complete locked metadata and that the checker
 accepts valid code and rejects a deliberate assignment defect. An initial smoke
 test used `-c` against a config with `files=[src]`, which Mypy rejects; changed
 the fixture to explicit temporary source files without altering configuration.
-All eight tooling cases now pass. Both module and CLI report Mypy2.4.0.
+All eight tooling cases now pass. Both module and CLI report Mypy 2.4.0.
 
 The first broader analysis reported 35 diagnostics in preserved A-runner code,
 metric optional narrowing and unavailable legacy docx/pandas typing. The two
@@ -60,18 +60,14 @@ Legacy reporting refusal was moved into explicit entrypoint functions so imports
 cannot trigger plotting/document writes. Historical template bodies remain
 unreachable. Their existing lint was corrected with import ordering, formatting,
 AST-equivalent literal wrapping and unused-local naming, without changing fixed
-historical value text. All30 changed/new Python files other than the preserved
-A runner pass Ruff; all31 parse. The three legacy reporting paths still refuse
+historical value text. All 30 changed/new Python files other than the preserved
+A runner pass Ruff; all 31 parse. The three legacy reporting paths still refuse
 before third-party imports/IO in executed negative tests.
 
 Fresh isolated regression: **443 tests, zero failures/errors/skips** across ten
 new suites plus the original238 suite in a separate process. Original suite has
 five existing record_property/JUnit warnings. Exact phase XML counts/commands
 are in the execution register; these are engineering tests, not real-data results.
-
-## Final integrated receipt
-
-After subsequent audit fixes,493 tests pass (255 new plus238 original), 37 Python files pass Ruff, all38 parse, and12 source files pass scoped Mypy. The original five JUnit warnings and documented baseline/optional dependency limits remain. Full commands/case IDs/source hashes are committed in MISSION_21_FINAL_ENGINEERING_VALIDATION.json.
 
 ## Entrypoint RECORD integrity correction
 
@@ -84,3 +80,7 @@ No package version, dependency rule or global installation changed. Fifteen
 focused tooling tests now pass, including all six package RECORD file-existence
 checks, five CLI hash/location checks and the CLI's nonzero type-error exit.
 The final integrated packet is regenerated after this correction.
+
+## Final integrated receipt
+
+After all audit corrections, **500 tests pass** (262 new plus 238 original). Ruff passes 37 Python files; all 38 parse; 12 source files pass scoped Mypy. Original five JUnit warnings and documented baseline/optional dependency limits remain. Exact commands, case IDs and source hashes are committed in MISSION_21_FINAL_ENGINEERING_VALIDATION.json.
