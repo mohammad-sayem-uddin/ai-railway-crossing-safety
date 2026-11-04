@@ -20,6 +20,13 @@ PROFILE = "SYNTHETIC_GROUPED_V1"
 _ID = re.compile(r"synthetic:[A-Za-z0-9][A-Za-z0-9._:-]*\Z")
 _LABEL = re.compile(r"[A-Za-z0-9][A-Za-z0-9._:-]*\Z")
 MAX_SEARCH_EVENTS = 18
+RECEIPT_VERSION = "SYNTHETIC_ALLOCATION_RECEIPT_V2"
+OBJECTIVE = "LEX_EVENT_LABEL_ORIGINAL_SQUARED_IMBALANCE_V1"
+ROLE_POLICY = "CANONICAL_EVENT_DEVELOPMENT_ONLY_NO_FALLBACK_V1"
+LIMITATIONS = (
+    "synthetic metadata only; no physical truth or scientific eligibility certification",
+    "feasibility only; no global optimality or independent-model-exposure guarantee",
+)
 
 
 class InvalidInput(ValueError):
@@ -356,6 +363,65 @@ def math_gcd(a: int, b: int) -> int:
     return a
 
 
+def _support_rules(required_support: tuple[tuple[str, int], ...]) -> tuple[tuple[str, int], ...]:
+    if type(required_support) is not tuple:
+        raise InvalidInput("immutable explicit support rules required")
+    rules = {}
+    for pair in required_support:
+        if type(pair) is not tuple or len(pair) != 2:
+            raise InvalidInput("support rule is (label,minimum)")
+        label, minimum = pair
+        if type(label) is not str or not _LABEL.fullmatch(label):
+            raise InvalidInput("invalid support label")
+        if label in rules or type(minimum) is not int or minimum < 1:
+            raise InvalidInput("duplicate/nonpositive support rule")
+        rules[label] = minimum
+    return tuple(sorted(rules.items()))
+
+
+@dataclass(frozen=True)
+class AllocationPolicy:
+    """Expected request supplied by the caller, separately from a candidate receipt."""
+
+    k: int
+    required_support: tuple[tuple[str, int], ...] = ()
+    node_budget: int = 100_000
+    profile: str = PROFILE
+    search_limit: int = MAX_SEARCH_EVENTS
+    objective: str = OBJECTIVE
+    role_policy: str = ROLE_POLICY
+    allow_ungrouped_fallback: bool = False
+    schema_version: str = "SYNTHETIC_ALLOCATION_POLICY_V1"
+
+    def __post_init__(self) -> None:
+        if type(self.k) is not int or self.k < 2:
+            raise InvalidInput("k must be an integer >=2")
+        if type(self.node_budget) is not int or self.node_budget < 1:
+            raise InvalidInput("positive deterministic node budget required")
+        if (type(self.search_limit) is not int or self.search_limit != MAX_SEARCH_EVENTS
+                or self.allow_ungrouped_fallback is not False):
+            raise InvalidInput("unsupported search limit or ungrouped fallback")
+        for actual, expected in ((self.profile, PROFILE), (self.objective, OBJECTIVE),
+                                 (self.role_policy, ROLE_POLICY),
+                                 (self.schema_version, "SYNTHETIC_ALLOCATION_POLICY_V1")):
+            if type(actual) is not str or actual != expected:
+                raise InvalidInput("unsupported allocation policy identity")
+        if _support_rules(self.required_support) != self.required_support:
+            raise InvalidInput("support policy must be canonical")
+
+    @property
+    def digest(self) -> str:
+        self.__post_init__()
+        return hashlib.sha256(_json(asdict(self)).encode()).hexdigest()
+
+
+def allocation_policy(*, k: int, required_support: tuple[tuple[str, int], ...] = (),
+                      node_budget: int = 100_000,
+                      allow_ungrouped_fallback: bool = False) -> AllocationPolicy:
+    return AllocationPolicy(k, _support_rules(required_support), node_budget,
+                            allow_ungrouped_fallback=allow_ungrouped_fallback)
+
+
 @dataclass(frozen=True)
 class Allocation:
     profile: str
@@ -370,12 +436,12 @@ class Allocation:
     assignments: tuple[tuple[str, int], ...]
     objective: tuple[int, int, int] | None
     reason: str | None
-    limitations: tuple[str, ...] = (
-        "synthetic metadata only; no physical truth or scientific eligibility certification",
-        "feasibility only; no global optimality or independent-model-exposure guarantee",
-    )
+    policy_digest: str
+    receipt_version: str = RECEIPT_VERSION
+    limitations: tuple[str, ...] = LIMITATIONS
 
     def canonical_json(self) -> str:
+        _validate_receipt_shape(self)
         return _json(asdict(self))
 
 
@@ -412,25 +478,9 @@ def allocate(dataset: SyntheticDataset, *, k: int,
              node_budget: int = 100_000, allow_ungrouped_fallback: bool = False) -> Allocation:
     """Return a verified feasible allocation or explicit no-assignment status."""
     registry = validate_dataset(dataset)
-    if type(k) is not int or k < 2:
-        raise InvalidInput("k must be an integer >=2")
-    if type(node_budget) is not int or node_budget < 1:
-        raise InvalidInput("positive deterministic node budget required")
-    if allow_ungrouped_fallback is not False:
-        raise InvalidInput("ungrouped fallback forbidden under every flag")
-    if type(required_support) is not tuple:
-        raise InvalidInput("immutable explicit support rules required")
-    rules = {}
-    for pair in required_support:
-        if type(pair) is not tuple or len(pair) != 2:
-            raise InvalidInput("support rule is (label,minimum)")
-        label, minimum = pair
-        if type(label) is not str or not _LABEL.fullmatch(label):
-            raise InvalidInput("invalid support label")
-        if label in rules or type(minimum) is not int or minimum < 1:
-            raise InvalidInput("duplicate/nonpositive support rule")
-        rules[label] = minimum
-    support = tuple(sorted(rules.items()))
+    policy = allocation_policy(k=k, required_support=required_support, node_budget=node_budget,
+                               allow_ungrouped_fallback=allow_ungrouped_fallback)
+    support = policy.required_support
     groups = tuple(g for g in registry.groups if g.role == DatasetRole.DEVELOPMENT_POOL)
     ordered = tuple(sorted(groups, key=lambda g: (-g.original_asset_count, g.event_id)))
     labels = tuple(sorted({label for g in groups for label in g.labels}))
@@ -444,7 +494,7 @@ def allocate(dataset: SyntheticDataset, *, k: int,
                           node_budget, visited, choices, status,
                           tuple(sorted((assignment or {}).items())),
                           None if assignment is None else _objective(groups, assignment, k, labels),
-                          reason)
+                          reason, policy.digest)
 
     if len(groups) < k or any(sum(label in g.labels for g in groups) < k*minimum
                               for label, minimum in support):
@@ -526,51 +576,94 @@ def allocate(dataset: SyntheticDataset, *, k: int,
     return result("INFEASIBLE_EXHAUSTIVE", reason="all canonical feasible branches exhausted")
 
 
-def verify_allocation(dataset: SyntheticDataset, allocation: Allocation) -> bool:
-    registry = validate_dataset(dataset)
-    if type(allocation) is not Allocation or allocation.profile != PROFILE:
-        raise InvalidInput("wrong allocation type/profile")
-    if allocation.input_digest != registry.input_digest or allocation.dataset_id != dataset.dataset_id:
-        raise InvalidInput("allocation inputs do not match verified synthetic registry")
-    if (type(allocation.k) is not int or allocation.k < 2
-            or type(allocation.node_budget) is not int or allocation.node_budget < 1
-            or type(allocation.visited_nodes) is not int
-            or not 0 <= allocation.visited_nodes <= allocation.node_budget):
-        raise InvalidInput("invalid allocation configuration/receipt")
-    if allocation.status not in (
-        "FEASIBLE_GREEDY", "FEASIBLE_SEARCH", "INFEASIBLE_NECESSARY",
-        "INFEASIBLE_EXHAUSTIVE", "UNDETERMINED_BUDGET", "UNDETERMINED_SIZE",
-    ):
+def _digest(value: str) -> None:
+    if type(value) is not str or not re.fullmatch(r"[0-9a-f]{64}", value):
+        raise InvalidInput("missing/malformed provenance digest")
+
+
+def _validate_receipt_shape(allocation: Allocation) -> AllocationPolicy:
+    """Validate every receipt field before equality, dictionary conversion or serialization."""
+    if type(allocation) is not Allocation:
+        raise InvalidInput("typed allocation receipt required")
+    if (type(allocation.profile) is not str or allocation.profile != PROFILE
+            or type(allocation.receipt_version) is not str
+            or allocation.receipt_version != RECEIPT_VERSION):
+        raise InvalidInput("wrong allocation type/profile/receipt version")
+    _identity(allocation.dataset_id)
+    _digest(allocation.input_digest)
+    _digest(allocation.policy_digest)
+    policy = allocation_policy(k=allocation.k, required_support=allocation.required_support,
+                               node_budget=allocation.node_budget)
+    if allocation.required_support != policy.required_support or allocation.policy_digest != policy.digest:
+        raise InvalidInput("missing/inconsistent allocation policy binding")
+    if (type(allocation.visited_nodes) is not int
+            or not 0 <= allocation.visited_nodes <= allocation.node_budget
+            or type(allocation.greedy_choices) is not int or allocation.greedy_choices < 0):
+        raise InvalidInput("invalid allocation work counters")
+    statuses = ("FEASIBLE_GREEDY", "FEASIBLE_SEARCH", "INFEASIBLE_NECESSARY",
+                "INFEASIBLE_EXHAUSTIVE", "UNDETERMINED_BUDGET", "UNDETERMINED_SIZE")
+    if type(allocation.status) is not str or allocation.status not in statuses:
         raise InvalidInput("unknown feasibility status")
-    if type(allocation.required_support) is not tuple:
-        raise InvalidInput("invalid support receipt")
-    support_labels = set()
-    for pair in allocation.required_support:
+    if (type(allocation.limitations) is not tuple or allocation.limitations != LIMITATIONS
+            or any(type(v) is not str for v in allocation.limitations)):
+        raise InvalidInput("invalid/missing limitation provenance")
+    if type(allocation.assignments) is not tuple:
+        raise InvalidInput("immutable assignment receipt required")
+    ids = []
+    for pair in allocation.assignments:
         if type(pair) is not tuple or len(pair) != 2:
-            raise InvalidInput("invalid support receipt")
-        label, minimum = pair
-        if (type(label) is not str or not _LABEL.fullmatch(label) or label in support_labels
-                or type(minimum) is not int or minimum < 1):
-            raise InvalidInput("invalid/duplicate support receipt")
-        support_labels.add(label)
-    if allocation.status not in ("FEASIBLE_GREEDY", "FEASIBLE_SEARCH"):
-        if allocation.assignments or allocation.objective is not None:
-            raise InvalidInput("failed/undetermined result cannot contain accepted assignment")
-        return False
-    groups = tuple(g for g in registry.groups if g.role == DatasetRole.DEVELOPMENT_POOL)
-    assignment = dict(allocation.assignments)
-    if len(assignment) != len(allocation.assignments) or set(assignment) != {g.event_id for g in groups}:
-        raise InvalidInput("duplicate/missing/extra or reserved event in allocation")
-    if type(allocation.k) is not int or allocation.k < 2:
-        raise InvalidInput("invalid fold count")
-    if any(type(v) is not int or not 0 <= v < allocation.k for v in assignment.values()):
-        raise InvalidInput("invalid fold index")
-    if not _valid(groups, assignment, allocation.k, allocation.required_support):
-        raise InvalidInput("allocation violates support/nonempty folds")
-    labels = tuple(sorted({label for g in groups for label in g.labels}))
-    if allocation.objective != _objective(groups, assignment, allocation.k, labels):
-        raise InvalidInput("forged objective")
-    return True
+            raise InvalidInput("malformed assignment receipt")
+        event_id, fold = pair
+        _identity(event_id)
+        if type(fold) is not int or not 0 <= fold < allocation.k:
+            raise InvalidInput("invalid fold index")
+        ids.append(event_id)
+    if ids != sorted(set(ids)):
+        raise InvalidInput("duplicate/noncanonical assignment identity")
+    if allocation.status.startswith("FEASIBLE_"):
+        if (not allocation.assignments or type(allocation.objective) is not tuple
+                or len(allocation.objective) != 3
+                or any(type(v) is not int or v < 0 for v in allocation.objective)
+                or allocation.reason is not None):
+            raise InvalidInput("malformed feasible objective/reason/assignment")
+    elif (allocation.assignments or allocation.objective is not None
+          or type(allocation.reason) is not str or not allocation.reason):
+        raise InvalidInput("failed/undetermined result requires reason and no accepted assignment")
+    if allocation.status in ("FEASIBLE_GREEDY", "INFEASIBLE_NECESSARY", "UNDETERMINED_SIZE"):
+        if allocation.visited_nodes != 0:
+            raise InvalidInput("non-search status cannot claim visited search nodes")
+    elif allocation.visited_nodes < 1:
+        raise InvalidInput("search status requires visited nodes")
+    if (allocation.status == "UNDETERMINED_BUDGET"
+            and allocation.visited_nodes != allocation.node_budget):
+        raise InvalidInput("budget status contradicts work receipt")
+    return policy
+
+
+def verify_allocation(dataset: SyntheticDataset, allocation: Allocation, *,
+                      expected_policy: AllocationPolicy | None = None) -> bool:
+    """Check against an independently supplied request and recompute the synthetic result.
+
+    This establishes reproducibility under that request, not authenticated execution
+    or scientific truth. Expected policy must never be reconstructed from a candidate.
+    """
+    if type(expected_policy) is not AllocationPolicy:
+        raise InvalidInput("independent expected allocation policy required")
+    expected_policy.__post_init__()
+    policy = _validate_receipt_shape(allocation)
+    if policy != expected_policy or allocation.policy_digest != expected_policy.digest:
+        raise InvalidInput("allocation contradicts expected policy")
+    registry = validate_dataset(dataset)
+    if allocation.input_digest != registry.input_digest or allocation.dataset_id != dataset.dataset_id:
+        raise InvalidInput("allocation inputs do not match original synthetic registry")
+    recomputed = allocate(dataset, k=expected_policy.k,
+                          required_support=expected_policy.required_support,
+                          node_budget=expected_policy.node_budget)
+    # Shape checks above exclude equal-valued bool/float substitutions. Recompute
+    # every status, assignment, objective, reason and deterministic work counter.
+    if allocation != recomputed:
+        raise InvalidInput("receipt contradicts deterministic allocation operation")
+    return allocation.status.startswith("FEASIBLE_")
 
 
 @dataclass(frozen=True)
@@ -585,12 +678,33 @@ class RolePlan:
     final_descriptive: tuple[str, ...]
     calibration_mode: str
     frozen_rule_id: str | None
+    dataset_id: str
+    dataset_version: str
+    input_digest: str
+    policy_digest: str
+    allocation_digest: str
+    original_roles: tuple[tuple[str, DatasetRole], ...]
+    outer_fold: int
+
+
+@dataclass(frozen=True)
+class RoleContext:
+    """Original synthetic inputs kept by the caller, separate from a proposed plan."""
+
+    dataset: SyntheticDataset
+    allocation: Allocation
+    policy: AllocationPolicy
+    outer_fold: int
+    validation_events: tuple[str, ...] = ()
+    calibration_mode: str = "NONE"
+    frozen_rule_id: str | None = None
 
 
 def role_plan(dataset: SyntheticDataset, allocation: Allocation, *, outer_fold: int,
               validation_events: tuple[str, ...] = (), calibration_mode: str = "NONE",
-              frozen_rule_id: str | None = None) -> RolePlan:
-    if not verify_allocation(dataset, allocation):
+              frozen_rule_id: str | None = None,
+              expected_policy: AllocationPolicy | None = None) -> RolePlan:
+    if not verify_allocation(dataset, allocation, expected_policy=expected_policy):
         raise InvalidInput("no accepted allocation for role plan")
     if type(outer_fold) is not int or not 0 <= outer_fold < allocation.k:
         raise InvalidInput("invalid outer fold")
@@ -619,12 +733,16 @@ def role_plan(dataset: SyntheticDataset, allocation: Allocation, *, outer_fold: 
                     tuple(sorted(calibration)), tuple(sorted(by_role[DatasetRole.RESERVED_CONTROL])),
                     tuple(sorted(by_role[DatasetRole.CASE_STUDY])),
                     tuple(sorted(by_role[DatasetRole.FINAL_DESCRIPTIVE])),
-                    calibration_mode, frozen_rule_id)
+                    calibration_mode, frozen_rule_id, dataset.dataset_id, dataset.version,
+                    registry.input_digest, allocation.policy_digest,
+                    hashlib.sha256(allocation.canonical_json().encode()).hexdigest(),
+                    tuple((g.event_id, g.role) for g in registry.groups), outer_fold)
 
 
 def validate_fit_membership(plan: RolePlan, operation: str, fit_events: tuple[str, ...], *,
                             selection_events: tuple[str, ...] = (),
-                            producing_fit_events: tuple[str, ...] = ()) -> None:
+                            producing_fit_events: tuple[str, ...] = (),
+                            expected_context: RoleContext | None = None) -> None:
     """Check proposed memberships only; no fitting/cache/model operation occurs.
 
     Full per-artifact evidence/OOF score provenance authentication is deferred.
@@ -632,6 +750,28 @@ def validate_fit_membership(plan: RolePlan, operation: str, fit_events: tuple[st
     """
     if type(plan) is not RolePlan:
         raise InvalidInput("typed role plan required")
+    if type(expected_context) is not RoleContext:
+        raise InvalidInput("independent original role provenance context required")
+    expected = role_plan(
+        expected_context.dataset, expected_context.allocation,
+        expected_policy=expected_context.policy, outer_fold=expected_context.outer_fold,
+        validation_events=expected_context.validation_events,
+        calibration_mode=expected_context.calibration_mode,
+        frozen_rule_id=expected_context.frozen_rule_id,
+    )
+    _identity(plan.dataset_id)
+    if type(plan.dataset_version) is not str or not plan.dataset_version.strip():
+        raise InvalidInput("original dataset version required")
+    for digest in (plan.input_digest, plan.policy_digest, plan.allocation_digest):
+        _digest(digest)
+    if type(plan.outer_fold) is not int or type(plan.original_roles) is not tuple:
+        raise InvalidInput("original role/outer-fold provenance required")
+    for pair in plan.original_roles:
+        if type(pair) is not tuple or len(pair) != 2 or type(pair[1]) is not DatasetRole:
+            raise InvalidInput("typed original role binding required")
+        _identity(pair[0])
+    if plan != expected:
+        raise InvalidInput("role plan contradicts original role provenance context")
     if plan.calibration_mode not in ("NONE", "RESERVED_CALIBRATION", "INNER_OOF"):
         raise InvalidInput("unknown calibration operation policy")
     if plan.frozen_rule_id is not None:

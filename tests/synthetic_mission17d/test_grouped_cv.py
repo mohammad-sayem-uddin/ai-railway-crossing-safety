@@ -12,8 +12,10 @@ from railway_detection.synthetic.grouped_cv import (
     DatasetRole,
     InvalidInput,
     MetadataValue,
+    RoleContext,
     Transform,
     allocate,
+    allocation_policy,
     role_plan,
     validate_dataset,
     validate_fit_membership,
@@ -59,7 +61,8 @@ def test_alias_camera_versions_and_derivatives_stay_in_one_event_group(dataset_f
     assert g.original_asset_count == 2 and len(g.asset_ids) == 3
     assert dict(registry.aliases)["synthetic:alias:pass-0"] == first.event_id
     result = allocate(d, k=3)
-    assert verify_allocation(d, result) and len(result.assignments) == 6
+    assert verify_allocation(d, result, expected_policy=allocation_policy(k=3))
+    assert len(result.assignments) == 6
     assert first.aliases[0] not in dict(result.assignments)
     assert registry.dataset.assets[-1].transform.parameters == (("left", "2"),)
     assert registry.dataset.captures[-1].camera.value == "second-camera"
@@ -74,7 +77,8 @@ def test_input_permutation_and_label_parameter_alignment_are_deterministic(datas
     a = allocate(d, k=3, required_support=(("a", 1),))
     b = allocate(permuted, k=3, required_support=(("a", 1),))
     assert a.canonical_json() == b.canonical_json()
-    assert verify_allocation(permuted, a)
+    assert verify_allocation(permuted, a, expected_policy=allocation_policy(
+        k=3, required_support=(("a", 1),)))
 
 
 @pytest.mark.parametrize("bad_id", [None, "", "event_001", "train_events/event_001", True])
@@ -142,7 +146,7 @@ def test_conflicting_content_annotation_capture_and_transform_identity_reject(da
 
 def test_explicit_empty_negative_and_video_timing_evidence(dataset_factory):
     d = dataset_factory(labels=((),)*6)
-    assert verify_allocation(d, allocate(d, k=3))
+    assert verify_allocation(d, allocate(d, k=3), expected_policy=allocation_policy(k=3))
     with pytest.raises(ValueError):
         validate_dataset(replace(d, annotations=(replace(d.annotations[0], confirmed_empty=False),)
                                                    +d.annotations[1:]))
@@ -203,7 +207,8 @@ def test_feasibility_agrees_with_independent_tiny_brute_force(dataset_factory, l
     result = allocate(d, k=k, required_support=support, node_budget=10000)
     possible = tiny_feasible(labels, k, support)
     assert result.status.startswith("FEASIBLE_") == possible
-    assert verify_allocation(d, result) == possible
+    assert verify_allocation(d, result, expected_policy=allocation_policy(
+        k=k, required_support=support, node_budget=10000)) == possible
     if not possible:
         assert result.status.startswith("INFEASIBLE_") and not result.assignments
 
@@ -213,7 +218,9 @@ def test_greedy_failure_can_find_a_feasible_bounded_search_candidate(dataset_fac
     labels = (('r', 'a1', 'a2'), ('b',), ('a1', 'a2', 'b'), ('r',))
     d = dataset_factory(labels=labels)
     result = allocate(d, k=2, required_support=(("r", 1),))
-    assert result.status == "FEASIBLE_SEARCH" and verify_allocation(d, result)
+    assert result.status == "FEASIBLE_SEARCH"
+    assert verify_allocation(d, result, expected_policy=allocation_policy(
+        k=2, required_support=(("r", 1),)))
     assert tiny_feasible(labels, 2, (("r", 1),))
 
 
@@ -231,7 +238,9 @@ def test_large_constructed_metadata_stays_on_polynomial_greedy_path(dataset_fact
     d = dataset_factory(labels=(('front',),)*1315)
     result = allocate(d, k=5, required_support=(("front", 1),))
     assert result.status == "FEASIBLE_GREEDY" and result.visited_nodes == 0
-    assert result.greedy_choices == 1315*5 and verify_allocation(d, result)
+    assert result.greedy_choices == 1315*5
+    assert verify_allocation(d, result, expected_policy=allocation_policy(
+        k=5, required_support=(("front", 1),)))
     sizes = [sum(fold == i for _, fold in result.assignments) for i in range(5)]
     assert max(sizes)-min(sizes) <= 1
 
@@ -239,7 +248,8 @@ def test_large_constructed_metadata_stays_on_polynomial_greedy_path(dataset_fact
 def test_fold_count_has_no_unpublished_32_fold_cap(dataset_factory):
     d = dataset_factory(labels=(('front',),)*33)
     result = allocate(d, k=33)
-    assert result.status == "FEASIBLE_GREEDY" and verify_allocation(d, result)
+    assert result.status == "FEASIBLE_GREEDY"
+    assert verify_allocation(d, result, expected_policy=allocation_policy(k=33))
     assert {fold for _, fold in result.assignments} == set(range(33))
 
 
@@ -254,7 +264,7 @@ def test_forged_assignment_objective_input_role_and_status_are_rejected(dataset_
                 replace(result, status="OPTIMAL"),
                 replace(result, assignments=((result.assignments[0][0], True),)+result.assignments[1:])]:
         with pytest.raises(ValueError):
-            verify_allocation(d, bad)
+            verify_allocation(d, bad, expected_policy=allocation_policy(k=3))
 
 
 def test_reserved_roles_and_training_calibration_selection_boundaries(dataset_factory):
@@ -267,29 +277,32 @@ def test_reserved_roles_and_training_calibration_selection_boundaries(dataset_fa
     evaluation = {e for e, fold in result.assignments if fold == 0}
     complement = sorted(set(dict(result.assignments))-evaluation)
     plan = role_plan(d, result, outer_fold=0, validation_events=(complement[0],),
-                     calibration_mode="RESERVED_CALIBRATION")
+                     calibration_mode="RESERVED_CALIBRATION",
+                     expected_policy=allocation_policy(k=3))
+    context = RoleContext(d, result, allocation_policy(k=3), 0, (complement[0],),
+                          "RESERVED_CALIBRATION")
     siblings = [set(plan.outer_evaluation), set(plan.training), set(plan.validation),
                 set(plan.calibration), set(plan.reserved_controls),
                 set(plan.case_studies), set(plan.final_descriptive)]
     assert sum(map(len, siblings)) == len(set.union(*siblings)) == 10
     validate_fit_membership(plan, "BASE_MODEL_FIT", plan.training,
-                            selection_events=plan.validation)
-    validate_fit_membership(plan, "PREPROCESSOR_FIT", plan.training)
-    validate_fit_membership(plan, "CALIBRATOR_FIT", plan.calibration)
+                            selection_events=plan.validation, expected_context=context)
+    validate_fit_membership(plan, "PREPROCESSOR_FIT", plan.training, expected_context=context)
+    validate_fit_membership(plan, "CALIBRATOR_FIT", plan.calibration, expected_context=context)
     for operation in ("BASE_MODEL_FIT", "PREPROCESSOR_FIT", "FEATURE_CACHE", "CALIBRATOR_FIT"):
         for forbidden in (plan.outer_evaluation, plan.reserved_controls, plan.case_studies,
                            plan.final_descriptive):
             with pytest.raises(ValueError):
-                validate_fit_membership(plan, operation, forbidden)
+                validate_fit_membership(plan, operation, forbidden, expected_context=context)
     with pytest.raises(ValueError):
         validate_fit_membership(plan, "FEATURE_CACHE", plan.training,
-                                producing_fit_events=plan.outer_evaluation)
+                                producing_fit_events=plan.outer_evaluation, expected_context=context)
     with pytest.raises(ValueError):
         validate_fit_membership(plan, "BASE_MODEL_FIT", plan.training,
-                                selection_events=plan.outer_evaluation)
+                                selection_events=plan.outer_evaluation, expected_context=context)
     with pytest.raises(ValueError):
         validate_fit_membership(replace(plan, training=plan.outer_evaluation),
-                                "BASE_MODEL_FIT", plan.outer_evaluation)
+                                "BASE_MODEL_FIT", plan.outer_evaluation, expected_context=context)
 
 
 def test_inner_validation_frozen_refit_and_unverified_oof_fail_closed(dataset_factory):
@@ -297,23 +310,30 @@ def test_inner_validation_frozen_refit_and_unverified_oof_fail_closed(dataset_fa
     allocation = allocate(d, k=3)
     outer = tuple(e for e, fold in allocation.assignments if fold == 0)
     with pytest.raises(ValueError):
-        role_plan(d, allocation, outer_fold=0, validation_events=outer)
+        role_plan(d, allocation, outer_fold=0, validation_events=outer,
+                  expected_policy=allocation_policy(k=3))
     with pytest.raises(ValueError):
-        role_plan(d, allocation, outer_fold=0)
-    frozen = role_plan(d, allocation, outer_fold=0, frozen_rule_id="synthetic:rule:frozen")
-    validate_fit_membership(frozen, "FINAL_REFIT", frozen.training)
+        role_plan(d, allocation, outer_fold=0, expected_policy=allocation_policy(k=3))
+    frozen = role_plan(d, allocation, outer_fold=0, frozen_rule_id="synthetic:rule:frozen",
+                       expected_policy=allocation_policy(k=3))
+    context = RoleContext(d, allocation, allocation_policy(k=3), 0,
+                          frozen_rule_id="synthetic:rule:frozen")
+    validate_fit_membership(frozen, "FINAL_REFIT", frozen.training, expected_context=context)
     for bad in (replace(frozen, frozen_rule_id=""),
                 replace(frozen, frozen_rule_id=None),
                 replace(frozen, calibration_mode="UNKNOWN")):
         with pytest.raises(ValueError):
-            validate_fit_membership(bad, "BASE_MODEL_FIT", bad.training)
+            validate_fit_membership(bad, "BASE_MODEL_FIT", bad.training, expected_context=context)
     complement = tuple(e for e, fold in allocation.assignments if fold != 0)
     with pytest.raises(ValueError):
-        role_plan(d, allocation, outer_fold=0, validation_events=complement)
+        role_plan(d, allocation, outer_fold=0, validation_events=complement,
+                  expected_policy=allocation_policy(k=3))
     inner = role_plan(d, allocation, outer_fold=0, validation_events=(complement[0],),
-                      calibration_mode="INNER_OOF")
+                      calibration_mode="INNER_OOF", expected_policy=allocation_policy(k=3))
+    context = RoleContext(d, allocation, allocation_policy(k=3), 0, (complement[0],),
+                          "INNER_OOF")
     with pytest.raises(ValueError, match="provenance"):
-        validate_fit_membership(inner, "CALIBRATOR_FIT", inner.validation)
+        validate_fit_membership(inner, "CALIBRATOR_FIT", inner.validation, expected_context=context)
 
 
 def test_rd024_rd025_not_reinterpreted_as_training_or_confirmation(dataset_factory):

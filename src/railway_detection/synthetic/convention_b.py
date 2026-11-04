@@ -6,10 +6,11 @@ No production controller, media reader, cache, checkpoint or file API is used.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import re
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from decimal import Decimal
 from enum import Enum
 from fractions import Fraction
@@ -100,6 +101,80 @@ class Watchdog:
             raise ValueError("unknown synthetic watchdog profile")
 
 
+def _canonical(value: Any) -> str:
+    def encode(item: Any) -> Any:
+        if isinstance(item, Fraction):
+            return {"numerator": item.numerator, "denominator": item.denominator}
+        if isinstance(item, Enum):
+            return item.value
+        if isinstance(item, dict):
+            return {k: encode(v) for k, v in item.items()}
+        if isinstance(item, (list, tuple)):
+            return [encode(v) for v in item]
+        return item
+    return json.dumps(encode(value), sort_keys=True, separators=(",", ":"), allow_nan=False)
+
+
+@dataclass(frozen=True)
+class RunConfiguration:
+    """Exact configuration snapshot consumed by a run, including reporting choices."""
+
+    initial_angle: Fraction
+    closing_seconds: Fraction
+    opening_seconds: Fraction
+    watchdog: Watchdog
+    mode: str
+    cutoff_us: int | None
+    report_times_us: tuple[int, ...] | None
+    profile: str = PROFILE
+    schema_version: str = "SYNTHETIC_RUN_CONFIGURATION_V1"
+    timestamp_policy: str = "INTEGER_US_OR_EXACT_GRID_DECIMAL_SECONDS_V1"
+    dynamics: str = "CLIPPED_LINEAR_0_90_STRICT_BLOCKED_LE_45_V1"
+    command_latency_us: int = 0
+    watchdog_priority: str = "SENSOR_FIRST_ONE_SHOT_V1"
+
+    def __post_init__(self) -> None:
+        if (any(type(v) is not Fraction for v in
+                (self.initial_angle, self.closing_seconds, self.opening_seconds))
+                or not 0 <= self.initial_angle <= 90
+                or self.closing_seconds <= 0 or self.opening_seconds <= 0):
+            raise ValueError("complete exact actuator configuration required")
+        if type(self.watchdog) is not Watchdog or type(self.watchdog.mode) is not str:
+            raise ValueError("explicit watchdog configuration required")
+        self.watchdog.__post_init__()
+        if self.watchdog.response is not None and type(self.watchdog.response) is not Command:
+            raise ValueError("watchdog response configuration must be normalized")
+        if type(self.mode) is not str or self.mode not in ("ARRIVAL", "OFFLINE"):
+            raise ValueError("explicit run mode required")
+        if self.cutoff_us is not None:
+            timestamp_us(self.cutoff_us)
+            if type(self.cutoff_us) is not int:
+                raise ValueError("configuration cutoff must be integer us")
+        if self.report_times_us is not None:
+            if (type(self.report_times_us) is not tuple or not self.report_times_us
+                    or any(type(t) is not int or t < 0 for t in self.report_times_us)
+                    or any(b <= a for a, b in zip(self.report_times_us, self.report_times_us[1:]))):
+                raise ValueError("configuration report grid must be increasing integer us")
+        for actual, expected in (
+            (self.profile, PROFILE), (self.schema_version, "SYNTHETIC_RUN_CONFIGURATION_V1"),
+            (self.timestamp_policy, "INTEGER_US_OR_EXACT_GRID_DECIMAL_SECONDS_V1"),
+            (self.dynamics, "CLIPPED_LINEAR_0_90_STRICT_BLOCKED_LE_45_V1"),
+            (self.watchdog_priority, "SENSOR_FIRST_ONE_SHOT_V1"),
+        ):
+            if type(actual) is not str or actual != expected:
+                raise ValueError("unsupported configuration contract")
+        if type(self.command_latency_us) is not int or self.command_latency_us != 0:
+            raise ValueError("only existing zero-latency synthetic command contract supported")
+
+    def canonical_json(self) -> str:
+        self.__post_init__()
+        return _canonical(asdict(self))
+
+    @property
+    def digest(self) -> str:
+        return hashlib.sha256(self.canonical_json().encode()).hexdigest()
+
+
 @dataclass(frozen=True)
 class Interval:
     start_us: int
@@ -154,21 +229,41 @@ class RunResult:
     endpoint_seconds: Fraction
     continuous_seconds: Fraction
     report_endpoint_seconds: Fraction | None
+    configuration: RunConfiguration
+    configuration_digest: str
 
     def canonical_json(self) -> str:
         """Deterministic synthetic output string; no file is written."""
-        def encode(value: Any) -> Any:
-            if isinstance(value, Fraction):
-                return {"numerator": value.numerator, "denominator": value.denominator}
-            if isinstance(value, Enum):
-                return value.value
-            if isinstance(value, dict):
-                return {k: encode(v) for k, v in value.items()}
-            if isinstance(value, (list, tuple)):
-                return [encode(v) for v in value]
-            return value
-        return json.dumps(encode(asdict(self)), sort_keys=True, separators=(",", ":"),
-                          allow_nan=False)
+        verify_run_configuration(self, expected_configuration=self.configuration)
+        return _canonical(asdict(self))
+
+
+def verify_run_configuration(result: RunResult, *,
+                             expected_configuration: RunConfiguration | None = None) -> None:
+    """Check recorded settings against separately retained expected settings.
+
+    This binds configuration, not source-code authenticity or a full trajectory proof.
+    """
+    if type(result) is not RunResult or type(expected_configuration) is not RunConfiguration:
+        raise ValueError("result and independent expected configuration required")
+    expected_configuration.__post_init__()
+    if type(result.configuration) is not RunConfiguration:
+        raise ValueError("missing run configuration")
+    result.configuration.__post_init__()
+    if (type(result.configuration_digest) is not str
+            or result.configuration_digest != result.configuration.digest
+            or result.configuration != expected_configuration):
+        raise ValueError("run configuration binding mismatch")
+    config = result.configuration
+    if result.profile != config.profile or result.mode != config.mode:
+        raise ValueError("result contradicts configured profile/mode")
+    if result.origin_us is not None and (
+            type(result.initial_angle) is not Fraction or result.initial_angle != config.initial_angle):
+        raise ValueError("result contradicts configured initial angle")
+    expected_grid_kind = "EVENT_GRID" if config.report_times_us is None else "FIXED_GRID"
+    expected_grid = result.event_grid_us if config.report_times_us is None else config.report_times_us
+    if result.report_grid_kind != expected_grid_kind or result.report_grid_us != expected_grid:
+        raise ValueError("result contradicts configured report grid")
 
 
 def _motion(q: Fraction, command: Command, seconds: Fraction,
@@ -185,6 +280,25 @@ def _motion(q: Fraction, command: Command, seconds: Fraction,
     return post, blocked
 
 
+def _report_endpoint_seconds(intervals: list[Interval], report: tuple[int, ...],
+                             down: Fraction, up: Fraction) -> Fraction:
+    """Merge two ordered grids; each interval/report boundary is visited O(1) times."""
+    index = 0
+    total = Fraction(0)
+    for start, end in zip(report, report[1:]):
+        while index < len(intervals) and intervals[index].end_us < end:
+            index += 1
+        if index == len(intervals):
+            raise ValueError("report endpoint outside trajectory")
+        interval = intervals[index]
+        if not interval.start_us <= end <= interval.end_us:
+            raise ValueError("report endpoint outside trajectory")
+        angle = _motion(interval.pre_angle, interval.applied_command,
+                        Fraction(end-interval.start_us, SECOND_US), down, up)[0]
+        total += (end-start) * Fraction(int(angle <= 45), SECOND_US)
+    return total
+
+
 class CausalRunner:
     """Commanded actuator helper; does not execute a research controller."""
 
@@ -192,14 +306,30 @@ class CausalRunner:
                  closing_seconds: int | str | Fraction = 3,
                  opening_seconds: int | str | Fraction = 3,
                  watchdog: Watchdog | None = None) -> None:
-        self.initial_angle = _exact(initial_angle)
         closing, opening = _exact(closing_seconds), _exact(opening_seconds)
-        if not 0 <= self.initial_angle <= 90 or closing <= 0 or opening <= 0:
-            raise ValueError("angle outside [0,90] or nonpositive actuator duration")
-        self.down, self.up = 90 / closing, 90 / opening
         if watchdog is not None and type(watchdog) is not Watchdog:
             raise ValueError("watchdog must be an explicit synthetic Watchdog")
-        self.watchdog = watchdog or Watchdog()
+        wd = watchdog or Watchdog()
+        normalized = Watchdog(wd.mode, wd.timeout_us,
+                              None if wd.response is None else normalize_command(wd.response))
+        self._configuration = RunConfiguration(_exact(initial_angle), closing, opening,
+                                               normalized, "ARRIVAL", None, None)
+
+    @property
+    def initial_angle(self) -> Fraction:
+        return self._configuration.initial_angle
+
+    @property
+    def down(self) -> Fraction:
+        return 90 / self._configuration.closing_seconds
+
+    @property
+    def up(self) -> Fraction:
+        return 90 / self._configuration.opening_seconds
+
+    @property
+    def watchdog(self) -> Watchdog:
+        return self._configuration.watchdog
 
     def run(self, events: list[SyntheticEvent] | tuple[SyntheticEvent, ...], *,
             fixture_id: str, mode: str = "ARRIVAL", cutoff: int | str | None = None,
@@ -212,12 +342,15 @@ class CausalRunner:
         fixed = None if report_times is None else tuple(timestamp_us(t) for t in report_times)
         if fixed is not None and (not fixed or any(b <= a for a, b in zip(fixed, fixed[1:]))):
             raise ValueError("report grid must be nonempty and strictly increasing")
+        config = replace(self._configuration, mode=mode, cutoff_us=cutoff_us,
+                         report_times_us=fixed)
+        down, up = 90 / config.closing_seconds, 90 / config.opening_seconds
         intervals: list[Interval] = []
         issues: list[CommandIssue] = []
         rejects: list[Rejection] = []
         accepted: list[str] = []
         seen_ids: set[str] = set()
-        q = self.initial_angle
+        q = config.initial_angle
         origin: int | None = None
         now: int | None = None
         last_sensor: int | None = None
@@ -243,30 +376,21 @@ class CausalRunner:
                 else:
                     if not report or report[0] != origin or report[-1] != now:
                         raise ValueError("report grid must span exact accepted origin/horizon")
-                    def angle_at(t: int) -> Fraction:
-                        if t == origin:
-                            return self.initial_angle
-                        for interval in intervals:
-                            if interval.start_us <= t <= interval.end_us:
-                                return _motion(interval.pre_angle, interval.applied_command,
-                                               Fraction(t-interval.start_us, SECOND_US),
-                                               self.down, self.up)[0]
-                        raise ValueError("report endpoint outside trajectory")
-                    report_value = sum(((b-a) * Fraction(int(angle_at(b) <= 45), SECOND_US)
-                                        for a, b in zip(report, report[1:])), Fraction(0))
+                    report_value = (endpoint if fixed is None else
+                                    _report_endpoint_seconds(intervals, report, down, up))
             return RunResult(PROFILE, fixture_id, status, reason, mode, reordered, origin, now,
-                             self.initial_angle if origin is not None else None,
+                             config.initial_angle if origin is not None else None,
                              q if origin is not None else None, tuple(intervals), tuple(issues),
                              tuple(rejects), tuple(accepted), grid, report,
                              "EVENT_GRID" if fixed is None else "FIXED_GRID", endpoint,
-                             continuous, report_value)
+                             continuous, report_value, config, config.digest)
 
         def append_until(t: int, kind: str) -> None:
             nonlocal q, now
             assert now is not None
             if t > now:
                 post, blocked_time = _motion(q, active, Fraction(t-now, SECOND_US),
-                                             self.down, self.up)
+                                             down, up)
                 intervals.append(Interval(now, t, active, effective, origin_id, q, post,
                                           post <= 45, blocked_time, kind))
                 q, now = post, t
@@ -279,7 +403,7 @@ class CausalRunner:
 
         def advance(t: int, kind: str) -> None:
             nonlocal timer_fired
-            wd = self.watchdog
+            wd = config.watchdog
             if wd.mode == "SCHEDULED" and last_sensor is not None and not timer_fired:
                 assert wd.timeout_us is not None
                 due = last_sensor + wd.timeout_us
@@ -333,7 +457,7 @@ class CausalRunner:
             else:
                 advance(t, "SENSOR")
             command, kind = requested, "SENSOR"
-            wd = self.watchdog
+            wd = config.watchdog
             if wd.mode == "DETECT_ON_ARRIVAL" and last_sensor is not None:
                 assert wd.timeout_us is not None
                 if t - last_sensor > wd.timeout_us:
