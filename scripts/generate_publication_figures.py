@@ -6,6 +6,13 @@ Extracts genuine empirical data from results/experiments/ and results/experiment
 
 from __future__ import annotations
 
+# Mission21: historical fixed claims are not verified empirical evidence.
+raise PermissionError(
+    "Legacy publication generator disabled before imports/IO: verified result receipts "
+    "and a reviewed reporting adapter are required. Use descriptive manuscript support."
+)
+
+
 import json
 from pathlib import Path
 from typing import Any

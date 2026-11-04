@@ -1,3 +1,10 @@
+
+# Mission21: historical fixed claims are not verified empirical evidence.
+raise PermissionError(
+    "Legacy publication generator disabled before imports/IO: verified result receipts "
+    "and a reviewed reporting adapter are required. Use descriptive manuscript support."
+)
+
 import os
 import numpy as np
 import pandas as pd

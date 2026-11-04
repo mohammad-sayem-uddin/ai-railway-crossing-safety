@@ -88,7 +88,7 @@ Next phase: WP08 deterministic source/docs snapshot tooling
 
 ## WP08
 
-Status: PASS_EXPLICIT_SOURCE_SNAPSHOT_TOOLING. Parent: `ac4fcc8ad31a8c45028e39fcb502645791753408`. Commit: `None`. Remote verified: False.
+Status: PASS_EXPLICIT_SOURCE_SNAPSHOT_TOOLING. Parent: `ac4fcc8ad31a8c45028e39fcb502645791753408`. Commit: `e4e6ed6a4af3e5388566f7fba371f70e9148e7dc`. Remote verified: True.
 
 Added source-snapshot CLI and API: exact caller-selected source/docs/config files, lexical protected-root denial before stat/read, no project traversal, no symlinks, regular UTF8 text only, bounded per-file/aggregate bytes, deterministic manifest and exact copy into exclusive new explicitly named external destination. Completion manifest written last. Tests use temporary constructed project/destination and filesystem-enumeration tripwires; protected path denial precedes any filesystem inspection.
 
@@ -97,3 +97,15 @@ Tests: [{"xml": "/tmp/mission21_wp08.xml", "command": "PYTHONPATH=src PYTEST_DIS
 Static: Entire modified script and new tests pass Ruff; isolated imports/runtime exercised
 Remaining: No actual project backup created because no external destination supplied. Existing preparation commands preserved. Same-user parent-directory races, whole-repository atomicity, OS/root hostility and rollback are not guaranteed; changed-per-file metadata is checked. Incomplete new destinations remain inspectable after IO failure, never certified complete.
 Next phase: WP09 receipt-bound descriptive manuscript support
+
+## WP09
+
+Status: PASS_RESULTS_ABSENT_DRAFT_AND_CONSTRUCTED_REPORTING. Parent: `e4e6ed6a4af3e5388566f7fba371f70e9148e7dc`. Commit: `None`. Remote verified: False.
+
+Found fixed unverified empirical/performance claims in legacy table/figure/report templates. Preserved historical template content but blocked default/public and legacy-table invocation before cache reads/output or third-party side effects. Added pure bound-row constructed Markdown renderer with camera-local denominators, exclusions and escaping, results-absent manuscript-support draft, truthful AI-use statement, pending human author roster and undecided venue. Initial two renderer tests found a wrong provenance field name; fixed and all eight cases pass.
+
+Exact files: scripts/generate_publication_tables.py, scripts/generate_publication_figures.py, scripts/generate_report_figures.py, scripts/build_research_report_doc.py, tests/synthetic_reporting/conftest.py, tests/synthetic_reporting/test_drafts.py, docs/generated/master_reaudit/MISSION_21_DESCRIPTIVE_MANUSCRIPT_SUPPORT_DRAFT.md
+Tests: [{"xml": "/tmp/mission21_wp09.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_reporting -p no:cacheprovider --import-mode=importlib tests/synthetic_reporting -q --junitxml=/tmp/mission21_wp09.xml", "tests": 8, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Entire table generator and new tests pass Ruff; three guarded legacy scripts syntax/early-refusal executed under IO tripwires. Their pre-existing body lint is inventoried separately in WP10.
+Remaining: No genuine empirical results, final author approvals, venue selection, external release or publication performed. Real-result/figure adapters remain gated on authentic verified result receipts. Historical generated outputs and paper bytes untouched.
+Next phase: WP10 bounded locked static-analysis repair and integrated regression

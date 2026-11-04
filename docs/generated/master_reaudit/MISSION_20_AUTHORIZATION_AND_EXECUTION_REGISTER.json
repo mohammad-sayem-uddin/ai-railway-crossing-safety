@@ -36053,6 +36053,46 @@
           "scripts/prepare_researcher_snapshot.py": "61634750db7e0c960de8477b3bbba351829792d838eb4956052f7e0dc73be2d5",
           "tests/synthetic_preservation/test_snapshot.py": "09aecea3dff47298dad46810c7b6daf786f61cb010a53256fd9249a78cf14dcf"
         },
+        "commit": "e4e6ed6a4af3e5388566f7fba371f70e9148e7dc",
+        "push_verified": true
+      },
+      {
+        "id": "WP09",
+        "status": "PASS_RESULTS_ABSENT_DRAFT_AND_CONSTRUCTED_REPORTING",
+        "files": [
+          "scripts/generate_publication_tables.py",
+          "scripts/generate_publication_figures.py",
+          "scripts/generate_report_figures.py",
+          "scripts/build_research_report_doc.py",
+          "tests/synthetic_reporting/conftest.py",
+          "tests/synthetic_reporting/test_drafts.py",
+          "docs/generated/master_reaudit/MISSION_21_DESCRIPTIVE_MANUSCRIPT_SUPPORT_DRAFT.md"
+        ],
+        "message": "fix: prevent unverified publication claims and add descriptive draft support",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp09.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_reporting -p no:cacheprovider --import-mode=importlib tests/synthetic_reporting -q --junitxml=/tmp/mission21_wp09.xml",
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Found fixed unverified empirical/performance claims in legacy table/figure/report templates. Preserved historical template content but blocked default/public and legacy-table invocation before cache reads/output or third-party side effects. Added pure bound-row constructed Markdown renderer with camera-local denominators, exclusions and escaping, results-absent manuscript-support draft, truthful AI-use statement, pending human author roster and undecided venue. Initial two renderer tests found a wrong provenance field name; fixed and all eight cases pass.",
+        "static": "Entire table generator and new tests pass Ruff; three guarded legacy scripts syntax/early-refusal executed under IO tripwires. Their pre-existing body lint is inventoried separately in WP10.",
+        "limitations": "No genuine empirical results, final author approvals, venue selection, external release or publication performed. Real-result/figure adapters remain gated on authentic verified result receipts. Historical generated outputs and paper bytes untouched.",
+        "next": "WP10 bounded locked static-analysis repair and integrated regression",
+        "parent": "e4e6ed6a4af3e5388566f7fba371f70e9148e7dc",
+        "source_sha256": {
+          "scripts/generate_publication_tables.py": "60be6cde98d174549f3bd98aee19fd180309758d494588f6e487a78766f893d8",
+          "scripts/generate_publication_figures.py": "d6cb62a75a1a183a3e0f4f4d7cb4ddf536399ae87d1e370a116bd4fb87dfca44",
+          "scripts/generate_report_figures.py": "b095580d037960ce3ed117ea81fecff0d671b0d50523dbfe7f99f6a7a9b091d9",
+          "scripts/build_research_report_doc.py": "e44d9957b2d287cedf958d43f23f5b744e6264823fc7d174879bcbe6d64f8f2e",
+          "tests/synthetic_reporting/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+          "tests/synthetic_reporting/test_drafts.py": "805290c1a6f15664f9c45307770bdceeee9f4c47e048e2585e40a529368b3865",
+          "docs/generated/master_reaudit/MISSION_21_DESCRIPTIVE_MANUSCRIPT_SUPPORT_DRAFT.md": "b95ef9186a528df03352a47c2d04ad81b0aa3b4b7c6e63c0bf19695844c38ae5"
+        },
         "commit": null,
         "push_verified": false
       }

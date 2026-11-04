@@ -109,9 +109,22 @@ Files: `scripts/prepare_researcher_snapshot.py`, `tests/synthetic_preservation/t
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_preservation -p no:cacheprovider --import-mode=importlib tests/synthetic_preservation -q --junitxml=/tmp/mission21_wp08.xml`: 18 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp08.xml`.
 
 Static analysis: Entire modified script and new tests pass Ruff; isolated imports/runtime exercised.
-Commit: None; push/local/tracking/live verified: False.
+Commit: e4e6ed6a4af3e5388566f7fba371f70e9148e7dc; push/local/tracking/live verified: True.
 Limitations: No actual project backup created because no external destination supplied. Existing preparation commands preserved. Same-user parent-directory races, whole-repository atomicity, OS/root hostility and rollback are not guaranteed; changed-per-file metadata is checked. Incomplete new destinations remain inspectable after IO failure, never certified complete.
 Next: WP09 receipt-bound descriptive manuscript support.
+
+### WP09 — PASS_RESULTS_ABSENT_DRAFT_AND_CONSTRUCTED_REPORTING
+
+Found fixed unverified empirical/performance claims in legacy table/figure/report templates. Preserved historical template content but blocked default/public and legacy-table invocation before cache reads/output or third-party side effects. Added pure bound-row constructed Markdown renderer with camera-local denominators, exclusions and escaping, results-absent manuscript-support draft, truthful AI-use statement, pending human author roster and undecided venue. Initial two renderer tests found a wrong provenance field name; fixed and all eight cases pass.
+
+Files: `scripts/generate_publication_tables.py`, `scripts/generate_publication_figures.py`, `scripts/generate_report_figures.py`, `scripts/build_research_report_doc.py`, `tests/synthetic_reporting/conftest.py`, `tests/synthetic_reporting/test_drafts.py`, `docs/generated/master_reaudit/MISSION_21_DESCRIPTIVE_MANUSCRIPT_SUPPORT_DRAFT.md`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_reporting -p no:cacheprovider --import-mode=importlib tests/synthetic_reporting -q --junitxml=/tmp/mission21_wp09.xml`: 8 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp09.xml`.
+
+Static analysis: Entire table generator and new tests pass Ruff; three guarded legacy scripts syntax/early-refusal executed under IO tripwires. Their pre-existing body lint is inventoried separately in WP10..
+Commit: None; push/local/tracking/live verified: False.
+Limitations: No genuine empirical results, final author approvals, venue selection, external release or publication performed. Real-result/figure adapters remain gated on authentic verified result receipts. Historical generated outputs and paper bytes untouched.
+Next: WP10 bounded locked static-analysis repair and integrated regression.
 
 ## Execution boundaries
 
