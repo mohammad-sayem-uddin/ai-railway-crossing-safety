@@ -96,9 +96,22 @@ Files: `src/railway_detection/data/constructed_manifest.py`, `tests/synthetic_da
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_data_provenance -p no:cacheprovider --import-mode=importlib tests/synthetic_data_provenance -q --junitxml=/tmp/mission21_wp07.xml`: 21 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp07.xml`.
 
 Static analysis: Ruff on new module/tests passes; isolated import/runtime under file/network/process IO tripwires.
-Commit: None; push/local/tracking/live verified: False.
+Commit: ac4fcc8ad31a8c45028e39fcb502645791753408; push/local/tracking/live verified: True.
 Limitations: Metadata consistency does not verify genuine physical identity, byte provenance, rights or scientific exposure. No preprocessing, raw/cache reads, training, calibration or official split performed. Existing guarded live scripts unchanged; live adapter still needs exact grants and genuine registry.
 Next: WP08 deterministic source/docs snapshot tooling.
+
+### WP08 — PASS_EXPLICIT_SOURCE_SNAPSHOT_TOOLING
+
+Added source-snapshot CLI and API: exact caller-selected source/docs/config files, lexical protected-root denial before stat/read, no project traversal, no symlinks, regular UTF8 text only, bounded per-file/aggregate bytes, deterministic manifest and exact copy into exclusive new explicitly named external destination. Completion manifest written last. Tests use temporary constructed project/destination and filesystem-enumeration tripwires; protected path denial precedes any filesystem inspection.
+
+Files: `scripts/prepare_researcher_snapshot.py`, `tests/synthetic_preservation/test_snapshot.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_preservation -p no:cacheprovider --import-mode=importlib tests/synthetic_preservation -q --junitxml=/tmp/mission21_wp08.xml`: 18 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp08.xml`.
+
+Static analysis: Entire modified script and new tests pass Ruff; isolated imports/runtime exercised.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: No actual project backup created because no external destination supplied. Existing preparation commands preserved. Same-user parent-directory races, whole-repository atomicity, OS/root hostility and rollback are not guaranteed; changed-per-file metadata is checked. Incomplete new destinations remain inspectable after IO failure, never certified complete.
+Next: WP09 receipt-bound descriptive manuscript support.
 
 ## Execution boundaries
 

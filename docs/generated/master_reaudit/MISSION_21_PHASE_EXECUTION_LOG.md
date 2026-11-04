@@ -76,7 +76,7 @@ Next phase: WP07 constructed source/derived manifest provenance
 
 ## WP07
 
-Status: PASS_CONSTRUCTED_IMMUTABLE_MANIFEST_CONTRACT. Parent: `4313a456fedba8a340e3cf46027405fa6f4c5a1a`. Commit: `None`. Remote verified: False.
+Status: PASS_CONSTRUCTED_IMMUTABLE_MANIFEST_CONTRACT. Parent: `4313a456fedba8a340e3cf46027405fa6f4c5a1a`. Commit: `ac4fcc8ad31a8c45028e39fcb502645791753408`. Remote verified: True.
 
 Added typed source/derived/annotation metadata, exact parent/source joins, immutable append-only versions with predecessor digests, physical-event role consistency, DAG validation and transitive fitted exposure. Independent retained digest detects substitution; aliases cannot cross development/evaluation roles. Every real backend invocation fails closed; synthetic annotation fixtures never claim human origin.
 
@@ -85,3 +85,15 @@ Tests: [{"xml": "/tmp/mission21_wp07.xml", "command": "PYTHONPATH=src PYTEST_DIS
 Static: Ruff on new module/tests passes; isolated import/runtime under file/network/process IO tripwires
 Remaining: Metadata consistency does not verify genuine physical identity, byte provenance, rights or scientific exposure. No preprocessing, raw/cache reads, training, calibration or official split performed. Existing guarded live scripts unchanged; live adapter still needs exact grants and genuine registry.
 Next phase: WP08 deterministic source/docs snapshot tooling
+
+## WP08
+
+Status: PASS_EXPLICIT_SOURCE_SNAPSHOT_TOOLING. Parent: `ac4fcc8ad31a8c45028e39fcb502645791753408`. Commit: `None`. Remote verified: False.
+
+Added source-snapshot CLI and API: exact caller-selected source/docs/config files, lexical protected-root denial before stat/read, no project traversal, no symlinks, regular UTF8 text only, bounded per-file/aggregate bytes, deterministic manifest and exact copy into exclusive new explicitly named external destination. Completion manifest written last. Tests use temporary constructed project/destination and filesystem-enumeration tripwires; protected path denial precedes any filesystem inspection.
+
+Exact files: scripts/prepare_researcher_snapshot.py, tests/synthetic_preservation/test_snapshot.py
+Tests: [{"xml": "/tmp/mission21_wp08.xml", "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_preservation -p no:cacheprovider --import-mode=importlib tests/synthetic_preservation -q --junitxml=/tmp/mission21_wp08.xml", "tests": 18, "failures": 0, "errors": 0, "skipped": 0}]
+Static: Entire modified script and new tests pass Ruff; isolated imports/runtime exercised
+Remaining: No actual project backup created because no external destination supplied. Existing preparation commands preserved. Same-user parent-directory races, whole-repository atomicity, OS/root hostility and rollback are not guaranteed; changed-per-file metadata is checked. Incomplete new destinations remain inspectable after IO failure, never certified complete.
+Next phase: WP09 receipt-bound descriptive manuscript support

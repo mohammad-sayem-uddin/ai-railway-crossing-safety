@@ -29,6 +29,7 @@ import subprocess
 import sys
 from datetime import UTC, datetime
 from pathlib import Path, PurePosixPath
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from railway_detection.safety.media_guard import require_media_authorization  # noqa: E402
 
@@ -412,6 +413,145 @@ def write_outputs(root: Path, out_dir: object, report: dict) -> list[str]:
     return written
 
 
+# Explicit source/docs preservation API. It never enumerates the project tree.
+SOURCE_ROOTS = frozenset({"src", "tests", "scripts", "docs", "configs", "schemas"})
+SOURCE_ROOT_FILES = frozenset({"README.md", "pyproject.toml", "requirements.lock", ".gitignore"})
+SOURCE_BLOCKED_PARTS = frozenset(
+    {
+        "raw",
+        "processed",
+        "cache",
+        "caches",
+        "checkpoints",
+        "models",
+        "experiments",
+        "results",
+        "outputs",
+        ".git",
+        ".venv",
+        "venv",
+        "__pycache__",
+    }
+)
+SOURCE_SUFFIXES = frozenset({".py", ".md", ".toml", ".yaml", ".yml", ".json", ".txt", ".lock"})
+
+
+def source_relative_path(value: str) -> PurePosixPath:
+    """Lexical denial occurs before stat, directory enumeration or file reads."""
+    if type(value) is not str or not value or "\\" in value:
+        raise SnapshotError("SOURCE_PATH_REFUSED", repr(value))
+    p = PurePosixPath(value)
+    if (
+        p.is_absolute()
+        or p.as_posix() != value
+        or ".." in p.parts
+        or any(ord(c) < 32 or ord(c) == 127 for c in value)
+        or any(part.lower() in SOURCE_BLOCKED_PARTS for part in p.parts)
+    ):
+        raise SnapshotError("SOURCE_PATH_REFUSED", value)
+    if value not in SOURCE_ROOT_FILES and (
+        len(p.parts) < 2
+        or p.parts[0] not in SOURCE_ROOTS
+        or p.suffix.lower() not in SOURCE_SUFFIXES
+    ):
+        raise SnapshotError("SOURCE_PATH_REFUSED", value)
+    return p
+
+
+def _no_symlink_components(path: Path) -> None:
+    for component in (*reversed(path.parents), path):
+        if component.is_symlink():
+            raise SnapshotError("SOURCE_SYMLINK_REFUSED", str(path))
+
+
+def build_source_snapshot(root: Path, paths: tuple[str, ...], *, code_identity: str):
+    """Read only exact selected text files; retain a coherent per-file byte snapshot.
+
+    Not an atomic whole-repository view. Same-user parent-directory replacement
+    and rollback are outside this cooperative filesystem profile.
+    """
+    if type(paths) is not tuple or not paths or len(paths) > 8192 or len(paths) != len(set(paths)):
+        raise SnapshotError("SOURCE_LIST_REFUSED", "explicit unique bounded tuple required")
+    if type(code_identity) is not str or not re.fullmatch(r"[0-9a-f]{40}", code_identity):
+        raise SnapshotError("SOURCE_CODE_REFUSED", "explicit commit identity required")
+    selected = tuple(sorted(source_relative_path(p).as_posix() for p in paths))
+    root = Path(root).absolute()
+    _no_symlink_components(root)
+    contents, entries, total = {}, [], 0
+    for rel in selected:
+        source = root / rel
+        _no_symlink_components(source)
+        # O_NOFOLLOW is required; do not silently weaken on unsupported platforms.
+        descriptor = os.open(source, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        with os.fdopen(descriptor, "rb") as stream:
+            before = os.fstat(stream.fileno())
+            import stat
+
+            if not stat.S_ISREG(before.st_mode) or before.st_size > MAX_BYTES:
+                raise SnapshotError("SOURCE_TYPE_SIZE_REFUSED", rel)
+            payload = stream.read(MAX_BYTES + 1)
+            after = os.fstat(stream.fileno())
+        if len(payload) > MAX_BYTES or (before.st_size, before.st_mtime_ns, before.st_ctime_ns) != (
+            after.st_size,
+            after.st_mtime_ns,
+            after.st_ctime_ns,
+        ):
+            raise SnapshotError("SOURCE_CHANGED_OR_TOO_LARGE", rel)
+        try:
+            decoded = payload.decode("utf-8")
+            if any(ord(char) < 32 and char not in "\n\r\t" for char in decoded):
+                raise SnapshotError("SOURCE_NOT_TEXT", rel)
+        except UnicodeDecodeError as exc:
+            raise SnapshotError("SOURCE_NOT_UTF8", rel) from exc
+        total += len(payload)
+        if total > 64 * 1024 * 1024:
+            raise SnapshotError("SOURCE_TOTAL_SIZE_REFUSED", str(total))
+        contents[rel] = payload
+        entries.append(
+            {"path": rel, "bytes": len(payload), "sha256": hashlib.sha256(payload).hexdigest()}
+        )
+    manifest = {
+        "schema": "SOURCE_DOCS_SNAPSHOT_V1",
+        "code_identity": code_identity,
+        "entries": entries,
+        "protected_resources_included": False,
+        "limitations": "explicit working-tree bytes; commit identity is caller assertion",
+    }
+    encoded = json.dumps(manifest, sort_keys=True, separators=(",", ":")).encode() + b"\n"
+    return encoded, contents
+
+
+def write_source_snapshot(
+    root: Path, paths: tuple[str, ...], *, destination: Path, code_identity: str
+):
+    """Create a new explicit external destination. MANIFEST is the completion marker.
+
+    Failure leaves only this call's incomplete new directory for inspection;
+    existing destinations are never overwritten. No external destination is inferred.
+    """
+    destination = Path(destination).absolute()
+    _no_symlink_components(destination)
+    root = Path(root).absolute()
+    if destination == root or root in destination.parents:
+        raise SnapshotError("SOURCE_DESTINATION_INSIDE_PROJECT", str(destination))
+    if destination.exists():
+        raise SnapshotError("DESTINATION_EXISTS", str(destination))
+    encoded, contents = build_source_snapshot(root, paths, code_identity=code_identity)
+    destination.mkdir()  # exclusive; parents must already exist and be explicitly chosen
+    for rel, payload in contents.items():
+        target = destination / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open("xb") as stream:
+            stream.write(payload)
+    with (destination / "SOURCE_MANIFEST.json").open("xb") as stream:
+        stream.write(encoded)
+    return {
+        "manifest_sha256": hashlib.sha256(encoded).hexdigest(),
+        "files": len(contents),
+        "destination": str(destination),
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -422,9 +562,25 @@ def main(argv: list[str] | None = None) -> int:
     )
     p.add_argument("--root", default=".")
     p.add_argument("--out-dir", required=True)
+    s = sub.add_parser(
+        "source-snapshot", help="copy explicit source/docs files to a NEW external directory"
+    )
+    s.add_argument("--root", required=True)
+    s.add_argument("--destination", required=True)
+    s.add_argument("--code-identity", required=True)
+    s.add_argument("paths", nargs="+")
     args = parser.parse_args(argv)
     try:
         root = Path(args.root)
+        if args.cmd == "source-snapshot":
+            receipt = write_source_snapshot(
+                root,
+                tuple(args.paths),
+                destination=Path(args.destination),
+                code_identity=args.code_identity,
+            )
+            print(json.dumps(receipt, sort_keys=True))
+            return 0
         report = build_report(root)
         if args.cmd == "check":
             print(json.dumps(report, indent=1))

@@ -36023,6 +36023,36 @@
           "tests/synthetic_data_provenance/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
           "tests/synthetic_data_provenance/test_manifest.py": "b2a5248d975bdb24d01599c50f3737d04b50c1c7e848c7b83cd30c809bae88c9"
         },
+        "commit": "ac4fcc8ad31a8c45028e39fcb502645791753408",
+        "push_verified": true
+      },
+      {
+        "id": "WP08",
+        "status": "PASS_EXPLICIT_SOURCE_SNAPSHOT_TOOLING",
+        "files": [
+          "scripts/prepare_researcher_snapshot.py",
+          "tests/synthetic_preservation/test_snapshot.py"
+        ],
+        "message": "feat: add deterministic source-only snapshots with explicit destinations",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp08.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_preservation -p no:cacheprovider --import-mode=importlib tests/synthetic_preservation -q --junitxml=/tmp/mission21_wp08.xml",
+            "tests": 18,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Added source-snapshot CLI and API: exact caller-selected source/docs/config files, lexical protected-root denial before stat/read, no project traversal, no symlinks, regular UTF8 text only, bounded per-file/aggregate bytes, deterministic manifest and exact copy into exclusive new explicitly named external destination. Completion manifest written last. Tests use temporary constructed project/destination and filesystem-enumeration tripwires; protected path denial precedes any filesystem inspection.",
+        "static": "Entire modified script and new tests pass Ruff; isolated imports/runtime exercised",
+        "limitations": "No actual project backup created because no external destination supplied. Existing preparation commands preserved. Same-user parent-directory races, whole-repository atomicity, OS/root hostility and rollback are not guaranteed; changed-per-file metadata is checked. Incomplete new destinations remain inspectable after IO failure, never certified complete.",
+        "next": "WP09 receipt-bound descriptive manuscript support",
+        "parent": "ac4fcc8ad31a8c45028e39fcb502645791753408",
+        "source_sha256": {
+          "scripts/prepare_researcher_snapshot.py": "61634750db7e0c960de8477b3bbba351829792d838eb4956052f7e0dc73be2d5",
+          "tests/synthetic_preservation/test_snapshot.py": "09aecea3dff47298dad46810c7b6daf786f61cb010a53256fd9249a78cf14dcf"
+        },
         "commit": null,
         "push_verified": false
       }
