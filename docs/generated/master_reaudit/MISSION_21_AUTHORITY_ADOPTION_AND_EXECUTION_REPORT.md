@@ -57,9 +57,22 @@ Files: `src/railway_detection/safety/constructed_authority.py`, `tests/synthetic
 - `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_security -p no:cacheprovider --import-mode=importlib tests/synthetic_security -q --junitxml=/tmp/mission21_wp04.xml`: 24 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp04.xml`.
 
 Static analysis: Scoped Ruff passes; Python3.11.15 standard-library SQLite;24 exact synthetic cases; no claim all32 ES deployment cases executed.
-Commit: None; push/local/tracking/live verified: False.
+Commit: 54efc28317c735745385c2d74e7103e778a9ae01; push/local/tracking/live verified: True.
 Limitations: Partial overall security infrastructure. CONSTRUCTED_ONLY profile cannot issue live grants or satisfy active GT schema. Identity/appointments are test fixtures, context/approval/anchor are independently retained caller expectations, and local SQLite is not independently protected authority/OS isolation or root-compromise resistance. Real broker/identity/time/revocation/backup service, external anchor trust, actual appointed roles and active-schema publication remain gated. ES28/29 protected deployment/compromised-root guarantees, service integration and all32-case acceptance are not claimed. No live AUTH/EVAL/GT receipt changed.
 Next: WP05–WP07 constructed methodology/reporting and guarded evidence interfaces.
+
+### WP05 — PASS_DESCRIPTIVE_REPORTING_CONTRACT
+
+Added pure typed descriptive metric rows and stratified cohort/camera/condition/metric reporting, exact M5 integer indicators, explicit null/exclusion handling, duplicate rejection, finite continuous values, observed denominators and event identities. New API omits CI/population inference by default. Existing classify_m4 and screen definitions unchanged; independent positive-witness/incomplete/no-interior/late-origin/M5/censored/missing cases and screen-provenance retention execute.
+
+Files: `src/railway_detection/evaluation/metrics.py`, `tests/synthetic_metric_contracts/conftest.py`, `tests/synthetic_metric_contracts/test_reporting.py`.
+
+- `PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_metric_contracts -p no:cacheprovider --import-mode=importlib tests/synthetic_metric_contracts -q --junitxml=/tmp/mission21_wp05.xml`: 15 tests, 0 failures, 0 errors, 0 skipped. Receipt `/tmp/mission21_wp05.xml`.
+
+Static analysis: Ruff on entire modified metrics module and new tests passes; Python3.11.15.
+Commit: None; push/local/tracking/live verified: False.
+Limitations: No empirical values, real GT, changed thresholds or protocol definitions; point classifications remain sampled-trajectory evidence, not continuous safety. Real reporting requires actual authorized inputs and per-metric human evidence.
+Next: WP06 constructed independent-camera descriptive orchestration.
 
 ## Execution boundaries
 

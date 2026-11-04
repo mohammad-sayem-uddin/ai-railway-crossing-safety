@@ -35927,6 +35927,38 @@
           "src/railway_detection/safety/constructed_authority.py": "7fc3ba71b7a484cedd30af13764e7e94c3ab71efe3a2464d6014987a51439d7f",
           "tests/synthetic_security/test_transactions.py": "f90be3512acf296dcefa226c1e280a667b177bc5115c894720671b5f466183f3"
         },
+        "commit": "54efc28317c735745385c2d74e7103e778a9ae01",
+        "push_verified": true
+      },
+      {
+        "id": "WP05",
+        "status": "PASS_DESCRIPTIVE_REPORTING_CONTRACT",
+        "files": [
+          "src/railway_detection/evaluation/metrics.py",
+          "tests/synthetic_metric_contracts/conftest.py",
+          "tests/synthetic_metric_contracts/test_reporting.py"
+        ],
+        "message": "feat: report camera-local metric denominators and exclusion reasons",
+        "receipts": [
+          {
+            "xml": "/tmp/mission21_wp05.xml",
+            "command": "PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_metric_contracts -p no:cacheprovider --import-mode=importlib tests/synthetic_metric_contracts -q --junitxml=/tmp/mission21_wp05.xml",
+            "tests": 15,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        ],
+        "notes": "Added pure typed descriptive metric rows and stratified cohort/camera/condition/metric reporting, exact M5 integer indicators, explicit null/exclusion handling, duplicate rejection, finite continuous values, observed denominators and event identities. New API omits CI/population inference by default. Existing classify_m4 and screen definitions unchanged; independent positive-witness/incomplete/no-interior/late-origin/M5/censored/missing cases and screen-provenance retention execute.",
+        "static": "Ruff on entire modified metrics module and new tests passes; Python3.11.15",
+        "limitations": "No empirical values, real GT, changed thresholds or protocol definitions; point classifications remain sampled-trajectory evidence, not continuous safety. Real reporting requires actual authorized inputs and per-metric human evidence.",
+        "next": "WP06 constructed independent-camera descriptive orchestration",
+        "parent": "54efc28317c735745385c2d74e7103e778a9ae01",
+        "source_sha256": {
+          "src/railway_detection/evaluation/metrics.py": "93e401c295abe39477c4b201e6c8414b3e76d8ce73e895cc9e02699616730a08",
+          "tests/synthetic_metric_contracts/conftest.py": "9fbf754059ec5d08e2344426729e1f54b269ab58727e2b20deb169e02297a595",
+          "tests/synthetic_metric_contracts/test_reporting.py": "8e06301fdb0dcf7908ebb9637e8b5e5a3aa173270f88d23dd6c412a514447aef"
+        },
         "commit": null,
         "push_verified": false
       }

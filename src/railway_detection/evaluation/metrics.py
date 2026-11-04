@@ -964,3 +964,87 @@ class EventMetricsCalculator:
                     {"event_id": evaluation.event_id, "reason": reason}
                 )
         return out
+
+
+@dataclass(frozen=True)
+class DescriptiveMetricRow:
+    """One camera-local finite-cohort observation; no authority implied by a row."""
+
+    event_key: str
+    camera: str
+    condition: str
+    metric: str
+    value: bool | int | float | None
+    exclusion_reason: str | None = None
+    provenance: str = ""
+
+
+def summarize_descriptive_rows(rows: tuple[DescriptiveMetricRow, ...]) -> tuple[dict, ...]:
+    """Explicit per-metric denominators/reasons, without CI or cross-camera pooling.
+
+    Engine and no-train cohorts remain separate. Missing/censored points remain
+    excluded, not zero. M5 is an integer failure indicator, not vehicle intrusion.
+    This pure reporting function loads no results and performs no evaluation.
+    """
+    from collections import Counter
+    from statistics import median
+
+    if type(rows) is not tuple:
+        raise ValueError("immutable reporting rows required")
+    groups: dict[tuple, list] = {}
+    seen: set[tuple] = set()
+    for row in rows:
+        if type(row) is not DescriptiveMetricRow:
+            raise ValueError("typed metric row required")
+        parts = row.event_key.split("/")
+        if (len(parts) != 2 or parts[0] not in KNOWN_COHORTS
+                or not parts[1].startswith("event_") or not parts[1][6:].isdigit()
+                or row.camera not in ("front", "back") or not row.condition
+                or not row.provenance):
+            raise ValueError("qualified event/camera/condition/provenance required")
+        if row.metric not in ("M4", "M5", "MTR", "WLT", "CLEARANCE", "OCCUPANCY"):
+            raise ValueError("unknown metric")
+        key = (parts[0], row.camera, row.condition, row.metric)
+        identity = (row.event_key, *key[1:])
+        if identity in seen:
+            raise ValueError("duplicate event in metric denominator")
+        seen.add(identity)
+        if row.value is None:
+            if not row.exclusion_reason:
+                raise ValueError("missing point must state exclusion reason")
+        else:
+            if row.exclusion_reason is not None:
+                raise ValueError("excluded point cannot enter denominator")
+            if row.metric == "M5":
+                if type(row.value) is not int or row.value not in (0, 1):
+                    raise ValueError("M5 must be exact integer0/1")
+            elif row.metric in ("M4", "MTR"):
+                if type(row.value) is not bool:
+                    raise ValueError("binary outcome must be boolean")
+            elif type(row.value) not in (int, float) or not math.isfinite(row.value):
+                raise ValueError("finite continuous value or explicit exclusion required")
+        groups.setdefault(key, []).append(row)
+    result = []
+    for (cohort, camera, condition, metric), members in sorted(groups.items()):
+        reasons: Counter[str] = Counter()
+        values = []
+        for row in members:
+            if cohort != "train_events" and metric in ("M4", "M5", "OCCUPANCY"):
+                reasons["separate_case_or_control_not_train_metric"] += 1
+            elif row.value is None:
+                reasons[row.exclusion_reason] += 1
+            else:
+                values.append(row.value)
+        binary = metric in ("M4", "M5", "MTR")
+        result.append({"cohort": cohort, "camera": camera, "condition": condition,
+                       "metric": metric, "observed_rows": len(members),
+                       "denominator": len(values),
+                       "excluded_by_reason": dict(sorted(reasons.items())),
+                       "numerator": sum(int(v) for v in values) if binary else None,
+                       "proportion": (sum(int(v) for v in values)/len(values)
+                                      if binary and values else None),
+                       "median": median(values) if values and not binary else None,
+                       "range": (min(values), max(values)) if values and not binary else None,
+                       "event_keys": tuple(row.event_key for row in members),
+                       "scope": "finite_cohort_descriptive_no_population_inference"})
+    return tuple(result)
