@@ -1,0 +1,319 @@
+{
+  "schema": "mission24-final-validation/1",
+  "date": "2026-11-05",
+  "timezone": "America/New_York",
+  "baseline": "0898a076de1e720ca0c6a85bcad579ae8892b584",
+  "exact_mission23_final_delivery": "0898a076de1e720ca0c6a85bcad579ae8892b584",
+  "implementation_commit": "025e8effd76b698b3332986c7a3a52826d82d765",
+  "fixture_remediation_commit": "6b682264dbc5492107347e95da297a7712c2b497",
+  "current_head_before_final_documentation": "6b682264dbc5492107347e95da297a7712c2b497",
+  "final_delivery_commit": "containing final documentation commit;exact hash reported after normal push verification",
+  "status": "ELIGIBLE_APPLICATION_ENGINEERING_COMPLETE;RESOURCE_FREE_ACCEPTANCE_VERIFIED;COMPARATOR_RETAINED_INACTIVE;NOT_PRODUCTION_READY",
+  "baseline_verification": {
+    "local_tracking_live_matched": true,
+    "mission23_source_and_bound_receipts_verified": true,
+    "historical_mission21_23_artifact_sha256": {
+      "docs/generated/master_reaudit/MISSION_21_18A_ACCEPTANCE_TRACEABILITY.md": "0c00bb3721cec01e881abf1332aff8f1d5ff99606cdb322abd19f355d743c032",
+      "docs/generated/master_reaudit/MISSION_21_DESCRIPTIVE_MANUSCRIPT_SUPPORT_DRAFT.md": "b95ef9186a528df03352a47c2d04ad81b0aa3b4b7c6e63c0bf19695844c38ae5",
+      "docs/generated/master_reaudit/MISSION_21_PHASE_EXECUTION_LOG.md": "61f96469872cac2f0f7cd4175ddbd76a4679c008898eae19ae203c365a6a6ab1",
+      "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_RECEIPT.json": "2f7e0f8a88f9ad6d8ce1c62903dfe01f2c26a2f5b0aeff3d815a343d79722ded",
+      "docs/generated/master_reaudit/MISSION_21_TOOLING_REPAIR_AND_STATIC_ANALYSIS.md": "fcb0067e29314bf4f90a2e8097acec0a6486c261e7046642aa6e6a3d50a3cc7f",
+      "docs/generated/master_reaudit/MISSION_21_AUTHORITY_ADOPTION_AND_EXECUTION_REPORT.md": "625a8fd767e0c48497450ea7a60f225dc1c42c24d9b565dcdf822828ac03a8d4",
+      "docs/generated/master_reaudit/MISSION_21_FINAL_ENGINEERING_VALIDATION.json": "17afad0b052a3bdb953bc1f1537311f163b0dbdb4fdf06946e02ca3f3e96788f",
+      "docs/generated/master_reaudit/MISSION_22_CRASH_RECOVERY_REPORT.md": "42a8369c7253271dc7724aa131357fd8eaf5594ec0f911c0aa48d389ae8ced81",
+      "docs/generated/master_reaudit/MISSION_22_DEMONSTRATION_RECEIPT.json": "c11c1e8cf6a8e56d3b94d787d272c138185562c953e41f1deeeec93ab7f9e095",
+      "docs/generated/master_reaudit/MISSION_22_REGRESSION_RECEIPT.json": "fcb0e655041ace44cd91666e6b8db70b8a5c4950fb85e5e98fa9277052996d65",
+      "docs/generated/master_reaudit/MISSION_22_END_TO_END_DEMONSTRATION.md": "ea226b1130262c35428963326a7acf51c546cdeb015a9e05dc702577342449d6",
+      "docs/generated/master_reaudit/MISSION_22_EXECUTION_REGISTER.json": "c025d0bc3b22e7c8224b7371a8d1a5ddce128f58e015c47c93d45c277d51882c",
+      "docs/generated/master_reaudit/MISSION_22_SECURITY_AND_FAILURE_INJECTION_REPORT.md": "5c73e6379c831e8b0f8bb8caf874b932b04d009aa48844d9d333c8149c14bd69",
+      "docs/generated/master_reaudit/MISSION_22_INTEGRATED_SYSTEM_VALIDATION_REPORT.md": "bcdd35f7375c1b13351c02e0031f1cff205cfc9f694b31886b49a9a2724d120c",
+      "docs/generated/master_reaudit/MISSION_22_INTERFACE_CONTRACT_AUDIT.md": "6c67fd9a51de3a0cdc6a58916035943545219d9ff74be74ee88ec5b0c90eeecb",
+      "docs/generated/master_reaudit/MISSION_22_FINAL_VALIDATION.json": "786bac32bb72223ea45df3b3a59659cd24d897a70714b0adb69c1413fc1a91c6",
+      "docs/generated/master_reaudit/MISSION_22_ARCHITECTURE_AND_DEPENDENCY_MAP.md": "9d521a3835760d7bacbb51d9610038171946c8b3be9600e75e2a18ba70e4c1b0",
+      "docs/generated/master_reaudit/MISSION_22_BACK_CAMERA_COMPARATOR_SPEC.md": "18082f9055b15010aebde36744b5f6c8cc55a011718ef491256c855187cc9837",
+      "docs/generated/master_reaudit/MISSION_23_FINAL_VALIDATION.json": "fd289b73f168477d045cd8f3202f90cead911fe7ec0a1fc1803a34b7862cce89",
+      "docs/generated/master_reaudit/MISSION_23_DEMONSTRATION_RECEIPT.json": "e562112160e277eb55ff6a6a7c741538d1612c7116fd81d255812e6c3a578992",
+      "docs/generated/master_reaudit/MISSION_23_TRIAGE_CASE_RECEIPT.json": "3a7daeda62a72bba9167b181fdd4ec63bafdbc2e0c2aafebee8ab37e83a1b051",
+      "docs/generated/master_reaudit/MISSION_23_COMPARATOR_DECISION_PACKET.md": "5eadc3dde8bca85580fb091de7419041f6e7cd2b4401fbad8556855a421634ff",
+      "docs/generated/master_reaudit/MISSION_23_RESOURCE_AUDIT_RECEIPT.json": "b8b463b2afb6ec3de73cf4eaf6044d4d6898d17d737f88946492153ca69f22df",
+      "docs/generated/master_reaudit/MISSION_23_RESOURCE_FREE_ACCEPTANCE_REPORT.md": "a3f0b8c76b130859d3af486dee48147f214910282c8d20c3622af387410c4333",
+      "docs/generated/master_reaudit/MISSION_23_PROTECTED_DEPENDENCY_EVIDENCE.json": "f219094e56ff001199df6bb6ee968bd4c3e3d63659ebdcc908a687f821235971",
+      "docs/generated/master_reaudit/MISSION_23_TEST_CLASSIFICATION_REGISTER.json": "df1a56d3bee34c44df7a05b88be7436ff724db7a2f2a4096d1929a96a71c4f38",
+      "docs/generated/master_reaudit/MISSION_23_INTEGRATION_HARDENING_REPORT.md": "8f94eb3f5e905bb73064f5ceb895ff00af81e7564c021b4e377244bfbe832876",
+      "docs/generated/master_reaudit/MISSION_23_REGRESSION_TRIAGE_REPORT.md": "081af8dbd452b7b9d3a89f0f6d1a325196a676dd3902d344eb7f525059d109d0",
+      "docs/generated/master_reaudit/MISSION_23_RESOURCE_FREE_EXECUTION_RECEIPT.json": "4c970d8113bbf890d65c77a70c88e2148f11fc0af02708d2ccac221360a0ec13",
+      "docs/generated/master_reaudit/MISSION_23_EXECUTION_REGISTER.json": "3e6dc5b7a70cab0f545fdb3cc6df0a2ae8fd80e0efc66984cc1b522de035a97f"
+    },
+    "seven_researcher_files_verified": true
+  },
+  "comparator": {
+    "id": "M22-COMP-MAPPING",
+    "user_statement": "Retain inactive comparator (Recommended)",
+    "source": "User reply to the single consolidated Mission24 decision request in this conversation",
+    "active": false,
+    "scientific_command_cells_adopted": 0,
+    "technical_interface": "INACTIVE_BACK_COMPARATOR/1",
+    "all64_mask_to_mask_admission_transitions_tested": true,
+    "all40_observed_mask_availability_combinations_tested": true,
+    "missing_mask_rejections": 8,
+    "total_comparator_cases": 138,
+    "logical_and_applied_commands": null,
+    "back_audio": "DEFERRED",
+    "frozen_primary_policy_changed": false,
+    "confirmation_miss_tolerance_EMA_changed": false
+  },
+  "application": {
+    "schema": "CONSTRUCTED_APPLICATION/1",
+    "coordinator": "existing integration_workflow.run_demo via typed WorkflowPort",
+    "origin_classes": [
+      "CONSTRUCTED_SYNTHETIC_INPUT",
+      "CONSTRUCTED_REVIEW_FIXTURE",
+      "UNVERIFIED_EXTERNAL_INPUT",
+      "GENUINE_EVIDENCE_PENDING"
+    ],
+    "only_constructed_input_admitted": true,
+    "commands": [
+      "demo",
+      "verify",
+      "receipt",
+      "acceptance",
+      "synthetic-test",
+      "validation",
+      "architecture"
+    ],
+    "complete_demo_command": "PYTHONPATH=src:. PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m railway_detection application demo --output /tmp/mission24-application",
+    "acceptance_command": "PYTHONPATH=src:. PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m railway_detection application acceptance --output /tmp/mission24-profile-a",
+    "typed_review_service": "TYPED_REVIEW_REQUEST/1 -> TYPED_REVIEW_RESPONSE/1;delegate owns transaction",
+    "typed_fixture_access": "TYPED_FIXTURE_ACCESS/1;delegate checks current scope at point of use",
+    "protected_operation_flags": [],
+    "genuine_service_available": false,
+    "all_seven_commands_exercised": true,
+    "validation_receipt_inspection_exit_code": 0
+  },
+  "tests": {
+    "full_frozen_source_audit": {
+      "modules": 154,
+      "process_groups": 45,
+      "counts": {
+        "tests": 3400,
+        "failures": 87,
+        "errors": 31,
+        "skipped": 0,
+        "passed": 3282
+      },
+      "execution_complete": true,
+      "source_bindings_unchanged": true,
+      "all_nonpassing_ids_equal_prior118_protected_dependencies": true,
+      "full_repository_green": false
+    },
+    "profile_a": {
+      "status": "PASSED_SELECTED_RESOURCE_FREE",
+      "counts": {
+        "tests": 3282,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 3282
+      },
+      "process_groups": 44,
+      "executed_modules": 153,
+      "not_executed_protected_dependency": 118,
+      "not_executed_unknown": 0,
+      "unknown_classification": 0,
+      "other_not_executed": 0,
+      "source_bindings_unchanged": true,
+      "all3091_prior_selected_cases_preserved": true,
+      "cases_not_added_across_reruns": true
+    },
+    "application_synthetic_cli": {
+      "counts": {
+        "tests": 191,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 191
+      },
+      "process_groups": 1,
+      "not_executed_outside_synthetic_scope": 3091,
+      "not_executed_protected_dependency": 118,
+      "not_executed_unknown": 0,
+      "included_in_profile_a": true
+    },
+    "subsets_included_in_profile_a": {
+      "prior_wp01_wp10": 500,
+      "original238_separate_process": 238,
+      "mission22": 62,
+      "mission23": 23,
+      "mission24_new": 191
+    },
+    "new_case_breakdown": {
+      "application": 25,
+      "typed_authorization": 11,
+      "CLI": 6,
+      "inactive_comparator": 138,
+      "review_interfaces": 11
+    },
+    "development_evidence": "Early fixture role/anchor integration errors and one missing pytest import were corrected;full audit exposed uncontrolled peakRSS in old deterministic-report fixture;fixed with all measurements injected plus varying-memory regression;pre-freeze audits not reused as final source evidence;all development reruns retained separately and not summed."
+  },
+  "classification_integrity": {
+    "register": "MISSION_24_TEST_CLASSIFICATION_REGISTER.json",
+    "validation_exit_code": 0,
+    "modules": 154,
+    "selected": 3282,
+    "protected": 118,
+    "unknown": 0,
+    "missing_or_stale": 0,
+    "historical_mission23_register_unchanged": true,
+    "legacy_yaml_new_changed_tests_default_unknown": true,
+    "original_classification_pass_counts_invented": false,
+    "root_conftest_and_M22_access_policy_unchanged": true,
+    "boundary": "Declared fresh-process profile replaces prohibited real-registry fingerprint with same temporary-registry fixture API plus inherited deny policy;not unrestricted pytest",
+    "source_changes_since_validation": false
+  },
+  "demonstration": {
+    "implementation_commit": "025e8effd76b698b3332986c7a3a52826d82d765",
+    "two_application_outputs_byte_identical": true,
+    "two_nested_execution_outputs_byte_identical": true,
+    "two_snapshot_manifests_byte_identical": true,
+    "verified_receipt_bytes_match": true,
+    "full_artifact_resume_passed": true,
+    "command_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "policy_denials": 0,
+    "genuine_evidence": false,
+    "empirical_results": false,
+    "promotion": false,
+    "outer_manifest": "APPLICATION_ARTIFACT_SET/1;exact3names",
+    "nested_manifest": "M22_CONSTRUCTED_RUN/1;exact9deterministicnames",
+    "SQLite_bytes_not_a_deterministic_artifact": true
+  },
+  "static_analysis": {
+    "ruff": {
+      "exit_code": 0,
+      "Python_files": [
+        "src/railway_detection/application/__init__.py",
+        "src/railway_detection/application/authorization.py",
+        "src/railway_detection/application/cli.py",
+        "src/railway_detection/application/comparator.py",
+        "src/railway_detection/application/contracts.py",
+        "src/railway_detection/application/review.py",
+        "src/railway_detection/application/workflow.py",
+        "src/railway_detection/cli/main.py",
+        "src/railway_detection/synthetic/integration_workflow.py",
+        "tests/synthetic_mission24/test_application.py",
+        "tests/synthetic_mission24/test_authorization.py",
+        "tests/synthetic_mission24/test_cli.py",
+        "tests/synthetic_mission24/test_comparator.py",
+        "tests/synthetic_mission24/test_review_interfaces.py",
+        "tests/unit/test_phase14_benchmark_suite.py"
+      ],
+      "count": 15,
+      "output": "All checks passed!"
+    },
+    "syntax": {
+      "AST_files": 15,
+      "errors": 0
+    },
+    "mypy": {
+      "exit_code": 0,
+      "scope": "application package7 source files + existing integration_workflow.py",
+      "source_files": 8,
+      "command": "PYTHONPATH=src:. .venv/bin/python -m mypy --follow-imports=silent --ignore-missing-imports --cache-dir=/tmp/m24_mypy_cache src/railway_detection/application src/railway_detection/synthetic/integration_workflow.py",
+      "output": "Success: no issues found in 8 source files",
+      "whole_repository_type_acceptance": false
+    },
+    "guarded_imports_architecture_cli": {
+      "exit_code": 0,
+      "policy_denials": 0,
+      "components": 10
+    },
+    "new_dependency_installations": []
+  },
+  "persistence": {
+    "actual_child_interruption_stages": [
+      "initialization",
+      "review_commit",
+      "review",
+      "workflow",
+      "application_receipt"
+    ],
+    "all_restarted_equal_direct_output": true,
+    "corrupt_or_missing_DB_or_old_schema_refuses": true,
+    "outer_and_nested_completion_boundaries_separate": true,
+    "shared_SQLite_transaction_owner_changed": false,
+    "genuine_human_records_or_promotions_created": false,
+    "completed_artifact_verification_not_live_authority_health_audit": true
+  },
+  "source_sha256": {
+    "src/railway_detection/application/__init__.py": "259f9be868283989e32845164a204e900c407dff336a130f9dba45b5bed5b55e",
+    "src/railway_detection/application/authorization.py": "0617d8b11060c590bada5925f8c6b214e912be4ec3a368ca7d18089c85286e08",
+    "src/railway_detection/application/cli.py": "fcd6ae91518475f2e063da42ebdc01b3a5ed6bbad700559d6693d8cbf5af19ca",
+    "src/railway_detection/application/comparator.py": "4ce928d74be203bb6c035aa5fc21c0ec4e43b13dfff6f8f97355e446121626da",
+    "src/railway_detection/application/contracts.py": "013f2681cfb1948314a68802d093f98d7902b9c374492d1ad0c2754cadac40f5",
+    "src/railway_detection/application/review.py": "7b850b7c52fb3b4d71bfc3dd35e94ded06ee11f713612d435f51d1bf68582944",
+    "src/railway_detection/application/workflow.py": "c9a0d049f29094480fadb9c9a3e2b81759c9558c4878a655df797fd0c80616d1",
+    "src/railway_detection/cli/main.py": "cda6a7dac50dc5ec967d8d00aa4c20378ac112dea99a9914036be0cd423cfd1b",
+    "src/railway_detection/synthetic/integration_workflow.py": "bfa14f3a40b845348d3bdef2be37476cb129cf1eefb03395ae397113ef8143d8",
+    "tests/synthetic_mission24/test_application.py": "ae4d771a5db0362a2e6f40f0290dee731190f382f249be7addca9c5b770073cf",
+    "tests/synthetic_mission24/test_authorization.py": "1c588eb166f6a4608162047dbc4005d884fcb7af26ca9f296b32181b9e0d1692",
+    "tests/synthetic_mission24/test_cli.py": "715f5d7a23e269940aac291129a53a61be35dcc821d5cf5db76ac0ab51f05ab0",
+    "tests/synthetic_mission24/test_comparator.py": "69eace8a7a8d504fbc46660f6427742523e17a64163ac11b71587a5691223ee6",
+    "tests/synthetic_mission24/test_review_interfaces.py": "98cac154f2e3d1466618532cd6fb864ceb8f9aefa8695912b5e0ca5e9b4340fb",
+    "tests/unit/test_phase14_benchmark_suite.py": "d6ce14b8f0ea08844fc66c2a5d523ff3d2311f23ce43643cff85f7d0e31521ad"
+  },
+  "receipt_sha256": {
+    "MISSION_24_RESOURCE_AUDIT_RECEIPT.json": "86127964fabd6cfc69188f2368c1b128c80ac6c5b2f5551264f50f5cf7eda28f",
+    "MISSION_24_TEST_CLASSIFICATION_REGISTER.json": "6adacceeb2d9c1916719825cdc61923c33d08ab0a9b116880f9f4c757ec7def2",
+    "MISSION_24_RESOURCE_FREE_EXECUTION_RECEIPT.json": "8db034827a76ec690d2776f8de858a2696f6188a7c818fd89c4219a5969c99c1",
+    "MISSION_24_SYNTHETIC_TEST_EXECUTION_RECEIPT.json": "8b595c9f595b3f68624fa2d67d2b6995e9014386d40467ef399630159d71847f",
+    "MISSION_24_DEMONSTRATION_RECEIPT.json": "744aed72f670dba2d2a429fa5f96e16ddfbadf629963b89d258e0265b06cd1bf",
+    "MISSION_24_FOCUSED_ACCEPTANCE_RECEIPT.json": "dc79b78b526cf20d1a471cfc23f67da36f67149de909b22b57991b623eb9d38d",
+    "MISSION_24_FINAL_FOCUSED_ACCEPTANCE_RECEIPT.json": "dbb39d0b1f52538ac83b8b494ef7427a3fbea453a5ed4f129514eb0da8e488c3",
+    "MISSION_24_PROTECTED_DEPENDENCY_EVIDENCE.json": "d3f9c369652d6b053e2878f441bebde79d94ab9336c3f38d597fd060c745239a"
+  },
+  "preserved_researcher_work_sha256": {
+    "docs/generated/master_reaudit/MISSION_17I_MISSION18_ACCEPTANCE_AND_DEPENDENCY_REGISTER.md": "e97f7918ad315bbf8e72417f9cfa4ab84c37d8ab037013c1dc6e09faa4130181",
+    "docs/generated/master_reaudit/MISSION_18A_CONVENTION_B_SYNTHETIC_INTEGRATION_REPORT.md": "5d970d46de0839b0dc5eb479fdb32b2bda1ad3bdde3dbb98e9ec719b2db83d83",
+    "docs/generated/master_reaudit/MISSION_18A_INTEGRATION_ACCEPTANCE_RECORD.md": "94c4e6638b5241f17170d0f7380e7bb4233b4857622e6e59643989115ee7cbea",
+    "docs/generated/master_reaudit/MISSION_18A_R2_RESEARCHER_SELECTION_AND_ADOPTION_RECORD.md": "faeae344008a835159b39cd02562e91f58a7f65ebb107f0caa1fbdccd5710643",
+    "docs/generated/master_reaudit/MISSION_18A_R_RESEARCHER_DECISION_PREPARATION.md": "8584586d6457c37d41227ceb5191306440bff55657dba133e753f730cf8408e8",
+    "docs/generated/master_reaudit/MISSION_19_MASTER_AUTHORIZATION_REGISTER.json": "919cbfdd0ddac07adb96ac9e8f3a98f12344cabab25e6662a7200d235b7b33d5",
+    "docs/generated/master_reaudit/MISSION_19_MASTER_PROJECT_AUTHORIZATION_AND_RESEARCH_DECISION_PACKET.md": "48dc86935d60f8837ff517137b2b596417759e5cd61ce37f6257292400d42c5b"
+  },
+  "git_integrity": {
+    "exit_code": 0,
+    "diagnostic_line_count": 270,
+    "stderr": "",
+    "scope": "Git connectivity only after implementation and fixture commits;historic dangling objects preserved"
+  },
+  "normal_exact_package_pushes_only": true,
+  "required_deliverables": [
+    "MISSION_24_FINAL_ARCHITECTURE.md",
+    "MISSION_24_COMPARATOR_IMPLEMENTATION_REPORT.md",
+    "MISSION_24_APPLICATION_INTEGRATION_REPORT.md",
+    "MISSION_24_HUMAN_REVIEW_INTERFACE_REPORT.md",
+    "MISSION_24_AUTHORIZATION_INTEGRATION_REPORT.md",
+    "MISSION_24_PERSISTENCE_AND_RECOVERY_REPORT.md",
+    "MISSION_24_END_TO_END_ACCEPTANCE_REPORT.md",
+    "MISSION_24_FINAL_VALIDATION.json"
+  ],
+  "readiness": {
+    "constructed_application": "VERIFIED reproducible local workflow and CLI",
+    "resource_free_acceptance": "VERIFIED3282selectedcases;118protecteddependenciesexplicitlynotexecuted",
+    "human_review": "CONSTRUCTED_SERVICE_INTERFACE_ONLY;genuine participation/appointments/evidence absent",
+    "authorization": "COOPERATIVE_LOCAL_ONLY;no independent identity/time/storage/OS assurance",
+    "real_data": "NOT_EXECUTED_OR_READY",
+    "production_physical_railway": "NOT_READY;NO_SAFETY_ASSURANCE"
+  },
+  "live_operations_executed": [],
+  "resource_choices": "21conditional and6denied/deferred preserved;no new live grant",
+  "limits": [
+    "Caller-owned code labels/roles/time/anchors are cooperative consistency inputs,not authentication",
+    "No all-ES/live-service acceptance,hostile-root recovery,power-loss/storage-controller durability or OS isolation",
+    "No protected media/hashing/checkpoints/caches,fitting/training/calibration,real inference/replay/evaluation,officialsplit,humanannotation/adjudication,GTpromotion,release or physicaldeployment"
+  ]
+}

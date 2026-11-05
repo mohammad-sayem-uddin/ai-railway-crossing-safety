@@ -1,0 +1,109 @@
+{
+  "schema": "mission24-application-demonstration/1",
+  "implementation_commit": "025e8effd76b698b3332986c7a3a52826d82d765",
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "two_application_outputs_equal": true,
+  "two_workflow_outputs_equal": true,
+  "two_snapshots_equal": true,
+  "verified_receipt_matches": true,
+  "full_artifact_resume_passed": true,
+  "policy_denials": [],
+  "application": {
+    "authorization": {
+      "classification": "MOCK_PRINCIPAL_ONLY",
+      "genuine_evidence": false,
+      "history_count": 4,
+      "promotion_available": false,
+      "schema": "CONSTRUCTED_AUTHORITY/1"
+    },
+    "cameras": [
+      {
+        "accepted_inputs": 8,
+        "camera": "front",
+        "controller_digest": "67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95",
+        "event": "synthetic:m22:s22:event",
+        "origin_us": 0,
+        "source": "camera_front",
+        "time_unit": "microseconds"
+      },
+      {
+        "accepted_inputs": 8,
+        "camera": "back",
+        "controller_digest": "67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95",
+        "event": "synthetic:m22:s22:event",
+        "origin_us": 100000,
+        "source": "camera_back",
+        "time_unit": "microseconds"
+      }
+    ],
+    "empirical_results": false,
+    "genuine_evidence": false,
+    "inactive_comparator_json": "[{\"active\":false,\"applied_command\":null,\"decision_id\":\"M22-COMP-MAPPING\",\"logical_command\":null,\"observation\":{\"availability\":\"FRESH\",\"camera\":\"back\",\"classification\":\"CONSTRUCTED_SYNTHETIC_INPUT\",\"event\":\"synthetic:m22:s22:event\",\"observation_id\":\"synthetic:back:frame:0\",\"observed_mask\":1,\"observed_us\":100000,\"producer\":{\"class_mapping\":[\"front\",\"rear\",\"side\"],\"controller_digest\":\"67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95\",\"identity\":\"CONSTRUCTED_RULE_FIXTURE_NO_MODEL\",\"source_staleness_us\":2000000,\"threshold\":0.35},\"received_us\":100000,\"source\":\"camera_back\",\"unknown_labels\":[]},\"schema\":\"INACTIVE_BACK_COMPARATOR/1\",\"status\":\"UNAVAILABLE_MAPPING_NOT_ADOPTED\"},{\"active\":false,\"applied_command\":null,\"decision_id\":\"M22-COMP-MAPPING\",\"logical_command\":null,\"observation\":{\"availability\":\"FRESH\",\"camera\":\"back\",\"classification\":\"CONSTRUCTED_SYNTHETIC_INPUT\",\"event\":\"synthetic:m22:s22:event\",\"observation_id\":\"synthetic:back:frame:1\",\"observed_mask\":1,\"observed_us\":300000,\"producer\":{\"class_mapping\":[\"front\",\"rear\",\"side\"],\"controller_digest\":\"67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95\",\"identity\":\"CONSTRUCTED_RULE_FIXTURE_NO_MODEL\",\"source_staleness_us\":2000000,\"threshold\":0.35},\"received_us\":300000,\"source\":\"camera_back\",\"unknown_labels\":[]},\"schema\":\"INACTIVE_BACK_COMPARATOR/1\",\"status\":\"UNAVAILABLE_MAPPING_NOT_ADOPTED\"},{\"active\":false,\"applied_command\":null,\"decision_id\":\"M22-COMP-MAPPING\",\"logical_command\":null,\"observation\":{\"availability\":\"FRESH\",\"camera\":\"back\",\"classification\":\"CONSTRUCTED_SYNTHETIC_INPUT\",\"event\":\"synthetic:m22:s22:event\",\"observation_id\":\"synthetic:back:frame:2\",\"observed_mask\":1,\"observed_us\":2300000,\"producer\":{\"class_mapping\":[\"front\",\"rear\",\"side\"],\"controller_digest\":\"67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95\",\"identity\":\"CONSTRUCTED_RULE_FIXTURE_NO_MODEL\",\"source_staleness_us\":2000000,\"threshold\":0.35},\"received_us\":2300000,\"source\":\"camera_back\",\"unknown_labels\":[]},\"schema\":\"INACTIVE_BACK_COMPARATOR/1\",\"status\":\"UNAVAILABLE_MAPPING_NOT_ADOPTED\"},{\"active\":false,\"applied_command\":null,\"decision_id\":\"M22-COMP-MAPPING\",\"logical_command\":null,\"observation\":{\"availability\":\"FRESH\",\"camera\":\"back\",\"classification\":\"CONSTRUCTED_SYNTHETIC_INPUT\",\"event\":\"synthetic:m22:s22:event\",\"observation_id\":\"synthetic:back:frame:3\",\"observed_mask\":1,\"observed_us\":3300000,\"producer\":{\"class_mapping\":[\"front\",\"rear\",\"side\"],\"controller_digest\":\"67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95\",\"identity\":\"CONSTRUCTED_RULE_FIXTURE_NO_MODEL\",\"source_staleness_us\":2000000,\"threshold\":0.35},\"received_us\":3300000,\"source\":\"camera_back\",\"unknown_labels\":[]},\"schema\":\"INACTIVE_BACK_COMPARATOR/1\",\"status\":\"UNAVAILABLE_MAPPING_NOT_ADOPTED\"},{\"active\":false,\"applied_command\":null,\"decision_id\":\"M22-COMP-MAPPING\",\"logical_command\":null,\"observation\":{\"availability\":\"FRESH\",\"camera\":\"back\",\"classification\":\"CONSTRUCTED_SYNTHETIC_INPUT\",\"event\":\"synthetic:m22:s22:event\",\"observation_id\":\"synthetic:back:frame:4\",\"observed_mask\":1,\"observed_us\":4300000,\"producer\":{\"class_mapping\":[\"front\",\"rear\",\"side\"],\"controller_digest\":\"67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95\",\"identity\":\"CONSTRUCTED_RULE_FIXTURE_NO_MODEL\",\"source_staleness_us\":2000000,\"threshold\":0.35},\"received_us\":4300000,\"source\":\"camera_back\",\"unknown_labels\":[]},\"schema\":\"INACTIVE_BACK_COMPARATOR/1\",\"status\":\"UNAVAILABLE_MAPPING_NOT_ADOPTED\"},{\"active\":false,\"applied_command\":null,\"decision_id\":\"M22-COMP-MAPPING\",\"logical_command\":null,\"observation\":{\"availability\":\"FRESH\",\"camera\":\"back\",\"classification\":\"CONSTRUCTED_SYNTHETIC_INPUT\",\"event\":\"synthetic:m22:s22:event\",\"observation_id\":\"synthetic:back:frame:5\",\"observed_mask\":1,\"observed_us\":5300000,\"producer\":{\"class_mapping\":[\"front\",\"rear\",\"side\"],\"controller_digest\":\"67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95\",\"identity\":\"CONSTRUCTED_RULE_FIXTURE_NO_MODEL\",\"source_staleness_us\":2000000,\"threshold\":0.35},\"received_us\":5300000,\"source\":\"camera_back\",\"unknown_labels\":[]},\"schema\":\"INACTIVE_BACK_COMPARATOR/1\",\"status\":\"UNAVAILABLE_MAPPING_NOT_ADOPTED\"},{\"active\":false,\"applied_command\":null,\"decision_id\":\"M22-COMP-MAPPING\",\"logical_command\":null,\"observation\":{\"availability\":\"FRESH\",\"camera\":\"back\",\"classification\":\"CONSTRUCTED_SYNTHETIC_INPUT\",\"event\":\"synthetic:m22:s22:event\",\"observation_id\":\"synthetic:back:frame:6\",\"observed_mask\":1,\"observed_us\":6300000,\"producer\":{\"class_mapping\":[\"front\",\"rear\",\"side\"],\"controller_digest\":\"67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95\",\"identity\":\"CONSTRUCTED_RULE_FIXTURE_NO_MODEL\",\"source_staleness_us\":2000000,\"threshold\":0.35},\"received_us\":6300000,\"source\":\"camera_back\",\"unknown_labels\":[]},\"schema\":\"INACTIVE_BACK_COMPARATOR/1\",\"status\":\"UNAVAILABLE_MAPPING_NOT_ADOPTED\"},{\"active\":false,\"applied_command\":null,\"decision_id\":\"M22-COMP-MAPPING\",\"logical_command\":null,\"observation\":{\"availability\":\"FRESH\",\"camera\":\"back\",\"classification\":\"CONSTRUCTED_SYNTHETIC_INPUT\",\"event\":\"synthetic:m22:s22:event\",\"observation_id\":\"synthetic:back:frame:7\",\"observed_mask\":1,\"observed_us\":7300000,\"producer\":{\"class_mapping\":[\"front\",\"rear\",\"side\"],\"controller_digest\":\"67b8b92f3ce71fbd2bd70d9decfaf74b52e666d5a86c50df08a8ed9c9c857b95\",\"identity\":\"CONSTRUCTED_RULE_FIXTURE_NO_MODEL\",\"source_staleness_us\":2000000,\"threshold\":0.35},\"received_us\":7300000,\"source\":\"camera_back\",\"unknown_labels\":[]},\"schema\":\"INACTIVE_BACK_COMPARATOR/1\",\"status\":\"UNAVAILABLE_MAPPING_NOT_ADOPTED\"}]\n",
+    "lineage_digest": "d76caed9d3bbca78c5f87d7ccb815852d347a8bdcb6837f43503ebaac3fc13a5",
+    "metric_contracts": [
+      {
+        "camera": "front",
+        "empirical_result": false,
+        "never_protected_m5": 0,
+        "premature_opening_m4": false,
+        "reason": null
+      },
+      {
+        "camera": "back",
+        "empirical_result": false,
+        "never_protected_m5": 0,
+        "premature_opening_m4": false,
+        "reason": null
+      }
+    ],
+    "physical_deployment": false,
+    "request": {
+      "classification": "CONSTRUCTED_SYNTHETIC_INPUT",
+      "code_identity": "025e8effd76b698b3332986c7a3a52826d82d765",
+      "crossing": "crossing_A",
+      "event": "synthetic:m22:s22:event",
+      "fixture": "synthetic:m22:s22:fixture",
+      "schema": "CONSTRUCTED_APPLICATION/1",
+      "seed": 22
+    },
+    "review": {
+      "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+      "genuine_evidence": false,
+      "history_count": 3,
+      "promotion_available": false,
+      "schema": "TYPED_REVIEW_RESPONSE/1"
+    },
+    "schema": "CONSTRUCTED_APPLICATION/1",
+    "workflow_execution_digest": "69103ffd1a2cd86df41181ffd52de91a11a7909083be1a422a99af63dc17238f"
+  },
+  "application_sha256": "4a625b2a3d3503f0bada63b7ba1d26656b901ebf02878d01843e8b4645691213",
+  "outer_artifact_manifest": {
+    "artifacts": {
+      "APPLICATION.json": "4a625b2a3d3503f0bada63b7ba1d26656b901ebf02878d01843e8b4645691213",
+      "APPLICATION_REQUEST.json": "6d2fc037984616ecd3750baf40cfa0e029cb855cf53f8f81dbef3edbd9e77605",
+      "workflow/COMPLETE.json": "c1dd63aa13d43290cb0fc7433c624360ba95cd40684d99027ea341a7cced587e"
+    },
+    "request_digest": "6d2fc037984616ecd3750baf40cfa0e029cb855cf53f8f81dbef3edbd9e77605",
+    "schema": "APPLICATION_ARTIFACT_SET/1"
+  },
+  "inner_artifact_manifest": {
+    "artifacts": {
+      "ACK.json": "e90789293945c3cf80f323aec637c8ed9029cbb8142c5d977c6225d68285574c",
+      "RUN.json": "e0cde4d1c4e59461b2889185cfdf6ab12a0ebbaecf093b44711ea9cf77c6cb9b",
+      "execution.json": "69103ffd1a2cd86df41181ffd52de91a11a7909083be1a422a99af63dc17238f",
+      "results_absent_report.md": "40cf60b88745b917d1c17efa559e238ce2f1adbdeb2a4e108fdcc4a106d875e0",
+      "snapshot/SOURCE_MANIFEST.json": "6c6f966b9fc0d7e7a144091284252c8a1693f407271cacaed8cac1077a5a3e6d",
+      "snapshot/docs/input_envelope.json": "e0cde4d1c4e59461b2889185cfdf6ab12a0ebbaecf093b44711ea9cf77c6cb9b",
+      "snapshot/src/fixture.py": "bb2ef167dc925acbcdc8c01ade8b8b731c6005649f4ad298d7ef33f51f25af70",
+      "source_fixture/docs/input_envelope.json": "e0cde4d1c4e59461b2889185cfdf6ab12a0ebbaecf093b44711ea9cf77c6cb9b",
+      "source_fixture/src/fixture.py": "bb2ef167dc925acbcdc8c01ade8b8b731c6005649f4ad298d7ef33f51f25af70"
+    },
+    "descriptor_sha256": "e0cde4d1c4e59461b2889185cfdf6ab12a0ebbaecf093b44711ea9cf77c6cb9b",
+    "schema": "M22_CONSTRUCTED_RUN/1"
+  }
+}

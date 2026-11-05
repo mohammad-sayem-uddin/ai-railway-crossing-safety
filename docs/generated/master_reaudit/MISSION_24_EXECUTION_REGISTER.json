@@ -60,7 +60,13 @@
     {
       "phase": "J/RSS fixture remediation",
       "validation": "191 new focused cases and existing determinism assertion pass;test now injects all measured inputs;companion regression preserves varying RSS reporting;protected-case8 ASTs unchanged",
-      "delivery": "containing fixture-remediation commit"
+      "delivery": "6b682264dbc5492107347e95da297a7712c2b497",
+      "push_verified": true
+    },
+    {
+      "phase": "I/J",
+      "validation": "Two appdemonstrations/full resume byte-identical;fullaudit3400/3282pass/87fail/31error/0skip;ProfileA3282pass/0fail/0error/0skip;118protectednotexecuted;0unknown/stale;syntheticCLI191pass;RuffAST15/Mypy8",
+      "delivery": "containing final documentation commit;exact hash in final delivery response"
     }
   ],
   "live_operations_executed": [],
@@ -70,5 +76,26 @@
     "source": "user reply to single consolidated Mission24 decision request in this conversation",
     "effect": "retain inactive comparator; no scientific mapping cells adopted;back-audio deferred",
     "name_or_signature_inferred": false
+  },
+  "status": "ELIGIBLE_APPLICATION_ENGINEERING_COMPLETE;RESOURCE_FREE_ACCEPTANCE_VERIFIED;COMPARATOR_RETAINED_INACTIVE;NOT_PRODUCTION_READY",
+  "final_validation": "MISSION_24_FINAL_VALIDATION.json",
+  "profile_a": {
+    "status": "PASSED_SELECTED_RESOURCE_FREE",
+    "counts": {
+      "tests": 3282,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 3282
+    },
+    "process_groups": 44,
+    "executed_modules": 153,
+    "not_executed_protected_dependency": 118,
+    "not_executed_unknown": 0,
+    "unknown_classification": 0,
+    "other_not_executed": 0,
+    "source_bindings_unchanged": true,
+    "all3091_prior_selected_cases_preserved": true,
+    "cases_not_added_across_reruns": true
   }
 }

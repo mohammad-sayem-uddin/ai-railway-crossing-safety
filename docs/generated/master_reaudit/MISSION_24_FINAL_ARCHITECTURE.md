@@ -1,8 +1,8 @@
 # Mission 24 — Unified application architecture
 
-Prepared 2026-11-05, America/New_York. Baseline `0898a076de1e720ca0c6a85bcad579ae8892b584`, the exact Mission23 final delivery. Local/tracking/live heads match. All prior source/receipt bindings and seven preserved work hashes verify. Mission21–23 reports remain historical records.
+Prepared 2026-11-05, America/New_York. Baseline `0898a076de1e720ca0c6a85bcad579ae8892b584`, the exact Mission 23 final delivery. Local/tracking/live heads match. All prior source/receipt bindings and seven preserved work hashes verify. Mission 21–23 reports remain historical records.
 
-The application is an adapter over the existing `integration_workflow.run_demo` coordinator, not a second simulation/review/authorization implementation. Typed application requests, camera/metric/service summaries, evidence classifications and an inactive comparator interface provide the public boundary. The existing project CLI gains an `application` namespace. Source-only acceptance continues through the Mission23 runner and a new source-version-specific Mission24 register; the historical Mission23 register is preserved.
+The application is an adapter over the existing `integration_workflow.run_demo` coordinator, not a second simulation/review/authorization implementation. Typed application requests, camera/metric/service summaries, evidence classifications and an inactive comparator interface provide the public boundary. The existing project CLI gains an `application` namespace. Source-only acceptance continues through the Mission 23 runner and a new source-version-specific Mission 24 register; the historical Mission 23 register is preserved.
 
 ```mermaid
 flowchart TD
@@ -34,8 +34,12 @@ The one remaining comparator definition is M22-COMP-MAPPING. Existing source pre
 | Camera input → comparator | INACTIVE_BACK_COMPARATOR/1 | Exact observed/receivedµs, producer snapshot and full masks/availability; null commands only. User explicitly retained inactivity. |
 | Coordinator → metrics/provenance/report | Existing WP05/WP07/WP02/WP08/WP09 contracts | Exact sampled B software metrics, source/artifact/role/exposure joins, explicit source snapshot and results-absent report. No empirical values. |
 | Application → persistence | APPLICATION_ARTIFACT_SET/1 | Outer three-artifact digest closure over request, receipt and nested completion; nested nine-artifact/core SQLite state remain separately owned. |
-| CLI → acceptance | Existing resource-free runner with Mission24 register | All permitted cases executed in isolated processes; protected exclusions and unknowns remain distinct from passes. Historical Mission23 register is unchanged. |
+| CLI → acceptance | Existing resource-free runner with Mission 24 register | All permitted cases executed in isolated processes; protected exclusions and unknowns remain distinct from passes. Historical Mission 23 register is unchanged. |
 
 The implemented workflow order is: validate application request → establish exact deterministic fixture identity → invoke existing scoped fixture-byte/read and camera/B processing → preserve A/B and command/actuator state distinctions → metric and lineage/CV contracts → typed fixture review/authority history → explicit snapshot/results-absent reporting → inactive comparator diagnostics → typed application receipt → outer completion. Lineage and permission are distinct; comparator diagnostics never influence native controller commands.
 
 User decision in the current conversation: “Retain inactive comparator (Recommended)”. This supersedes the initial pending-response note for this mission; it does not fill any scientific mapping cell. All independent application work continues under the existing authorized engineering scope.
+
+## Final implementation evidence
+
+The actual application CLI executed the full selected profile: 3,282 passed,0 failed/errors/skips, with 118 protected dependencies explicitly unexecuted and 0 unknown/stale classifications. All191 new application/interface cases and all prior selected cases are included. The complete guarded audit remains87 failures plus31 setup errors against those same protected dependencies; it is not full operational acceptance. Typed service ports are implemented adapters over existing transaction/domain owners, not substitute genuine-evidence or independently protected services.
