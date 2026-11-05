@@ -1,0 +1,15 @@
+# Mission 26 — Duration-floor compatibility investigation
+
+Prepared 2026-11-05, America/New_York. Documentary metadata only. No source access, permission, human evidence or scientific execution is established.
+
+The active validator is `src/railway_detection/annotation/stage2_1_schema.py`, schema `8.1.0-stage2.1`, ReviewerMetadata.__post_init__. It derives review_duration_s from timezone-aware review_start_utc/review_end_utc and rejects intervals below the existing MIN_PLAUSIBLE_REVIEW_DURATION_S=30.0. Caller-supplied duration is discarded by build_stage2_1_record_from_dict. The source comments explicitly call this an anti-fabrication plausibility floor, not proof of genuine review or scientific sufficiency.
+
+Its antecedent is annotation/integrity_safeguard.py’s Phase11.1 anti-fabrication check of shared timestamps and plausible non-overlapping sessions. docs/PHASE11_1_INTEGRITY_INVENTORY.json records those historical findings; no original reviews were reopened. Git history locates the tracked canonical file in ad9e5c3; that repository-import commit does not prove an earlier researcher approval date.
+
+Consumers: review_session.build_review_record validates metadata/schema but also requires separate genuine authorization and live hashes, so it is not invoked here; promotion_gate.py validates through build_stage2_1_record_from_dict before other gates; second_review.py calls the duration failure a schema rejection rather than a review trigger; stage21_timing_pilot records actual prospective wall/monotonic timing and cannot establish a numerical scientific minimum by itself.
+
+RD046’s scientific floor remains deferred. Crucially, the earlier Mission5A STAGE21_SCHEMA_AND_REVIEW_GOVERNANCE_PROPOSAL_20261101_M5A.md §2 explicitly says “flat 30 s floor stays”. Mission17C2/Mission17E likewise distinguish plausibility from sufficiency. Thus retaining the current30-second rejection while deferring scientific sufficiency is compatible with the documentary direction; there is no evidence-supported need to invent a new threshold or request a repeated decision now.
+
+The eligible compatibility adapter is diagnostic only: call the active ReviewerMetadata validator on supplied timing metadata, report compatible/incompatible, retain actual originals, and never pad time, fabricate sessions, relabel8.2-proposed as8.1 or infer human truth. A successful timing check creates no complete review record or promotion eligibility. The inactive proposed module remains unimported by gates. Genuine schema/human/source compatibility still requires actual evidence and canonical acceptance; this investigation narrows the conceptual gap, not those unmet evidence gates.
+
+Recommendation: keep the existing plausibility validator unchanged and carry actual session timing; maintain RD046’s scientific deferral. Only a future requested change to the canonical rule would need a separately adopted versioned amendment. No new scientific decision is required for this mission’s diagnostic adapter.

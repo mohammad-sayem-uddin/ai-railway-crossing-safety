@@ -1,0 +1,164 @@
+{
+  "schema": "mission26-experiments/1",
+  "crossing": "crossing_A",
+  "descriptive_only": true,
+  "M4_primary": true,
+  "M5": "NEVER_PROTECTED_M5 integer failure indicator",
+  "occupancy": "DEFERRED",
+  "physical_entry": "DEFERRED",
+  "B2_back": "DEFERRED_AVAILABILITY",
+  "comparator": "USER_RETAINED_INACTIVE",
+  "no_inferential_or_generalization_claims": true,
+  "experiments": [
+    {
+      "condition": "B0_front",
+      "research_question": "Descriptive front-camera vision behavior",
+      "required_data": "front",
+      "human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "permissions": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "configuration": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "source_identities": "Exact manifest-bound selected camera/resources; none verified for execution here",
+      "metrics": "M4/M5/MTR subject to source-clock and screen eligibility",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "reproducibility": "Exact code/config/input/authorization/human/source/lineage/output digests and logs",
+      "blockers": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable"
+      ],
+      "status": "NOT_READY_NOT_EXECUTED",
+      "executed": false
+    },
+    {
+      "condition": "B1_audio",
+      "research_question": "Perceptual audio outcomes only",
+      "required_data": "approved acoustic sources",
+      "human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "permissions": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "configuration": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "source_identities": "Exact manifest-bound selected camera/resources; none verified for execution here",
+      "metrics": "Acoustic event-level outcomes; no independent gate actuation",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "reproducibility": "Exact code/config/input/authorization/human/source/lineage/output digests and logs",
+      "blockers": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable"
+      ],
+      "status": "NOT_READY_NOT_EXECUTED",
+      "executed": false
+    },
+    {
+      "condition": "B2_front",
+      "research_question": "Vision with supporting audio under frozen policy",
+      "required_data": "front plus separately available supporting audio",
+      "human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "permissions": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "configuration": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "source_identities": "Exact manifest-bound selected camera/resources; none verified for execution here",
+      "metrics": "M4/M5/MTR with per-metric denominators",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "reproducibility": "Exact code/config/input/authorization/human/source/lineage/output digests and logs",
+      "blockers": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable"
+      ],
+      "status": "NOT_READY_NOT_EXECUTED",
+      "executed": false
+    },
+    {
+      "condition": "B0_back",
+      "research_question": "Primary back-camera descriptive outcomes",
+      "required_data": "back",
+      "human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "permissions": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "configuration": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "source_identities": "Exact manifest-bound selected camera/resources; none verified for execution here",
+      "metrics": "M4/M5/MTR with camera-local GT",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "reproducibility": "Exact code/config/input/authorization/human/source/lineage/output digests and logs",
+      "blockers": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable"
+      ],
+      "status": "NOT_READY_NOT_EXECUTED",
+      "executed": false
+    },
+    {
+      "condition": "R04",
+      "research_question": "Restricted optional exploratory fusion",
+      "required_data": "historical exact11 only",
+      "human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "permissions": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "configuration": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "source_identities": "Exact manifest-bound selected camera/resources; none verified for execution here",
+      "metrics": "Exploratory outputs separate from independent-camera primary",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "reproducibility": "Exact code/config/input/authorization/human/source/lineage/output digests and logs",
+      "blockers": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable"
+      ],
+      "status": "NOT_READY_NOT_EXECUTED",
+      "executed": false
+    },
+    {
+      "condition": "B0_back_stateless",
+      "research_question": "Deferred separately mapped comparator",
+      "required_data": "back",
+      "human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "permissions": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "configuration": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "source_identities": "Exact manifest-bound selected camera/resources; none verified for execution here",
+      "metrics": "UNAVAILABLE until scientific mapping adopted",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "reproducibility": "Exact code/config/input/authorization/human/source/lineage/output digests and logs",
+      "blockers": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable"
+      ],
+      "status": "DEFERRED_SCIENTIFIC_MAPPING",
+      "executed": false
+    }
+  ]
+}
