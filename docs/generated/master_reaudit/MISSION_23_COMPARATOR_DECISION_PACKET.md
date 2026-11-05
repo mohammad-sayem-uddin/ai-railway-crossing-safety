@@ -2,7 +2,7 @@
 
 Prepared 2026-11-05, America/New_York. Decision remains **M22-COMP-MAPPING**. This packet supplies technical context for one complete researcher-authored mapping; it adopts no command cell and enables neither the comparator nor back audio.
 
-The unchanged M19-METH-04 direction recorded in Mission20 selects a separately labeled memoryless `B0_back_stateless` comparator while keeping `B0_back` primary and stateful. It does not define the per-frame command table. The Mission22 technical contract already fixes admission, reset, exact native clock, actuator separation and deterministic error handling. None is reopened here.
+The unchanged M19-METH-04 direction recorded in Mission 20 selects a separately labeled memoryless `B0_back_stateless` comparator while keeping `B0_back` primary and stateful. It does not define the per-frame command table. The Mission 22 technical contract already fixes admission, reset, exact native clock, actuator separation and deterministic error handling. None is reopened here.
 
 ## Exact input representation and current sources
 
@@ -25,7 +25,7 @@ These predicates describe current code; they are not a command mapping. In parti
 
 ## Existing transition behavior
 
-The frozen engine is stateful: IDLE approach evidence starts confirmation; two qualifying ticks permit warning, then the2s warning and3s closing stages advance. TRAIN_PRESENT and CROSSING_OCCUPIED retain closure; departure evidence advances through TRAIN_DEPARTING and REAR_CONFIRMED. In REAR_CONFIRMED, approach evidence takes precedence and resets clearance; otherwise stale/missing departure evidence aborts clearance, audio may postpone dwell, and3s clear dwell permits CROSSING_CLEAR. Duplicate and decreasing timestamps are rejected separately. Rules4–6 cover sensor loss/degradation and Rule9 covers recovery.
+The frozen engine is stateful: IDLE approach evidence starts confirmation; two qualifying ticks permit warning, then the2s warning and 3s closing stages advance. TRAIN_PRESENT and CROSSING_OCCUPIED retain closure; departure evidence advances through TRAIN_DEPARTING and REAR_CONFIRMED. In REAR_CONFIRMED, approach evidence takes precedence and resets clearance; otherwise stale/missing departure evidence aborts clearance, audio may postpone dwell, and 3s clear dwell permits CROSSING_CLEAR. Duplicate and decreasing timestamps are rejected separately. Rules4–6 cover sensor loss/degradation and Rule9 covers recovery.
 
 Consequently the same mask can have different commands in different historical states. Rear-only at initial IDLE is not the same event as rear-only following observed departure. Empty valid vision is healthy negative evidence, but is not a universal clearance certificate. Copying counters, dwell timers or previous perceptual states into the proposed comparator would violate its memoryless decision definition.
 
@@ -69,6 +69,6 @@ Record the genuine source statement, exact eight command cells, all availability
 - `configs/decision_policy_v1.yaml`, raw text SHA256 `c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575`. Its0.1s timing example is distinct from frozen0.2s evaluation; no cadence amendment is made.
 - `src/railway_detection/fusion/rules.py`, SHA256 `3e11bdb9644c1d0e43d6a42c23487b38301e5cee9d3247c0f1d9a0b2db3d5e18`.
 - `src/railway_detection/fusion/decision_engine.py`, SHA256 `3f5e3521e5b0b78e4ea2090855712cd36c0d91420ec125c09001382b1f0fcf40`.
-- Mission20 register M19-METH-04; Mission22 comparator technical contract; current `descriptive_constructed.py` refusal of `B0_back_stateless` and `B2_back`.
+- Mission 20 register M19-METH-04; Mission 22 comparator technical contract; current `descriptive_constructed.py` refusal of `B0_back_stateless` and `B2_back`.
 
 These are source/config/document hashes. No checkpoint bytes, checkpoint hash verification, model inference or source observations were accessed.

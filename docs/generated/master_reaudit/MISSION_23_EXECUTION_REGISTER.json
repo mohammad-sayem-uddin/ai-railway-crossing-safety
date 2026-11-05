@@ -35,9 +35,40 @@
     {
       "phase": "B/C/D/E/F/G/H/I",
       "validation": "All143 baseline nonpasses reproduced;25 runner/fixture cases fixed and passed;23 new cases,prior500 andM22 62 pass; fullaudit3209/3091pass/87fail/31error/0skip; classifier3091selected118protected0unknown; scopedMypy5/RuffAST15",
-      "delivery": "containing commit; final receipt carries exact hash"
+      "delivery": "1ab4e71f5f1b98507fb44d7d59b84dec13ee2e96",
+      "push_verified": true
+    },
+    {
+      "phase": "J/final acceptance",
+      "validation": "ProfileA3091pass/0fail/0error/0skip;118protected notexecuted;0unknown/stale;demo2destinations+resume;RuffAST15/Mypy5;preserved7andM22artifacts",
+      "delivery": "containing final commit; exact hash in delivery response"
     }
   ],
   "live_operations_executed": [],
-  "pending_scientific_definition": "M22-COMP-MAPPING"
+  "pending_scientific_definition": "M22-COMP-MAPPING",
+  "status": "ELIGIBLE_MISSION23_WORK_COMPLETE; PROFILE_A_VERIFIED; PROTECTED_PROFILE_NOT_EXECUTED; NOT_PRODUCTION_READY",
+  "profile_a": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/run_resource_free_acceptance.py run --output /tmp/mission23-profile-a",
+    "status": "PASSED_SELECTED_RESOURCE_FREE",
+    "counts": {
+      "tests": 3091,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 3091
+    },
+    "process_groups": 43,
+    "executed_modules": 148,
+    "not_executed_protected_dependency": 118,
+    "not_executed_unknown": 0,
+    "other_not_executed": 0,
+    "unknown_classification": 0,
+    "blocked_not_counted_passed": true,
+    "selection_matches_register": true,
+    "source_bindings_unchanged": true,
+    "root_conftest_and_existing_access_guards_unchanged": true,
+    "root_registry_fingerprint_handling": "Original conftest not edited; declared fresh-process profile replaces prohibited real-registry read with same temporary-registry fixture API and inherited point-of-use denial",
+    "counting": "All500 prior package cases,original238,M22 62 andM23 23 are subsets of3091, never added again. Development reruns are not added."
+  },
+  "final_validation": "MISSION_23_FINAL_VALIDATION.json"
 }
