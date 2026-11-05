@@ -1,0 +1,227 @@
+{
+  "schema": "mission26-final-validation/1",
+  "date": "2026-11-05",
+  "timezone": "America/New_York",
+  "exact_mission25_final_delivery": "e8a96a15d4d29d92dc009ee1eea98767a09417ad",
+  "inventory_commit": "d714c1c",
+  "implementation_commit": "64d766d81e652c94523433b8e4212946413368e7",
+  "final_delivery_commit": "Containing final documentation commit; exact hash reported after normal push verification",
+  "status": "ELIGIBLE_READINESS_ENGINEERING_COMPLETE;RESOURCE_FREE_ACCEPTANCE_VERIFIED;REAL_DATA_BLOCKED",
+  "full_guarded_audit": {
+    "receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json",
+    "counts": {
+      "tests": 3646,
+      "failures": 87,
+      "errors": 31,
+      "skipped": 0,
+      "passed": 3528
+    },
+    "status": "NONPASSING",
+    "test_modules": 160,
+    "process_groups": 47,
+    "retained_audit_bindings_independently_match_current": true,
+    "protected_failures_and_setup_errors_are_not_successful_execution": true
+  },
+  "selected_acceptance": {
+    "receipt": "MISSION_26_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+    "command": "PYTHONPATH=src:. PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m railway_detection application acceptance --output /private/tmp/m26_delivery_profile_loopback_20261105",
+    "counts": {
+      "tests": 3528,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 3528
+    },
+    "status": "PASSED_SELECTED_RESOURCE_FREE",
+    "test_modules": 159,
+    "process_groups": 46,
+    "not_executed_protected_dependencies": 118,
+    "not_executed_unknown": 0,
+    "all_previous_3430_cases_preserved": true,
+    "exact_previous_118_protected_case_ids_preserved": true,
+    "new_mission26_cases_included_once": 98,
+    "source_bindings_unchanged": true,
+    "whole_repository_acceptance": false,
+    "sandbox_retry": "The first delivery run hit OS localhost bind restrictions and a native macOS Matplotlib abort. Final complete run used approved escalation while retaining mission22_policy and inherited child guards; runs are not summed.",
+    "earlier_sandbox_run": "/private/tmp/m26_delivery_profile_20261105/receipt.json",
+    "earlier_sandbox_run_counts": {
+      "tests": 3379,
+      "passed": 3376,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0
+    },
+    "earlier_sandbox_run_process_abort": {
+      "group": "legacy_25",
+      "exit_code": -6,
+      "selected_cases_without_junit_results": 149
+    },
+    "exact_case_coverage_verified": true
+  },
+  "classification_integrity": {
+    "register": "MISSION_26_TEST_CLASSIFICATION_REGISTER.json",
+    "issues": [],
+    "counts": {
+      "selected": 3528,
+      "protected": 118,
+      "unknown": 0
+    },
+    "test_modules": 160,
+    "shared_dependencies": 253,
+    "legacy_yaml_inventory_is_not_the_executed_mission26_register": true
+  },
+  "static": {
+    "ruff": {
+      "exit_code": 0,
+      "python_files": 8,
+      "output": "All checks passed!"
+    },
+    "syntax": {
+      "ast_files": 8,
+      "errors": 0
+    },
+    "mypy": {
+      "exit_code": 0,
+      "source_files": 5,
+      "options": "--follow-imports=silent --ignore-missing-imports --cache-dir /private/tmp/m26_delivery_mypy_scoped",
+      "output": "Success: no issues found in 5 source files",
+      "scope": "preflight/__init__.py, catalog.py, engine.py; application/cli.py; safety/resource_free_acceptance.py",
+      "whole_repository_type_acceptance": false,
+      "initial_import_following_check": "52 errors in 14 preserved imported modules; no checked Mission26 source diagnostic. Existing scoped configuration was then used. Older dependencies were not modified or represented as type-clean."
+    },
+    "imports": {
+      "modules": 6,
+      "errors": 0
+    },
+    "pip_check": {
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    },
+    "source_sha256": {
+      "src/railway_detection/application/preflight/__init__.py": "3fc4c7fe3380caca0ed6de1b25f85600c0b3ae1a6c16a55b4fd0fc0d6b851275",
+      "src/railway_detection/application/preflight/catalog.py": "734a929a09c3b8fea72440afddc345af758b20802f181250531e65c6061f7285",
+      "src/railway_detection/application/preflight/engine.py": "d25d8b4ab9d0bbd828dfa9ce653510788391e90f7c30c22c3bc2ad2c6ea33d1d",
+      "src/railway_detection/application/cli.py": "2c47037b9d0b62bb0b47ffeb9855e5fb97e4c07ac29824ecf6583d6dce6a9ff6",
+      "src/railway_detection/safety/resource_free_acceptance.py": "b481dc64f64862bb6e11ed4aa68946bffec23e4292d758d2dd831f63da744b59",
+      "tests/unit/test_media_opener_coverage.py": "6d44921cd6ed43d5bbffad50d372cc8fc17839381e1ab740cf8dcbd086fd3d59",
+      "tests/synthetic_mission26/test_engine.py": "2fa1ed6d544635fcc36fedadfece36db29b10f5a0426f808834886ea61f61e34",
+      "tests/synthetic_mission26/test_inventory_cli.py": "1a18e2396abd4536bc284bdf0fceb8c3f1739fbf50cd633ed9ff97f99f1e30f7"
+    }
+  },
+  "inventory_and_rights": {
+    "candidate_events": 27,
+    "train": 23,
+    "no_train": 3,
+    "engine_only": 1,
+    "r04_exact_events": 11,
+    "documentary_camera_references": 54,
+    "excluded_duplicate_camera_references": 2,
+    "collection_or_model_references": 7,
+    "documentary_source_rows": 63,
+    "source_rights_status": {
+      "RIGHTS_UNKNOWN": 62,
+      "RIGHTS_PARTIALLY_DOCUMENTED": 1
+    },
+    "individual_audio_collection_member_rights_registry_complete": false,
+    "actual_installed_license_files_reverified": 9,
+    "inventory_signoff": false,
+    "live_source_identity_or_accessibility_verified": false
+  },
+  "human_and_external": {
+    "role_requirements": 6,
+    "genuine_appointments_or_qualifications_supplied": 0,
+    "external_requirement_rows": 9,
+    "external_applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+    "universal_ethics_or_railway_approval_assumed": false,
+    "genuine_verifier_player_storage_publisher_adapters_enabled": false
+  },
+  "landmarks_and_duration": {
+    "physical_t2": "DEFERRED",
+    "invented_measurements": 0,
+    "lens_plane_substitution_allowed": false,
+    "acoustic_gt_shift_allowed": false,
+    "canonical_schema": "8.1.0-stage2.1",
+    "existing_plausibility_floor_seconds": 30.0,
+    "canonical_validator_changed": false,
+    "scientific_duration_floor": "RD046_DEFERRED",
+    "adapter": "Diagnostic canonical ReviewerMetadata validation only; no duration padding, records, source access or promotion"
+  },
+  "operations": {
+    "total": 27,
+    "conditional_preserved": 21,
+    "denied_deferred_preserved": 6,
+    "preflight_blocked": 21,
+    "execution_not_permitted": 6,
+    "authorized_not_executed": 0,
+    "executed": 0,
+    "new_grants": 0,
+    "execution_backend": false,
+    "successful_preflight_is_not_authorization": true,
+    "canonical_point_of_use_guards_preserved": true
+  },
+  "scientific_execution": {
+    "readiness_rows": 6,
+    "experiments_executed": 0,
+    "inactive_eight_mask_comparator": "DEFERRED_SCIENTIFIC_MAPPING",
+    "descriptive_crossing_A_only": true,
+    "physical_entry_and_occupancy_deferred": true,
+    "empirical_performance_or_safety_claims": false
+  },
+  "adversarial": {
+    "receipt": "MISSION_26_ADVERSARIAL_CASE_RECEIPT.json",
+    "cases": 98,
+    "passed": 98,
+    "failed": 0,
+    "constructed_only": true,
+    "genuine_positive_execution_tested": false
+  },
+  "deterministic_cli": {
+    "receipt": "MISSION_26_DEMONSTRATION_RECEIPT.json",
+    "two_reports_identical": true,
+    "expected_exit_codes": [
+      0,
+      0,
+      0,
+      3,
+      3,
+      2
+    ],
+    "policy_denials": 0,
+    "fixed_clock_zero_is_diagnostic_not_authority_time": true
+  },
+  "preservation": {
+    "researcher_files_unchanged_and_unstaged": 7,
+    "mission21_through25_artifacts_unchanged": 70,
+    "baseline_register": "MISSION_26_EXECUTION_REGISTER.json",
+    "protected_resources_opened_decoded_hashed_or_processed": 0,
+    "real_review_corpus_accessed": false
+  },
+  "git": {
+    "connectivity_fsck_exit": 0,
+    "historic_dangling_objects_preserved": true,
+    "live_origin_main_before_delivery": "64d766d81e652c94523433b8e4212946413368e7",
+    "delivery": "Normal commit and push only; local/tracking/live HEAD checked after containing commit"
+  },
+  "artifact_sha256": {
+    "MISSION_26_DATASET_AND_SOURCE_INVENTORY.md": "c0e7218245b963420352498920057522884ba21a22fcdb33ef08b37348e3f938",
+    "MISSION_26_DATA_RIGHTS_AND_PROVENANCE_REGISTER.json": "e805db97237597e9c5e2046fc7a44b848b7302e71b49bccfe88245d47d50821a",
+    "MISSION_26_HUMAN_PARTICIPATION_REQUIREMENTS.md": "a3ac51a0b5dd3b43134c193b295d287f578e07f5c545cf633a3b98a215eabd10",
+    "MISSION_26_INSTITUTIONAL_AND_EXTERNAL_APPLICABILITY.md": "082c4bd5bb60f6af851dd69dceaf42bfe60541827829a61fce9d41e59265db87",
+    "MISSION_26_PHYSICAL_LANDMARK_EVIDENCE_REGISTER.md": "c9cb35dae41d18e94431c4236bfb552630b35f7da3c584e4ee64e3e22ec4f5e0",
+    "MISSION_26_DURATION_FLOOR_COMPATIBILITY_REPORT.md": "f6883578055617fd7d1d9ebc501f2d7a4c2376eb26c4f240d295f30dbd2e9a34",
+    "MISSION_26_RESOURCE_OPERATION_PREFLIGHT.json": "6ef5440ef89f2be4783a32801b641aa1439a0317b2fbd1476673315bef8315f5",
+    "MISSION_26_EXPERIMENT_READINESS_MATRIX.json": "47f5d8e466023b91f4ea23107d8f5fe3cb136d7280a566e5fc4b6edfa787995e",
+    "MISSION_26_REAL_DATA_READINESS_DASHBOARD.md": "191a2510a15e44dc9c0b397ab67f69c188430a7dc7622beff01f7053c8ba0319",
+    "MISSION_26_READINESS_DASHBOARD.json": "2356367e47325642c81a520a7f6ae4c6263a321157563e396dca1c94a99195e5",
+    "MISSION_26_READINESS_CATALOG.json": "fbf5bc307d6a97b0bdecf1df66648211bad8a0853a22e4aeb9de16dde5fee9e2",
+    "MISSION_26_CATALOG_BINDING.json": "d5e8b50e2aa100222febf0afe9883fb7c18aa0d9a82699e2b1127add94a6ad5a",
+    "MISSION_26_PREFLIGHT_SCHEMA.json": "8fcf4a293e3d2bb935af8d486a3a381c09563b5c7c46ac7b04c92d157fb83822",
+    "MISSION_26_RESOURCE_AUDIT_RECEIPT.json": "01c078fe7f7ff1466f3a632f6667ea53b552a3995bd1fc8a21385ec85cad3674",
+    "MISSION_26_RESOURCE_FREE_EXECUTION_RECEIPT.json": "aa46a00d9508187e2953e095fa04328e80d4ce86db19b948f177ef9f69677dc7",
+    "MISSION_26_TEST_CLASSIFICATION_REGISTER.json": "e7aa362ae8de6faec001a552142eef78e33452085154ee3137f1a5f09e7c8fc5",
+    "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json": "69e31e33f7ce8024153a109b990c09b1f2cecc947b6472b29d7c5c9228826716",
+    "MISSION_26_ADVERSARIAL_CASE_RECEIPT.json": "1982ec4c67dce941747a84586ec4ea4188059546d0c9d08749c15daa5013ae41",
+    "MISSION_26_DEMONSTRATION_RECEIPT.json": "fe08a07fd06d5c051514d0214e1cca8c2b64a3267c9e7b61885c1073248cb1b2",
+    "MISSION_26_EVIDENCE_ACQUISITION_READINESS_REPORT.md": "46cd15305fdb4e4772598824a0d9eb5d176c129e9c2f4b08f9af770e8509e756"
+  }
+}

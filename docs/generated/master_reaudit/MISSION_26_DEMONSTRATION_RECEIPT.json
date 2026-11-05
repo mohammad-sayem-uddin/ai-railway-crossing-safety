@@ -1,0 +1,122 @@
+{
+  "schema": "mission26-demonstration/1",
+  "implementation_commit": "64d766d81e652c94523433b8e4212946413368e7",
+  "commands": [
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "report",
+        "--now",
+        "0",
+        "--format",
+        "json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "stdout_sha256": "77ee5e0cd64055b3d91a9b411bf432e1b3d388e156dcc4b7488e37e3f1dd2c44"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "report",
+        "--now",
+        "0",
+        "--format",
+        "json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "stdout_sha256": "77ee5e0cd64055b3d91a9b411bf432e1b3d388e156dcc4b7488e37e3f1dd2c44"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "report",
+        "--now",
+        "0"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "stdout_sha256": "80b37137763625baed5f9a2b75fd92d5618442a12692d40d91ae2bd60dbe4889"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "check",
+        "--operation",
+        "M19-PERM-02",
+        "--resource",
+        "doc:v2:train_events/event_001:front:video",
+        "--now",
+        "0"
+      ],
+      "expected_exit": 3,
+      "actual_exit": 3,
+      "stdout_sha256": "fbdaa040dc66a3e62cefb853630799855e11f14ae611fe95c047a4ab6314c66d"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "check",
+        "--operation",
+        "M19-PERM-24",
+        "--resource",
+        "doc:v2:train_events/event_001:front:video",
+        "--now",
+        "0"
+      ],
+      "expected_exit": 3,
+      "actual_exit": 3,
+      "stdout_sha256": "ed7b235276eef088d5ceadd729281a5b02a913df0dd99dd26a4be3c98c091aa8"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "check",
+        "--operation",
+        "M19-PERM-02",
+        "--resource",
+        "data/raw/NEVER_OPEN",
+        "--now",
+        "0"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "stdout_sha256": "6cff05eb7c62f33b6f092c3f913902aea92b524974d184bffa1dbff1f862bd45"
+    }
+  ],
+  "two_report_outputs_identical": true,
+  "committed_dashboard_matches": true,
+  "policy_denials": [],
+  "report_generation_is_not_authorization_or_execution": true,
+  "operation_states": {
+    "conditional": "PREFLIGHT_BLOCKED",
+    "denied": "EXECUTION_NOT_PERMITTED",
+    "invalid_path": "PREFLIGHT_BLOCKED"
+  },
+  "source_rights_and_people_verified": false
+}

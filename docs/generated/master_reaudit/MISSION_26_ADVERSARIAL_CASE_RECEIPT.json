@@ -1,0 +1,1877 @@
+{
+  "schema": "mission26-adversarial/1",
+  "cases": [
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_constructed_complete_preflight_only_prepares_authorization_review",
+      "expected": "constructed complete preflight only prepares authorization review",
+      "expected_assertions": [
+        "assert e.initial_state() == State.NOT_STARTED",
+        "assert ready.state == State.READY and not ready.execution_permitted and not ready.grant_issued",
+        "assert e.submit_authorization_review(q, ready, cs, now=10) == State.PENDING",
+        "assert e.submit_authorization_review(q, ready, cs, now=10) == State.PENDING",
+        "assert not e._authorizations and not e._executions"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError, match=\"no executor\")"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 111,
+        "function_source": "def test_constructed_complete_preflight_only_prepares_authorization_review():\n    e, q, cs = fixture()\n    assert e.initial_state() == State.NOT_STARTED\n    ready = e.check(q, cs, now=10)\n    assert ready.state == State.READY and not ready.execution_permitted and not ready.grant_issued\n    assert e.submit_authorization_review(q, ready, cs, now=10) == State.PENDING\n    assert e.submit_authorization_review(q, ready, cs, now=10) == State.PENDING\n    with pytest.raises(PermissionError, match=\"no executor\"):\n        e.require_execution()\n    assert not e._authorizations and not e._executions"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[SOURCE_IDENTITY]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[RESOURCE_RIGHTS]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[ACTOR_IDENTITY]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[ROLE]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[PURPOSE]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[ENVIRONMENT]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[PERMISSION_BASIS]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[VALIDITY]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[REVOCATION]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[TECHNICAL]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[HUMAN]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[PROTOCOL]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[DATA_SCHEMA]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[PROVENANCE]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[LOGGING]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_each_missing_mandatory_evidence_kind_blocks_before_authorization[OUTPUT]",
+      "expected": "each missing mandatory evidence kind blocks before authorization",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)",
+        "assert not e._requests"
+      ],
+      "expected_refusals": [
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 124,
+        "function_source": "def test_each_missing_mandatory_evidence_kind_blocks_before_authorization(kind):\n    e, q, cs = fixture()\n    cs = tuple(c for c in cs if c.kind != kind)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == kind for i in result.issues)\n    with pytest.raises(PermissionError):\n        e.submit_authorization_review(q, result, cs, now=10)\n    assert not e._requests"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[resource_identity-0000000000000000000000000000000000000000000000000000000000000000]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[resource_id-synthetic:unknown]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[actor-synthetic:wrong_actor]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[role-wrong_role]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[purpose-wrong_purpose]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[environment-wrong_runtime]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[protocol-None]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[data_schema-None]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[provenance_parents-value8]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[audit_log-None]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[output_destination-None]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[acoustic_shift_us-1]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_wrong_or_missing_exact_request_binding_refuses[boundaries-value12]",
+      "expected": "wrong or missing exact request binding refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 152,
+        "function_source": "def test_wrong_or_missing_exact_request_binding_refuses(field, value):\n    e, q, cs = fixture()\n    q = replace(q, **{field: value})\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[RESOURCE_RIGHTS-change0-RESOURCE_RIGHTS]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[RESOURCE_RIGHTS-change1-RESOURCE_RIGHTS]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[RESOURCE_RIGHTS-change2-RESOURCE_RIGHTS]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[TECHNICAL-change3-EXTERNAL]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[TECHNICAL-change4-EXTERNAL]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[TECHNICAL-change5-TECHNICAL]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[HUMAN-change6-HUMAN]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[HUMAN-change7-HUMAN]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[HUMAN-change8-HUMAN]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[HUMAN-change9-HUMAN]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[DATA_SCHEMA-change10-DURATION_SCHEMA]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[PROVENANCE-change11-PROVENANCE]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[OUTPUT-change12-OUTPUT]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries[LOGGING-change13-LOGGING]",
+      "expected": "unknown owner conflicting license human schema provenance and output boundaries",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)",
+        "assert not result.execution_permitted"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 182,
+        "function_source": "def test_unknown_owner_conflicting_license_human_schema_provenance_and_output_boundaries(\n    kind, change, boundary\n):\n    e, q, cs = fixture()\n    if \"batch_complete\" in change:\n        q = replace(q, operation=\"M19-PERM-21\", purpose=dict(e.purposes)[\"M19-PERM-21\"])\n        cs = claims(q)\n    cs = mutate(cs, kind, change)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == boundary for i in result.issues)\n    assert not result.execution_permitted"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_current_claim_scope_time_and_classification_cannot_be_bypassed[expired]",
+      "expected": "current claim scope time and classification cannot be bypassed",
+      "expected_assertions": [
+        "assert e.check(q, cs, now=10).state == State.BLOCKED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 198,
+        "function_source": "def test_current_claim_scope_time_and_classification_cannot_be_bypassed(fault):\n    e, q, cs = fixture()\n    c = cs[0]\n    values = {\n        \"expired\": {\"expires\": 10},\n        \"revoked\": {\"revoked\": True},\n        \"future\": {\"valid_from\": 11},\n        \"wrong_binding\": {\"request_digest\": \"0\" * 64},\n        \"false_genuine\": {\"classification\": DOCUMENTARY},\n        \"bool_clock\": {\"expires\": True},\n    }\n    cs = (replace(c, **values[fault]),) + cs[1:]\n    assert e.check(q, cs, now=10).state == State.BLOCKED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_current_claim_scope_time_and_classification_cannot_be_bypassed[revoked]",
+      "expected": "current claim scope time and classification cannot be bypassed",
+      "expected_assertions": [
+        "assert e.check(q, cs, now=10).state == State.BLOCKED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 198,
+        "function_source": "def test_current_claim_scope_time_and_classification_cannot_be_bypassed(fault):\n    e, q, cs = fixture()\n    c = cs[0]\n    values = {\n        \"expired\": {\"expires\": 10},\n        \"revoked\": {\"revoked\": True},\n        \"future\": {\"valid_from\": 11},\n        \"wrong_binding\": {\"request_digest\": \"0\" * 64},\n        \"false_genuine\": {\"classification\": DOCUMENTARY},\n        \"bool_clock\": {\"expires\": True},\n    }\n    cs = (replace(c, **values[fault]),) + cs[1:]\n    assert e.check(q, cs, now=10).state == State.BLOCKED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_current_claim_scope_time_and_classification_cannot_be_bypassed[future]",
+      "expected": "current claim scope time and classification cannot be bypassed",
+      "expected_assertions": [
+        "assert e.check(q, cs, now=10).state == State.BLOCKED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 198,
+        "function_source": "def test_current_claim_scope_time_and_classification_cannot_be_bypassed(fault):\n    e, q, cs = fixture()\n    c = cs[0]\n    values = {\n        \"expired\": {\"expires\": 10},\n        \"revoked\": {\"revoked\": True},\n        \"future\": {\"valid_from\": 11},\n        \"wrong_binding\": {\"request_digest\": \"0\" * 64},\n        \"false_genuine\": {\"classification\": DOCUMENTARY},\n        \"bool_clock\": {\"expires\": True},\n    }\n    cs = (replace(c, **values[fault]),) + cs[1:]\n    assert e.check(q, cs, now=10).state == State.BLOCKED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_current_claim_scope_time_and_classification_cannot_be_bypassed[wrong_binding]",
+      "expected": "current claim scope time and classification cannot be bypassed",
+      "expected_assertions": [
+        "assert e.check(q, cs, now=10).state == State.BLOCKED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 198,
+        "function_source": "def test_current_claim_scope_time_and_classification_cannot_be_bypassed(fault):\n    e, q, cs = fixture()\n    c = cs[0]\n    values = {\n        \"expired\": {\"expires\": 10},\n        \"revoked\": {\"revoked\": True},\n        \"future\": {\"valid_from\": 11},\n        \"wrong_binding\": {\"request_digest\": \"0\" * 64},\n        \"false_genuine\": {\"classification\": DOCUMENTARY},\n        \"bool_clock\": {\"expires\": True},\n    }\n    cs = (replace(c, **values[fault]),) + cs[1:]\n    assert e.check(q, cs, now=10).state == State.BLOCKED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_current_claim_scope_time_and_classification_cannot_be_bypassed[false_genuine]",
+      "expected": "current claim scope time and classification cannot be bypassed",
+      "expected_assertions": [
+        "assert e.check(q, cs, now=10).state == State.BLOCKED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 198,
+        "function_source": "def test_current_claim_scope_time_and_classification_cannot_be_bypassed(fault):\n    e, q, cs = fixture()\n    c = cs[0]\n    values = {\n        \"expired\": {\"expires\": 10},\n        \"revoked\": {\"revoked\": True},\n        \"future\": {\"valid_from\": 11},\n        \"wrong_binding\": {\"request_digest\": \"0\" * 64},\n        \"false_genuine\": {\"classification\": DOCUMENTARY},\n        \"bool_clock\": {\"expires\": True},\n    }\n    cs = (replace(c, **values[fault]),) + cs[1:]\n    assert e.check(q, cs, now=10).state == State.BLOCKED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_current_claim_scope_time_and_classification_cannot_be_bypassed[bool_clock]",
+      "expected": "current claim scope time and classification cannot be bypassed",
+      "expected_assertions": [
+        "assert e.check(q, cs, now=10).state == State.BLOCKED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 198,
+        "function_source": "def test_current_claim_scope_time_and_classification_cannot_be_bypassed(fault):\n    e, q, cs = fixture()\n    c = cs[0]\n    values = {\n        \"expired\": {\"expires\": 10},\n        \"revoked\": {\"revoked\": True},\n        \"future\": {\"valid_from\": 11},\n        \"wrong_binding\": {\"request_digest\": \"0\" * 64},\n        \"false_genuine\": {\"classification\": DOCUMENTARY},\n        \"bool_clock\": {\"expires\": True},\n    }\n    cs = (replace(c, **values[fault]),) + cs[1:]\n    assert e.check(q, cs, now=10).state == State.BLOCKED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_t2_and_occupancy_alias_require_actual_landmark_evidence[None]",
+      "expected": "t2 and occupancy alias require actual landmark evidence",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == \"LANDMARK\" for i in result.issues)"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 216,
+        "function_source": "def test_t2_and_occupancy_alias_require_actual_landmark_evidence(landmark):\n    e, q, _ = fixture()\n    q = replace(q, boundaries=(\"T2\", \"T_OCC_START\"), landmark_kind=landmark)\n    cs = claims(q)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == \"LANDMARK\" for i in result.issues)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_t2_and_occupancy_alias_require_actual_landmark_evidence[LENS_PLANE]",
+      "expected": "t2 and occupancy alias require actual landmark evidence",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == \"LANDMARK\" for i in result.issues)"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 216,
+        "function_source": "def test_t2_and_occupancy_alias_require_actual_landmark_evidence(landmark):\n    e, q, _ = fixture()\n    q = replace(q, boundaries=(\"T2\", \"T_OCC_START\"), landmark_kind=landmark)\n    cs = claims(q)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == \"LANDMARK\" for i in result.issues)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_t2_and_occupancy_alias_require_actual_landmark_evidence[LEGACY_LENS_PLANE]",
+      "expected": "t2 and occupancy alias require actual landmark evidence",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == \"LANDMARK\" for i in result.issues)"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 216,
+        "function_source": "def test_t2_and_occupancy_alias_require_actual_landmark_evidence(landmark):\n    e, q, _ = fixture()\n    q = replace(q, boundaries=(\"T2\", \"T_OCC_START\"), landmark_kind=landmark)\n    cs = claims(q)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == \"LANDMARK\" for i in result.issues)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_t2_and_occupancy_alias_require_actual_landmark_evidence[PHYSICAL_ROADWAY_ENTRY]",
+      "expected": "t2 and occupancy alias require actual landmark evidence",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == \"LANDMARK\" for i in result.issues)"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 216,
+        "function_source": "def test_t2_and_occupancy_alias_require_actual_landmark_evidence(landmark):\n    e, q, _ = fixture()\n    q = replace(q, boundaries=(\"T2\", \"T_OCC_START\"), landmark_kind=landmark)\n    cs = claims(q)\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == \"LANDMARK\" for i in result.issues)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_every_denied_operation_stays_denied_even_with_complete_checklists[12]",
+      "expected": "every denied operation stays denied even with complete checklists",
+      "expected_assertions": [
+        "assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 225,
+        "function_source": "def test_every_denied_operation_stays_denied_even_with_complete_checklists(operation):\n    e, q, _ = fixture()\n    q = replace(q, operation=f\"M19-PERM-{operation:02}\")\n    assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_every_denied_operation_stays_denied_even_with_complete_checklists[13]",
+      "expected": "every denied operation stays denied even with complete checklists",
+      "expected_assertions": [
+        "assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 225,
+        "function_source": "def test_every_denied_operation_stays_denied_even_with_complete_checklists(operation):\n    e, q, _ = fixture()\n    q = replace(q, operation=f\"M19-PERM-{operation:02}\")\n    assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_every_denied_operation_stays_denied_even_with_complete_checklists[16]",
+      "expected": "every denied operation stays denied even with complete checklists",
+      "expected_assertions": [
+        "assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 225,
+        "function_source": "def test_every_denied_operation_stays_denied_even_with_complete_checklists(operation):\n    e, q, _ = fixture()\n    q = replace(q, operation=f\"M19-PERM-{operation:02}\")\n    assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_every_denied_operation_stays_denied_even_with_complete_checklists[18]",
+      "expected": "every denied operation stays denied even with complete checklists",
+      "expected_assertions": [
+        "assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 225,
+        "function_source": "def test_every_denied_operation_stays_denied_even_with_complete_checklists(operation):\n    e, q, _ = fixture()\n    q = replace(q, operation=f\"M19-PERM-{operation:02}\")\n    assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_every_denied_operation_stays_denied_even_with_complete_checklists[24]",
+      "expected": "every denied operation stays denied even with complete checklists",
+      "expected_assertions": [
+        "assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 225,
+        "function_source": "def test_every_denied_operation_stays_denied_even_with_complete_checklists(operation):\n    e, q, _ = fixture()\n    q = replace(q, operation=f\"M19-PERM-{operation:02}\")\n    assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_every_denied_operation_stays_denied_even_with_complete_checklists[25]",
+      "expected": "every denied operation stays denied even with complete checklists",
+      "expected_assertions": [
+        "assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 225,
+        "function_source": "def test_every_denied_operation_stays_denied_even_with_complete_checklists(operation):\n    e, q, _ = fixture()\n    q = replace(q, operation=f\"M19-PERM-{operation:02}\")\n    assert e.check(q, claims(q), now=10).state == State.PROHIBITED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_coherently_rebound_wrong_resource_still_refuses_independent_catalog_identity",
+      "expected": "coherently rebound wrong resource still refuses independent catalog identity",
+      "expected_assertions": [
+        "assert any(i.classification == \"MISSING_RESOURCE_IDENTITY\" for i in result.issues)"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 231,
+        "function_source": "def test_coherently_rebound_wrong_resource_still_refuses_independent_catalog_identity():\n    e, q, _ = fixture()\n    q = replace(q, resource_identity=\"0\" * 64)\n    result = e.check(q, claims(q), now=10)\n    assert any(i.classification == \"MISSING_RESOURCE_IDENTITY\" for i in result.issues)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_stale_or_modified_readiness_and_duplicate_request_substitution_refuse",
+      "expected": "stale or modified readiness and duplicate request substitution refuse",
+      "expected_assertions": [
+        "assert other_ready.state == State.READY"
+      ],
+      "expected_refusals": [
+        "pytest.raises(ValueError, match=\"duplicate\")",
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 238,
+        "function_source": "def test_stale_or_modified_readiness_and_duplicate_request_substitution_refuse():\n    e, q, cs = fixture()\n    ready = e.check(q, cs, now=10)\n    for bad in (\n        replace(ready, catalog_digest=\"0\" * 64),\n        replace(ready, request_digest=\"0\" * 64),\n        replace(ready, evaluated_at=9),\n    ):\n        with pytest.raises(PermissionError):\n            e.submit_authorization_review(q, bad, cs, now=10)\n    e.submit_authorization_review(q, ready, cs, now=10)\n    other = replace(\n        q,\n        resource_id=\"synthetic:resource:1\",\n        resource_identity=dict(e.resources)[\"synthetic:resource:1\"],\n    )\n    other_claims = claims(other)\n    other_ready = e.check(other, other_claims, now=10)\n    assert other_ready.state == State.READY\n    with pytest.raises(ValueError, match=\"duplicate\"):\n        e.submit_authorization_review(other, other_ready, other_claims, now=10)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_constructed_review_and_receipts_cannot_be_upgraded_or_certify_execution",
+      "expected": "constructed review and receipts cannot be upgraded or certify execution",
+      "expected_assertions": [
+        "assert not e._authorizations and not e._executions"
+      ],
+      "expected_refusals": [
+        "pytest.raises(ValueError, match=\"constructed\")",
+        "pytest.raises(PermissionError)",
+        "pytest.raises(PermissionError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 261,
+        "function_source": "def test_constructed_review_and_receipts_cannot_be_upgraded_or_certify_execution():\n    e, q, cs = fixture()\n    ready = e.check(q, cs, now=10)\n    e.submit_authorization_review(q, ready, cs, now=10)\n    receipt = ExternalReceipt(\n        \"synthetic:receipt\",\n        digest(q),\n        e.catalog_digest,\n        None,\n        0,\n        100,\n        False,\n        \"synthetic:canonical_ref\",\n        \"synthetic:external_ref\",\n        FIXTURE,\n    )\n    for _ in range(2):\n        with pytest.raises(PermissionError):\n            e.record_authorization(q, ready, cs, receipt, now=10)\n        with pytest.raises(PermissionError):\n            e.record_execution(q, receipt, now=10)\n    assert not e._authorizations and not e._executions\n    with pytest.raises(ValueError, match=\"constructed\"):\n        e.check(replace(q, classification=DOCUMENTARY), cs, now=10)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_duplicate_evidence_and_global_approval_flags_do_not_create_authority",
+      "expected": "duplicate evidence and global approval flags do not create authority",
+      "expected_assertions": [
+        "assert e.check(q, cs + (cs[0],), now=10).state == State.BLOCKED",
+        "assert e.check(q, (forged,) + cs[1:], now=10).state == State.BLOCKED",
+        "assert not e._authorizations"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 287,
+        "function_source": "def test_duplicate_evidence_and_global_approval_flags_do_not_create_authority():\n    e, q, cs = fixture()\n    assert e.check(q, cs + (cs[0],), now=10).state == State.BLOCKED\n    forged = replace(cs[0], facts_json=canonical({\"approved\": True}))\n    assert e.check(q, (forged,) + cs[1:], now=10).state == State.BLOCKED\n    assert not e._authorizations"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_expired_or_revoked_operation_permission_evidence_refuses[expired_permission]",
+      "expected": "expired or revoked operation permission evidence refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(\n        i.boundary == \"PERMISSION_BASIS\" for i in result.issues\n    )",
+        "assert not e._authorizations"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 296,
+        "function_source": "def test_expired_or_revoked_operation_permission_evidence_refuses(fault):\n    e, q, cs = fixture()\n    cs = tuple(\n        replace(c, expires=10)\n        if c.kind == \"PERMISSION_BASIS\" and fault == \"expired_permission\"\n        else replace(c, revoked=True)\n        if c.kind == \"PERMISSION_BASIS\"\n        else c\n        for c in cs\n    )\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(\n        i.boundary == \"PERMISSION_BASIS\" for i in result.issues\n    )\n    assert not e._authorizations"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_expired_or_revoked_operation_permission_evidence_refuses[revoked_permission]",
+      "expected": "expired or revoked operation permission evidence refuses",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(\n        i.boundary == \"PERMISSION_BASIS\" for i in result.issues\n    )",
+        "assert not e._authorizations"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 296,
+        "function_source": "def test_expired_or_revoked_operation_permission_evidence_refuses(fault):\n    e, q, cs = fixture()\n    cs = tuple(\n        replace(c, expires=10)\n        if c.kind == \"PERMISSION_BASIS\" and fault == \"expired_permission\"\n        else replace(c, revoked=True)\n        if c.kind == \"PERMISSION_BASIS\"\n        else c\n        for c in cs\n    )\n    result = e.check(q, cs, now=10)\n    assert result.state == State.BLOCKED and any(\n        i.boundary == \"PERMISSION_BASIS\" for i in result.issues\n    )\n    assert not e._authorizations"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_coherently_rebound_missing_parent_still_refuses_retained_provenance_registry",
+      "expected": "coherently rebound missing parent still refuses retained provenance registry",
+      "expected_assertions": [
+        "assert result.state == State.BLOCKED and any(i.boundary == \"PROVENANCE\" for i in result.issues)"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 313,
+        "function_source": "def test_coherently_rebound_missing_parent_still_refuses_retained_provenance_registry():\n    e, q, _ = fixture()\n    q = replace(q, provenance_parents=(\"synthetic:missing_parent\",))\n    result = e.check(q, claims(q), now=10)\n    assert result.state == State.BLOCKED and any(i.boundary == \"PROVENANCE\" for i in result.issues)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_first_review_and_pilot_do_not_require_future_gt_completion_or_a_scientific_floor[19]",
+      "expected": "first review and pilot do not require future gt completion or a scientific floor",
+      "expected_assertions": [
+        "assert ready.state == State.READY and not ready.execution_permitted",
+        "assert e.submit_authorization_review(q, ready, cs, now=10) == State.PENDING",
+        "assert not e._authorizations and not e._executions"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 321,
+        "function_source": "def test_first_review_and_pilot_do_not_require_future_gt_completion_or_a_scientific_floor(\n    operation,\n):\n    e, q, _ = fixture()\n    op = f\"M19-PERM-{operation:02}\"\n    q = replace(q, operation=op, purpose=dict(e.purposes)[op])\n    cs = claims(q)\n    cs = mutate(cs, \"HUMAN\", {\"batch_complete\": False})\n    cs = mutate(cs, \"DATA_SCHEMA\", {\"duration_compatibility\": \"NOT_APPLICABLE_NO_REVIEW_RECORD\"})\n    ready = e.check(q, cs, now=10)\n    assert ready.state == State.READY and not ready.execution_permitted\n    assert e.submit_authorization_review(q, ready, cs, now=10) == State.PENDING\n    assert not e._authorizations and not e._executions"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_first_review_and_pilot_do_not_require_future_gt_completion_or_a_scientific_floor[26]",
+      "expected": "first review and pilot do not require future gt completion or a scientific floor",
+      "expected_assertions": [
+        "assert ready.state == State.READY and not ready.execution_permitted",
+        "assert e.submit_authorization_review(q, ready, cs, now=10) == State.PENDING",
+        "assert not e._authorizations and not e._executions"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 321,
+        "function_source": "def test_first_review_and_pilot_do_not_require_future_gt_completion_or_a_scientific_floor(\n    operation,\n):\n    e, q, _ = fixture()\n    op = f\"M19-PERM-{operation:02}\"\n    q = replace(q, operation=op, purpose=dict(e.purposes)[op])\n    cs = claims(q)\n    cs = mutate(cs, \"HUMAN\", {\"batch_complete\": False})\n    cs = mutate(cs, \"DATA_SCHEMA\", {\"duration_compatibility\": \"NOT_APPLICABLE_NO_REVIEW_RECORD\"})\n    ready = e.check(q, cs, now=10)\n    assert ready.state == State.READY and not ready.execution_permitted\n    assert e.submit_authorization_review(q, ready, cs, now=10) == State.PENDING\n    assert not e._authorizations and not e._executions"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_engine.py::test_adjudication_preflight_requires_existing_independent_parent_reviews",
+      "expected": "adjudication preflight requires existing independent parent reviews",
+      "expected_assertions": [
+        "assert e.check(q, cs, now=10).state == State.BLOCKED"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "PreflightEngine.check: exact resource/purpose/actor/role/time/rights/human/schema/provenance/output claims",
+      "source": {
+        "file": "tests/synthetic_mission26/test_engine.py",
+        "line": 336,
+        "function_source": "def test_adjudication_preflight_requires_existing_independent_parent_reviews():\n    e, q, _ = fixture()\n    q = replace(q, operation=\"M19-PERM-20\", purpose=dict(e.purposes)[\"M19-PERM-20\"])\n    cs = mutate(claims(q), \"HUMAN\", {\"review_parents_complete\": False})\n    assert e.check(q, cs, now=10).state == State.BLOCKED"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_actual_documentary_inventory_preserves_sources_roles_scopes_and_rights",
+      "expected": "actual documentary inventory preserves sources roles scopes and rights",
+      "expected_assertions": [
+        "assert (\n        len(c[\"sources\"]) == 63 and len(c[\"candidate_events\"]) == 27 and len(c[\"R04_events\"]) == 11\n    )",
+        "assert sum(s[\"eligibility\"] == \"CANDIDATE_ONLY\" for s in c[\"sources\"]) == 54",
+        "assert sum(s[\"eligibility\"] == \"EXCLUDED\" for s in c[\"sources\"]) == 2",
+        "assert all(not s[\"live_digest_verified\"] for s in c[\"sources\"])",
+        "assert all(s[\"owner\"] is None for s in c[\"sources\"])",
+        "assert all(len(s[\"rights\"]) == 10 for s in c[\"sources\"])",
+        "assert sum(o[\"selection_preserved\"] == \"A\" for o in c[\"operations\"]) == 21",
+        "assert sum(o[\"selection_preserved\"] == \"B\" for o in c[\"operations\"]) == 6"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 16,
+        "function_source": "def test_actual_documentary_inventory_preserves_sources_roles_scopes_and_rights():\n    c = module.load_catalog()\n    module.verify_catalog(c)\n    assert (\n        len(c[\"sources\"]) == 63 and len(c[\"candidate_events\"]) == 27 and len(c[\"R04_events\"]) == 11\n    )\n    assert sum(s[\"eligibility\"] == \"CANDIDATE_ONLY\" for s in c[\"sources\"]) == 54\n    assert sum(s[\"eligibility\"] == \"EXCLUDED\" for s in c[\"sources\"]) == 2\n    assert all(not s[\"live_digest_verified\"] for s in c[\"sources\"])\n    assert all(s[\"owner\"] is None for s in c[\"sources\"])\n    assert all(len(s[\"rights\"]) == 10 for s in c[\"sources\"])\n    assert sum(o[\"selection_preserved\"] == \"A\" for o in c[\"operations\"]) == 21\n    assert sum(o[\"selection_preserved\"] == \"B\" for o in c[\"operations\"]) == 6"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_incomplete_or_substituted_inventory_never_becomes_signed_off[event_count]",
+      "expected": "incomplete or substituted inventory never becomes signed off",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 43,
+        "function_source": "def test_incomplete_or_substituted_inventory_never_becomes_signed_off(fault):\n    c = module.load_catalog()\n    if fault == \"event_count\":\n        c[\"candidate_events\"].pop()\n    elif fault == \"r04_expansion\":\n        c[\"R04_events\"].append(\"train_events/event_010\")\n    elif fault == \"source_missing\":\n        c[\"sources\"].pop(0)\n    elif fault == \"source_duplicate\":\n        c[\"sources\"].append(c[\"sources\"][0])\n    elif fault == \"false_signoff\":\n        c[\"inventory_signoff\"] = True\n    elif fault == \"false_live_hash\":\n        c[\"sources\"][0][\"live_digest_verified\"] = True\n    elif fault == \"missing_provenance\":\n        c[\"sources\"][0][\"provenance\"] = None\n    with pytest.raises(ValueError):\n        module.verify_catalog(c)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_incomplete_or_substituted_inventory_never_becomes_signed_off[r04_expansion]",
+      "expected": "incomplete or substituted inventory never becomes signed off",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 43,
+        "function_source": "def test_incomplete_or_substituted_inventory_never_becomes_signed_off(fault):\n    c = module.load_catalog()\n    if fault == \"event_count\":\n        c[\"candidate_events\"].pop()\n    elif fault == \"r04_expansion\":\n        c[\"R04_events\"].append(\"train_events/event_010\")\n    elif fault == \"source_missing\":\n        c[\"sources\"].pop(0)\n    elif fault == \"source_duplicate\":\n        c[\"sources\"].append(c[\"sources\"][0])\n    elif fault == \"false_signoff\":\n        c[\"inventory_signoff\"] = True\n    elif fault == \"false_live_hash\":\n        c[\"sources\"][0][\"live_digest_verified\"] = True\n    elif fault == \"missing_provenance\":\n        c[\"sources\"][0][\"provenance\"] = None\n    with pytest.raises(ValueError):\n        module.verify_catalog(c)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_incomplete_or_substituted_inventory_never_becomes_signed_off[source_missing]",
+      "expected": "incomplete or substituted inventory never becomes signed off",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 43,
+        "function_source": "def test_incomplete_or_substituted_inventory_never_becomes_signed_off(fault):\n    c = module.load_catalog()\n    if fault == \"event_count\":\n        c[\"candidate_events\"].pop()\n    elif fault == \"r04_expansion\":\n        c[\"R04_events\"].append(\"train_events/event_010\")\n    elif fault == \"source_missing\":\n        c[\"sources\"].pop(0)\n    elif fault == \"source_duplicate\":\n        c[\"sources\"].append(c[\"sources\"][0])\n    elif fault == \"false_signoff\":\n        c[\"inventory_signoff\"] = True\n    elif fault == \"false_live_hash\":\n        c[\"sources\"][0][\"live_digest_verified\"] = True\n    elif fault == \"missing_provenance\":\n        c[\"sources\"][0][\"provenance\"] = None\n    with pytest.raises(ValueError):\n        module.verify_catalog(c)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_incomplete_or_substituted_inventory_never_becomes_signed_off[source_duplicate]",
+      "expected": "incomplete or substituted inventory never becomes signed off",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 43,
+        "function_source": "def test_incomplete_or_substituted_inventory_never_becomes_signed_off(fault):\n    c = module.load_catalog()\n    if fault == \"event_count\":\n        c[\"candidate_events\"].pop()\n    elif fault == \"r04_expansion\":\n        c[\"R04_events\"].append(\"train_events/event_010\")\n    elif fault == \"source_missing\":\n        c[\"sources\"].pop(0)\n    elif fault == \"source_duplicate\":\n        c[\"sources\"].append(c[\"sources\"][0])\n    elif fault == \"false_signoff\":\n        c[\"inventory_signoff\"] = True\n    elif fault == \"false_live_hash\":\n        c[\"sources\"][0][\"live_digest_verified\"] = True\n    elif fault == \"missing_provenance\":\n        c[\"sources\"][0][\"provenance\"] = None\n    with pytest.raises(ValueError):\n        module.verify_catalog(c)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_incomplete_or_substituted_inventory_never_becomes_signed_off[false_signoff]",
+      "expected": "incomplete or substituted inventory never becomes signed off",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 43,
+        "function_source": "def test_incomplete_or_substituted_inventory_never_becomes_signed_off(fault):\n    c = module.load_catalog()\n    if fault == \"event_count\":\n        c[\"candidate_events\"].pop()\n    elif fault == \"r04_expansion\":\n        c[\"R04_events\"].append(\"train_events/event_010\")\n    elif fault == \"source_missing\":\n        c[\"sources\"].pop(0)\n    elif fault == \"source_duplicate\":\n        c[\"sources\"].append(c[\"sources\"][0])\n    elif fault == \"false_signoff\":\n        c[\"inventory_signoff\"] = True\n    elif fault == \"false_live_hash\":\n        c[\"sources\"][0][\"live_digest_verified\"] = True\n    elif fault == \"missing_provenance\":\n        c[\"sources\"][0][\"provenance\"] = None\n    with pytest.raises(ValueError):\n        module.verify_catalog(c)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_incomplete_or_substituted_inventory_never_becomes_signed_off[false_live_hash]",
+      "expected": "incomplete or substituted inventory never becomes signed off",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 43,
+        "function_source": "def test_incomplete_or_substituted_inventory_never_becomes_signed_off(fault):\n    c = module.load_catalog()\n    if fault == \"event_count\":\n        c[\"candidate_events\"].pop()\n    elif fault == \"r04_expansion\":\n        c[\"R04_events\"].append(\"train_events/event_010\")\n    elif fault == \"source_missing\":\n        c[\"sources\"].pop(0)\n    elif fault == \"source_duplicate\":\n        c[\"sources\"].append(c[\"sources\"][0])\n    elif fault == \"false_signoff\":\n        c[\"inventory_signoff\"] = True\n    elif fault == \"false_live_hash\":\n        c[\"sources\"][0][\"live_digest_verified\"] = True\n    elif fault == \"missing_provenance\":\n        c[\"sources\"][0][\"provenance\"] = None\n    with pytest.raises(ValueError):\n        module.verify_catalog(c)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_incomplete_or_substituted_inventory_never_becomes_signed_off[missing_provenance]",
+      "expected": "incomplete or substituted inventory never becomes signed off",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 43,
+        "function_source": "def test_incomplete_or_substituted_inventory_never_becomes_signed_off(fault):\n    c = module.load_catalog()\n    if fault == \"event_count\":\n        c[\"candidate_events\"].pop()\n    elif fault == \"r04_expansion\":\n        c[\"R04_events\"].append(\"train_events/event_010\")\n    elif fault == \"source_missing\":\n        c[\"sources\"].pop(0)\n    elif fault == \"source_duplicate\":\n        c[\"sources\"].append(c[\"sources\"][0])\n    elif fault == \"false_signoff\":\n        c[\"inventory_signoff\"] = True\n    elif fault == \"false_live_hash\":\n        c[\"sources\"][0][\"live_digest_verified\"] = True\n    elif fault == \"missing_provenance\":\n        c[\"sources\"][0][\"provenance\"] = None\n    with pytest.raises(ValueError):\n        module.verify_catalog(c)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_dashboard_is_deterministic_and_separates_unknown_denied_selected_and_executed",
+      "expected": "dashboard is deterministic and separates unknown denied selected and executed",
+      "expected_assertions": [
+        "assert a == b",
+        "assert len(a[\"operations\"]) == 27",
+        "assert sum(r[\"preflight\"][\"state\"] == \"PREFLIGHT_BLOCKED\" for r in a[\"operations\"]) == 21",
+        "assert sum(r[\"preflight\"][\"state\"] == \"EXECUTION_NOT_PERMITTED\" for r in a[\"operations\"]) == 6",
+        "assert not a[\"authorized_but_not_executed\"] and not a[\"executed_operations\"]",
+        "assert not a[\"new_grants\"] and not a[\"protected_resources_accessed\"]",
+        "assert all(r[\"status\"] == \"UNKNOWN_REQUIRES_VERIFICATION\" for r in a[\"external_requirements\"])",
+        "assert \"Unknown is distinct from denied\" in module.render(a)"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 63,
+        "function_source": "def test_dashboard_is_deterministic_and_separates_unknown_denied_selected_and_executed():\n    c = module.load_catalog()\n    a = module.dashboard(c, now=0)\n    b = module.dashboard(c, now=0)\n    assert a == b\n    assert len(a[\"operations\"]) == 27\n    assert sum(r[\"preflight\"][\"state\"] == \"PREFLIGHT_BLOCKED\" for r in a[\"operations\"]) == 21\n    assert sum(r[\"preflight\"][\"state\"] == \"EXECUTION_NOT_PERMITTED\" for r in a[\"operations\"]) == 6\n    assert not a[\"authorized_but_not_executed\"] and not a[\"executed_operations\"]\n    assert not a[\"new_grants\"] and not a[\"protected_resources_accessed\"]\n    assert all(r[\"status\"] == \"UNKNOWN_REQUIRES_VERIFICATION\" for r in a[\"external_requirements\"])\n    assert \"Unknown is distinct from denied\" in module.render(a)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth[2026-11-05T00:00:29.999999Z-INCOMPATIBLE_DURATION_SCHEMA]",
+      "expected": "timing adapter uses existing canonical rule without changing human truth",
+      "expected_assertions": [
+        "assert result[\"status\"] == status and not result[\"genuine_review_proven\"]",
+        "assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 87,
+        "function_source": "def test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth(end, status):\n    result = duration_compatibility(\n        reviewer_id=\"synthetic:timing_metadata_fixture\",\n        session_id=\"synthetic:session\",\n        start=\"2026-11-05T00:00:00Z\",\n        end=end,\n        tool=\"constructed timing unit test\",\n    )\n    assert result[\"status\"] == status and not result[\"genuine_review_proven\"]\n    if status == \"CANONICAL_SCHEMA_TIMING_COMPATIBLE\":\n        assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth[2026-11-05T00:00:30Z-CANONICAL_SCHEMA_TIMING_COMPATIBLE]",
+      "expected": "timing adapter uses existing canonical rule without changing human truth",
+      "expected_assertions": [
+        "assert result[\"status\"] == status and not result[\"genuine_review_proven\"]",
+        "assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 87,
+        "function_source": "def test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth(end, status):\n    result = duration_compatibility(\n        reviewer_id=\"synthetic:timing_metadata_fixture\",\n        session_id=\"synthetic:session\",\n        start=\"2026-11-05T00:00:00Z\",\n        end=end,\n        tool=\"constructed timing unit test\",\n    )\n    assert result[\"status\"] == status and not result[\"genuine_review_proven\"]\n    if status == \"CANONICAL_SCHEMA_TIMING_COMPATIBLE\":\n        assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth[2026-11-05T00:00:30.000001Z-CANONICAL_SCHEMA_TIMING_COMPATIBLE]",
+      "expected": "timing adapter uses existing canonical rule without changing human truth",
+      "expected_assertions": [
+        "assert result[\"status\"] == status and not result[\"genuine_review_proven\"]",
+        "assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 87,
+        "function_source": "def test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth(end, status):\n    result = duration_compatibility(\n        reviewer_id=\"synthetic:timing_metadata_fixture\",\n        session_id=\"synthetic:session\",\n        start=\"2026-11-05T00:00:00Z\",\n        end=end,\n        tool=\"constructed timing unit test\",\n    )\n    assert result[\"status\"] == status and not result[\"genuine_review_proven\"]\n    if status == \"CANONICAL_SCHEMA_TIMING_COMPATIBLE\":\n        assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth[2026-11-05T00:00:00Z-INCOMPATIBLE_DURATION_SCHEMA]",
+      "expected": "timing adapter uses existing canonical rule without changing human truth",
+      "expected_assertions": [
+        "assert result[\"status\"] == status and not result[\"genuine_review_proven\"]",
+        "assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 87,
+        "function_source": "def test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth(end, status):\n    result = duration_compatibility(\n        reviewer_id=\"synthetic:timing_metadata_fixture\",\n        session_id=\"synthetic:session\",\n        start=\"2026-11-05T00:00:00Z\",\n        end=end,\n        tool=\"constructed timing unit test\",\n    )\n    assert result[\"status\"] == status and not result[\"genuine_review_proven\"]\n    if status == \"CANONICAL_SCHEMA_TIMING_COMPATIBLE\":\n        assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth[invalid-INCOMPATIBLE_DURATION_SCHEMA]",
+      "expected": "timing adapter uses existing canonical rule without changing human truth",
+      "expected_assertions": [
+        "assert result[\"status\"] == status and not result[\"genuine_review_proven\"]",
+        "assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 87,
+        "function_source": "def test_timing_adapter_uses_existing_canonical_rule_without_changing_human_truth(end, status):\n    result = duration_compatibility(\n        reviewer_id=\"synthetic:timing_metadata_fixture\",\n        session_id=\"synthetic:session\",\n        start=\"2026-11-05T00:00:00Z\",\n        end=end,\n        tool=\"constructed timing unit test\",\n    )\n    assert result[\"status\"] == status and not result[\"genuine_review_proven\"]\n    if status == \"CANONICAL_SCHEMA_TIMING_COMPATIBLE\":\n        assert result[\"scientific_duration_floor\"] == \"DEFERRED\" and not result[\"record_created\"]"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_metadata_reader_refuses_protected_or_unreviewed_location_before_read[data/raw/source.mov]",
+      "expected": "metadata reader refuses protected or unreviewed location before read",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 109,
+        "function_source": "def test_metadata_reader_refuses_protected_or_unreviewed_location_before_read(path, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"read_text\", lambda *a, **k: (_ for _ in ()).throw(AssertionError(\"reader reached\"))\n    )\n    with pytest.raises(ValueError):\n        module._metadata(ROOT / path)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_metadata_reader_refuses_protected_or_unreviewed_location_before_read[models/weights.pt]",
+      "expected": "metadata reader refuses protected or unreviewed location before read",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 109,
+        "function_source": "def test_metadata_reader_refuses_protected_or_unreviewed_location_before_read(path, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"read_text\", lambda *a, **k: (_ for _ in ()).throw(AssertionError(\"reader reached\"))\n    )\n    with pytest.raises(ValueError):\n        module._metadata(ROOT / path)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_metadata_reader_refuses_protected_or_unreviewed_location_before_read[docs/../data/private.json]",
+      "expected": "metadata reader refuses protected or unreviewed location before read",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 109,
+        "function_source": "def test_metadata_reader_refuses_protected_or_unreviewed_location_before_read(path, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"read_text\", lambda *a, **k: (_ for _ in ()).throw(AssertionError(\"reader reached\"))\n    )\n    with pytest.raises(ValueError):\n        module._metadata(ROOT / path)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_metadata_reader_refuses_protected_or_unreviewed_location_before_read[/tmp/arbitrary.json]",
+      "expected": "metadata reader refuses protected or unreviewed location before read",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError)"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 109,
+        "function_source": "def test_metadata_reader_refuses_protected_or_unreviewed_location_before_read(path, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"read_text\", lambda *a, **k: (_ for _ in ()).throw(AssertionError(\"reader reached\"))\n    )\n    with pytest.raises(ValueError):\n        module._metadata(ROOT / path)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_altered_source_manifest_catalog_binding_or_alias_refuses[catalog]",
+      "expected": "altered source manifest catalog binding or alias refuses",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises((ValueError, OSError))"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 135,
+        "function_source": "def test_altered_source_manifest_catalog_binding_or_alias_refuses(tmp_path, monkeypatch, fault):\n    docs, binding = copy_metadata(tmp_path, monkeypatch)\n    if fault == \"catalog\":\n        (docs / module.CATALOG).write_text(\"{}\")\n    elif fault == \"source_manifest\":\n        (tmp_path / \"docs/PHASE11_3_REVIEW_INVENTORY.json\").write_text(\"{}\")\n    elif fault == \"binding_schema\":\n        binding[\"schema\"] = \"unsupported\"\n    elif fault == \"escape\":\n        binding[\"document_bindings\"] = {\"../data/source.json\": \"0\" * 64}\n    elif fault == \"manifest_type\":\n        binding[\"document_bindings\"] = []\n    else:\n        (docs / module.CATALOG).unlink()\n        (docs / module.CATALOG).symlink_to(tmp_path / \"NEVER_READ\")\n    (docs / module.BINDING).write_text(json.dumps(binding))\n    with pytest.raises((ValueError, OSError)):\n        module.load_catalog()"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_altered_source_manifest_catalog_binding_or_alias_refuses[source_manifest]",
+      "expected": "altered source manifest catalog binding or alias refuses",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises((ValueError, OSError))"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 135,
+        "function_source": "def test_altered_source_manifest_catalog_binding_or_alias_refuses(tmp_path, monkeypatch, fault):\n    docs, binding = copy_metadata(tmp_path, monkeypatch)\n    if fault == \"catalog\":\n        (docs / module.CATALOG).write_text(\"{}\")\n    elif fault == \"source_manifest\":\n        (tmp_path / \"docs/PHASE11_3_REVIEW_INVENTORY.json\").write_text(\"{}\")\n    elif fault == \"binding_schema\":\n        binding[\"schema\"] = \"unsupported\"\n    elif fault == \"escape\":\n        binding[\"document_bindings\"] = {\"../data/source.json\": \"0\" * 64}\n    elif fault == \"manifest_type\":\n        binding[\"document_bindings\"] = []\n    else:\n        (docs / module.CATALOG).unlink()\n        (docs / module.CATALOG).symlink_to(tmp_path / \"NEVER_READ\")\n    (docs / module.BINDING).write_text(json.dumps(binding))\n    with pytest.raises((ValueError, OSError)):\n        module.load_catalog()"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_altered_source_manifest_catalog_binding_or_alias_refuses[binding_schema]",
+      "expected": "altered source manifest catalog binding or alias refuses",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises((ValueError, OSError))"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 135,
+        "function_source": "def test_altered_source_manifest_catalog_binding_or_alias_refuses(tmp_path, monkeypatch, fault):\n    docs, binding = copy_metadata(tmp_path, monkeypatch)\n    if fault == \"catalog\":\n        (docs / module.CATALOG).write_text(\"{}\")\n    elif fault == \"source_manifest\":\n        (tmp_path / \"docs/PHASE11_3_REVIEW_INVENTORY.json\").write_text(\"{}\")\n    elif fault == \"binding_schema\":\n        binding[\"schema\"] = \"unsupported\"\n    elif fault == \"escape\":\n        binding[\"document_bindings\"] = {\"../data/source.json\": \"0\" * 64}\n    elif fault == \"manifest_type\":\n        binding[\"document_bindings\"] = []\n    else:\n        (docs / module.CATALOG).unlink()\n        (docs / module.CATALOG).symlink_to(tmp_path / \"NEVER_READ\")\n    (docs / module.BINDING).write_text(json.dumps(binding))\n    with pytest.raises((ValueError, OSError)):\n        module.load_catalog()"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_altered_source_manifest_catalog_binding_or_alias_refuses[escape]",
+      "expected": "altered source manifest catalog binding or alias refuses",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises((ValueError, OSError))"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 135,
+        "function_source": "def test_altered_source_manifest_catalog_binding_or_alias_refuses(tmp_path, monkeypatch, fault):\n    docs, binding = copy_metadata(tmp_path, monkeypatch)\n    if fault == \"catalog\":\n        (docs / module.CATALOG).write_text(\"{}\")\n    elif fault == \"source_manifest\":\n        (tmp_path / \"docs/PHASE11_3_REVIEW_INVENTORY.json\").write_text(\"{}\")\n    elif fault == \"binding_schema\":\n        binding[\"schema\"] = \"unsupported\"\n    elif fault == \"escape\":\n        binding[\"document_bindings\"] = {\"../data/source.json\": \"0\" * 64}\n    elif fault == \"manifest_type\":\n        binding[\"document_bindings\"] = []\n    else:\n        (docs / module.CATALOG).unlink()\n        (docs / module.CATALOG).symlink_to(tmp_path / \"NEVER_READ\")\n    (docs / module.BINDING).write_text(json.dumps(binding))\n    with pytest.raises((ValueError, OSError)):\n        module.load_catalog()"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_altered_source_manifest_catalog_binding_or_alias_refuses[alias]",
+      "expected": "altered source manifest catalog binding or alias refuses",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises((ValueError, OSError))"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 135,
+        "function_source": "def test_altered_source_manifest_catalog_binding_or_alias_refuses(tmp_path, monkeypatch, fault):\n    docs, binding = copy_metadata(tmp_path, monkeypatch)\n    if fault == \"catalog\":\n        (docs / module.CATALOG).write_text(\"{}\")\n    elif fault == \"source_manifest\":\n        (tmp_path / \"docs/PHASE11_3_REVIEW_INVENTORY.json\").write_text(\"{}\")\n    elif fault == \"binding_schema\":\n        binding[\"schema\"] = \"unsupported\"\n    elif fault == \"escape\":\n        binding[\"document_bindings\"] = {\"../data/source.json\": \"0\" * 64}\n    elif fault == \"manifest_type\":\n        binding[\"document_bindings\"] = []\n    else:\n        (docs / module.CATALOG).unlink()\n        (docs / module.CATALOG).symlink_to(tmp_path / \"NEVER_READ\")\n    (docs / module.BINDING).write_text(json.dumps(binding))\n    with pytest.raises((ValueError, OSError)):\n        module.load_catalog()"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_altered_source_manifest_catalog_binding_or_alias_refuses[manifest_type]",
+      "expected": "altered source manifest catalog binding or alias refuses",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises((ValueError, OSError))"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 135,
+        "function_source": "def test_altered_source_manifest_catalog_binding_or_alias_refuses(tmp_path, monkeypatch, fault):\n    docs, binding = copy_metadata(tmp_path, monkeypatch)\n    if fault == \"catalog\":\n        (docs / module.CATALOG).write_text(\"{}\")\n    elif fault == \"source_manifest\":\n        (tmp_path / \"docs/PHASE11_3_REVIEW_INVENTORY.json\").write_text(\"{}\")\n    elif fault == \"binding_schema\":\n        binding[\"schema\"] = \"unsupported\"\n    elif fault == \"escape\":\n        binding[\"document_bindings\"] = {\"../data/source.json\": \"0\" * 64}\n    elif fault == \"manifest_type\":\n        binding[\"document_bindings\"] = []\n    else:\n        (docs / module.CATALOG).unlink()\n        (docs / module.CATALOG).symlink_to(tmp_path / \"NEVER_READ\")\n    (docs / module.BINDING).write_text(json.dumps(binding))\n    with pytest.raises((ValueError, OSError)):\n        module.load_catalog()"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_actual_cli_reports_and_checks_never_execute_or_accept_a_resource_path",
+      "expected": "actual cli reports and checks never execute or accept a resource path",
+      "expected_assertions": [
+        "assert a.returncode == b.returncode == 0 and a.stdout == b.stdout",
+        "assert not report[\"new_grants\"]",
+        "assert p.returncode == 2",
+        "assert p.returncode == 3 and not json.loads(p.stdout)[\"execution_permitted\"]"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 155,
+        "function_source": "def test_actual_cli_reports_and_checks_never_execute_or_accept_a_resource_path():\n    base = [sys.executable, \"-m\", \"railway_detection\", \"application\", \"readiness\"]\n    a = subprocess.run(\n        base + [\"report\", \"--now\", \"0\", \"--format\", \"json\"],\n        cwd=ROOT,\n        capture_output=True,\n        text=True,\n    )\n    b = subprocess.run(\n        base + [\"report\", \"--now\", \"0\", \"--format\", \"json\"],\n        cwd=ROOT,\n        capture_output=True,\n        text=True,\n    )\n    assert a.returncode == b.returncode == 0 and a.stdout == b.stdout\n    report = json.loads(a.stdout)\n    assert not report[\"new_grants\"]\n    source = module.load_catalog()[\"sources\"][0][\"source_id\"]\n    for operation in (\"M19-PERM-02\", \"M19-PERM-24\"):\n        p = subprocess.run(\n            base + [\"check\", \"--operation\", operation, \"--resource\", source, \"--now\", \"0\"],\n            cwd=ROOT,\n            capture_output=True,\n            text=True,\n        )\n        assert p.returncode == 3 and not json.loads(p.stdout)[\"execution_permitted\"]\n    p = subprocess.run(\n        base\n        + [\n            \"check\",\n            \"--operation\",\n            \"M19-PERM-02\",\n            \"--resource\",\n            \"data/raw/NEVER_OPEN\",\n            \"--now\",\n            \"0\",\n        ],\n        cwd=ROOT,\n        capture_output=True,\n        text=True,\n    )\n    assert p.returncode == 2"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_acceptance_closure_detects_changed_documentary_catalog_without_touching_source_resources",
+      "expected": "acceptance closure detects changed documentary catalog without touching source resources",
+      "expected_assertions": [
+        "assert a[\"shared_digest\"] != b[\"shared_digest\"]",
+        "assert not any(\"data/raw\" in name for name in b[\"shared_source_sha256\"])"
+      ],
+      "expected_refusals": [],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 199,
+        "function_source": "def test_acceptance_closure_detects_changed_documentary_catalog_without_touching_source_resources(\n    tmp_path,\n):\n    from railway_detection.safety.resource_free_acceptance import bindings\n\n    (tmp_path / \"tests\").mkdir()\n    p = tmp_path / \"docs/generated/master_reaudit/MISSION_26_READINESS_CATALOG.json\"\n    p.parent.mkdir(parents=True)\n    p.write_text(\"{}\")\n    a = bindings(tmp_path)\n    p.write_text('{\"altered\":true}')\n    b = bindings(tmp_path)\n    assert a[\"shared_digest\"] != b[\"shared_digest\"]\n    assert not any(\"data/raw\" in name for name in b[\"shared_source_sha256\"])"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_acceptance_closure_refuses_documentary_parent_alias_before_hash[docs]",
+      "expected": "acceptance closure refuses documentary parent alias before hash",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError, match=\"alias\")"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 216,
+        "function_source": "def test_acceptance_closure_refuses_documentary_parent_alias_before_hash(tmp_path, family):\n    from railway_detection.safety.resource_free_acceptance import bindings\n\n    (tmp_path / \"tests\").mkdir()\n    p = tmp_path / family\n    p.parent.mkdir(parents=True, exist_ok=True)\n    p.symlink_to(tmp_path / \"NEVER_ENUMERATE\")\n    with pytest.raises(ValueError, match=\"alias\"):\n        bindings(tmp_path)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission26/test_inventory_cli.py::test_acceptance_closure_refuses_documentary_parent_alias_before_hash[docs/generated/master_reaudit]",
+      "expected": "acceptance closure refuses documentary parent alias before hash",
+      "expected_assertions": [],
+      "expected_refusals": [
+        "pytest.raises(ValueError, match=\"alias\")"
+      ],
+      "actual": "passed",
+      "pass": true,
+      "enforcement_boundary": "Catalog/document hashes, safe metadata reader, canonical ReviewerMetadata or actual readiness CLI",
+      "source": {
+        "file": "tests/synthetic_mission26/test_inventory_cli.py",
+        "line": 216,
+        "function_source": "def test_acceptance_closure_refuses_documentary_parent_alias_before_hash(tmp_path, family):\n    from railway_detection.safety.resource_free_acceptance import bindings\n\n    (tmp_path / \"tests\").mkdir()\n    p = tmp_path / family\n    p.parent.mkdir(parents=True, exist_ok=True)\n    p.symlink_to(tmp_path / \"NEVER_ENUMERATE\")\n    with pytest.raises(ValueError, match=\"alias\"):\n        bindings(tmp_path)"
+      },
+      "evidence_receipt": "MISSION_26_RESOURCE_AUDIT_RECEIPT.json#synthetic_mission26",
+      "genuine_operation_executed": false
+    }
+  ],
+  "count": 98,
+  "scope": "Constructed metadata only; policy/refusal successes are not actual source use/authorization/execution."
+}

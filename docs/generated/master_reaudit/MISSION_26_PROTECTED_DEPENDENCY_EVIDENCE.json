@@ -1,0 +1,58 @@
+{
+  "tests/test_phase11_9_synthetic_pilot.py::test_pilot_writes_nothing_to_production_review_directory": {
+    "module_sha256": "ac11b986fc377491c388f29a6b4de9a75fed62dfcff9a6de3a8433a0b95622d0",
+    "resource_anchor": "data/ground_truth/reviews",
+    "reason": "Source/traceback and captured policy log establish unavailable protected dependency: data/ground_truth/reviews",
+    "reference": "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json#tests/test_phase11_9_synthetic_pilot.py::test_pilot_writes_nothing_to_production_review_directory",
+    "review": "Exact protected test module unchanged from Mission25; fresh Mission26 denied/dependency diagnostics retained. New documentary dependency closure checked; no protected acceptance or permission inferred."
+  },
+  "tests/unit/test_leg_exec.py::test_real_repository_state_is_consistent_whether_or_not_leg_exec_has_run": {
+    "module_sha256": "19efa24de8ff77c38284f587e9d157eed0baeafe05da57308bfc11786eec2ff1",
+    "resource_anchor": "data/ground_truth/reviews",
+    "reason": "Source/traceback and captured policy log establish unavailable protected dependency: data/ground_truth/reviews",
+    "reference": "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json#tests/unit/test_leg_exec.py::test_real_repository_state_is_consistent_whether_or_not_leg_exec_has_run",
+    "review": "Exact protected test module unchanged from Mission25; fresh Mission26 denied/dependency diagnostics retained. New documentary dependency closure checked; no protected acceptance or permission inferred."
+  },
+  "tests/unit/test_phase14_benchmark_suite.py::test_benchmark_command_writes_a_complete_unclaiming_report": {
+    "module_sha256": "d6ce14b8f0ea08844fc66c2a5d523ff3d2311f23ce43643cff85f7d0e31521ad",
+    "resource_anchor": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+    "reason": "Source/traceback and captured policy log establish unavailable protected dependency: experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+    "reference": "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json#tests/unit/test_phase14_benchmark_suite.py::test_benchmark_command_writes_a_complete_unclaiming_report",
+    "review": "Exact protected test module unchanged from Mission25; fresh Mission26 denied/dependency diagnostics retained. New documentary dependency closure checked; no protected acceptance or permission inferred."
+  },
+  "tests/unit/test_phase14_benchmark_suite.py::test_target_claim_through_the_command_is_not_granted_to_a_dev_machine": {
+    "module_sha256": "d6ce14b8f0ea08844fc66c2a5d523ff3d2311f23ce43643cff85f7d0e31521ad",
+    "resource_anchor": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+    "reason": "Source/traceback and captured policy log establish unavailable protected dependency: experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+    "reference": "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json#tests/unit/test_phase14_benchmark_suite.py::test_target_claim_through_the_command_is_not_granted_to_a_dev_machine",
+    "review": "Exact protected test module unchanged from Mission25; fresh Mission26 denied/dependency diagnostics retained. New documentary dependency closure checked; no protected acceptance or permission inferred."
+  },
+  "tests/unit/test_readiness_audit.py::test_real_audit_summarizes_the_legacy_corpus_without_touching_it": {
+    "module_sha256": "6b3c1bd7397e01e87e7607a4a59a57ba5b43d632a67719b95a597961560de87a",
+    "resource_anchor": "data/ground_truth/reviews",
+    "reason": "Source/traceback and captured policy log establish unavailable protected dependency: data/ground_truth/reviews",
+    "reference": "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json#tests/unit/test_readiness_audit.py::test_real_audit_summarizes_the_legacy_corpus_without_touching_it",
+    "review": "Exact protected test module unchanged from Mission25; fresh Mission26 denied/dependency diagnostics retained. New documentary dependency closure checked; no protected acceptance or permission inferred."
+  },
+  "tests/unit/test_readiness_audit.py::test_leg_exec_preflight_verifies_inputs_and_never_writes": {
+    "module_sha256": "6b3c1bd7397e01e87e7607a4a59a57ba5b43d632a67719b95a597961560de87a",
+    "resource_anchor": "data/ground_truth/reviews",
+    "reason": "Source/traceback and captured policy log establish unavailable protected dependency: data/ground_truth/reviews",
+    "reference": "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json#tests/unit/test_readiness_audit.py::test_leg_exec_preflight_verifies_inputs_and_never_writes",
+    "review": "Exact protected test module unchanged from Mission25; fresh Mission26 denied/dependency diagnostics retained. New documentary dependency closure checked; no protected acceptance or permission inferred."
+  },
+  "tests/unit/test_readiness_audit.py::test_legacy_records_with_forged_stage21_version_string_are_rejected": {
+    "module_sha256": "6b3c1bd7397e01e87e7607a4a59a57ba5b43d632a67719b95a597961560de87a",
+    "resource_anchor": "data/ground_truth/reviews",
+    "reason": "Source/traceback and captured policy log establish unavailable protected dependency: data/ground_truth/reviews",
+    "reference": "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json#tests/unit/test_readiness_audit.py::test_legacy_records_with_forged_stage21_version_string_are_rejected",
+    "review": "Exact protected test module unchanged from Mission25; fresh Mission26 denied/dependency diagnostics retained. New documentary dependency closure checked; no protected acceptance or permission inferred."
+  },
+  "tests/unit/test_reproducibility_audit.py::test_audit_command_writes_outside_the_repository_only": {
+    "module_sha256": "866c2b65cba8cf181179ceb639be0ec0c1c6545da2a814659145ca5da4cc9e02",
+    "resource_anchor": "data/manifests/layer_b_v2_annotation_inventory.json",
+    "reason": "Source/traceback and captured policy log establish unavailable protected dependency: data/manifests/layer_b_v2_annotation_inventory.json",
+    "reference": "MISSION_26_PROTECTED_DEPENDENCY_EVIDENCE.json#tests/unit/test_reproducibility_audit.py::test_audit_command_writes_outside_the_repository_only",
+    "review": "Exact protected test module unchanged from Mission25; fresh Mission26 denied/dependency diagnostics retained. New documentary dependency closure checked; no protected acceptance or permission inferred."
+  }
+}

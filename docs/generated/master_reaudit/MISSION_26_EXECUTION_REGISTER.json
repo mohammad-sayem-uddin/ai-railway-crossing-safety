@@ -83,5 +83,25 @@
     "docs/generated/master_reaudit/MISSION_25_REVIEW_INTAKE_SCHEMA.json": "e5df01e24180e8b2e8c73c0103ae199a15bbce171b9d3603c9e07edafafcd84d",
     "docs/generated/master_reaudit/MISSION_25_TEST_CLASSIFICATION_REGISTER.json": "91996afade4ee6f7eeed639b5735e0a3ed0ecde2d41f052170db266c66b13970"
   },
-  "request_sha256": "f42a7e22a72065588e907fb3b5faf662c2852f19e409016f9cb6e3cf71ae75ce"
+  "request_sha256": "f42a7e22a72065588e907fb3b5faf662c2852f19e409016f9cb6e3cf71ae75ce",
+  "current_status": "ELIGIBLE_READINESS_ENGINEERING_COMPLETE;RESOURCE_FREE_ACCEPTANCE_VERIFIED;REAL_DATA_BLOCKED",
+  "final_validation": "MISSION_26_FINAL_VALIDATION.json",
+  "delivery_report": "MISSION_26_EVIDENCE_ACQUISITION_READINESS_REPORT.md",
+  "phase_history": [
+    {
+      "phases": "A-G,I",
+      "commit": "d714c1c",
+      "scope": "Documentary source inventory, rights, human/external/landmark requirements, duration investigation, 27 operation and scientific readiness registers"
+    },
+    {
+      "phases": "H,J,K",
+      "commit": "64d766d81e652c94523433b8e4212946413368e7",
+      "scope": "Preflight engine, application CLI, schema, 98 constructed cases, metadata-bound test closure"
+    },
+    {
+      "phases": "K-L,delivery",
+      "commit": "Containing final documentation commit",
+      "scope": "Frozen audit/classification, independent source-preservation checks, complete resource-free acceptance and delivery receipts"
+    }
+  ]
 }
