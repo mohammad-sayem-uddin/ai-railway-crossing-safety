@@ -59,6 +59,28 @@ def bindings(root: Path) -> dict[str, Any]:
             raise ValueError("configuration alias refused before hashing")
         if p.is_file() and p.suffix in {".yaml", ".yml", ".json"}:
             shared[str(p.relative_to(root))] = hashlib.sha256(p.read_bytes()).hexdigest()
+    # Named source-free documentary inputs are part of the runtime closure.
+    # Do not discover resources through arbitrary manifest paths or research trees.
+    metadata = (
+        "README.md",
+        "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "docs/archive/REAL_DATASET_INVENTORY.md",
+        "docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md",
+        "docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md",
+        "docs/generated/master_reaudit/MISSION_26_READINESS_CATALOG.json",
+        "docs/generated/master_reaudit/MISSION_26_CATALOG_BINDING.json",
+        "docs/generated/master_reaudit/MISSION_26_DATA_RIGHTS_AND_PROVENANCE_REGISTER.json",
+        "docs/generated/master_reaudit/MISSION_26_RESOURCE_OPERATION_PREFLIGHT.json",
+        "docs/generated/master_reaudit/MISSION_26_EXPERIMENT_READINESS_MATRIX.json",
+    )
+    for relative in metadata:
+        candidate = root / relative
+        for parent in reversed((candidate, *candidate.parents)):
+            if parent.is_symlink():
+                raise ValueError("documentary dependency alias refused before hashing")
+        if candidate.is_file():
+            shared[relative] = hashlib.sha256(candidate.read_bytes()).hexdigest()
     # Conservative whole-source closure: dynamic imports and loader defaults are included.
     return {"modules": modules, "shared_source_sha256": shared, "shared_digest": digest(shared)}
 

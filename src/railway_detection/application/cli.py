@@ -9,7 +9,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-REGISTER = ROOT / "docs/generated/master_reaudit/MISSION_25_TEST_CLASSIFICATION_REGISTER.json"
+REGISTER = ROOT / "docs/generated/master_reaudit/MISSION_26_TEST_CLASSIFICATION_REGISTER.json"
 
 
 @dataclass(frozen=True)
@@ -92,6 +92,11 @@ def add_arguments(subparsers):
     )
 
     add_review_arguments(commands)
+    from railway_detection.application.preflight.catalog import (
+        add_arguments as add_readiness_arguments,
+    )
+
+    add_readiness_arguments(commands)
     demo = commands.add_parser("demo", help="Run the complete constructed application")
     demo.add_argument("--output", required=True)
     demo.add_argument("--seed", type=int, default=22)
@@ -168,7 +173,13 @@ def run_acceptance(args):
     selected = [
         node
         for node in chosen["selected"]
-        if node.startswith(("tests/synthetic_mission24/", "tests/synthetic_mission25/"))
+        if node.startswith(
+            (
+                "tests/synthetic_mission24/",
+                "tests/synthetic_mission25/",
+                "tests/synthetic_mission26/",
+            )
+        )
     ]
     if not selected:
         raise ValueError("no classified application tests; do not infer a pass")

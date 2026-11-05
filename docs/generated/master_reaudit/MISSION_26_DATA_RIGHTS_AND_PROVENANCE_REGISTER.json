@@ -4818,7 +4818,7 @@
       "event": null,
       "camera": null,
       "source_type": "HISTORICAL_COLLECTION_REFERENCE",
-      "declared_path": null,
+      "declared_path": "data/raw/layer_b/videos/",
       "historical_digest": null,
       "live_digest_verified": false,
       "provenance": {
@@ -4902,7 +4902,7 @@
       "event": null,
       "camera": null,
       "source_type": "AUDIO_COLLECTION_REFERENCE",
-      "declared_path": null,
+      "declared_path": "data/raw/audio/train_horn/positive/",
       "historical_digest": null,
       "live_digest_verified": false,
       "provenance": {
@@ -4986,7 +4986,7 @@
       "event": null,
       "camera": null,
       "source_type": "AUDIO_COLLECTION_REFERENCE",
-      "declared_path": null,
+      "declared_path": "data/raw/audio/train_horn/negative/",
       "historical_digest": null,
       "live_digest_verified": false,
       "provenance": {
@@ -5154,7 +5154,7 @@
       "event": null,
       "camera": null,
       "source_type": "VISION_DEVELOPMENT_COLLECTION_REFERENCE",
-      "declared_path": null,
+      "declared_path": "data/raw/vision/v1/baler.v1i.yolov8",
       "historical_digest": null,
       "live_digest_verified": false,
       "provenance": {
@@ -5238,7 +5238,7 @@
       "event": null,
       "camera": null,
       "source_type": "CHECKPOINT_REFERENCE",
-      "declared_path": null,
+      "declared_path": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
       "historical_digest": null,
       "live_digest_verified": false,
       "provenance": {
@@ -5322,7 +5322,7 @@
       "event": null,
       "camera": null,
       "source_type": "CHECKPOINT_REFERENCE",
-      "declared_path": null,
+      "declared_path": "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt",
       "historical_digest": null,
       "live_digest_verified": false,
       "provenance": {

@@ -1,0 +1,26 @@
+{
+  "schema": "mission26-implementation-validation/1",
+  "focused": {
+    "passed": 98,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "ruff_syntax_python_files": 8,
+  "scoped_mypy_sources": 5,
+  "whole_repository_type_claim": false,
+  "genuine_positive_authorization_or_execution_tested": false,
+  "execution_backend": false,
+  "new_grants": 0,
+  "files_sha256": {
+    "src/railway_detection/application/preflight/__init__.py": "3fc4c7fe3380caca0ed6de1b25f85600c0b3ae1a6c16a55b4fd0fc0d6b851275",
+    "src/railway_detection/application/preflight/catalog.py": "734a929a09c3b8fea72440afddc345af758b20802f181250531e65c6061f7285",
+    "src/railway_detection/application/preflight/engine.py": "d25d8b4ab9d0bbd828dfa9ce653510788391e90f7c30c22c3bc2ad2c6ea33d1d",
+    "src/railway_detection/application/cli.py": "2c47037b9d0b62bb0b47ffeb9855e5fb97e4c07ac29824ecf6583d6dce6a9ff6",
+    "src/railway_detection/safety/resource_free_acceptance.py": "b481dc64f64862bb6e11ed4aa68946bffec23e4292d758d2dd831f63da744b59",
+    "tests/unit/test_media_opener_coverage.py": "6d44921cd6ed43d5bbffad50d372cc8fc17839381e1ab740cf8dcbd086fd3d59",
+    "tests/synthetic_mission26/test_engine.py": "2fa1ed6d544635fcc36fedadfece36db29b10f5a0426f808834886ea61f61e34",
+    "tests/synthetic_mission26/test_inventory_cli.py": "1a18e2396abd4536bc284bdf0fceb8c3f1739fbf50cd633ed9ff97f99f1e30f7"
+  },
+  "final_frozen_acceptance": "pending complete audit/classification/selection; focused reruns never summed"
+}

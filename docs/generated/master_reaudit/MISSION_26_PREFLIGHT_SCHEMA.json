@@ -1,0 +1,328 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:train-automation:research-preflight:1",
+  "$ref": "#/$defs/Request",
+  "$comment": "Metadata structure only; source/rights/current verification and semantic checks remain required. This schema grants no operation.",
+  "$defs": {
+    "Request": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "type": "string"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "resource_id": {
+          "type": "string"
+        },
+        "resource_identity": {
+          "type": "string"
+        },
+        "actor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "purpose": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "environment": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "protocol": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_schema": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "output_destination": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "audit_log": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "provenance_parents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "boundaries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "landmark_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acoustic_shift_us": {
+          "type": "integer"
+        },
+        "classification": {
+          "type": "string"
+        },
+        "schema": {
+          "const": "RESEARCH_PREFLIGHT/1"
+        }
+      },
+      "required": [
+        "request_id",
+        "operation",
+        "resource_id",
+        "resource_identity",
+        "actor",
+        "role",
+        "purpose",
+        "environment",
+        "protocol",
+        "data_schema",
+        "output_destination",
+        "audit_log",
+        "provenance_parents",
+        "boundaries",
+        "landmark_kind",
+        "acoustic_shift_us",
+        "classification",
+        "schema"
+      ]
+    },
+    "Claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "request_digest": {
+          "type": "string"
+        },
+        "valid_from": {
+          "type": "integer"
+        },
+        "expires": {
+          "type": "integer"
+        },
+        "revoked": {
+          "type": "boolean"
+        },
+        "facts_json": {
+          "type": "string"
+        },
+        "classification": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reference",
+        "request_digest",
+        "valid_from",
+        "expires",
+        "revoked",
+        "facts_json",
+        "classification"
+      ]
+    },
+    "Issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "type": "string"
+        },
+        "boundary": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "classification",
+        "boundary",
+        "reason"
+      ]
+    },
+    "Readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "PREFLIGHT_NOT_STARTED",
+            "PREFLIGHT_BLOCKED",
+            "PREFLIGHT_READY_FOR_AUTHORIZATION_REVIEW",
+            "AUTHORIZATION_REVIEW_PENDING",
+            "AUTHORIZED_NOT_EXECUTED",
+            "EXECUTION_NOT_PERMITTED",
+            "EXECUTION_COMPLETED_WITH_VALID_RECEIPT"
+          ]
+        },
+        "request_digest": {
+          "type": "string"
+        },
+        "catalog_digest": {
+          "type": "string"
+        },
+        "evaluated_at": {
+          "type": "integer"
+        },
+        "classification": {
+          "type": "string"
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Issue"
+          }
+        },
+        "schema": {
+          "const": "RESEARCH_PREFLIGHT/1"
+        },
+        "execution_permitted": {
+          "type": "boolean"
+        },
+        "grant_issued": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "state",
+        "request_digest",
+        "catalog_digest",
+        "evaluated_at",
+        "classification",
+        "issues",
+        "schema",
+        "execution_permitted",
+        "grant_issued"
+      ]
+    },
+    "ExternalReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "type": "string"
+        },
+        "request_digest": {
+          "type": "string"
+        },
+        "catalog_digest": {
+          "type": "string"
+        },
+        "authorization_digest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valid_from": {
+          "type": "integer"
+        },
+        "expires": {
+          "type": "integer"
+        },
+        "revoked": {
+          "type": "boolean"
+        },
+        "canonical_schema_reference": {
+          "type": "string"
+        },
+        "external_verification_reference": {
+          "type": "string"
+        },
+        "classification": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "request_digest",
+        "catalog_digest",
+        "authorization_digest",
+        "valid_from",
+        "expires",
+        "revoked",
+        "canonical_schema_reference",
+        "external_verification_reference",
+        "classification"
+      ]
+    }
+  }
+}

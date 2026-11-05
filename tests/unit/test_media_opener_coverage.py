@@ -25,7 +25,7 @@ RESEARCH_READER_ALLOWLIST: dict[str, str] = {}
 
 #: ``"<relative path>::<function>"`` -> why this function cannot open raw media.
 REVIEWED_METADATA_ONLY: dict[str, str] = {
-    "src/railway_detection/safety/resource_free_acceptance.py::bindings": "hashes only explicit src/scripts/test Python and config metadata families after protected-root and source/config symlink refusal; no research artifact trees",
+    "src/railway_detection/safety/resource_free_acceptance.py::bindings": "hashes explicit src/scripts/test Python, config and fixed named documentary readiness metadata after protected-root and parent-first alias refusal; no research resource trees",
     "src/railway_detection/synthetic/integration_workflow.py::verify_completed": "hashes only closed-name constructed demo JSON/docs/source artifacts after protected-root and parent-first symlink rejection",
     "src/railway_detection/synthetic/integration_workflow.py::run_demo": "hashes only its own named constructed artifacts and snapshot, after protected-root and parent-first symlink rejection; never media/cache/checkpoint paths",
     "src/railway_detection/annotation/batch_multimodal_annotator.py::_compute_prompt_hash": "hashes the prompt template text file",
