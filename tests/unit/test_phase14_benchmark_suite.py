@@ -21,8 +21,13 @@ from railway_detection.optimization.benchmark_suite import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-HOST = {"system": "Linux", "machine": "aarch64", "processor": "x", "cpu_count": 4,
-        "cpu_model": "Synthetic CPU"}
+HOST = {
+    "system": "Linux",
+    "machine": "aarch64",
+    "processor": "x",
+    "cpu_count": 4,
+    "cpu_model": "Synthetic CPU",
+}
 GOOD_FP = {"verified": True, "frozen_config": {}, "decision_policy": {}, "checkpoints": {}}
 SYNTHETIC = InputDescription("synthetic", "unit-test inputs")
 REAL = InputDescription("real", "recorded footage", {"manifest_sha256": "a" * 64})
@@ -43,13 +48,28 @@ def _stages():
     return [("pre", lambda x: x + 1), ("infer", lambda x: x * 2)]
 
 
-def _run(protocol=None, inputs=(1, 2, 3), description=SYNTHETIC, fp=GOOD_FP, host=HOST,
-         clock=None, stages=None):
-    protocol = protocol or BenchmarkProtocol(warmup_iterations=1, measured_iterations=2,
-                                             repetitions=2)
+def _run(
+    protocol=None,
+    inputs=(1, 2, 3),
+    description=SYNTHETIC,
+    fp=GOOD_FP,
+    host=HOST,
+    clock=None,
+    stages=None,
+):
+    protocol = protocol or BenchmarkProtocol(
+        warmup_iterations=1, measured_iterations=2, repetitions=2
+    )
     return run_staged_benchmark(
-        "unit", _stages() if stages is None else stages, list(inputs), protocol, description,
-        root=REPO_ROOT, clock=clock or StepClock(), host=host, fingerprints=fp,
+        "unit",
+        _stages() if stages is None else stages,
+        list(inputs),
+        protocol,
+        description,
+        root=REPO_ROOT,
+        clock=clock or StepClock(),
+        host=host,
+        fingerprints=fp,
     )
 
 
@@ -71,7 +91,16 @@ def test_stage_latency_throughput_and_counts_are_exact_with_a_stepped_clock():
     assert report["limitations"] == list(LIMITATIONS)
 
 
-def test_reports_are_deterministic_given_injected_environment_and_clock():
+def test_reports_are_deterministic_given_injected_environment_and_clock(monkeypatch):
+    from types import SimpleNamespace
+
+    from railway_detection.optimization import benchmark_suite
+
+    # The entire report includes lifetime process peak RSS, a third measured input.
+    # Fix it alongside the injected clock/host; never assume allocator state is stable.
+    monkeypatch.setattr(
+        benchmark_suite.resource, "getrusage", lambda _: SimpleNamespace(ru_maxrss=1024)
+    )
     first, second = _run(clock=StepClock()), _run(clock=StepClock())
     assert json.dumps(first, sort_keys=True) == json.dumps(second, sort_keys=True)
 
@@ -119,8 +148,12 @@ def test_a_decreasing_clock_aborts_the_report():
 
 @pytest.mark.parametrize(
     "kwargs",
-    [{"stages": []}, {"inputs": ()}, {"stages": [("a", len), ("a", len)]},
-     {"stages": [("a", "not callable")]}],
+    [
+        {"stages": []},
+        {"inputs": ()},
+        {"stages": [("a", len), ("a", len)]},
+        {"stages": [("a", "not callable")]},
+    ],
 )
 def test_malformed_stage_or_input_specs_are_refused(kwargs):
     with pytest.raises(BenchmarkProtocolError):
@@ -152,9 +185,13 @@ CRITERION = {"statistic": "p99_ms", "limit_ms": 1000.0, "documented_in": "docs/X
 
 
 def _claim_protocol(**kw):
-    base = dict(warmup_iterations=0, measured_iterations=34, repetitions=1,
-                target_platform={"system": "Linux", "machine": "aarch64"},
-                acceptance_criterion=CRITERION)
+    base = dict(
+        warmup_iterations=0,
+        measured_iterations=34,
+        repetitions=1,
+        target_platform={"system": "Linux", "machine": "aarch64"},
+        acceptance_criterion=CRITERION,
+    )
     base.update(kw)
     return BenchmarkProtocol(**base)
 
@@ -202,11 +239,13 @@ def test_stale_checkpoint_fingerprints_void_every_claim():
 
 @pytest.mark.parametrize(
     "criterion",
-    [{"statistic": "p42_ms", "limit_ms": 1.0, "documented_in": "d"},
-     {"statistic": "p99_ms", "limit_ms": 0, "documented_in": "d"},
-     {"statistic": "p99_ms", "limit_ms": float("nan"), "documented_in": "d"},
-     {"statistic": "p99_ms", "limit_ms": 1.0, "documented_in": " "},
-     {"statistic": "p99_ms", "limit_ms": 1.0}],
+    [
+        {"statistic": "p42_ms", "limit_ms": 1.0, "documented_in": "d"},
+        {"statistic": "p99_ms", "limit_ms": 0, "documented_in": "d"},
+        {"statistic": "p99_ms", "limit_ms": float("nan"), "documented_in": "d"},
+        {"statistic": "p99_ms", "limit_ms": 1.0, "documented_in": " "},
+        {"statistic": "p99_ms", "limit_ms": 1.0},
+    ],
 )
 def test_acceptance_criteria_must_be_complete_and_cite_a_document(criterion):
     with pytest.raises(BenchmarkProtocolError):
@@ -214,8 +253,7 @@ def test_acceptance_criteria_must_be_complete_and_cite_a_document(criterion):
 
 
 def test_assess_acceptance_is_descriptive_without_a_criterion():
-    out = assess_acceptance({"p99_ms": 1.0}, BenchmarkProtocol(), target_evidence=True,
-                            inputs=REAL)
+    out = assess_acceptance({"p99_ms": 1.0}, BenchmarkProtocol(), target_evidence=True, inputs=REAL)
     assert out["claim_permitted"] is False
     assert "no documented acceptance criterion" in out["claim_blockers"]
 
@@ -256,23 +294,35 @@ def test_missing_or_altered_checkpoints_fail_verification(tmp_path):
     assert missing["verified"] is False
     assert missing["checkpoints"]["vision"]["actual_sha256"] is None
 
-    for relative in ("experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
-                     "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt"):
+    for relative in (
+        "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+        "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt",
+    ):
         target = root / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(b"not the pinned weights")
     altered = artifact_fingerprints(root)
     assert altered["verified"] is False
     assert not altered["checkpoints"]["vision"]["matches_frozen_config"]
-    assert altered["checkpoints"]["vision"]["actual_sha256"] != (
-        altered["checkpoints"]["vision"]["expected_sha256"]
+    assert (
+        altered["checkpoints"]["vision"]["actual_sha256"]
+        != (altered["checkpoints"]["vision"]["expected_sha256"])
     )
 
 
 def test_host_environment_records_revision_hosts_and_dependencies():
     env = collect_host_environment(REPO_ROOT)
-    for key in ("system", "machine", "cpu_model", "ram_bytes", "accelerators", "packages",
-                "code_revision", "worktree_dirty", "python_version"):
+    for key in (
+        "system",
+        "machine",
+        "cpu_model",
+        "ram_bytes",
+        "accelerators",
+        "packages",
+        "code_revision",
+        "worktree_dirty",
+        "python_version",
+    ):
         assert key in env
     assert len(env["code_revision"]) == 40
     assert set(env["packages"]) >= {"torch", "numpy", "PyYAML"}
@@ -287,12 +337,14 @@ def test_equivalence_needs_identical_outputs_and_the_same_inputs():
     good = lambda x: {"y": x + x}  # noqa: E731
     report = check_candidate_equivalence(ref, good, inputs)
     assert report["equivalent"] and report["failures"] == []
-    assert report["input_set_sha256"] == check_candidate_equivalence(ref, good, inputs)[
-        "input_set_sha256"
-    ]
-    assert report["input_set_sha256"] != check_candidate_equivalence(ref, good, [1, 2, 4])[
-        "input_set_sha256"
-    ]
+    assert (
+        report["input_set_sha256"]
+        == check_candidate_equivalence(ref, good, inputs)["input_set_sha256"]
+    )
+    assert (
+        report["input_set_sha256"]
+        != check_candidate_equivalence(ref, good, [1, 2, 4])["input_set_sha256"]
+    )
 
 
 def test_mismatched_outputs_properties_errors_and_self_comparison_are_all_refused():
@@ -310,7 +362,9 @@ def test_mismatched_outputs_properties_errors_and_self_comparison_are_all_refuse
 
     # outputs equal, but a required property is violated
     prop = check_candidate_equivalence(
-        ref, lambda x: {"y": x * 2}, inputs,
+        ref,
+        lambda x: {"y": x * 2},
+        inputs,
         property_checks={"y_is_even": lambda a, b: b["y"] % 2 == 1},
     )
     assert not prop["equivalent"] and prop["failures"][0]["property"] == "y_is_even"
@@ -326,8 +380,20 @@ def test_mismatched_outputs_properties_errors_and_self_comparison_are_all_refuse
 
 def test_benchmark_command_writes_a_complete_unclaiming_report(tmp_path):
     out = tmp_path / "bench.json"
-    code = cli_main(["benchmark", "run", "--output", str(out), "--warmup", "1",
-                     "--iterations", "2", "--repetitions", "2"])
+    code = cli_main(
+        [
+            "benchmark",
+            "run",
+            "--output",
+            str(out),
+            "--warmup",
+            "1",
+            "--iterations",
+            "2",
+            "--repetitions",
+            "2",
+        ]
+    )
     assert code == 0
     report = json.loads(out.read_text())
     assert report["schema_version"] == "phase14-benchmark-report/2"
@@ -341,10 +407,23 @@ def test_benchmark_command_writes_a_complete_unclaiming_report(tmp_path):
     assert report["memory"]["process_peak_rss_bytes"] > 0
     assert report["limitations"]
     again = tmp_path / "bench2.json"
-    cli_main(["benchmark", "run", "--output", str(again), "--warmup", "1",
-              "--iterations", "2", "--repetitions", "2"])
-    assert json.loads(again.read_text())["output_fingerprint_sha256"] == (
-        report["output_fingerprint_sha256"]
+    cli_main(
+        [
+            "benchmark",
+            "run",
+            "--output",
+            str(again),
+            "--warmup",
+            "1",
+            "--iterations",
+            "2",
+            "--repetitions",
+            "2",
+        ]
+    )
+    assert (
+        json.loads(again.read_text())["output_fingerprint_sha256"]
+        == (report["output_fingerprint_sha256"])
     )
 
 
@@ -357,9 +436,26 @@ def test_benchmark_command_refuses_to_write_into_repository_trees(tmp_path, tree
 
 def test_target_claim_through_the_command_is_not_granted_to_a_dev_machine(tmp_path):
     out = tmp_path / "claim.json"
-    cli_main(["benchmark", "run", "--output", str(out), "--iterations", "2", "--repetitions", "1",
-              "--target-machine", "armv7l", "--acceptance-statistic", "p99_ms",
-              "--acceptance-limit-ms", "200", "--acceptance-doc", "docs/NONE.md"])
+    cli_main(
+        [
+            "benchmark",
+            "run",
+            "--output",
+            str(out),
+            "--iterations",
+            "2",
+            "--repetitions",
+            "1",
+            "--target-machine",
+            "armv7l",
+            "--acceptance-statistic",
+            "p99_ms",
+            "--acceptance-limit-ms",
+            "200",
+            "--acceptance-doc",
+            "docs/NONE.md",
+        ]
+    )
     report = json.loads(out.read_text())
     assert report["host_matches_declared_target"] is False
     assert report["real_time_claim_permitted"] is False

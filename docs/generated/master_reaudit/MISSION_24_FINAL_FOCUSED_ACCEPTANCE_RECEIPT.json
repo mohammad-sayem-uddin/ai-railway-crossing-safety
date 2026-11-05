@@ -1,0 +1,798 @@
+{
+  "schema": "mission24-final-focused/1",
+  "source_sha256": {
+    "src/railway_detection/application/__init__.py": "259f9be868283989e32845164a204e900c407dff336a130f9dba45b5bed5b55e",
+    "src/railway_detection/application/authorization.py": "0617d8b11060c590bada5925f8c6b214e912be4ec3a368ca7d18089c85286e08",
+    "src/railway_detection/application/cli.py": "fcd6ae91518475f2e063da42ebdc01b3a5ed6bbad700559d6693d8cbf5af19ca",
+    "src/railway_detection/application/comparator.py": "4ce928d74be203bb6c035aa5fc21c0ec4e43b13dfff6f8f97355e446121626da",
+    "src/railway_detection/application/contracts.py": "013f2681cfb1948314a68802d093f98d7902b9c374492d1ad0c2754cadac40f5",
+    "src/railway_detection/application/review.py": "7b850b7c52fb3b4d71bfc3dd35e94ded06ee11f713612d435f51d1bf68582944",
+    "src/railway_detection/application/workflow.py": "c9a0d049f29094480fadb9c9a3e2b81759c9558c4878a655df797fd0c80616d1",
+    "src/railway_detection/cli/main.py": "cda6a7dac50dc5ec967d8d00aa4c20378ac112dea99a9914036be0cd423cfd1b",
+    "src/railway_detection/synthetic/integration_workflow.py": "bfa14f3a40b845348d3bdef2be37476cb129cf1eefb03395ae397113ef8143d8",
+    "tests/synthetic_mission24/test_application.py": "ae4d771a5db0362a2e6f40f0290dee731190f382f249be7addca9c5b770073cf",
+    "tests/synthetic_mission24/test_authorization.py": "1c588eb166f6a4608162047dbc4005d884fcb7af26ca9f296b32181b9e0d1692",
+    "tests/synthetic_mission24/test_cli.py": "715f5d7a23e269940aac291129a53a61be35dcc821d5cf5db76ac0ab51f05ab0",
+    "tests/synthetic_mission24/test_comparator.py": "69eace8a7a8d504fbc46660f6427742523e17a64163ac11b71587a5691223ee6",
+    "tests/synthetic_mission24/test_review_interfaces.py": "98cac154f2e3d1466618532cd6fb864ceb8f9aefa8695912b5e0ca5e9b4340fb",
+    "tests/unit/test_phase14_benchmark_suite.py": "d6ce14b8f0ea08844fc66c2a5d523ff3d2311f23ce43643cff85f7d0e31521ad"
+  },
+  "counts": {
+    "tests": 191,
+    "passed": 191,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "cases": [
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_single_workflow_two_destinations_full_resume_and_typed_contracts"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_invalid_application_identity_refuses_before_persistence[change0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_invalid_application_identity_refuses_before_persistence[change1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_invalid_application_identity_refuses_before_persistence[change2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_invalid_application_identity_refuses_before_persistence[change3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_invalid_application_identity_refuses_before_persistence[change4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_invalid_application_identity_refuses_before_persistence[change5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_actual_cli_interruption_restart_and_duplicate_recovery[initialization]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_actual_cli_interruption_restart_and_duplicate_recovery[review_commit]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_actual_cli_interruption_restart_and_duplicate_recovery[review]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_actual_cli_interruption_restart_and_duplicate_recovery[workflow]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_actual_cli_interruption_restart_and_duplicate_recovery[application_receipt]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_substituted_stale_incomplete_or_aliased_artifact_refuses[application]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_substituted_stale_incomplete_or_aliased_artifact_refuses[marker]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_substituted_stale_incomplete_or_aliased_artifact_refuses[pending]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_substituted_stale_incomplete_or_aliased_artifact_refuses[core]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_substituted_stale_incomplete_or_aliased_artifact_refuses[missing_parent]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_substituted_stale_incomplete_or_aliased_artifact_refuses[schema]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_substituted_stale_incomplete_or_aliased_artifact_refuses[alias]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_protected_output_and_genuine_record_fences"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_duplicate_request_fields_are_not_silently_overwritten"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_injected_workflow_must_return_typed_constructed_contract"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_interrupted_application_does_not_repair_invalid_persisted_state[corrupt_database]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_interrupted_application_does_not_repair_invalid_persisted_state[old_service_schema]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_application",
+      "name": "test_interrupted_application_does_not_repair_invalid_persisted_state[missing_checkpoint_parent]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_exact_resource_access_retry_and_audit_history"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_scope_mismatch_never_returns_bytes_or_success[change8]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_authorization",
+      "name": "test_revocation_clock_and_modified_registry_fail_closed"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_cli",
+      "name": "test_architecture_and_error_codes_have_no_live_route"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_cli",
+      "name": "test_acceptance_cli_delegates_existing_runner"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_cli",
+      "name": "test_synthetic_test_selection_is_explicit_and_never_runs_protected_cases"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_cli",
+      "name": "test_validation_receipt_inspection_preserves_exclusion_counts"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_cli",
+      "name": "test_validation_metadata_cannot_open_protected_tree_before_read"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_cli",
+      "name": "test_benchmark_keeps_actual_memory_measurements_in_reports"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[0-0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[0-1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[0-2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[0-3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[0-4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[0-5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[0-6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[0-7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[1-0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[1-1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[1-2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[1-3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[1-4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[1-5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[1-6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[1-7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[2-0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[2-1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[2-2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[2-3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[2-4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[2-5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[2-6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[2-7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[3-0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[3-1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[3-2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[3-3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[3-4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[3-5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[3-6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[3-7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[4-0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[4-1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[4-2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[4-3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[4-4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[4-5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[4-6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[4-7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[5-0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[5-1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[5-2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[5-3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[5-4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[5-5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[5-6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[5-7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[6-0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[6-1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[6-2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[6-3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[6-4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[6-5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[6-6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[6-7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[7-0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[7-1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[7-2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[7-3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[7-4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[7-5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[7-6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_mask_transitions_inactive_and_reset_deterministic[7-7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[0-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[0-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[0-DEGRADED]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[0-RECOVERING]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[0-UNKNOWN]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[1-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[1-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[1-DEGRADED]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[1-RECOVERING]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[1-UNKNOWN]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[2-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[2-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[2-DEGRADED]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[2-RECOVERING]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[2-UNKNOWN]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[3-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[3-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[3-DEGRADED]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[3-RECOVERING]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[3-UNKNOWN]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[4-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[4-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[4-DEGRADED]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[4-RECOVERING]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[4-UNKNOWN]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[5-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[5-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[5-DEGRADED]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[5-RECOVERING]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[5-UNKNOWN]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[6-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[6-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[6-DEGRADED]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[6-RECOVERING]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[6-UNKNOWN]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[7-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[7-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[7-DEGRADED]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[7-RECOVERING]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_all_masks_across_observed_availability_states[7-UNKNOWN]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_cannot_become_any_observed_mask[0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_cannot_become_any_observed_mask[1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_cannot_become_any_observed_mask[2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_cannot_become_any_observed_mask[3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_cannot_become_any_observed_mask[4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_cannot_become_any_observed_mask[5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_cannot_become_any_observed_mask[6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_cannot_become_any_observed_mask[7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_masks_come_from_complete_simultaneous_set_without_tie_break[0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_masks_come_from_complete_simultaneous_set_without_tie_break[1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_masks_come_from_complete_simultaneous_set_without_tie_break[2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_masks_come_from_complete_simultaneous_set_without_tie_break[3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_masks_come_from_complete_simultaneous_set_without_tie_break[4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_masks_come_from_complete_simultaneous_set_without_tie_break[5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_masks_come_from_complete_simultaneous_set_without_tie_break[6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_masks_come_from_complete_simultaneous_set_without_tie_break[7]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_original_clock_and_strict_producer_staleness_context[2000000-FRESH]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_original_clock_and_strict_producer_staleness_context[2000001-STALE]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_invalid_confidence_refuses[True]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_invalid_confidence_refuses[nan]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_invalid_confidence_refuses[inf]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_invalid_confidence_refuses[-0.1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_invalid_confidence_refuses[1.1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_missing_unknown_audio_duplicate_and_source_substitution"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_clock_schema_and_construction_refuse[change0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_clock_schema_and_construction_refuse[change1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_clock_schema_and_construction_refuse[change2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_clock_schema_and_construction_refuse[change3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_clock_schema_and_construction_refuse[change4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_clock_schema_and_construction_refuse[change5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_clock_schema_and_construction_refuse[change6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_availability_requires_explicit_boolean_not_coercion[1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_availability_requires_explicit_boolean_not_coercion[true]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_comparator",
+      "name": "test_availability_requires_explicit_boolean_not_coercion[None]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_typed_closed_requests_immutable_history_and_genuine_boundary"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_current_scope_refuses_before_history_or_quota_write[change0]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_current_scope_refuses_before_history_or_quota_write[change1]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_current_scope_refuses_before_history_or_quota_write[change2]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_current_scope_refuses_before_history_or_quota_write[change3]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_current_scope_refuses_before_history_or_quota_write[change4]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_current_scope_refuses_before_history_or_quota_write[change5]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_current_scope_refuses_before_history_or_quota_write[change6]"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_revocation_blocks_even_readiness_and_duplicate_requests"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_required_independent_second_review_and_unresolved_disagreement"
+    },
+    {
+      "class": "tests.synthetic_mission24.test_review_interfaces",
+      "name": "test_readiness_refuses_stale_schema_and_wrong_domain_role"
+    }
+  ],
+  "additional_existing_benchmark_determinism_case": {
+    "passed": 1,
+    "not_added_to_new_case_count": true
+  },
+  "memory_fixture_remediation": "Live lifetime peakRSS must be injected for full-report deterministic equality. Production benchmark measurements unchanged;new varying-RSS regression ensures observations are retained."
+}

@@ -99,3 +99,43 @@ def test_validation_metadata_cannot_open_protected_tree_before_read(monkeypatch)
     )
     with pytest.raises(ValueError, match="protected"):
         cli.inspect_validation_receipt(cli.ROOT / "data/raw/receipt.json")
+
+
+def test_benchmark_keeps_actual_memory_measurements_in_reports(monkeypatch):
+    from types import SimpleNamespace
+
+    from railway_detection.optimization import benchmark_suite
+    from railway_detection.optimization.benchmark import BenchmarkProtocol
+
+    class Clock:
+        now = 0.0
+
+        def __call__(self):
+            self.now += 0.001
+            return self.now
+
+    memory = iter([1024, 2048])
+    monkeypatch.setattr(
+        benchmark_suite.resource, "getrusage", lambda _: SimpleNamespace(ru_maxrss=next(memory))
+    )
+    reports = [
+        benchmark_suite.run_staged_benchmark(
+            "constructed-memory-contract",
+            [("identity", lambda value: value)],
+            [1],
+            BenchmarkProtocol(warmup_iterations=0, measured_iterations=1, repetitions=1),
+            benchmark_suite.InputDescription("synthetic", "CONSTRUCTED memory measurement fixture"),
+            root=cli.ROOT,
+            clock=Clock(),
+            host={"system": "CONSTRUCTED"},
+            fingerprints={"verified": False, "checkpoints": {}},
+        )
+        for _ in range(2)
+    ]
+    assert (
+        reports[0]["memory"]["process_peak_rss_bytes"] * 2
+        == reports[1]["memory"]["process_peak_rss_bytes"]
+    )
+    assert reports[0]["stage_latency_ms"] == reports[1]["stage_latency_ms"]
+    assert reports[0]["output_fingerprint_sha256"] == reports[1]["output_fingerprint_sha256"]
+    assert all(not r["real_time_claim_permitted"] and not r["is_safety_evidence"] for r in reports)

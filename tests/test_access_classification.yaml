@@ -31,12 +31,12 @@ limitations:
   policy.
 summary:
   total_test_files: 154
-  model_checkpoint_access: 15
   raw_media_access: 4
-  unknown: 39
-  synthetic_only: 77
-  metadata_only: 17
+  unknown: 40
   processed_data_access: 2
+  model_checkpoint_access: 14
+  metadata_only: 17
+  synthetic_only: 77
   safe_for_synthetic_runner: 94
 test_files:
   tests/integration/test_phase0_smoke.py:
@@ -1979,31 +1979,23 @@ test_files:
       skipped: 0
       passed: 18
   tests/unit/test_phase14_benchmark_suite.py:
-    access_dirs:
-    - configs
-    - experiments/vision/39f402dfe460/checkpoints/weights
-    access_paths:
-    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
-    - configs/decision_policy_v1.yaml
-    - configs/frozen_experiment_v1.yaml
-    blocked_attempts:
-      MODEL_CHECKPOINT: 3
-    category: MODEL_CHECKPOINT_ACCESS
-    child_processes_guarded: false
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: Attempted 3 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
-      via io.open in test_real_artifacts_verify_and_both_hash_conventions_are_recorded (call).
+    sha256: d6ce14b8f0ea08844fc66c2a5d523ff3d2311f23ce43643cff85f7d0e31521ad
+    category: UNKNOWN
     safe_for_synthetic_runner: false
-    sha256: 7f9525fe9407e416e680b707b1d3085f1669a2b2df814aa019b9be7f4b889d27
+    reason: 'tests/unit/test_phase14_benchmark_suite.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
     spawns_child_process: false
-    static_hints:
-    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt
-    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    child_processes_guarded: false
     tests:
-      failed: 3
+      passed: 0
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 32
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/unit/test_phase14_profiler.py:
     access_dirs: []
     access_paths: []
@@ -3522,7 +3514,7 @@ test_files:
       skipped: 0
     evidence: source_inventory_only_no_dynamic_classification_claim
   tests/synthetic_mission24/test_cli.py:
-    sha256: 0e52ba8442c20119ef85ca19bd6634858aae2f18f75c4f64074aae51a2bca4c8
+    sha256: 715f5d7a23e269940aac291129a53a61be35dcc821d5cf5db76ac0ab51f05ab0
     category: UNKNOWN
     safe_for_synthetic_runner: false
     reason: 'tests/synthetic_mission24/test_cli.py: changed/new source; UNKNOWN pending executed evidence

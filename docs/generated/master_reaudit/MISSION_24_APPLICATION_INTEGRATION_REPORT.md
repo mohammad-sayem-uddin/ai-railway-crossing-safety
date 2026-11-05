@@ -36,3 +36,7 @@ PYTHONPATH=src:. PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m railway_detection
 ```
 
 The inspection accepts only named execution metadata, rejects protected-root aliases before reading, verifies exact integer group/totals and inconsistent pass claims, and preserves exclusion counts. It reports internal consistency only. The separate acceptance command validates current source bindings and actually executes selected cases.
+
+## Regression found during complete integration
+
+A complete guarded run exposed an unrelated pre-existing flaky benchmark fixture: the report-equality test injected a stepped clock and host metadata but left lifetime peak RSS measured from the live process. The two reports differed only in that memory field. The fixture now controls RSS too, retaining its full report-equality assertion. A companion application test injects two different RSS readings and verifies that the unchanged benchmark implementation still reports the differing memory values with identical synthetic workload/timing outputs and no performance or safety claim. This is a test-fixture correction, not suppression of measured fields or a new benchmark result.

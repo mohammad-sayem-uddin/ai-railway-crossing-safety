@@ -54,7 +54,13 @@
     {
       "phase": "B/C/D/E/F/G/H",
       "validation": "190 focused cases passed;RuffAST14 files;scopedMypy8 source files;typed app/CLI/review/resource access and inactive comparator;full acceptance pending",
-      "delivery": "containing implementation commit"
+      "delivery": "025e8effd76b698b3332986c7a3a52826d82d765",
+      "push_verified": true
+    },
+    {
+      "phase": "J/RSS fixture remediation",
+      "validation": "191 new focused cases and existing determinism assertion pass;test now injects all measured inputs;companion regression preserves varying RSS reporting;protected-case8 ASTs unchanged",
+      "delivery": "containing fixture-remediation commit"
     }
   ],
   "live_operations_executed": [],
