@@ -23,15 +23,21 @@ limitations:
 - The classification is bound to each file's SHA-256; a changed file is STALE and not run.
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
+- Mission22 inventories new/changed test files conservatively as UNKNOWN, with zero invented classifier
+  test counts; its complete regression command still executes every file under a separate inherited access
+  policy.
+- Mission22 inventories new/changed test files conservatively as UNKNOWN, with zero invented classifier
+  test counts; its complete regression command still executes every file under a separate inherited access
+  policy.
 summary:
-  total_test_files: 121
+  total_test_files: 146
   synthetic_only: 78
-  metadata_only: 22
+  metadata_only: 21
   model_checkpoint_access: 15
   processed_data_access: 2
   raw_media_access: 4
-  unknown: 0
-  safe_for_synthetic_runner: 100
+  unknown: 26
+  safe_for_synthetic_runner: 99
 test_files:
   tests/integration/test_phase0_smoke.py:
     access_dirs: []
@@ -1417,58 +1423,24 @@ test_files:
       skipped: 0
       passed: 72
   tests/unit/test_media_opener_coverage.py:
-    access_dirs:
-    - research
-    - research/scripts
-    - scratch
-    access_paths:
-    - research/__init__.py
-    - research/scripts/__init__.py
-    - research/scripts/generate_ablation_figures.py
-    - research/scripts/generate_all_figures.py
-    - research/scripts/generate_architecture_diagrams.py
-    - research/scripts/generate_evaluation_figures.py
-    - research/scripts/generate_failure_figures.py
-    - research/scripts/generate_qualitative_figures.py
-    - research/scripts/generate_state_machine_diagram.py
-    - research/scripts/generate_temporal_diagrams.py
-    - research/scripts/generate_training_figures.py
-    - research/scripts/generate_video_progression_figure.py
-    - scratch/analyze_audio.py
-    - scratch/analyze_forensic_results.py
-    - scratch/analyze_train_events.py
-    - scratch/audit_train_events.py
-    - scratch/compute_candidates.py
-    - scratch/dense_event_measurer.py
-    - scratch/extract_frames.py
-    - scratch/forensic_event_auditor.py
-    - scratch/generate_v7_proposals.py
-    - scratch/measure_ground_truth_v7.py
-    - scratch/physical_frame_inspector.py
-    - scratch/run_phase2_verification.py
-    - scratch/run_unit_tests.py
+    sha256: 72ba608bbaf52f4e2bde60108b8a364da753c03d61141851e92b17e1fc3bd180
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_media_opener_coverage.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
     blocked_attempts: {}
-    category: METADATA_ONLY
-    child_processes_guarded: false
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: Reads 25 repository metadata file(s) (e.g. research/__init__.py, research/scripts/__init__.py,
-      research/scripts/generate_ablation_figures.py); no media, weights, processed data or results were
-      requested.
-    safe_for_synthetic_runner: true
-    sha256: c27ddf55f137bc281aae8a6fabe79dc0c1e62a6cd31be764beefe8a66edfefe8
+    access_dirs: []
+    static_hints: []
     spawns_child_process: false
-    static_hints:
-    - 'import subprocess
-
-      subprocess.run([''ffmpeg'', ''-i'', ''a.mov'', ''b.jpg''])
-
-      '
-    - src/railway_detection/experiments/frozen_config.py::compute_file_sha256
+    child_processes_guarded: false
     tests:
       failed: 0
       errors: 0
       skipped: 0
-      passed: 8
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/unit/test_metadata_only_audit.py:
     access_dirs: []
     access_paths: []
@@ -3049,6 +3021,481 @@ test_files:
       errors: 0
       skipped: 0
       passed: 9
+  tests/synthetic_data_provenance/test_manifest.py:
+    sha256: b2a5248d975bdb24d01599c50f3737d04b50c1c7e848c7b83cd30c809bae88c9
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_data_provenance/test_manifest.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_evaluation_pipeline/test_orchestration.py:
+    sha256: ddeea2e6902b4a13af1425cad19bb560b196b7bb89708f8d2df6d377bbf41804
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_evaluation_pipeline/test_orchestration.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_human_review/test_adapters.py:
+    sha256: 6d6b9591efa865f7fb73ec5d67efaec72479106b91bc8ab1d679faf93e8b3e12
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_human_review/test_adapters.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_human_review/test_domain.py:
+    sha256: d4346b6a01451f6c07cee94e8af723bc039b5c0a44ef13284f09e72d1778d24e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_human_review/test_domain.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_human_review/test_persistence.py:
+    sha256: 367906b22d6e69342f7d9efe8d6042fa3fb4d3c1c523c44a0052f2068d6186f4
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_human_review/test_persistence.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_metric_contracts/test_reporting.py:
+    sha256: 8e06301fdb0dcf7908ebb9637e8b5e5a3aa173270f88d23dd6c412a514447aef
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_metric_contracts/test_reporting.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_convention_b.py:
+    sha256: 2aa21e462217ee7126afc98a4d5a26633e50da6063fbf8418b9205d695fae658
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_convention_b.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_grouped_cv.py:
+    sha256: 81018f5539a144e650d5206c9cf9bda5ca8474230773310b781b5e733c42c12d
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_grouped_cv.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_isolation.py:
+    sha256: 5d9424894bb70979695114bb72b9955885b6448874f6c8eddbfddf8622c52986
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_isolation.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_mission17f_regressions.py:
+    sha256: 9b5cb17c176079275d8261cd6f33906268524f009b37c2a28a116d22590f5ff4
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_mission17f_regressions.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_mission17g_hardening.py:
+    sha256: 5e6e62b3cf8f8b85dc3532d03fb6942fe02f7a51bd3fa60d18c6cc994cd7ddaa
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_mission17g_hardening.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission18a/test_convention_b_integration.py:
+    sha256: 236d4e2255fa12ddd02f7172bda9438d20cecdc5b21d6c5b96fc5cf065d19eab
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission18a/test_convention_b_integration.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission18a/test_isolation.py:
+    sha256: bc8ef206b442012f6b5655403326a9ce1c542f48d932ed37b39f6d23016d163f
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission18a/test_isolation.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission18b/test_provenance.py:
+    sha256: 8010ba783b4a351c1888b08905f8b0031d090cea0724c47245b01cfafdb59044
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission18b/test_provenance.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_crash_and_adversarial.py:
+    sha256: 75ab5aac4b157686571f5137c6b0c55e54d7660dcd278dee1ed077eedf7d5d5f
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_crash_and_adversarial.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_metric_bridge.py:
+    sha256: 62ca81c05586579b8eeb8d19c9074b1c82ef7db37f3be522e40f863b413db37e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_metric_bridge.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_review_service.py:
+    sha256: d01d172fd2382ccaed6e06f09536743c06db45086007e3c061a874b91fd55e8f
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_review_service.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_workflow.py:
+    sha256: 939a69c695a5c483a72aa3a31d098f9b928b3b1967f6e721114fc476763826fd
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_workflow.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_preservation/test_snapshot.py:
+    sha256: 09aecea3dff47298dad46810c7b6daf786f61cb010a53256fd9249a78cf14dcf
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_preservation/test_snapshot.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_reporting/test_drafts.py:
+    sha256: 805290c1a6f15664f9c45307770bdceeee9f4c47e048e2585e40a529368b3865
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_reporting/test_drafts.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_security/test_broker.py:
+    sha256: f3d430a8aebfe2451a55a24362f08ae41cde601614b4a776109c3b96509d26c2
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_security/test_broker.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_security/test_composed_workflow.py:
+    sha256: b1314dc95a62b8dfca94fb7fb513fad22f113c5a359b6917ac605835ec67f34f
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_security/test_composed_workflow.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_security/test_transactions.py:
+    sha256: b4f5abda2f76d9ccf80a6223d1d69f19a221138630325202abfbc50180ef54e9
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_security/test_transactions.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_tooling/test_restored_mypy.py:
+    sha256: a9d02f3566ef1b6d492972278222d4da2b708b192495dd8768074da5c7cefd9b
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_tooling/test_restored_mypy.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_regression_policy.py:
+    sha256: 7606cfa12aa4d52a8f37a56c7548352d92ea50039ead8e91c29a91e29e393711
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_regression_policy.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
 amendments:
 - mission: 14
   tool: docs/generated/phase5/mission14_tools/classify_selected.py

@@ -151,3 +151,52 @@ def test_protected_output_path_denied_before_access(monkeypatch):
 
     with pytest.raises(SnapshotError):
         source_relative_path("data/raw/source.json")
+
+
+def test_coherent_file_digest_change_still_fails_deterministic_replay(tmp_path):
+    import hashlib
+
+    out = tmp_path / "run"
+    run_demo(out, code_identity=CODE)
+    core = json.loads((out / "execution.json").read_text())
+    core["simulations"]["front"]["result"]["controller_calls"] = 999
+    (out / "execution.json").write_text(json.dumps(core))
+    marker = json.loads((out / "COMPLETE.json").read_text())
+    marker["artifacts"]["execution.json"] = hashlib.sha256(
+        (out / "execution.json").read_bytes()
+    ).hexdigest()
+    (out / "COMPLETE.json").write_text(json.dumps(marker))
+    with pytest.raises(ValueError, match="deterministic replay"):
+        run_demo(out, code_identity=CODE, resume=True)
+
+
+@pytest.mark.parametrize("relative", ["RUN.json", "constructed.sqlite", "snapshot"])
+def test_resume_rejects_metadata_alias_before_read(tmp_path, relative, monkeypatch):
+    out = tmp_path / "run"
+    with pytest.raises(InterruptedError):
+        run_demo(out, code_identity=CODE, stop_after="initialization")
+    target = tmp_path / "unreadable_sentinel"
+    target.write_text("MUST NOT BE READ")
+    path = out / relative
+    if path.exists():
+        path.unlink()
+    path.symlink_to(target)
+    original = Path.read_text
+
+    def guarded(path, *args, **kwargs):
+        if path == target or path == out / relative:
+            raise AssertionError("metadata alias was opened")
+        return original(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", guarded)
+    with pytest.raises(ValueError, match="symlink refused before access"):
+        run_demo(out, code_identity=CODE, resume=True)
+
+
+def test_projection_does_not_activate_inactive_candidate_module():
+    script = (
+        "import sys; import railway_detection.annotation.human_review_adapter; "
+        "assert not any(k.endswith('stage2_1_schema_proposed') for k in sys.modules)"
+    )
+    result = subprocess.run([sys.executable, "-c", script], capture_output=True, text=True)
+    assert result.returncode == 0, result.stdout + result.stderr

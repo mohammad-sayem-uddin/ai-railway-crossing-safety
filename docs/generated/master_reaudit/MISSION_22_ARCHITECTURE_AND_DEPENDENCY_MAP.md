@@ -80,3 +80,43 @@ incompatible module-import/IO-tripwire suites in separate processes.
 The implementation will add adapters around these boundaries. Frozen scientific
 constants, historical A behavior, protocol files and live permission guards stay
 outside ordinary integration rewrites.
+
+
+## Mission 22 implemented graph
+
+The earlier dashed graph is the preserved baseline diagnosis. These adapters now execute:
+
+```mermaid
+flowchart TD
+ F[Constructed event and exact front/back inputs] --> L[WP07 immutable source/derived lineage]
+ L --> J[Exact identity and transitive-exposure join]
+ J --> CV[WP02 K4 constructed CV registry]
+ F --> A[WP04 fixture authority and byte broker]
+ A --> B[WP01 public runner B / actual decision engine]
+ B --> C[WP06 explicit camera-local streams]
+ C --> M[WP05 labeled B sampled geometry contracts]
+ C --> AH[Separate historical-shape A diagnostic receipts]
+ A --> R[Versioned WP03/WP04 shared SQLite review transaction]
+ R --> P[Non-promotable boundary projection]
+ J --> S[WP08 explicit source-only snapshot]
+ M --> E[Execution JSON / constructed contract results]
+ E --> N[WP09 empirical results absent report]
+ S --> Q[WP10 runtime / syntax / Ruff / scoped Mypy]
+ N --> Q
+```
+
+`integration_workflow.run_demo` owns stage ordering and immutable RUN binding;
+`ConstructedIdentity` binds the synthetic physical event, camera fixture IDs and
+explicit display alias. `validate_stream_bindings` rejects missing/crossed/fused
+camera inputs. `project_b_metrics` verifies the full retained request/result
+before a labeled diagnostic projection. `join_lineage` checks exact source,
+artifact, role and exposure relationships. `ConstructedReviewService` checks
+current authority and writes both journals/quota within one shared transaction;
+its scope cannot claim genuine human evidence.
+
+Persistence remains two distinct boundaries: SQLite domain/authority commit and
+filesystem completion markers. Parent-first alias rejection precedes named
+metadata opens; recovery/version/digest failures refuse certification. Local
+roles, clocks and anchors are explicit trust assumptions, not production services.
+The snapshot copies only the two generated source/docs fixture files named in
+its path tuple; it does not snapshot real source media or project data.

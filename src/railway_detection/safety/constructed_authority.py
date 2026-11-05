@@ -152,8 +152,14 @@ class ConstructedAuthority:
         try:
             yield
             self.db.execute("COMMIT")
-        except BaseException:
-            self.db.execute("ROLLBACK")
+        except BaseException as error:
+            try:
+                if self.db.in_transaction:
+                    self.db.execute("ROLLBACK")
+            except Exception as rollback_error:
+                error.add_note(
+                    "rollback failed; recover/audit before reuse: " + str(rollback_error)
+                )
             raise
 
     def _role(self, actor, role):

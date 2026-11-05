@@ -104,8 +104,14 @@ class ConstructedReviewStore:
                 raise ValueError("review registry/role/context substitution")
             self._restore()
             self.db.execute("COMMIT")
-        except BaseException:
-            self.db.execute("ROLLBACK")
+        except BaseException as error:
+            try:
+                if self.db.in_transaction:
+                    self.db.execute("ROLLBACK")
+            except Exception as rollback_error:
+                error.add_note(
+                    "rollback failed; recover/audit before reuse: " + str(rollback_error)
+                )
             raise
 
     def _apply(self, workflow, operation, actor, event, args):
@@ -234,8 +240,14 @@ class ConstructedReviewStore:
                 operation, actor, event, request_id=request_id, **args
             )
             self.db.execute("COMMIT")
-        except BaseException:
-            self.db.execute("ROLLBACK")
+        except BaseException as error:
+            try:
+                if self.db.in_transaction:
+                    self.db.execute("ROLLBACK")
+            except Exception as rollback_error:
+                error.add_note(
+                    "rollback failed; recover/audit before reuse: " + str(rollback_error)
+                )
             raise
         self.anchor = next_anchor
         return receipt

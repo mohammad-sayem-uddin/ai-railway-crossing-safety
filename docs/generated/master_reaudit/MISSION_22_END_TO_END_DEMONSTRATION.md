@@ -50,6 +50,20 @@ Focused integration tests:
 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission22 -p no:cacheprovider --import-mode=importlib tests/synthetic_mission22 -q
 ```
 
-Final regression/security/crash counts and readiness levels will be filled from
-actual execution in the final validation packet. No historical Mission21 pass
-is counted as a newly executed Mission22 test.
+Complete repository inventory under the constructed-only regression policy:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/run_mission22_regression.py --output /tmp/mission22-full-regression
+```
+
+Use a new external output directory. Each synthetic suite runs in its own
+process. The remaining test modules run in explicit batches with a temporary
+experiment registry fixture; the root conftest's real registry read is omitted.
+No test module is excluded. The inherited Python audit policy blocks project
+research data and native training backends; it permits source/runtime access,
+constructed temporary files and local loopback tests. This is not an OS sandbox.
+All commands, JUnit cases and denied attempts are retained in regression.json;
+per-group generated test fixtures are removed after their receipts are retained.
+Exit1 means at least one failure/error, including denied protected-data attempts.
+Those cases are never counted as passing or skipped. Final exact counts and
+limitations are in MISSION_22_FINAL_VALIDATION.json.

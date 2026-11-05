@@ -14,7 +14,7 @@ existing-runner B entrypoint, separate A receipts, explicit sampled B geometry
 contracts, exact lineage/CV asset and exposure joins, atomically authorized
 review fixtures, deterministic source snapshots and a results-absent report.
 
-Current focused suite:41 passed,0 failed/errors/skips. Original human-review30
+First acceptance focused suite:41 passed,0 failed/errors/skips. Original human-review30
 and security46 cases also passed during remediation. Scoped analysis covers the
 seven new/modified application paths; final broader regression follows.
 
@@ -23,3 +23,25 @@ review context only checked at opening; missing versioned service boundary;
 uncontrolled malformed receipt errors; fresh tuple-rich versus resumed JSON
 result shapes; completion markers able to omit required artifact paths. These
 are bounded constructed software fixes, not a live service or human enrollment.
+
+
+## Adversarial and recovery acceptance
+
+The focused suite now executes62 cases, all passing with zero skips/errors.
+The original500 Mission21 cases were independently rerun and passed under the
+inherited policy, including the original238 in a fresh process. Full legacy
+regression is separately accounted for; its non-passing protected-data cases
+are not engineering acceptance or missing-dependency skips.
+
+Further fixes: actual SQLITE_FULL rollback could mask its original exception;
+ACK step could disagree with its journal prefix; missing/crossed camera streams
+needed an explicit admission join; a coherent completed-file hash change needed
+full B replay; resumed metadata aliases needed rejection before reads; the
+boundary adapter imported the inactive proposed module contrary to its fence.
+All now have executed regression coverage. New hash openers are reviewed as
+constructed metadata-only, and stale test classifications remain conservative.
+
+Security/crash reports classify tested local properties separately from genuine
+identity, trusted time, power loss, hostile root and live-service acceptance.
+The back-camera comparator has a full technical contract with one isolated
+pending scientific mapping; no arbitrary tie/missing-data rules are activated.

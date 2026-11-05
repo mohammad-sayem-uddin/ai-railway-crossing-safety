@@ -15,10 +15,14 @@ from railway_detection.annotation.stage2_1_schema import (
     STAGE_2_1_SCHEMA_VERSION,
     BoundaryAdjudication,
 )
-from railway_detection.annotation.stage2_1_schema_proposed import (
-    PROPOSED_SCHEMA_VERSION,
-    BoundaryObservation,
-)
+
+# A non-promotable wire projection does not activate the inactive candidate module.
+PROPOSED_SCHEMA_VERSION = "8.2.0-stage2.1-proposed"
+NOT_OBSERVABLE_REASONS = {
+    "not_applicable_for_cohort",
+    "not_visible_in_recording",
+    "landmark_not_defined",
+}
 
 
 def project_constructed_boundaries(
@@ -68,21 +72,25 @@ def project_constructed_boundaries(
                 )
             )
         else:
-            projected[canonical_name] = BoundaryObservation(
-                state=observation.state,
-                rationale=observation.rationale,
-                evidence_status=statuses[local],
-                value_s=seconds,
-                reference_camera=observation.camera,
-                frame_index=None,
-                censoring_direction=observation.censoring_direction,
-                timestamp_uncertainty_s=(
+            reason = reasons.get(local)
+            if observation.state == "NOT_OBSERVABLE" and reason not in NOT_OBSERVABLE_REASONS:
+                raise ValueError("explicit valid not-observable reason required")
+            projected[canonical_name] = {
+                "state": observation.state,
+                "rationale": observation.rationale,
+                "evidence_status": statuses[local],
+                "value_s": seconds,
+                "reference_camera": observation.camera,
+                "frame_index": None,
+                "censoring_direction": observation.censoring_direction,
+                "timestamp_uncertainty_s": (
                     None
                     if observation.uncertainty_us is None
                     else observation.uncertainty_us / 1_000_000
                 ),
-                not_observable_reason=reasons.get(local),
-            ).to_dict()
+                "not_observable_reason": reason,
+                "onset_provenance": None,
+            }
     return {
         "schema": "CONSTRUCTED_BOUNDARY_PROJECTION_V1",
         "target_boundary_schema": target_schema,

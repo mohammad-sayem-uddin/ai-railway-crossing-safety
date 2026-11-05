@@ -25,6 +25,8 @@ RESEARCH_READER_ALLOWLIST: dict[str, str] = {}
 
 #: ``"<relative path>::<function>"`` -> why this function cannot open raw media.
 REVIEWED_METADATA_ONLY: dict[str, str] = {
+    "src/railway_detection/synthetic/integration_workflow.py::verify_completed": "hashes only closed-name constructed demo JSON/docs/source artifacts after protected-root and parent-first symlink rejection",
+    "src/railway_detection/synthetic/integration_workflow.py::run_demo": "hashes only its own named constructed artifacts and snapshot, after protected-root and parent-first symlink rejection; never media/cache/checkpoint paths",
     "src/railway_detection/annotation/batch_multimodal_annotator.py::_compute_prompt_hash": "hashes the prompt template text file",
     "src/railway_detection/annotation/candidate_split_queue.py::_read_json": "reads JSON manifests",
     "src/railway_detection/annotation/gemini_annotator.py::_load_prompt_template_hash": "hashes the prompt template text file",

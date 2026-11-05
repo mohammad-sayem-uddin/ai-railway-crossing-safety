@@ -48,7 +48,10 @@ from railway_detection.safety.constructed_broker import (
 )
 from railway_detection.simulation.runner import EventSimulationRunner
 from railway_detection.synthetic.convention_b_pipeline import ConstructedBatch, IntegrationRequest
-from railway_detection.synthetic.integration_contracts import project_b_metrics
+from railway_detection.synthetic.integration_contracts import (
+    project_b_metrics,
+    validate_stream_bindings,
+)
 from railway_detection.synthetic.integration_fixture import make_fixture
 
 SCHEMA = "M22_CONSTRUCTED_RUN/1"
@@ -114,7 +117,35 @@ def output_path(value):
     return path
 
 
+def reject_metadata_aliases(output):
+    """Check parents before children; cooperative local check, not an OS race fence."""
+    paths = (
+        "RUN.json",
+        "ACK.json",
+        "constructed.sqlite",
+        "constructed.sqlite-journal",
+        "constructed.sqlite-wal",
+        "constructed.sqlite-shm",
+        "COMPLETE.json",
+        "execution.json",
+        "results_absent_report.md",
+        "source_fixture/docs/input_envelope.json",
+        "source_fixture/src/fixture.py",
+        "snapshot/SOURCE_MANIFEST.json",
+        "snapshot/docs/input_envelope.json",
+        "snapshot/src/fixture.py",
+    )
+    for relative in paths:
+        parts = Path(relative).parts
+        current = output
+        for part in parts:
+            current = current / part
+            if current.is_symlink() or current.with_name(current.name + ".pending").is_symlink():
+                raise ValueError("constructed metadata symlink refused before access")
+
+
 def verify_completed(output, descriptor):
+    reject_metadata_aliases(output)
     marker = json.loads((output / "COMPLETE.json").read_text())
     if marker.get("schema") != SCHEMA or marker.get("descriptor_sha256") != sha(text(descriptor)):
         raise ValueError("completion schema/binding mismatch")
@@ -159,12 +190,29 @@ def verify_completed(output, descriptor):
         )
     ):
         raise ValueError("completed artifact cannot become real evidence or another event")
+    fixture = make_fixture(seed=descriptor["seed"], code_identity=descriptor["code_identity"])
+    for camera, request in fixture["requests"].items():
+        from railway_detection.fusion.decision_engine import MultimodalDecisionEngine
+
+        fresh = EventSimulationRunner(MultimodalDecisionEngine()).run_frames_convention_b(request)
+        if core["simulations"][camera]["result"] != json.loads(fresh.canonical_json()):
+            raise ValueError("completed B output fails deterministic replay")
+        t4 = 7_200_000 + (100_000 if camera == "back" else 0)
+        expected_metrics = json.loads(
+            text(project_b_metrics(fresh, expected_request=request, t4_us=t4))
+        )
+        if core["B_metric_contracts"][camera] != expected_metrics:
+            raise ValueError("completed B metric contract mismatch")
+    if core["lineage_CV"] != json.loads(text(fixture["joined"])):
+        raise ValueError("completed lineage/CV provenance mismatch")
     return core
 
 
 def run_demo(destination, *, seed=22, code_identity, resume=False, stop_after=None):
     output = output_path(destination)
+    reject_metadata_aliases(output)
     fixture = make_fixture(seed=seed, code_identity=code_identity)
+    validate_stream_bindings(fixture)
     identity = fixture["identity"]
     source = ConstructedResource(
         "synthetic:resource:frames", "synthetic:resource:v1", fixture["source_bytes"]
@@ -323,6 +371,13 @@ def run_demo(destination, *, seed=22, code_identity, resume=False, stop_after=No
             or not 0 <= ack["step"] <= len(actions)
         ):
             raise ValueError("unsupported checkpoint")
+        if (
+            type(ack.get("anchor")) is not list
+            or len(ack["anchor"]) != 2
+            or type(ack["anchor"][0]) is not int
+            or ack["anchor"][0] != ack["step"]
+        ):
+            raise ValueError("checkpoint step and committed review prefix disagree")
         anchor = tuple(ack["anchor"])
         try:
             store = ConstructedReviewStore(

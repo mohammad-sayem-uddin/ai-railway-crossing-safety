@@ -53,10 +53,50 @@
         "root_full_regression": "not yet executed"
       },
       "parent": "9ea9198e3cbd1a452c28ef7aeeeaed80854b5beb",
+      "commit_record": "ca81f6effc7d2645a4f9b0a1238ef0a165708ee9",
+      "push_verified": true
+    },
+    {
+      "phase": "DFHG",
+      "message": "fix: harden constructed recovery and exercise adversarial integration boundaries",
+      "files": [
+        "src/railway_detection/annotation/human_review_adapter.py",
+        "src/railway_detection/annotation/human_review_store.py",
+        "src/railway_detection/safety/constructed_authority.py",
+        "src/railway_detection/synthetic/integration_contracts.py",
+        "src/railway_detection/synthetic/integration_workflow.py",
+        "scripts/run_mission22_regression.py",
+        "tests/mission22_policy.py",
+        "tests/synthetic_mission22/test_crash_and_adversarial.py",
+        "tests/synthetic_mission22/test_regression_policy.py",
+        "tests/synthetic_mission22/test_workflow.py",
+        "tests/test_access_classification.yaml",
+        "tests/unit/test_media_opener_coverage.py",
+        "docs/generated/master_reaudit/MISSION_22_ARCHITECTURE_AND_DEPENDENCY_MAP.md",
+        "docs/generated/master_reaudit/MISSION_22_INTERFACE_CONTRACT_AUDIT.md",
+        "docs/generated/master_reaudit/MISSION_22_INTEGRATED_SYSTEM_VALIDATION_REPORT.md",
+        "docs/generated/master_reaudit/MISSION_22_END_TO_END_DEMONSTRATION.md",
+        "docs/generated/master_reaudit/MISSION_22_SECURITY_AND_FAILURE_INJECTION_REPORT.md",
+        "docs/generated/master_reaudit/MISSION_22_CRASH_RECOVERY_REPORT.md",
+        "docs/generated/master_reaudit/MISSION_22_BACK_CAMERA_COMPARATOR_SPEC.md"
+      ],
+      "validation": {
+        "focused": 62,
+        "failed": 0,
+        "skipped": 0,
+        "mypy_application_files": 9,
+        "ruff_and_AST": "all changed Python paths",
+        "full_inventory": "final run in progress; prior500 independently passed",
+        "scientific_pending": "M22-COMP-MAPPING only"
+      },
+      "parent": "ca81f6effc7d2645a4f9b0a1238ef0a165708ee9",
       "commit_record": "containing commit; actual hash retained in next phase/final delivery receipt"
     }
   ],
   "live_permissions_activated": 0,
   "mission21_source_validation": "38 Python hashes/AST and17 source commits independently checked",
-  "status": "IN_PROGRESS"
+  "status": "IN_PROGRESS",
+  "current_status": "constructed integration and adversarial/recovery phases validated; final full inventory running",
+  "pending_scientific_definition": "M22-COMP-MAPPING",
+  "live_operations_executed": []
 }

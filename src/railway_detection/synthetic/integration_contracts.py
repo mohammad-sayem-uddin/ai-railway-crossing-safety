@@ -181,3 +181,24 @@ def project_b_metrics(result, *, expected_request, t4_us, boundary_state="OBSERV
         ],
         "limit": "sampled exact-geometry software projection; no continuous safety inference",
     }
+
+
+def validate_stream_bindings(fixture):
+    """No display-slot identity, missing stream or fused source can stand in for this fixture."""
+    identity = fixture["identity"]
+    identity.validate()
+    requests = fixture["requests"]
+    if set(requests) != {"front", "back"}:
+        raise ValueError("both explicitly independent constructed camera streams required")
+    for camera, request in requests.items():
+        if request.batch.fixture_id != identity.fixture_id + ":" + camera:
+            raise ValueError("camera/event fixture identity mismatch")
+        rows = json.loads(request.batch.inputs_json)
+        if not rows:
+            raise ValueError("missing camera stream; no zero metric substitution")
+        for row in rows:
+            if not row["frame"]["vision_records"] or any(
+                evidence["source_id"] != "camera_" + camera or evidence["modality"] != "vision"
+                for evidence in row["frame"]["vision_records"]
+            ):
+                raise ValueError("camera identity mismatch or unapproved cross-camera fusion")

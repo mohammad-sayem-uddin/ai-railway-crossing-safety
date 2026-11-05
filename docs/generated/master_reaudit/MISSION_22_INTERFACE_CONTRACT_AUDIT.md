@@ -22,7 +22,30 @@ and cutoff endpoints, not fixed report-grid points as new observations, and
 supplies no continuous safety inference. Human T4/occupancy/physical entry remain
 unestablished. Real evaluation remains denied by its existing entrypoint.
 
-The native controller is unchanged. Audio must remain supporting-only; a
-separate audio-only integration negative will verify it cannot issue closure or
-clearance. Back-audio remains deferred. The comparator's unresolved policy is
+The native controller is unchanged. Audio must remain supporting-only; the
+executed audio-only integration negative verifies no LOWER command and no
+CROSSING_CLEAR state. Back-audio remains deferred. The comparator's unresolved policy is
 isolated in the separate formal specification, never filled with defaults.
+
+
+## Final interface hardening
+
+The adapter no longer imports the inactive proposed schema module. It emits a
+plain, non-promotable wire projection with explicit reasons/sidecar, validates
+its limited fields, and never satisfies a complete active schema or creates
+approval/onset evidence. Both the original30 human-review cases and a fresh
+cold-process import-fence case pass.
+
+The driver refuses named RUN/DB/snapshot aliases before metadata reads, checks
+ACK step against committed prefix, and checks detached B output by replay even
+if an attacker updates its file digest. New hash openers are registered in the
+existing source tripwire with their exact constructed-only path bounds. The
+scanner still detects unguarded media readers. New/changed test classifications
+are conservatively UNKNOWN until the original classifier is rerun; no safe
+classification or dynamic classifier counts are invented. Mission22's separate
+full-inventory runner executes those files regardless of that classification.
+
+Real WP03 service prerequisites remain missing: genuine appointment and consent,
+qualified distinct second reviewer when triggered, source-bound observations,
+real player access, human batch judgment and promotion evidence. Mock review
+records, local actor strings and boundary projections cannot provide them.
