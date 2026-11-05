@@ -142,6 +142,24 @@ class ReviewLifecycle:
             raise PermissionError("mock verifier principal cannot authenticate genuine evidence")
         return principal
 
+    def _verify_statement(
+        self, kind: str, value: object, reference: str | None, principal: str, now: int
+    ) -> None:
+        if self._verify(kind, value, reference, now) != principal:
+            raise PermissionError("human statement signer differs from assigned principal")
+
+    def _verify_adjudication(self, record: Adjudication, principal: str, now: int) -> None:
+        self._verify_statement(
+            "HUMAN_ADJUDICATION", record, record.human_statement_reference, principal, now
+        )
+        resolution = record.resolution
+        if (
+            resolution is not None
+            and resolution.observation.boundary == "T2"
+            and resolution.observation.state == "OBSERVABLE"
+        ):
+            self._verify("PHYSICAL_ENTRY_LANDMARK", resolution, resolution.landmark_evidence, now)
+
     def _access(
         self, permission: Permission, actor: str, event: str, operation: str, now: int, role: str
     ) -> str:
@@ -214,7 +232,7 @@ class ReviewLifecycle:
         a = self._assignment(assignment_id)
         if permission.reference != a.permission_reference:
             raise PermissionError("assignment authorization reference substitution")
-        self._access(permission, a.reviewer_id, a.event, "SUBMIT", now, "REVIEWER")
+        principal = self._access(permission, a.reviewer_id, a.event, "SUBMIT", now, "REVIEWER")
         if assignment_id not in self._sessions or a.role != "REVIEWER":
             raise ValueError("blind reviewer session required")
         source = item.validate(self.batch)
@@ -225,7 +243,9 @@ class ReviewLifecycle:
         ):
             raise PermissionError("observation assignment/source scope mismatch")
         if not self.fixture:
-            self._verify("HUMAN_OBSERVATION", item, item.human_statement_reference, now)
+            self._verify_statement(
+                "HUMAN_OBSERVATION", item, item.human_statement_reference, principal, now
+            )
             self._verify("SOURCE_IDENTITY", source, source.verification_reference, now)
             if item.observation.boundary == "T2" and item.observation.state == "OBSERVABLE":
                 self._verify("PHYSICAL_ENTRY_LANDMARK", item, item.landmark_evidence, now)
@@ -399,7 +419,7 @@ class ReviewLifecycle:
         else:
             raise ValueError("automatic adjudication forbidden")
         if not self.fixture:
-            self._verify("HUMAN_ADJUDICATION", record, record.human_statement_reference, now)
+            self._verify_adjudication(record, principal, now)
         prior = self._adjudications.get(record.adjudication_id)
         if prior:
             if prior != record:
@@ -475,12 +495,7 @@ class ReviewLifecycle:
                         if principal in principals:
                             raise PermissionError("adjudicator independence changed")
                         if not self.fixture:
-                            self._verify(
-                                "HUMAN_ADJUDICATION",
-                                resolution,
-                                resolution.human_statement_reference,
-                                now,
-                            )
+                            self._verify_adjudication(resolution, principal, now)
                     except (ValueError, PermissionError, StopIteration) as exc:
                         issues.append("ADJUDICATION_CURRENT_EVIDENCE:" + str(exc))
             events.append((event, tuple(sorted(set(issues)))))
@@ -508,7 +523,18 @@ class ReviewLifecycle:
                     verification.append(kind + ":" + str(exc))
             for item in self.observations:
                 try:
-                    self._verify("HUMAN_OBSERVATION", item, item.human_statement_reference, now)
+                    principal = self.roster[item.reviewer_id].principal(
+                        event=next(
+                            s.event for s in self.batch.sources if s.source_id == item.source_id
+                        ),
+                        role="REVIEWER",
+                        now=now,
+                        fixture=False,
+                        verifier=self.verifier,
+                    )
+                    self._verify_statement(
+                        "HUMAN_OBSERVATION", item, item.human_statement_reference, principal, now
+                    )
                     if item.observation.boundary == "T2" and item.observation.state == "OBSERVABLE":
                         self._verify("PHYSICAL_ENTRY_LANDMARK", item, item.landmark_evidence, now)
                 except (ValueError, PermissionError) as exc:

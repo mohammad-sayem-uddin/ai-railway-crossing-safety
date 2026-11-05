@@ -31,12 +31,12 @@ limitations:
   policy.
 summary:
   total_test_files: 158
+  unknown: 44
+  metadata_only: 17
   processed_data_access: 2
   synthetic_only: 77
   model_checkpoint_access: 14
-  metadata_only: 17
   raw_media_access: 4
-  unknown: 44
   safe_for_synthetic_runner: 94
 test_files:
   tests/integration/test_phase0_smoke.py:
@@ -3568,7 +3568,7 @@ test_files:
       skipped: 0
     evidence: source_inventory_only_no_dynamic_classification_claim
   tests/synthetic_mission25/test_contracts.py:
-    sha256: 41c49baf00b0c80c825f0974ccb4e9d89a0285c6abde25b7ff6b7371c27a6ccf
+    sha256: 22424d0359932bf7ce697f9733f73d3dc89f424295cee893ae81ae55b095f99a
     category: UNKNOWN
     safe_for_synthetic_runner: false
     reason: 'tests/synthetic_mission25/test_contracts.py: changed/new source; UNKNOWN pending executed

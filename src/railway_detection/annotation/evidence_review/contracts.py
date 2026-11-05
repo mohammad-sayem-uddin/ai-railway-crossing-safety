@@ -166,6 +166,9 @@ class Reviewer:
         if not self.identity_evidence or not self.qualification.verification_reference:
             raise PermissionError("identity and authorized qualification verification required")
         principal = verifier.verify("REVIEWER_IDENTITY", digest(self), self.identity_evidence, now)
+        text(principal)
+        if principal.startswith("synthetic:"):
+            raise PermissionError("mock principal cannot authenticate genuine reviewer")
         for kind, ref in (
             ("QUALIFICATION", self.qualification.verification_reference),
             ("INDEPENDENCE", self.independence_reference),

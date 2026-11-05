@@ -317,3 +317,91 @@ def test_uncertain_original_pts_still_must_match_its_source_clock(contracts, fau
     )
     with pytest.raises(ValueError, match="source contract"):
         replace(item, observation=o).validate(batch)
+
+
+@pytest.mark.parametrize(
+    "returned", [None, "", "synthetic:forged-principal", "different-unverified-principal"]
+)
+def test_external_statement_port_cannot_authenticate_a_different_or_mock_signer(
+    contracts, returned
+):
+    # Deliberately contradictory verifier output exercises refusal only. No
+    # deployment verifier or positive genuine evidence is created by this test.
+    class ContradictoryPort:
+        def verify(self, kind, subject_digest, reference, now):
+            return returned
+
+    from railway_detection.annotation.evidence_review.contracts import CANDIDATE
+
+    _, batch, roster, _ = contracts
+    source = replace(
+        batch.sources[0], source_id="unverified-source-reference", event="train_events/event_001"
+    )
+    candidate = replace(
+        batch,
+        classification=CANDIDATE,
+        events=(("train_events/event_001", "TRAIN"),),
+        sources=(source,),
+    )
+    engine = ReviewLifecycle(candidate, roster, verifier=ContradictoryPort())
+    with pytest.raises((ValueError, PermissionError)):
+        engine._verify_statement(
+            "HUMAN_OBSERVATION",
+            {"classification": "UNVERIFIED_TEST_ONLY"},
+            "unverified-statement-reference",
+            "expected-unverified-principal",
+            10,
+        )
+    assert not engine.observations
+    assert not engine.readiness(now=10).genuine_evidence_accepted
+
+
+def test_t2_adjudication_requires_landmark_attestation_separate_from_human_statement(contracts):
+    class LandmarkRefusingPort:
+        def __init__(self):
+            self.calls = []
+
+        def verify(self, kind, subject_digest, reference, now):
+            self.calls.append(kind)
+            if kind == "PHYSICAL_ENTRY_LANDMARK":
+                raise PermissionError("no actual physical landmark evidence")
+            if kind == "HUMAN_ADJUDICATION":
+                return "unverified-expected-principal"
+            raise PermissionError("all genuine evidence absent in this negative fixture")
+
+    from railway_detection.annotation.evidence_review.contracts import CANDIDATE
+    from railway_detection.annotation.evidence_review.lifecycle import Adjudication
+
+    _, batch, roster, _ = contracts
+    source = replace(
+        batch.sources[0], source_id="unverified-source-reference", event="train_events/event_001"
+    )
+    candidate = replace(
+        batch,
+        classification=CANDIDATE,
+        events=(("train_events/event_001", "TRAIN"),),
+        sources=(source,),
+    )
+    port = LandmarkRefusingPort()
+    engine = ReviewLifecycle(candidate, roster, verifier=port)
+    resolution = replace(
+        point(batch, roster[0], "T2"),
+        landmark_kind="PHYSICAL_ROADWAY_ENTRY",
+        landmark_evidence="unverified-landmark-reference",
+    )
+    record = Adjudication(
+        "unverified-test-adjudication",
+        source.event,
+        source.source_id,
+        "T2",
+        "unverified-adjudicator-reference",
+        (),
+        "HUMAN_RESOLVED",
+        "negative verification fixture, never stored",
+        resolution,
+        "unverified-human-statement-reference",
+    )
+    with pytest.raises(PermissionError, match="physical landmark"):
+        engine._verify_adjudication(record, "unverified-expected-principal", 10)
+    assert port.calls == ["HUMAN_ADJUDICATION", "PHYSICAL_ENTRY_LANDMARK"]
+    assert not engine._adjudications and not engine.observations

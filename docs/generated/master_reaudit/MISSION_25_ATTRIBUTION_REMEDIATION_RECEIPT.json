@@ -1,0 +1,30 @@
+{
+  "schema": "mission25-attribution-remediation/1",
+  "problem": "External statement signers were not compared with the assigned canonical principal; T2 adjudication landmark evidence needed a separate check. Genuine mode was disabled and no genuine statement was accepted.",
+  "fix": "Require same-principal statement verification at submission and readiness; reject blank/mock reviewer identities; independently verify observable T2 adjudication landmarks at submission/readiness.",
+  "focused_current_tests": {
+    "passed": 146,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "new_negative_port_cases": 5,
+  "genuine_records_created": 0,
+  "ruff_files": 10,
+  "syntax_files": 10,
+  "mypy_sources": 6,
+  "earlier_audit": "/tmp/m25_acceptance_audit:3541 cases with118 protected nonpasses before attribution hardening; retained development evidence, not final acceptance",
+  "earlier_profile": "/tmp/m25_profile_a:in-progress during source hardening; excluded from frozen-source final acceptance",
+  "files_sha256": {
+    "src/railway_detection/annotation/evidence_review/__init__.py": "e7ab186b8693ee1036e9f0b164e7473fb698b4198f5f31f110d582763287347c",
+    "src/railway_detection/annotation/evidence_review/contracts.py": "0572203059798c457b8a8f89d7d2f93348416ee7459262f9201f72c94f562afe",
+    "src/railway_detection/annotation/evidence_review/integration.py": "4edf0fc0fd956f750aa1527c6ab9e525a9dd73e4a79034f9f42f7b40e65879f1",
+    "src/railway_detection/annotation/evidence_review/journal.py": "b2ea5f601650d5e546055ec4f8e4bcec999be7aeaf32eecdc1b6b4b5efacd610",
+    "src/railway_detection/annotation/evidence_review/lifecycle.py": "120779f6de738386653d4b9865db0cd77dadb240088b9605d20fc658af973f5f",
+    "src/railway_detection/application/cli.py": "5a5f79f1164b679eabbc9be0a6ff26212a0e596c5c66d1a3ea72b18b0bbcc30e",
+    "tests/synthetic_mission25/test_contracts.py": "22424d0359932bf7ce697f9733f73d3dc89f424295cee893ae81ae55b095f99a",
+    "tests/synthetic_mission25/test_integration.py": "2f576950447418a8cbeca5d93cff1baf451d84f244c39a4a4a1b873b04cec287",
+    "tests/synthetic_mission25/test_journal.py": "cb722087dfb48719f7ee0ca26a2fdd14c7d9b30b86e4a7d1003ec9f50b6db183",
+    "tests/synthetic_mission25/test_lifecycle.py": "89825fb0c09e02ffd7bebf036050b7467661e0e00f61aedbb27145b85dc45bc4"
+  }
+}
