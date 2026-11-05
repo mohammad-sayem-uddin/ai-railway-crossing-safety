@@ -1,0 +1,127 @@
+{
+  "schema": "mission25-external-requirements/1",
+  "genuine_evidence_supplied": false,
+  "universal_institutional_or_ethics_approval_assumed": false,
+  "requirements": [
+    {
+      "id": "M25-REQ-01",
+      "subject": "Reviewer identity and authenticated session",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-02",
+      "subject": "Qualifications and authorized verification",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-03",
+      "subject": "Appointment or delegation where applicable",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-04",
+      "subject": "Conflict-of-interest declaration",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-05",
+      "subject": "Independence and distinct physical principals",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-06",
+      "subject": "Source access rights and data-owner/license scope",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-07",
+      "subject": "Human review procedure and neutral player",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-08",
+      "subject": "Participant consent and applicable institutional requirements",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-09",
+      "subject": "Adjudication authority and qualification",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-10",
+      "subject": "Promotion authority and exact batch signoff",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-11",
+      "subject": "Evidence retention, withdrawal and access controls",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    },
+    {
+      "id": "M25-REQ-12",
+      "subject": "Canonical schema/protocol/boundary compatibility acceptance",
+      "applicability": "UNKNOWN_REQUIRES_VERIFICATION",
+      "evidence": null,
+      "actual_owner_or_verifier": null,
+      "context_needed": "Actual project/institution/data ownership/participants/retention/deployment rules",
+      "software_gate": "Authenticated scoped evidence; references/status flags alone insufficient",
+      "live_operation_authorized": false
+    }
+  ]
+}

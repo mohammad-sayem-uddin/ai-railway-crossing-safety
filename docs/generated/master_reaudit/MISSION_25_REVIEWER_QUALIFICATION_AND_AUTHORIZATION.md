@@ -1,0 +1,11 @@
+# Mission 25 — Reviewer qualification and authorization
+
+Prepared 2026-11-05, America/New_York. Metadata/software infrastructure only; no genuine reviewer, observation, adjudication, source access or promotion established.
+
+`Reviewer`, `Qualification`, `Permission` and `Assignment` are immutable contracts in `annotation/evidence_review`. Stable reviewer IDs bind a canonical principal reference, actual evidence references, scoped roles/events, validity interval, conflicts, independence and participation declaration. Assignment history binds the exact batch, source list and permission reference. Missing qualifications, expired/future intervals, conflicts, missing declarations, revoked or mismatched permissions refuse before mutation.
+
+MOCK_REVIEWER_FIXTURE, UNVERIFIED_REVIEWER, QUALIFICATION_EVIDENCE_PENDING and VERIFIED_REVIEWER remain distinct. There is no upgrade operation. A VERIFIED label alone is insufficient: an externally supplied EvidenceVerifier must authenticate identity, authorized qualification verification, independence and participation, returning the same physical principal for each. Constructed identifiers/qualifications refuse genuine use. No verifier implementation, credential issuer or authentic human roster is supplied.
+
+Constructed durable commands additionally use existing WP04 current session/fence/resource/context/purpose/time/quota checks. A single SQLite transaction appends the governance command, authority transaction/receipt/journal and quota. The anchor advances after commit. Current denial applies even to duplicate requests. Caller-controlled local roles and time are cooperative fixtures, never independent authentication.
+
+A future deployment must provide an authenticated principal/session adapter, maintained qualification/role evidence service, current clock and withdrawal/revocation service, human submission attestation, appointment evidence where applicable and a privacy/retention policy. Participant willingness and declared independence are actual human inputs. Institutional applicability is separately UNKNOWN_REQUIRES_VERIFICATION; no institutional approval is invented.

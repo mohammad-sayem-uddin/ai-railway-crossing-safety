@@ -1,0 +1,742 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:train-automation:review-governance:1",
+  "title": "Review governance metadata /1",
+  "$comment": "Metadata wire structure only. Runtime semantic/evidence verification remains mandatory. Not the active Stage2.1 schema and not an approval. Emit explicit null/default fields.",
+  "$ref": "#/$defs/Batch",
+  "$defs": {
+    "Qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reference": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "valid_from": {
+          "type": "integer"
+        },
+        "expires": {
+          "type": "integer"
+        },
+        "verification_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "reference",
+        "roles",
+        "events",
+        "valid_from",
+        "expires",
+        "verification_reference"
+      ]
+    },
+    "Reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reviewer_id": {
+          "type": "string"
+        },
+        "principal_reference": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "MOCK_REVIEWER_FIXTURE",
+            "UNVERIFIED_REVIEWER",
+            "QUALIFICATION_EVIDENCE_PENDING",
+            "VERIFIED_REVIEWER"
+          ]
+        },
+        "qualification": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Qualification"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "identity_evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "independence_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "consent_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "reviewer_id",
+        "principal_reference",
+        "status",
+        "qualification",
+        "identity_evidence",
+        "conflicts",
+        "independence_reference",
+        "consent_reference"
+      ]
+    },
+    "Permission": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reference": {
+          "type": "string"
+        },
+        "actor": {
+          "type": "string"
+        },
+        "batch_digest": {
+          "type": "string"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "environment": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "valid_from": {
+          "type": "integer"
+        },
+        "expires": {
+          "type": "integer"
+        },
+        "revoked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "reference",
+        "actor",
+        "batch_digest",
+        "events",
+        "operations",
+        "environment",
+        "purpose",
+        "valid_from",
+        "expires",
+        "revoked"
+      ]
+    },
+    "Source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "type": "string"
+        },
+        "event": {
+          "type": "string"
+        },
+        "camera": {
+          "type": "string"
+        },
+        "content_digest": {
+          "type": "string"
+        },
+        "manifest_reference": {
+          "type": "string"
+        },
+        "origin_us": {
+          "type": "integer"
+        },
+        "timebase": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "end_us": {
+          "type": "integer"
+        },
+        "verification_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "source_id",
+        "event",
+        "camera",
+        "content_digest",
+        "manifest_reference",
+        "origin_us",
+        "timebase",
+        "end_us",
+        "verification_reference"
+      ]
+    },
+    "Batch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "batch_id": {
+          "type": "string"
+        },
+        "protocol_reference": {
+          "type": "string"
+        },
+        "manifest_reference": {
+          "type": "string"
+        },
+        "schema_reference": {
+          "type": "string"
+        },
+        "boundary_version": {
+          "type": "string"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Source"
+          }
+        },
+        "boundaries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "creation_reference": {
+          "type": "string"
+        },
+        "classification": {
+          "type": "string"
+        },
+        "lineage_digest": {
+          "type": "string"
+        },
+        "approval_references": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "schema": {
+          "const": "REVIEW_GOVERNANCE/1"
+        }
+      },
+      "required": [
+        "batch_id",
+        "protocol_reference",
+        "manifest_reference",
+        "schema_reference",
+        "boundary_version",
+        "events",
+        "sources",
+        "boundaries",
+        "creation_reference",
+        "classification",
+        "lineage_digest",
+        "approval_references",
+        "schema"
+      ]
+    },
+    "BoundaryObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "observation_id": {
+          "type": "string"
+        },
+        "reviewer_id": {
+          "type": "string"
+        },
+        "source_id": {
+          "type": "string"
+        },
+        "boundary_version": {
+          "type": "string"
+        },
+        "observation": {
+          "$ref": "#/$defs/Observation"
+        },
+        "previous": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "correction_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acoustic_shift_us": {
+          "type": "integer"
+        },
+        "landmark_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "landmark_evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "human_statement_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "observation_id",
+        "reviewer_id",
+        "source_id",
+        "boundary_version",
+        "observation",
+        "previous",
+        "correction_reason",
+        "acoustic_shift_us",
+        "landmark_kind",
+        "landmark_evidence",
+        "human_statement_reference"
+      ]
+    },
+    "Observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "boundary": {
+          "type": "string"
+        },
+        "camera": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "value_us": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "censoring_direction": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uncertainty_us": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pts_ticks": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "timebase": {
+          "anyOf": [
+            {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "origin_us": {
+          "type": "integer"
+        },
+        "landmark": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "boundary",
+        "camera",
+        "state",
+        "rationale",
+        "value_us",
+        "censoring_direction",
+        "uncertainty_us",
+        "pts_ticks",
+        "timebase",
+        "origin_us",
+        "landmark"
+      ]
+    },
+    "Assignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assignment_id": {
+          "type": "string"
+        },
+        "batch_digest": {
+          "type": "string"
+        },
+        "event": {
+          "type": "string"
+        },
+        "reviewer_id": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "permission_reference": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "assignment_id",
+        "batch_digest",
+        "event",
+        "reviewer_id",
+        "role",
+        "source_ids",
+        "permission_reference"
+      ]
+    },
+    "Adjudication": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "adjudication_id": {
+          "type": "string"
+        },
+        "event": {
+          "type": "string"
+        },
+        "source_id": {
+          "type": "string"
+        },
+        "boundary": {
+          "type": "string"
+        },
+        "adjudicator": {
+          "type": "string"
+        },
+        "contributors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "resolution": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundaryObservation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "human_statement_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "previous": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "adjudication_id",
+        "event",
+        "source_id",
+        "boundary",
+        "adjudicator",
+        "contributors",
+        "state",
+        "reason",
+        "resolution",
+        "human_statement_reference",
+        "previous"
+      ]
+    },
+    "PromotionReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "type": "string"
+        },
+        "batch_digest": {
+          "type": "string"
+        },
+        "history_digest": {
+          "type": "string"
+        },
+        "lineage_digest": {
+          "type": "string"
+        },
+        "object_digest": {
+          "type": "string"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "authorization_reference": {
+          "type": "string"
+        },
+        "verification_reference": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "batch_digest",
+        "history_digest",
+        "lineage_digest",
+        "object_digest",
+        "issuer",
+        "authorization_reference",
+        "verification_reference"
+      ]
+    },
+    "Readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "CONSTRUCTED_NON_PROMOTABLE",
+            "INCOMPLETE_REVIEW_BATCH",
+            "REVIEW_COMPLETE_PENDING_VERIFICATION",
+            "PROMOTION_ELIGIBLE_PENDING_AUTHORIZATION",
+            "PROMOTED_WITH_VALID_RECEIPT"
+          ]
+        },
+        "batch_digest": {
+          "type": "string"
+        },
+        "history_digest": {
+          "type": "string"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "event_reasons": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "genuine_evidence_accepted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "batch_digest",
+        "history_digest",
+        "reasons",
+        "event_reasons",
+        "genuine_evidence_accepted"
+      ]
+    }
+  }
+}

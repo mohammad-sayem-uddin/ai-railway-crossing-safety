@@ -1,0 +1,40 @@
+{
+  "schema": "mission25-implementation-validation/1",
+  "phaseA_commit": "7e58cd0e577bbe7847a4cc063190f3083b28b6d6",
+  "phaseB_I": "typed metadata lifecycle, constructed atomic journal and CLI; genuine ports explicitly disabled",
+  "focused_current_tests": {
+    "passed": 141,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "command": "PYTHONPATH=src:. PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/python -m pytest --confcutdir=tests/synthetic_mission25 -p no:cacheprovider -q tests/synthetic_mission25"
+  },
+  "earlier_guarded_development_receipt": {
+    "path": "/tmp/m25_focused_v1/receipt.json",
+    "passed": 329,
+    "scope": "138 then-current Mission25 plus 191 Mission24; precedes three final cases/clock-schema hardening, not final frozen acceptance"
+  },
+  "ruff": "10 changed/new Python files pass",
+  "syntax": "10 parse",
+  "mypy": {
+    "command": ".venv/bin/mypy --follow-imports=silent src/railway_detection/annotation/evidence_review src/railway_detection/application/cli.py",
+    "checked_sources": 6,
+    "status": "PASS",
+    "whole_repository_claim": false
+  },
+  "files_sha256": {
+    "src/railway_detection/annotation/evidence_review/__init__.py": "e7ab186b8693ee1036e9f0b164e7473fb698b4198f5f31f110d582763287347c",
+    "src/railway_detection/annotation/evidence_review/contracts.py": "608b7f689e83ec81d3bf3058437cded1fe208bb134ef5dd920250d01efef0dd6",
+    "src/railway_detection/annotation/evidence_review/integration.py": "4edf0fc0fd956f750aa1527c6ab9e525a9dd73e4a79034f9f42f7b40e65879f1",
+    "src/railway_detection/annotation/evidence_review/journal.py": "b2ea5f601650d5e546055ec4f8e4bcec999be7aeaf32eecdc1b6b4b5efacd610",
+    "src/railway_detection/annotation/evidence_review/lifecycle.py": "ed0b02b276a99234c848ee6aa4fa78c7efb588e4a39b7cff6671cd362296fb46",
+    "src/railway_detection/application/cli.py": "5a5f79f1164b679eabbc9be0a6ff26212a0e596c5c66d1a3ea72b18b0bbcc30e",
+    "tests/synthetic_mission25/test_contracts.py": "41c49baf00b0c80c825f0974ccb4e9d89a0285c6abde25b7ff6b7371c27a6ccf",
+    "tests/synthetic_mission25/test_integration.py": "2f576950447418a8cbeca5d93cff1baf451d84f244c39a4a4a1b873b04cec287",
+    "tests/synthetic_mission25/test_journal.py": "cb722087dfb48719f7ee0ca26a2fdd14c7d9b30b86e4a7d1003ec9f50b6db183",
+    "tests/synthetic_mission25/test_lifecycle.py": "89825fb0c09e02ffd7bebf036050b7467661e0e00f61aedbb27145b85dc45bc4"
+  },
+  "genuine_positive_acceptance": false,
+  "new_permissions": 0,
+  "full_current_acceptance": "pending frozen-source audit/classification/execution"
+}
