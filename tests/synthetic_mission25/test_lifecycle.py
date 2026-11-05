@@ -320,3 +320,37 @@ def test_external_metadata_incomplete_status_has_precise_missing_human_and_sourc
     assert any("SOURCE_IDENTITY" in reason for reason in ready.reasons)
     assert any("CANONICAL_SCHEMA_ACCEPTANCE" in reason for reason in ready.reasons)
     assert not ready.genuine_evidence_accepted
+
+
+@pytest.mark.parametrize("fault", ["orphan_resolution_parent", "duplicate_observation_identity"])
+def test_adjudication_resolution_cannot_hide_missing_parents_or_reuse_original_identity(fault):
+    e, a, _, roster, p = two_reviews()
+    appointed = replace(
+        assignment(e.batch, roster[2], p[2], "ADJUDICATOR"), assignment_id="synthetic:adjudicator"
+    )
+    e.assign(appointed, p[2], now=10)
+    e.open_session(appointed.assignment_id, p[2], now=10)
+    d = e.compare(a.event)["disagreements"][0]
+    resolution = point(e.batch, roster[2], d["boundary"])
+    if fault == "orphan_resolution_parent":
+        resolution = replace(
+            resolution, previous="0" * 64, correction_reason="orphaned negative fixture"
+        )
+    else:
+        resolution = replace(resolution, observation_id=e.observations[0].observation_id)
+    record = Adjudication(
+        "synthetic:invalid-adjudication",
+        a.event,
+        d["source_id"],
+        d["boundary"],
+        roster[2].reviewer_id,
+        d["contributors"],
+        "HUMAN_RESOLVED",
+        "negative fixture never accepted as human judgment",
+        resolution,
+    )
+    originals = e.observations
+    with pytest.raises(ValueError):
+        e.adjudicate(appointed.assignment_id, record, p[2], now=10)
+    assert e.observations == originals and not e._adjudications
+    assert not e.readiness(now=10, permissions=p).genuine_evidence_accepted

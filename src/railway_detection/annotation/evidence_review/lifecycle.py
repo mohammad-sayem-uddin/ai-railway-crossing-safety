@@ -409,6 +409,20 @@ class ReviewLifecycle:
             if record.resolution is None:
                 raise ValueError("human resolution observation missing")
             source = record.resolution.validate(self.batch)
+            if record.resolution.previous is not None:
+                raise ValueError(
+                    "adjudication resolution cannot carry an orphan observation parent; "
+                    "version the adjudication"
+                )
+            if record.resolution.observation_id in self._observations or any(
+                other.adjudication_id != record.adjudication_id
+                and other.resolution is not None
+                and other.resolution.observation_id == record.resolution.observation_id
+                for other in self._adjudications.values()
+            ):
+                raise ValueError(
+                    "adjudication resolution identity duplicates an existing observation"
+                )
             if (
                 record.resolution.reviewer_id != a.reviewer_id
                 or source.event != a.event

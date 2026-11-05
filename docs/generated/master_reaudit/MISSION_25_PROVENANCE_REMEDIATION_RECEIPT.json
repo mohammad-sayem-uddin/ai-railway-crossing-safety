@@ -1,0 +1,29 @@
+{
+  "schema": "mission25-provenance-remediation/1",
+  "problem": "A separate adjudication resolution could retain an orphan observation-correction parent or reuse an original observation ID.",
+  "fix": "Reject resolution.previous; corrections version the separate adjudication. Reject resolution IDs already used by observations or another adjudication. No record is stored on refusal.",
+  "focused_current_tests": {
+    "passed": 148,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "new_negative_cases": 2,
+  "genuine_records_created": 0,
+  "ruff_files": 10,
+  "syntax_files": 10,
+  "mypy_sources": 6,
+  "files_sha256": {
+    "src/railway_detection/annotation/evidence_review/__init__.py": "e7ab186b8693ee1036e9f0b164e7473fb698b4198f5f31f110d582763287347c",
+    "src/railway_detection/annotation/evidence_review/contracts.py": "0572203059798c457b8a8f89d7d2f93348416ee7459262f9201f72c94f562afe",
+    "src/railway_detection/annotation/evidence_review/integration.py": "4edf0fc0fd956f750aa1527c6ab9e525a9dd73e4a79034f9f42f7b40e65879f1",
+    "src/railway_detection/annotation/evidence_review/journal.py": "b2ea5f601650d5e546055ec4f8e4bcec999be7aeaf32eecdc1b6b4b5efacd610",
+    "src/railway_detection/annotation/evidence_review/lifecycle.py": "8f0e31b10b3203ae835605ea67becb74c2f877503f77327e5e1d757ea4de059a",
+    "src/railway_detection/application/cli.py": "5a5f79f1164b679eabbc9be0a6ff26212a0e596c5c66d1a3ea72b18b0bbcc30e",
+    "tests/synthetic_mission25/test_contracts.py": "22424d0359932bf7ce697f9733f73d3dc89f424295cee893ae81ae55b095f99a",
+    "tests/synthetic_mission25/test_integration.py": "2f576950447418a8cbeca5d93cff1baf451d84f244c39a4a4a1b873b04cec287",
+    "tests/synthetic_mission25/test_journal.py": "cb722087dfb48719f7ee0ca26a2fdd14c7d9b30b86e4a7d1003ec9f50b6db183",
+    "tests/synthetic_mission25/test_lifecycle.py": "611782011bd0f3c9e35b2e0d28d64f1d1f12a11dd37b86fa0dc39270be900fe7"
+  },
+  "final_acceptance": "Pending new frozen-source audit; previous audit_final changed during this fix and is excluded."
+}
