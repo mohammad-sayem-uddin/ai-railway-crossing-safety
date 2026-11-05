@@ -154,6 +154,10 @@ class ConstructedReviewStore:
         return _sha(canonical(value(result)))
 
     def _restore(self):
+        if self.db.execute("SELECT body FROM constructed_review_context").fetchall() != [
+            (self.context,)
+        ]:
+            raise ValueError("review context changed at point of use")
         workflow = ReviewWorkflow(self.reviewers, aliases=self.principal_aliases)
         rows = self.db.execute(
             "SELECT seq,request,body,previous,head,result_digest "
@@ -182,7 +186,9 @@ class ConstructedReviewStore:
             raise ValueError("retained review anchor mismatch; no blind reset")
         return workflow
 
-    def execute(self, operation, actor, event, *, request_id, **args):
+    def execute_in_transaction(self, operation, actor, event, *, request_id, **args):
+        if not self.db.in_transaction:
+            raise ValueError("caller-owned atomic transaction required")
         _id(request_id)
         if event in self.event_aliases:
             event = self.event_aliases[event]
@@ -196,33 +202,40 @@ class ConstructedReviewStore:
             args["observations"] = [asdict(o) for o in args["observations"]]
         body = canonical({"operation": operation, "actor": actor, "event": event, "args": args})
         payload = json.loads(body)
+        workflow = self._restore()
+        existing = self.db.execute(
+            "SELECT seq,body,head,result_digest FROM constructed_review_log WHERE request=?",
+            (request_id,),
+        ).fetchone()
+        if existing:
+            if existing[1] != body:
+                raise ValueError("review request content substitution")
+            receipt = ReviewCommit(existing[0], existing[2], request_id, existing[3])
+        else:
+            if self.anchor[0] >= 8192:
+                raise ValueError("constructed history workload bound exceeded")
+            result = self._apply(workflow, **payload)
+            count, previous = self.anchor
+            head = _sha(canonical({"sequence": count + 1, "previous": previous, "body": body}))
+            receipt = ReviewCommit(count + 1, head, request_id, self._result_digest(result))
+            self.db.execute(
+                "INSERT INTO constructed_review_log VALUES(?,?,?,?,?,?)",
+                (receipt.count, request_id, body, previous, head, receipt.result_digest),
+            )
+        next_anchor = (
+            (receipt.count, receipt.head) if receipt.count > self.anchor[0] else self.anchor
+        )
+        return receipt, next_anchor
+
+    def execute(self, operation, actor, event, *, request_id, **args):
         self.db.execute("BEGIN IMMEDIATE")
         try:
-            workflow = self._restore()
-            existing = self.db.execute(
-                "SELECT seq,body,head,result_digest FROM constructed_review_log WHERE request=?",
-                (request_id,),
-            ).fetchone()
-            if existing:
-                if existing[1] != body:
-                    raise ValueError("review request content substitution")
-                receipt = ReviewCommit(existing[0], existing[2], request_id, existing[3])
-            else:
-                if self.anchor[0] >= 8192:
-                    raise ValueError("constructed history workload bound exceeded")
-                result = self._apply(workflow, **payload)
-                count, previous = self.anchor
-                head = _sha(canonical({"sequence": count + 1, "previous": previous, "body": body}))
-                receipt = ReviewCommit(count + 1, head, request_id, self._result_digest(result))
-                self.db.execute(
-                    "INSERT INTO constructed_review_log VALUES(?,?,?,?,?,?)",
-                    (receipt.count, request_id, body, previous, head, receipt.result_digest),
-                )
+            receipt, next_anchor = self.execute_in_transaction(
+                operation, actor, event, request_id=request_id, **args
+            )
             self.db.execute("COMMIT")
         except BaseException:
             self.db.execute("ROLLBACK")
             raise
-        # Exact retries return their historical receipt without moving the current anchor back.
-        if receipt.count > self.anchor[0]:
-            self.anchor = receipt.count, receipt.head
+        self.anchor = next_anchor
         return receipt

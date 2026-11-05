@@ -314,7 +314,10 @@ class ConstructedAuthority:
 
     def _historical_receipt(self, session, transaction, body, serialized):
         decode_payload(body)
-        receipt = Receipt(**json.loads(serialized))
+        try:
+            receipt = Receipt(**json.loads(serialized))
+        except (ValueError, TypeError) as error:
+            raise ValueError("malformed historical receipt") from error
         if (
             canonical(asdict(receipt)) != serialized
             or type(receipt.sequence) is not int

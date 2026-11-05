@@ -1,0 +1,28 @@
+# Mission22 — Interface contract audit
+
+Prepared 2026-11-05, America/New_York. Actual implementation and new executed
+tests supersede existence-only claims. Everything below is constructed evidence.
+
+| Boundary | Finding and implemented contract | Validation |
+|---|---|---|
+| WP01 ↔ WP05 | Old orchestration's M4/M5 were A-only. `project_b_metrics` retains that A output separately and supplies an explicitly labeled sampled exact-geometry B software projection. Positive/negative motion, exact90/0 and HOLD_PHYSICAL are distinct from logical intent; strict blocked≤45 is unchanged. No empirical B metric adoption. | Native demo plus scripted opening/never-protected/incomplete/censored/missing/tampered cases. Missing and censored outputs stay null with reasons. |
+| WP01 ↔ WP06 | Frame IDs, physical event IDs and cohort display slot were disconnected. A constructed identity manifest labels the display slot as an interface alias, not a real V2 observation. Each native stream has one exact camera source and local origin; no fusion or alignment is performed. | Two streams at origins0/100000µs, same fixed crossing; source/request bytes bound before existing-runner invocation. |
+| WP02 ↔ WP07 | Independent artifact and source DAGs could lose group/fit provenance at a caller boundary. `join_lineage` requires complete exact asset IDs, physical event/role/parent/content/transform joins and equal transitive FIT/SELECT/initialization exposure. | A declared inner-OOF score, initialization/preprocessor/base artifacts, source and derived assets; missing parents/groups/digests/exposure substitutions deny. No fitting/prediction generation. |
+| WP03 ↔ WP04 | Both services owned BEGIN IMMEDIATE; sequential authorization could race review writes. A versioned `CONSTRUCTED_REVIEW_FIXTURE/1` service now shares one DB transaction with quota and authority journal. Store anchor advances only after commit. Current context is rechecked on use. | Purpose/actor/resource/runtime/expiry/fence/genuine-label negatives; insert failure rolls both journals/quota back; retry and lost-response recovery are tested. |
+| WP04 ↔ WP07 | Lineage is not permission. The actual fixture-byte broker separately checks current scope/fence/time and immutable resource digest before returning bytes. Those exact bytes bind the event's source content identity. | Old source digest/modified bytes cannot silently become current input. Mock role strings never create genuine credentials. |
+| WP07 ↔ WP08 | Snapshot is a separate filesystem completion boundary. The driver preserves exact event/config/source/lineage/CV digests in a source-only input envelope and invokes WP08's explicit path tuple. | Two independent destinations produce identical manifests; stale/tampered and incomplete snapshots refuse completion. Protected paths deny before source access. |
+| WP05 ↔ WP09 | Numeric constructed contracts could be mistaken for empirical outcomes. The demonstration emits separate constructed metric JSON and calls the results-absent renderer without empirical rows. | UNAVAILABLE remains explicit; the report claims no real evaluation, authorship appointment, venue or safety effect. |
+| WP08 ↔ WP10 | Existing complete markers did not enforce a closed artifact set; resumed JSON shape differed from fresh tuples. Driver now requires exact artifact names/digests and normalizes its public output to canonical JSON values. | Deterministic fresh/resumed result equality and snapshot tampering/partial-write tests. Runtime/typing results are recorded separately. |
+
+## Scientific boundaries
+
+B geometry projection is an explicit software diagnostic, not a replacement for
+historical A tables or a claim of adopted empirical B reporting. It uses event
+and cutoff endpoints, not fixed report-grid points as new observations, and
+supplies no continuous safety inference. Human T4/occupancy/physical entry remain
+unestablished. Real evaluation remains denied by its existing entrypoint.
+
+The native controller is unchanged. Audio must remain supporting-only; a
+separate audio-only integration negative will verify it cannot issue closure or
+clearance. Back-audio remains deferred. The comparator's unresolved policy is
+isolated in the separate formal specification, never filled with defaults.

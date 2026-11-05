@@ -24,6 +24,35 @@
       ],
       "validation": "38 source hashes/AST,17 source commits, matching local/tracking/live HEAD and7 preserved work hashes; no runtime claim",
       "parent": "923d4fd39286651aae7b15864c9e5781ad644e24",
+      "commit_record": "9ea9198e3cbd1a452c28ef7aeeeaed80854b5beb",
+      "push_verified": true
+    },
+    {
+      "phase": "BCE",
+      "message": "feat: integrate constructed workflow with atomic authorized review and lineage",
+      "files": [
+        "src/railway_detection/annotation/human_review_store.py",
+        "src/railway_detection/annotation/human_review_service.py",
+        "src/railway_detection/safety/constructed_authority.py",
+        "src/railway_detection/synthetic/integration_contracts.py",
+        "src/railway_detection/synthetic/integration_fixture.py",
+        "src/railway_detection/synthetic/integration_workflow.py",
+        "scripts/run_mission22_demo.py",
+        "tests/synthetic_mission22/test_review_service.py",
+        "tests/synthetic_mission22/test_metric_bridge.py",
+        "tests/synthetic_mission22/test_workflow.py",
+        "docs/generated/master_reaudit/MISSION_22_INTEGRATED_SYSTEM_VALIDATION_REPORT.md",
+        "docs/generated/master_reaudit/MISSION_22_INTERFACE_CONTRACT_AUDIT.md",
+        "docs/generated/master_reaudit/MISSION_22_END_TO_END_DEMONSTRATION.md"
+      ],
+      "validation": {
+        "focused_tests": 41,
+        "human_regression": 30,
+        "security_regression": 46,
+        "mypy": "Success: no issues found in 7 source files\n",
+        "root_full_regression": "not yet executed"
+      },
+      "parent": "9ea9198e3cbd1a452c28ef7aeeeaed80854b5beb",
       "commit_record": "containing commit; actual hash retained in next phase/final delivery receipt"
     }
   ],
