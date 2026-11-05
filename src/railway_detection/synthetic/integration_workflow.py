@@ -230,7 +230,16 @@ def verify_completed(output, descriptor):
     return core
 
 
-def run_demo(destination, *, seed=22, code_identity, resume=False, stop_after=None):
+def run_demo(
+    destination,
+    *,
+    seed=22,
+    code_identity,
+    resume=False,
+    stop_after=None,
+    review_factory=ConstructedReviewService,
+    broker_factory=ConstructedResourceBroker,
+):
     output = output_path(destination)
     reject_metadata_aliases(output)
     fixture = make_fixture(seed=seed, code_identity=code_identity)
@@ -314,7 +323,7 @@ def run_demo(destination, *, seed=22, code_identity, resume=False, stop_after=No
         from dataclasses import replace
 
         scope = replace(scope, fence=fence)
-        broker = ConstructedResourceBroker(
+        broker = broker_factory(
             authority,
             resources=(source,),
             expected_registry_digest=sha(canonical(((source.resource_id, source_hash),))),
@@ -427,7 +436,7 @@ def run_demo(destination, *, seed=22, code_identity, resume=False, stop_after=No
                 events=(identity.physical_event,),
                 expected_anchor=anchor,
             )
-        service = ConstructedReviewService(authority, store)
+        service = review_factory(authority, store)
         last = None
         for index, (op, args) in enumerate(actions):
             last = service.execute(

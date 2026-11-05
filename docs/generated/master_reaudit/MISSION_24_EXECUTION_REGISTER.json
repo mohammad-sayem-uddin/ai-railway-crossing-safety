@@ -48,9 +48,21 @@
     {
       "phase": "A",
       "validation": "M23 exact delivery/source/receipt hashes;local/tracking/live match;7 preserved files verified",
-      "delivery": "containing baseline commit"
+      "delivery": "1c60e11672e91cee51e2fb39212391bc64dd2389",
+      "push_verified": true
+    },
+    {
+      "phase": "B/C/D/E/F/G/H",
+      "validation": "190 focused cases passed;RuffAST14 files;scopedMypy8 source files;typed app/CLI/review/resource access and inactive comparator;full acceptance pending",
+      "delivery": "containing implementation commit"
     }
   ],
   "live_operations_executed": [],
-  "comparator_decision": "M22-COMP-MAPPING;one consolidated request sent;no mapping adopted"
+  "comparator_decision": {
+    "id": "M22-COMP-MAPPING",
+    "statement": "Retain inactive comparator (Recommended)",
+    "source": "user reply to single consolidated Mission24 decision request in this conversation",
+    "effect": "retain inactive comparator; no scientific mapping cells adopted;back-audio deferred",
+    "name_or_signature_inferred": false
+  }
 }

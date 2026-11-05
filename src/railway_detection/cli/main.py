@@ -263,6 +263,10 @@ def build_parser() -> argparse.ArgumentParser:
     repro_parser.add_argument("--results", action="append", default=[])
     repro_parser.set_defaults(func=_audit_reproducibility)
 
+    from railway_detection.application.cli import add_arguments as add_application_arguments
+
+    add_application_arguments(subparsers)
+
     # Future namespaces: clear "not implemented in Phase 0" errors.
     report_parser = subparsers.add_parser("report", help="Report commands (placeholder)")
     report_sub = report_parser.add_subparsers(dest="report_command", required=True)
@@ -500,9 +504,7 @@ def _vision_train(args: argparse.Namespace) -> int:
                 "command": "vision train",
                 "dataset_root": str(config.dataset_root),
                 "mock_data": bool(args.mock or config.mock_data),
-                "checkpoint_path": str(result.checkpoint_path)
-                if result.checkpoint_path
-                else None,
+                "checkpoint_path": str(result.checkpoint_path) if result.checkpoint_path else None,
                 "split_id": summary.split_id,
                 "device": getattr(config, "device", "mps"),
             },
@@ -514,9 +516,7 @@ def _vision_train(args: argparse.Namespace) -> int:
 def _latest_split_id(split_output_root: Path) -> str | None:
     if not split_output_root.exists():
         return None
-    candidates = [
-        path.name for path in split_output_root.iterdir() if path.is_dir()
-    ]
+    candidates = [path.name for path in split_output_root.iterdir() if path.is_dir()]
     if not candidates:
         return None
     return sorted(candidates, key=lambda name: _mtime(split_output_root / name))[-1]
@@ -656,9 +656,7 @@ def _simulate_run(args: argparse.Namespace) -> int:
 
         profiler = StageProfiler()
     out_dir = (
-        Path(args.output_dir)
-        if args.output_dir
-        else Path("results/simulations") / event.event_id
+        Path(args.output_dir) if args.output_dir else Path("results/simulations") / event.event_id
     )
     try:
         result = runner.run_frames(
@@ -747,11 +745,11 @@ def _evaluation_status(args: argparse.Namespace) -> int:
 
 def _evaluation_metadata_only_audit(args: argparse.Namespace) -> int:
     """Validate input-manifest metadata without assessing readiness or source bytes."""
+    from railway_detection.evaluation.input_contracts import EvaluationInputError
     from railway_detection.evaluation.metadata_only_audit import (
         MetadataOnlyIsolationError,
         audit_input_manifest_metadata_only,
     )
-    from railway_detection.evaluation.input_contracts import EvaluationInputError
 
     root = Path(args.repository_root).resolve()
     manifest = Path(args.input_manifest)
@@ -766,7 +764,16 @@ def _evaluation_metadata_only_audit(args: argparse.Namespace) -> int:
         logger.error("metadata-only isolation violation: %s", exc)
         return 4
     except EvaluationInputError as exc:
-        print(json.dumps({"audit_mode": "METADATA_ONLY_MANIFEST_AUDIT_NOT_OFFICIAL_READINESS", **exc.to_dict()}, indent=2, sort_keys=True))
+        print(
+            json.dumps(
+                {
+                    "audit_mode": "METADATA_ONLY_MANIFEST_AUDIT_NOT_OFFICIAL_READINESS",
+                    **exc.to_dict(),
+                },
+                indent=2,
+                sort_keys=True,
+            )
+        )
         return 2
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0
@@ -843,9 +850,7 @@ def _audit_reproducibility(args: argparse.Namespace) -> int:
         if target is None:
             continue
         resolved = Path(target).resolve()
-        for name in (
-            "data", "configs", "models", "experiments", "results", "src", "tests", "docs"
-        ):
+        for name in ("data", "configs", "models", "experiments", "results", "src", "tests", "docs"):
             guard = (root / name).resolve()
             if resolved == guard or guard in resolved.parents:
                 logger.error("refusing to write the audit inside %s/", name)

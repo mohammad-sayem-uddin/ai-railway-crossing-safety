@@ -1,0 +1,15 @@
+# Mission 24 — Comparator interface and retained inactive decision
+
+Prepared 2026-11-05, America/New_York. User response to the single consolidated decision request: **“Retain inactive comparator (Recommended)”**. This records the actual conversational choice without inventing a name, institutional role, signature or scientific mapping. No additional comparator question is required.
+
+Inspection of Mission20/M19-METH-04, the Mission23 packet, `decision_policy_v1`, `frozen_experiment_v1.yaml`, `fusion/rules.py` and the actual engine confirms that the eight stateless commands are not completely defined. Side appears in both approach and departure predicates; state, confirmation, warning/clearance dwell and sensor recovery affect existing outputs. Those historical rules cannot be copied into a memoryless command table as an engineering default.
+
+Implemented `application/comparator.py` is an inactive technical interface. Its immutable producer reference identifies a constructed rule fixture, class IDs0/front,1/rear,2/side, qualified threshold0.35 and the existing2,000,000µs source-age context. These are retained input-admission references; they adopt no stale/missing command rule and verify no production model.
+
+Input masks use `F + 2*S + 4*R`, with values0–7. A full simultaneous set determines the observed mask independent of detection order. Unknown labels, including generic train, produce explicit unknown evidence instead of a fabricated three-class observation. Missing evidence has neither an observed mask nor an observation time. Fresh, stale, degraded, recovering and unknown states remain distinct; invalid/nonfinite confidence, wrong source/modality, future or noninteger source clocks and inconsistent declared freshness refuse admission.
+
+Every admitted observation returns `UNAVAILABLE_MAPPING_NOT_ADOPTED`, with logical and applied commands both null and active=false. Duplicate or decreasing arrival times return `REJECTED_TIMESTAMP` without changing the cursor. Reset clears that admission cursor only. No EMA, confirmation counter, dwell state, gate model or alternate class priority is introduced. The native primary engine and its frozen policy remain unchanged. Audio/front/fused input cannot supply this back-camera interface; back audio remains deferred.
+
+The new suite covers all64 mask-to-mask transitions, all40 observed mask/availability combinations, all8 missing-mask rejection cases, all8 simultaneous-set/permutation masks, strict freshness equality, invalid clocks/confidences, source/classification substitution, duplicate/decreasing time and deterministic reset. These test admission and unavailability, not an adopted comparator's actuation or empirical performance.
+
+The unified application includes these inactive outcomes alongside its independent camera/B results. They never feed a command into the primary controller or actuator. A future genuine amendment must supply the complete frozen mask/availability mapping, producer/config bindings and its scientific interpretation, then pass command-level acceptance before activation. No convenience activation flag is present.
