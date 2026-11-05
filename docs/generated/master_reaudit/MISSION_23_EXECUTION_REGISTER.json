@@ -1,0 +1,37 @@
+{
+  "schema": "mission23-execution/1",
+  "date": "2026-11-05",
+  "timezone": "America/New_York",
+  "baseline": "308440428874147af9d07c00c11971d0ae2ca9d0",
+  "preserved_work_sha256": {
+    "docs/generated/master_reaudit/MISSION_17I_MISSION18_ACCEPTANCE_AND_DEPENDENCY_REGISTER.md": "e97f7918ad315bbf8e72417f9cfa4ab84c37d8ab037013c1dc6e09faa4130181",
+    "docs/generated/master_reaudit/MISSION_18A_CONVENTION_B_SYNTHETIC_INTEGRATION_REPORT.md": "5d970d46de0839b0dc5eb479fdb32b2bda1ad3bdde3dbb98e9ec719b2db83d83",
+    "docs/generated/master_reaudit/MISSION_18A_INTEGRATION_ACCEPTANCE_RECORD.md": "94c4e6638b5241f17170d0f7380e7bb4233b4857622e6e59643989115ee7cbea",
+    "docs/generated/master_reaudit/MISSION_18A_R2_RESEARCHER_SELECTION_AND_ADOPTION_RECORD.md": "faeae344008a835159b39cd02562e91f58a7f65ebb107f0caa1fbdccd5710643",
+    "docs/generated/master_reaudit/MISSION_18A_R_RESEARCHER_DECISION_PREPARATION.md": "8584586d6457c37d41227ceb5191306440bff55657dba133e753f730cf8408e8",
+    "docs/generated/master_reaudit/MISSION_19_MASTER_AUTHORIZATION_REGISTER.json": "919cbfdd0ddac07adb96ac9e8f3a98f12344cabab25e6662a7200d235b7b33d5",
+    "docs/generated/master_reaudit/MISSION_19_MASTER_PROJECT_AUTHORIZATION_AND_RESEARCH_DECISION_PACKET.md": "48dc86935d60f8837ff517137b2b596417759e5cd61ce37f6257292400d42c5b"
+  },
+  "mission22_artifact_sha256": {
+    "docs/generated/master_reaudit/MISSION_22_CRASH_RECOVERY_REPORT.md": "42a8369c7253271dc7724aa131357fd8eaf5594ec0f911c0aa48d389ae8ced81",
+    "docs/generated/master_reaudit/MISSION_22_DEMONSTRATION_RECEIPT.json": "c11c1e8cf6a8e56d3b94d787d272c138185562c953e41f1deeeec93ab7f9e095",
+    "docs/generated/master_reaudit/MISSION_22_REGRESSION_RECEIPT.json": "fcb0e655041ace44cd91666e6b8db70b8a5c4950fb85e5e98fa9277052996d65",
+    "docs/generated/master_reaudit/MISSION_22_END_TO_END_DEMONSTRATION.md": "ea226b1130262c35428963326a7acf51c546cdeb015a9e05dc702577342449d6",
+    "docs/generated/master_reaudit/MISSION_22_EXECUTION_REGISTER.json": "c025d0bc3b22e7c8224b7371a8d1a5ddce128f58e015c47c93d45c277d51882c",
+    "docs/generated/master_reaudit/MISSION_22_SECURITY_AND_FAILURE_INJECTION_REPORT.md": "5c73e6379c831e8b0f8bb8caf874b932b04d009aa48844d9d333c8149c14bd69",
+    "docs/generated/master_reaudit/MISSION_22_INTEGRATED_SYSTEM_VALIDATION_REPORT.md": "bcdd35f7375c1b13351c02e0031f1cff205cfc9f694b31886b49a9a2724d120c",
+    "docs/generated/master_reaudit/MISSION_22_INTERFACE_CONTRACT_AUDIT.md": "6c67fd9a51de3a0cdc6a58916035943545219d9ff74be74ee88ec5b0c90eeecb",
+    "docs/generated/master_reaudit/MISSION_22_FINAL_VALIDATION.json": "786bac32bb72223ea45df3b3a59659cd24d897a70714b0adb69c1413fc1a91c6",
+    "docs/generated/master_reaudit/MISSION_22_ARCHITECTURE_AND_DEPENDENCY_MAP.md": "9d521a3835760d7bacbb51d9610038171946c8b3be9600e75e2a18ba70e4c1b0",
+    "docs/generated/master_reaudit/MISSION_22_BACK_CAMERA_COMPARATOR_SPEC.md": "18082f9055b15010aebde36744b5f6c8cc55a011718ef491256c855187cc9837"
+  },
+  "phase_history": [
+    {
+      "phase": "A",
+      "validation": "M22 four commits,finalreceipt/source bindings,7preserved files verified; local/tracking/live3084404 match",
+      "delivery": "containing commit; actual hash carried forward"
+    }
+  ],
+  "live_operations_executed": [],
+  "pending_scientific_definition": "M22-COMP-MAPPING"
+}
