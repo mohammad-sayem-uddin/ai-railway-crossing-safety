@@ -1,0 +1,783 @@
+{
+  "schema": "mission25-demonstration/1",
+  "implementation_commit": "3bc3e941813fabca98203a8cddf6ecc42008f195",
+  "commands": [
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "review",
+        "interface"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "5ace778c0b82622d81b93db6167fc48ff35afb6c31049a10cbc80c8c1e9aee56"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "review",
+        "demo",
+        "--output",
+        "/tmp/m25_frozen_demonstrations/work/first",
+        "--code-identity",
+        "3bc3e941813fabca98203a8cddf6ecc42008f195"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "021a25af25a9d1197aba8907d25ad6dcd11727ab0d4b0ef92df73412240a0c88"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "review",
+        "demo",
+        "--output",
+        "/tmp/m25_frozen_demonstrations/work/second",
+        "--code-identity",
+        "3bc3e941813fabca98203a8cddf6ecc42008f195"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "021a25af25a9d1197aba8907d25ad6dcd11727ab0d4b0ef92df73412240a0c88"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "review",
+        "verify",
+        "--output",
+        "/tmp/m25_frozen_demonstrations/work/first"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "021a25af25a9d1197aba8907d25ad6dcd11727ab0d4b0ef92df73412240a0c88"
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "review",
+        "dashboard",
+        "--output",
+        "/tmp/m25_frozen_demonstrations/work/first"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8ec7034c0fa9560d90af2f04e357ae51be194d293ceda289210aa3b79ce810d9"
+    }
+  ],
+  "two_run_artifact_equality": {
+    "REVIEW_DASHBOARD.json": true,
+    "REVIEW_LINEAGE.json": true,
+    "RESULTS_ABSENT.md": true,
+    "REVIEW_COMPLETE.json": true,
+    "snapshot/SOURCE_MANIFEST.json": true
+  },
+  "policy_denials": [],
+  "dashboard": {
+    "adjudications": [],
+    "assignments": [
+      {
+        "assignment_id": "synthetic:assignment:0",
+        "batch_digest": "31602282fa7b0f0107e05ce77c3e4d5a27d76117a52360a3f4f4f118e98e4129",
+        "event": "synthetic:m22:s22:event",
+        "permission_reference": "synthetic:permission:0",
+        "reviewer_id": "synthetic:reviewer:0",
+        "role": "REVIEWER",
+        "source_ids": [
+          "synthetic:source:8"
+        ]
+      },
+      {
+        "assignment_id": "synthetic:assignment:1",
+        "batch_digest": "31602282fa7b0f0107e05ce77c3e4d5a27d76117a52360a3f4f4f118e98e4129",
+        "event": "synthetic:m22:s22:event",
+        "permission_reference": "synthetic:permission:1",
+        "reviewer_id": "synthetic:reviewer:1",
+        "role": "REVIEWER",
+        "source_ids": [
+          "synthetic:source:8"
+        ]
+      }
+    ],
+    "audit_history": [
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"ASSIGNMENT\",\"record\":{\"assignment_id\":\"synthetic:assignment:0\",\"batch_digest\":\"31602282fa7b0f0107e05ce77c3e4d5a27d76117a52360a3f4f4f118e98e4129\",\"event\":\"synthetic:m22:s22:event\",\"permission_reference\":\"synthetic:permission:0\",\"reviewer_id\":\"synthetic:reviewer:0\",\"role\":\"REVIEWER\",\"source_ids\":[\"synthetic:source:8\"]}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_SESSION\",\"record\":{\"assignment\":\"synthetic:assignment:0\",\"session\":\"a70e1fb2217a213cc5d7a6447e7228fb0bd8ca065b5e0910276d66f7c8d74ae0\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_OBSERVATION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":null,\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T1\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":1000000,\"rationale\":\"constructed fixture; no human observation\",\"state\":\"OBSERVABLE\",\"timebase\":[1,1000000],\"uncertainty_us\":null,\"value_us\":1000000},\"observation_id\":\"synthetic:observation:0:T1\",\"previous\":null,\"reviewer_id\":\"synthetic:reviewer:0\",\"source_id\":\"synthetic:source:8\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_OBSERVATION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":null,\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T2\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":null,\"rationale\":\"constructed fixture; no human observation\",\"state\":\"UNCERTAIN\",\"timebase\":null,\"uncertainty_us\":null,\"value_us\":null},\"observation_id\":\"synthetic:observation:0:T2\",\"previous\":null,\"reviewer_id\":\"synthetic:reviewer:0\",\"source_id\":\"synthetic:source:8\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_OBSERVATION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":null,\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T3\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":3000000,\"rationale\":\"constructed fixture; no human observation\",\"state\":\"OBSERVABLE\",\"timebase\":[1,1000000],\"uncertainty_us\":null,\"value_us\":3000000},\"observation_id\":\"synthetic:observation:0:T3\",\"previous\":null,\"reviewer_id\":\"synthetic:reviewer:0\",\"source_id\":\"synthetic:source:8\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_OBSERVATION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":null,\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T4\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":4000000,\"rationale\":\"constructed fixture; no human observation\",\"state\":\"OBSERVABLE\",\"timebase\":[1,1000000],\"uncertainty_us\":null,\"value_us\":4000000},\"observation_id\":\"synthetic:observation:0:T4\",\"previous\":null,\"reviewer_id\":\"synthetic:reviewer:0\",\"source_id\":\"synthetic:source:8\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"REVIEW_COMPLETION\",\"record\":{\"assignment\":\"synthetic:assignment:0\",\"risks\":[[\"EXPLICIT_REVIEWER_FLAG\",false],[\"UNCERTAIN_BOUNDARY\",true],[\"ENGINE_T3_T4_INTERPRETATION\",false],[\"FRONT_BACK_CONFLICT\",false],[\"MEDIA_HASH_MISSING_OR_INCONSISTENT\",false],[\"CORRECTED_FROM_CANDIDATE\",false]]}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"ASSIGNMENT\",\"record\":{\"assignment_id\":\"synthetic:assignment:1\",\"batch_digest\":\"31602282fa7b0f0107e05ce77c3e4d5a27d76117a52360a3f4f4f118e98e4129\",\"event\":\"synthetic:m22:s22:event\",\"permission_reference\":\"synthetic:permission:1\",\"reviewer_id\":\"synthetic:reviewer:1\",\"role\":\"REVIEWER\",\"source_ids\":[\"synthetic:source:8\"]}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_SESSION\",\"record\":{\"assignment\":\"synthetic:assignment:1\",\"session\":\"d7a4c056cfc3d96d64cdf48d5a3d5b320709de55ee5691058dae51f07dde36c3\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_OBSERVATION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":null,\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T1\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":1100000,\"rationale\":\"constructed fixture; no human observation\",\"state\":\"OBSERVABLE\",\"timebase\":[1,1000000],\"uncertainty_us\":null,\"value_us\":1100000},\"observation_id\":\"synthetic:observation:1:T1\",\"previous\":null,\"reviewer_id\":\"synthetic:reviewer:1\",\"source_id\":\"synthetic:source:8\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_OBSERVATION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":null,\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T2\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":null,\"rationale\":\"constructed fixture; no human observation\",\"state\":\"UNCERTAIN\",\"timebase\":null,\"uncertainty_us\":null,\"value_us\":null},\"observation_id\":\"synthetic:observation:1:T2\",\"previous\":null,\"reviewer_id\":\"synthetic:reviewer:1\",\"source_id\":\"synthetic:source:8\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_OBSERVATION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":null,\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T3\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":3100000,\"rationale\":\"constructed fixture; no human observation\",\"state\":\"OBSERVABLE\",\"timebase\":[1,1000000],\"uncertainty_us\":null,\"value_us\":3100000},\"observation_id\":\"synthetic:observation:1:T3\",\"previous\":null,\"reviewer_id\":\"synthetic:reviewer:1\",\"source_id\":\"synthetic:source:8\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"BLIND_OBSERVATION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":null,\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T4\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":4100000,\"rationale\":\"constructed fixture; no human observation\",\"state\":\"OBSERVABLE\",\"timebase\":[1,1000000],\"uncertainty_us\":null,\"value_us\":4100000},\"observation_id\":\"synthetic:observation:1:T4\",\"previous\":null,\"reviewer_id\":\"synthetic:reviewer:1\",\"source_id\":\"synthetic:source:8\"}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"REVIEW_COMPLETION\",\"record\":{\"assignment\":\"synthetic:assignment:1\",\"risks\":[[\"EXPLICIT_REVIEWER_FLAG\",false],[\"UNCERTAIN_BOUNDARY\",true],[\"ENGINE_T3_T4_INTERPRETATION\",false],[\"FRONT_BACK_CONFLICT\",false],[\"MEDIA_HASH_MISSING_OR_INCONSISTENT\",false],[\"CORRECTED_FROM_CANDIDATE\",false]]}}",
+      "{\"classification\":\"CONSTRUCTED_REVIEW_FIXTURE\",\"kind\":\"INFORMED_CORRECTION\",\"record\":{\"acoustic_shift_us\":0,\"boundary_version\":\"synthetic:boundary-definition:v1\",\"correction_reason\":\"constructed correction history exercise\",\"human_statement_reference\":null,\"landmark_evidence\":null,\"landmark_kind\":null,\"observation\":{\"boundary\":\"T1\",\"camera\":\"front\",\"censoring_direction\":null,\"landmark\":null,\"origin_us\":0,\"pts_ticks\":1000000,\"rationale\":\"informed constructed correction\",\"state\":\"OBSERVABLE\",\"timebase\":[1,1000000],\"uncertainty_us\":null,\"value_us\":1000000},\"observation_id\":\"synthetic:correction:0:T1\",\"previous\":\"d32c5ff26378dd7a5c08248922b06d311337882c3b6bb6e203eb7cd1697c3301\",\"reviewer_id\":\"synthetic:reviewer:0\",\"source_id\":\"synthetic:source:8\"}}"
+    ],
+    "batch": {
+      "approval_references": [],
+      "batch_id": "synthetic:mission25:batch",
+      "boundaries": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "boundary_version": "synthetic:boundary-definition:v1",
+      "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+      "creation_reference": "synthetic:batch-creation",
+      "events": [
+        [
+          "synthetic:m22:s22:event",
+          "TRAIN"
+        ]
+      ],
+      "lineage_digest": "8599d6fe9d65ef00a22a40627cc2b07b72995bc618e6cf08b42d243760a0b826",
+      "manifest_reference": "synthetic:manifest:m22:v1",
+      "protocol_reference": "synthetic:protocol:v1",
+      "schema": "REVIEW_GOVERNANCE/1",
+      "schema_reference": "synthetic:boundary-projection:v1",
+      "sources": [
+        {
+          "camera": "front",
+          "content_digest": "b0b7b92cf800879c153ac159bac20f0f60afde263d2878d8bed0aa923da79271",
+          "end_us": 10000000,
+          "event": "synthetic:m22:s22:event",
+          "manifest_reference": "synthetic:manifest:m22:v1",
+          "origin_us": 0,
+          "source_id": "synthetic:source:8",
+          "timebase": [
+            1,
+            1000000
+          ],
+          "verification_reference": null
+        }
+      ]
+    },
+    "comparisons": [
+      {
+        "automatic_adjudication": false,
+        "clear_boundary_audit": "RISK_BASED_NO_FIXED_PERCENTAGE",
+        "completed_assignments": 2,
+        "disagreements": [
+          {
+            "boundary": "T1",
+            "contributors": [
+              "1fbab71f27e22539b6897435948ad0e4a4602c94df949be91b8f1336254f0ec4",
+              "b70039acdf3e9184c43ec3a94d4efbb58abe655f484c0caebb53538e10859e63"
+            ],
+            "source_id": "synthetic:source:8",
+            "state": "UNCERTAIN"
+          },
+          {
+            "boundary": "T3",
+            "contributors": [
+              "63020ff603cdc204eff3ba60daa22f9f93db32848bb4790a4e86ece2b3c52827",
+              "838991ea70f8504d6ac906486b4ff01891d0d2fc291b6bf573288ff79d6790d5"
+            ],
+            "source_id": "synthetic:source:8",
+            "state": "UNCERTAIN"
+          },
+          {
+            "boundary": "T4",
+            "contributors": [
+              "45ed2b8744279e5c5372fcf4bec5ecc8afb929462bd37a59d6a87edb6e406aed",
+              "dc4143651d7b40002c792aa54fbd38efe145002cd01223bdd8b23e431dfcc136"
+            ],
+            "source_id": "synthetic:source:8",
+            "state": "UNCERTAIN"
+          }
+        ],
+        "event": "synthetic:m22:s22:event",
+        "required_second_review": true,
+        "risk_reasons": [
+          "CORRECTED_FROM_CANDIDATE",
+          "UNCERTAIN_BOUNDARY"
+        ]
+      }
+    ],
+    "live_publisher_enabled": false,
+    "observations": [
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": null,
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T1",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": 1000000,
+          "rationale": "constructed fixture; no human observation",
+          "state": "OBSERVABLE",
+          "timebase": [
+            1,
+            1000000
+          ],
+          "uncertainty_us": null,
+          "value_us": 1000000
+        },
+        "observation_id": "synthetic:observation:0:T1",
+        "previous": null,
+        "reviewer_id": "synthetic:reviewer:0",
+        "source_id": "synthetic:source:8"
+      },
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": null,
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T2",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": null,
+          "rationale": "constructed fixture; no human observation",
+          "state": "UNCERTAIN",
+          "timebase": null,
+          "uncertainty_us": null,
+          "value_us": null
+        },
+        "observation_id": "synthetic:observation:0:T2",
+        "previous": null,
+        "reviewer_id": "synthetic:reviewer:0",
+        "source_id": "synthetic:source:8"
+      },
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": null,
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T3",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": 3000000,
+          "rationale": "constructed fixture; no human observation",
+          "state": "OBSERVABLE",
+          "timebase": [
+            1,
+            1000000
+          ],
+          "uncertainty_us": null,
+          "value_us": 3000000
+        },
+        "observation_id": "synthetic:observation:0:T3",
+        "previous": null,
+        "reviewer_id": "synthetic:reviewer:0",
+        "source_id": "synthetic:source:8"
+      },
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": null,
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T4",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": 4000000,
+          "rationale": "constructed fixture; no human observation",
+          "state": "OBSERVABLE",
+          "timebase": [
+            1,
+            1000000
+          ],
+          "uncertainty_us": null,
+          "value_us": 4000000
+        },
+        "observation_id": "synthetic:observation:0:T4",
+        "previous": null,
+        "reviewer_id": "synthetic:reviewer:0",
+        "source_id": "synthetic:source:8"
+      },
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": null,
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T1",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": 1100000,
+          "rationale": "constructed fixture; no human observation",
+          "state": "OBSERVABLE",
+          "timebase": [
+            1,
+            1000000
+          ],
+          "uncertainty_us": null,
+          "value_us": 1100000
+        },
+        "observation_id": "synthetic:observation:1:T1",
+        "previous": null,
+        "reviewer_id": "synthetic:reviewer:1",
+        "source_id": "synthetic:source:8"
+      },
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": null,
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T2",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": null,
+          "rationale": "constructed fixture; no human observation",
+          "state": "UNCERTAIN",
+          "timebase": null,
+          "uncertainty_us": null,
+          "value_us": null
+        },
+        "observation_id": "synthetic:observation:1:T2",
+        "previous": null,
+        "reviewer_id": "synthetic:reviewer:1",
+        "source_id": "synthetic:source:8"
+      },
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": null,
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T3",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": 3100000,
+          "rationale": "constructed fixture; no human observation",
+          "state": "OBSERVABLE",
+          "timebase": [
+            1,
+            1000000
+          ],
+          "uncertainty_us": null,
+          "value_us": 3100000
+        },
+        "observation_id": "synthetic:observation:1:T3",
+        "previous": null,
+        "reviewer_id": "synthetic:reviewer:1",
+        "source_id": "synthetic:source:8"
+      },
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": null,
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T4",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": 4100000,
+          "rationale": "constructed fixture; no human observation",
+          "state": "OBSERVABLE",
+          "timebase": [
+            1,
+            1000000
+          ],
+          "uncertainty_us": null,
+          "value_us": 4100000
+        },
+        "observation_id": "synthetic:observation:1:T4",
+        "previous": null,
+        "reviewer_id": "synthetic:reviewer:1",
+        "source_id": "synthetic:source:8"
+      },
+      {
+        "acoustic_shift_us": 0,
+        "boundary_version": "synthetic:boundary-definition:v1",
+        "correction_reason": "constructed correction history exercise",
+        "human_statement_reference": null,
+        "landmark_evidence": null,
+        "landmark_kind": null,
+        "observation": {
+          "boundary": "T1",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": 1000000,
+          "rationale": "informed constructed correction",
+          "state": "OBSERVABLE",
+          "timebase": [
+            1,
+            1000000
+          ],
+          "uncertainty_us": null,
+          "value_us": 1000000
+        },
+        "observation_id": "synthetic:correction:0:T1",
+        "previous": "d32c5ff26378dd7a5c08248922b06d311337882c3b6bb6e203eb7cd1697c3301",
+        "reviewer_id": "synthetic:reviewer:0",
+        "source_id": "synthetic:source:8"
+      }
+    ],
+    "readiness": {
+      "batch_digest": "31602282fa7b0f0107e05ce77c3e4d5a27d76117a52360a3f4f4f118e98e4129",
+      "event_reasons": [
+        [
+          "synthetic:m22:s22:event",
+          [
+            "UNRESOLVED_DISAGREEMENT:synthetic:source:8:T1",
+            "UNRESOLVED_DISAGREEMENT:synthetic:source:8:T3",
+            "UNRESOLVED_DISAGREEMENT:synthetic:source:8:T4"
+          ]
+        ]
+      ],
+      "genuine_evidence_accepted": false,
+      "history_digest": "94d62b80488887fd89d819d729ff96336c5ce6f09acef3923b0b081602c9d87c",
+      "reasons": [
+        "FIXTURE_NEVER_HUMAN_GROUND_TRUTH",
+        "UNRESOLVED_DISAGREEMENT:synthetic:source:8:T1",
+        "UNRESOLVED_DISAGREEMENT:synthetic:source:8:T3",
+        "UNRESOLVED_DISAGREEMENT:synthetic:source:8:T4"
+      ],
+      "status": "CONSTRUCTED_NON_PROMOTABLE"
+    },
+    "real_review_ui_enabled": false,
+    "schema": "REVIEW_GOVERNANCE/1"
+  },
+  "lineage": {
+    "WP02_WP07": {
+      "classification": "CONSTRUCTED_LINEAGE_CV_JOIN",
+      "cv": {
+        "calibration_mode": "NONE",
+        "context_digest": "628b7f6f1b96a126cb50cbd21f44eae16c4726bb3aaa6d8fa7c2d9d1c526cdec",
+        "exposure": [
+          [
+            "synthetic:init",
+            [
+              "synthetic:dev:2"
+            ]
+          ],
+          [
+            "synthetic:model",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:pre",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ]
+        ],
+        "limitation": "constructed consistency only; no fitting, authority or authenticity",
+        "registry_digest": "ac99efd4cba5cbd9e027c8160ecf5763b0485cd4761c04207020527cbc7e166a",
+        "schema": "CONSTRUCTED_ARTIFACT_OOF_V1",
+        "score_count": 1
+      },
+      "dataset_digest": "514d994815b9b083f85098316ba618bb5af9d75c8f7c965867f7b8d6b75b0acc",
+      "manifest": {
+        "classification": "CONSTRUCTED_METADATA_ONLY",
+        "fitted_exposure": [
+          [
+            "synthetic:source:0",
+            []
+          ],
+          [
+            "synthetic:source:0:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:1",
+            []
+          ],
+          [
+            "synthetic:source:1:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:2",
+            []
+          ],
+          [
+            "synthetic:source:2:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:3",
+            []
+          ],
+          [
+            "synthetic:source:3:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:4",
+            []
+          ],
+          [
+            "synthetic:source:4:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:5",
+            []
+          ],
+          [
+            "synthetic:source:5:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:6",
+            []
+          ],
+          [
+            "synthetic:source:6:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:7",
+            []
+          ],
+          [
+            "synthetic:source:7:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:8",
+            []
+          ],
+          [
+            "synthetic:source:8:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ]
+        ],
+        "manifest_digest": "d76caed9d3bbca78c5f87d7ccb815852d347a8bdcb6837f43503ebaac3fc13a5",
+        "physical_events": 9,
+        "real_eligibility": false,
+        "records": 18
+      },
+      "physical_events": [
+        "synthetic:dev:0",
+        "synthetic:dev:1",
+        "synthetic:dev:2",
+        "synthetic:dev:3",
+        "synthetic:dev:4",
+        "synthetic:dev:5",
+        "synthetic:dev:6",
+        "synthetic:dev:7",
+        "synthetic:m22:s22:event"
+      ],
+      "real_eligibility": false
+    },
+    "batch_digest": "31602282fa7b0f0107e05ce77c3e4d5a27d76117a52360a3f4f4f118e98e4129",
+    "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+    "eligible_for_fit_or_promotion": false,
+    "genuine_evidence": false,
+    "history_digest": "94d62b80488887fd89d819d729ff96336c5ce6f09acef3923b0b081602c9d87c",
+    "observation_overlays": [
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "d32c5ff26378dd7a5c08248922b06d311337882c3b6bb6e203eb7cd1697c3301",
+        "previous": null,
+        "source": "synthetic:source:8"
+      },
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "27514f70c015cd62a620de9424242d617e2133c3b7fa2a619ff8472cee80133c",
+        "previous": null,
+        "source": "synthetic:source:8"
+      },
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "63020ff603cdc204eff3ba60daa22f9f93db32848bb4790a4e86ece2b3c52827",
+        "previous": null,
+        "source": "synthetic:source:8"
+      },
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "45ed2b8744279e5c5372fcf4bec5ecc8afb929462bd37a59d6a87edb6e406aed",
+        "previous": null,
+        "source": "synthetic:source:8"
+      },
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "b70039acdf3e9184c43ec3a94d4efbb58abe655f484c0caebb53538e10859e63",
+        "previous": null,
+        "source": "synthetic:source:8"
+      },
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "52b094b380ec73ed60765f225f3297d975cafd3e4349955fbdde1aa8e8f73519",
+        "previous": null,
+        "source": "synthetic:source:8"
+      },
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "838991ea70f8504d6ac906486b4ff01891d0d2fc291b6bf573288ff79d6790d5",
+        "previous": null,
+        "source": "synthetic:source:8"
+      },
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "dc4143651d7b40002c792aa54fbd38efe145002cd01223bdd8b23e431dfcc136",
+        "previous": null,
+        "source": "synthetic:source:8"
+      },
+      {
+        "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+        "id": "1fbab71f27e22539b6897435948ad0e4a4602c94df949be91b8f1336254f0ec4",
+        "previous": "d32c5ff26378dd7a5c08248922b06d311337882c3b6bb6e203eb7cd1697c3301",
+        "source": "synthetic:source:8"
+      }
+    ],
+    "schema": "REVIEW_LINEAGE_JOIN/1"
+  },
+  "manifest": {
+    "artifacts": {
+      "RESULTS_ABSENT.md": "40cf60b88745b917d1c17efa559e238ce2f1adbdeb2a4e108fdcc4a106d875e0",
+      "REVIEW_DASHBOARD.json": "8ec7034c0fa9560d90af2f04e357ae51be194d293ceda289210aa3b79ce810d9",
+      "REVIEW_LINEAGE.json": "a222306ba58f919b09101961b54c322d58add5b0b8ce733b5b072c3055061f95"
+    },
+    "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+    "code_identity": "3bc3e941813fabca98203a8cddf6ecc42008f195",
+    "genuine_evidence": false,
+    "live_ui": false,
+    "promotion": false,
+    "retained_anchor": [
+      15,
+      "af906e44cc2c024c1c251cf07aec821b2e8f221ed2ed1ea1a86a4cf1b61f4d8e"
+    ],
+    "schema": "CONSTRUCTED_REVIEW_DEMONSTRATION/1",
+    "snapshot_digest": "ea6475eb104e33e58dcbdb174b02b3e295c5afd64082cb5f1ae3f7857cf40078"
+  },
+  "snapshot_manifest": {
+    "code_identity": "3bc3e941813fabca98203a8cddf6ecc42008f195",
+    "entries": [
+      {
+        "bytes": 14355,
+        "path": "src/railway_detection/annotation/evidence_review/contracts.py",
+        "sha256": "0572203059798c457b8a8f89d7d2f93348416ee7459262f9201f72c94f562afe"
+      },
+      {
+        "bytes": 20113,
+        "path": "src/railway_detection/annotation/evidence_review/integration.py",
+        "sha256": "4edf0fc0fd956f750aa1527c6ab9e525a9dd73e4a79034f9f42f7b40e65879f1"
+      },
+      {
+        "bytes": 13474,
+        "path": "src/railway_detection/annotation/evidence_review/journal.py",
+        "sha256": "b2ea5f601650d5e546055ec4f8e4bcec999be7aeaf32eecdc1b6b4b5efacd610"
+      },
+      {
+        "bytes": 29065,
+        "path": "src/railway_detection/annotation/evidence_review/lifecycle.py",
+        "sha256": "8f0e31b10b3203ae835605ea67becb74c2f877503f77327e5e1d757ea4de059a"
+      }
+    ],
+    "limitations": "explicit working-tree bytes; commit identity is caller assertion",
+    "protected_resources_included": false,
+    "schema": "SOURCE_DOCS_SNAPSHOT_V1"
+  },
+  "limits": "All review records are constructed. Genuine verification/player/persistence/publication adapters remain disabled. No actual human judgment/rights/promotion."
+}
