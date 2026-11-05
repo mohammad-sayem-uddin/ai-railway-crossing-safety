@@ -903,6 +903,9 @@ def _load_manifest_tool():
 
     sys.modules["mission5a_manifest_tool"] = module
     spec.loader.exec_module(module)  # type: ignore[union-attr]
+    # Constructed unversioned temp-root fixture: all Git queries report no repository.
+    # Git metadata is irrelevant to the path/hash/overwrite contracts under test.
+    module._git = lambda root, *args: ""
     return module
 
 

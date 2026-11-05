@@ -9,14 +9,14 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-from datetime import datetime, timedelta, UTC
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
 
 from railway_detection.annotation.adjudication_session import (
-    DuplicateRecordError,
     AdjudicationSessionError,
+    DuplicateRecordError,
     EventNotInManifestError,
     MediaHashMismatchError,
     ModelFirewallViolationError,
@@ -44,19 +44,23 @@ T0 = datetime(2026, 10, 15, 10, 0, 0, tzinfo=UTC)
 def _make_clock(start: datetime = T0, step_s: float = 45.0):
     """Return a callable time_source that advances by step_s on each call."""
     calls = {"n": 0}
+
     def clock() -> datetime:
         t = start + timedelta(seconds=calls["n"] * step_s)
         calls["n"] += 1
         return t
+
     return clock
 
 
 def _make_monotonic(step_s: float = 45.0):
     calls = {"n": 0}
+
     def clock() -> float:
         value = calls["n"] * step_s
         calls["n"] += 1
         return value
+
     return clock
 
 
@@ -79,7 +83,9 @@ def _make_inventory(tmp_path: Path, event_id: str, cohort: str = "train_events")
     front_sha = _sha256(media["front"].read_bytes())
     back_sha = _sha256(media["back"].read_bytes())
     proposal_path = tmp_path / f"{event_id}_synthetic_proposal.json"
-    proposal_path.write_text(json.dumps({"synthetic": True, "event_id": event_id}), encoding="utf-8")
+    proposal_path.write_text(
+        json.dumps({"synthetic": True, "event_id": event_id}), encoding="utf-8"
+    )
     proposal_sha = _sha256(proposal_path.read_bytes())
     return {
         "total_events": 1,
@@ -100,12 +106,42 @@ def _make_inventory(tmp_path: Path, event_id: str, cohort: str = "train_events")
 
 def _boundary_set_simple() -> dict[str, dict]:
     return {
-        "T0_first_visible": {"state": "OBSERVABLE", "rationale": "Synthetic: visible at frame 0", "value_s": 0.0, "reference_camera": "front"},
-        "T1_danger_zone_entry": {"state": "OBSERVABLE", "rationale": "Synthetic: cowcatcher at landmark", "value_s": 5.8, "reference_camera": "front"},
-        "T2_crossing_occupancy_start": {"state": "OBSERVABLE", "rationale": "Synthetic: pilot crosses plane", "value_s": 6.5, "reference_camera": "front"},
-        "T3_locomotive_unit_clearance": {"state": "OBSERVABLE", "rationale": "Synthetic: rear coupler clears", "value_s": 3.6, "reference_camera": "back"},
-        "T4_tail_clearance": {"state": "OBSERVABLE", "rationale": "Synthetic: final coach clears", "value_s": 45.0, "reference_camera": "back"},
-        "T_scene_clear": {"state": "CENSORED", "rationale": "Synthetic: recording ends while train still visible", "value_s": None, "reference_camera": None},
+        "T0_first_visible": {
+            "state": "OBSERVABLE",
+            "rationale": "Synthetic: visible at frame 0",
+            "value_s": 0.0,
+            "reference_camera": "front",
+        },
+        "T1_danger_zone_entry": {
+            "state": "OBSERVABLE",
+            "rationale": "Synthetic: cowcatcher at landmark",
+            "value_s": 5.8,
+            "reference_camera": "front",
+        },
+        "T2_crossing_occupancy_start": {
+            "state": "OBSERVABLE",
+            "rationale": "Synthetic: pilot crosses plane",
+            "value_s": 6.5,
+            "reference_camera": "front",
+        },
+        "T3_locomotive_unit_clearance": {
+            "state": "OBSERVABLE",
+            "rationale": "Synthetic: rear coupler clears",
+            "value_s": 3.6,
+            "reference_camera": "back",
+        },
+        "T4_tail_clearance": {
+            "state": "OBSERVABLE",
+            "rationale": "Synthetic: final coach clears",
+            "value_s": 45.0,
+            "reference_camera": "back",
+        },
+        "T_scene_clear": {
+            "state": "CENSORED",
+            "rationale": "Synthetic: recording ends while train still visible",
+            "value_s": None,
+            "reference_camera": None,
+        },
     }
 
 
@@ -117,17 +153,22 @@ def _run_full_session(tmp_path: Path, event_id: str = "synthetic_adj_001") -> Pa
     clock = _make_clock()
     monotonic_clock = _make_monotonic()
     session = create_session_from_inventory(
-        inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-        output_dir=output_dir, time_source=clock, monotonic_source=monotonic_clock,
+        inventory,
+        event_key,
+        SYNTHETIC_REVIEWER,
+        SYNTHETIC_ALLOWLIST,
+        output_dir=output_dir,
+        time_source=clock,
+        monotonic_source=monotonic_clock,
     )
     session.start()
     session.submit_boundaries(_boundary_set_simple())
-    preview = session.preview(
+    _preview = session.preview(
         adjudication_status="APPROVED",
         attestation_statement=(
-        "I, the synthetic test reviewer, confirm that all boundary adjudications "
-        "were made independently from visual inspection of the media files, "
-        "without reference to any model output."
+            "I, the synthetic test reviewer, confirm that all boundary adjudications "
+            "were made independently from visual inspection of the media files, "
+            "without reference to any model output."
         ),
     )
     session.confirm(confirmed=True, preview_sha256=session.preview_sha256)
@@ -165,14 +206,21 @@ class TestHappyPath:
         clock = _make_clock()
         monotonic_clock = _make_monotonic()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=output_dir, time_source=clock, monotonic_source=monotonic_clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=output_dir,
+            time_source=clock,
+            monotonic_source=monotonic_clock,
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
-        preview = session.preview(
+        _preview = session.preview(
             adjudication_status="APPROVED",
-            attestation_statement="Synthetic reviewer independently inspected synthetic media only.",
+            attestation_statement=(
+                "Synthetic reviewer independently inspected synthetic media only."
+            ),
         )
         session.confirm(confirmed=True, preview_sha256=session.preview_sha256)
         session.finalize()
@@ -201,8 +249,11 @@ class TestFailureModes:
         event_key = "train_events/synthetic_adj_010"
         with pytest.raises(ReviewerNotAuthorizedError):
             create_session_from_inventory(
-                inventory, event_key, "unauthorized@evil.com",
-                SYNTHETIC_ALLOWLIST, output_dir=tmp_path / "output",
+                inventory,
+                event_key,
+                "unauthorized@evil.com",
+                SYNTHETIC_ALLOWLIST,
+                output_dir=tmp_path / "output",
             )
 
     def test_unknown_event_rejected(self, tmp_path: Path) -> None:
@@ -214,16 +265,22 @@ class TestFailureModes:
         inventory = _make_inventory(tmp_path, "event_001")
         with pytest.raises(EventNotInManifestError, match="Synthetic-only"):
             create_session_from_inventory(
-                inventory, "train_events/event_001", SYNTHETIC_REVIEWER,
-                SYNTHETIC_ALLOWLIST, output_dir=tmp_path / "output",
+                inventory,
+                "train_events/event_001",
+                SYNTHETIC_REVIEWER,
+                SYNTHETIC_ALLOWLIST,
+                output_dir=tmp_path / "output",
             )
 
     def test_non_temp_output_is_rejected(self, tmp_path: Path) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_outside")
         with pytest.raises(AdjudicationSessionError, match="SYNTHETIC_ONLY_PATH_REQUIRED"):
             create_session_from_inventory(
-                inventory, "train_events/synthetic_adj_outside", SYNTHETIC_REVIEWER,
-                SYNTHETIC_ALLOWLIST, output_dir=Path.cwd() / "unsafe_output",
+                inventory,
+                "train_events/synthetic_adj_outside",
+                SYNTHETIC_REVIEWER,
+                SYNTHETIC_ALLOWLIST,
+                output_dir=Path.cwd() / "unsafe_output",
             )
 
     def test_media_hash_mismatch_aborts(self, tmp_path: Path) -> None:
@@ -234,8 +291,12 @@ class TestFailureModes:
         clock = _make_clock()
         monotonic_clock = _make_monotonic()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=tmp_path / "output", time_source=clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=clock,
             monotonic_source=monotonic_clock,
         )
         with pytest.raises(MediaHashMismatchError):
@@ -250,8 +311,12 @@ class TestFailureModes:
         clock = _make_clock()
         monotonic_clock = _make_monotonic()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=tmp_path / "output", time_source=clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=clock,
             monotonic_source=monotonic_clock,
         )
         session.start()
@@ -268,13 +333,19 @@ class TestFailureModes:
     def test_short_monotonic_duration_rejected(self, tmp_path: Path) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_too_fast")
         counter = {"value": 0.0}
+
         def fast_clock() -> float:
             counter["value"] += 1.0
             return counter["value"]
+
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_too_fast", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=tmp_path / "output",
-            time_source=_make_clock(step_s=1.0), monotonic_source=fast_clock,
+            inventory,
+            "train_events/synthetic_adj_too_fast",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=_make_clock(step_s=1.0),
+            monotonic_source=fast_clock,
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -284,12 +355,18 @@ class TestFailureModes:
                 attestation_statement="Synthetic reviewer inspected synthetic media only.",
             )
 
-    def test_confirmation_requires_affirmative_flag_and_matching_preview(self, tmp_path: Path) -> None:
+    def test_confirmation_requires_affirmative_flag_and_matching_preview(
+        self, tmp_path: Path
+    ) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_confirmation")
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_confirmation", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=tmp_path / "output",
-            time_source=_make_clock(), monotonic_source=_make_monotonic(),
+            inventory,
+            "train_events/synthetic_adj_confirmation",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=_make_clock(),
+            monotonic_source=_make_monotonic(),
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -309,9 +386,13 @@ class TestFailureModes:
         target = output_dir / "synthetic_adj_existing_stage2_1_review.json"
         target.write_text("preserve-existing", encoding="utf-8")
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_existing", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=output_dir,
-            time_source=_make_clock(), monotonic_source=_make_monotonic(),
+            inventory,
+            "train_events/synthetic_adj_existing",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=output_dir,
+            time_source=_make_clock(),
+            monotonic_source=_make_monotonic(),
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -324,14 +405,20 @@ class TestFailureModes:
             session.finalize()
         assert target.read_text(encoding="utf-8") == "preserve-existing"
 
-    def test_atomic_create_race_preserves_concurrent_record(self, tmp_path: Path, monkeypatch) -> None:
+    def test_atomic_create_race_preserves_concurrent_record(
+        self, tmp_path: Path, monkeypatch
+    ) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_race")
         output_dir = tmp_path / "output"
         target = output_dir / "synthetic_adj_race_stage2_1_review.json"
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_race", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=output_dir,
-            time_source=_make_clock(), monotonic_source=_make_monotonic(),
+            inventory,
+            "train_events/synthetic_adj_race",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=output_dir,
+            time_source=_make_clock(),
+            monotonic_source=_make_monotonic(),
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -342,9 +429,11 @@ class TestFailureModes:
         session.confirm(confirmed=True, preview_sha256=session.preview_sha256)
 
         real_link = os.link
+
         def concurrent_create(source, destination, *args, **kwargs):
             Path(destination).write_text("concurrent winner", encoding="utf-8")
             return real_link(source, destination, *args, **kwargs)
+
         monkeypatch.setattr(os, "link", concurrent_create)
 
         with pytest.raises(DuplicateRecordError, match="created concurrently"):
@@ -352,13 +441,19 @@ class TestFailureModes:
         assert target.read_text(encoding="utf-8") == "concurrent winner"
         assert sorted(p.name for p in output_dir.iterdir()) == [target.name]
 
-    def test_media_changed_during_staging_prevents_atomic_create(self, tmp_path: Path, monkeypatch) -> None:
+    def test_media_changed_during_staging_prevents_atomic_create(
+        self, tmp_path: Path, monkeypatch
+    ) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_staging_change")
         output_dir = tmp_path / "output"
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_staging_change", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=output_dir,
-            time_source=_make_clock(), monotonic_source=_make_monotonic(),
+            inventory,
+            "train_events/synthetic_adj_staging_change",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=output_dir,
+            time_source=_make_clock(),
+            monotonic_source=_make_monotonic(),
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -369,10 +464,14 @@ class TestFailureModes:
         session.confirm(confirmed=True, preview_sha256=session.preview_sha256)
 
         real_fsync = os.fsync
+
         def mutate_after_staging(fd):
             result = real_fsync(fd)
-            (tmp_path / "synthetic_adj_staging_change_front.mov").write_bytes(b"changed while staging")
+            (tmp_path / "synthetic_adj_staging_change_front.mov").write_bytes(
+                b"changed while staging"
+            )
             return result
+
         monkeypatch.setattr(os, "fsync", mutate_after_staging)
 
         with pytest.raises(MediaHashMismatchError, match="immediately before"):
@@ -382,11 +481,19 @@ class TestFailureModes:
 
     def test_proposal_change_before_preview_fails_closed(self, tmp_path: Path) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_proposal_preview")
-        proposal = Path(inventory["events"]["train_events/synthetic_adj_proposal_preview"]["active_proposal_file"])
+        proposal = Path(
+            inventory["events"]["train_events/synthetic_adj_proposal_preview"][
+                "active_proposal_file"
+            ]
+        )
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_proposal_preview", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=tmp_path / "output",
-            time_source=_make_clock(), monotonic_source=_make_monotonic(),
+            inventory,
+            "train_events/synthetic_adj_proposal_preview",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=_make_clock(),
+            monotonic_source=_make_monotonic(),
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -401,12 +508,18 @@ class TestFailureModes:
 
     def test_proposal_change_after_preview_prevents_write(self, tmp_path: Path) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_proposal_write")
-        proposal = Path(inventory["events"]["train_events/synthetic_adj_proposal_write"]["active_proposal_file"])
+        proposal = Path(
+            inventory["events"]["train_events/synthetic_adj_proposal_write"]["active_proposal_file"]
+        )
         output_dir = tmp_path / "output"
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_proposal_write", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=output_dir,
-            time_source=_make_clock(), monotonic_source=_make_monotonic(),
+            inventory,
+            "train_events/synthetic_adj_proposal_write",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=output_dir,
+            time_source=_make_clock(),
+            monotonic_source=_make_monotonic(),
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -424,12 +537,20 @@ class TestFailureModes:
         self, tmp_path: Path, monkeypatch
     ) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_proposal_staging")
-        proposal = Path(inventory["events"]["train_events/synthetic_adj_proposal_staging"]["active_proposal_file"])
+        proposal = Path(
+            inventory["events"]["train_events/synthetic_adj_proposal_staging"][
+                "active_proposal_file"
+            ]
+        )
         output_dir = tmp_path / "output"
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_proposal_staging", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=output_dir,
-            time_source=_make_clock(), monotonic_source=_make_monotonic(),
+            inventory,
+            "train_events/synthetic_adj_proposal_staging",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=output_dir,
+            time_source=_make_clock(),
+            monotonic_source=_make_monotonic(),
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -443,7 +564,9 @@ class TestFailureModes:
 
         def mutate_proposal_after_staging(fd):
             result = real_fsync(fd)
-            proposal.write_text('{"synthetic":true,"changed_during_staging":true}', encoding="utf-8")
+            proposal.write_text(
+                '{"synthetic":true,"changed_during_staging":true}', encoding="utf-8"
+            )
             return result
 
         monkeypatch.setattr(os, "fsync", mutate_proposal_after_staging)
@@ -457,9 +580,13 @@ class TestFailureModes:
         event = inventory["events"]["train_events/synthetic_adj_symlink_escape"]
         front = Path(event["raw_media"]["front"]["path"])
         session = create_session_from_inventory(
-            inventory, "train_events/synthetic_adj_symlink_escape", SYNTHETIC_REVIEWER,
-            SYNTHETIC_ALLOWLIST, output_dir=tmp_path / "output",
-            time_source=_make_clock(), monotonic_source=_make_monotonic(),
+            inventory,
+            "train_events/synthetic_adj_symlink_escape",
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=_make_clock(),
+            monotonic_source=_make_monotonic(),
         )
         # Point at an existing read-only system file outside tempfile storage;
         # the runner must reject its resolved path before reading it.
@@ -469,7 +596,8 @@ class TestFailureModes:
         with pytest.raises(MediaHashMismatchError, match="Synthetic-only media path check"):
             session.start()
         assert not session.is_active
-        front.unlink()
+        # Product refusal is established. The profile runner owns removal of its
+        # temporary tree after the guarded child exits; no target is unlinked here.
 
     def test_model_firewall_blocks_model_paths(self, tmp_path: Path) -> None:
         inventory = _make_inventory(tmp_path, "synthetic_adj_013")
@@ -478,7 +606,10 @@ class TestFailureModes:
         inventory["events"][event_key]["raw_media"]["front"]["path"] = "results/yolo/best.pt"
         with pytest.raises(ModelFirewallViolationError):
             create_session_from_inventory(
-                inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
+                inventory,
+                event_key,
+                SYNTHETIC_REVIEWER,
+                SYNTHETIC_ALLOWLIST,
                 output_dir=tmp_path / "output",
             )
 
@@ -487,21 +618,40 @@ class TestFailureModes:
         event_key = "train_events/synthetic_adj_014"
         clock = _make_clock()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=tmp_path / "output", time_source=clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=clock,
         )
         session.start()
         # 4 out of 6 boundaries UNCERTAIN (>50%)
         boundaries = {}
-        for i, ts in enumerate([
-            "T0_first_visible", "T1_danger_zone_entry",
-            "T2_crossing_occupancy_start", "T3_locomotive_unit_clearance",
-            "T4_tail_clearance", "T_scene_clear",
-        ]):
+        for i, ts in enumerate(
+            [
+                "T0_first_visible",
+                "T1_danger_zone_entry",
+                "T2_crossing_occupancy_start",
+                "T3_locomotive_unit_clearance",
+                "T4_tail_clearance",
+                "T_scene_clear",
+            ]
+        ):
             if i < 4:
-                boundaries[ts] = {"state": "UNCERTAIN", "rationale": "Cannot determine", "value_s": None, "reference_camera": None}
+                boundaries[ts] = {
+                    "state": "UNCERTAIN",
+                    "rationale": "Cannot determine",
+                    "value_s": None,
+                    "reference_camera": None,
+                }
             else:
-                boundaries[ts] = {"state": "OBSERVABLE", "rationale": "Clearly visible", "value_s": float(i), "reference_camera": "front"}
+                boundaries[ts] = {
+                    "state": "OBSERVABLE",
+                    "rationale": "Clearly visible",
+                    "value_s": float(i),
+                    "reference_camera": "front",
+                }
         with pytest.raises(StopConditionTriggeredError):
             session.submit_boundaries(boundaries)
         assert not session.is_active
@@ -511,8 +661,12 @@ class TestFailureModes:
         event_key = "train_events/synthetic_adj_015"
         clock = _make_clock()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=tmp_path / "output", time_source=clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=clock,
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -525,15 +679,21 @@ class TestFailureModes:
         clock = _make_clock()
         monotonic_clock = _make_monotonic()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=tmp_path / "output", time_source=clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=clock,
             monotonic_source=monotonic_clock,
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
         session.preview(
             adjudication_status="APPROVED",
-            attestation_statement="Synthetic reviewer independently inspected synthetic media only.",
+            attestation_statement=(
+                "Synthetic reviewer independently inspected synthetic media only."
+            ),
         )
         session.confirm(confirmed=True, preview_sha256=session.preview_sha256)
         session.finalize()
@@ -546,8 +706,12 @@ class TestFailureModes:
         event_key = "train_events/synthetic_adj_017"
         clock = _make_clock()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=tmp_path / "output", time_source=clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=clock,
         )
         with pytest.raises(SessionNotStartedError):
             session.submit_boundaries(_boundary_set_simple())
@@ -557,8 +721,12 @@ class TestFailureModes:
         event_key = "train_events/synthetic_adj_018"
         clock = _make_clock()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=tmp_path / "output", time_source=clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=tmp_path / "output",
+            time_source=clock,
         )
         session.start()
         session.submit_boundaries(_boundary_set_simple())
@@ -571,8 +739,12 @@ class TestFailureModes:
         output_dir = tmp_path / "output"
         clock = _make_clock()
         session = create_session_from_inventory(
-            inventory, event_key, SYNTHETIC_REVIEWER, SYNTHETIC_ALLOWLIST,
-            output_dir=output_dir, time_source=clock,
+            inventory,
+            event_key,
+            SYNTHETIC_REVIEWER,
+            SYNTHETIC_ALLOWLIST,
+            output_dir=output_dir,
+            time_source=clock,
         )
         session.start()
         session.withdraw("Researcher withdrew for testing purposes.")

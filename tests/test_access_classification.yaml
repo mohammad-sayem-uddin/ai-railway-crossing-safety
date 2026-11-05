@@ -30,14 +30,14 @@ limitations:
   test counts; its complete regression command still executes every file under a separate inherited access
   policy.
 summary:
-  total_test_files: 146
-  synthetic_only: 78
-  metadata_only: 21
-  model_checkpoint_access: 15
+  total_test_files: 149
+  unknown: 34
   processed_data_access: 2
   raw_media_access: 4
-  unknown: 26
-  safe_for_synthetic_runner: 99
+  metadata_only: 17
+  synthetic_only: 77
+  model_checkpoint_access: 15
+  safe_for_synthetic_runner: 94
 test_files:
   tests/integration/test_phase0_smoke.py:
     access_dirs: []
@@ -266,30 +266,23 @@ test_files:
       skipped: 0
       passed: 11
   tests/test_phase11_11_adjudication_session.py:
-    access_dirs: []
+    sha256: d852f0eea251d4a5233c48fa024199d2da1d12cb48e9b39886c9440ae3d1468e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/test_phase11_11_adjudication_session.py: changed/new source; UNKNOWN pending executed
+      evidence review'
     access_paths: []
     blocked_attempts: {}
-    category: SYNTHETIC_ONLY
-    child_processes_guarded: false
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: 26 test(s) executed; no repository file outside source/test code was read; all data is created
-      in temporary directories.
-    safe_for_synthetic_runner: true
-    sha256: d84cbddd8ab548ddd36bf57653e94801698f33df8c96b7ee201e208bd37766c1
+    access_dirs: []
+    static_hints: []
     spawns_child_process: false
-    static_hints:
-    - _back.mov
-    - _front.mov
-    - results/yolo/best.pt
-    - synthetic_adj_002_back.mov
-    - synthetic_adj_002_front.mov
-    - synthetic_adj_media_changed_front.mov
-    - synthetic_adj_staging_change_front.mov
+    child_processes_guarded: false
     tests:
+      passed: 0
       failed: 0
       errors: 0
       skipped: 0
-      passed: 26
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/test_phase11_12_readiness_blocker_report.py:
     access_dirs: []
     access_paths: []
@@ -608,56 +601,23 @@ test_files:
       skipped: 0
       passed: 37
   tests/unit/test_access_classification_tools.py:
-    access_dirs:
-    - .
-    access_paths:
-    - guard.jsonl
+    sha256: 43656ed61ca83a981a81b06aacff30c0ac65ecc95e151a6462c19688f551c6e9
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_access_classification_tools.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
     blocked_attempts: {}
-    category: METADATA_ONLY
-    child_processes_guarded: true
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: 'Reads 1 repository metadata file(s) (e.g. guard.jsonl); no media, weights, processed data
-      or results were requested. Child processes are reviewed as guarded: every child pytest it launches
-      loads railway_detection.safety.access_guard_plugin (_run_probe, the runner tests via run_synthetic_tests.main,
-      the log-location test).'
-    safe_for_synthetic_runner: true
-    sha256: f0d4489039f0ecac279ffae0328ecd1d9e2e768721ac36a894fdb189da02783c
-    spawns_child_process: true
-    static_hints:
-    - "\n        def test_it():\n            open(REPO / \"data/raw/layer_b/v2/train_events/event_001/camera_front.mov\"\
-      , \"rb\")\n    "
-    - "\n        def test_pathlib():\n            (REPO / \"data/raw/x.wav\").read_bytes()\n        def\
-      \ test_os_open():\n            os.open(str(REPO / \"data/raw/x.wav\"), os.O_RDONLY)\n    "
-    - "\n        def test_tmp(tmp_path):\n            (tmp_path / \"a.mov\").write_bytes(b\"x\"); assert\
-      \ (tmp_path / \"a.mov\").read_bytes()\n            import railway_detection.cli.main\n    "
-    - anything/clip.mp4
-    - clip.mov
-    - data/processed/layer_b/audio/x.json
-    - data/raw
-    - data/raw/layer_b
-    - data/raw/layer_b/a.mov
-    - data/raw/layer_b/c.mov
-    - data/raw/layer_b/v2/train_events/event_001/camera_front.mov
-    - data/raw/x.mov
-    - 'def test_a(): open(''data/raw/x.mov'')
-
-      '
-    - experiments/vision/abc/checkpoints/weights/best.pt
-    - experiments/vision/abc/report.json
-    - 'import subprocess
-
-      P = "data/raw/layer_b/a.mov"
-
-      subprocess_name = "subprocess"
-
-      '
-    - results/a.json
-    - results/experiment_registry.jsonl
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
     tests:
+      passed: 0
       failed: 0
       errors: 0
       skipped: 0
-      passed: 58
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/unit/test_audio_entrypoint_gate.py:
     access_dirs: []
     access_paths: []
@@ -1423,12 +1383,11 @@ test_files:
       skipped: 0
       passed: 72
   tests/unit/test_media_opener_coverage.py:
-    sha256: 72ba608bbaf52f4e2bde60108b8a364da753c03d61141851e92b17e1fc3bd180
+    sha256: 43ff8bd1d5b7dbcde3972ac5eaa632087ab86cc43c90f75f58e09b78f16e83c3
     category: UNKNOWN
     safe_for_synthetic_runner: false
-    reason: 'tests/unit/test_media_opener_coverage.py: new or changed source; original classifier evidence
-      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
-      separately under its inherited policy.'
+    reason: 'tests/unit/test_media_opener_coverage.py: changed/new source; UNKNOWN pending executed evidence
+      review'
     access_paths: []
     blocked_attempts: {}
     access_dirs: []
@@ -1436,10 +1395,10 @@ test_files:
     spawns_child_process: false
     child_processes_guarded: false
     tests:
+      passed: 0
       failed: 0
       errors: 0
       skipped: 0
-      passed: 0
     evidence: source_inventory_only_no_dynamic_classification_claim
   tests/unit/test_metadata_only_audit.py:
     access_dirs: []
@@ -1656,61 +1615,41 @@ test_files:
       skipped: 0
       passed: 57
   tests/unit/test_mission5a1_audit_regressions.py:
-    access_dirs:
-    - configs
-    access_paths:
-    - configs/frozen_experiment_v1.yaml
+    sha256: 5e7d87a0e815732e73b3c147d85cc841cbbcfd2692cd0a1d4d209e80aa565f40
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_mission5a1_audit_regressions.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
     blocked_attempts: {}
-    category: METADATA_ONLY
-    child_processes_guarded: false
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
-      processed data or results were requested.
-    safe_for_synthetic_runner: true
-    sha256: d8b8f42c226fdbfa9625fdf8cd5c5c8ccc92f7682d0005a0604ef303ff61d22d
+    access_dirs: []
+    static_hints: []
     spawns_child_process: false
-    static_hints:
-    - ../outside.mp4
-    - best.pt
-    - clip.mov
-    - data/raw
-    - data/raw/meta.json
-    - data/raw/v.mp4
-    - outside.mp4
-    - src/clip.mov
-    - src/dirlink/outside.mp4
-    - v.mp4
-    - weights/best.pt
+    child_processes_guarded: false
     tests:
+      passed: 0
       failed: 0
       errors: 0
       skipped: 0
-      passed: 68
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/unit/test_mission5a_production.py:
-    access_dirs:
-    - docs/generated/mission_5a
-    access_paths:
-    - docs/generated/mission_5a/FINAL_GROUND_TRUTH_PROTOCOL_v7.1.0_PROPOSED.md
-    - docs/generated/mission_5a/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.0_PROPOSED.md
-    - docs/generated/mission_5a/PAPER_REVISION_PROPOSAL_20261101_M5A.md
+    sha256: b2f1419eedd97fca302b672ee3ce1153c526c1c2939bcd37e6268025c11d335e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_mission5a_production.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
     blocked_attempts: {}
-    category: METADATA_ONLY
-    child_processes_guarded: false
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: Reads 3 repository metadata file(s) (e.g. docs/generated/mission_5a/FINAL_GROUND_TRUTH_PROTOCOL_v7.1.0_PROPOSED.md,
-      docs/generated/mission_5a/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.0_PROPOSED.md, docs/generated/mission_5a/PAPER_REVISION_PROPOSAL_20261101_M5A.md);
-      no media, weights, processed data or results were requested.
-    safe_for_synthetic_runner: true
-    sha256: 68bbe1db68fe5ffebfaabfca15d23bed9ad51468bf5e40aa051ffb9c0fc941bd
+    access_dirs: []
+    static_hints: []
     spawns_child_process: false
-    static_hints:
-    - clip.mov
-    - v.mp4
+    child_processes_guarded: false
     tests:
+      passed: 0
       failed: 0
       errors: 0
       skipped: 0
-      passed: 88
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/unit/test_phase10_1_safety_checks.py:
     access_dirs: []
     access_paths: []
@@ -2170,27 +2109,23 @@ test_files:
       skipped: 0
       passed: 2
   tests/unit/test_phase1_metric_closure.py:
-    access_dirs:
-    - configs
-    access_paths:
-    - configs/frozen_experiment_v1.yaml
+    sha256: 844d90ec15173b4659cc08f968e282306c2db63533bb3fbcc7f0026a53bb387e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_phase1_metric_closure.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
     blocked_attempts: {}
-    category: METADATA_ONLY
-    child_processes_guarded: false
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
-      processed data or results were requested.
-    safe_for_synthetic_runner: true
-    sha256: 2ce6bac3d858071da093739d7ae0e5e06978670c85f1929d3bf488545304c225
+    access_dirs: []
+    static_hints: []
     spawns_child_process: false
-    static_hints:
-    - data/raw
-    - data/raw/nested
+    child_processes_guarded: false
     tests:
+      passed: 0
       failed: 0
       errors: 0
       skipped: 0
-      passed: 99
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/unit/test_phase2_protocol_consolidation.py:
     access_dirs:
     - configs
@@ -3495,6 +3430,60 @@ test_files:
       errors: 0
       skipped: 0
       passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission23/test_acceptance_contract.py:
+    sha256: 0128e93da0744a31a8f2ad875bf155558a4e3847cd0a23311b814378aca72a6e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission23/test_acceptance_contract.py: changed/new source; UNKNOWN pending
+      executed evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission23/test_demo_hardening.py:
+    sha256: f7c653bcd4c062ed83c8145ea1eb6f9a7ed77e6b723262986328e054b8d1d53c
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission23/test_demo_hardening.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission23/test_fixture_adapters.py:
+    sha256: a50f9433ae5b9115f6801142f07b24a365046fe7b626f1bdbd37d784efd2c161
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission23/test_fixture_adapters.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
     evidence: source_inventory_only_no_dynamic_classification_claim
 amendments:
 - mission: 14

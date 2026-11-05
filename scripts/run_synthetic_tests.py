@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import tempfile
 import xml.etree.ElementTree as ET
@@ -155,9 +156,11 @@ def main(argv: list[str] | None = None) -> int:
         *args.extra,
         *selected,
     ]
-    env = {
+    env = os.environ | {
         "PYTHONDONTWRITEBYTECODE": "1",
-        "PYTHONPATH": str(PACKAGE_SRC),
+        "PYTHONPATH": os.pathsep.join(
+            filter(None, [str(PACKAGE_SRC), os.environ.get("PYTHONPATH", "")])
+        ),
         "PATH": "/usr/bin:/bin:/usr/local/bin:/opt/homebrew/bin",
     }
     proc = subprocess.run(cmd, cwd=REPO_ROOT, env=env, capture_output=True, text=True)
@@ -169,8 +172,8 @@ def main(argv: list[str] | None = None) -> int:
     violations = verify_log(events, manifest, selected)
     counts = {"passed": 0, "failed": 0, "skipped": 0, "errors": 0}
     if junit.is_file():
-        suite = ET.parse(junit).getroot()
-        suite = suite if suite.tag == "testsuite" else suite.find("testsuite")
+        root = ET.parse(junit).getroot()
+        suite = root if root.tag == "testsuite" else root.find("testsuite")
         if suite is not None:
             total = int(suite.get("tests", 0))
             counts = {

@@ -25,6 +25,7 @@ RESEARCH_READER_ALLOWLIST: dict[str, str] = {}
 
 #: ``"<relative path>::<function>"`` -> why this function cannot open raw media.
 REVIEWED_METADATA_ONLY: dict[str, str] = {
+    "src/railway_detection/safety/resource_free_acceptance.py::bindings": "hashes only explicit src/scripts/test Python and config metadata families after protected-root and source/config symlink refusal; no research artifact trees",
     "src/railway_detection/synthetic/integration_workflow.py::verify_completed": "hashes only closed-name constructed demo JSON/docs/source artifacts after protected-root and parent-first symlink rejection",
     "src/railway_detection/synthetic/integration_workflow.py::run_demo": "hashes only its own named constructed artifacts and snapshot, after protected-root and parent-first symlink rejection; never media/cache/checkpoint paths",
     "src/railway_detection/annotation/batch_multimodal_annotator.py::_compute_prompt_hash": "hashes the prompt template text file",
@@ -71,8 +72,21 @@ def _is_binary_read(call: ast.Call, *, mode_index: int) -> bool:
 
 
 _PATH_PREDICT = re.compile(r"\.predict\([^)]*?source=(?:str\(|Path\(|[A-Za-z_]*path\b|p\b)", re.S)
-_GUARDS = ("require_media_authorization(", "require_media_command_authorization(", "frame_generator(")
-_FFMPEG_NAMES = ('"ffmpeg"', '"ffprobe"', "'ffmpeg'", "'ffprobe'", 'ffmpeg"', "ffprobe\"", "ffmpeg'", "ffprobe'")
+_GUARDS = (
+    "require_media_authorization(",
+    "require_media_command_authorization(",
+    "frame_generator(",
+)
+_FFMPEG_NAMES = (
+    '"ffmpeg"',
+    '"ffprobe"',
+    "'ffmpeg'",
+    "'ffprobe'",
+    'ffmpeg"',
+    'ffprobe"',
+    "ffmpeg'",
+    "ffprobe'",
+)
 
 
 def _reader_tokens(text: str, calls: list[ast.Call]) -> list[tuple[int, str]]:
@@ -122,7 +136,11 @@ def _scopes(tree: ast.Module):
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
             yield node.name, node
     module_level = ast.Module(
-        body=[n for n in tree.body if not isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))],
+        body=[
+            n
+            for n in tree.body
+            if not isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))
+        ],
         type_ignores=[],
     )
     yield "<module>", module_level
@@ -146,8 +164,10 @@ def _scan() -> dict[str, str]:
             continue
         rel = path.relative_to(ROOT).as_posix()
         for name, node in _scopes(tree):
-            text = ast.get_source_segment(source, node) if not isinstance(node, ast.Module) else (
-                "\n".join(ast.get_source_segment(source, n) or "" for n in node.body)
+            text = (
+                ast.get_source_segment(source, node)
+                if not isinstance(node, ast.Module)
+                else ("\n".join(ast.get_source_segment(source, n) or "" for n in node.body))
             )
             text = text or ""
             calls = [n for n in ast.walk(node) if isinstance(n, ast.Call)]

@@ -10,6 +10,7 @@ import hashlib
 import json
 import os
 import sqlite3
+import tempfile
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any
@@ -146,6 +147,15 @@ def reject_metadata_aliases(output):
 
 def verify_completed(output, descriptor):
     reject_metadata_aliases(output)
+    for relative in (
+        "RUN.json",
+        "ACK.json",
+        "execution.json",
+        "results_absent_report.md",
+        "COMPLETE.json",
+    ):
+        if (output / (relative + ".pending")).exists():
+            raise ValueError("completed run contains incomplete pending metadata")
     marker = json.loads((output / "COMPLETE.json").read_text())
     if marker.get("schema") != SCHEMA or marker.get("descriptor_sha256") != sha(text(descriptor)):
         raise ValueError("completion schema/binding mismatch")
@@ -205,6 +215,18 @@ def verify_completed(output, descriptor):
             raise ValueError("completed B metric contract mismatch")
     if core["lineage_CV"] != json.loads(text(fixture["joined"])):
         raise ValueError("completed lineage/CV provenance mismatch")
+    # A file digest can be coherently rewritten by this same-user profile's owner.
+    # Compare every deterministic public artifact against fresh constructed execution.
+    with tempfile.TemporaryDirectory(prefix="m23-replay-", dir=output.parent) as temporary:
+        replay = Path(temporary) / "fresh"
+        expected_core = run_demo(
+            replay, seed=descriptor["seed"], code_identity=descriptor["code_identity"]
+        )
+        if core != expected_core:
+            raise ValueError("completed public result fails full constructed replay")
+        for relative in expected_paths:
+            if (output / relative).read_bytes() != (replay / relative).read_bytes():
+                raise ValueError("completed artifact fails full constructed replay: " + relative)
     return core
 
 

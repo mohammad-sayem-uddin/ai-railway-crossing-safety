@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 import subprocess
 import sys
 import textwrap
@@ -109,8 +110,11 @@ def _run_probe(tmp_path: Path, body: str) -> tuple[subprocess.CompletedProcess, 
         cwd=tmp_path,
         capture_output=True,
         text=True,
-        env={
-            "PYTHONPATH": str(REPO / "src"),
+        env=os.environ
+        | {
+            "PYTHONPATH": os.pathsep.join(
+                filter(None, [str(REPO / "src"), os.environ.get("PYTHONPATH", "")])
+            ),
             "PATH": "/usr/bin:/bin",
             "PYTHONDONTWRITEBYTECODE": "1",
         },
@@ -255,8 +259,11 @@ def test_guard_requires_a_log_outside_the_repository():
         cwd=REPO,
         capture_output=True,
         text=True,
-        env={
-            "PYTHONPATH": str(REPO / "src"),
+        env=os.environ
+        | {
+            "PYTHONPATH": os.pathsep.join(
+                filter(None, [str(REPO / "src"), os.environ.get("PYTHONPATH", "")])
+            ),
             "PATH": "/usr/bin:/bin",
             "PYTHONDONTWRITEBYTECODE": "1",
         },

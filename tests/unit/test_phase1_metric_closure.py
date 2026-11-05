@@ -84,8 +84,10 @@ def _run(steps, event=TRAIN):
 def _secs(blocked_from, stop, start=0, unblocked_at=()):
     """1 Hz steps start..stop (inclusive); blocked from ``blocked_from``; some forced open."""
     return [
-        _step(float(t), blocked=(blocked_from is not None and t >= blocked_from
-                                 and t not in unblocked_at))
+        _step(
+            float(t),
+            blocked=(blocked_from is not None and t >= blocked_from and t not in unblocked_at),
+        )
         for t in range(start, stop + 1)
     ]
 
@@ -323,13 +325,19 @@ class TestTimestampNormalization:
     def test_lead_in_screen_compares_available_time_on_the_grid(self):
         # 3.8 - 0.2 == 3.5999999999999996 as a raw float, i.e. "less than 3.6".
         edge = screen_missed_train_lead_in(
-            3.8, first_visible_time_s=0.2, first_visible_left_censored=False,
-            min_block_latency_s=3.6, min_block_latency_source="unit",
+            3.8,
+            first_visible_time_s=0.2,
+            first_visible_left_censored=False,
+            min_block_latency_s=3.6,
+            min_block_latency_source="unit",
         )
         assert edge.outcome == SCREEN_PASSED and edge.available_lead_in_s == 3.6
         short = screen_missed_train_lead_in(
-            3.8, first_visible_time_s=0.200001, first_visible_left_censored=False,
-            min_block_latency_s=3.6, min_block_latency_source="unit",
+            3.8,
+            first_visible_time_s=0.200001,
+            first_visible_left_censored=False,
+            min_block_latency_s=3.6,
+            min_block_latency_source="unit",
         )
         assert short.outcome == SCREEN_INSUFFICIENT_LEAD_IN
 
@@ -339,21 +347,34 @@ class TestTimestampNormalization:
 # ---------------------------------------------------------------------------
 
 
-def _truth(boundaries=None, cameras=None, event="train_events/case", cohort="train_events",
-           censored=(), uncertain=()):
+def _truth(
+    boundaries=None,
+    cameras=None,
+    event="train_events/case",
+    cohort="train_events",
+    censored=(),
+    uncertain=(),
+):
     boundaries = {T1: 5.0, T4: 10.0} if boundaries is None else boundaries
     cameras = cameras or {T0: "front", T1: "front", T4: "back"}
     return ApprovedEventGroundTruth(
-        event_id=event, cohort=cohort, review_id="r", reviewer_id="s",
-        observable_boundaries=boundaries, censored_boundaries=tuple(censored),
-        uncertain_boundaries=tuple(uncertain), not_applicable_boundaries=(),
+        event_id=event,
+        cohort=cohort,
+        review_id="r",
+        reviewer_id="s",
+        observable_boundaries=boundaries,
+        censored_boundaries=tuple(censored),
+        uncertain_boundaries=tuple(uncertain),
+        not_applicable_boundaries=(),
         boundary_cameras={k: v for k, v in cameras.items() if k in boundaries},
     )
 
 
 def _replay(systems, event="train_events/case", mode="independent_camera", cohort="train_events"):
     return EventReplay(
-        event_id=event, cohort=cohort, camera_mode=mode,
+        event_id=event,
+        cohort=cohort,
+        camera_mode=mode,
         systems={
             name: SystemReplay(name, offsets, _run(steps, event))
             for name, (offsets, steps) in systems.items()
@@ -428,8 +449,11 @@ class TestClockAwareM4M5Propagation:
         """The front clock has no T4: its ``t4_missing`` classification is only a placeholder."""
         replay = _replay({"front": FRONT_BLOCKED, "back": (BACK_OFFSETS, _secs(None, 12))})
         front_alone = EventMetricsCalculator.evaluate_run(
-            replay.systems["front"].result, entry_time_s=5.0, clearance_time_s=None,
-            has_train_ground_truth=True, premature_opening_window=M4_WINDOW,
+            replay.systems["front"].result,
+            entry_time_s=5.0,
+            clearance_time_s=None,
+            has_train_ground_truth=True,
+            premature_opening_window=M4_WINDOW,
             cohort="train_events",
         )
         assert front_alone.m4_status == M4_STATUS_NOT_EVALUABLE  # non-None, but meaningless
@@ -523,8 +547,11 @@ SOURCE = "unit-test synthetic latency (not an approved threshold)"
 class TestClockAwareLeadInPropagation:
     def _screened(self, truth, **kwargs):
         return _evaluate(
-            _secs(2, 12), truth=truth,
-            lead_in_min_block_latency_s=LATENCY, lead_in_latency_source=SOURCE, **kwargs
+            _secs(2, 12),
+            truth=truth,
+            lead_in_min_block_latency_s=LATENCY,
+            lead_in_latency_source=SOURCE,
+            **kwargs,
         )
 
     def test_screen_is_off_unless_requested(self):
@@ -567,14 +594,20 @@ class TestClockAwareLeadInPropagation:
     def test_dual_camera_screen_exclusion_propagates_from_the_fused_clock(self):
         offsets = {"front": 0.0, "back": 0.0}
         replay = _replay(
-            {"fused": (offsets, _secs(2, 12)), "front": FRONT_BLOCKED,
-             "back": (BACK_OFFSETS, _secs(2, 12))},
+            {
+                "fused": (offsets, _secs(2, 12)),
+                "front": FRONT_BLOCKED,
+                "back": (BACK_OFFSETS, _secs(2, 12)),
+            },
             mode="dual_camera",
         )
         truth = _truth(boundaries={T0: 2.0, T1: 5.0, T4: 10.0})
         ev = evaluate_event_replay(
-            replay, truth, premature_opening_window=M4_WINDOW,
-            lead_in_min_block_latency_s=LATENCY, lead_in_latency_source=SOURCE,
+            replay,
+            truth,
+            premature_opening_window=M4_WINDOW,
+            lead_in_min_block_latency_s=LATENCY,
+            lead_in_latency_source=SOURCE,
         )
         assert ev.missed_train_screen == SCREEN_INSUFFICIENT_LEAD_IN and ev.missed_train is None
 
@@ -590,8 +623,11 @@ class TestClockAwareLeadInPropagation:
 
 def _screen(entry, first_visible, censored, latency=LATENCY):
     return screen_missed_train_lead_in(
-        entry, first_visible_time_s=first_visible, first_visible_left_censored=censored,
-        min_block_latency_s=latency, min_block_latency_source=SOURCE,
+        entry,
+        first_visible_time_s=first_visible,
+        first_visible_left_censored=censored,
+        min_block_latency_s=latency,
+        min_block_latency_source=SOURCE,
     )
 
 
@@ -620,8 +656,11 @@ class TestLeadInScreenAndLiteralM3:
 
     def test_insufficient_lead_in_with_observable_t0_is_not_a_software_failure(self):
         ev = EventMetricsCalculator.evaluate_run(
-            _run(_secs(None, 12)), entry_time_s=3.0, clearance_time_s=9.0,
-            lead_in_min_block_latency_s=LATENCY, lead_in_latency_source=SOURCE,
+            _run(_secs(None, 12)),
+            entry_time_s=3.0,
+            clearance_time_s=9.0,
+            lead_in_min_block_latency_s=LATENCY,
+            lead_in_latency_source=SOURCE,
             first_visible_time_s=1.0,
         )
         assert ev.missed_train is None  # the barrier never closed, yet this is not a miss
@@ -729,21 +768,28 @@ class TestCohortIdentityAndAggregation:
                 _secs(None, 12), "train_events/a", entry_time_s=1.0, clearance_time_s=5.0
             ),
             "b_viol": _evaluate_run(
-                _secs(1, 12, unblocked_at=(3,)), "train_events/b",
-                entry_time_s=1.0, clearance_time_s=5.0,
+                _secs(1, 12, unblocked_at=(3,)),
+                "train_events/b",
+                entry_time_s=1.0,
+                clearance_time_s=5.0,
             ),
             "c_clean": _evaluate_run(
                 _secs(1, 12), "train_events/c", entry_time_s=1.0, clearance_time_s=5.0
             ),
             "d_excl": _evaluate_run(
-                _secs(1, 12), "train_events/d", entry_time_s=1.0, clearance_time_s=5.0,
+                _secs(1, 12),
+                "train_events/d",
+                entry_time_s=1.0,
+                clearance_time_s=5.0,
                 evaluable=False,
             ),
             "e_notrain": _evaluate_run(
                 _secs(1, 12), "no_train_events/e", has_train_ground_truth=False
             ),
             "h_notrain_excl": _evaluate_run(
-                _secs(None, 12), "no_train_events/h", has_train_ground_truth=False,
+                _secs(None, 12),
+                "no_train_events/h",
+                has_train_ground_truth=False,
                 evaluable=False,
             ),
             "f_engine": _evaluate_run(
@@ -758,9 +804,13 @@ class TestCohortIdentityAndAggregation:
     def test_every_record_carries_its_cohort(self):
         evs = self._mixed()
         assert {k: v.cohort for k, v in evs.items()} == {
-            "a_m5": "train_events", "b_viol": "train_events", "c_clean": "train_events",
-            "d_excl": "train_events", "e_notrain": "no_train_events",
-            "h_notrain_excl": "no_train_events", "f_engine": "engine_events",
+            "a_m5": "train_events",
+            "b_viol": "train_events",
+            "c_clean": "train_events",
+            "d_excl": "train_events",
+            "e_notrain": "no_train_events",
+            "h_notrain_excl": "no_train_events",
+            "f_engine": "engine_events",
             "g_unverified": "train_events",
         }
         bare = _evaluate_run(_secs(1, 12), "event_001", cohort="train_events", clearance_time_s=5.0)
@@ -777,8 +827,11 @@ class TestCohortIdentityAndAggregation:
         assert summary.unverified_ground_truth_count == 1
         assert summary.excluded_train_events_count == 1
         assert summary.total_events == (
-            summary.eligible_events + summary.no_train_events + summary.engine_events
-            + summary.unverified_ground_truth_count + summary.excluded_train_events_count
+            summary.eligible_events
+            + summary.no_train_events
+            + summary.engine_events
+            + summary.unverified_ground_truth_count
+            + summary.excluded_train_events_count
         )
         exported = summary.to_dict()
         assert exported["unverified_ground_truth_count"] == 1
@@ -788,8 +841,11 @@ class TestCohortIdentityAndAggregation:
         for key, ev in self._mixed().items():
             s = EventMetricsCalculator.aggregate_cohort([ev])
             assert s.total_events == 1 and s.total_events == (
-                s.eligible_events + s.no_train_events + s.engine_events
-                + s.unverified_ground_truth_count + s.excluded_train_events_count
+                s.eligible_events
+                + s.no_train_events
+                + s.engine_events
+                + s.unverified_ground_truth_count
+                + s.excluded_train_events_count
             ), key
 
     def test_new_counts_do_not_change_any_metric_denominator(self):
@@ -799,10 +855,17 @@ class TestCohortIdentityAndAggregation:
             [evs["a_m5"], evs["b_viol"], evs["c_clean"], evs["e_notrain"]]
         ).to_dict()
         for key in (
-            "eligible_events", "missed_train_evaluable_count", "missed_train_count",
-            "premature_opening_evaluable_count", "premature_opening_count",
-            "never_protected_evaluable_count", "never_protected_count", "m4_no_violation_count",
-            "m4_not_evaluable_count", "false_alarm_evaluable_count", "false_alarm_count",
+            "eligible_events",
+            "missed_train_evaluable_count",
+            "missed_train_count",
+            "premature_opening_evaluable_count",
+            "premature_opening_count",
+            "never_protected_evaluable_count",
+            "never_protected_count",
+            "m4_no_violation_count",
+            "m4_not_evaluable_count",
+            "false_alarm_evaluable_count",
+            "false_alarm_count",
         ):
             assert everything[key] == eligible_only[key], key
         assert everything["premature_opening_evaluable_count"] == 2
@@ -814,7 +877,10 @@ class TestCohortIdentityAndAggregation:
             _secs(1, 12), "train_events/t", entry_time_s=1.0, clearance_time_s=5.0
         )
         engine = _evaluate_run(
-            _secs(None, 12), "engine_events/x", entry_time_s=1.0, clearance_time_s=5.0,
+            _secs(None, 12),
+            "engine_events/x",
+            entry_time_s=1.0,
+            clearance_time_s=5.0,
             has_train_ground_truth=False,
         )
         assert engine.evaluable is False and engine.notes == "engine_event_excluded"
@@ -843,9 +909,7 @@ class TestCohortIdentityAndAggregation:
 
     def test_qualified_ids_with_the_same_event_number_aggregate_cleanly(self):
         a = _evaluate_run(_secs(1, 12), "train_events/event_001", clearance_time_s=5.0)
-        b = _evaluate_run(
-            _secs(1, 12), "no_train_events/event_001", has_train_ground_truth=False
-        )
+        b = _evaluate_run(_secs(1, 12), "no_train_events/event_001", has_train_ground_truth=False)
         s = EventMetricsCalculator.aggregate_cohort([a, b])
         assert (s.eligible_events, s.no_train_events) == (1, 1)
 
@@ -891,6 +955,9 @@ def _manifest_tool():
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)  # type: ignore[union-attr]
+    # Constructed unversioned temp-root fixture: all Git queries report no repository.
+    # Git metadata is irrelevant to the path/hash/overwrite contracts under test.
+    module._git = lambda root, *args: ""
     return module
 
 

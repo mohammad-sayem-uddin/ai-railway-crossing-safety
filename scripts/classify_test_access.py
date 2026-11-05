@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import ast
 import json
+import os
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
@@ -112,9 +113,11 @@ def run_one(rel: str, work: Path) -> dict[str, Any]:
         f"--junitxml={junit}",
         rel,
     ]
-    env = {
+    env = os.environ | {
         "PYTHONDONTWRITEBYTECODE": "1",
-        "PYTHONPATH": str(PACKAGE_SRC),
+        "PYTHONPATH": os.pathsep.join(
+            filter(None, [str(PACKAGE_SRC), os.environ.get("PYTHONPATH", "")])
+        ),
         "PATH": "/usr/bin:/bin:/usr/local/bin:/opt/homebrew/bin",
     }
     try:
@@ -126,8 +129,8 @@ def run_one(rel: str, work: Path) -> dict[str, Any]:
         exit_code, timed_out = -1, True
     tests = {"passed": 0, "failed": 0, "skipped": 0, "errors": 0}
     if junit.is_file():
-        suite = ET.parse(junit).getroot()
-        suite = suite if suite.tag == "testsuite" else suite.find("testsuite")
+        root = ET.parse(junit).getroot()
+        suite = root if root.tag == "testsuite" else root.find("testsuite")
         if suite is not None:
             total = int(suite.get("tests", 0))
             tests = {

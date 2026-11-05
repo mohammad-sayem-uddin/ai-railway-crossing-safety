@@ -29,7 +29,13 @@
     {
       "phase": "A",
       "validation": "M22 four commits,finalreceipt/source bindings,7preserved files verified; local/tracking/live3084404 match",
-      "delivery": "containing commit; actual hash carried forward"
+      "delivery": "281c08e630f11b886c52c1514be91ff3cf716915",
+      "push_verified": true
+    },
+    {
+      "phase": "B/C/D/E/F/G/H/I",
+      "validation": "All143 baseline nonpasses reproduced;25 runner/fixture cases fixed and passed;23 new cases,prior500 andM22 62 pass; fullaudit3209/3091pass/87fail/31error/0skip; classifier3091selected118protected0unknown; scopedMypy5/RuffAST15",
+      "delivery": "containing commit; final receipt carries exact hash"
     }
   ],
   "live_operations_executed": [],
