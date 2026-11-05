@@ -90,13 +90,62 @@
         "scientific_pending": "M22-COMP-MAPPING only"
       },
       "parent": "ca81f6effc7d2645a4f9b0a1238ef0a165708ee9",
+      "commit_record": "77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f",
+      "push_verified": true
+    },
+    {
+      "phase": "IJ",
+      "message": "docs: record Mission 22 complete regression and bounded integration readiness",
+      "files": [
+        "docs/generated/master_reaudit/MISSION_22_INTEGRATED_SYSTEM_VALIDATION_REPORT.md",
+        "docs/generated/master_reaudit/MISSION_22_INTERFACE_CONTRACT_AUDIT.md",
+        "docs/generated/master_reaudit/MISSION_22_END_TO_END_DEMONSTRATION.md",
+        "docs/generated/master_reaudit/MISSION_22_FINAL_VALIDATION.json",
+        "docs/generated/master_reaudit/MISSION_22_REGRESSION_RECEIPT.json",
+        "docs/generated/master_reaudit/MISSION_22_DEMONSTRATION_RECEIPT.json"
+      ],
+      "validation": {
+        "full_inventory_files": 146,
+        "tests": 3186,
+        "passed": 3043,
+        "failures": 112,
+        "errors": 31,
+        "skipped": 0,
+        "new_integration_passed": 62,
+        "prior_package_tests_passed": 500,
+        "original_suite_passed": 238,
+        "ruff_and_AST_files": 16,
+        "mypy_source_files": 9,
+        "two_demo_outputs_identical": true,
+        "demo_policy_denials": 0,
+        "nonpassing_dispositions": "135 direct policy refusal;8 downstream protected-resource unavailable",
+        "preserved_files": 7
+      },
+      "parent": "77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f",
       "commit_record": "containing commit; actual hash retained in next phase/final delivery receipt"
     }
   ],
   "live_permissions_activated": 0,
   "mission21_source_validation": "38 Python hashes/AST and17 source commits independently checked",
   "status": "IN_PROGRESS",
-  "current_status": "constructed integration and adversarial/recovery phases validated; final full inventory running",
+  "current_status": "ALL_CURRENTLY_ELIGIBLE_ENGINEERING_EXECUTED; constructed demonstration verified; full regression nonpassing under protected-resource policy",
   "pending_scientific_definition": "M22-COMP-MAPPING",
-  "live_operations_executed": []
+  "live_operations_executed": [],
+  "final_tests": {
+    "tests": 3186,
+    "failures": 112,
+    "errors": 31,
+    "skipped": 0,
+    "passed": 3043
+  },
+  "focused_tests": 62,
+  "readiness": {
+    "constructed_integration": "VERIFIED: actual decision engine, native B front/back, lineage/CV, fixture authority/review, snapshot, results-absent report and deterministic replay executed.",
+    "software_engineering": "BOUNDED_INTEGRATION_VERIFIED; COMPLETE_REPOSITORY_REGRESSION_NOT_GREEN. Prior500 and new62 pass; full3186 includes112 failures and31 setup errors under protected-resource policy.",
+    "human_review": "FIXTURE_SERVICE_ONLY: genuine appointments/qualification/consent, source-bound human observations, live player/service integration and human batch judgments absent.",
+    "authorization_system": "COOPERATIVE_LOCAL_ONLY: mock principals/resources/time, actual temporary SQLite atomicity tested. Independent identity/clock/operator/storage, hostile-user and all-ES/live service acceptance absent.",
+    "real_data": "NOT_EXECUTED_OR_READY: no protected media/checkpoint/cache access, fitting, real inference/replay/evaluation, split or GT promotion.",
+    "production_physical_deployment": "NOT_READY: no field validation, safety assurance, physical actuation, machine durability or independent security infrastructure."
+  },
+  "final_validation": "MISSION_22_FINAL_VALIDATION.json"
 }

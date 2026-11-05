@@ -67,3 +67,13 @@ per-group generated test fixtures are removed after their receipts are retained.
 Exit1 means at least one failure/error, including denied protected-data attempts.
 Those cases are never counted as passing or skipped. Final exact counts and
 limitations are in MISSION_22_FINAL_VALIDATION.json.
+
+
+Executed final verification at implementation commit
+`77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f`: two independent destinations and a
+completed resume exited 0 under the inherited access policy, with byte-identical
+execution JSON/snapshot manifests and zero denied accesses. The committed
+MISSION_22_DEMONSTRATION_RECEIPT.json retains the explicitly constructed example.
+All 62 new integration cases pass. The complete 146-module regression produced
+3,043 passes, 112 failures and 31 setup errors across 3,186 cases, with zero skips;
+its remaining blocked-resource cases do not establish operational readiness.

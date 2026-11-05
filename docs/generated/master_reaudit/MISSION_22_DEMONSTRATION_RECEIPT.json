@@ -1,0 +1,1468 @@
+{
+  "code_identity": "77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f",
+  "two_independent_destinations_and_resume": true,
+  "execution_sha256": "1d2e8b65812977fea4dbae0850953931f2a028520ef85e20b9d806c7300e23ac",
+  "complete_manifest": {
+    "artifacts": {
+      "ACK.json": "e90789293945c3cf80f323aec637c8ed9029cbb8142c5d977c6225d68285574c",
+      "RUN.json": "6727b933e479260cd57170dd7d51bb4937efa4efa0cc794e13390a5731e5f036",
+      "execution.json": "1d2e8b65812977fea4dbae0850953931f2a028520ef85e20b9d806c7300e23ac",
+      "results_absent_report.md": "40cf60b88745b917d1c17efa559e238ce2f1adbdeb2a4e108fdcc4a106d875e0",
+      "snapshot/SOURCE_MANIFEST.json": "3f144b7699a4bb8a5ede66585ea16d40856155a85205c861a356b790d40530f3",
+      "snapshot/docs/input_envelope.json": "6727b933e479260cd57170dd7d51bb4937efa4efa0cc794e13390a5731e5f036",
+      "snapshot/src/fixture.py": "bb2ef167dc925acbcdc8c01ade8b8b731c6005649f4ad298d7ef33f51f25af70",
+      "source_fixture/docs/input_envelope.json": "6727b933e479260cd57170dd7d51bb4937efa4efa0cc794e13390a5731e5f036",
+      "source_fixture/src/fixture.py": "bb2ef167dc925acbcdc8c01ade8b8b731c6005649f4ad298d7ef33f51f25af70"
+    },
+    "descriptor_sha256": "6727b933e479260cd57170dd7d51bb4937efa4efa0cc794e13390a5731e5f036",
+    "schema": "M22_CONSTRUCTED_RUN/1"
+  },
+  "policy_denials": [],
+  "execution": {
+    "B_metric_contracts": {
+      "back": {
+        "M4": false,
+        "M5": 0,
+        "classification": "CONSTRUCTED_B_SAMPLED_METRIC_CONTRACT",
+        "classification_detail": {
+          "first_blocked_s": 5.3,
+          "first_step_s": 0.1,
+          "interior_step_count": 1,
+          "last_step_s": 7.3,
+          "max_step_gap_s": 2.0,
+          "never_protected": false,
+          "premature": false,
+          "reason": null,
+          "replay_complete": true,
+          "status": "EVALUABLE"
+        },
+        "convention": "B",
+        "empirical_result": false,
+        "limit": "sampled exact-geometry software projection; no continuous safety inference",
+        "points": [
+          {
+            "angle": "90",
+            "blocked": false,
+            "geometry_state": "OPEN",
+            "time_us": 100000
+          },
+          {
+            "angle": "90",
+            "blocked": false,
+            "geometry_state": "OPEN",
+            "time_us": 300000
+          },
+          {
+            "angle": "90",
+            "blocked": false,
+            "geometry_state": "OPEN",
+            "time_us": 2300000
+          },
+          {
+            "angle": "90",
+            "blocked": false,
+            "geometry_state": "OPEN",
+            "time_us": 3300000
+          },
+          {
+            "angle": "60",
+            "blocked": false,
+            "geometry_state": "CLOSING",
+            "time_us": 4300000
+          },
+          {
+            "angle": "30",
+            "blocked": true,
+            "geometry_state": "CLOSING",
+            "time_us": 5300000
+          },
+          {
+            "angle": "0",
+            "blocked": true,
+            "geometry_state": "CLOSED",
+            "time_us": 6300000
+          },
+          {
+            "angle": "0",
+            "blocked": true,
+            "geometry_state": "CLOSED",
+            "time_us": 7300000
+          }
+        ],
+        "reason": null,
+        "research_metric_adoption": false,
+        "timestamp_unit": "microseconds"
+      },
+      "front": {
+        "M4": false,
+        "M5": 0,
+        "classification": "CONSTRUCTED_B_SAMPLED_METRIC_CONTRACT",
+        "classification_detail": {
+          "first_blocked_s": 4.2,
+          "first_step_s": 0.0,
+          "interior_step_count": 2,
+          "last_step_s": 7.2,
+          "max_step_gap_s": 2.0,
+          "never_protected": false,
+          "premature": false,
+          "reason": null,
+          "replay_complete": true,
+          "status": "EVALUABLE"
+        },
+        "convention": "B",
+        "empirical_result": false,
+        "limit": "sampled exact-geometry software projection; no continuous safety inference",
+        "points": [
+          {
+            "angle": "90",
+            "blocked": false,
+            "geometry_state": "OPEN",
+            "time_us": 0
+          },
+          {
+            "angle": "90",
+            "blocked": false,
+            "geometry_state": "OPEN",
+            "time_us": 200000
+          },
+          {
+            "angle": "90",
+            "blocked": false,
+            "geometry_state": "OPEN",
+            "time_us": 2200000
+          },
+          {
+            "angle": "60",
+            "blocked": false,
+            "geometry_state": "CLOSING",
+            "time_us": 3200000
+          },
+          {
+            "angle": "30",
+            "blocked": true,
+            "geometry_state": "CLOSING",
+            "time_us": 4200000
+          },
+          {
+            "angle": "0",
+            "blocked": true,
+            "geometry_state": "CLOSED",
+            "time_us": 5200000
+          },
+          {
+            "angle": "0",
+            "blocked": true,
+            "geometry_state": "CLOSED",
+            "time_us": 6200000
+          },
+          {
+            "angle": "0",
+            "blocked": true,
+            "geometry_state": "CLOSED",
+            "time_us": 7200000
+          }
+        ],
+        "reason": null,
+        "research_metric_adoption": false,
+        "timestamp_unit": "microseconds"
+      }
+    },
+    "boundary_projection": {
+      "active_schema_satisfied": false,
+      "evidence_statuses": {
+        "SCENE_CLEAR": "MISSING",
+        "T0": "MISSING",
+        "T1": "MISSING",
+        "T2": "MISSING",
+        "T3": "MISSING",
+        "T4": "MISSING"
+      },
+      "exact_source_body": [
+        {
+          "boundary": "T0",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "state": "NOT_OBSERVABLE",
+          "timebase": null,
+          "uncertainty_us": null,
+          "value_us": null
+        },
+        {
+          "boundary": "T1",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "state": "NOT_OBSERVABLE",
+          "timebase": null,
+          "uncertainty_us": null,
+          "value_us": null
+        },
+        {
+          "boundary": "T2",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "state": "NOT_OBSERVABLE",
+          "timebase": null,
+          "uncertainty_us": null,
+          "value_us": null
+        },
+        {
+          "boundary": "T3",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "state": "NOT_OBSERVABLE",
+          "timebase": null,
+          "uncertainty_us": null,
+          "value_us": null
+        },
+        {
+          "boundary": "T4",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "state": "NOT_OBSERVABLE",
+          "timebase": null,
+          "uncertainty_us": null,
+          "value_us": null
+        },
+        {
+          "boundary": "SCENE_CLEAR",
+          "camera": "front",
+          "censoring_direction": null,
+          "landmark": null,
+          "origin_us": 0,
+          "pts_ticks": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "state": "NOT_OBSERVABLE",
+          "timebase": null,
+          "uncertainty_us": null,
+          "value_us": null
+        }
+      ],
+      "human_review_record": false,
+      "limitations": "boundary projection only; missing human/approval/source/protocol evidence; legacy projection requires exact sidecar to retain structured timing",
+      "projected_boundaries": {
+        "T0_first_visible": {
+          "frame_index": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "reference_camera": "front",
+          "state": "UNOBSERVABLE_NOT_APPLICABLE",
+          "value_s": null
+        },
+        "T1_danger_zone_entry": {
+          "frame_index": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "reference_camera": "front",
+          "state": "UNOBSERVABLE_NOT_APPLICABLE",
+          "value_s": null
+        },
+        "T2_crossing_occupancy_start": {
+          "frame_index": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "reference_camera": "front",
+          "state": "UNOBSERVABLE_NOT_APPLICABLE",
+          "value_s": null
+        },
+        "T3_locomotive_unit_clearance": {
+          "frame_index": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "reference_camera": "front",
+          "state": "UNOBSERVABLE_NOT_APPLICABLE",
+          "value_s": null
+        },
+        "T4_tail_clearance": {
+          "frame_index": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "reference_camera": "front",
+          "state": "UNOBSERVABLE_NOT_APPLICABLE",
+          "value_s": null
+        },
+        "T_scene_clear": {
+          "frame_index": null,
+          "rationale": "CONSTRUCTED_REVIEW_FIXTURE: no human observation",
+          "reference_camera": "front",
+          "state": "UNOBSERVABLE_NOT_APPLICABLE",
+          "value_s": null
+        }
+      },
+      "schema": "CONSTRUCTED_BOUNDARY_PROJECTION_V1",
+      "source_body_digest": "58247ad3249fa48d8e018cab89507ade5fb944a25e4680306c1eea81243bd4cf",
+      "target_boundary_schema": "8.1.0-stage2.1"
+    },
+    "classification": "CONSTRUCTED_EVENT_NOT_V2_OBSERVATION",
+    "empirical_results": false,
+    "human_evidence": false,
+    "identity": {
+      "classification": "CONSTRUCTED_EVENT_NOT_V2_OBSERVATION",
+      "crossing": "crossing_A",
+      "fixture_id": "synthetic:m22:s22:fixture",
+      "metric_display_slot": "train_events/event_001",
+      "physical_event": "synthetic:m22:s22:event"
+    },
+    "lineage_CV": {
+      "classification": "CONSTRUCTED_LINEAGE_CV_JOIN",
+      "cv": {
+        "calibration_mode": "NONE",
+        "context_digest": "628b7f6f1b96a126cb50cbd21f44eae16c4726bb3aaa6d8fa7c2d9d1c526cdec",
+        "exposure": [
+          [
+            "synthetic:init",
+            [
+              "synthetic:dev:2"
+            ]
+          ],
+          [
+            "synthetic:model",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:pre",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ]
+        ],
+        "limitation": "constructed consistency only; no fitting, authority or authenticity",
+        "registry_digest": "ac99efd4cba5cbd9e027c8160ecf5763b0485cd4761c04207020527cbc7e166a",
+        "schema": "CONSTRUCTED_ARTIFACT_OOF_V1",
+        "score_count": 1
+      },
+      "dataset_digest": "514d994815b9b083f85098316ba618bb5af9d75c8f7c965867f7b8d6b75b0acc",
+      "manifest": {
+        "classification": "CONSTRUCTED_METADATA_ONLY",
+        "fitted_exposure": [
+          [
+            "synthetic:source:0",
+            []
+          ],
+          [
+            "synthetic:source:0:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:1",
+            []
+          ],
+          [
+            "synthetic:source:1:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:2",
+            []
+          ],
+          [
+            "synthetic:source:2:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:3",
+            []
+          ],
+          [
+            "synthetic:source:3:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:4",
+            []
+          ],
+          [
+            "synthetic:source:4:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:5",
+            []
+          ],
+          [
+            "synthetic:source:5:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:6",
+            []
+          ],
+          [
+            "synthetic:source:6:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:7",
+            []
+          ],
+          [
+            "synthetic:source:7:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ],
+          [
+            "synthetic:source:8",
+            []
+          ],
+          [
+            "synthetic:source:8:derived",
+            [
+              "synthetic:dev:2",
+              "synthetic:dev:3",
+              "synthetic:dev:5",
+              "synthetic:dev:6",
+              "synthetic:dev:7"
+            ]
+          ]
+        ],
+        "manifest_digest": "d76caed9d3bbca78c5f87d7ccb815852d347a8bdcb6837f43503ebaac3fc13a5",
+        "physical_events": 9,
+        "real_eligibility": false,
+        "records": 18
+      },
+      "physical_events": [
+        "synthetic:dev:0",
+        "synthetic:dev:1",
+        "synthetic:dev:2",
+        "synthetic:dev:3",
+        "synthetic:dev:4",
+        "synthetic:dev:5",
+        "synthetic:dev:6",
+        "synthetic:dev:7",
+        "synthetic:m22:s22:event"
+      ],
+      "real_eligibility": false
+    },
+    "mock_review": {
+      "authority_receipt": {
+        "body_digest": "5888576d56e90965a95799f652916aaf06d48c723bccf082ae730f45c47056d3",
+        "head": "9f5951e4a5b195eb87e6daa4ba117b87fd06be085a5ececd7889a60c5a44a6d2",
+        "sequence": 4,
+        "session": "synthetic:session:m22",
+        "transaction": "synthetic:review:2"
+      },
+      "classification": "CONSTRUCTED_REVIEW_FIXTURE",
+      "real_human_evidence": false,
+      "review_commit": {
+        "classification": "CONSTRUCTED_ONLY_NOT_HUMAN_EVIDENCE",
+        "count": 3,
+        "head": "3f89bd69ace8abe10703df6ec3d252ee84dcf3c515b9abf5c6caa7757c6c75c4",
+        "request_id": "synthetic:review:2",
+        "result_digest": "80b5d5ac59451919c580589f88583bebaeafb59e0e43dfe9b67fb24ca3aa63f5"
+      },
+      "schema": "CONSTRUCTED_REVIEW_FIXTURE/1"
+    },
+    "operational_readiness": "CONSTRUCTED_INTEGRATION_ONLY",
+    "producer_code_identity": "77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f",
+    "promotion": false,
+    "resource_binding": "5165aef3065dc5ce99a4477112c87430858575c7606538c7fd85837ae51665bd",
+    "schema": "M22_CONSTRUCTED_RUN/1",
+    "separate_A_metric_receipt": {
+      "classification": "CONSTRUCTED_ONLY_NOT_REAL_EVALUATION",
+      "metrics": [
+        {
+          "camera": "back",
+          "cohort": "train_events",
+          "condition": "B0_back",
+          "denominator": 1,
+          "event_keys": [
+            "train_events/event_001"
+          ],
+          "excluded_by_reason": {},
+          "median": null,
+          "metric": "M4",
+          "numerator": 0,
+          "observed_rows": 1,
+          "proportion": 0.0,
+          "range": null,
+          "scope": "finite_cohort_descriptive_no_population_inference"
+        },
+        {
+          "camera": "back",
+          "cohort": "train_events",
+          "condition": "B0_back",
+          "denominator": 1,
+          "event_keys": [
+            "train_events/event_001"
+          ],
+          "excluded_by_reason": {},
+          "median": null,
+          "metric": "M5",
+          "numerator": 0,
+          "observed_rows": 1,
+          "proportion": 0.0,
+          "range": null,
+          "scope": "finite_cohort_descriptive_no_population_inference"
+        },
+        {
+          "camera": "front",
+          "cohort": "train_events",
+          "condition": "B0_front",
+          "denominator": 1,
+          "event_keys": [
+            "train_events/event_001"
+          ],
+          "excluded_by_reason": {},
+          "median": null,
+          "metric": "M4",
+          "numerator": 0,
+          "observed_rows": 1,
+          "proportion": 0.0,
+          "range": null,
+          "scope": "finite_cohort_descriptive_no_population_inference"
+        },
+        {
+          "camera": "front",
+          "cohort": "train_events",
+          "condition": "B0_front",
+          "denominator": 1,
+          "event_keys": [
+            "train_events/event_001"
+          ],
+          "excluded_by_reason": {},
+          "median": null,
+          "metric": "M5",
+          "numerator": 0,
+          "observed_rows": 1,
+          "proportion": 0.0,
+          "range": null,
+          "scope": "finite_cohort_descriptive_no_population_inference"
+        }
+      ],
+      "no_population_claim": true,
+      "official_eligibility": false,
+      "runs": [
+        {
+          "A_closed_duration_s": 7.0,
+          "A_total_duration_s": 7.2,
+          "B_continuous_seconds": "7/2",
+          "B_endpoint_seconds": "4",
+          "B_report_endpoint_seconds": "4",
+          "B_status": "COMPLETE",
+          "M4_M5_trajectory": "A_unchanged_legacy_semantics",
+          "camera": "front",
+          "classification": "CONSTRUCTED_ONLY_NOT_REAL_EVALUATION",
+          "condition": "B0_front",
+          "controller_calls_B": 8,
+          "event_key": "train_events/event_001",
+          "input_digest": "7b3c29030b210890c07c20663e3ce4642bfb08c3a3e41462559f4b5bed6df5b1"
+        },
+        {
+          "A_closed_duration_s": 4.0,
+          "A_total_duration_s": 7.2,
+          "B_continuous_seconds": "5/2",
+          "B_endpoint_seconds": "3",
+          "B_report_endpoint_seconds": "3",
+          "B_status": "COMPLETE",
+          "M4_M5_trajectory": "A_unchanged_legacy_semantics",
+          "camera": "back",
+          "classification": "CONSTRUCTED_ONLY_NOT_REAL_EVALUATION",
+          "condition": "B0_back",
+          "controller_calls_B": 8,
+          "event_key": "train_events/event_001",
+          "input_digest": "3a4469be4d2cd8fcf9b2b00ef7e23b1b25c49b01fb77b42adfab976b0c4ef3a6"
+        }
+      ]
+    },
+    "simulations": {
+      "back": {
+        "angle_unit": "degrees",
+        "classification": "CONSTRUCTED_B_EXECUTION",
+        "request": {
+          "batch": {
+            "fixture_id": "synthetic:m22:s22:fixture:back",
+            "inputs_json": "[{\"event_id\":\"synthetic:back:frame:0\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":0.1,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_back\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_back\",\"timestamp_s\":0.1}]},\"timestamp\":100000},{\"event_id\":\"synthetic:back:frame:1\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":0.3,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_back\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_back\",\"timestamp_s\":0.3}]},\"timestamp\":300000},{\"event_id\":\"synthetic:back:frame:2\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":2.3,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_back\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_back\",\"timestamp_s\":2.3}]},\"timestamp\":2300000},{\"event_id\":\"synthetic:back:frame:3\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":3.3,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_back\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_back\",\"timestamp_s\":3.3}]},\"timestamp\":3300000},{\"event_id\":\"synthetic:back:frame:4\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":4.3,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_back\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_back\",\"timestamp_s\":4.3}]},\"timestamp\":4300000},{\"event_id\":\"synthetic:back:frame:5\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":5.3,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_back\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_back\",\"timestamp_s\":5.3}]},\"timestamp\":5300000},{\"event_id\":\"synthetic:back:frame:6\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":6.3,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_back\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_back\",\"timestamp_s\":6.3}]},\"timestamp\":6300000},{\"event_id\":\"synthetic:back:frame:7\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":7.3,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_back\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_back\",\"timestamp_s\":7.3}]},\"timestamp\":7300000}]",
+            "provenance": "CONSTRUCTED_IN_MEMORY"
+          },
+          "closing_seconds": "3",
+          "code_identity": "synthetic:code:77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f",
+          "controller_json": "{\"kind\":\"CURRENT_ENGINE\",\"settings\":{\"approach_threshold\":0.35,\"audio_threshold\":0.37,\"clearance_dwell_s\":3.0,\"confirm_frames\":2,\"departure_threshold\":0.35,\"fault_confirm_frames\":2,\"fault_recovery_hold_s\":3.0,\"gate_closing_s\":3.0,\"gate_opening_s\":3.0,\"source_staleness_s\":2.0,\"warning_dwell_s\":2.0}}",
+          "cutoff": null,
+          "initial_angle": "90",
+          "mode": "ARRIVAL",
+          "opening_seconds": "3",
+          "report_step_us": null,
+          "report_times": null,
+          "schema": "CONSTRUCTED_CONVENTION_B_PIPELINE_V1"
+        },
+        "result": {
+          "causal": {
+            "accepted_event_ids": [
+              "synthetic:back:frame:0",
+              "synthetic:back:frame:1",
+              "synthetic:back:frame:2",
+              "synthetic:back:frame:3",
+              "synthetic:back:frame:4",
+              "synthetic:back:frame:5",
+              "synthetic:back:frame:6",
+              "synthetic:back:frame:7"
+            ],
+            "configuration": {
+              "closing_seconds": {
+                "denominator": 1,
+                "numerator": 3
+              },
+              "command_latency_us": 0,
+              "cutoff_us": null,
+              "dynamics": "CLIPPED_LINEAR_0_90_STRICT_BLOCKED_LE_45_V1",
+              "initial_angle": {
+                "denominator": 1,
+                "numerator": 90
+              },
+              "mode": "ARRIVAL",
+              "opening_seconds": {
+                "denominator": 1,
+                "numerator": 3
+              },
+              "profile": "SYNTHETIC_CONVENTION_B_V1",
+              "report_times_us": null,
+              "schema_version": "SYNTHETIC_RUN_CONFIGURATION_V1",
+              "timestamp_policy": "INTEGER_US_OR_EXACT_GRID_DECIMAL_SECONDS_V1",
+              "watchdog": {
+                "mode": "NONE",
+                "response": null,
+                "timeout_us": null
+              },
+              "watchdog_priority": "SENSOR_FIRST_ONE_SHOT_V1"
+            },
+            "configuration_digest": "82f42e4a380342c4f84b5fd1a5446e8b5eae5cbe4f97422a8174a17fb56e1598",
+            "continuous_seconds": {
+              "denominator": 2,
+              "numerator": 5
+            },
+            "endpoint_seconds": {
+              "denominator": 1,
+              "numerator": 3
+            },
+            "event_grid_us": [
+              100000,
+              300000,
+              2300000,
+              3300000,
+              4300000,
+              5300000,
+              6300000,
+              7300000
+            ],
+            "final_angle": {
+              "denominator": 1,
+              "numerator": 0
+            },
+            "fixture_id": "synthetic:m22:s22:fixture:back",
+            "horizon_us": 7300000,
+            "initial_angle": {
+              "denominator": 1,
+              "numerator": 90
+            },
+            "intervals": [
+              {
+                "applied_command": "RAISE",
+                "blocked": false,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "effective_us": 100000,
+                "end_kind": "SENSOR",
+                "end_us": 300000,
+                "origin_event_id": "synthetic:back:frame:0",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "start_us": 100000
+              },
+              {
+                "applied_command": "RAISE",
+                "blocked": false,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "effective_us": 300000,
+                "end_kind": "SENSOR",
+                "end_us": 2300000,
+                "origin_event_id": "synthetic:back:frame:1",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "start_us": 300000
+              },
+              {
+                "applied_command": "RAISE",
+                "blocked": false,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "effective_us": 2300000,
+                "end_kind": "SENSOR",
+                "end_us": 3300000,
+                "origin_event_id": "synthetic:back:frame:2",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "start_us": 2300000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": false,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "effective_us": 3300000,
+                "end_kind": "SENSOR",
+                "end_us": 4300000,
+                "origin_event_id": "synthetic:back:frame:3",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 60
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "start_us": 3300000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": true,
+                "continuous_seconds": {
+                  "denominator": 2,
+                  "numerator": 1
+                },
+                "effective_us": 4300000,
+                "end_kind": "SENSOR",
+                "end_us": 5300000,
+                "origin_event_id": "synthetic:back:frame:4",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 30
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 60
+                },
+                "start_us": 4300000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": true,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "effective_us": 5300000,
+                "end_kind": "SENSOR",
+                "end_us": 6300000,
+                "origin_event_id": "synthetic:back:frame:5",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 30
+                },
+                "start_us": 5300000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": true,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "effective_us": 6300000,
+                "end_kind": "SENSOR",
+                "end_us": 7300000,
+                "origin_event_id": "synthetic:back:frame:6",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "start_us": 6300000
+              }
+            ],
+            "issues": [
+              {
+                "command": "RAISE",
+                "event_id": "synthetic:back:frame:0",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "RAISE",
+                "timestamp_us": 100000
+              },
+              {
+                "command": "RAISE",
+                "event_id": "synthetic:back:frame:1",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "RAISE",
+                "timestamp_us": 300000
+              },
+              {
+                "command": "RAISE",
+                "event_id": "synthetic:back:frame:2",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "RAISE",
+                "timestamp_us": 2300000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:back:frame:3",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 3300000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:back:frame:4",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 4300000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:back:frame:5",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 5300000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:back:frame:6",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 6300000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:back:frame:7",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 7300000
+              }
+            ],
+            "mode": "ARRIVAL",
+            "origin_us": 100000,
+            "profile": "SYNTHETIC_CONVENTION_B_V1",
+            "reason": null,
+            "rejections": [],
+            "reordered": false,
+            "report_endpoint_seconds": {
+              "denominator": 1,
+              "numerator": 3
+            },
+            "report_grid_kind": "EVENT_GRID",
+            "report_grid_us": [
+              100000,
+              300000,
+              2300000,
+              3300000,
+              4300000,
+              5300000,
+              6300000,
+              7300000
+            ],
+            "status": "COMPLETE"
+          },
+          "code_identity": "synthetic:code:77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f",
+          "controller_calls": 8,
+          "decisions": [
+            {
+              "accepted": true,
+              "command": "RAISE",
+              "decision_json": "{\"evidence_references\":[\"camera_back:0.1\"],\"explanation\":\"Qualified approach detected; awaiting confirmation\",\"fault_status\":\"none\",\"gate_command\":\"OPEN\",\"health_reasons\":{\"camera_back\":\"observation_healthy\"},\"observation_ages\":{\"camera_back\":0.0},\"previous_gate_state\":\"OPEN\",\"previous_state\":\"IDLE\",\"resulting_gate_state\":\"OPEN\",\"resulting_state\":\"TRAIN_APPROACHING\",\"rule_id\":\"RULE_1_APPROACH_TRIGGER\",\"scenario_run_id\":\"synthetic:m22:s22:fixture:back\",\"source_availability\":{\"camera_back\":true},\"source_health\":{\"camera_back\":\"healthy\"},\"timestamp_s\":0.1}",
+              "event_id": "synthetic:back:frame:0",
+              "input_index": 0,
+              "logical_target": "OPEN",
+              "timestamp_us": 100000
+            },
+            {
+              "accepted": true,
+              "command": "RAISE",
+              "decision_json": "{\"evidence_references\":[\"camera_back:0.3\"],\"explanation\":\"Approach confirmed; initiating warning phase\",\"fault_status\":\"none\",\"gate_command\":\"OPEN\",\"health_reasons\":{\"camera_back\":\"observation_healthy\"},\"observation_ages\":{\"camera_back\":0.0},\"previous_gate_state\":\"OPEN\",\"previous_state\":\"TRAIN_APPROACHING\",\"resulting_gate_state\":\"OPEN\",\"resulting_state\":\"WARNING\",\"rule_id\":\"RULE_1_APPROACH_TRIGGER\",\"scenario_run_id\":\"synthetic:m22:s22:fixture:back\",\"source_availability\":{\"camera_back\":true},\"source_health\":{\"camera_back\":\"healthy\"},\"timestamp_s\":0.3}",
+              "event_id": "synthetic:back:frame:1",
+              "input_index": 1,
+              "logical_target": "OPEN",
+              "timestamp_us": 300000
+            },
+            {
+              "accepted": true,
+              "command": "RAISE",
+              "decision_json": "{\"evidence_references\":[\"camera_back:2.3\"],\"explanation\":null,\"fault_status\":\"none\",\"gate_command\":\"OPEN\",\"health_reasons\":{\"camera_back\":\"observation_healthy\"},\"observation_ages\":{\"camera_back\":0.0},\"previous_gate_state\":\"OPEN\",\"previous_state\":\"WARNING\",\"resulting_gate_state\":\"OPEN\",\"resulting_state\":\"WARNING\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:back\",\"source_availability\":{\"camera_back\":true},\"source_health\":{\"camera_back\":\"healthy\"},\"timestamp_s\":2.3}",
+              "event_id": "synthetic:back:frame:2",
+              "input_index": 2,
+              "logical_target": "OPEN",
+              "timestamp_us": 2300000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_back:3.3\"],\"explanation\":\"Warning dwell of 2.0s elapsed; beginning gate closure\",\"fault_status\":\"none\",\"gate_command\":\"CLOSING\",\"health_reasons\":{\"camera_back\":\"observation_healthy\"},\"observation_ages\":{\"camera_back\":0.0},\"previous_gate_state\":\"OPEN\",\"previous_state\":\"WARNING\",\"resulting_gate_state\":\"CLOSING\",\"resulting_state\":\"GATE_CLOSING\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:back\",\"source_availability\":{\"camera_back\":true},\"source_health\":{\"camera_back\":\"healthy\"},\"timestamp_s\":3.3}",
+              "event_id": "synthetic:back:frame:3",
+              "input_index": 3,
+              "logical_target": "CLOSING",
+              "timestamp_us": 3300000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_back:4.3\"],\"explanation\":null,\"fault_status\":\"none\",\"gate_command\":\"CLOSING\",\"health_reasons\":{\"camera_back\":\"observation_healthy\"},\"observation_ages\":{\"camera_back\":0.0},\"previous_gate_state\":\"CLOSING\",\"previous_state\":\"GATE_CLOSING\",\"resulting_gate_state\":\"CLOSING\",\"resulting_state\":\"GATE_CLOSING\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:back\",\"source_availability\":{\"camera_back\":true},\"source_health\":{\"camera_back\":\"healthy\"},\"timestamp_s\":4.3}",
+              "event_id": "synthetic:back:frame:4",
+              "input_index": 4,
+              "logical_target": "CLOSING",
+              "timestamp_us": 4300000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_back:5.3\"],\"explanation\":null,\"fault_status\":\"none\",\"gate_command\":\"CLOSING\",\"health_reasons\":{\"camera_back\":\"observation_healthy\"},\"observation_ages\":{\"camera_back\":0.0},\"previous_gate_state\":\"CLOSING\",\"previous_state\":\"GATE_CLOSING\",\"resulting_gate_state\":\"CLOSING\",\"resulting_state\":\"GATE_CLOSING\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:back\",\"source_availability\":{\"camera_back\":true},\"source_health\":{\"camera_back\":\"healthy\"},\"timestamp_s\":5.3}",
+              "event_id": "synthetic:back:frame:5",
+              "input_index": 5,
+              "logical_target": "CLOSING",
+              "timestamp_us": 5300000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_back:6.3\"],\"explanation\":\"Gate closing elapsed (3.0s); gate fully closed\",\"fault_status\":\"none\",\"gate_command\":\"CLOSED\",\"health_reasons\":{\"camera_back\":\"observation_healthy\"},\"observation_ages\":{\"camera_back\":0.0},\"previous_gate_state\":\"CLOSING\",\"previous_state\":\"GATE_CLOSING\",\"resulting_gate_state\":\"CLOSED\",\"resulting_state\":\"TRAIN_PRESENT\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:back\",\"source_availability\":{\"camera_back\":true},\"source_health\":{\"camera_back\":\"healthy\"},\"timestamp_s\":6.3}",
+              "event_id": "synthetic:back:frame:6",
+              "input_index": 6,
+              "logical_target": "CLOSED",
+              "timestamp_us": 6300000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_back:7.3\"],\"explanation\":\"Train occupancy observed at crossing\",\"fault_status\":\"none\",\"gate_command\":\"CLOSED\",\"health_reasons\":{\"camera_back\":\"observation_healthy\"},\"observation_ages\":{\"camera_back\":0.0},\"previous_gate_state\":\"CLOSED\",\"previous_state\":\"TRAIN_PRESENT\",\"resulting_gate_state\":\"CLOSED\",\"resulting_state\":\"CROSSING_OCCUPIED\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:back\",\"source_availability\":{\"camera_back\":true},\"source_health\":{\"camera_back\":\"healthy\"},\"timestamp_s\":7.3}",
+              "event_id": "synthetic:back:frame:7",
+              "input_index": 7,
+              "logical_target": "CLOSED",
+              "timestamp_us": 7300000
+            }
+          ],
+          "processing_mode": "ARRIVAL",
+          "reason": null,
+          "reordered": false,
+          "request_digest": "36c8911092da88cdd91a469442e2c72d8f4879a0edd5104991ab7fda72bda9b0",
+          "request_json": "{\"batch\":{\"fixture_id\":\"synthetic:m22:s22:fixture:back\",\"inputs_json\":\"[{\\\"event_id\\\":\\\"synthetic:back:frame:0\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":0.1,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_back\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_back\\\",\\\"timestamp_s\\\":0.1}]},\\\"timestamp\\\":100000},{\\\"event_id\\\":\\\"synthetic:back:frame:1\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":0.3,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_back\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_back\\\",\\\"timestamp_s\\\":0.3}]},\\\"timestamp\\\":300000},{\\\"event_id\\\":\\\"synthetic:back:frame:2\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":2.3,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_back\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_back\\\",\\\"timestamp_s\\\":2.3}]},\\\"timestamp\\\":2300000},{\\\"event_id\\\":\\\"synthetic:back:frame:3\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":3.3,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_back\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_back\\\",\\\"timestamp_s\\\":3.3}]},\\\"timestamp\\\":3300000},{\\\"event_id\\\":\\\"synthetic:back:frame:4\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":4.3,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_back\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_back\\\",\\\"timestamp_s\\\":4.3}]},\\\"timestamp\\\":4300000},{\\\"event_id\\\":\\\"synthetic:back:frame:5\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":5.3,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_back\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_back\\\",\\\"timestamp_s\\\":5.3}]},\\\"timestamp\\\":5300000},{\\\"event_id\\\":\\\"synthetic:back:frame:6\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":6.3,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_back\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_back\\\",\\\"timestamp_s\\\":6.3}]},\\\"timestamp\\\":6300000},{\\\"event_id\\\":\\\"synthetic:back:frame:7\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":7.3,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_back\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_back\\\",\\\"timestamp_s\\\":7.3}]},\\\"timestamp\\\":7300000}]\",\"provenance\":\"CONSTRUCTED_IN_MEMORY\"},\"closing_seconds\":\"3\",\"code_identity\":\"synthetic:code:77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f\",\"controller_json\":\"{\\\"kind\\\":\\\"CURRENT_ENGINE\\\",\\\"settings\\\":{\\\"approach_threshold\\\":0.35,\\\"audio_threshold\\\":0.37,\\\"clearance_dwell_s\\\":3.0,\\\"confirm_frames\\\":2,\\\"departure_threshold\\\":0.35,\\\"fault_confirm_frames\\\":2,\\\"fault_recovery_hold_s\\\":3.0,\\\"gate_closing_s\\\":3.0,\\\"gate_opening_s\\\":3.0,\\\"source_staleness_s\\\":2.0,\\\"warning_dwell_s\\\":2.0}}\",\"cutoff\":null,\"initial_angle\":\"90\",\"mode\":\"ARRIVAL\",\"opening_seconds\":\"3\",\"report_step_us\":null,\"report_times\":null,\"schema\":\"CONSTRUCTED_CONVENTION_B_PIPELINE_V1\"}",
+          "schema": "CONSTRUCTED_CONVENTION_B_PIPELINE_V1",
+          "status": "COMPLETE"
+        },
+        "time_unit": "microseconds"
+      },
+      "front": {
+        "angle_unit": "degrees",
+        "classification": "CONSTRUCTED_B_EXECUTION",
+        "request": {
+          "batch": {
+            "fixture_id": "synthetic:m22:s22:fixture:front",
+            "inputs_json": "[{\"event_id\":\"synthetic:front:frame:0\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":0.0,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_front\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_front\",\"timestamp_s\":0.0}]},\"timestamp\":0},{\"event_id\":\"synthetic:front:frame:1\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":0.2,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_front\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_front\",\"timestamp_s\":0.2}]},\"timestamp\":200000},{\"event_id\":\"synthetic:front:frame:2\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":2.2,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_front\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_front\",\"timestamp_s\":2.2}]},\"timestamp\":2200000},{\"event_id\":\"synthetic:front:frame:3\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":3.2,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_front\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_front\",\"timestamp_s\":3.2}]},\"timestamp\":3200000},{\"event_id\":\"synthetic:front:frame:4\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":4.2,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_front\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_front\",\"timestamp_s\":4.2}]},\"timestamp\":4200000},{\"event_id\":\"synthetic:front:frame:5\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":5.2,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_front\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_front\",\"timestamp_s\":5.2}]},\"timestamp\":5200000},{\"event_id\":\"synthetic:front:frame:6\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":6.2,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_front\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_front\",\"timestamp_s\":6.2}]},\"timestamp\":6200000},{\"event_id\":\"synthetic:front:frame:7\",\"frame\":{\"active_sources\":[],\"audio_records\":[],\"health_reasons\":{},\"master_timestamp_s\":7.2,\"missing_sources\":[],\"observation_ages\":{},\"source_availability\":{\"camera_front\":true},\"source_health\":{},\"vision_records\":[{\"available\":true,\"detections\":[{\"bbox_xyxy\":null,\"confidence\":0.99,\"label\":\"front\",\"metadata\":{}}],\"metadata\":{},\"modality\":\"vision\",\"source_id\":\"camera_front\",\"timestamp_s\":7.2}]},\"timestamp\":7200000}]",
+            "provenance": "CONSTRUCTED_IN_MEMORY"
+          },
+          "closing_seconds": "3",
+          "code_identity": "synthetic:code:77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f",
+          "controller_json": "{\"kind\":\"CURRENT_ENGINE\",\"settings\":{\"approach_threshold\":0.35,\"audio_threshold\":0.37,\"clearance_dwell_s\":3.0,\"confirm_frames\":2,\"departure_threshold\":0.35,\"fault_confirm_frames\":2,\"fault_recovery_hold_s\":3.0,\"gate_closing_s\":3.0,\"gate_opening_s\":3.0,\"source_staleness_s\":2.0,\"warning_dwell_s\":2.0}}",
+          "cutoff": null,
+          "initial_angle": "90",
+          "mode": "ARRIVAL",
+          "opening_seconds": "3",
+          "report_step_us": null,
+          "report_times": null,
+          "schema": "CONSTRUCTED_CONVENTION_B_PIPELINE_V1"
+        },
+        "result": {
+          "causal": {
+            "accepted_event_ids": [
+              "synthetic:front:frame:0",
+              "synthetic:front:frame:1",
+              "synthetic:front:frame:2",
+              "synthetic:front:frame:3",
+              "synthetic:front:frame:4",
+              "synthetic:front:frame:5",
+              "synthetic:front:frame:6",
+              "synthetic:front:frame:7"
+            ],
+            "configuration": {
+              "closing_seconds": {
+                "denominator": 1,
+                "numerator": 3
+              },
+              "command_latency_us": 0,
+              "cutoff_us": null,
+              "dynamics": "CLIPPED_LINEAR_0_90_STRICT_BLOCKED_LE_45_V1",
+              "initial_angle": {
+                "denominator": 1,
+                "numerator": 90
+              },
+              "mode": "ARRIVAL",
+              "opening_seconds": {
+                "denominator": 1,
+                "numerator": 3
+              },
+              "profile": "SYNTHETIC_CONVENTION_B_V1",
+              "report_times_us": null,
+              "schema_version": "SYNTHETIC_RUN_CONFIGURATION_V1",
+              "timestamp_policy": "INTEGER_US_OR_EXACT_GRID_DECIMAL_SECONDS_V1",
+              "watchdog": {
+                "mode": "NONE",
+                "response": null,
+                "timeout_us": null
+              },
+              "watchdog_priority": "SENSOR_FIRST_ONE_SHOT_V1"
+            },
+            "configuration_digest": "82f42e4a380342c4f84b5fd1a5446e8b5eae5cbe4f97422a8174a17fb56e1598",
+            "continuous_seconds": {
+              "denominator": 2,
+              "numerator": 7
+            },
+            "endpoint_seconds": {
+              "denominator": 1,
+              "numerator": 4
+            },
+            "event_grid_us": [
+              0,
+              200000,
+              2200000,
+              3200000,
+              4200000,
+              5200000,
+              6200000,
+              7200000
+            ],
+            "final_angle": {
+              "denominator": 1,
+              "numerator": 0
+            },
+            "fixture_id": "synthetic:m22:s22:fixture:front",
+            "horizon_us": 7200000,
+            "initial_angle": {
+              "denominator": 1,
+              "numerator": 90
+            },
+            "intervals": [
+              {
+                "applied_command": "RAISE",
+                "blocked": false,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "effective_us": 0,
+                "end_kind": "SENSOR",
+                "end_us": 200000,
+                "origin_event_id": "synthetic:front:frame:0",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "start_us": 0
+              },
+              {
+                "applied_command": "RAISE",
+                "blocked": false,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "effective_us": 200000,
+                "end_kind": "SENSOR",
+                "end_us": 2200000,
+                "origin_event_id": "synthetic:front:frame:1",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "start_us": 200000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": false,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "effective_us": 2200000,
+                "end_kind": "SENSOR",
+                "end_us": 3200000,
+                "origin_event_id": "synthetic:front:frame:2",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 60
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 90
+                },
+                "start_us": 2200000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": true,
+                "continuous_seconds": {
+                  "denominator": 2,
+                  "numerator": 1
+                },
+                "effective_us": 3200000,
+                "end_kind": "SENSOR",
+                "end_us": 4200000,
+                "origin_event_id": "synthetic:front:frame:3",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 30
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 60
+                },
+                "start_us": 3200000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": true,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "effective_us": 4200000,
+                "end_kind": "SENSOR",
+                "end_us": 5200000,
+                "origin_event_id": "synthetic:front:frame:4",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 30
+                },
+                "start_us": 4200000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": true,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "effective_us": 5200000,
+                "end_kind": "SENSOR",
+                "end_us": 6200000,
+                "origin_event_id": "synthetic:front:frame:5",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "start_us": 5200000
+              },
+              {
+                "applied_command": "LOWER",
+                "blocked": true,
+                "continuous_seconds": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "effective_us": 6200000,
+                "end_kind": "SENSOR",
+                "end_us": 7200000,
+                "origin_event_id": "synthetic:front:frame:6",
+                "post_angle": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "pre_angle": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "start_us": 6200000
+              }
+            ],
+            "issues": [
+              {
+                "command": "RAISE",
+                "event_id": "synthetic:front:frame:0",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "RAISE",
+                "timestamp_us": 0
+              },
+              {
+                "command": "RAISE",
+                "event_id": "synthetic:front:frame:1",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "RAISE",
+                "timestamp_us": 200000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:front:frame:2",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 2200000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:front:frame:3",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 3200000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:front:frame:4",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 4200000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:front:frame:5",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 5200000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:front:frame:6",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 6200000
+              },
+              {
+                "command": "LOWER",
+                "event_id": "synthetic:front:frame:7",
+                "kind": "SENSOR",
+                "mapping_provenance": "DERIVED_FROM_TARGET",
+                "requested_command": "LOWER",
+                "timestamp_us": 7200000
+              }
+            ],
+            "mode": "ARRIVAL",
+            "origin_us": 0,
+            "profile": "SYNTHETIC_CONVENTION_B_V1",
+            "reason": null,
+            "rejections": [],
+            "reordered": false,
+            "report_endpoint_seconds": {
+              "denominator": 1,
+              "numerator": 4
+            },
+            "report_grid_kind": "EVENT_GRID",
+            "report_grid_us": [
+              0,
+              200000,
+              2200000,
+              3200000,
+              4200000,
+              5200000,
+              6200000,
+              7200000
+            ],
+            "status": "COMPLETE"
+          },
+          "code_identity": "synthetic:code:77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f",
+          "controller_calls": 8,
+          "decisions": [
+            {
+              "accepted": true,
+              "command": "RAISE",
+              "decision_json": "{\"evidence_references\":[\"camera_front:0.0\"],\"explanation\":\"Qualified approach detected; awaiting confirmation\",\"fault_status\":\"none\",\"gate_command\":\"OPEN\",\"health_reasons\":{\"camera_front\":\"observation_healthy\"},\"observation_ages\":{\"camera_front\":{\"nonfinite_age\":\"inf\"}},\"previous_gate_state\":\"OPEN\",\"previous_state\":\"IDLE\",\"resulting_gate_state\":\"OPEN\",\"resulting_state\":\"TRAIN_APPROACHING\",\"rule_id\":\"RULE_1_APPROACH_TRIGGER\",\"scenario_run_id\":\"synthetic:m22:s22:fixture:front\",\"source_availability\":{\"camera_front\":true},\"source_health\":{\"camera_front\":\"healthy\"},\"timestamp_s\":0.0}",
+              "event_id": "synthetic:front:frame:0",
+              "input_index": 0,
+              "logical_target": "OPEN",
+              "timestamp_us": 0
+            },
+            {
+              "accepted": true,
+              "command": "RAISE",
+              "decision_json": "{\"evidence_references\":[\"camera_front:0.2\"],\"explanation\":\"Approach confirmed; initiating warning phase\",\"fault_status\":\"none\",\"gate_command\":\"OPEN\",\"health_reasons\":{\"camera_front\":\"observation_healthy\"},\"observation_ages\":{\"camera_front\":0.0},\"previous_gate_state\":\"OPEN\",\"previous_state\":\"TRAIN_APPROACHING\",\"resulting_gate_state\":\"OPEN\",\"resulting_state\":\"WARNING\",\"rule_id\":\"RULE_1_APPROACH_TRIGGER\",\"scenario_run_id\":\"synthetic:m22:s22:fixture:front\",\"source_availability\":{\"camera_front\":true},\"source_health\":{\"camera_front\":\"healthy\"},\"timestamp_s\":0.2}",
+              "event_id": "synthetic:front:frame:1",
+              "input_index": 1,
+              "logical_target": "OPEN",
+              "timestamp_us": 200000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_front:2.2\"],\"explanation\":\"Warning dwell of 2.0s elapsed; beginning gate closure\",\"fault_status\":\"none\",\"gate_command\":\"CLOSING\",\"health_reasons\":{\"camera_front\":\"observation_healthy\"},\"observation_ages\":{\"camera_front\":0.0},\"previous_gate_state\":\"OPEN\",\"previous_state\":\"WARNING\",\"resulting_gate_state\":\"CLOSING\",\"resulting_state\":\"GATE_CLOSING\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:front\",\"source_availability\":{\"camera_front\":true},\"source_health\":{\"camera_front\":\"healthy\"},\"timestamp_s\":2.2}",
+              "event_id": "synthetic:front:frame:2",
+              "input_index": 2,
+              "logical_target": "CLOSING",
+              "timestamp_us": 2200000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_front:3.2\"],\"explanation\":null,\"fault_status\":\"none\",\"gate_command\":\"CLOSING\",\"health_reasons\":{\"camera_front\":\"observation_healthy\"},\"observation_ages\":{\"camera_front\":0.0},\"previous_gate_state\":\"CLOSING\",\"previous_state\":\"GATE_CLOSING\",\"resulting_gate_state\":\"CLOSING\",\"resulting_state\":\"GATE_CLOSING\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:front\",\"source_availability\":{\"camera_front\":true},\"source_health\":{\"camera_front\":\"healthy\"},\"timestamp_s\":3.2}",
+              "event_id": "synthetic:front:frame:3",
+              "input_index": 3,
+              "logical_target": "CLOSING",
+              "timestamp_us": 3200000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_front:4.2\"],\"explanation\":null,\"fault_status\":\"none\",\"gate_command\":\"CLOSING\",\"health_reasons\":{\"camera_front\":\"observation_healthy\"},\"observation_ages\":{\"camera_front\":0.0},\"previous_gate_state\":\"CLOSING\",\"previous_state\":\"GATE_CLOSING\",\"resulting_gate_state\":\"CLOSING\",\"resulting_state\":\"GATE_CLOSING\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:front\",\"source_availability\":{\"camera_front\":true},\"source_health\":{\"camera_front\":\"healthy\"},\"timestamp_s\":4.2}",
+              "event_id": "synthetic:front:frame:4",
+              "input_index": 4,
+              "logical_target": "CLOSING",
+              "timestamp_us": 4200000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_front:5.2\"],\"explanation\":\"Gate closing elapsed (3.0s); gate fully closed\",\"fault_status\":\"none\",\"gate_command\":\"CLOSED\",\"health_reasons\":{\"camera_front\":\"observation_healthy\"},\"observation_ages\":{\"camera_front\":0.0},\"previous_gate_state\":\"CLOSING\",\"previous_state\":\"GATE_CLOSING\",\"resulting_gate_state\":\"CLOSED\",\"resulting_state\":\"TRAIN_PRESENT\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:front\",\"source_availability\":{\"camera_front\":true},\"source_health\":{\"camera_front\":\"healthy\"},\"timestamp_s\":5.2}",
+              "event_id": "synthetic:front:frame:5",
+              "input_index": 5,
+              "logical_target": "CLOSED",
+              "timestamp_us": 5200000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_front:6.2\"],\"explanation\":\"Train occupancy observed at crossing\",\"fault_status\":\"none\",\"gate_command\":\"CLOSED\",\"health_reasons\":{\"camera_front\":\"observation_healthy\"},\"observation_ages\":{\"camera_front\":0.0},\"previous_gate_state\":\"CLOSED\",\"previous_state\":\"TRAIN_PRESENT\",\"resulting_gate_state\":\"CLOSED\",\"resulting_state\":\"CROSSING_OCCUPIED\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:front\",\"source_availability\":{\"camera_front\":true},\"source_health\":{\"camera_front\":\"healthy\"},\"timestamp_s\":6.2}",
+              "event_id": "synthetic:front:frame:6",
+              "input_index": 6,
+              "logical_target": "CLOSED",
+              "timestamp_us": 6200000
+            },
+            {
+              "accepted": true,
+              "command": "LOWER",
+              "decision_json": "{\"evidence_references\":[\"camera_front:7.2\"],\"explanation\":null,\"fault_status\":\"none\",\"gate_command\":\"CLOSED\",\"health_reasons\":{\"camera_front\":\"observation_healthy\"},\"observation_ages\":{\"camera_front\":0.0},\"previous_gate_state\":\"CLOSED\",\"previous_state\":\"CROSSING_OCCUPIED\",\"resulting_gate_state\":\"CLOSED\",\"resulting_state\":\"CROSSING_OCCUPIED\",\"rule_id\":null,\"scenario_run_id\":\"synthetic:m22:s22:fixture:front\",\"source_availability\":{\"camera_front\":true},\"source_health\":{\"camera_front\":\"healthy\"},\"timestamp_s\":7.2}",
+              "event_id": "synthetic:front:frame:7",
+              "input_index": 7,
+              "logical_target": "CLOSED",
+              "timestamp_us": 7200000
+            }
+          ],
+          "processing_mode": "ARRIVAL",
+          "reason": null,
+          "reordered": false,
+          "request_digest": "2ad862fc8744898c025b2df0dfd69915e691d14816f2110717e5cb657dac3a50",
+          "request_json": "{\"batch\":{\"fixture_id\":\"synthetic:m22:s22:fixture:front\",\"inputs_json\":\"[{\\\"event_id\\\":\\\"synthetic:front:frame:0\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":0.0,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_front\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_front\\\",\\\"timestamp_s\\\":0.0}]},\\\"timestamp\\\":0},{\\\"event_id\\\":\\\"synthetic:front:frame:1\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":0.2,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_front\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_front\\\",\\\"timestamp_s\\\":0.2}]},\\\"timestamp\\\":200000},{\\\"event_id\\\":\\\"synthetic:front:frame:2\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":2.2,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_front\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_front\\\",\\\"timestamp_s\\\":2.2}]},\\\"timestamp\\\":2200000},{\\\"event_id\\\":\\\"synthetic:front:frame:3\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":3.2,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_front\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_front\\\",\\\"timestamp_s\\\":3.2}]},\\\"timestamp\\\":3200000},{\\\"event_id\\\":\\\"synthetic:front:frame:4\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":4.2,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_front\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_front\\\",\\\"timestamp_s\\\":4.2}]},\\\"timestamp\\\":4200000},{\\\"event_id\\\":\\\"synthetic:front:frame:5\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":5.2,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_front\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_front\\\",\\\"timestamp_s\\\":5.2}]},\\\"timestamp\\\":5200000},{\\\"event_id\\\":\\\"synthetic:front:frame:6\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":6.2,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_front\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_front\\\",\\\"timestamp_s\\\":6.2}]},\\\"timestamp\\\":6200000},{\\\"event_id\\\":\\\"synthetic:front:frame:7\\\",\\\"frame\\\":{\\\"active_sources\\\":[],\\\"audio_records\\\":[],\\\"health_reasons\\\":{},\\\"master_timestamp_s\\\":7.2,\\\"missing_sources\\\":[],\\\"observation_ages\\\":{},\\\"source_availability\\\":{\\\"camera_front\\\":true},\\\"source_health\\\":{},\\\"vision_records\\\":[{\\\"available\\\":true,\\\"detections\\\":[{\\\"bbox_xyxy\\\":null,\\\"confidence\\\":0.99,\\\"label\\\":\\\"front\\\",\\\"metadata\\\":{}}],\\\"metadata\\\":{},\\\"modality\\\":\\\"vision\\\",\\\"source_id\\\":\\\"camera_front\\\",\\\"timestamp_s\\\":7.2}]},\\\"timestamp\\\":7200000}]\",\"provenance\":\"CONSTRUCTED_IN_MEMORY\"},\"closing_seconds\":\"3\",\"code_identity\":\"synthetic:code:77e78eeb1e81bfa2d96e8725de9ea0d34585fe9f\",\"controller_json\":\"{\\\"kind\\\":\\\"CURRENT_ENGINE\\\",\\\"settings\\\":{\\\"approach_threshold\\\":0.35,\\\"audio_threshold\\\":0.37,\\\"clearance_dwell_s\\\":3.0,\\\"confirm_frames\\\":2,\\\"departure_threshold\\\":0.35,\\\"fault_confirm_frames\\\":2,\\\"fault_recovery_hold_s\\\":3.0,\\\"gate_closing_s\\\":3.0,\\\"gate_opening_s\\\":3.0,\\\"source_staleness_s\\\":2.0,\\\"warning_dwell_s\\\":2.0}}\",\"cutoff\":null,\"initial_angle\":\"90\",\"mode\":\"ARRIVAL\",\"opening_seconds\":\"3\",\"report_step_us\":null,\"report_times\":null,\"schema\":\"CONSTRUCTED_CONVENTION_B_PIPELINE_V1\"}",
+          "schema": "CONSTRUCTED_CONVENTION_B_PIPELINE_V1",
+          "status": "COMPLETE"
+        },
+        "time_unit": "microseconds"
+      }
+    },
+    "synthetic_inputs": true
+  }
+}
