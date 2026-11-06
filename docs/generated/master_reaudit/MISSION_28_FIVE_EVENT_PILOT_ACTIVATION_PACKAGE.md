@@ -1,0 +1,53 @@
+# Mission 28 five-event pilot activation package
+
+**PILOT_NOT_READY — INACTIVE — NOT AUTHORIZED — NOT EXECUTED.** No genuine evidence, appointment, human observation, adjudication or execution receipt was received. This package operationalizes the existing Mission27 protocol without adding/removing events, changing RD001–055 or changing the 27 historical selections.
+
+## Fixed event and source scope
+
+| Event | Documentary front / back identities | Preserved reason, documentary only |
+|---|---|---|
+| train_events/event_005 | doc:v2:train_events/event_005:front:video / doc:v2:train_events/event_005:back:video | Reported dual-ended censoring; no actual observations made |
+| train_events/event_021 | doc:v2:train_events/event_021:front:video / doc:v2:train_events/event_021:back:video | Reported night/distant-tail ambiguity; inventory/paper lighting conflict unresolved |
+| engine_events/event_001 | doc:v2:engine_events/event_001:front:video / doc:v2:engine_events/event_001:back:video | Engine T3/T4 interpretation; independent second review mandatory |
+| train_events/event_001 | doc:v2:train_events/event_001:front:video / doc:v2:train_events/event_001:back:video | Existing proposed clean contrast, not a verified content finding |
+| no_train_events/event_001 | doc:v2:no_train_events/event_001:front:video / doc:v2:no_train_events/event_001:back:video | Negative control; do not infer train boundaries |
+
+All ten actual recording identities, custodians, acquisition parents, source origins/timebases and owner relationships remain unverified. Their documentary references, old hashes and aliases are retained in `MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json`; none is a fresh physical identity or availability check. Each is SOURCE_IDENTITY_UNKNOWN. The complete 27-event candidate inventory stays unsigned, its two duplicate exclusions stay excluded and R04 stays exactly eleven events. Only pilot train001/005 are within that unchanged R04 subset. No new recording or media inspection is permitted by this mission.
+
+## Rights and assignments
+
+Every pilot source retains RIGHTS_UNKNOWN in all ten separate rights dimensions. The first relevant purposes are the actual research use, permitted storage, processing/presentation and annotation; every exact operation/actor/role/environment/output binding still requires its own evidence. Training, model/calibration use, original redistribution, public release, promotion, later evaluation and publication are separate. Do not require public-release permission merely to prepare a private pilot, or transfer one dimension to another. All 63 source rows are assessed individually in the exact-source rights register. No exact source/purpose is authorized here.
+
+Actual primary reviewer, distinct independent second reviewer and separate adjudicator: **unappointed/unqualified/unverified**. Researcher and promotion delegation also remain unevidenced. External audit is optional only if someone is actually appointed; it never substitutes for mandatory independent review. Actual appointment/identity/competence, assigned scope, independence/exposure/conflicts, participation disposition, current source access, validity/expiry/revocation and actual verification identity must precede source access. No GitHub username, commit, job title or AI statement supplies those facts. The coding agent makes no human qualification decision.
+
+## Operative protocol, schema and source presentation
+
+Preserve `MISSION_27_HUMAN_REVIEWER_HANDBOOK.md` and `MISSION_27_GENUINE_REVIEW_PILOT_PROTOCOL.md`. The active canonical schema is **8.1.0-stage2.1** in `src/railway_detection/annotation/stage2_1_schema.py`; its existing 30-second session plausibility floor is unchanged. Never pad recorded duration. RD046 scientific duration sufficiency remains deferred. The inactive 8.2 proposal is not substituted.
+
+Exact operative protocol/adoption binding remains missing. The known experiment document `docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md` is version **9.1.1 PROPOSED**, not an automatically operative authorization or schema adoption. Record an existing attributable operative document/version/reference and canonical compatibility through ACT-06; do not reselect adopted scientific directions or invent formal approval. A proposed protocol reference cannot satisfy the operative binding by itself.
+
+The actual source clock/origin and accepted player mapping remain missing for all ten references. Presentation must preserve original camera-local PTS ticks/rational timebase/origin and separate source time from actual session wall/monotonic timing. Front/back clocks stay independent. Acoustic offsets never move human GT. A neutral source-only player must authenticate the actual assigned person and recheck the existing canonical grant before every source use. Keep candidates, old observations, evaluated-model outputs and comparisons hidden until each required independent pass is sealed. Log accidental exposure, stop the affected assignment and refer it for actual independent disposition; a checkbox does not prove blinding.
+
+## Human procedures, conditional on actual prerequisites
+
+1. Primary reviewer records human-only T1–T4 states, exact source/camera/assignment/session/protocol/schema parents, original PTS/frame reference, rationale, uncertainty, censoring and real duration. No values are prefilled from documents or model output.
+2. T1 means the adopted approach danger-zone/frog line; T2 means physical roadway entry and remains **DEFERRED** without genuine physical landmark/source-camera evidence; T3 means locomotive-unit clearance; T4 means tail clearance without an invented exit landmark. Never replace T2 with the lens-plane annotation. Do not assume engine T3 equals T4. T2 deferral blocks observable physical-entry/occupancy claims, not preparation of T1/T3/T4 or an explicit unavailable T2 state.
+3. Preserve original states and missingness, LEFT/RIGHT censoring per camera and UNCERTAIN disagreements. Null is never zero; no inferred missing timestamp, averaged disagreement or new numerical tolerance. Serialize genuine observations only when the active schema preserves them; otherwise stop publication and record the compatibility issue.
+4. Seal all assigned source/boundary observations plus all six risk assessments. Mandatory second review retains the exact triggers: explicit DISPUTED/NEEDS_SECOND_REVIEW flag; any UNCERTAIN boundary; engine T3/T4 interpretation; front/back conflict; missing/inconsistent source hashes; boundary corrected from a candidate. CENSORED or NOT_OBSERVABLE alone introduces no new trigger. Missing identity/hash evidence also stops source access. Preserve the risk-based clear-boundary audit without a fixed percentage.
+5. A separately qualified, authorized and physically distinct second reviewer seals an independent pass before comparison. Preserve actual prior-exposure/conflict declarations and all original observations. Account aliases do not establish distinct people.
+6. Comparison retains all exact independent contributor digests. A separate qualified adjudicator may act only with current adjudication authorization and complete independent parents, at that later stage; future adjudication parents are not demanded before a blind first pass. Unresolved disagreement stays UNCERTAIN. Human adjudication/corrections are separate append-only actions with actual reasons and exact parents; software never supplies judgments.
+7. Validate complete five-event/ten-source coverage, risks, required second reviews, dispute dispositions and immutable audit history. An incomplete batch stays incomplete. Promotion/export require separate canonical permission and receipt; this package issues neither. M4 remains primary, M5 remains the NEVER_PROTECTED_M5 integer failure companion, MTR remains a feasibility screen, and per-metric evaluable denominators stay mandatory. No unsupported occupancy, outcome-dependent exclusion, cross-site/all-weather or safety/performance claim.
+
+## Trusted services, data handling and canonical authority
+
+All genuine services remain missing as assessed in `MISSION_28_HUMAN_REVIEW_SERVICE_REGISTER.json`: physical identity, documentary and human evidence verification, blind source presentation, authenticated immutable observation storage, canonical publication/export, trustworthy current time, and current revocation/audit protection. Existing interfaces are not deployment acceptance. Local SQLite and Python audit hooks do not prove independently protected human storage or OS isolation.
+
+The actual custodian's scoped storage/recipients/output/retention rules, authenticated source/batch/submission identities, atomic WP03/WP04 transaction, retained audit anchors, idempotent recovery, current expiry/revocation and approved backup/recovery must be accepted before genuine use. Do not publish confidential correspondence, credentials or source material to Git. Loss of those guarantees stops further access; original observations remain immutable.
+
+Existing M19-PERM-02/19/26/27 source/review/pilot/annotation decisions remain conditional and blocked. M19-PERM-20 adjudication and M19-PERM-21 promotion are separate. Technical probe/hash operations, if ever needed, require their own current canonical authorization; this mission does not perform them. All 27 operation selections are preserved. A successful preflight would only prepare authorization review. Actual current exact-source/actor/role/purpose/environment/time/log/output canonical authorization is required for execution, not a circular condition for merely reaching authorization-review readiness. No authorization review request or grant is created here.
+
+## Stop and final activation decision
+
+Stop for missing/conflicting/expired/revoked evidence, wrong source or scope, unavailable trusted services/time, unqualified/conflicted or exposed reviewers, source-clock mismatch, privacy incident, missing audit/transaction parents, incompatible canonical representation or incomplete batch coverage. Preserve incident metadata; do not bypass an OS control or infer restart permission.
+
+The machine decision `MISSION_28_FINAL_PILOT_READINESS_DECISION.json` enumerates all thirteen prerequisite categories, ten source-specific preflight results, exact missing evidence and existing ACT-01–07 links. **The pilot is not ready for authorization review and stays inactive.** ACT-01/02 are the first genuine blockers to resolve; actual appointments and accepted deployment/canonical bindings remain necessary. No step in this conditional protocol was conducted.

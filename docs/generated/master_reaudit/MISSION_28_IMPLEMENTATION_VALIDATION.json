@@ -1,0 +1,52 @@
+{
+  "schema": "mission28-implementation/1",
+  "status": "FOCUSED_INTAKE_REPAIRS_AND_READ_ONLY_PILOT_DIAGNOSIS_VALIDATED",
+  "reproduced_defects": 3,
+  "initial_constructed_reproducer_counts": {
+    "tests": 12,
+    "passed": 8,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0
+  },
+  "focused_frozen_counts": {
+    "tests": 86,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 86
+  },
+  "guarded_audit": {
+    "tests": 3732,
+    "failures": 87,
+    "errors": 31,
+    "skipped": 0,
+    "passed": 3614
+  },
+  "guarded_audit_status": "NONPASSING",
+  "new_mission28_cases": 23,
+  "all_previous_3591_selected_ids_preserved": true,
+  "all_previous_3528_mission26_selected_ids_preserved": true,
+  "same_118_protected_ids": true,
+  "source_bindings_unchanged": true,
+  "static_receipt": "MISSION_28_STATIC_VALIDATION.json",
+  "files_sha256": {
+    "src/railway_detection/application/evidence_intake/intake.py": "d1133c0ad229443d8fc1a8b72b9db16ae63b0e3f54eec46bb63ff4f24992db33",
+    "src/railway_detection/application/evidence_intake/cli.py": "ff715ef27dba0258e133ba685ea6b060e7888dab5bf03377e85982b0b2417b49",
+    "src/railway_detection/application/evidence_intake/pilot.py": "624a5435f86b65ce07f125847973c213fb581d0c3f4b9f56a34e0cd4071b8975",
+    "src/railway_detection/application/cli.py": "c6f5f5bf26ddedc03f7a3feb651e3d1ba62c34262a6b510d0ff750aa32d265f1",
+    "src/railway_detection/application/preflight/catalog.py": "6845a98e608216873646b039a28fcdae1a6d5ae616154490bea4953c7890774d",
+    "src/railway_detection/safety/resource_free_acceptance.py": "9344bd19742bd5d35ce4fe45134d927c56ab764af4649eb47985a79a79ccffb2",
+    "tests/synthetic_mission28/test_intake_integrity.py": "e56bc823259d471dfef8fdaebece18b3294bdec7401cb9c4324b54fca4aa331c",
+    "tests/synthetic_mission28/test_pilot_readiness.py": "4c653b5c7d3b445d02e7ff274359ed20ce04f1d0e09254d80f2cdc64aa3fc5a3"
+  },
+  "final_selected_profile": "Pending frozen CLI run from delivered implementation",
+  "pilot_state": "PILOT_NOT_READY",
+  "new_original_evidence_items": 0,
+  "independently_verified_originals": 0,
+  "actual_qualified_reviewers": 0,
+  "grants_issued": 0,
+  "pilot_executed": false,
+  "new_database_or_alternate_authority": false,
+  "mission27_schema_and_verifier_interfaces_unchanged": true
+}

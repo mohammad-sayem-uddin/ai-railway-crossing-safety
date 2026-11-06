@@ -67,6 +67,10 @@ def dispatch(args):
         with sqlite3.connect(path) as connection:
             journal = DocumentaryJournal(connection)
             head = EMPTY_HEAD if args.evidence_command == "init" else args.expected_head
+            retry = False
+            if args.evidence_command in ("submit", "advance"):
+                before = journal.snapshot(expected_head=head, now=args.now)
+                retry = any(row["request"] == args.request for row in before["audit_history"])
             if args.evidence_command == "submit":
                 item = parse_evidence(sys.stdin.read(64 * 1024 + 1))
                 head = journal.submit(item, request=args.request, expected_head=head)
@@ -79,7 +83,14 @@ def dispatch(args):
                     now=args.now,
                     reason=args.reason,
                 )  # verifier intentionally unavailable; high-trust stages refuse
+            result_head = head
+            # An exact retry returns its original receipt, while later committed
+            # entries must remain visible under the caller's current retained head.
+            if retry:
+                head = args.expected_head
             report = journal.snapshot(expected_head=head, now=args.now)
+            if args.evidence_command in ("submit", "advance"):
+                report["request_result_head"] = result_head
             print(canonical(report))
         return 0
     except PermissionError as error:

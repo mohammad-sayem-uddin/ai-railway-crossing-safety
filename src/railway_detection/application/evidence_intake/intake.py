@@ -222,6 +222,10 @@ class DocumentaryJournal:
     def __init__(self, connection: sqlite3.Connection, *, constructed: bool = False):
         if type(constructed) is not bool:
             raise ValueError("explicit fixture-mode boolean required")
+        if connection.in_transaction:
+            raise ValueError(
+                "dedicated documentary connection required; owner transaction is active"
+            )
         self.db = connection
         self.constructed = constructed
         self.db.execute(
@@ -445,8 +449,14 @@ class DocumentaryJournal:
                 self.db.commit()
                 return prior[1]
             self._allowed(state["status"], target)
-            if target == Status.EXPIRED and (item.expires is None or now < item.expires):
-                raise ValueError("expiry cannot be inferred from missing dates")
+            if target == Status.EXPIRED:
+                deadlines = [
+                    value
+                    for value in (item.expires, (state["attestation"] or {}).get("expires"))
+                    if value is not None
+                ]
+                if not deadlines or now < min(deadlines):
+                    raise ValueError("expiry cannot be inferred from missing dates")
             a = self._attest(item, target, now, verifier) if target in ATTESTED else None
             head = self._append(
                 request,

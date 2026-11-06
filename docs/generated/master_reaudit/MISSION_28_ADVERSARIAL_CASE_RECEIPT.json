@@ -1,0 +1,387 @@
+{
+  "schema": "mission28-adversarial/1",
+  "cases": [
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_initialization_never_commits_an_existing_owner_transaction",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 25,
+        "function_source": "def test_initialization_never_commits_an_existing_owner_transaction():\n    connection = sqlite3.connect(\":memory:\")\n    connection.execute(\"CREATE TABLE owner_work (value TEXT)\")\n    connection.execute(\"INSERT INTO owner_work VALUES ('constructed-uncommitted')\")\n    assert connection.in_transaction\n    with pytest.raises(ValueError, match=\"transaction\"):\n        DocumentaryJournal(connection, constructed=True)\n    assert connection.in_transaction\n    connection.rollback()\n    assert connection.execute(\"SELECT * FROM owner_work\").fetchall() == []\n    assert (\n        connection.execute(\"SELECT name FROM sqlite_master WHERE name='documentary_log'\").fetchall()\n        == []\n    )"
+      },
+      "expected_assertions_or_refusals": [
+        "assert connection.in_transaction",
+        "with pytest.raises(ValueError, match=\"transaction\"):\n        DocumentaryJournal(connection, constructed=True)",
+        "assert connection.in_transaction",
+        "assert connection.execute(\"SELECT * FROM owner_work\").fetchall() == []",
+        "assert (\n        connection.execute(\"SELECT name FROM sqlite_master WHERE name='documentary_log'\").fetchall()\n        == []\n    )"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_explicit_nonexpiring_document_can_record_evidenced_verification_expiry",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 41,
+        "function_source": "def test_explicit_nonexpiring_document_can_record_evidenced_verification_expiry():\n    j = journal()\n    e = item(valid_from=None, expires=None, expiry_not_applicable=True)\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head)\n    assert (\n        j.snapshot(expected_head=head, now=100)[\"evidence\"][0][\"effective_status\"] == Status.EXPIRED\n    )\n    head = j.transition(\n        e.evidence_id,\n        Status.EXPIRED,\n        request=\"synthetic:expire-verification\",\n        expected_head=head,\n        now=100,\n        reason=\"constructed attestation expired\",\n    )\n    snapshot = j.snapshot(expected_head=head, now=100)\n    assert snapshot[\"evidence\"][0][\"recorded_status\"] == Status.EXPIRED\n    assert not snapshot[\"evidence\"][0][\"genuine_permission\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "assert (\n        j.snapshot(expected_head=head, now=100)[\"evidence\"][0][\"effective_status\"] == Status.EXPIRED\n    )",
+        "assert snapshot[\"evidence\"][0][\"recorded_status\"] == Status.EXPIRED",
+        "assert not snapshot[\"evidence\"][0][\"genuine_permission\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_cli_exact_retry_after_later_write_returns_history_without_losing_current_head[submit]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 63,
+        "function_source": "def test_cli_exact_retry_after_later_write_returns_history_without_losing_current_head(\n    tmp_path,\n    monkeypatch,\n    capsys,\n    retry_target,\n):\n    path = tmp_path / \"constructed_documentary.sqlite\"\n    prefix = [\"application\", \"evidence\"]\n    assert main(prefix + [\"init\", \"--journal\", str(path), \"--now\", \"20\"]) == 0\n    head = json.loads(capsys.readouterr().out)[\"head\"]\n    # Adversarial documentary-shaped fixture: explicitly marked and never authenticated.\n    fixture = {\n        \"evidence_id\": \"CONSTRUCTED_TEST_NOT_GENUINE:retry\",\n        \"evidence_type\": \"APPOINTMENT\",\n        \"subject\": \"CONSTRUCTED_TEST_NOT_GENUINE:person\",\n        \"source_reference\": \"CONSTRUCTED_TEST_NOT_GENUINE:unverified-reference\",\n        \"issuing_authority\": None,\n        \"scope\": {\n            \"resource\": \"CONSTRUCTED_TEST_NOT_GENUINE:source\",\n            \"operation\": None,\n            \"actor\": None,\n            \"role\": None,\n            \"purpose\": None,\n            \"environment\": None,\n        },\n    }\n    monkeypatch.setattr(\"sys.stdin\", io.StringIO(canonical(fixture)))\n    submit = prefix + [\n        \"submit\",\n        \"--journal\",\n        str(path),\n        \"--now\",\n        \"20\",\n        \"--request\",\n        \"fixture:submit\",\n    ]\n    assert main(submit + [\"--expected-head\", head]) == 0\n    submit_head = json.loads(capsys.readouterr().out)[\"head\"]\n    parsed = prefix + [\n        \"advance\",\n        \"--journal\",\n        str(path),\n        \"--now\",\n        \"20\",\n        \"--request\",\n        \"fixture:parsed\",\n        \"--evidence-id\",\n        fixture[\"evidence_id\"],\n        \"--target\",\n        \"PARSED\",\n        \"--reason\",\n        \"constructed parse\",\n    ]\n    assert main(parsed + [\"--expected-head\", submit_head]) == 0\n    parsed_head = json.loads(capsys.readouterr().out)[\"head\"]\n    valid = prefix + [\n        \"advance\",\n        \"--journal\",\n        str(path),\n        \"--now\",\n        \"20\",\n        \"--request\",\n        \"fixture:valid\",\n        \"--evidence-id\",\n        fixture[\"evidence_id\"],\n        \"--target\",\n        \"STRUCTURALLY_VALID\",\n        \"--reason\",\n        \"constructed validation\",\n    ]\n    assert main(valid + [\"--expected-head\", parsed_head]) == 0\n    current_head = json.loads(capsys.readouterr().out)[\"head\"]\n    monkeypatch.setattr(\"sys.stdin\", io.StringIO(canonical(fixture)))\n    command = submit if retry_target == \"submit\" else parsed\n    assert main(command + [\"--expected-head\", current_head]) == 0\n    result = json.loads(capsys.readouterr().out)\n    assert result[\"head\"] == current_head and len(result[\"audit_history\"]) == 3\n    assert result[\"request_result_head\"] == (\n        submit_head if retry_target == \"submit\" else parsed_head\n    )\n    assert not result[\"authorized_operations\"] and not result[\"human_review_ready\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "assert main(prefix + [\"init\", \"--journal\", str(path), \"--now\", \"20\"]) == 0",
+        "assert main(submit + [\"--expected-head\", head]) == 0",
+        "assert main(parsed + [\"--expected-head\", submit_head]) == 0",
+        "assert main(valid + [\"--expected-head\", parsed_head]) == 0",
+        "assert main(command + [\"--expected-head\", current_head]) == 0",
+        "assert result[\"head\"] == current_head and len(result[\"audit_history\"]) == 3",
+        "assert result[\"request_result_head\"] == (\n        submit_head if retry_target == \"submit\" else parsed_head\n    )",
+        "assert not result[\"authorized_operations\"] and not result[\"human_review_ready\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_cli_exact_retry_after_later_write_returns_history_without_losing_current_head[PARSED]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 63,
+        "function_source": "def test_cli_exact_retry_after_later_write_returns_history_without_losing_current_head(\n    tmp_path,\n    monkeypatch,\n    capsys,\n    retry_target,\n):\n    path = tmp_path / \"constructed_documentary.sqlite\"\n    prefix = [\"application\", \"evidence\"]\n    assert main(prefix + [\"init\", \"--journal\", str(path), \"--now\", \"20\"]) == 0\n    head = json.loads(capsys.readouterr().out)[\"head\"]\n    # Adversarial documentary-shaped fixture: explicitly marked and never authenticated.\n    fixture = {\n        \"evidence_id\": \"CONSTRUCTED_TEST_NOT_GENUINE:retry\",\n        \"evidence_type\": \"APPOINTMENT\",\n        \"subject\": \"CONSTRUCTED_TEST_NOT_GENUINE:person\",\n        \"source_reference\": \"CONSTRUCTED_TEST_NOT_GENUINE:unverified-reference\",\n        \"issuing_authority\": None,\n        \"scope\": {\n            \"resource\": \"CONSTRUCTED_TEST_NOT_GENUINE:source\",\n            \"operation\": None,\n            \"actor\": None,\n            \"role\": None,\n            \"purpose\": None,\n            \"environment\": None,\n        },\n    }\n    monkeypatch.setattr(\"sys.stdin\", io.StringIO(canonical(fixture)))\n    submit = prefix + [\n        \"submit\",\n        \"--journal\",\n        str(path),\n        \"--now\",\n        \"20\",\n        \"--request\",\n        \"fixture:submit\",\n    ]\n    assert main(submit + [\"--expected-head\", head]) == 0\n    submit_head = json.loads(capsys.readouterr().out)[\"head\"]\n    parsed = prefix + [\n        \"advance\",\n        \"--journal\",\n        str(path),\n        \"--now\",\n        \"20\",\n        \"--request\",\n        \"fixture:parsed\",\n        \"--evidence-id\",\n        fixture[\"evidence_id\"],\n        \"--target\",\n        \"PARSED\",\n        \"--reason\",\n        \"constructed parse\",\n    ]\n    assert main(parsed + [\"--expected-head\", submit_head]) == 0\n    parsed_head = json.loads(capsys.readouterr().out)[\"head\"]\n    valid = prefix + [\n        \"advance\",\n        \"--journal\",\n        str(path),\n        \"--now\",\n        \"20\",\n        \"--request\",\n        \"fixture:valid\",\n        \"--evidence-id\",\n        fixture[\"evidence_id\"],\n        \"--target\",\n        \"STRUCTURALLY_VALID\",\n        \"--reason\",\n        \"constructed validation\",\n    ]\n    assert main(valid + [\"--expected-head\", parsed_head]) == 0\n    current_head = json.loads(capsys.readouterr().out)[\"head\"]\n    monkeypatch.setattr(\"sys.stdin\", io.StringIO(canonical(fixture)))\n    command = submit if retry_target == \"submit\" else parsed\n    assert main(command + [\"--expected-head\", current_head]) == 0\n    result = json.loads(capsys.readouterr().out)\n    assert result[\"head\"] == current_head and len(result[\"audit_history\"]) == 3\n    assert result[\"request_result_head\"] == (\n        submit_head if retry_target == \"submit\" else parsed_head\n    )\n    assert not result[\"authorized_operations\"] and not result[\"human_review_ready\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "assert main(prefix + [\"init\", \"--journal\", str(path), \"--now\", \"20\"]) == 0",
+        "assert main(submit + [\"--expected-head\", head]) == 0",
+        "assert main(parsed + [\"--expected-head\", submit_head]) == 0",
+        "assert main(valid + [\"--expected-head\", parsed_head]) == 0",
+        "assert main(command + [\"--expected-head\", current_head]) == 0",
+        "assert result[\"head\"] == current_head and len(result[\"audit_history\"]) == 3",
+        "assert result[\"request_result_head\"] == (\n        submit_head if retry_target == \"submit\" else parsed_head\n    )",
+        "assert not result[\"authorized_operations\"] and not result[\"human_review_ready\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_constructed_accepted_evidence_never_leaks_across_scope[resource-synthetic:other-source]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 158,
+        "function_source": "def test_constructed_accepted_evidence_never_leaks_across_scope(field, value):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, verifier=ConstructedVerifier())\n    changed_scope = replace(e.scope, **{field: value})\n    replacement = replace(\n        e,\n        evidence_id=\"synthetic:cross-scope-replacement\",\n        scope=changed_scope,\n        parent_reference=digest(e),\n        supersedes_reference=digest(e),\n    )\n    with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)\n    with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )\n    assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)",
+        "with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )",
+        "assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_constructed_accepted_evidence_never_leaks_across_scope[operation-M19-PERM-03]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 158,
+        "function_source": "def test_constructed_accepted_evidence_never_leaks_across_scope(field, value):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, verifier=ConstructedVerifier())\n    changed_scope = replace(e.scope, **{field: value})\n    replacement = replace(\n        e,\n        evidence_id=\"synthetic:cross-scope-replacement\",\n        scope=changed_scope,\n        parent_reference=digest(e),\n        supersedes_reference=digest(e),\n    )\n    with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)\n    with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )\n    assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)",
+        "with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )",
+        "assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_constructed_accepted_evidence_never_leaks_across_scope[actor-synthetic:other-actor]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 158,
+        "function_source": "def test_constructed_accepted_evidence_never_leaks_across_scope(field, value):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, verifier=ConstructedVerifier())\n    changed_scope = replace(e.scope, **{field: value})\n    replacement = replace(\n        e,\n        evidence_id=\"synthetic:cross-scope-replacement\",\n        scope=changed_scope,\n        parent_reference=digest(e),\n        supersedes_reference=digest(e),\n    )\n    with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)\n    with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )\n    assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)",
+        "with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )",
+        "assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_constructed_accepted_evidence_never_leaks_across_scope[role-ADJUDICATOR]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 158,
+        "function_source": "def test_constructed_accepted_evidence_never_leaks_across_scope(field, value):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, verifier=ConstructedVerifier())\n    changed_scope = replace(e.scope, **{field: value})\n    replacement = replace(\n        e,\n        evidence_id=\"synthetic:cross-scope-replacement\",\n        scope=changed_scope,\n        parent_reference=digest(e),\n        supersedes_reference=digest(e),\n    )\n    with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)\n    with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )\n    assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)",
+        "with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )",
+        "assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_constructed_accepted_evidence_never_leaks_across_scope[purpose-synthetic:other-purpose]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 158,
+        "function_source": "def test_constructed_accepted_evidence_never_leaks_across_scope(field, value):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, verifier=ConstructedVerifier())\n    changed_scope = replace(e.scope, **{field: value})\n    replacement = replace(\n        e,\n        evidence_id=\"synthetic:cross-scope-replacement\",\n        scope=changed_scope,\n        parent_reference=digest(e),\n        supersedes_reference=digest(e),\n    )\n    with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)\n    with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )\n    assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)",
+        "with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )",
+        "assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_constructed_accepted_evidence_never_leaks_across_scope[environment-synthetic:other-environment]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 158,
+        "function_source": "def test_constructed_accepted_evidence_never_leaks_across_scope(field, value):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, verifier=ConstructedVerifier())\n    changed_scope = replace(e.scope, **{field: value})\n    replacement = replace(\n        e,\n        evidence_id=\"synthetic:cross-scope-replacement\",\n        scope=changed_scope,\n        parent_reference=digest(e),\n        supersedes_reference=digest(e),\n    )\n    with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)\n    with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )\n    assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)",
+        "with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )",
+        "assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_constructed_accepted_evidence_never_leaks_across_scope[rights-value6]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 158,
+        "function_source": "def test_constructed_accepted_evidence_never_leaks_across_scope(field, value):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, verifier=ConstructedVerifier())\n    changed_scope = replace(e.scope, **{field: value})\n    replacement = replace(\n        e,\n        evidence_id=\"synthetic:cross-scope-replacement\",\n        scope=changed_scope,\n        parent_reference=digest(e),\n        supersedes_reference=digest(e),\n    )\n    with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)\n    with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )\n    assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"cross-subject/scope\"):\n        j.submit(replacement, request=\"synthetic:cross-scope\", expected_head=head)",
+        "with pytest.raises(PermissionError):\n        j.accepted_for(\n            e.evidence_id,\n            changed_scope,\n            expected_head=head,\n            now=20,\n            verifier=ConstructedVerifier(),\n        )",
+        "assert not j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"genuine_permission\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_intake_integrity.py::test_historical_retry_does_not_reverify_or_resurrect_revoked_evidence",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_intake_integrity.py",
+        "line": 184,
+        "function_source": "def test_historical_retry_does_not_reverify_or_resurrect_revoked_evidence():\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head)\n    revoked = j.transition(\n        e.evidence_id,\n        Status.REVOKED,\n        request=\"synthetic:revoke\",\n        expected_head=head,\n        now=21,\n        reason=\"constructed local revocation\",\n    )\n    assert j.submit(e, request=\"synthetic:submit\", expected_head=revoked) != revoked\n    assert (\n        j.snapshot(expected_head=revoked, now=21)[\"evidence\"][0][\"recorded_status\"]\n        == Status.REVOKED\n    )\n    with pytest.raises(PermissionError):\n        j.accepted_for(e.evidence_id, e.scope, expected_head=revoked, now=21)"
+      },
+      "expected_assertions_or_refusals": [
+        "assert j.submit(e, request=\"synthetic:submit\", expected_head=revoked) != revoked",
+        "assert (\n        j.snapshot(expected_head=revoked, now=21)[\"evidence\"][0][\"recorded_status\"]\n        == Status.REVOKED\n    )",
+        "with pytest.raises(PermissionError):\n        j.accepted_for(e.evidence_id, e.scope, expected_head=revoked, now=21)"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_exact_existing_pilot_is_not_ready_and_all_diagnostic_sources_remain_blocked",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 13,
+        "function_source": "def test_exact_existing_pilot_is_not_ready_and_all_diagnostic_sources_remain_blocked():\n    report = pilot.report(now=0)\n    value = report[\"pilot\"]\n    assert value[\"state\"] == \"PILOT_NOT_READY\"\n    assert value[\"events\"] == [\n        \"train_events/event_005\",\n        \"train_events/event_021\",\n        \"engine_events/event_001\",\n        \"train_events/event_001\",\n        \"no_train_events/event_001\",\n    ]\n    assert tuple(s[\"source_id\"] for s in value[\"sources\"]) == pilot.SOURCE_IDS\n    assert len(value[\"sources\"]) == 10 and len(value[\"prerequisites\"]) == 13\n    assert all(s[\"preflight\"][\"state\"] == State.BLOCKED for s in value[\"sources\"])\n    assert not value[\"authorization\"] and not value[\"execution_receipt\"]\n    assert not value[\"grant_issued\"] and not value[\"execution_permitted\"]\n    assert not report[\"new_original_evidence_received\"]\n    assert report[\"inventory\"][\"R04_count\"] == 11 and not report[\"inventory\"][\"signoff\"]\n    assert sum(o[\"selection\"] == \"A\" for o in report[\"operations\"]) == 21\n    assert sum(o[\"selection\"] == \"B\" for o in report[\"operations\"]) == 6"
+      },
+      "expected_assertions_or_refusals": [
+        "assert value[\"state\"] == \"PILOT_NOT_READY\"",
+        "assert value[\"events\"] == [\n        \"train_events/event_005\",\n        \"train_events/event_021\",\n        \"engine_events/event_001\",\n        \"train_events/event_001\",\n        \"no_train_events/event_001\",\n    ]",
+        "assert tuple(s[\"source_id\"] for s in value[\"sources\"]) == pilot.SOURCE_IDS",
+        "assert len(value[\"sources\"]) == 10 and len(value[\"prerequisites\"]) == 13",
+        "assert all(s[\"preflight\"][\"state\"] == State.BLOCKED for s in value[\"sources\"])",
+        "assert not value[\"authorization\"] and not value[\"execution_receipt\"]",
+        "assert not value[\"grant_issued\"] and not value[\"execution_permitted\"]",
+        "assert not report[\"new_original_evidence_received\"]",
+        "assert report[\"inventory\"][\"R04_count\"] == 11 and not report[\"inventory\"][\"signoff\"]",
+        "assert sum(o[\"selection\"] == \"A\" for o in report[\"operations\"]) == 21",
+        "assert sum(o[\"selection\"] == \"B\" for o in report[\"operations\"]) == 6"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_pilot_diagnosis_is_deterministic_and_canonical_authorization_is_execution_only",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 35,
+        "function_source": "def test_pilot_diagnosis_is_deterministic_and_canonical_authorization_is_execution_only():\n    a = pilot.report(now=0)\n    assert a == pilot.report(now=0)\n    entries = {r[\"id\"]: r for r in a[\"pilot\"][\"prerequisites\"]}\n    assert entries[\"CANONICAL_AUTHORIZATION\"][\"required_for\"] == \"EXECUTION_ONLY\"\n    assert not a[\"pilot\"][\"optional_external_audit_is_universal_blocker\"]\n    assert not a[\"pilot\"][\"release_permission_required_for_private_pilot\"]\n    assert len(a[\"pilot\"][\"missing_services\"]) == 6\n    assert \"DEFERRED\" in a[\"pilot\"][\"T2\"]\n    assert a[\"pilot\"][\"canonical_plausibility_floor_seconds\"] == 30"
+      },
+      "expected_assertions_or_refusals": [
+        "assert a == pilot.report(now=0)",
+        "assert entries[\"CANONICAL_AUTHORIZATION\"][\"required_for\"] == \"EXECUTION_ONLY\"",
+        "assert not a[\"pilot\"][\"optional_external_audit_is_universal_blocker\"]",
+        "assert not a[\"pilot\"][\"release_permission_required_for_private_pilot\"]",
+        "assert len(a[\"pilot\"][\"missing_services\"]) == 6",
+        "assert \"DEFERRED\" in a[\"pilot\"][\"T2\"]",
+        "assert a[\"pilot\"][\"canonical_plausibility_floor_seconds\"] == 30"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_substituted_documentary_pilot_source_is_not_silently_accepted[missing_source]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 50,
+        "function_source": "def test_substituted_documentary_pilot_source_is_not_silently_accepted(monkeypatch, fault):\n    package = copy.deepcopy(pilot.load_package())\n    source = next(s for s in package[\"sources\"][\"sources\"] if s[\"source_id\"] == pilot.SOURCE_IDS[0])\n    if fault == \"missing_source\":\n        package[\"sources\"][\"sources\"].remove(source)\n    if fault == \"wrong_event\":\n        source[\"event\"] = \"CONSTRUCTED_TEST_NOT_GENUINE:wrong-event\"\n    if fault == \"wrong_camera\":\n        source[\"camera\"] = \"back\"\n    if fault == \"missing_rights\":\n        package[\"rights\"][\"sources\"] = [\n            s for s in package[\"rights\"][\"sources\"] if s[\"source_id\"] != pilot.SOURCE_IDS[0]\n        ]\n    monkeypatch.setattr(pilot, \"load_package\", lambda: package)\n    with pytest.raises(ValueError, match=\"pilot|required\"):\n        pilot.report(now=0)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"pilot|required\"):\n        pilot.report(now=0)"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_substituted_documentary_pilot_source_is_not_silently_accepted[wrong_event]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 50,
+        "function_source": "def test_substituted_documentary_pilot_source_is_not_silently_accepted(monkeypatch, fault):\n    package = copy.deepcopy(pilot.load_package())\n    source = next(s for s in package[\"sources\"][\"sources\"] if s[\"source_id\"] == pilot.SOURCE_IDS[0])\n    if fault == \"missing_source\":\n        package[\"sources\"][\"sources\"].remove(source)\n    if fault == \"wrong_event\":\n        source[\"event\"] = \"CONSTRUCTED_TEST_NOT_GENUINE:wrong-event\"\n    if fault == \"wrong_camera\":\n        source[\"camera\"] = \"back\"\n    if fault == \"missing_rights\":\n        package[\"rights\"][\"sources\"] = [\n            s for s in package[\"rights\"][\"sources\"] if s[\"source_id\"] != pilot.SOURCE_IDS[0]\n        ]\n    monkeypatch.setattr(pilot, \"load_package\", lambda: package)\n    with pytest.raises(ValueError, match=\"pilot|required\"):\n        pilot.report(now=0)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"pilot|required\"):\n        pilot.report(now=0)"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_substituted_documentary_pilot_source_is_not_silently_accepted[wrong_camera]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 50,
+        "function_source": "def test_substituted_documentary_pilot_source_is_not_silently_accepted(monkeypatch, fault):\n    package = copy.deepcopy(pilot.load_package())\n    source = next(s for s in package[\"sources\"][\"sources\"] if s[\"source_id\"] == pilot.SOURCE_IDS[0])\n    if fault == \"missing_source\":\n        package[\"sources\"][\"sources\"].remove(source)\n    if fault == \"wrong_event\":\n        source[\"event\"] = \"CONSTRUCTED_TEST_NOT_GENUINE:wrong-event\"\n    if fault == \"wrong_camera\":\n        source[\"camera\"] = \"back\"\n    if fault == \"missing_rights\":\n        package[\"rights\"][\"sources\"] = [\n            s for s in package[\"rights\"][\"sources\"] if s[\"source_id\"] != pilot.SOURCE_IDS[0]\n        ]\n    monkeypatch.setattr(pilot, \"load_package\", lambda: package)\n    with pytest.raises(ValueError, match=\"pilot|required\"):\n        pilot.report(now=0)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"pilot|required\"):\n        pilot.report(now=0)"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_substituted_documentary_pilot_source_is_not_silently_accepted[missing_rights]",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 50,
+        "function_source": "def test_substituted_documentary_pilot_source_is_not_silently_accepted(monkeypatch, fault):\n    package = copy.deepcopy(pilot.load_package())\n    source = next(s for s in package[\"sources\"][\"sources\"] if s[\"source_id\"] == pilot.SOURCE_IDS[0])\n    if fault == \"missing_source\":\n        package[\"sources\"][\"sources\"].remove(source)\n    if fault == \"wrong_event\":\n        source[\"event\"] = \"CONSTRUCTED_TEST_NOT_GENUINE:wrong-event\"\n    if fault == \"wrong_camera\":\n        source[\"camera\"] = \"back\"\n    if fault == \"missing_rights\":\n        package[\"rights\"][\"sources\"] = [\n            s for s in package[\"rights\"][\"sources\"] if s[\"source_id\"] != pilot.SOURCE_IDS[0]\n        ]\n    monkeypatch.setattr(pilot, \"load_package\", lambda: package)\n    with pytest.raises(ValueError, match=\"pilot|required\"):\n        pilot.report(now=0)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"pilot|required\"):\n        pilot.report(now=0)"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_changed_discovery_document_refuses_stale_binding",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 68,
+        "function_source": "def test_changed_discovery_document_refuses_stale_binding(monkeypatch):\n    original = pilot._metadata\n    monkeypatch.setattr(\n        pilot,\n        \"_metadata\",\n        lambda path: original(path) + \" \" if path.name == pilot.DISCOVERY else original(path),\n    )\n    with pytest.raises(ValueError, match=\"binding\"):\n        pilot.report(now=0)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"binding\"):\n        pilot.report(now=0)"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_rehashed_unverified_original_submission_does_not_become_verification",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 79,
+        "function_source": "def test_rehashed_unverified_original_submission_does_not_become_verification(monkeypatch):\n    original = pilot._metadata\n    document = json.loads(original(pilot.DOCS / pilot.DISCOVERY))\n    document[\"actual_new_original_evidence_items\"] = [\n        {\"source_reference\": \"CONSTRUCTED_TEST_NOT_GENUINE:forged-original\", \"verified\": True}\n    ]\n    body = json.dumps(document)\n    from railway_detection.safety.constructed_authority import sha\n\n    binding = json.dumps({\"schema\": \"MISSION28_BINDING/1\", \"discovery_sha256\": sha(body)})\n    monkeypatch.setattr(\n        pilot, \"_metadata\", lambda path: body if path.name == pilot.DISCOVERY else binding\n    )\n    with pytest.raises(ValueError, match=\"independently verified intake\"):\n        pilot.report(now=0)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"independently verified intake\"):\n        pilot.report(now=0)"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_rehashed_global_approval_flag_never_changes_pilot_readiness",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 96,
+        "function_source": "def test_rehashed_global_approval_flag_never_changes_pilot_readiness(monkeypatch):\n    original = pilot._metadata\n    document = json.loads(original(pilot.DOCS / pilot.DISCOVERY))\n    document[\"approved\"] = True\n    document[\"qualified\"] = True\n    document[\"authorized\"] = True\n    body = json.dumps(document)\n    from railway_detection.safety.constructed_authority import sha\n\n    binding = json.dumps({\"schema\": \"MISSION28_BINDING/1\", \"discovery_sha256\": sha(body)})\n    monkeypatch.setattr(\n        pilot, \"_metadata\", lambda path: body if path.name == pilot.DISCOVERY else binding\n    )\n    value = pilot.report(now=0)[\"pilot\"]\n    assert value[\"state\"] == \"PILOT_NOT_READY\" and not value[\"authorization\"]\n    assert not value[\"execution_permitted\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "assert value[\"state\"] == \"PILOT_NOT_READY\" and not value[\"authorization\"]",
+        "assert not value[\"execution_permitted\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_readiness_cli_exposes_diagnosis_without_executing_pilot",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 114,
+        "function_source": "def test_readiness_cli_exposes_diagnosis_without_executing_pilot(capsys):\n    assert (\n        main(\n            [\n                \"application\",\n                \"readiness\",\n                \"report\",\n                \"--mission\",\n                \"28\",\n                \"--now\",\n                \"0\",\n                \"--format\",\n                \"json\",\n            ]\n        )\n        == 0\n    )\n    report = json.loads(capsys.readouterr().out)\n    assert report[\"pilot\"][\"state\"] == \"PILOT_NOT_READY\"\n    assert not report[\"operations_executed\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "assert (\n        main(\n            [\n                \"application\",\n                \"readiness\",\n                \"report\",\n                \"--mission\",\n                \"28\",\n                \"--now\",\n                \"0\",\n                \"--format\",\n                \"json\",\n            ]\n        )\n        == 0\n    )",
+        "assert report[\"pilot\"][\"state\"] == \"PILOT_NOT_READY\"",
+        "assert not report[\"operations_executed\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    },
+    {
+      "nodeid": "tests/synthetic_mission28/test_pilot_readiness.py::test_negative_clock_is_never_treated_as_current_authority_time",
+      "outcome": "passed",
+      "source": {
+        "file": "tests/synthetic_mission28/test_pilot_readiness.py",
+        "line": 136,
+        "function_source": "def test_negative_clock_is_never_treated_as_current_authority_time():\n    with pytest.raises(ValueError):\n        pilot.report(now=-1)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        pilot.report(now=-1)"
+      ],
+      "classification": "CONSTRUCTED_TEST_ONLY_NON_PROMOTABLE",
+      "genuine_original_verification": false
+    }
+  ],
+  "new_cases": 23,
+  "passed": 23,
+  "protected_source_access": false,
+  "genuine_positive_verification_or_pilot_tested": false,
+  "inherited_63_mission27_cases_preserved": true
+}

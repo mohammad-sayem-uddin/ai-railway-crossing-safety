@@ -1,0 +1,458 @@
+{
+  "schema": "mission28-documentary-delta/1",
+  "date": "2026-11-06",
+  "baseline": "d757eb95e332cde87be44b8510b4163242644a0b",
+  "previous_search": "MISSION_27_DOCUMENTARY_SEARCH_RECEIPT.json",
+  "permitted_text_files_checked": 541,
+  "unchanged_files": 541,
+  "new_files": [],
+  "changed_files": [],
+  "missing_files": [],
+  "delta_review": [],
+  "root_report_xml_unchanged": true,
+  "embedded_docx_media_read": false,
+  "prior_mission27_json_records_parsed": [
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_ADVERSARIAL_CASE_RECEIPT.json",
+      "sha256": "86b7178a21b0e57d9ce31c45e08962cf20d9cd2683207e829fb21f5d3b5f96d0",
+      "fields": [
+        "schema",
+        "cases",
+        "count",
+        "required_coverage",
+        "all_fixtures_explicitly_constructed_non_promotable",
+        "genuine_positive_verification_or_review_tested",
+        "not_scientific_evidence"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_BASELINE_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+      "sha256": "5c8386565afb4ccce4cf600feab7370fe74bc9820099ec0e853369afba92436a",
+      "fields": [
+        "process_errors",
+        "schema",
+        "audit",
+        "source_bindings",
+        "all_test_files",
+        "groups",
+        "totals",
+        "not_executed",
+        "requested",
+        "execution_complete",
+        "source_bindings_unchanged",
+        "status"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_DEMONSTRATION_RECEIPT.json",
+      "sha256": "28f842524332c78cd5604326add937f64ec73c3c73ee451e4627489c4e154a13",
+      "fields": [
+        "schema",
+        "commands",
+        "three_json_reports_identical",
+        "generated_markdown_matches",
+        "generated_json_matches",
+        "policy_denials",
+        "new_grants",
+        "protected_resources_accessed",
+        "clock",
+        "actual_human_evidence_or_observations_submitted"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_DOCUMENTARY_SEARCH_RECEIPT.json",
+      "sha256": "4f0be6867049f95cb20ebbd3ddba6460ad6b75f70149b3ebe5db75aa6a8bdad8",
+      "fields": [
+        "schema",
+        "date",
+        "scope",
+        "documents",
+        "mission26_machine_registers",
+        "local_license_texts",
+        "connected_document_sessions",
+        "original_external_documents_found",
+        "limits",
+        "root_report_text_inspection",
+        "tracked_original_document_filename_check"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_DOCUMENT_BINDING.json",
+      "sha256": "29e71322ba5d023b4412180fd586f38bc99be0097ae84b35c8e5fec92f9c0aea",
+      "fields": [
+        "schema",
+        "document_sha256"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_EVIDENCE_INTAKE_SCHEMA.json",
+      "sha256": "defe0bc4742db231aa7ac606a60417362da3e858a5bf2abb5b9ad95da9f2db13",
+      "fields": [
+        "$schema",
+        "title",
+        "type",
+        "additionalProperties",
+        "required",
+        "properties",
+        "$comment"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_EVIDENCE_REGISTER.json",
+      "sha256": "bc917b6a3c7a89b947af4dc5a834d725a7a49689f37ebb481992e8c8778b095a",
+      "fields": [
+        "schema",
+        "documentary_findings",
+        "submitted_items",
+        "original_appointment_permission_institution_observation_evidence",
+        "known_expired",
+        "known_revoked",
+        "missing_dates",
+        "intake_journal"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_EXECUTION_REGISTER.json",
+      "sha256": "69e6a63dce5ab40e9f511a322c89018275092439629553e782d6d011b69a8df6",
+      "fields": [
+        "schema",
+        "date",
+        "timezone",
+        "branch",
+        "head",
+        "tracking_head",
+        "live_remote_head",
+        "mission26_inventory",
+        "mission26_implementation",
+        "mission26_final_delivery",
+        "preserved_work",
+        "historical_artifacts",
+        "working_tree_porcelain",
+        "request_sha256",
+        "phase_history",
+        "current_status",
+        "final_validation"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_EXTERNAL_REQUIREMENTS_RESOLUTION.json",
+      "sha256": "09c00b116f78c90cca32879648c57c86c14d885530e549b23ba3b2aef273369a",
+      "fields": [
+        "schema",
+        "requirements",
+        "universal_applicability_assumed",
+        "requests_sent"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_FINAL_VALIDATION.json",
+      "sha256": "616bfe487a5bd8c79e249236f5972b2698f37b5586e0d1ade1a8c1d85e874f5d",
+      "fields": [
+        "schema",
+        "date",
+        "timezone",
+        "status",
+        "baseline",
+        "mission26",
+        "documentary_delivery_commit",
+        "implementation_delivery_commit",
+        "final_documentation_delivery",
+        "evidence_acquisition",
+        "human_and_external",
+        "pilot",
+        "scientific_preservation",
+        "operations",
+        "full_guarded_audit",
+        "selected_acceptance",
+        "baseline_selected_acceptance",
+        "adversarial",
+        "static",
+        "cli",
+        "development_runs_not_summed",
+        "preservation",
+        "git",
+        "artifact_sha256"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_FOCUSED_REGRESSION_RECEIPT.json",
+      "sha256": "e1bcf5d01672b39b784f0e5bbb33fc991f8fd013cefc6a947ca20b64612f7f73",
+      "fields": [
+        "process_errors",
+        "schema",
+        "audit",
+        "source_bindings",
+        "all_test_files",
+        "groups",
+        "totals",
+        "not_executed",
+        "requested",
+        "execution_complete",
+        "source_bindings_unchanged",
+        "status"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_IMPLEMENTATION_VALIDATION.json",
+      "sha256": "d085385bffa2797d01e1251945d60d6d3f3bdf52ef92ae64321b37420764f88c",
+      "fields": [
+        "schema",
+        "status",
+        "guarded_audit",
+        "guarded_audit_status",
+        "selected_profile",
+        "new_adversarial_cases",
+        "required_categories_mapped",
+        "source_bindings_unchanged",
+        "static_receipt",
+        "source_sha256",
+        "legacy_inventory_new_modules",
+        "legacy_yaml_is_not_executed_classification_register",
+        "new_grants",
+        "genuine_adapters_enabled",
+        "canonical_validator_unchanged",
+        "final_frozen_acceptance"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_OPERATION_ACTIVATION_REVIEW.json",
+      "sha256": "f65fed1dc7e2f0998f801ad3f061a737d343b3c1e01771f4902ff736c345dad0",
+      "fields": [
+        "schema",
+        "evaluated_at",
+        "clock_meaning",
+        "historical_catalog_digest",
+        "preserved_conditional",
+        "preserved_denied_deferred",
+        "new_verified_evidence",
+        "operations",
+        "new_grants",
+        "authorized",
+        "executed",
+        "historical_operation_decisions_modified"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_PROTECTED_DEPENDENCY_EVIDENCE.json",
+      "sha256": "b63b0b74d491e0b39a26f91460060f21e92d93e0016b089b1558d155c92e0bed",
+      "fields": [
+        "tests/test_phase11_9_synthetic_pilot.py::test_pilot_writes_nothing_to_production_review_directory",
+        "tests/unit/test_leg_exec.py::test_real_repository_state_is_consistent_whether_or_not_leg_exec_has_run",
+        "tests/unit/test_phase14_benchmark_suite.py::test_benchmark_command_writes_a_complete_unclaiming_report",
+        "tests/unit/test_phase14_benchmark_suite.py::test_target_claim_through_the_command_is_not_granted_to_a_dev_machine",
+        "tests/unit/test_readiness_audit.py::test_real_audit_summarizes_the_legacy_corpus_without_touching_it",
+        "tests/unit/test_readiness_audit.py::test_leg_exec_preflight_verifies_inputs_and_never_writes",
+        "tests/unit/test_readiness_audit.py::test_legacy_records_with_forged_stage21_version_string_are_rejected",
+        "tests/unit/test_reproducibility_audit.py::test_audit_command_writes_outside_the_repository_only"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_RESEARCHER_ACTION_REGISTER.json",
+      "sha256": "b68460933fbb94d414fc3c68cb35796fc6f2632caca75dc1777e0bbd2da97b22",
+      "fields": [
+        "schema",
+        "requests",
+        "requests_sent",
+        "adopted_decisions_reopened"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_RESOURCE_AUDIT_RECEIPT.json",
+      "sha256": "b74bf5cc8653c4e571e30a951f29d885f0717f6a16389e795be77c02bd539a77",
+      "fields": [
+        "process_errors",
+        "schema",
+        "audit",
+        "source_bindings",
+        "all_test_files",
+        "groups",
+        "totals",
+        "not_executed",
+        "requested",
+        "execution_complete",
+        "source_bindings_unchanged",
+        "status"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+      "sha256": "aded52a2af7840d068adea2df4cc030292731b91e87cd1827abf58dfa64bd608",
+      "fields": [
+        "process_errors",
+        "schema",
+        "audit",
+        "source_bindings",
+        "all_test_files",
+        "groups",
+        "totals",
+        "not_executed",
+        "requested",
+        "execution_complete",
+        "source_bindings_unchanged",
+        "status"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_REVIEWER_APPOINTMENT_AND_QUALIFICATION_REGISTER.json",
+      "sha256": "e98b68cc83a3c26b12e5bb4d29fa581c8864d9d2f72ebd2c74356ff388ce9245",
+      "fields": [
+        "schema",
+        "roles",
+        "actual_candidates",
+        "appointed",
+        "qualified",
+        "note"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_SCIENTIFIC_DECISION_PRESERVATION.json",
+      "sha256": "27ae967e4cb0fbace5e919afaecc9569e818cf48906c29bcebc70a0f56c58fde",
+      "fields": [
+        "schema",
+        "source",
+        "adoption_sources",
+        "RD",
+        "historical_artifact_bindings",
+        "canonical_validator",
+        "canonical_validator_sha256",
+        "canonical_floor_seconds",
+        "scientific_duration_sufficiency",
+        "comparator"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_SOURCE_IDENTITY_AND_PROVENANCE_REGISTER.json",
+      "sha256": "ea984a4579019499604dcf56f6d6af4e36bbad4986b11989b559b6ba9c41c179",
+      "fields": [
+        "schema",
+        "baseline",
+        "crossing",
+        "inventory_signoff",
+        "candidate_events",
+        "R04_events",
+        "counts",
+        "documentary_conflicts",
+        "sources"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json",
+      "sha256": "42c957ae552da8fd5507594bae1bda13b84ee01a76695aa0daf9dd9a8ba4958b",
+      "fields": [
+        "schema",
+        "rights_dimensions",
+        "counts",
+        "sources",
+        "search_receipt",
+        "upstream_recheck",
+        "local_software_license_evidence"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_STATIC_VALIDATION.json",
+      "sha256": "a38eff6c6b739a4f13ff9b8078ea98e5459a9694ee9216af94d1b61e051e47e9",
+      "fields": [
+        "schema",
+        "scope",
+        "files_sha256",
+        "ast",
+        "ruff",
+        "mypy",
+        "pip_check",
+        "git_connectivity",
+        "imports",
+        "canonical_validator_sha256"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_TEST_CLASSIFICATION_REGISTER.json",
+      "sha256": "91095591ec14e588907518fbeb391c48661a7c4428dbbbcf5ca65c63fbb312bb",
+      "fields": [
+        "schema",
+        "shared_source_sha256",
+        "shared_digest",
+        "modules",
+        "scope"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_27_UPDATED_READINESS_DASHBOARD.json",
+      "sha256": "7cfbd1dcfb43ed69236102bd5623870a4355f812581bf4d22af22cb7ea306af4",
+      "fields": [
+        "schema",
+        "catalog_digest",
+        "inventory",
+        "source_rights",
+        "human_roles",
+        "landmarks",
+        "external_requirements",
+        "operations",
+        "experiments",
+        "documentary_conflicts",
+        "authorized_but_not_executed",
+        "executed_operations",
+        "new_grants",
+        "protected_resources_accessed",
+        "documentary_package_digest",
+        "documentary_evidence_found",
+        "evidence_stages",
+        "reviewers_appointed",
+        "reviewers_qualified",
+        "source_identities_verified",
+        "human_review_ready",
+        "operations_ready_for_authorization_review",
+        "operations_authorized",
+        "operations_executed",
+        "submission_register",
+        "source_identity_register",
+        "rights_verification_register",
+        "reviewer_register",
+        "external_resolution_register",
+        "missing_evidence_requests",
+        "expired_evidence",
+        "revoked_evidence",
+        "unverified_dates_are_not_inferred_current",
+        "trusted_adapters_enabled",
+        "historical_mission26_modified",
+        "evidence_scope"
+      ],
+      "classification": "PRIOR_MISSION_ENGINEERING_OR_DOCUMENTARY_RECORD"
+    }
+  ],
+  "tracked_document_filename_check": [
+    "README.md",
+    "docs/archive/README.md",
+    "docs/generated/phase5/mission13_probes/README.md",
+    "docs/generated/phase5/mission14_evidence/README.md",
+    "research/README.md",
+    "results/archive/old_test_dataset/README.md",
+    "scripts/README.md"
+  ],
+  "actual_new_original_evidence_items": [],
+  "official_submissions": 0,
+  "private_accounts_accessed": false,
+  "scope": "Same permitted README/docs/research text scope as Mission27; exact metadata document XML only. Protected media/cache/checkpoint/review contents not searched. Current mission instruction is task authority, not source permission or reviewer evidence."
+}

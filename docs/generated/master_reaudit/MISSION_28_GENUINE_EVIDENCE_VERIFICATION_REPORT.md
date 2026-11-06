@@ -1,0 +1,54 @@
+# Mission 28 genuine evidence verification report
+
+Prepared 2026-11-06, America/New_York. **No new genuine original evidence was received or independently verified. No exact source/purpose is newly accepted or authorized, no actual reviewer is qualified or appointed, and the five-event pilot is PILOT_NOT_READY.** Eligible work consists of the documented evidence delta, individual assessments, a complete conditional activation package and three demonstrated intake repairs; genuine review remains inactive.
+
+## Baseline and newly accessible evidence
+
+Mission27 documentary delivery is `d5d81d9eee0f7136a23aec9793e823487ee89f00`, implementation `d796f60b5108be73d25c4590745a51916cb03de1`, and final documentation `d757eb95e332cde87be44b8510b4163242644a0b`. Local main, tracking origin/main and live remote main matched the final delivery at baseline. `MISSION_28_EXECUTION_REGISTER.json` binds all seven researcher work files and 123 historical Mission21–27 artifacts. No historical decision or artifact is rewritten.
+
+The Mission28 discovery receipt compares the actual bytes of all 541 permitted Mission27 text documents: **541 unchanged, zero new, zero changed, zero missing**. The root report's document XML is unchanged; embedded media were not read. All 24 Mission27 JSON registers and receipts were parsed and examined alongside the source implementation, schema and existing journal/verifier contracts. Tracked original-document filename checks reveal no new agreement, consent, owner permission or acquisition document. The new Mission28 attachment is an execution instruction, not an original source permission, appointment or signature.
+
+No private external account, protected review corpus, raw media, production cache or checkpoint was searched. The investigation is limited to accessible permitted documentary sources; it does not assert that private custodian records do not exist. No new original item is eligible for official intake. Existing AI-prepared reports, historical metadata and constructed fixtures are not relabeled as original evidence merely to populate a journal. Official submitted/parsed/structurally-valid/attributable/independently-verified/purpose-accepted item counts remain zero. The existing workflow's wire status ACCEPTED_FOR_SPECIFIC_PURPOSE corresponds to the brief's ACCEPTED_FOR_PURPOSE label; its semantics and schema are unchanged.
+
+## Individual verification outcomes
+
+All 63 documentary source references are **SOURCE_IDENTITY_UNKNOWN**, each with explicit documentary parents and a verification explanation. This is not a finding that a recording is unavailable or a rights owner denied permission. Historical names, paths, old hashes, 46 aliases, durations and two engine-origin statements remain documentary claims. No physical file identity, original acquisition custody, source clock, owner relationship, live availability or formal inventory signoff is established. Preserve 27 candidates (23 train, three controls, one engine case), 54 camera references, two excluded duplicate references and R04 exactly eleven.
+
+Source rights remain **62 RIGHTS_UNKNOWN and one RIGHTS_PARTIALLY_DOCUMENTED**, with **630 separate RIGHTS_UNKNOWN dimension assessments**. No source status is upgraded, no exact purpose accepted, and no verification identity/date/audit event is invented. Collection-level ESC-50 information does not identify exact project members; software terms do not establish recording, dataset or checkpoint rights. All actual actor/role/operation/purpose/environment/storage/recipient/output/validity/expiry/revocation evidence remains absent or unresolved. Existing restrictions and separate raw-release denial remain preserved.
+
+All nine external applicability rows remain UNKNOWN_REQUIRES_VERIFICATION, with actual authority/decision sources unevidenced. Neither universal approval requirements nor exemptions are assumed. The six role rows describe unfilled requirements, not six invented people. There are zero actual candidates with attributable appointment/qualification evidence; IDENTITY_UNVERIFIED and the subsequent pending steps remain explicit. GitHub names, commits and titles do not qualify reviewers. The coding agent makes no human qualification judgment.
+
+## Focused integrity repairs and existing-service assessment
+
+Four failing constructed reproducer cases demonstrated three defects in the existing Mission27 workflow:
+
+| Defect | Actual repair | Preserved boundary |
+|---|---|---|
+| Initialization committed a caller's pending SQLite transaction | Refuse an active owner transaction before creating a table or committing | No alternative database or WP03/WP04 transaction introduced |
+| Exact CLI submit/advance retry failed after later valid writes | Preserve the caller's validated current retained head; return the original request_result_head separately | Same immutable request result; no re-execution, overwrite or stale-head bypass |
+| A document with no fixed expiry could show expired verification but could not record EXPIRED | Use the already recorded document or verifier deadline, refusing unknown dates | No invented legal expiry or automatic permission; evidence lineage remains append-only |
+
+`MISSION_28_INTAKE_DEFECT_REPRODUCTION_RECEIPT.json` retains the original 8 passes/4 failures from twelve constructed cases. The final tests additionally exercise exact scope supersession, revocation, original-result replay and the pilot diagnosis. Constructed positive verifier fixtures remain test-only and non-promotable. No genuine original, signature or reviewer evidence is manufactured. Existing Mission27 input schemas, canonical evidence types/stages and trusted verification interfaces are retained; no schema or alternate authorization system was needed for these repairs.
+
+The existing six activation ports remain unavailable. Eight service-assessment rows cover identity, documentary verification, human-review evidence, blind presentation, immutable human storage, canonical export, trusted time and revocation/audit dependencies. The assessment names actual implementations, authentication/authorization/trust boundaries, current missing dependencies, data handling, failure behavior and required real deployment acceptance. Typed interfaces and local SQLite do not prove independent protected storage, trusted time or OS isolation. No service is invented or connected.
+
+## Fixed pilot and operation decisions
+
+The final activation package preserves train005, train021, engine001, train001 and no-train001, each front/back: exactly five events and ten documentary references. Censoring/night-tail/engine/control distinctions and the unresolved lighting conflict remain documentary, without source inspection or inferred human judgments. The handbook, blind first pass, distinct independent second reviewer, separate adjudicator, risk triggers, uncertainty/censoring, immutable corrections, stop conditions and canonical source/assignment/output/audit requirements are explicit. Future adjudication parents are required when adjudication is requested, not before a blind first pass.
+
+The read-only command `application readiness report --mission 28 --now 0` uses the existing Mission26 preflight engine and Mission27 documentary package, plus the hash-bound discovery result. It produces PILOT_NOT_READY with thirteen explicit prerequisite categories and ten individually blocked pilot checks. Flags in JSON cannot authenticate originals, instantiate missing services or authorize execution. The clock is deterministic diagnostics, not trusted authority time. Canonical authorization remains an execution prerequisite, separate from readiness for authorization review. Optional external audit and public release do not become universal private-pilot blockers.
+
+All 27 historical selections remain preserved: 21 conditional checks are blocked and six denied/deferred operations remain execution-not-permitted. No grant, actual authorization, authorization-review request or execution receipt is issued. T2 stays deferred physical roadway entry; no lens-plane substitution, acoustic GT shift or invented exit landmark. Canonical 8.1 and its existing 30-second plausibility floor are unchanged, RD046 scientific duration sufficiency remains deferred, and M4/M5/MTR, per-metric denominators, descriptive crossing_A scope and inactive comparator are preserved. No new threshold, observation, model result, occupancy or performance/safety claim is produced.
+
+## Exact next genuine actions
+
+ACT-01 and ACT-02 remain the priorities: the actual researcher/custodian must supply original acquisition/member/custody evidence, and the actual owner/licensor must supply the exact-member purpose-specific rights chain. Actual applicable institution/site/privacy/participation determinations, qualified independent appointments and accepted deployment/canonical bindings remain necessary. `MISSION_28_RESEARCHER_ACTION_PACKAGE.md` records unchanged states and next actions without repeating generic forms; its JSON register identifies remaining evidence references, blocked operations, responsible parties and work that may proceed. No request was sent, authority contacted, reviewer appointed or application submitted.
+
+The pilot is not ready for authorization review. Preparing this complete package does not grant source access or permission to execute. Validation results and exact delivery commits are recorded at final delivery after the frozen acceptance run.
+
+
+## Implementation validation before final selected delivery
+
+The complete guarded audit contains 3,732 cases: 3,614 passed, 87 failed, 31 setup errors, zero skips. It remains NONPASSING because the exact same 118 protected dependencies from Missions26/27 are unavailable under the deny policy. These are not successful protected operations. The new source-bound register has zero unknown classifications/stale bindings and retains every earlier 3,591 Mission27 selected case and every earlier 3,528 Mission26 selected case, plus 23 new cases. The 86-case frozen focused regression passed; repeated/subset runs are never summed. The legacy YAML inventory independently adds two conservative UNKNOWN modules without changing any older classification; it is not the executed acceptance register.
+
+The guarded CLI receipt records exits 0,0,0,0,3,3,2, identical repeated JSON, matching generated JSON/Markdown/pilot decision, the unchanged historical Mission27 view and zero denied accesses. Ruff/AST cover eight Python files, scoped Mypy six sources, imports six modules, and dependency/Git connectivity checks pass. The final selected CLI receipt and exact post-push commit verification are delivered separately after the frozen implementation commit.

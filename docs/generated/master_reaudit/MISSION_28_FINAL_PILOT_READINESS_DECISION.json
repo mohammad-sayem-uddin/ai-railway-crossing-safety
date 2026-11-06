@@ -1,0 +1,4097 @@
+{
+  "schema": "MISSION28_PILOT_READINESS/1",
+  "state": "PILOT_NOT_READY",
+  "events": [
+    "train_events/event_005",
+    "train_events/event_021",
+    "engine_events/event_001",
+    "train_events/event_001",
+    "no_train_events/event_001"
+  ],
+  "sources": [
+    {
+      "source_id": "doc:v2:train_events/event_005:front:video",
+      "event": "train_events/event_005",
+      "camera": "front",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_005/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "0a43ab9c443a7c77772f29be74fd70dedcf7208050d384ebad8ed84f228f6502",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:train_events/event_005:back:video",
+      "event": "train_events/event_005",
+      "camera": "back",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_005/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_005:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "015f93324cf32d5954f6e9a477d6662c059c35aa5e5c91e61674b6c4cd81b5ea",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:train_events/event_021:front:video",
+      "event": "train_events/event_021",
+      "camera": "front",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_021/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "63a8533c0d211a6a80488a6a69a2c1200508c994ebc54259f40048b91d50edfe",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:train_events/event_021:back:video",
+      "event": "train_events/event_021",
+      "camera": "back",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_021/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_021:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "10acc733a68c19696ddbb4e56d14caa8f824bd507d1b2d9224913a2ac5b2d7ba",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:engine_events/event_001:front:video",
+      "event": "engine_events/event_001",
+      "camera": "front",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/engine_events/event_001/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "a7778bf06fd3c3cc3cfbd944aa49a6726d68ee83733e6878167aced91f513802",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:engine_events/event_001:back:video",
+      "event": "engine_events/event_001",
+      "camera": "back",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/engine_events/event_001/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:engine_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "8701d4c3269448abf1aff05ac331af2a020e47c2ce8710a9e81c0ba8d62ca40f",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:train_events/event_001:front:video",
+      "event": "train_events/event_001",
+      "camera": "front",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_001/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "63815eee3d0fa84cf5b0c0806c91194a0184dc774aad80b71a4ef2e74f953f72",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:train_events/event_001:back:video",
+      "event": "train_events/event_001",
+      "camera": "back",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_001/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "ab2a941f506d8e5e870fbf0d0a72a19668c5b39995260357b05c11ece8a97afd",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:no_train_events/event_001:front:video",
+      "event": "no_train_events/event_001",
+      "camera": "front",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/no_train_events/event_001/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:front:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "ad77f1f74af23151975b3c2600d59bf0d7f53e5d9b4126e8de02f718fcd0c38c",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    },
+    {
+      "source_id": "doc:v2:no_train_events/event_001:back:video",
+      "event": "no_train_events/event_001",
+      "camera": "back",
+      "source_identity_status": "SOURCE_IDENTITY_UNKNOWN",
+      "documentary_parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/no_train_events/event_001/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "rights_status": "RIGHTS_UNKNOWN",
+      "rights_by_dimension": {
+        "RESEARCH_USE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "INTERNAL_STORAGE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PROCESSING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ANNOTATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "TRAINING": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "EVALUATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DERIVED_RESULTS_PUBLICATION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "DEIDENTIFIED_METADATA_SHARE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "ORIGINAL_REDISTRIBUTION": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        },
+        "PUBLIC_DATASET_RELEASE": {
+          "status": "RIGHTS_UNKNOWN",
+          "evidence": null,
+          "needed": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession",
+          "exact_subject": "doc:v2:no_train_events/event_001:back:video",
+          "accepted_for_purpose": false,
+          "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+          "issuing_authority": null,
+          "validity": null,
+          "expiry": null,
+          "revocation": null,
+          "permitted_purposes": [],
+          "restrictions": [
+            "No protected use under Mission26",
+            "No formal inventory signoff",
+            "Independent camera-local clocks",
+            "Embedded audio availability unverified; not training eligibility"
+          ],
+          "missing": "Exact source identity, applicable owner/license provenance and operation-specific scope; do not infer from possession"
+        }
+      },
+      "independently_verified_identity": null,
+      "actual_reviewer_assignment": null,
+      "canonical_authorization": null,
+      "preflight": {
+        "state": "PREFLIGHT_BLOCKED",
+        "request_digest": "f12636472462efa5faccddb757fe8d30ff067f93530a58124e7b9c3dcf0fef6b",
+        "catalog_digest": "86f07f0c01f413e8f38f962a52980e7a3816211acfad94e5193c215a3248c71f",
+        "evaluated_at": 0,
+        "classification": "UNVERIFIED_DOCUMENTARY_INPUT",
+        "issues": [
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR",
+            "reason": "Exact actor absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Exact role absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PURPOSE",
+            "reason": "Exact purpose absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Exact environment absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Exact protocol absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Exact data_schema absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT_DESTINATION",
+            "reason": "Exact output_destination absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "AUDIT_LOG",
+            "reason": "Exact audit_log absent"
+          },
+          {
+            "classification": "MISSING_RESOURCE_IDENTITY",
+            "boundary": "SOURCE_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ACTOR_IDENTITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_ACTOR_OR_ROLE",
+            "boundary": "ROLE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PURPOSE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "ENVIRONMENT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "VALIDITY",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "REVOCATION",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROTOCOL",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DATA_SCHEMA",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "PROVENANCE",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "LOGGING",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "OUTPUT",
+            "reason": "Evidence absent"
+          },
+          {
+            "classification": "MISSING_RIGHTS_EVIDENCE",
+            "boundary": "RESOURCE_RIGHTS",
+            "reason": "Actual owner/license and exact operation rights required"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "TECHNICAL",
+            "reason": "Required technical bindings incomplete"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "EXTERNAL",
+            "reason": "Actual scoped applicability/evidence required; no universal approval assumed"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Qualification/independence/conflict/batch evidence incomplete"
+          },
+          {
+            "classification": "MISSING_HUMAN_EVIDENCE",
+            "boundary": "HUMAN",
+            "reason": "Constructed review cannot satisfy genuine evidence"
+          },
+          {
+            "classification": "MISSING_TECHNICAL_PREREQUISITE",
+            "boundary": "DURATION_SCHEMA",
+            "reason": "Canonical duration/schema compatibility absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "PERMISSION_BASIS",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "VALIDITY",
+            "reason": "Current exact-operation basis/state absent"
+          },
+          {
+            "classification": "UNKNOWN_REQUIRES_VERIFICATION",
+            "boundary": "REVOCATION",
+            "reason": "Current exact-operation basis/state absent"
+          }
+        ],
+        "schema": "RESEARCH_PREFLIGHT/1",
+        "execution_permitted": false,
+        "grant_issued": false
+      },
+      "resource_binding": "DOCUMENTARY_ONLY_NOT_VERIFIED_PHYSICAL_IDENTITY"
+    }
+  ],
+  "prerequisites": [
+    {
+      "id": "SOURCE_IDENTITY",
+      "action": "ACT-01",
+      "missing": "Attributable original acquisition/member/custodian evidence",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "EXACT_SOURCE_RIGHTS",
+      "action": "ACT-02",
+      "missing": "Current exact-source and purpose rights",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "EXTERNAL_APPLICABILITY",
+      "action": "ACT-03/04",
+      "missing": "Actual scoped applicability determinations",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "PRIMARY_REVIEWER",
+      "action": "ACT-05",
+      "missing": "Actual qualified appointed primary reviewer",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "INDEPENDENT_SECOND_REVIEW",
+      "action": "ACT-05",
+      "missing": "Distinct qualified physical person and exposure evidence",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "SEPARATE_ADJUDICATION",
+      "action": "ACT-05",
+      "missing": "Actual separate qualified adjudication capability",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "SOURCE_PRESENTATION",
+      "action": "ACT-06",
+      "missing": "Accepted blind guarded source presentation",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "TRUSTED_IDENTITY",
+      "action": "ACT-05/06",
+      "missing": "Authenticated physical people and current scoped assignment",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "TRUSTED_TIME",
+      "action": "ACT-06",
+      "missing": "Accepted current time service; diagnostic clock is insufficient",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "EVIDENCE_STORAGE",
+      "action": "ACT-06",
+      "missing": "Authenticated immutable storage; local SQLite is not proof",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "AUDIT_REVOCATION",
+      "action": "ACT-06",
+      "missing": "Retained anchors, current revocation and audit acceptance",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "PROTOCOL_SCHEMA",
+      "action": "ACT-06",
+      "missing": "Exact operative protocol/adoption and active 8.1 compatibility",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "AUTHORIZATION_REVIEW_READINESS"
+    },
+    {
+      "id": "CANONICAL_AUTHORIZATION",
+      "action": "ACT-06",
+      "missing": "Actual current operation-specific canonical authorization",
+      "evidence_reference": null,
+      "status": "EVIDENCE_PENDING",
+      "required_for": "EXECUTION_ONLY"
+    }
+  ],
+  "missing_services": [
+    "identity",
+    "documentary_verifier",
+    "review_verifier",
+    "player",
+    "observation_store",
+    "publisher"
+  ],
+  "optional_external_audit_is_universal_blocker": false,
+  "release_permission_required_for_private_pilot": false,
+  "T2": "DEFERRED; blocks observable physical entry/occupancy, not T1/T3/T4 preparation",
+  "canonical_schema": "8.1.0-stage2.1",
+  "canonical_plausibility_floor_seconds": 30,
+  "RD046": "SCIENTIFIC_DURATION_SUFFICIENCY_DEFERRED",
+  "authorization": null,
+  "execution_receipt": null,
+  "grant_issued": false,
+  "execution_permitted": false
+}

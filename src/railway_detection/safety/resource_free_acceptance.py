@@ -81,6 +81,8 @@ def bindings(root: Path) -> dict[str, Any]:
         "docs/generated/master_reaudit/MISSION_27_RESEARCHER_ACTION_REGISTER.json",
         "docs/generated/master_reaudit/MISSION_27_EVIDENCE_REGISTER.json",
         "docs/generated/master_reaudit/MISSION_27_DOCUMENT_BINDING.json",
+        "docs/generated/master_reaudit/MISSION_28_GENUINE_EVIDENCE_DISCOVERY_RECEIPT.json",
+        "docs/generated/master_reaudit/MISSION_28_DOCUMENT_BINDING.json",
     )
     for relative in metadata:
         candidate = root / relative
