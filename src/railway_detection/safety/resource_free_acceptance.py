@@ -62,6 +62,7 @@ def bindings(root: Path) -> dict[str, Any]:
     # Named source-free documentary inputs are part of the runtime closure.
     # Do not discover resources through arbitrary manifest paths or research trees.
     metadata = (
+        "tests/test_access_classification.yaml",
         "README.md",
         "docs/PHASE11_3_REVIEW_INVENTORY.json",
         "docs/archive/REAL_DATASET_V2_INVENTORY.md",
@@ -73,6 +74,13 @@ def bindings(root: Path) -> dict[str, Any]:
         "docs/generated/master_reaudit/MISSION_26_DATA_RIGHTS_AND_PROVENANCE_REGISTER.json",
         "docs/generated/master_reaudit/MISSION_26_RESOURCE_OPERATION_PREFLIGHT.json",
         "docs/generated/master_reaudit/MISSION_26_EXPERIMENT_READINESS_MATRIX.json",
+        "docs/generated/master_reaudit/MISSION_27_SOURCE_IDENTITY_AND_PROVENANCE_REGISTER.json",
+        "docs/generated/master_reaudit/MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json",
+        "docs/generated/master_reaudit/MISSION_27_EXTERNAL_REQUIREMENTS_RESOLUTION.json",
+        "docs/generated/master_reaudit/MISSION_27_REVIEWER_APPOINTMENT_AND_QUALIFICATION_REGISTER.json",
+        "docs/generated/master_reaudit/MISSION_27_RESEARCHER_ACTION_REGISTER.json",
+        "docs/generated/master_reaudit/MISSION_27_EVIDENCE_REGISTER.json",
+        "docs/generated/master_reaudit/MISSION_27_DOCUMENT_BINDING.json",
     )
     for relative in metadata:
         candidate = root / relative

@@ -1,0 +1,161 @@
+{
+  "schema": "mission27-evidence/1",
+  "documentary_findings": [
+    {
+      "evidence_id": "DOC27-LICENSE-01",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "ultralytics==8.4.121",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/ultralytics-8.4.121.dist-info/licenses/LICENSE",
+      "document_sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-LICENSE-02",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "torch==2.13.0",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/torch-2.13.0.dist-info/licenses/LICENSE",
+      "document_sha256": "bd018feef8825e88181c84eb7e3aa4eafb8f08a20d9fd6ef948569610c4a3e43",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-LICENSE-03",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "torch==2.13.0",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/torch-2.13.0.dist-info/licenses/third_party/FP16/LICENSE",
+      "document_sha256": "17e4f539024be2749ee729d1e2f01d24cef12ece8c9bf18e91a4349be29c80bf",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-LICENSE-04",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "torchvision==0.28.0",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/torchvision-0.28.0.dist-info/LICENSE",
+      "document_sha256": "6502f676851cfe25f8af75531dfb32375b7325b73c37e7b43741fa422893e71d",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-LICENSE-05",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "numpy==2.4.6",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/numpy-2.4.6.dist-info/licenses/LICENSE.txt",
+      "document_sha256": "649a589ab31076e79e9ce62ba24eae9959598124176640dbc95f87bd10f34fcf",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-LICENSE-06",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "numpy==2.4.6",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/numpy-2.4.6.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+      "document_sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-LICENSE-07",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "opencv-python==5.0.0.93",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/opencv_python-5.0.0.93.dist-info/LICENSE-3RD-PARTY.txt",
+      "document_sha256": "2537f5653345db7231ff12f307bcfa4c89807d45ed1c4bb8ebfb6f26f61b160a",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-LICENSE-08",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "opencv-python==5.0.0.93",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/opencv_python-5.0.0.93.dist-info/LICENSE.txt",
+      "document_sha256": "09d719058e782ac7bc71ba21c944e1136cde2bb957c0e888121f0218d6b5f02c",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-LICENSE-09",
+      "evidence_type": "INSTALLED_SOFTWARE_LICENSE_TEXT",
+      "subject": "PyYAML==6.0.3",
+      "source_reference": "/Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/pyyaml-6.0.3.dist-info/licenses/LICENSE",
+      "document_sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Installed software license only; no license of actual dataset or trained weights established."
+    },
+    {
+      "evidence_id": "DOC27-UPSTREAM-01",
+      "evidence_type": "UPSTREAM_LICENSE_INFORMATION",
+      "subject": "ESC50 upstream terms",
+      "source_reference": "https://github.com/karolpiczak/ESC-50#license",
+      "date_examined": "2026-11-06",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Upstream information; exact asset/member/purpose applicability not verified"
+    },
+    {
+      "evidence_id": "DOC27-UPSTREAM-02",
+      "evidence_type": "UPSTREAM_LICENSE_INFORMATION",
+      "subject": "CC BY-NC terms",
+      "source_reference": "https://creativecommons.org/licenses/by-nc/3.0/",
+      "date_examined": "2026-11-06",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Upstream information; exact asset/member/purpose applicability not verified"
+    },
+    {
+      "evidence_id": "DOC27-UPSTREAM-03",
+      "evidence_type": "UPSTREAM_LICENSE_INFORMATION",
+      "subject": "Ultralytics upstream license",
+      "source_reference": "https://github.com/ultralytics/ultralytics/blob/main/LICENSE",
+      "date_examined": "2026-11-06",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Upstream information; exact asset/member/purpose applicability not verified"
+    },
+    {
+      "evidence_id": "DOC27-INVENTORY-01",
+      "evidence_type": "HISTORICAL_DOCUMENTARY_INVENTORY",
+      "subject": "candidate inventory",
+      "source_reference": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+      "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Historical identity/acquisition references only; not source ownership/signoff"
+    },
+    {
+      "evidence_id": "DOC27-INVENTORY-02",
+      "evidence_type": "HISTORICAL_DOCUMENTARY_INVENTORY",
+      "subject": "candidate inventory",
+      "source_reference": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+      "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Historical identity/acquisition references only; not source ownership/signoff"
+    },
+    {
+      "evidence_id": "DOC27-INVENTORY-03",
+      "evidence_type": "HISTORICAL_DOCUMENTARY_INVENTORY",
+      "subject": "candidate inventory",
+      "source_reference": "docs/archive/REAL_DATASET_INVENTORY.md",
+      "document_sha256": "fc3ef7faea43a2eaf0560204df0047e81ccf0ed1480bbde855dd40be23c28327",
+      "stage": "DOCUMENTARY_FOUND",
+      "independently_verified_exact_project_asset": false,
+      "scope": "Historical identity/acquisition references only; not source ownership/signoff"
+    }
+  ],
+  "submitted_items": [],
+  "original_appointment_permission_institution_observation_evidence": [],
+  "known_expired": [],
+  "known_revoked": [],
+  "missing_dates": "UNKNOWN_NOT_CURRENT_PERMISSION",
+  "intake_journal": "No official original-evidence submissions; test journals are separate CONSTRUCTED_DOCUMENTARY_FIXTURE only"
+}

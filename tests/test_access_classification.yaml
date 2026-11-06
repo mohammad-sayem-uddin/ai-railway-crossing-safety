@@ -30,13 +30,13 @@ limitations:
   test counts; its complete regression command still executes every file under a separate inherited access
   policy.
 summary:
-  total_test_files: 160
+  total_test_files: 162
+  unknown: 48
+  processed_data_access: 2
+  raw_media_access: 4
+  model_checkpoint_access: 14
   metadata_only: 17
   synthetic_only: 77
-  unknown: 46
-  model_checkpoint_access: 14
-  raw_media_access: 4
-  processed_data_access: 2
   safe_for_synthetic_runner: 94
 test_files:
   tests/integration/test_phase0_smoke.py:
@@ -3663,6 +3663,42 @@ test_files:
     safe_for_synthetic_runner: false
     reason: 'tests/synthetic_mission26/test_inventory_cli.py: changed/new source; UNKNOWN pending executed
       evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission27/test_dashboard_cli.py:
+    sha256: 7a147ac1602f91e84300751890cb8cee47c41c4d00eea87313936f6783921acb
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission27/test_dashboard_cli.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission27/test_documentary_intake.py:
+    sha256: a7de4cba7ecfb0aacb93c11302d800db07179f62db7a6d7060b8547c257f60a9
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission27/test_documentary_intake.py: changed/new source; UNKNOWN pending
+      executed evidence review'
     access_paths: []
     blocked_attempts: {}
     access_dirs: []

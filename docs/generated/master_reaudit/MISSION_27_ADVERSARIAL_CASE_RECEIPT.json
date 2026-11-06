@@ -1,0 +1,1339 @@
+{
+  "schema": "mission27-adversarial/1",
+  "cases": [
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_dashboard_preserves_all_operation_selections_and_separates_evidence_stages",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 23,
+        "function_source": "def test_dashboard_preserves_all_operation_selections_and_separates_evidence_stages():\n    a = reporting.dashboard(now=1794009600)\n    assert a == reporting.dashboard(now=1794009600)\n    assert a[\"schema\"] == \"MISSION27_READINESS_DASHBOARD/1\"\n    assert len(a[\"documentary_evidence_found\"]) == 15\n    assert not any(a[\"evidence_stages\"].values())\n    assert sum(o[\"selection\"] == \"A\" for o in a[\"operations\"]) == 21\n    assert sum(o[\"selection\"] == \"B\" for o in a[\"operations\"]) == 6\n    assert sum(o[\"preflight\"][\"state\"] == State.BLOCKED for o in a[\"operations\"]) == 21\n    assert sum(o[\"preflight\"][\"state\"] == State.PROHIBITED for o in a[\"operations\"]) == 6\n    assert not a[\"human_review_ready\"] and not a[\"trusted_adapters_enabled\"]\n    assert not a[\"operations_authorized\"] and not a[\"operations_executed\"]\n    assert \"submitted\" in reporting.render(\n        a\n    ) and \"Unknown is distinct from denied\" in reporting.render(a)"
+      },
+      "expected_assertions_or_refusals": [
+        "assert a == reporting.dashboard(now=1794009600)",
+        "assert a[\"schema\"] == \"MISSION27_READINESS_DASHBOARD/1\"",
+        "assert len(a[\"documentary_evidence_found\"]) == 15",
+        "assert not any(a[\"evidence_stages\"].values())",
+        "assert sum(o[\"selection\"] == \"A\" for o in a[\"operations\"]) == 21",
+        "assert sum(o[\"selection\"] == \"B\" for o in a[\"operations\"]) == 6",
+        "assert sum(o[\"preflight\"][\"state\"] == State.BLOCKED for o in a[\"operations\"]) == 21",
+        "assert sum(o[\"preflight\"][\"state\"] == State.PROHIBITED for o in a[\"operations\"]) == 6",
+        "assert not a[\"human_review_ready\"] and not a[\"trusted_adapters_enabled\"]",
+        "assert not a[\"operations_authorized\"] and not a[\"operations_executed\"]",
+        "assert \"submitted\" in reporting.render(\n        a\n    ) and \"Unknown is distinct from denied\" in reporting.render(a)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_new_readiness_option_and_evidence_report_produce_identical_json",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 40,
+        "function_source": "def test_new_readiness_option_and_evidence_report_produce_identical_json(capsys):\n    assert (\n        main(\n            [\n                \"application\",\n                \"readiness\",\n                \"report\",\n                \"--mission\",\n                \"27\",\n                \"--format\",\n                \"json\",\n                \"--now\",\n                \"0\",\n            ]\n        )\n        == 0\n    )\n    a = json.loads(capsys.readouterr().out)\n    assert main([\"application\", \"evidence\", \"report\", \"--format\", \"json\", \"--now\", \"0\"]) == 0\n    b = json.loads(capsys.readouterr().out)\n    assert a == b and not a[\"operations_executed\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "assert (\n        main(\n            [\n                \"application\",\n                \"readiness\",\n                \"report\",\n                \"--mission\",\n                \"27\",\n                \"--format\",\n                \"json\",\n                \"--now\",\n                \"0\",\n            ]\n        )\n        == 0\n    )",
+        "assert main([\"application\", \"evidence\", \"report\", \"--format\", \"json\", \"--now\", \"0\"]) == 0",
+        "assert a == b and not a[\"operations_executed\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_altered_documentary_binding_refuses_before_dashboard_composition",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 63,
+        "function_source": "def test_altered_documentary_binding_refuses_before_dashboard_composition(monkeypatch):\n    original = reporting._metadata\n\n    def changed(path):\n        value = original(path)\n        if path.name == reporting.FILES[\"evidence\"]:\n            return value.replace('\"submitted_items\": []', '\"submitted_items\": [{\"verified\": true}]')\n        return value\n\n    monkeypatch.setattr(reporting, \"_metadata\", changed)\n    with pytest.raises(ValueError, match=\"binding\"):\n        reporting.dashboard(now=0)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"binding\"):\n        reporting.dashboard(now=0)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_unreviewed_submission_is_never_assumed_accepted_by_dashboard",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 77,
+        "function_source": "def test_unreviewed_submission_is_never_assumed_accepted_by_dashboard(monkeypatch):\n    package = reporting.load_package()\n    package[\"evidence\"][\"submitted_items\"] = [{\"verified\": True}]\n    monkeypatch.setattr(reporting, \"load_package\", lambda: package)\n    with pytest.raises(ValueError, match=\"independently reviewed\"):\n        reporting.dashboard(now=0)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"independently reviewed\"):\n        reporting.dashboard(now=0)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate0]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 97,
+        "function_source": "def test_no_protected_path_is_probed_or_opened_as_documentary_journal(candidate, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"is_symlink\", lambda *a: (_ for _ in ()).throw(AssertionError(\"probed\"))\n    )\n    with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate1]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 97,
+        "function_source": "def test_no_protected_path_is_probed_or_opened_as_documentary_journal(candidate, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"is_symlink\", lambda *a: (_ for _ in ()).throw(AssertionError(\"probed\"))\n    )\n    with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate2]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 97,
+        "function_source": "def test_no_protected_path_is_probed_or_opened_as_documentary_journal(candidate, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"is_symlink\", lambda *a: (_ for _ in ()).throw(AssertionError(\"probed\"))\n    )\n    with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate3]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 97,
+        "function_source": "def test_no_protected_path_is_probed_or_opened_as_documentary_journal(candidate, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"is_symlink\", lambda *a: (_ for _ in ()).throw(AssertionError(\"probed\"))\n    )\n    with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate4]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 97,
+        "function_source": "def test_no_protected_path_is_probed_or_opened_as_documentary_journal(candidate, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"is_symlink\", lambda *a: (_ for _ in ()).throw(AssertionError(\"probed\"))\n    )\n    with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate5]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 97,
+        "function_source": "def test_no_protected_path_is_probed_or_opened_as_documentary_journal(candidate, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"is_symlink\", lambda *a: (_ for _ in ()).throw(AssertionError(\"probed\"))\n    )\n    with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate6]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 97,
+        "function_source": "def test_no_protected_path_is_probed_or_opened_as_documentary_journal(candidate, monkeypatch):\n    monkeypatch.setattr(\n        Path, \"is_symlink\", lambda *a: (_ for _ in ()).throw(AssertionError(\"probed\"))\n    )\n    with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        cli.journal_path(str(candidate))"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_journal_parent_alias_refuses_before_connect",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 105,
+        "function_source": "def test_journal_parent_alias_refuses_before_connect(tmp_path):\n    target = tmp_path / \"target\"\n    target.mkdir()\n    alias = tmp_path / \"alias\"\n    alias.symlink_to(target, target_is_directory=True)\n    with pytest.raises(ValueError, match=\"aliases\"):\n        cli.journal_path(str(alias / \"candidate_documentary.sqlite\"))"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"aliases\"):\n        cli.journal_path(str(alias / \"candidate_documentary.sqlite\"))"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_documentary_cli_refuses_attribution_of_constructed_adversarial_reference",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 114,
+        "function_source": "def test_documentary_cli_refuses_attribution_of_constructed_adversarial_reference(\n    tmp_path, monkeypatch, capsys\n):\n    path = tmp_path / \"candidate_documentary.sqlite\"\n    # Deliberately non-synthetic strings represent unverified adversarial input, not real evidence.\n    e = {\n        \"evidence_id\": \"adversarial-input-1\",\n        \"evidence_type\": \"APPOINTMENT\",\n        \"subject\": \"CONSTRUCTED_TEST_NOT_GENUINE:unverified-person\",\n        \"source_reference\": \"CONSTRUCTED_TEST_NOT_GENUINE:forged-appointment-reference\",\n        \"issuing_authority\": None,\n        \"scope\": {\n            \"resource\": \"CONSTRUCTED_TEST_NOT_GENUINE:unverified-resource\",\n            \"operation\": None,\n            \"actor\": None,\n            \"role\": None,\n            \"purpose\": None,\n            \"environment\": None,\n            \"rights\": [],\n        },\n    }\n    prefix = [\"application\", \"evidence\"]\n    assert main(prefix + [\"init\", \"--journal\", str(path), \"--now\", \"20\"]) == 0\n    head = json.loads(capsys.readouterr().out)[\"head\"]\n    assert head == EMPTY_HEAD\n    monkeypatch.setattr(\"sys.stdin\", io.StringIO(canonical(e)))\n    assert (\n        main(\n            prefix\n            + [\n                \"submit\",\n                \"--journal\",\n                str(path),\n                \"--now\",\n                \"20\",\n                \"--request\",\n                \"adversarial-submit\",\n                \"--expected-head\",\n                head,\n            ]\n        )\n        == 0\n    )\n    head = json.loads(capsys.readouterr().out)[\"head\"]\n    for target in [\"PARSED\", \"STRUCTURALLY_VALID\"]:\n        assert (\n            main(\n                prefix\n                + [\n                    \"advance\",\n                    \"--journal\",\n                    str(path),\n                    \"--now\",\n                    \"20\",\n                    \"--request\",\n                    target,\n                    \"--expected-head\",\n                    head,\n                    \"--evidence-id\",\n                    e[\"evidence_id\"],\n                    \"--target\",\n                    target,\n                    \"--reason\",\n                    \"adversarial document test\",\n                ]\n            )\n            == 0\n        )\n        head = json.loads(capsys.readouterr().out)[\"head\"]\n    assert (\n        main(\n            prefix\n            + [\n                \"advance\",\n                \"--journal\",\n                str(path),\n                \"--now\",\n                \"20\",\n                \"--request\",\n                \"attribution\",\n                \"--expected-head\",\n                head,\n                \"--evidence-id\",\n                e[\"evidence_id\"],\n                \"--target\",\n                \"ATTRIBUTABLE\",\n                \"--reason\",\n                \"unverified reference is insufficient\",\n            ]\n        )\n        == 3\n    )\n    assert json.loads(capsys.readouterr().out)[\"status\"] == \"BLOCKED\"\n    assert (\n        main(prefix + [\"inspect\", \"--journal\", str(path), \"--now\", \"20\", \"--expected-head\", head])\n        == 0\n    )\n    result = json.loads(capsys.readouterr().out)\n    assert not result[\"evidence\"][0][\"genuine_permission\"] and not result[\"human_review_ready\"]\n    assert not result[\"authorized_operations\"]\n    assert main(prefix + [\"init\", \"--journal\", str(path), \"--now\", \"20\"]) == 2"
+      },
+      "expected_assertions_or_refusals": [
+        "assert main(prefix + [\"init\", \"--journal\", str(path), \"--now\", \"20\"]) == 0",
+        "assert head == EMPTY_HEAD",
+        "assert (\n        main(\n            prefix\n            + [\n                \"submit\",\n                \"--journal\",\n                str(path),\n                \"--now\",\n                \"20\",\n                \"--request\",\n                \"adversarial-submit\",\n                \"--expected-head\",\n                head,\n            ]\n        )\n        == 0\n    )",
+        "assert (\n        main(\n            prefix\n            + [\n                \"advance\",\n                \"--journal\",\n                str(path),\n                \"--now\",\n                \"20\",\n                \"--request\",\n                \"attribution\",\n                \"--expected-head\",\n                head,\n                \"--evidence-id\",\n                e[\"evidence_id\"],\n                \"--target\",\n                \"ATTRIBUTABLE\",\n                \"--reason\",\n                \"unverified reference is insufficient\",\n            ]\n        )\n        == 3\n    )",
+        "assert json.loads(capsys.readouterr().out)[\"status\"] == \"BLOCKED\"",
+        "assert (\n        main(prefix + [\"inspect\", \"--journal\", str(path), \"--now\", \"20\", \"--expected-head\", head])\n        == 0\n    )",
+        "assert not result[\"evidence\"][0][\"genuine_permission\"] and not result[\"human_review_ready\"]",
+        "assert not result[\"authorized_operations\"]",
+        "assert main(prefix + [\"init\", \"--journal\", str(path), \"--now\", \"20\"]) == 2",
+        "assert (\n            main(\n                prefix\n                + [\n                    \"advance\",\n                    \"--journal\",\n                    str(path),\n                    \"--now\",\n                    \"20\",\n                    \"--request\",\n                    target,\n                    \"--expected-head\",\n                    head,\n                    \"--evidence-id\",\n                    e[\"evidence_id\"],\n                    \"--target\",\n                    target,\n                    \"--reason\",\n                    \"adversarial document test\",\n                ]\n            )\n            == 0\n        )"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_absent_adapters_never_activate_source_player_or_human_review",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 217,
+        "function_source": "def test_absent_adapters_never_activate_source_player_or_human_review():\n    ports = ActivationPorts()\n    assert len(ports.missing()) == 6\n    with pytest.raises(PermissionError, match=\"inactive\"):\n        ports.require_genuine_activation()"
+      },
+      "expected_assertions_or_refusals": [
+        "assert len(ports.missing()) == 6",
+        "with pytest.raises(PermissionError, match=\"inactive\"):\n        ports.require_genuine_activation()"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_preflight_receives_no_fabricated_claims_from_documentary_intake",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 224,
+        "function_source": "def test_preflight_receives_no_fabricated_claims_from_documentary_intake():\n    catalog = load_catalog()\n    q = current_request(catalog, \"M19-PERM-19\", catalog[\"sources\"][0][\"source_id\"])\n    result = engine(catalog).check(q, (), now=20)\n    assert (\n        result.state == State.BLOCKED and not result.grant_issued and not result.execution_permitted\n    )"
+      },
+      "expected_assertions_or_refusals": [
+        "assert (\n        result.state == State.BLOCKED and not result.grant_issued and not result.execution_permitted\n    )"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_invalid_operation_and_rights_scopes_refuse[change0]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 241,
+        "function_source": "def test_invalid_operation_and_rights_scopes_refuse(change):\n    scope = Scope(\"documentary-source\", None, None, None, None, None)\n    from dataclasses import replace\n\n    with pytest.raises(ValueError):\n        replace(scope, **change).validate()"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        replace(scope, **change).validate()"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_invalid_operation_and_rights_scopes_refuse[change1]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 241,
+        "function_source": "def test_invalid_operation_and_rights_scopes_refuse(change):\n    scope = Scope(\"documentary-source\", None, None, None, None, None)\n    from dataclasses import replace\n\n    with pytest.raises(ValueError):\n        replace(scope, **change).validate()"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        replace(scope, **change).validate()"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_invalid_operation_and_rights_scopes_refuse[change2]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_dashboard_cli.py",
+        "line": 241,
+        "function_source": "def test_invalid_operation_and_rights_scopes_refuse(change):\n    scope = Scope(\"documentary-source\", None, None, None, None, None)\n    from dataclasses import replace\n\n    with pytest.raises(ValueError):\n        replace(scope, **change).validate()"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        replace(scope, **change).validate()"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_stages_are_distinct_and_constructed_acceptance_never_becomes_genuine",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 91,
+        "function_source": "def test_stages_are_distinct_and_constructed_acceptance_never_becomes_genuine():\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"effective_status\"] == \"SUBMITTED\"\n    head = advance(j, e, head)\n    snapshot = j.snapshot(expected_head=head, now=20)\n    assert len(snapshot[\"audit_history\"]) == 6\n    assert snapshot[\"evidence\"][0][\"effective_status\"] == Status.ACCEPTED\n    assert not snapshot[\"evidence\"][0][\"genuine_permission\"]\n    assert not snapshot[\"human_review_ready\"] and snapshot[\"new_grants\"] == 0\n    with pytest.raises(PermissionError, match=\"genuine\"):\n        j.accepted_for(\n            e.evidence_id, e.scope, expected_head=head, now=20, verifier=ConstructedVerifier()\n        )"
+      },
+      "expected_assertions_or_refusals": [
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"effective_status\"] == \"SUBMITTED\"",
+        "assert len(snapshot[\"audit_history\"]) == 6",
+        "assert snapshot[\"evidence\"][0][\"effective_status\"] == Status.ACCEPTED",
+        "assert not snapshot[\"evidence\"][0][\"genuine_permission\"]",
+        "assert not snapshot[\"human_review_ready\"] and snapshot[\"new_grants\"] == 0",
+        "with pytest.raises(PermissionError, match=\"genuine\"):\n        j.accepted_for(\n            e.evidence_id, e.scope, expected_head=head, now=20, verifier=ConstructedVerifier()\n        )"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_forged_appointment_reference_cannot_skip_verification_stages[ATTRIBUTABLE]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 109,
+        "function_source": "def test_forged_appointment_reference_cannot_skip_verification_stages(target):\n    j = journal()\n    e = item(evidence_type=\"APPOINTMENT\", source_reference=\"synthetic:forged-letter\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    with pytest.raises(ValueError, match=\"skipped\"):\n        j.transition(\n            e.evidence_id,\n            target,\n            request=\"synthetic:forge\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed forged reference\",\n        )\n    assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"skipped\"):\n        j.transition(\n            e.evidence_id,\n            target,\n            request=\"synthetic:forge\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed forged reference\",\n        )",
+        "assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_forged_appointment_reference_cannot_skip_verification_stages[INDEPENDENTLY_VERIFIED]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 109,
+        "function_source": "def test_forged_appointment_reference_cannot_skip_verification_stages(target):\n    j = journal()\n    e = item(evidence_type=\"APPOINTMENT\", source_reference=\"synthetic:forged-letter\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    with pytest.raises(ValueError, match=\"skipped\"):\n        j.transition(\n            e.evidence_id,\n            target,\n            request=\"synthetic:forge\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed forged reference\",\n        )\n    assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"skipped\"):\n        j.transition(\n            e.evidence_id,\n            target,\n            request=\"synthetic:forge\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed forged reference\",\n        )",
+        "assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_forged_appointment_reference_cannot_skip_verification_stages[ACCEPTED_FOR_SPECIFIC_PURPOSE]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 109,
+        "function_source": "def test_forged_appointment_reference_cannot_skip_verification_stages(target):\n    j = journal()\n    e = item(evidence_type=\"APPOINTMENT\", source_reference=\"synthetic:forged-letter\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    with pytest.raises(ValueError, match=\"skipped\"):\n        j.transition(\n            e.evidence_id,\n            target,\n            request=\"synthetic:forge\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed forged reference\",\n        )\n    assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"skipped\"):\n        j.transition(\n            e.evidence_id,\n            target,\n            request=\"synthetic:forge\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed forged reference\",\n        )",
+        "assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[missing_issuer]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 138,
+        "function_source": "def test_unattributable_or_incomplete_evidence_never_reaches_attribution(fault):\n    e = item()\n    if fault == \"missing_issuer\":\n        e = replace(e, issuing_authority=None)\n    if fault == \"unattributable_permission\":\n        e = replace(e, source_reference=\"synthetic:unknown\")\n    if fault == \"conflicting_rights\":\n        e = replace(e, unresolved_conflicts=(\"synthetic:conflict\",))\n    if fault == \"expired_permission\":\n        e = replace(e, expires=20)\n    if fault == \"invalid_scope\":\n        e = replace(e, scope=replace(e.scope, purpose=None))\n    if fault == \"incomplete_package\":\n        e = replace(e, valid_from=None, expires=None)\n    if fault == \"empty_rights\":\n        e = replace(e, scope=replace(e.scope, rights=()))\n    if fault == \"false_qualification\":\n        e = replace(e, evidence_type=\"QUALIFICATION\")\n    j = journal()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[unattributable_permission]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 138,
+        "function_source": "def test_unattributable_or_incomplete_evidence_never_reaches_attribution(fault):\n    e = item()\n    if fault == \"missing_issuer\":\n        e = replace(e, issuing_authority=None)\n    if fault == \"unattributable_permission\":\n        e = replace(e, source_reference=\"synthetic:unknown\")\n    if fault == \"conflicting_rights\":\n        e = replace(e, unresolved_conflicts=(\"synthetic:conflict\",))\n    if fault == \"expired_permission\":\n        e = replace(e, expires=20)\n    if fault == \"invalid_scope\":\n        e = replace(e, scope=replace(e.scope, purpose=None))\n    if fault == \"incomplete_package\":\n        e = replace(e, valid_from=None, expires=None)\n    if fault == \"empty_rights\":\n        e = replace(e, scope=replace(e.scope, rights=()))\n    if fault == \"false_qualification\":\n        e = replace(e, evidence_type=\"QUALIFICATION\")\n    j = journal()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[conflicting_rights]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 138,
+        "function_source": "def test_unattributable_or_incomplete_evidence_never_reaches_attribution(fault):\n    e = item()\n    if fault == \"missing_issuer\":\n        e = replace(e, issuing_authority=None)\n    if fault == \"unattributable_permission\":\n        e = replace(e, source_reference=\"synthetic:unknown\")\n    if fault == \"conflicting_rights\":\n        e = replace(e, unresolved_conflicts=(\"synthetic:conflict\",))\n    if fault == \"expired_permission\":\n        e = replace(e, expires=20)\n    if fault == \"invalid_scope\":\n        e = replace(e, scope=replace(e.scope, purpose=None))\n    if fault == \"incomplete_package\":\n        e = replace(e, valid_from=None, expires=None)\n    if fault == \"empty_rights\":\n        e = replace(e, scope=replace(e.scope, rights=()))\n    if fault == \"false_qualification\":\n        e = replace(e, evidence_type=\"QUALIFICATION\")\n    j = journal()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[expired_permission]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 138,
+        "function_source": "def test_unattributable_or_incomplete_evidence_never_reaches_attribution(fault):\n    e = item()\n    if fault == \"missing_issuer\":\n        e = replace(e, issuing_authority=None)\n    if fault == \"unattributable_permission\":\n        e = replace(e, source_reference=\"synthetic:unknown\")\n    if fault == \"conflicting_rights\":\n        e = replace(e, unresolved_conflicts=(\"synthetic:conflict\",))\n    if fault == \"expired_permission\":\n        e = replace(e, expires=20)\n    if fault == \"invalid_scope\":\n        e = replace(e, scope=replace(e.scope, purpose=None))\n    if fault == \"incomplete_package\":\n        e = replace(e, valid_from=None, expires=None)\n    if fault == \"empty_rights\":\n        e = replace(e, scope=replace(e.scope, rights=()))\n    if fault == \"false_qualification\":\n        e = replace(e, evidence_type=\"QUALIFICATION\")\n    j = journal()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[invalid_scope]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 138,
+        "function_source": "def test_unattributable_or_incomplete_evidence_never_reaches_attribution(fault):\n    e = item()\n    if fault == \"missing_issuer\":\n        e = replace(e, issuing_authority=None)\n    if fault == \"unattributable_permission\":\n        e = replace(e, source_reference=\"synthetic:unknown\")\n    if fault == \"conflicting_rights\":\n        e = replace(e, unresolved_conflicts=(\"synthetic:conflict\",))\n    if fault == \"expired_permission\":\n        e = replace(e, expires=20)\n    if fault == \"invalid_scope\":\n        e = replace(e, scope=replace(e.scope, purpose=None))\n    if fault == \"incomplete_package\":\n        e = replace(e, valid_from=None, expires=None)\n    if fault == \"empty_rights\":\n        e = replace(e, scope=replace(e.scope, rights=()))\n    if fault == \"false_qualification\":\n        e = replace(e, evidence_type=\"QUALIFICATION\")\n    j = journal()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[incomplete_package]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 138,
+        "function_source": "def test_unattributable_or_incomplete_evidence_never_reaches_attribution(fault):\n    e = item()\n    if fault == \"missing_issuer\":\n        e = replace(e, issuing_authority=None)\n    if fault == \"unattributable_permission\":\n        e = replace(e, source_reference=\"synthetic:unknown\")\n    if fault == \"conflicting_rights\":\n        e = replace(e, unresolved_conflicts=(\"synthetic:conflict\",))\n    if fault == \"expired_permission\":\n        e = replace(e, expires=20)\n    if fault == \"invalid_scope\":\n        e = replace(e, scope=replace(e.scope, purpose=None))\n    if fault == \"incomplete_package\":\n        e = replace(e, valid_from=None, expires=None)\n    if fault == \"empty_rights\":\n        e = replace(e, scope=replace(e.scope, rights=()))\n    if fault == \"false_qualification\":\n        e = replace(e, evidence_type=\"QUALIFICATION\")\n    j = journal()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[empty_rights]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 138,
+        "function_source": "def test_unattributable_or_incomplete_evidence_never_reaches_attribution(fault):\n    e = item()\n    if fault == \"missing_issuer\":\n        e = replace(e, issuing_authority=None)\n    if fault == \"unattributable_permission\":\n        e = replace(e, source_reference=\"synthetic:unknown\")\n    if fault == \"conflicting_rights\":\n        e = replace(e, unresolved_conflicts=(\"synthetic:conflict\",))\n    if fault == \"expired_permission\":\n        e = replace(e, expires=20)\n    if fault == \"invalid_scope\":\n        e = replace(e, scope=replace(e.scope, purpose=None))\n    if fault == \"incomplete_package\":\n        e = replace(e, valid_from=None, expires=None)\n    if fault == \"empty_rights\":\n        e = replace(e, scope=replace(e.scope, rights=()))\n    if fault == \"false_qualification\":\n        e = replace(e, evidence_type=\"QUALIFICATION\")\n    j = journal()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[false_qualification]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 138,
+        "function_source": "def test_unattributable_or_incomplete_evidence_never_reaches_attribution(fault):\n    e = item()\n    if fault == \"missing_issuer\":\n        e = replace(e, issuing_authority=None)\n    if fault == \"unattributable_permission\":\n        e = replace(e, source_reference=\"synthetic:unknown\")\n    if fault == \"conflicting_rights\":\n        e = replace(e, unresolved_conflicts=(\"synthetic:conflict\",))\n    if fault == \"expired_permission\":\n        e = replace(e, expires=20)\n    if fault == \"invalid_scope\":\n        e = replace(e, scope=replace(e.scope, purpose=None))\n    if fault == \"incomplete_package\":\n        e = replace(e, valid_from=None, expires=None)\n    if fault == \"empty_rights\":\n        e = replace(e, scope=replace(e.scope, rights=()))\n    if fault == \"false_qualification\":\n        e = replace(e, evidence_type=\"QUALIFICATION\")\n    j = journal()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((PermissionError, ValueError)):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:invalid\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed negative\",\n            verifier=None\n            if fault in (\"unattributable_permission\", \"false_qualification\")\n            else ConstructedVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[wrong_source]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[wrong_purpose]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[wrong_stage]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[wrong_digest]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[revoked_permission]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[expired_verification]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[wrong_issuer]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[same_person]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[wrong_classification]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[forged_qualification]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 189,
+        "function_source": "def test_malicious_verification_attestation_is_rejected(fault):\n    j = journal()\n    e = item(evidence_type=\"QUALIFICATION\" if fault == \"forged_qualification\" else \"RIGHTS\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n\n    class BadVerifier(ConstructedVerifier):\n        def inspect(self, evidence, stage, now):\n            a = super().inspect(evidence, stage, now)\n            if fault == \"wrong_source\":\n                return replace(a, scope_digest=digest(replace(e.scope, resource=\"synthetic:other\")))\n            if fault == \"wrong_purpose\":\n                return replace(a, scope_digest=digest(replace(e.scope, purpose=\"other\")))\n            if fault == \"wrong_stage\":\n                return replace(a, stage=Status.ACCEPTED)\n            if fault == \"wrong_digest\":\n                return replace(a, evidence_digest=\"f\" * 64)\n            if fault == \"revoked_permission\":\n                return replace(a, revoked=True)\n            if fault == \"expired_verification\":\n                return replace(a, expires=20)\n            if fault == \"wrong_issuer\":\n                return replace(a, issuer=\"synthetic:forged-owner\")\n            if fault == \"same_person\":\n                return replace(a, verifier_principal=e.scope.actor)\n            if fault == \"wrong_classification\":\n                return replace(a, classification=DOCUMENTARY)\n            return replace(a, verifier_principal=e.issuing_authority)\n\n    with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )\n    assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:bad\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed malicious receipt\",\n            verifier=BadVerifier(),\n        )",
+        "assert j.snapshot(expected_head=head, now=20)[\"evidence\"][0][\"recorded_status\"] == Status.VALID"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unknown_dates_are_not_expired_and_do_not_mean_valid_permission",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 231,
+        "function_source": "def test_unknown_dates_are_not_expired_and_do_not_mean_valid_permission():\n    j = journal()\n    e = item(valid_from=None, expires=None, documented_date=None)\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    assert (\n        j.snapshot(expected_head=head, now=10000)[\"evidence\"][0][\"effective_status\"]\n        == Status.SUBMITTED\n    )\n    with pytest.raises(ValueError, match=\"inferred\"):\n        j.transition(\n            e.evidence_id,\n            Status.EXPIRED,\n            request=\"synthetic:expiry\",\n            expected_head=head,\n            now=10000,\n            reason=\"unknown dates\",\n        )"
+      },
+      "expected_assertions_or_refusals": [
+        "assert (\n        j.snapshot(expected_head=head, now=10000)[\"evidence\"][0][\"effective_status\"]\n        == Status.SUBMITTED\n    )",
+        "with pytest.raises(ValueError, match=\"inferred\"):\n        j.transition(\n            e.evidence_id,\n            Status.EXPIRED,\n            request=\"synthetic:expiry\",\n            expected_head=head,\n            now=10000,\n            reason=\"unknown dates\",\n        )"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_terminal_evidence_cannot_be_reaccepted_or_overwritten[REVOKED]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 251,
+        "function_source": "def test_terminal_evidence_cannot_be_reaccepted_or_overwritten(terminal):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = j.transition(\n        e.evidence_id,\n        terminal,\n        request=\"synthetic:terminal\",\n        expected_head=head,\n        now=100,\n        reason=\"constructed terminal status\",\n    )\n    with pytest.raises(ValueError, match=\"terminal\"):\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:resurrect\",\n            expected_head=head,\n            now=101,\n            reason=\"invalid resurrection\",\n        )\n    assert j.snapshot(expected_head=head, now=101)[\"evidence\"][0][\"effective_status\"] == terminal"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"terminal\"):\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:resurrect\",\n            expected_head=head,\n            now=101,\n            reason=\"invalid resurrection\",\n        )",
+        "assert j.snapshot(expected_head=head, now=101)[\"evidence\"][0][\"effective_status\"] == terminal"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_terminal_evidence_cannot_be_reaccepted_or_overwritten[REJECTED]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 251,
+        "function_source": "def test_terminal_evidence_cannot_be_reaccepted_or_overwritten(terminal):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = j.transition(\n        e.evidence_id,\n        terminal,\n        request=\"synthetic:terminal\",\n        expected_head=head,\n        now=100,\n        reason=\"constructed terminal status\",\n    )\n    with pytest.raises(ValueError, match=\"terminal\"):\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:resurrect\",\n            expected_head=head,\n            now=101,\n            reason=\"invalid resurrection\",\n        )\n    assert j.snapshot(expected_head=head, now=101)[\"evidence\"][0][\"effective_status\"] == terminal"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"terminal\"):\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:resurrect\",\n            expected_head=head,\n            now=101,\n            reason=\"invalid resurrection\",\n        )",
+        "assert j.snapshot(expected_head=head, now=101)[\"evidence\"][0][\"effective_status\"] == terminal"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_terminal_evidence_cannot_be_reaccepted_or_overwritten[EXPIRED]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 251,
+        "function_source": "def test_terminal_evidence_cannot_be_reaccepted_or_overwritten(terminal):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = j.transition(\n        e.evidence_id,\n        terminal,\n        request=\"synthetic:terminal\",\n        expected_head=head,\n        now=100,\n        reason=\"constructed terminal status\",\n    )\n    with pytest.raises(ValueError, match=\"terminal\"):\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:resurrect\",\n            expected_head=head,\n            now=101,\n            reason=\"invalid resurrection\",\n        )\n    assert j.snapshot(expected_head=head, now=101)[\"evidence\"][0][\"effective_status\"] == terminal"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"terminal\"):\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:resurrect\",\n            expected_head=head,\n            now=101,\n            reason=\"invalid resurrection\",\n        )",
+        "assert j.snapshot(expected_head=head, now=101)[\"evidence\"][0][\"effective_status\"] == terminal"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_expiry_boundary_is_exclusive_and_original_state_is_retained",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 275,
+        "function_source": "def test_expiry_boundary_is_exclusive_and_original_state_is_retained():\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head)\n    assert (\n        j.snapshot(expected_head=head, now=99)[\"evidence\"][0][\"effective_status\"] == Status.ACCEPTED\n    )\n    row = j.snapshot(expected_head=head, now=100)[\"evidence\"][0]\n    assert row[\"recorded_status\"] == Status.ACCEPTED and row[\"effective_status\"] == Status.EXPIRED"
+      },
+      "expected_assertions_or_refusals": [
+        "assert (\n        j.snapshot(expected_head=head, now=99)[\"evidence\"][0][\"effective_status\"] == Status.ACCEPTED\n    )",
+        "assert row[\"recorded_status\"] == Status.ACCEPTED and row[\"effective_status\"] == Status.EXPIRED"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_duplicate_or_substituted_lineage_rolls_back_without_partial_append[duplicate_id]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 290,
+        "function_source": "def test_duplicate_or_substituted_lineage_rolls_back_without_partial_append(fault):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    replacement = replace(\n        e, evidence_id=\"synthetic:new\", parent_reference=digest(e), supersedes_reference=digest(e)\n    )\n    if fault == \"duplicate_id\":\n        replacement = replace(replacement, evidence_id=e.evidence_id)\n    if fault == \"altered_parent\":\n        replacement = replace(replacement, parent_reference=\"f\" * 64)\n    if fault == \"wrong_subject\":\n        replacement = replace(replacement, subject=\"synthetic:other\")\n    if fault == \"wrong_scope\":\n        replacement = replace(replacement, scope=replace(e.scope, purpose=\"other\"))\n    with pytest.raises(ValueError):\n        j.submit(replacement, request=\"synthetic:replacement\", expected_head=head)\n    assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        j.submit(replacement, request=\"synthetic:replacement\", expected_head=head)",
+        "assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_duplicate_or_substituted_lineage_rolls_back_without_partial_append[altered_parent]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 290,
+        "function_source": "def test_duplicate_or_substituted_lineage_rolls_back_without_partial_append(fault):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    replacement = replace(\n        e, evidence_id=\"synthetic:new\", parent_reference=digest(e), supersedes_reference=digest(e)\n    )\n    if fault == \"duplicate_id\":\n        replacement = replace(replacement, evidence_id=e.evidence_id)\n    if fault == \"altered_parent\":\n        replacement = replace(replacement, parent_reference=\"f\" * 64)\n    if fault == \"wrong_subject\":\n        replacement = replace(replacement, subject=\"synthetic:other\")\n    if fault == \"wrong_scope\":\n        replacement = replace(replacement, scope=replace(e.scope, purpose=\"other\"))\n    with pytest.raises(ValueError):\n        j.submit(replacement, request=\"synthetic:replacement\", expected_head=head)\n    assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        j.submit(replacement, request=\"synthetic:replacement\", expected_head=head)",
+        "assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_duplicate_or_substituted_lineage_rolls_back_without_partial_append[wrong_subject]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 290,
+        "function_source": "def test_duplicate_or_substituted_lineage_rolls_back_without_partial_append(fault):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    replacement = replace(\n        e, evidence_id=\"synthetic:new\", parent_reference=digest(e), supersedes_reference=digest(e)\n    )\n    if fault == \"duplicate_id\":\n        replacement = replace(replacement, evidence_id=e.evidence_id)\n    if fault == \"altered_parent\":\n        replacement = replace(replacement, parent_reference=\"f\" * 64)\n    if fault == \"wrong_subject\":\n        replacement = replace(replacement, subject=\"synthetic:other\")\n    if fault == \"wrong_scope\":\n        replacement = replace(replacement, scope=replace(e.scope, purpose=\"other\"))\n    with pytest.raises(ValueError):\n        j.submit(replacement, request=\"synthetic:replacement\", expected_head=head)\n    assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        j.submit(replacement, request=\"synthetic:replacement\", expected_head=head)",
+        "assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_duplicate_or_substituted_lineage_rolls_back_without_partial_append[wrong_scope]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 290,
+        "function_source": "def test_duplicate_or_substituted_lineage_rolls_back_without_partial_append(fault):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    replacement = replace(\n        e, evidence_id=\"synthetic:new\", parent_reference=digest(e), supersedes_reference=digest(e)\n    )\n    if fault == \"duplicate_id\":\n        replacement = replace(replacement, evidence_id=e.evidence_id)\n    if fault == \"altered_parent\":\n        replacement = replace(replacement, parent_reference=\"f\" * 64)\n    if fault == \"wrong_subject\":\n        replacement = replace(replacement, subject=\"synthetic:other\")\n    if fault == \"wrong_scope\":\n        replacement = replace(replacement, scope=replace(e.scope, purpose=\"other\"))\n    with pytest.raises(ValueError):\n        j.submit(replacement, request=\"synthetic:replacement\", expected_head=head)\n    assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError):\n        j.submit(replacement, request=\"synthetic:replacement\", expected_head=head)",
+        "assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_exact_retry_and_changed_request_are_distinguished",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 310,
+        "function_source": "def test_exact_retry_and_changed_request_are_distinguished():\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    assert j.submit(e, request=\"synthetic:submit\", expected_head=head) == head\n    with pytest.raises(ValueError, match=\"substitution\"):\n        j.submit(\n            replace(e, source_reference=\"synthetic:altered\"),\n            request=\"synthetic:submit\",\n            expected_head=head,\n        )\n    next_head = j.transition(\n        e.evidence_id,\n        Status.PARSED,\n        request=\"synthetic:parse\",\n        expected_head=head,\n        now=20,\n        reason=\"constructed parse\",\n    )\n    assert (\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:parse\",\n            expected_head=next_head,\n            now=20,\n            reason=\"constructed parse\",\n        )\n        == next_head\n    )\n    with pytest.raises(ValueError, match=\"substitution\"):\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:parse\",\n            expected_head=next_head,\n            now=20,\n            reason=\"changed request\",\n        )"
+      },
+      "expected_assertions_or_refusals": [
+        "assert j.submit(e, request=\"synthetic:submit\", expected_head=head) == head",
+        "with pytest.raises(ValueError, match=\"substitution\"):\n        j.submit(\n            replace(e, source_reference=\"synthetic:altered\"),\n            request=\"synthetic:submit\",\n            expected_head=head,\n        )",
+        "assert (\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:parse\",\n            expected_head=next_head,\n            now=20,\n            reason=\"constructed parse\",\n        )\n        == next_head\n    )",
+        "with pytest.raises(ValueError, match=\"substitution\"):\n        j.transition(\n            e.evidence_id,\n            Status.PARSED,\n            request=\"synthetic:parse\",\n            expected_head=next_head,\n            now=20,\n            reason=\"changed request\",\n        )"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_replay_detects_tamper_against_retained_head[truncate]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 352,
+        "function_source": "def test_replay_detects_tamper_against_retained_head(fault):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    if fault == \"truncate\":\n        j.db.execute(\"DELETE FROM documentary_log\")\n    else:\n        body = json.loads(j.db.execute(\"SELECT body FROM documentary_log\").fetchone()[0])\n        body[\"evidence\"][\"source_reference\"] = \"synthetic:altered\"\n        body = canonical(body)\n        j.db.execute(\"UPDATE documentary_log SET body=?\", (body,))\n        if fault == \"rehash\":\n            altered_head = digest(\n                {\"seq\": 1, \"request\": \"synthetic:submit\", \"body\": body, \"previous\": EMPTY_HEAD}\n            )\n            j.db.execute(\"UPDATE documentary_log SET head=?\", (altered_head,))\n    j.db.commit()\n    with pytest.raises(ValueError, match=\"lineage|head\"):\n        j.snapshot(expected_head=head, now=20)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"lineage|head\"):\n        j.snapshot(expected_head=head, now=20)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_replay_detects_tamper_against_retained_head[alter]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 352,
+        "function_source": "def test_replay_detects_tamper_against_retained_head(fault):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    if fault == \"truncate\":\n        j.db.execute(\"DELETE FROM documentary_log\")\n    else:\n        body = json.loads(j.db.execute(\"SELECT body FROM documentary_log\").fetchone()[0])\n        body[\"evidence\"][\"source_reference\"] = \"synthetic:altered\"\n        body = canonical(body)\n        j.db.execute(\"UPDATE documentary_log SET body=?\", (body,))\n        if fault == \"rehash\":\n            altered_head = digest(\n                {\"seq\": 1, \"request\": \"synthetic:submit\", \"body\": body, \"previous\": EMPTY_HEAD}\n            )\n            j.db.execute(\"UPDATE documentary_log SET head=?\", (altered_head,))\n    j.db.commit()\n    with pytest.raises(ValueError, match=\"lineage|head\"):\n        j.snapshot(expected_head=head, now=20)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"lineage|head\"):\n        j.snapshot(expected_head=head, now=20)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_replay_detects_tamper_against_retained_head[rehash]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 352,
+        "function_source": "def test_replay_detects_tamper_against_retained_head(fault):\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    if fault == \"truncate\":\n        j.db.execute(\"DELETE FROM documentary_log\")\n    else:\n        body = json.loads(j.db.execute(\"SELECT body FROM documentary_log\").fetchone()[0])\n        body[\"evidence\"][\"source_reference\"] = \"synthetic:altered\"\n        body = canonical(body)\n        j.db.execute(\"UPDATE documentary_log SET body=?\", (body,))\n        if fault == \"rehash\":\n            altered_head = digest(\n                {\"seq\": 1, \"request\": \"synthetic:submit\", \"body\": body, \"previous\": EMPTY_HEAD}\n            )\n            j.db.execute(\"UPDATE documentary_log SET head=?\", (altered_head,))\n    j.db.commit()\n    with pytest.raises(ValueError, match=\"lineage|head\"):\n        j.snapshot(expected_head=head, now=20)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"lineage|head\"):\n        j.snapshot(expected_head=head, now=20)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_sqlite_failure_rolls_back_and_lost_response_retry_preserves_exact_record",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 373,
+        "function_source": "def test_sqlite_failure_rolls_back_and_lost_response_retry_preserves_exact_record():\n    j = journal()\n    e = item()\n    j.db.execute(\n        \"CREATE TRIGGER interrupt BEFORE INSERT ON documentary_log \"\n        \"BEGIN SELECT RAISE(ABORT,'constructed interrupt'); END\"\n    )\n    with pytest.raises(sqlite3.IntegrityError):\n        j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    assert not j.snapshot(expected_head=EMPTY_HEAD, now=20)[\"evidence\"]\n    j.db.execute(\"DROP TRIGGER interrupt\")\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    # Simulated lost response: same request and retained committed head retrieves history.\n    assert j.submit(e, request=\"synthetic:submit\", expected_head=head) == head\n    assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(sqlite3.IntegrityError):\n        j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)",
+        "assert not j.snapshot(expected_head=EMPTY_HEAD, now=20)[\"evidence\"]",
+        "assert j.submit(e, request=\"synthetic:submit\", expected_head=head) == head",
+        "assert len(j.snapshot(expected_head=head, now=20)[\"audit_history\"]) == 1"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_concurrent_writer_stale_head_refuses_and_reopen_replay_is_deterministic",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 390,
+        "function_source": "def test_concurrent_writer_stale_head_refuses_and_reopen_replay_is_deterministic(tmp_path):\n    path = tmp_path / \"synthetic_documentary.sqlite\"\n    j = DocumentaryJournal(sqlite3.connect(path), constructed=True)\n    other = DocumentaryJournal(sqlite3.connect(path), constructed=True)\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    with pytest.raises(ValueError, match=\"head\"):\n        other.submit(\n            replace(e, evidence_id=\"synthetic:other\"),\n            request=\"synthetic:other\",\n            expected_head=EMPTY_HEAD,\n        )\n    assert j.snapshot(expected_head=head, now=20) == other.snapshot(expected_head=head, now=20)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"head\"):\n        other.submit(\n            replace(e, evidence_id=\"synthetic:other\"),\n            request=\"synthetic:other\",\n            expected_head=EMPTY_HEAD,\n        )",
+        "assert j.snapshot(expected_head=head, now=20) == other.snapshot(expected_head=head, now=20)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_closed_json_cannot_assert_verification_or_inject_observations[{\"scope\":{},\"evidence_id\":\"x\",\"evidence_id\":\"y\"}]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 413,
+        "function_source": "def test_closed_json_cannot_assert_verification_or_inject_observations(body):\n    with pytest.raises((ValueError, TypeError)):\n        parse_evidence(body)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((ValueError, TypeError)):\n        parse_evidence(body)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_closed_json_cannot_assert_verification_or_inject_observations[{\"scope\":{},\"verified\":true}]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 413,
+        "function_source": "def test_closed_json_cannot_assert_verification_or_inject_observations(body):\n    with pytest.raises((ValueError, TypeError)):\n        parse_evidence(body)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((ValueError, TypeError)):\n        parse_evidence(body)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_closed_json_cannot_assert_verification_or_inject_observations[{\"scope\":{},\"evidence_type\":\"HUMAN_OBSERVATION\"}]",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 413,
+        "function_source": "def test_closed_json_cannot_assert_verification_or_inject_observations(body):\n    with pytest.raises((ValueError, TypeError)):\n        parse_evidence(body)"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises((ValueError, TypeError)):\n        parse_evidence(body)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_constructed_observation_or_reviewer_evidence_cannot_be_promoted_as_genuine",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 418,
+        "function_source": "def test_constructed_observation_or_reviewer_evidence_cannot_be_promoted_as_genuine():\n    e = item()\n    body = asdict(e)\n    body[\"classification\"] = DOCUMENTARY\n    with pytest.raises(ValueError, match=\"relabeled\"):\n        parse_evidence(canonical(body))\n    with pytest.raises(PermissionError, match=\"separation\"):\n        DocumentaryJournal(sqlite3.connect(\":memory:\")).submit(\n            e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD\n        )\n    with pytest.raises(ValueError, match=\"documentary evidence only\"):\n        replace(e, evidence_type=\"HUMAN_OBSERVATION\").validate()"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"relabeled\"):\n        parse_evidence(canonical(body))",
+        "with pytest.raises(PermissionError, match=\"separation\"):\n        DocumentaryJournal(sqlite3.connect(\":memory:\")).submit(\n            e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD\n        )",
+        "with pytest.raises(ValueError, match=\"documentary evidence only\"):\n        replace(e, evidence_type=\"HUMAN_OBSERVATION\").validate()"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_linked_supersession_and_revocation_are_append_only",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 432,
+        "function_source": "def test_linked_supersession_and_revocation_are_append_only():\n    j = journal()\n    e = item()\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    correction = replace(\n        e, evidence_id=\"synthetic:new\", parent_reference=digest(e), supersedes_reference=digest(e)\n    )\n    head = j.submit(correction, request=\"synthetic:correction\", expected_head=head)\n    revoke = replace(\n        e, evidence_id=\"synthetic:revoke\", evidence_type=\"REVOCATION\", revokes_reference=digest(e)\n    )\n    head = j.submit(revoke, request=\"synthetic:revocation\", expected_head=head)\n    head = advance(j, revoke, head)\n    rows = {r[\"evidence_id\"]: r for r in j.snapshot(expected_head=head, now=20)[\"evidence\"]}\n    assert rows[e.evidence_id][\"recorded_status\"] == Status.REVOKED\n    assert rows[e.evidence_id][\"item\"] == asdict(e)"
+      },
+      "expected_assertions_or_refusals": [
+        "assert rows[e.evidence_id][\"recorded_status\"] == Status.REVOKED",
+        "assert rows[e.evidence_id][\"item\"] == asdict(e)"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_verification_expiry_is_effective_even_before_document_expiry",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 450,
+        "function_source": "def test_verification_expiry_is_effective_even_before_document_expiry():\n    j = journal()\n    e = item(expires=200)\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head)\n    row = j.snapshot(expected_head=head, now=100)[\"evidence\"][0]\n    assert row[\"effective_status\"] == Status.EXPIRED\n    assert row[\"recorded_status\"] == Status.ACCEPTED\n    assert not row[\"currently_usable_for_operation\"]"
+      },
+      "expected_assertions_or_refusals": [
+        "assert row[\"effective_status\"] == Status.EXPIRED",
+        "assert row[\"recorded_status\"] == Status.ACCEPTED",
+        "assert not row[\"currently_usable_for_operation\"]"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_explicit_nonexpiring_document_still_requires_current_independent_verification",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 461,
+        "function_source": "def test_explicit_nonexpiring_document_still_requires_current_independent_verification():\n    j = journal()\n    e = item(valid_from=None, expires=None, expiry_not_applicable=True)\n    head = j.submit(e, request=\"synthetic:submit\", expected_head=EMPTY_HEAD)\n    head = advance(j, e, head, through=Status.VALID)\n    with pytest.raises(PermissionError, match=\"unavailable\"):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:absent\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed no-expiry claim\",\n        )\n    head = advance_from_valid(j, e, head)\n    assert (\n        j.snapshot(expected_head=head, now=100)[\"evidence\"][0][\"effective_status\"] == Status.EXPIRED\n    )"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(PermissionError, match=\"unavailable\"):\n        j.transition(\n            e.evidence_id,\n            Status.ATTRIBUTABLE,\n            request=\"synthetic:absent\",\n            expected_head=head,\n            now=20,\n            reason=\"constructed no-expiry claim\",\n        )",
+        "assert (\n        j.snapshot(expected_head=head, now=100)[\"evidence\"][0][\"effective_status\"] == Status.EXPIRED\n    )"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    },
+    {
+      "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_conflicting_expiry_applicability_is_rejected",
+      "outcome": "passed",
+      "group": "synthetic_mission27",
+      "source": {
+        "file": "tests/synthetic_mission27/test_documentary_intake.py",
+        "line": 495,
+        "function_source": "def test_conflicting_expiry_applicability_is_rejected():\n    with pytest.raises(ValueError, match=\"conflicting expiry\"):\n        item(expiry_not_applicable=True).validate()"
+      },
+      "expected_assertions_or_refusals": [
+        "with pytest.raises(ValueError, match=\"conflicting expiry\"):\n        item(expiry_not_applicable=True).validate()"
+      ],
+      "classification": "CONSTRUCTED_TEST_NON_PROMOTABLE",
+      "scope": "Software behavior only; no original evidence/appointment/permission or observation"
+    }
+  ],
+  "count": 63,
+  "required_coverage": [
+    {
+      "required_case": "Forged appointment reference",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_forged_appointment_reference_cannot_skip_verification_stages[ATTRIBUTABLE]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_forged_appointment_reference_cannot_skip_verification_stages[INDEPENDENTLY_VERIFIED]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_forged_appointment_reference_cannot_skip_verification_stages[ACCEPTED_FOR_SPECIFIC_PURPOSE]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Missing issuing authority",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[missing_issuer]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Unattributable permission",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[unattributable_permission]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Conflicting rights",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[conflicting_rights]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Expired permission",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[expired_permission]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Revoked permission",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[revoked_permission]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Wrong source identity",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[wrong_source]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Duplicate evidence ID",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_duplicate_or_substituted_lineage_rolls_back_without_partial_append[duplicate_id]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Altered evidence parent",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_duplicate_or_substituted_lineage_rolls_back_without_partial_append[altered_parent]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "False reviewer qualification",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[false_qualification]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Same-person independence violation",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission25/test_lifecycle.py::test_distinct_ids_with_same_physical_principal_cannot_satisfy_second_review",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Unresolved conflict of interest",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission25/test_contracts.py::test_reviewer_assignment_refuses_missing_expired_conflicted_or_upgraded_evidence[conflict]",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Invalid scope",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[invalid_scope]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Wrong operation purpose",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_malicious_verification_attestation_is_rejected[wrong_purpose]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Incomplete evidence package",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_unattributable_or_incomplete_evidence_never_reaches_attribution[incomplete_package]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Revoked reviewer assignment",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission25/test_lifecycle.py::test_submission_rechecks_current_permission_before_any_mutation[revoked]",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Unauthorized source access",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate0]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate1]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate2]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate3]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate4]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate5]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_no_protected_path_is_probed_or_opened_as_documentary_journal[candidate6]",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        },
+        {
+          "nodeid": "tests/synthetic_mission27/test_dashboard_cli.py::test_absent_adapters_never_activate_source_player_or_human_review",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Constructed observation promoted as genuine",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission27/test_documentary_intake.py::test_constructed_observation_or_reviewer_evidence_cannot_be_promoted_as_genuine",
+          "outcome": "passed",
+          "group": "synthetic_mission27"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Adjudication without independent review parents",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission26/test_engine.py::test_adjudication_preflight_requires_existing_independent_parent_reviews",
+          "outcome": "passed",
+          "group": "synthetic_mission26"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "T2 lens-plane substitution",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission25/test_contracts.py::test_t2_physical_entry_remains_deferred_and_cannot_be_lens_plane[None]",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        },
+        {
+          "nodeid": "tests/synthetic_mission25/test_contracts.py::test_t2_physical_entry_remains_deferred_and_cannot_be_lens_plane[LENS_PLANE]",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        },
+        {
+          "nodeid": "tests/synthetic_mission25/test_contracts.py::test_t2_physical_entry_remains_deferred_and_cannot_be_lens_plane[LEGACY_LENS_PLANE]",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        },
+        {
+          "nodeid": "tests/synthetic_mission25/test_contracts.py::test_t2_physical_entry_remains_deferred_and_cannot_be_lens_plane[invented_exit]",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Acoustic timestamp substitution",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission25/test_contracts.py::test_observation_rejects_invalid_clock_source_or_acoustic_shift[acoustic]",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Missing provenance",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission26/test_engine.py::test_coherently_rebound_missing_parent_still_refuses_retained_provenance_registry",
+          "outcome": "passed",
+          "group": "synthetic_mission26"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    },
+    {
+      "required_case": "Incomplete batch represented as complete",
+      "executed_cases": [
+        {
+          "nodeid": "tests/synthetic_mission25/test_lifecycle.py::test_incomplete_batch_and_omitted_risk_assessment_never_complete",
+          "outcome": "passed",
+          "group": "synthetic_mission25"
+        }
+      ],
+      "limit": "Constructed software refusal only; no genuine positive execution"
+    }
+  ],
+  "all_fixtures_explicitly_constructed_non_promotable": true,
+  "genuine_positive_verification_or_review_tested": false,
+  "not_scientific_evidence": true
+}

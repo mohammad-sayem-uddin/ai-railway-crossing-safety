@@ -115,7 +115,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "1.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 59,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "49.835",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_001/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_001:back:video",
@@ -163,7 +180,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "1.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 59,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "46.065",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_001/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_002:front:video",
@@ -211,7 +245,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "2.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 60,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "32.49",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_002/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_002:back:video",
@@ -259,7 +310,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "2.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 60,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "30.202",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_002/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_003:front:video",
@@ -307,7 +375,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "3.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 61,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "33.323",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_003/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_003:back:video",
@@ -355,7 +440,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "3.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 61,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "32.535",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_003/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_004:front:video",
@@ -403,7 +505,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "4.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 62,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "75.588",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_004/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_004:back:video",
@@ -451,7 +570,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "4.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 62,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "78.073",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_004/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_005:front:video",
@@ -499,7 +635,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "5.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 63,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "79.557",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_005/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_005:back:video",
@@ -547,7 +700,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "5.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 63,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "78.107",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_005/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_006:front:video",
@@ -595,7 +765,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "6.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 64,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "126.19",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_006/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_006:back:video",
@@ -643,7 +830,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "6.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 64,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "126.978",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_006/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_007:front:video",
@@ -691,7 +895,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "7.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 65,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "38.26",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_007/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_007:back:video",
@@ -739,7 +960,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "7.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 65,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "34.542",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_007/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_008:front:video",
@@ -787,7 +1025,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "8.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 66,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "58.875",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_008/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_008:back:video",
@@ -835,7 +1090,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "8.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 66,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "62.717",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_008/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_009:front:video",
@@ -883,7 +1155,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "9.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 67,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "42.897",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_009/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_009:back:video",
@@ -931,7 +1220,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "9.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 67,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "37.602",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_009/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_010:front:video",
@@ -979,7 +1285,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "11.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 68,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "24.017",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_010/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_010:back:video",
@@ -1027,7 +1350,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "11.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 68,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "23.517",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_010/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_011:front:video",
@@ -1075,7 +1415,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "12.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 69,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "37.692",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_011/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_011:back:video",
@@ -1123,7 +1480,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "12.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 69,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "37.37",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_011/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_012:front:video",
@@ -1171,7 +1545,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "13.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 70,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "75.187",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_012/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_012:back:video",
@@ -1219,7 +1610,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "13.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 70,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "70.738",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_012/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_013:front:video",
@@ -1267,7 +1675,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "14.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 71,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "73.687",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_013/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_013:back:video",
@@ -1315,7 +1740,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "14.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 71,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "73.237",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_013/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_014:front:video",
@@ -1363,7 +1805,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "15.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 72,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "55.04",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_014/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_014:back:video",
@@ -1411,7 +1870,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "15.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 72,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "53.503",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_014/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_015:front:video",
@@ -1459,7 +1935,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "16.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 73,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "31.155",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_015/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_015:back:video",
@@ -1507,7 +2000,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "16.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 73,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "22.233",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_015/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_016:front:video",
@@ -1555,7 +2065,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "17.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 74,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "46.867",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_016/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_016:back:video",
@@ -1603,7 +2130,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "17.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 74,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "45.27",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_016/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_017:front:video",
@@ -1651,7 +2195,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "18.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 75,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "81.658",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_017/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_017:back:video",
@@ -1699,7 +2260,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "18.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 75,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "83.773",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_017/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_018:front:video",
@@ -1747,7 +2325,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "19.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 76,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "58.942",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_018/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_018:back:video",
@@ -1795,7 +2390,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "19.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 76,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "52.637",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_018/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_019:front:video",
@@ -1843,7 +2455,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "20.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 77,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "60.31",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_019/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_019:back:video",
@@ -1891,7 +2520,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "20.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 77,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "51.13",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_019/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_020:front:video",
@@ -1939,7 +2585,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "21.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 78,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "28.553",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_020/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_020:back:video",
@@ -1987,7 +2650,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "21.mov",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 78,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "29.87",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_020/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_021:front:video",
@@ -2035,7 +2715,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "22(night)",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 79,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "53.413",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_021/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_021:back:video",
@@ -2083,7 +2780,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "22(night)",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 79,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "61.37",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_021/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_022:front:video",
@@ -2131,7 +2845,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "23(night)",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 80,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "43.637",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_022/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_022:back:video",
@@ -2179,7 +2910,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "23(night)",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 80,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "46.335",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_022/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_023:front:video",
@@ -2227,7 +2975,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "24(night)",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 81,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "44.838",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_023/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:train_events/event_023:back:video",
@@ -2275,7 +3040,24 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": {
+        "alias": "24(night)",
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 81,
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "HISTORICAL_ALIAS_NOT_ORIGINAL_CUSTODY_OR_LIVE_FILE_VERIFICATION"
+      },
+      "historical_recording_metadata": {
+        "declared_duration_s": "45.768",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_023/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:no_train_events/event_001:front:video",
@@ -2323,7 +3105,18 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": null,
+      "historical_recording_metadata": {
+        "declared_duration_s": "24.635",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_001/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:no_train_events/event_001:back:video",
@@ -2371,7 +3164,18 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": null,
+      "historical_recording_metadata": {
+        "declared_duration_s": "24.422",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_001/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:no_train_events/event_002:front:video",
@@ -2419,7 +3223,18 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": null,
+      "historical_recording_metadata": {
+        "declared_duration_s": "11.877",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_002/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:no_train_events/event_002:back:video",
@@ -2467,7 +3282,18 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": null,
+      "historical_recording_metadata": {
+        "declared_duration_s": "13.333",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_002/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:no_train_events/event_003:front:video",
@@ -2515,7 +3341,18 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": null,
+      "historical_recording_metadata": {
+        "declared_duration_s": "23.788",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_003/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:no_train_events/event_003:back:video",
@@ -2563,7 +3400,18 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": null,
+      "historical_recording_metadata": {
+        "declared_duration_s": "22.733",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_003/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      }
     },
     {
       "source_id": "doc:v2:engine_events/event_001:front:video",
@@ -2611,7 +3459,25 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": null,
+      "historical_recording_metadata": {
+        "declared_duration_s": "7.873",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/engine_events/event_001/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      },
+      "documentary_recording_origin_claim": {
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 98,
+        "statement": "- Front Camera: iPhone 12 Pro, 7.87s, recorded 2026-10-04 19:26:25 (SHA `847d04fef5ba...`)",
+        "status": "ARCHIVE_CLAIM_NOT_VERIFIED_CLOCK_OR_OWNERSHIP",
+        "date_meaning": "Historical recording claim; not authorization or issue date"
+      }
     },
     {
       "source_id": "doc:v2:engine_events/event_001:back:video",
@@ -2659,7 +3525,25 @@
         "No formal inventory signoff",
         "Independent camera-local clocks",
         "Embedded audio availability unverified; not training eligibility"
-      ]
+      ],
+      "documentary_acquisition_alias": null,
+      "historical_recording_metadata": {
+        "declared_duration_s": "9.8",
+        "reference": {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/engine_events/event_001/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        "verified": false
+      },
+      "documentary_recording_origin_claim": {
+        "document": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "line": 99,
+        "statement": "- Back Camera: iPad 10th gen, 9.80s, recorded 2026-10-04 19:26:28 (SHA `5f60e9d6d877...`)",
+        "status": "ARCHIVE_CLAIM_NOT_VERIFIED_CLOCK_OR_OWNERSHIP",
+        "date_meaning": "Historical recording claim; not authorization or issue date"
+      }
     },
     {
       "source_id": "doc:excluded:historical_duplicate_010:front",
@@ -2706,7 +3590,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     },
     {
       "source_id": "doc:excluded:historical_duplicate_010:back",
@@ -2753,7 +3638,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     },
     {
       "source_id": "doc:collection:layer_b_v1",
@@ -2800,7 +3686,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     },
     {
       "source_id": "doc:collection:horn_positive",
@@ -2847,7 +3734,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     },
     {
       "source_id": "doc:collection:horn_negative",
@@ -2894,7 +3782,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     },
     {
       "source_id": "doc:collection:esc50",
@@ -2941,7 +3830,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     },
     {
       "source_id": "doc:collection:vision_v1",
@@ -2988,7 +3878,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     },
     {
       "source_id": "doc:model:vision_frozen",
@@ -3035,7 +3926,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     },
     {
       "source_id": "doc:model:audio_v3",
@@ -3082,7 +3974,8 @@
         "No current operation grant",
         "Collection counts do not establish per-file identities",
         "No implied model/data license transfer"
-      ]
+      ],
+      "documentary_acquisition_alias": null
     }
   ]
 }

@@ -229,6 +229,7 @@ def add_arguments(commands):
     sub = parser.add_subparsers(dest="readiness_command", required=True)
     report = sub.add_parser("report")
     report.add_argument("--format", choices=("json", "markdown"), default="markdown")
+    report.add_argument("--mission", type=int, choices=(26, 27), default=26)
     report.add_argument("--now", type=int, required=True)
     report.set_defaults(func=dispatch)
     check = sub.add_parser("check")
@@ -244,6 +245,12 @@ def dispatch(args):
     try:
         catalog = load_catalog()
         if args.readiness_command == "report":
+            if getattr(args, "mission", 26) == 27:
+                from railway_detection.application.evidence_intake import reporting
+
+                report = reporting.dashboard(now=args.now)
+                print(reporting.render(report) if args.format == "markdown" else canonical(report))
+                return 0
             report = dashboard(catalog, now=args.now)
             print(render(report) if args.format == "markdown" else canonical(report))
             return 0  # Successful report generation is not operation readiness.

@@ -1,0 +1,142 @@
+{
+  "schema": "mission27-cli-verification/1",
+  "commands": [
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "evidence",
+        "report",
+        "--format",
+        "json",
+        "--now",
+        "0"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "0cb34785e48afdb30e2e905bdf32bc9f6a8ed824a5271c640378f2864455e9e9",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "evidence",
+        "report",
+        "--format",
+        "json",
+        "--now",
+        "0"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "0cb34785e48afdb30e2e905bdf32bc9f6a8ed824a5271c640378f2864455e9e9",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "report",
+        "--mission",
+        "27",
+        "--format",
+        "json",
+        "--now",
+        "0"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "0cb34785e48afdb30e2e905bdf32bc9f6a8ed824a5271c640378f2864455e9e9",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "report",
+        "--mission",
+        "27",
+        "--format",
+        "markdown",
+        "--now",
+        "0"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e23edc314ac7c3a99713e12bebd4bc9362646eadc2699d7e0b7c7d3ca130a59c",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "check",
+        "--operation",
+        "M19-PERM-19",
+        "--resource",
+        "doc:v2:train_events/event_001:front:video",
+        "--now",
+        "0"
+      ],
+      "exit_code": 3,
+      "stdout_sha256": "73b72c75cf48e5e8a1484efb68346b29b4e4d24c4e3ad3ef8fe7911d70fb573c",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "check",
+        "--operation",
+        "M19-PERM-24",
+        "--resource",
+        "doc:v2:train_events/event_001:front:video",
+        "--now",
+        "0"
+      ],
+      "exit_code": 3,
+      "stdout_sha256": "ed7b235276eef088d5ceadd729281a5b02a913df0dd99dd26a4be3c98c091aa8",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "check",
+        "--operation",
+        "M19-PERM-19",
+        "--resource",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/forbidden.mp4",
+        "--now",
+        "0"
+      ],
+      "exit_code": 2,
+      "stdout_sha256": "6cff05eb7c62f33b6f092c3f913902aea92b524974d184bffa1dbff1f862bd45",
+      "stderr": ""
+    }
+  ],
+  "three_json_reports_identical": true,
+  "generated_markdown_matches": true,
+  "generated_json_matches": true,
+  "policy_denials": [],
+  "new_grants": 0,
+  "protected_resources_accessed": false,
+  "clock": "Fixed zero diagnostics, not trusted authority time",
+  "actual_human_evidence_or_observations_submitted": 0
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "mission27-implementation-validation/1",
+  "status": "METADATA_ENGINEERING_VALIDATED_GENUINE_REVIEW_INACTIVE",
+  "guarded_audit": {
+    "tests": 3709,
+    "failures": 87,
+    "errors": 31,
+    "skipped": 0,
+    "passed": 3591
+  },
+  "guarded_audit_status": "NONPASSING",
+  "selected_profile": "Pending final frozen CLI acceptance; no full-repository acceptance claimed",
+  "new_adversarial_cases": 63,
+  "required_categories_mapped": 23,
+  "source_bindings_unchanged": true,
+  "static_receipt": "MISSION_27_STATIC_VALIDATION.json",
+  "source_sha256": {
+    "src/railway_detection/application/evidence_intake/__init__.py": "a45b707747671679d21fd835628daaed264f5f15935f07de7bd6f186d31ed67e",
+    "src/railway_detection/application/evidence_intake/cli.py": "3781bf4aadeaae4e840471892de6102f7b3436d12e7da8b7410acd40889fe834",
+    "src/railway_detection/application/evidence_intake/intake.py": "321c53808953c440c9fc43d7c4e520f63ed841b85ad4a0893b552926165db970",
+    "src/railway_detection/application/evidence_intake/ports.py": "4533a9551b440a9804a32232e9977baa3d96c6904b376c76bf8e9ff554b495ab",
+    "src/railway_detection/application/evidence_intake/reporting.py": "9bb2b454e5844a99e96b1eaae9a3c0851db64b08bdf3f81afbc556e5ddb69bdf",
+    "src/railway_detection/application/cli.py": "76b9b9974715580bdc4df43fe4e208cc80473b63253bfec3e624863813c78859",
+    "src/railway_detection/application/preflight/catalog.py": "fa6a4cfbe344cd6db194f8f50018371e3296854b623c5d3606473d97f624b1f4",
+    "src/railway_detection/safety/resource_free_acceptance.py": "f683e696417311cd7fa0add1ae40311bb07d2a61edfaf8e0b9d98b018e213974",
+    "tests/synthetic_mission27/test_dashboard_cli.py": "7a147ac1602f91e84300751890cb8cee47c41c4d00eea87313936f6783921acb",
+    "tests/synthetic_mission27/test_documentary_intake.py": "a7de4cba7ecfb0aacb93c11302d800db07179f62db7a6d7060b8547c257f60a9"
+  },
+  "legacy_inventory_new_modules": "Two UNKNOWN entries, safe_for_synthetic_runner false; all old entries preserved exactly",
+  "legacy_yaml_is_not_executed_classification_register": true,
+  "new_grants": 0,
+  "genuine_adapters_enabled": false,
+  "canonical_validator_unchanged": true
+}

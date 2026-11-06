@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Document-reference submission; structural validity is not authentication",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "evidence_type",
+    "subject",
+    "source_reference",
+    "issuing_authority",
+    "scope"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "evidence_type": {
+      "enum": [
+        "SOURCE_IDENTITY",
+        "RIGHTS",
+        "APPOINTMENT",
+        "QUALIFICATION",
+        "INDEPENDENCE",
+        "PARTICIPATION",
+        "EXTERNAL_DETERMINATION",
+        "PROTOCOL_ADOPTION",
+        "LANDMARK",
+        "REVOCATION"
+      ]
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "source_reference": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "issuing_authority": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resource",
+        "operation",
+        "actor",
+        "role",
+        "purpose",
+        "environment"
+      ],
+      "properties": {
+        "resource": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "operation": {
+          "enum": [
+            null,
+            "M19-PERM-01",
+            "M19-PERM-02",
+            "M19-PERM-03",
+            "M19-PERM-04",
+            "M19-PERM-05",
+            "M19-PERM-06",
+            "M19-PERM-07",
+            "M19-PERM-08",
+            "M19-PERM-09",
+            "M19-PERM-10",
+            "M19-PERM-11",
+            "M19-PERM-12",
+            "M19-PERM-13",
+            "M19-PERM-14",
+            "M19-PERM-15",
+            "M19-PERM-16",
+            "M19-PERM-17",
+            "M19-PERM-18",
+            "M19-PERM-19",
+            "M19-PERM-20",
+            "M19-PERM-21",
+            "M19-PERM-22",
+            "M19-PERM-23",
+            "M19-PERM-24",
+            "M19-PERM-25",
+            "M19-PERM-26",
+            "M19-PERM-27"
+          ]
+        },
+        "actor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "role": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "purpose": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "environment": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "rights": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "RESEARCH_USE",
+              "INTERNAL_STORAGE",
+              "PROCESSING",
+              "ANNOTATION",
+              "TRAINING",
+              "EVALUATION",
+              "DERIVED_RESULTS_PUBLICATION",
+              "DEIDENTIFIED_METADATA_SHARE",
+              "ORIGINAL_REDISTRIBUTION",
+              "PUBLIC_DATASET_RELEASE"
+            ]
+          }
+        }
+      }
+    },
+    "documented_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "valid_from": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "expires": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "parent_reference": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "supersedes_reference": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "revokes_reference": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "unresolved_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      }
+    },
+    "classification": {
+      "enum": [
+        "UNVERIFIED_DOCUMENTARY_INPUT",
+        "CONSTRUCTED_DOCUMENTARY_FIXTURE"
+      ]
+    },
+    "schema": {
+      "const": "DOCUMENTARY_EVIDENCE/1"
+    },
+    "expiry_not_applicable": {
+      "type": "boolean",
+      "default": false,
+      "description": "Explicit evidenced non-applicability claim, never inferred from null. Independent verification remains mandatory; conflicts with a concrete expires value."
+    }
+  },
+  "$comment": "Runtime additionally enforces exact classes, lineage, validity, fixture separation, retained heads and independently verified stage transitions. No verification/status/signature field accepted."
+}
