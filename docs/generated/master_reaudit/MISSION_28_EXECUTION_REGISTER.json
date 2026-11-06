@@ -143,5 +143,21 @@
     "docs/generated/master_reaudit/MISSION_27_UPDATED_READINESS_DASHBOARD.json": "7cfbd1dcfb43ed69236102bd5623870a4355f812581bf4d22af22cb7ea306af4",
     "docs/generated/master_reaudit/MISSION_27_UPDATED_READINESS_DASHBOARD.md": "dd2d0044bd51432f0c533d8d7da858f90669c597269b7b01054d965cf210fef8"
   },
-  "request_sha256": "f325e99b70f35237a62653fadc17d70cc83f2e413c685c62a2bfb6e7e1342dee"
+  "request_sha256": "f325e99b70f35237a62653fadc17d70cc83f2e413c685c62a2bfb6e7e1342dee",
+  "phase_history": [
+    {
+      "phase": "Evidence delta, individual assessments, three intake repairs and fixed pilot diagnosis",
+      "commit": "69ec20f6aa8a7b0fa090ec8824bebecf024a8a3e",
+      "local_tracking_live_verified": true
+    },
+    {
+      "phase": "Frozen selected acceptance and preservation",
+      "receipt": "MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+      "passed": 3614,
+      "protected_not_executed": 118,
+      "status": "PASSED_SELECTED_RESOURCE_FREE"
+    }
+  ],
+  "current_status": "ELIGIBLE_WORK_COMPLETE;PILOT_NOT_READY_NO_NEW_GENUINE_EVIDENCE",
+  "final_validation": "MISSION_28_FINAL_VALIDATION.json"
 }

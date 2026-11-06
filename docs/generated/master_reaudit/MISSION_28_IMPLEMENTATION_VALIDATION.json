@@ -48,5 +48,16 @@
   "grants_issued": 0,
   "pilot_executed": false,
   "new_database_or_alternate_authority": false,
-  "mission27_schema_and_verifier_interfaces_unchanged": true
+  "mission27_schema_and_verifier_interfaces_unchanged": true,
+  "final_frozen_selected_acceptance": {
+    "receipt": "MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+    "tests": 3614,
+    "passed": 3614,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "not_executed_protected": 118,
+    "unknown_classifications": 0,
+    "source_bindings_unchanged": true
+  }
 }
