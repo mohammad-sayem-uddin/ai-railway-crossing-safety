@@ -1,0 +1,58 @@
+{
+  "schema": "mission29-cli/1",
+  "commands": [
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "/Users/sayemuddin/Desktop/Train_automation/scripts/validate_mission29_research_decision.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6e8197ce71439cc35dd6364e5f8d484df3af842cf6eff3c9daa1a3d372916984",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "/Users/sayemuddin/Desktop/Train_automation/scripts/validate_mission29_research_decision.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6e8197ce71439cc35dd6364e5f8d484df3af842cf6eff3c9daa1a3d372916984",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "railway_detection",
+        "application",
+        "readiness",
+        "report",
+        "--mission",
+        "28",
+        "--now",
+        "0",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e319c509ea7c0715fca38298009cc07716ee83dcb308b9673712a4075888d2d1",
+      "stderr": ""
+    }
+  ],
+  "deterministic_reports_identical": true,
+  "report": {
+    "assurance": "Documentary consistency only; not source authenticity, legal clearance, canonical authorization or empirical scientific validity",
+    "current_pathway": "PATH_B_DEFENSIBLE_MANUSCRIPT_PREPARATION",
+    "issues": [],
+    "new_grants": 0,
+    "package_digest": "9ba32116ba9d4444bee5d2ea8064062bc43b2c2d5b54e408c62c6d0beb2a7ea7",
+    "schema": "mission29-documentary-validation/1",
+    "valid": true
+  },
+  "mission28_readiness_dashboard_unchanged": true,
+  "pilot_state": "PILOT_NOT_READY",
+  "policy_denials": [],
+  "assurance": "Document consistency only; not independent source/rights/authenticity verification",
+  "experiments_executed": false,
+  "new_grants": 0
+}

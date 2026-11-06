@@ -1,0 +1,444 @@
+{
+  "schema": "mission29-future-experiments/1",
+  "crossing": "crossing_A",
+  "experiments": [
+    {
+      "condition": "B0_front",
+      "research_question": "Descriptive front-camera vision behavior",
+      "status": "NOT_AUTHORIZED_NOT_EXECUTED",
+      "required_source_identities": "front; exact authenticated per-source/member manifest required, not documentary path identity",
+      "required_rights": "Exact source/model/cache operation-specific use/processing/evaluation and separately scoped metadata output; no cross-dimension transfer",
+      "required_human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "required_authorization": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "inputs": "front",
+      "protocol": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "expected_output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "metrics": "M4/M5/MTR subject to source-clock and screen eligibility",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring_and_uncertainty": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "known_limitations": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable",
+        "No event-level generalization, cross-site/weather/safety-improvement or unsupported occupancy claim"
+      ],
+      "stop_conditions": [
+        "Missing/expired/revoked/wrong-scope identity/rights/actor/grant",
+        "Unknown source clock, unverified model/cache lineage or noncanonical schema",
+        "Missing genuine metric-required GT/independent review or per-metric denominator",
+        "Lost trust/audit/transaction integrity or unapproved scientific mapping"
+      ],
+      "executed": false,
+      "documentary_candidate_event_scope": [
+        "train_events/event_001",
+        "train_events/event_002",
+        "train_events/event_003",
+        "train_events/event_004",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_008",
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_012",
+        "train_events/event_013",
+        "train_events/event_014",
+        "train_events/event_015",
+        "train_events/event_016",
+        "train_events/event_017",
+        "train_events/event_018",
+        "train_events/event_019",
+        "train_events/event_020",
+        "train_events/event_021",
+        "train_events/event_022",
+        "train_events/event_023",
+        "no_train_events/event_001",
+        "no_train_events/event_002",
+        "no_train_events/event_003",
+        "engine_events/event_001"
+      ],
+      "scope_kind": "DOCUMENTARY_CANDIDATES_ONLY_NOT_VERIFIED_MEMBERS_OR_ELIGIBLE_DENOMINATOR",
+      "source_manifest_requirement": "ACT-01 must bind each applicable event/camera/member/original clock and provenance; ACT-02 must verify exact operation scope. Candidate membership creates no eligibility or access right."
+    },
+    {
+      "condition": "B1_audio",
+      "research_question": "Perceptual audio outcomes only",
+      "status": "NOT_AUTHORIZED_NOT_EXECUTED",
+      "required_source_identities": "approved acoustic sources; exact authenticated per-source/member manifest required, not documentary path identity",
+      "required_rights": "Exact source/model/cache operation-specific use/processing/evaluation and separately scoped metadata output; no cross-dimension transfer",
+      "required_human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "required_authorization": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "inputs": "approved acoustic sources",
+      "protocol": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "expected_output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "metrics": "Acoustic event-level outcomes; no independent gate actuation",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring_and_uncertainty": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "known_limitations": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable",
+        "No event-level generalization, cross-site/weather/safety-improvement or unsupported occupancy claim"
+      ],
+      "stop_conditions": [
+        "Missing/expired/revoked/wrong-scope identity/rights/actor/grant",
+        "Unknown source clock, unverified model/cache lineage or noncanonical schema",
+        "Missing genuine metric-required GT/independent review or per-metric denominator",
+        "Lost trust/audit/transaction integrity or unapproved scientific mapping"
+      ],
+      "executed": false,
+      "documentary_candidate_event_scope": [
+        "train_events/event_001",
+        "train_events/event_002",
+        "train_events/event_003",
+        "train_events/event_004",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_008",
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_012",
+        "train_events/event_013",
+        "train_events/event_014",
+        "train_events/event_015",
+        "train_events/event_016",
+        "train_events/event_017",
+        "train_events/event_018",
+        "train_events/event_019",
+        "train_events/event_020",
+        "train_events/event_021",
+        "train_events/event_022",
+        "train_events/event_023",
+        "no_train_events/event_001",
+        "no_train_events/event_002",
+        "no_train_events/event_003",
+        "engine_events/event_001"
+      ],
+      "scope_kind": "DOCUMENTARY_CANDIDATES_ONLY_NOT_VERIFIED_MEMBERS_OR_ELIGIBLE_DENOMINATOR",
+      "source_manifest_requirement": "ACT-01 must bind each applicable event/camera/member/original clock and provenance; ACT-02 must verify exact operation scope. Candidate membership creates no eligibility or access right."
+    },
+    {
+      "condition": "B2_front",
+      "research_question": "Vision with supporting audio under frozen policy",
+      "status": "NOT_AUTHORIZED_NOT_EXECUTED",
+      "required_source_identities": "front plus separately available supporting audio; exact authenticated per-source/member manifest required, not documentary path identity",
+      "required_rights": "Exact source/model/cache operation-specific use/processing/evaluation and separately scoped metadata output; no cross-dimension transfer",
+      "required_human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "required_authorization": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "inputs": "front plus separately available supporting audio",
+      "protocol": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "expected_output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "metrics": "M4/M5/MTR with per-metric denominators",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring_and_uncertainty": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "known_limitations": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable",
+        "No event-level generalization, cross-site/weather/safety-improvement or unsupported occupancy claim"
+      ],
+      "stop_conditions": [
+        "Missing/expired/revoked/wrong-scope identity/rights/actor/grant",
+        "Unknown source clock, unverified model/cache lineage or noncanonical schema",
+        "Missing genuine metric-required GT/independent review or per-metric denominator",
+        "Lost trust/audit/transaction integrity or unapproved scientific mapping"
+      ],
+      "executed": false,
+      "documentary_candidate_event_scope": [
+        "train_events/event_001",
+        "train_events/event_002",
+        "train_events/event_003",
+        "train_events/event_004",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_008",
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_012",
+        "train_events/event_013",
+        "train_events/event_014",
+        "train_events/event_015",
+        "train_events/event_016",
+        "train_events/event_017",
+        "train_events/event_018",
+        "train_events/event_019",
+        "train_events/event_020",
+        "train_events/event_021",
+        "train_events/event_022",
+        "train_events/event_023",
+        "no_train_events/event_001",
+        "no_train_events/event_002",
+        "no_train_events/event_003",
+        "engine_events/event_001"
+      ],
+      "scope_kind": "DOCUMENTARY_CANDIDATES_ONLY_NOT_VERIFIED_MEMBERS_OR_ELIGIBLE_DENOMINATOR",
+      "source_manifest_requirement": "ACT-01 must bind each applicable event/camera/member/original clock and provenance; ACT-02 must verify exact operation scope. Candidate membership creates no eligibility or access right."
+    },
+    {
+      "condition": "B0_back",
+      "research_question": "Primary back-camera descriptive outcomes",
+      "status": "NOT_AUTHORIZED_NOT_EXECUTED",
+      "required_source_identities": "back; exact authenticated per-source/member manifest required, not documentary path identity",
+      "required_rights": "Exact source/model/cache operation-specific use/processing/evaluation and separately scoped metadata output; no cross-dimension transfer",
+      "required_human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "required_authorization": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "inputs": "back",
+      "protocol": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "expected_output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "metrics": "M4/M5/MTR with camera-local GT",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring_and_uncertainty": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "known_limitations": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable",
+        "No event-level generalization, cross-site/weather/safety-improvement or unsupported occupancy claim"
+      ],
+      "stop_conditions": [
+        "Missing/expired/revoked/wrong-scope identity/rights/actor/grant",
+        "Unknown source clock, unverified model/cache lineage or noncanonical schema",
+        "Missing genuine metric-required GT/independent review or per-metric denominator",
+        "Lost trust/audit/transaction integrity or unapproved scientific mapping"
+      ],
+      "executed": false,
+      "documentary_candidate_event_scope": [
+        "train_events/event_001",
+        "train_events/event_002",
+        "train_events/event_003",
+        "train_events/event_004",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_008",
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_012",
+        "train_events/event_013",
+        "train_events/event_014",
+        "train_events/event_015",
+        "train_events/event_016",
+        "train_events/event_017",
+        "train_events/event_018",
+        "train_events/event_019",
+        "train_events/event_020",
+        "train_events/event_021",
+        "train_events/event_022",
+        "train_events/event_023",
+        "no_train_events/event_001",
+        "no_train_events/event_002",
+        "no_train_events/event_003",
+        "engine_events/event_001"
+      ],
+      "scope_kind": "DOCUMENTARY_CANDIDATES_ONLY_NOT_VERIFIED_MEMBERS_OR_ELIGIBLE_DENOMINATOR",
+      "source_manifest_requirement": "ACT-01 must bind each applicable event/camera/member/original clock and provenance; ACT-02 must verify exact operation scope. Candidate membership creates no eligibility or access right."
+    },
+    {
+      "condition": "R04",
+      "research_question": "Restricted optional exploratory fusion",
+      "status": "NOT_AUTHORIZED_NOT_EXECUTED",
+      "required_source_identities": "historical exact11 only; exact authenticated per-source/member manifest required, not documentary path identity",
+      "required_rights": "Exact source/model/cache operation-specific use/processing/evaluation and separately scoped metadata output; no cross-dimension transfer",
+      "required_human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "required_authorization": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "inputs": "historical exact11 only",
+      "protocol": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "expected_output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "metrics": "Exploratory outputs separate from independent-camera primary",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring_and_uncertainty": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "known_limitations": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable",
+        "No event-level generalization, cross-site/weather/safety-improvement or unsupported occupancy claim"
+      ],
+      "stop_conditions": [
+        "Missing/expired/revoked/wrong-scope identity/rights/actor/grant",
+        "Unknown source clock, unverified model/cache lineage or noncanonical schema",
+        "Missing genuine metric-required GT/independent review or per-metric denominator",
+        "Lost trust/audit/transaction integrity or unapproved scientific mapping"
+      ],
+      "executed": false,
+      "documentary_candidate_event_scope": [
+        "train_events/event_001",
+        "train_events/event_002",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_009",
+        "train_events/event_011",
+        "train_events/event_012",
+        "train_events/event_013",
+        "train_events/event_014",
+        "train_events/event_017"
+      ],
+      "scope_kind": "DOCUMENTARY_CANDIDATES_ONLY_NOT_VERIFIED_MEMBERS_OR_ELIGIBLE_DENOMINATOR",
+      "source_manifest_requirement": "ACT-01 must bind each applicable event/camera/member/original clock and provenance; ACT-02 must verify exact operation scope. Candidate membership creates no eligibility or access right."
+    },
+    {
+      "condition": "B0_back_stateless",
+      "research_question": "Deferred separately mapped comparator",
+      "status": "DEFERRED_SCIENTIFIC_MAPPING",
+      "required_source_identities": "back; exact authenticated per-source/member manifest required, not documentary path identity",
+      "required_rights": "Exact source/model/cache operation-specific use/processing/evaluation and separately scoped metadata output; no cross-dimension transfer",
+      "required_human_evidence": [
+        "Authentic source-linked independent reviews",
+        "Promoted GT and per-metric boundary eligibility where required"
+      ],
+      "required_authorization": [
+        "Exact source/model/cache/inference/replay/evaluation grants as individually applicable"
+      ],
+      "inputs": "back",
+      "protocol": "Frozen decision_policy_v1 and exact model/config/protocol identities; no silent thresholds/EMA",
+      "expected_output": "Versioned descriptive finite-cohort receipts; unavailable cells stay unavailable",
+      "metrics": "UNAVAILABLE until scientific mapping adopted",
+      "eligibility": "Train/control/engine-case separated; no role transfer or universal denominator",
+      "censoring_and_uncertainty": "Nonpoint remains null with explicit reasons; no unavailable value becomes zero",
+      "known_limitations": [
+        "Actual source/rights/actor/authorization evidence missing",
+        "Genuine human data and canonical bindings unavailable",
+        "No event-level generalization, cross-site/weather/safety-improvement or unsupported occupancy claim"
+      ],
+      "stop_conditions": [
+        "Missing/expired/revoked/wrong-scope identity/rights/actor/grant",
+        "Unknown source clock, unverified model/cache lineage or noncanonical schema",
+        "Missing genuine metric-required GT/independent review or per-metric denominator",
+        "Lost trust/audit/transaction integrity or unapproved scientific mapping"
+      ],
+      "executed": false,
+      "documentary_candidate_event_scope": [
+        "train_events/event_001",
+        "train_events/event_002",
+        "train_events/event_003",
+        "train_events/event_004",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_008",
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_012",
+        "train_events/event_013",
+        "train_events/event_014",
+        "train_events/event_015",
+        "train_events/event_016",
+        "train_events/event_017",
+        "train_events/event_018",
+        "train_events/event_019",
+        "train_events/event_020",
+        "train_events/event_021",
+        "train_events/event_022",
+        "train_events/event_023",
+        "no_train_events/event_001",
+        "no_train_events/event_002",
+        "no_train_events/event_003",
+        "engine_events/event_001"
+      ],
+      "scope_kind": "DOCUMENTARY_CANDIDATES_ONLY_NOT_VERIFIED_MEMBERS_OR_ELIGIBLE_DENOMINATOR",
+      "source_manifest_requirement": "ACT-01 must bind each applicable event/camera/member/original clock and provenance; ACT-02 must verify exact operation scope. Candidate membership creates no eligibility or access right."
+    },
+    {
+      "condition": "B2_back",
+      "research_question": "Already provisional supporting back-audio analysis only if its availability/scope is genuinely established",
+      "status": "DEFERRED_AVAILABILITY_NOT_AUTHORIZED",
+      "required_source_identities": "Exact back-container audio/source and any derivation/model/cache identities; no assumed availability",
+      "required_rights": "Exact source/audio use/processing/evaluation/output rights",
+      "required_human_evidence": [
+        "Actual source-linked human boundaries and horn truth only if reported"
+      ],
+      "required_authorization": [
+        "Separate canonical source/model/inference/cache/replay/evaluation grants as applicable"
+      ],
+      "inputs": "Unverified back audio and independently clocked back vision",
+      "protocol": "Existing adopted supporting-audio policy only; no invented availability or comparator rule",
+      "expected_output": "Separate descriptive result with metric-specific null/eligibility reasons if ever authorized",
+      "metrics": "Only adopted, eligible camera-local metrics; no audio-only gate outcome",
+      "eligibility": "Unknown until actual source availability and scope established",
+      "censoring_and_uncertainty": "Preserve original clocks/uncertainty/censoring; no acoustic GT shift",
+      "known_limitations": [
+        "Already provisional; not a new condition approval",
+        "No pooled cross-camera score or primary fusion claim"
+      ],
+      "stop_conditions": [
+        "Any missing actual source/rights/human/authorization evidence",
+        "Unknown audio availability or unadopted scientific mapping"
+      ],
+      "executed": false,
+      "documentary_candidate_event_scope": [
+        "train_events/event_001",
+        "train_events/event_002",
+        "train_events/event_003",
+        "train_events/event_004",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_008",
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_012",
+        "train_events/event_013",
+        "train_events/event_014",
+        "train_events/event_015",
+        "train_events/event_016",
+        "train_events/event_017",
+        "train_events/event_018",
+        "train_events/event_019",
+        "train_events/event_020",
+        "train_events/event_021",
+        "train_events/event_022",
+        "train_events/event_023",
+        "no_train_events/event_001",
+        "no_train_events/event_002",
+        "no_train_events/event_003",
+        "engine_events/event_001"
+      ],
+      "scope_kind": "DOCUMENTARY_CANDIDATES_ONLY_NOT_VERIFIED_MEMBERS_OR_ELIGIBLE_DENOMINATOR",
+      "source_manifest_requirement": "ACT-01 must bind each applicable event/camera/member/original clock and provenance; ACT-02 must verify exact operation scope. Candidate membership creates no eligibility or access right."
+    }
+  ],
+  "experiments_executed": 0,
+  "eight_mask_comparator": "INACTIVE_UNTIL_SEPARATELY_ADOPTED_MAPPING",
+  "official_split_created": false,
+  "training_calibration_or_new_recordings": false,
+  "fixed_pilot_source_references": [
+    "doc:v2:train_events/event_005:front:video",
+    "doc:v2:train_events/event_005:back:video",
+    "doc:v2:train_events/event_021:front:video",
+    "doc:v2:train_events/event_021:back:video",
+    "doc:v2:engine_events/event_001:front:video",
+    "doc:v2:engine_events/event_001:back:video",
+    "doc:v2:train_events/event_001:front:video",
+    "doc:v2:train_events/event_001:back:video",
+    "doc:v2:no_train_events/event_001:front:video",
+    "doc:v2:no_train_events/event_001:back:video"
+  ],
+  "exact_member_identities_currently_verified": []
+}

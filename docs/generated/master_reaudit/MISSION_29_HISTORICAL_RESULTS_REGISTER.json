@@ -1,0 +1,489 @@
+{
+  "schema": "mission29-historical-results/1",
+  "results": [
+    {
+      "id": "H29-VISION",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "kind": "YOLOv8n still-image development diagnostics",
+      "evidence": [
+        {
+          "path": "README.md",
+          "line": 102,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "README.md",
+          "line": 106,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "configs/frozen_experiment_v1.yaml",
+          "line": 15,
+          "document_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "configuration_or_model_identity": {
+        "model_name": "YOLOv8n",
+        "checkpoint_reference": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+        "configuration_declared_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+        "checkpoint_identity_reverified": false
+      },
+      "dataset_split_provenance": {
+        "partition": "705d388743ea",
+        "split": "development_fallback",
+        "reported_leakage_risk": true,
+        "reported_allow_ungrouped_fallback": true,
+        "current_config_require_grouping": true,
+        "current_config_allow_ungrouped_fallback": false,
+        "current_config_does_not_repair_historical_split": true
+      },
+      "reported_metrics": {
+        "mAP50": "0.9946",
+        "mAP50_95": "0.855",
+        "reported_objects": 487,
+        "reported_cropped_images": 3165
+      },
+      "metric_definition": "Reported bounding-box average precision at IoU .50 and over .50:.95; not event detection, crossing protection, direction or safety rates",
+      "known_leakage_or_provenance_risks": [
+        "Documented ungrouped fallback and frame/scene leakage; historical split artifact not reopened",
+        "README single-class language versus front/rear/side configuration mapping is not resolved without exact asset evidence"
+      ],
+      "independently_reproduced": false,
+      "protected_inputs_accessed": false,
+      "permission_status": "EXACT_SOURCE_RIGHTS_UNRESOLVED;NO_EXTERNAL_RELEASE_CLEARANCE",
+      "manuscript_preparation_use": "HISTORICAL_LIMITATION_NOTE_ONLY",
+      "external_publication_authorized": false,
+      "limitations": [
+        "No new inference, checkpoint/cache access or raw-data evaluation",
+        "Historical report is not an independently reproduced result",
+        "Exact source/member/model rights and current physical identities remain unverified",
+        "No event-independent or cross-site generalization",
+        "487 objects and 3,165 images are reported development counts, not 27 independent train events"
+      ]
+    },
+    {
+      "id": "H29-AUDIO-README",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "kind": "Audio V3 rounded summary",
+      "evidence": [
+        {
+          "path": "README.md",
+          "line": 117,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "configs/frozen_experiment_v1.yaml",
+          "line": 25,
+          "document_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "configuration_or_model_identity": {
+        "model_name": "CompactTrainHornCNN V3",
+        "checkpoint_reference": "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt",
+        "configuration_declared_sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782",
+        "checkpoint_identity_reverified": false
+      },
+      "dataset_split_provenance": {
+        "reported_split_role": "VALIDATION_IN_README",
+        "split_role_conflicted_with_detailed_report": true
+      },
+      "reported_metrics": {
+        "F1": "0.869",
+        "ROC_AUC": "0.961",
+        "operating_threshold": "0.3700"
+      },
+      "metric_definition": "README labels these validation metrics; detailed report labels comparable numbers test-window outcomes",
+      "known_leakage_or_provenance_risks": [
+        "Validation/test labeling conflict",
+        "Checkpoint hash is configuration-declared only; no independent member/provenance verification"
+      ],
+      "independently_reproduced": false,
+      "protected_inputs_accessed": false,
+      "permission_status": "EXACT_SOURCE_RIGHTS_UNRESOLVED;NO_EXTERNAL_RELEASE_CLEARANCE",
+      "manuscript_preparation_use": "HISTORICAL_LIMITATION_NOTE_ONLY",
+      "external_publication_authorized": false,
+      "limitations": [
+        "No new inference, checkpoint/cache access or raw-data evaluation",
+        "Historical report is not an independently reproduced result",
+        "Exact source/member/model rights and current physical identities remain unverified",
+        "Rounded AUC .961 versus detailed .9613 is reported precision, not an independent replication",
+        "No event-level or gate-level performance claim"
+      ]
+    },
+    {
+      "id": "H29-AUDIO-REPORT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "kind": "Audio V3 detailed historical report",
+      "evidence": [
+        {
+          "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+          "line": 178,
+          "document_sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+          "line": 188,
+          "document_sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+          "line": 80,
+          "document_sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "configuration_or_model_identity": {
+        "model_name": "CompactTrainHornCNN V3",
+        "configuration_reference": "configs/frozen_experiment_v1.yaml",
+        "checkpoint_identity_reverified": false
+      },
+      "dataset_split_provenance": {
+        "reported_split_role": "TEST_WINDOWS",
+        "reported_test_recordings": 26,
+        "reported_test_windows": 182,
+        "reported_negative_folds": {
+          "train": [
+            1,
+            2,
+            3
+          ],
+          "validation": [
+            4
+          ],
+          "test": [
+            5
+          ]
+        },
+        "grouping_claim_independently_reverified": false
+      },
+      "reported_metrics": {
+        "F1": "0.8690",
+        "ROC_AUC": "0.9613",
+        "operating_threshold": "0.3700",
+        "reported_validation_F1": "0.9942",
+        "recording_F1": "0.8667",
+        "recording_ROC_AUC": "0.9408"
+      },
+      "metric_definition": "Window F1/AUC and separately pooled recording F1/AUC; neither is a train-event safety metric",
+      "known_leakage_or_provenance_risks": [
+        "The report asserts source/fold isolation; actual manifests, sources and weights were not accessed",
+        "Exact-member rights/attribution unresolved; source/channel confounding not ruled out"
+      ],
+      "independently_reproduced": false,
+      "protected_inputs_accessed": false,
+      "permission_status": "EXACT_SOURCE_RIGHTS_UNRESOLVED;NO_EXTERNAL_RELEASE_CLEARANCE",
+      "manuscript_preparation_use": "HISTORICAL_LIMITATION_NOTE_ONLY",
+      "external_publication_authorized": false,
+      "limitations": [
+        "No new inference, checkpoint/cache access or raw-data evaluation",
+        "Historical report is not an independently reproduced result",
+        "Exact source/member/model rights and current physical identities remain unverified",
+        "README 128-mel statement conflicts with frozen/report 64 bands; paper FFT/hop statements also conflict with frozen 512/256",
+        "Do not silently equate windows, recordings, events or validation/test partitions"
+      ]
+    },
+    {
+      "id": "H29-AUDIO-V2",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "kind": "Prohibited historical Audio V2",
+      "evidence": [
+        {
+          "path": "configs/frozen_experiment_v1.yaml",
+          "line": 27,
+          "document_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "src/railway_detection/experiments/frozen_config.py",
+          "line": 33,
+          "document_sha256": "bcbe3684192664e4cb8b8d4221389cf4d13ee2a7f1c72cdc815f0a671f23e3bd",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "src/railway_detection/experiments/frozen_config.py",
+          "line": 377,
+          "document_sha256": "bcbe3684192664e4cb8b8d4221389cf4d13ee2a7f1c72cdc815f0a671f23e3bd",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "src/railway_detection/evaluation/replay_producer.py",
+          "line": 207,
+          "document_sha256": "855818b3dcc73ddab9b2669736e2dbfb5df861e986d0e6acc7697129bc3bed43",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "configuration_or_model_identity": {
+        "checkpoint_reference": "models/audio/best_checkpoint.pt",
+        "configuration_prohibited_sha256": "59b0785f73b201dfd2fb335b98f6ddb764c8544d1ca5fc9e8aa326d74ffcf7d5",
+        "execution": "PROHIBITED"
+      },
+      "dataset_split_provenance": {
+        "status": "HISTORICAL_LEAKAGE_AND_PROVENANCE_LIMITATIONS"
+      },
+      "reported_metrics": {
+        "historical_perfect_scores": "NOT_ADMISSIBLE_AS_CURRENT_PERFORMANCE"
+      },
+      "metric_definition": "Historical component scores do not override present prohibition",
+      "known_leakage_or_provenance_risks": [
+        "Existing config-integrity, checkpoint prohibition and replay provenance path remain authoritative"
+      ],
+      "independently_reproduced": false,
+      "protected_inputs_accessed": false,
+      "permission_status": "EXACT_SOURCE_RIGHTS_UNRESOLVED;NO_EXTERNAL_RELEASE_CLEARANCE",
+      "manuscript_preparation_use": "PROHIBITION_NOTE_ONLY",
+      "external_publication_authorized": false,
+      "limitations": [
+        "No new inference, checkpoint/cache access or raw-data evaluation",
+        "Historical report is not an independently reproduced result",
+        "Exact source/member/model rights and current physical identities remain unverified",
+        "No V2 loading, hashing, inference, replay or rehabilitation"
+      ]
+    },
+    {
+      "id": "H29-SYNC010",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "kind": "Conflicting event_010 synchronization documents",
+      "evidence": [
+        {
+          "path": "docs/PHASE5_OUTPUT_AUDIT_AND_R04_FEASIBILITY.md",
+          "line": 147,
+          "document_sha256": "8472df7943cc61d3125f3d3544b5b21470dcf304cde5d07db2ca54e55e4c6997",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/R04_CALIBRATION_VALIDATION_REPORT.md",
+          "line": 130,
+          "document_sha256": "9e4e80d599b85933b582ee733fc32f2849d452bd666caa39bcc3625b96521ae3",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/R04_ALL_EVENT_CALIBRATION_INVESTIGATION.md",
+          "line": 273,
+          "document_sha256": "3869fabf410de0b373de227a57b28d9738a0eecd2b134926f56ae67fa68134ff",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "configuration_or_model_identity": {
+        "event": "train_events/event_010",
+        "not_the_excluded_qualified_historical_duplicate": true
+      },
+      "dataset_split_provenance": {
+        "R04_exact_events": [
+          "train_events/event_001",
+          "train_events/event_002",
+          "train_events/event_005",
+          "train_events/event_006",
+          "train_events/event_007",
+          "train_events/event_009",
+          "train_events/event_011",
+          "train_events/event_012",
+          "train_events/event_013",
+          "train_events/event_014",
+          "train_events/event_017"
+        ],
+        "event_010_in_R04": false
+      },
+      "reported_metrics": {
+        "reported_acoustic_offset_s": "+2.7158",
+        "reported_metadata_offset_s": "-17.0",
+        "reported_discrepancy_s": "19.72",
+        "document_statuses": [
+          "RESOLVED_VIA_AUDIO",
+          "AMBIGUOUS",
+          "CALIBRATION_SUPPORTED_WITH_CLAIMED_VISUAL_CORROBORATION"
+        ]
+      },
+      "metric_definition": "Historical clock-offset assertions and conflicting classifications, not fresh source synchronization",
+      "known_leakage_or_provenance_risks": [
+        "No independently authenticated source identity or original corroboration inspected",
+        "Historical lens-plane correspondence cannot establish physical roadway entry"
+      ],
+      "independently_reproduced": false,
+      "protected_inputs_accessed": false,
+      "permission_status": "EXACT_SOURCE_RIGHTS_UNRESOLVED;NO_EXTERNAL_RELEASE_CLEARANCE",
+      "manuscript_preparation_use": "HISTORICAL_LIMITATION_NOTE_ONLY",
+      "external_publication_authorized": false,
+      "limitations": [
+        "No new inference, checkpoint/cache access or raw-data evaluation",
+        "Historical report is not an independently reproduced result",
+        "Exact source/member/model rights and current physical identities remain unverified",
+        "Do not select one contradictory offset/status by guessing",
+        "No new media inspection, T2 lens-plane substitution, acoustic GT shift or R04 expansion"
+      ]
+    },
+    {
+      "id": "H29-T0",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "kind": "T0 left-censoring documentary register and contradictions",
+      "evidence": [
+        {
+          "path": "docs/DATASET_ANNOTATION_QUALITY_AUDIT.md",
+          "line": 59,
+          "document_sha256": "286661120451ab4c8650f66ada22b84576f7efd20bb0467ec08af42d2ad57273",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "README.md",
+          "line": 162,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md",
+          "line": 163,
+          "document_sha256": "03444930ec0d73e9dad16a2b510511c61e9a1302e3e6a25cf83307d81a26ea78",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/SAME_CAMERA_FEASIBILITY_CENSORING_AND_ENGINE_EXCLUSION_20261101_M4E3.md",
+          "line": 54,
+          "document_sha256": "bc6fa789784d9bcfd9426a167b1c222d01685d63671fd7ef42b153b66d8fa75e",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "configuration_or_model_identity": {
+        "boundary": "T0",
+        "actual_human_observations_verified": 0
+      },
+      "dataset_split_provenance": {
+        "candidate_train_events": 23,
+        "genuine_evaluable_denominator": null
+      },
+      "reported_metrics": {
+        "reported_left_censored": [
+          "20/23",
+          "23/23"
+        ],
+        "reported_observed_emergence_event_ids": [
+          "event_009",
+          "event_015",
+          "event_016"
+        ]
+      },
+      "metric_definition": "Recording-onset censoring claims, not newly observed train arrivals or human-verified counts",
+      "known_leakage_or_provenance_risks": [
+        "Legacy candidate annotations and report contradictions; source and human evidence not authenticated"
+      ],
+      "independently_reproduced": false,
+      "protected_inputs_accessed": false,
+      "permission_status": "EXACT_SOURCE_RIGHTS_UNRESOLVED;NO_EXTERNAL_RELEASE_CLEARANCE",
+      "manuscript_preparation_use": "HISTORICAL_LIMITATION_NOTE_ONLY",
+      "external_publication_authorized": false,
+      "limitations": [
+        "No new inference, checkpoint/cache access or raw-data evaluation",
+        "Historical report is not an independently reproduced result",
+        "Exact source/member/model rights and current physical identities remain unverified",
+        "Do not infer onset from recording zero or fill missing time",
+        "Retain originals/disagreements and per-metric eligibility; no current 20/23 or 23/23 empirical claim"
+      ]
+    },
+    {
+      "id": "H29-M4M5",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "kind": "Historical M4/M5 non-evaluability",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/HISTORICAL_BENCHMARK_CAUSALITY_IMPACT_AUDIT.md",
+          "line": 22,
+          "document_sha256": "08b201c78a4c6ca6b4ed2638cc76824f2accfd771a0a3261849b31e8b4f37154",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/phase2/EXPERIMENT_DESIGN_CONSOLIDATED.md",
+          "line": 73,
+          "document_sha256": "f9ae618bb1d61afe7610d28c3a3399293f5b28a76d9abb12ad8dfb53285c2d1b",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "configuration_or_model_identity": {
+        "metrics": [
+          "M4",
+          "NEVER_PROTECTED_M5"
+        ],
+        "current_approved_GT": null
+      },
+      "dataset_split_provenance": {
+        "historically_reported_evaluable_count": 0,
+        "current_empirical_denominator": null
+      },
+      "reported_metrics": {
+        "reported_evaluable_count": 0,
+        "observed_real_M4_rate": null,
+        "observed_real_M5_count": null
+      },
+      "metric_definition": "M4 premature opening is primary; M5 integer failure companion. Historical report says unavailable T4 made real outcomes non-evaluable",
+      "known_leakage_or_provenance_risks": [
+        "Historical result packages and protected proposals were not reopened",
+        "Retroactive timing, missing GT, sparse-sampling and source-clock limits remain relevant"
+      ],
+      "independently_reproduced": false,
+      "protected_inputs_accessed": false,
+      "permission_status": "EXACT_SOURCE_RIGHTS_UNRESOLVED;NO_EXTERNAL_RELEASE_CLEARANCE",
+      "manuscript_preparation_use": "HISTORICAL_LIMITATION_NOTE_ONLY",
+      "external_publication_authorized": false,
+      "limitations": [
+        "No new inference, checkpoint/cache access or raw-data evaluation",
+        "Historical report is not an independently reproduced result",
+        "Exact source/member/model rights and current physical identities remain unverified",
+        "Non-computable is not a measured zero percent or zero failures",
+        "Do not drop independent back-camera primary analysis in favor of the old front-only draft"
+      ]
+    },
+    {
+      "id": "H29-MTR",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "kind": "Historical lead-in/timing diagnostics",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MTR_ARITHMETIC_CENSORING_RECHALLENGE.md",
+          "line": 26,
+          "document_sha256": "3cbe0dbafb966e187086bed12d3ce4605461ea752f2eb0dc573e9160da072162",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/HISTORICAL_BENCHMARK_CAUSALITY_IMPACT_AUDIT.md",
+          "line": 243,
+          "document_sha256": "08b201c78a4c6ca6b4ed2638cc76824f2accfd771a0a3261849b31e8b4f37154",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "configuration_or_model_identity": {
+        "scope": "Historical controller and censoring diagnostics, not hardware timing"
+      },
+      "dataset_split_provenance": {
+        "human_verified_physical_lead_in": null
+      },
+      "reported_metrics": {
+        "historical_3_6s": "ENGINEERING_DIAGNOSTIC_NOT_REGULATORY_STANDARD",
+        "fresh_physical_MTR": null
+      },
+      "metric_definition": "MTR remains a feasibility screen, with censoring/eligibility and actuator convention explicit",
+      "known_leakage_or_provenance_risks": [
+        "Recording pre-roll is not necessarily physical approach lead-in",
+        "Old retroactive simulation and floating-point effects cannot be cited as current real latency"
+      ],
+      "independently_reproduced": false,
+      "protected_inputs_accessed": false,
+      "permission_status": "EXACT_SOURCE_RIGHTS_UNRESOLVED;NO_EXTERNAL_RELEASE_CLEARANCE",
+      "manuscript_preparation_use": "HISTORICAL_LIMITATION_NOTE_ONLY",
+      "external_publication_authorized": false,
+      "limitations": [
+        "No new inference, checkpoint/cache access or raw-data evaluation",
+        "Historical report is not an independently reproduced result",
+        "Exact source/member/model rights and current physical identities remain unverified",
+        "No new scientific threshold or inferential test",
+        "A fixed-command mathematical correction is not a rerun of a real-data experiment"
+      ]
+    }
+  ],
+  "fresh_empirical_results": [],
+  "protected_assets_accessed": false,
+  "historical_numbers_independently_reproduced": false
+}

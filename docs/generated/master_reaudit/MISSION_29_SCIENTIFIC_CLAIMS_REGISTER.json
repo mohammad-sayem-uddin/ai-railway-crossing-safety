@@ -1,0 +1,382 @@
+{
+  "schema": "mission29-claims/1",
+  "claims": [
+    {
+      "id": "C29-01",
+      "topic": "engineering_implementation",
+      "proposed_claim": "The repository implements source/provenance, human-review and operation-specific preflight contracts.",
+      "classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "evidence_scope": "SOFTWARE_AND_METHODOLOGY",
+      "evidence_ids": [
+        "software28:synthetic_mission24",
+        "software28:synthetic_mission25",
+        "software28:synthetic_mission26",
+        "software28:synthetic_mission27",
+        "software28:synthetic_mission28"
+      ],
+      "manuscript_use": "METHOD_ONLY",
+      "mandatory_limitations": [
+        "Local code and constructed validation, not accepted genuine services or actual source authorization"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-02",
+      "topic": "software_validation",
+      "proposed_claim": "Mission28 selected resource-free acceptance passed 3614 cases with 118 protected dependencies unexecuted.",
+      "classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "evidence_scope": "SOFTWARE_ONLY",
+      "evidence_ids": [
+        "software28:synthetic_mission28",
+        "protected-tests-118"
+      ],
+      "manuscript_use": "SOFTWARE_VALIDATION_ONLY",
+      "mandatory_limitations": [
+        "Exact baseline receipt scope; never a detection score, an experiment or whole-repository acceptance"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-03",
+      "topic": "candidate_inventory",
+      "proposed_claim": "The documentary plan contains 23 train, 3 control and 1 engine candidate at crossing_A, plus excluded duplicate references.",
+      "classification": "DOCUMENTARY_ONLY",
+      "evidence_scope": "DOCUMENTARY_SCOPE",
+      "evidence_ids": [
+        "doc:v2:train_events/event_001:front:video"
+      ],
+      "manuscript_use": "SCOPE_ONLY",
+      "mandatory_limitations": [
+        "No verified physical identity, availability, ownership or formal inventory signoff"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-04",
+      "topic": "historical_vision",
+      "proposed_claim": "Legacy reported still-image mAP50=.9946 and mAP50:95=.855 describe a leakage-flagged development_fallback split.",
+      "classification": "HISTORICAL_DIAGNOSTIC_ONLY",
+      "evidence_scope": "HISTORICAL_COMPONENT",
+      "evidence_ids": [
+        "H29-VISION"
+      ],
+      "manuscript_use": "HISTORICAL_LIMITATION_ONLY",
+      "mandatory_limitations": [
+        "Reported 487 objects are not train events; no new reproduction or event/cross-site inference"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-05",
+      "topic": "historical_audio",
+      "proposed_claim": "Legacy reports contain F1=.869 and AUC=.961 at .3700; split labels and detailed precision differ.",
+      "classification": "HISTORICAL_DIAGNOSTIC_ONLY",
+      "evidence_scope": "HISTORICAL_COMPONENT",
+      "evidence_ids": [
+        "H29-AUDIO-README",
+        "H29-AUDIO-REPORT"
+      ],
+      "manuscript_use": "HISTORICAL_LIMITATION_ONLY",
+      "mandatory_limitations": [
+        "Checkpoint is configuration-declared only; preserve validation/test/window/recording distinctions; not event protection"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-06",
+      "topic": "train_detection",
+      "proposed_claim": "The system has validated event-level train detection performance.",
+      "classification": "REQUIRES_FUTURE_EXPERIMENT",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-VISION"
+      ],
+      "manuscript_use": "FUTURE_WORK",
+      "mandatory_limitations": [
+        "No genuine source/GT/authorized evaluation; exclude positive performance assertion"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-07",
+      "topic": "camera_roles",
+      "proposed_claim": "Primary analysis retains independent camera clocks; front approach and back clearance outcomes remain separate.",
+      "classification": "DOCUMENTARY_ONLY",
+      "evidence_scope": "ADOPTED_METHOD",
+      "evidence_ids": [
+        "H29-M4M5"
+      ],
+      "manuscript_use": "METHOD_ONLY",
+      "mandatory_limitations": [
+        "Methodology direction only; old front-only draft is not a replacement; no camera performance validated"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-08",
+      "topic": "direction_classification",
+      "proposed_claim": "Front/rear/side appearance classes validate train direction.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-VISION"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "View labels are not validated direction truth"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-09",
+      "topic": "weather_robustness",
+      "proposed_claim": "The system is robust in all weather.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-VISION",
+        "H29-AUDIO-REPORT"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "No controlled weather evaluation; confuser categories are not field-weather validation"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-10",
+      "topic": "night_performance",
+      "proposed_claim": "Night performance has been established.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-T0"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "Night/zero-night documentary conflict unresolved; no inspected source or authorized stratified evaluation"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-11",
+      "topic": "fog_rain",
+      "proposed_claim": "Fog and rain detection performance is demonstrated.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-AUDIO-REPORT"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "ESC-50 rain/audio category does not establish real crossing performance under rain/fog"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-12",
+      "topic": "cross_camera_fusion",
+      "proposed_claim": "Restricted R04 fusion remains exploratory for exactly eleven events, with no event010 expansion.",
+      "classification": "DOCUMENTARY_ONLY",
+      "evidence_scope": "ADOPTED_METHOD",
+      "evidence_ids": [
+        "H29-SYNC010"
+      ],
+      "manuscript_use": "METHOD_ONLY",
+      "mandatory_limitations": [
+        "No fresh alignment, fusion improvement or primary/generalization claim; acoustic offsets do not shift GT"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-13",
+      "topic": "audio_support",
+      "proposed_claim": "Audio is supporting evidence only and cannot independently authorize lowering or clearance under the adopted policy.",
+      "classification": "DOCUMENTARY_ONLY",
+      "evidence_scope": "ADOPTED_METHOD",
+      "evidence_ids": [
+        "H29-AUDIO-README"
+      ],
+      "manuscript_use": "METHOD_ONLY",
+      "mandatory_limitations": [
+        "Policy role, not proof of field horn accuracy or hardware safety"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-14",
+      "topic": "premature_opening",
+      "proposed_claim": "Real-data premature opening was measured as zero.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-M4M5"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "Non-evaluable/null is not measured zero; missing approved T4 and authorization"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-15",
+      "topic": "M4_M5_MTR",
+      "proposed_claim": "M4 is primary, M5 is an integer NEVER_PROTECTED_M5 companion, and MTR is a feasibility screen with metric-specific eligibility.",
+      "classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "evidence_scope": "SOFTWARE_AND_METHODOLOGY",
+      "evidence_ids": [
+        "software28:synthetic_metric_contracts",
+        "H29-M4M5",
+        "H29-MTR"
+      ],
+      "manuscript_use": "METHOD_ONLY",
+      "mandatory_limitations": [
+        "Sampled software contracts are not continuous physical safety proof; no new numerical cutoff or global exclusion"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-16",
+      "topic": "occupancy",
+      "proposed_claim": "Full roadway occupancy has been validated or calculated.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-M4M5"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "Physical entry and same-camera/synchronization requirements remain deferred"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-17",
+      "topic": "physical_entry",
+      "proposed_claim": "Legacy lens-plane or road-centerline labels are validated physical T2.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-SYNC010"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "T2 remains physical-roadway-entry deferred; no invented exit landmark"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-18",
+      "topic": "real_time_performance",
+      "proposed_claim": "Historical timing or unit tests establish real-time field operation.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-MTR"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "No real-time field latency measurement or deployment acceptance; simulated convention is not hardware response"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-19",
+      "topic": "safety_improvement",
+      "proposed_claim": "The implementation improves railway safety.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "software28:synthetic_mission24"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "Engineering refusals/tests do not measure safety benefit or certification"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-20",
+      "topic": "cross_site_generalization",
+      "proposed_claim": "The system generalizes to other crossings.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-VISION"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "Single fixed crossing; development leakage and no multi-site independent evaluation"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-21",
+      "topic": "human_review_accuracy",
+      "proposed_claim": "The human review procedure has demonstrated annotation accuracy.",
+      "classification": "REQUIRES_FUTURE_EXPERIMENT",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "software28:synthetic_mission25"
+      ],
+      "manuscript_use": "FUTURE_WORK",
+      "mandatory_limitations": [
+        "No actual appointed/qualified reviewers or independent human observations; no inferred agreement/tolerance"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-22",
+      "topic": "identity_and_reproducibility",
+      "proposed_claim": "Declared checkpoint hashes and Git presence guarantee scientific reproducibility.",
+      "classification": "NOT_SUPPORTED",
+      "evidence_scope": "FIELD_EMPIRICAL",
+      "evidence_ids": [
+        "H29-AUDIO-README",
+        "H29-VISION"
+      ],
+      "manuscript_use": "EXCLUDE",
+      "mandatory_limitations": [
+        "Configuration declarations and code presence do not prove actual assets, rights, source lineage, GT or repeated experiments"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-23",
+      "topic": "governance",
+      "proposed_claim": "The workflow distinguishes submission, verification, purpose acceptance, preflight, authorization and execution.",
+      "classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "evidence_scope": "SOFTWARE_AND_METHODOLOGY",
+      "evidence_ids": [
+        "software28:synthetic_mission26",
+        "software28:synthetic_mission27",
+        "software28:synthetic_mission28"
+      ],
+      "manuscript_use": "METHOD_ONLY",
+      "mandatory_limitations": [
+        "Cooperative software behavior; no OS isolation, genuine deployment or institutional approval established"
+      ],
+      "independent_empirical_validation": false
+    },
+    {
+      "id": "C29-24",
+      "topic": "documentation_method",
+      "proposed_claim": "Dataset/model documentation can describe intended use, provenance and limitations without converting a reference into project permission.",
+      "classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "evidence_scope": "METHODOLOGICAL_CONTEXT",
+      "evidence_ids": [
+        "L29-DATASHEETS",
+        "L29-MODELCARDS"
+      ],
+      "manuscript_use": "METHOD_ONLY",
+      "mandatory_limitations": [
+        "Primary literature is conceptual context, not verification of this project or evidence of novelty"
+      ],
+      "independent_empirical_validation": false
+    }
+  ],
+  "no_new_scientific_thresholds": true,
+  "no_new_empirical_results": true,
+  "adopted_decisions_reopened": false,
+  "publication_scope": "INTERNAL_ORIGINAL_METHODS_MANUSCRIPT_PREPARATION_ONLY"
+}

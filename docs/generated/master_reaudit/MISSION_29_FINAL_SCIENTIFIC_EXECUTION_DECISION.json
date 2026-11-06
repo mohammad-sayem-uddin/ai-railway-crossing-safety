@@ -1,0 +1,100 @@
+{
+  "schema": "mission29-pathway-decision/1",
+  "current_pathway": "PATH_B_DEFENSIBLE_MANUSCRIPT_PREPARATION",
+  "decision_date": "2026-11-06",
+  "current_research_possible": [
+    "Original methods/software-validation manuscript preparation",
+    "Documentary contradiction and historical-results audit",
+    "Existing source-free regression and claim consistency validation"
+  ],
+  "blocked_or_prohibited": [
+    "Genuine pilot/human review/GT promotion and real-data experiments without actual prerequisites and canonical authorization",
+    "Protected resource access, raw/material release and physical deployment",
+    "Audio V2 execution",
+    "External manuscript submission before actual author/R-PUB/artifact review"
+  ],
+  "path_a": {
+    "state": "BLOCKED",
+    "pilot_state": "PILOT_NOT_READY",
+    "genuine_verified_source_identities": 0,
+    "qualified_appointed_reviewers": 0,
+    "current_canonical_authorization": null,
+    "requirements_reference": "MISSION_28_FINAL_PILOT_READINESS_DECISION.json#prerequisites",
+    "new_genuine_evidence": []
+  },
+  "path_b": {
+    "state": "DEFENSIBLE_FOR_DEFINED_MANUSCRIPT_PREPARATION_ONLY",
+    "manuscript_preparation_can_begin": true,
+    "publication_rights_assessed": true,
+    "publication_rights_register": "MISSION_29_PUBLICATION_RIGHTS_REGISTER.json",
+    "scope": "ORIGINAL_METHODS_TEXT_AND_QUALIFIED_SOFTWARE_VALIDATION",
+    "historical_results_use": "LIMITATION_OR_PROVENANCE_NOTE_ONLY_NOT_PRIMARY_EMPIRICAL_RESULTS",
+    "protected_artifacts_excluded": true,
+    "external_submission_authorized": false,
+    "raw_or_protected_release_authorized": false,
+    "human_author_roster": null,
+    "venue": null,
+    "publication_acceptance_guaranteed": false
+  },
+  "historical_results_reportable_as_qualified_notes": [
+    "H29-VISION",
+    "H29-AUDIO-README",
+    "H29-AUDIO-REPORT",
+    "H29-AUDIO-V2",
+    "H29-SYNC010",
+    "H29-T0",
+    "H29-M4M5",
+    "H29-MTR"
+  ],
+  "claims_to_exclude": [
+    "C29-08",
+    "C29-09",
+    "C29-10",
+    "C29-11",
+    "C29-14",
+    "C29-16",
+    "C29-17",
+    "C29-18",
+    "C29-19",
+    "C29-20",
+    "C29-22"
+  ],
+  "methodology_claims_in_scope": [
+    "C29-01",
+    "C29-02",
+    "C29-03",
+    "C29-04",
+    "C29-05",
+    "C29-07",
+    "C29-12",
+    "C29-13",
+    "C29-15",
+    "C29-23",
+    "C29-24"
+  ],
+  "engineering": {
+    "core_freeze_recommended": true,
+    "material_new_defects_found": 0,
+    "necessary_current_work": "Bounded claim/pathway/publication consistency validator and requested regression only",
+    "reopen_only_for": [
+      "Demonstrated material defect",
+      "Actual accepted deployment/evidence integration requirement",
+      "Separately adopted scientific comparator mapping"
+    ],
+    "no_new_broad_infrastructure_or_demos": true
+  },
+  "actual_human_external_actions": [
+    "ACT-01/02 original source acquisition/custody and exact-member rights",
+    "ACT-03/04 actual applicable institution/site/participant/privacy determinations",
+    "ACT-05 actual qualified primary/independent second/separate adjudicator appointments",
+    "ACT-06 actual trusted services and canonical operation authorization",
+    "ACT-07 only if appointed",
+    "Actual human authors verify draft, contributions and AI disclosure; perform artifact-specific R-PUB/release review before external submission"
+  ],
+  "recommended_next_milestone": "Human revision and rights/claim review of the prepared methods draft; pursue ACT-01/02 originals in parallel, with core engineering frozen",
+  "empirical_experiments_executed": false,
+  "new_grants_issued": 0,
+  "protected_resources_accessed": false,
+  "scientific_completion": false,
+  "evidence_integrity_note": "This is a scoped research-direction/document-preparation decision, not an authenticating source-rights verifier, journal acceptance or canonical authorization."
+}

@@ -1,0 +1,227 @@
+{
+  "schema": "mission29-publication-rights/1",
+  "assessment_complete_for_defined_preparation_scope": true,
+  "scope": "Original internal methods/software-validation manuscript preparation and explicitly requested Git documentation delivery; not journal submission or protected artifact release",
+  "preparation_authority": {
+    "task_sha256": "02d264173f475bd2d8faaf25c55ec328f8345477f90d2cc20eed42c9856a59e8",
+    "scope": "Mission29 sections 7/8/14/15: original analysis/manuscript preparation and scoped Git delivery only",
+    "not_a_canonical_resource_grant": true
+  },
+  "project_license_declaration": "Proprietary research prototype; declaration is not a verified ownership chain or blanket release license",
+  "external_submission_authorized": false,
+  "raw_or_protected_assets_release_authorized": false,
+  "human_author_roster": null,
+  "human_final_approval": null,
+  "venue": null,
+  "RPUB": "UNRESOLVED; retained, not reopened or bypassed",
+  "assets": [
+    {
+      "id": "PUB29-ORIGINAL-TEXT",
+      "asset": "Original methods/limitations prose",
+      "assessment": "ALLOWED_INTERNAL_PREPARATION",
+      "internal_preparation_allowed": true,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "task_sha256": "02d264173f475bd2d8faaf25c55ec328f8345477f90d2cc20eed42c9856a59e8",
+          "scope": "Mission29 sections 7/8/14/15: original analysis/manuscript preparation and scoped Git delivery only",
+          "not_a_canonical_resource_grant": true
+        }
+      ],
+      "restrictions": [
+        "Original prose only",
+        "Actual human authors must verify/account for conclusions and AI assistance",
+        "External submission and R-PUB remain unresolved"
+      ]
+    },
+    {
+      "id": "PUB29-METHOD-DESCRIPTION",
+      "asset": "Original conceptual descriptions of implemented code/protocol",
+      "assessment": "ALLOWED_INTERNAL_PREPARATION",
+      "internal_preparation_allowed": true,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "task_sha256": "02d264173f475bd2d8faaf25c55ec328f8345477f90d2cc20eed42c9856a59e8",
+          "scope": "Mission29 sections 7/8/14/15: original analysis/manuscript preparation and scoped Git delivery only",
+          "not_a_canonical_resource_grant": true
+        },
+        {
+          "path": "pyproject.toml",
+          "line": 11,
+          "document_sha256": "75d77b187f896ed3a2b21112199d52e066c336d34f8956656b162395811ec56b",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_21_DESCRIPTIVE_MANUSCRIPT_SUPPORT_DRAFT.md",
+          "line": 1,
+          "document_sha256": "b95ef9186a528df03352a47c2d04ad81b0aa3b4b7c6e63c0bf19695844c38ae5",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "restrictions": [
+        "No presumption of an open-source license or legal ownership from Git presence",
+        "No copied source-code bundle or third-party figures",
+        "Conceptual description is not deployment acceptance"
+      ]
+    },
+    {
+      "id": "PUB29-SOFTWARE-SUMMARY",
+      "asset": "Accurate summary of existing constructed/source validation receipts",
+      "assessment": "ALLOWED_INTERNAL_PREPARATION",
+      "internal_preparation_allowed": true,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "task_sha256": "02d264173f475bd2d8faaf25c55ec328f8345477f90d2cc20eed42c9856a59e8",
+          "scope": "Mission29 sections 7/8/14/15: original analysis/manuscript preparation and scoped Git delivery only",
+          "not_a_canonical_resource_grant": true
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_FINAL_VALIDATION.json",
+          "line": 1,
+          "document_sha256": "aa3733e971ad8e38b6098c90728f7860a0201874e95046b45f96999dc9cf7e76",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "restrictions": [
+        "Tests are engineering evidence only",
+        "No real dataset/human/railway safety or model-performance interpretation",
+        "Whole-repository acceptance excluded"
+      ]
+    },
+    {
+      "id": "PUB29-INVENTORY-SUMMARY",
+      "asset": "Aggregate documentary candidate scope",
+      "assessment": "ALLOWED_INTERNAL_PREPARATION",
+      "internal_preparation_allowed": true,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "task_sha256": "02d264173f475bd2d8faaf25c55ec328f8345477f90d2cc20eed42c9856a59e8",
+          "scope": "Mission29 sections 7/8/14/15: original analysis/manuscript preparation and scoped Git delivery only",
+          "not_a_canonical_resource_grant": true
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "restrictions": [
+        "27 candidates, not signed-off verified recordings",
+        "No original source files, personal data or implied acquisition authority"
+      ]
+    },
+    {
+      "id": "PUB29-HISTORICAL-NOTES",
+      "asset": "Legacy numeric facts with source attribution and exact limitations",
+      "assessment": "HISTORICAL_LIMITATION_NOTE_ONLY",
+      "internal_preparation_allowed": true,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "task_sha256": "02d264173f475bd2d8faaf25c55ec328f8345477f90d2cc20eed42c9856a59e8",
+          "scope": "Mission29 sections 7/8/14/15: original analysis/manuscript preparation and scoped Git delivery only",
+          "not_a_canonical_resource_grant": true
+        },
+        {
+          "path": "README.md",
+          "line": 1,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+          "line": 1,
+          "document_sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "restrictions": [
+        "Not primary empirical results",
+        "Do not silently fix split/count/architecture contradictions",
+        "Artifact-specific external release review remains needed"
+      ]
+    },
+    {
+      "id": "PUB29-RAW-MEDIA",
+      "asset": "Original raw media or extracted frames/audio",
+      "assessment": "EXCLUDED_PROTECTED_ASSET",
+      "internal_preparation_allowed": false,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_EXACT_SOURCE_RIGHTS_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "2cc9d6404819a32fc18f78a22cbc3644bf9b45eafa84a07347eed417e5a9e6e4",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "restrictions": [
+        "Do not access or reproduce",
+        "No exact source/purpose release permission verified",
+        "Historical raw-release denial retained"
+      ]
+    },
+    {
+      "id": "PUB29-MODELS-CACHES",
+      "asset": "Production checkpoints, caches and original derived arrays",
+      "assessment": "EXCLUDED_PROTECTED_ASSET",
+      "internal_preparation_allowed": false,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "path": "configs/frozen_experiment_v1.yaml",
+          "line": 1,
+          "document_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "restrictions": [
+        "Software license is not asset/model/data rights",
+        "Do not access, load, hash, redistribute or infer permission"
+      ]
+    },
+    {
+      "id": "PUB29-HUMAN-RECORDS",
+      "asset": "Original review/consent/appointment records or fabricated substitute",
+      "assessment": "EXCLUDED_PROTECTED_ASSET",
+      "internal_preparation_allowed": false,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_REVIEWER_IDENTITY_AND_QUALIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0a72cea8177d17bdbfafbb35884bfb4f9f450ce61f77cc6154a3cedecacce079",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "restrictions": [
+        "No genuine qualified appointment/observation evidence supplied",
+        "No private personal records or invented human judgments"
+      ]
+    },
+    {
+      "id": "PUB29-THIRD-PARTY",
+      "asset": "Third-party full text, code, figures or copied historical illustrations",
+      "assessment": "EXCLUDED_FROM_REPRODUCTION",
+      "internal_preparation_allowed": false,
+      "external_release_authorized": false,
+      "evidence": [
+        {
+          "path": "pyproject.toml",
+          "line": 1,
+          "document_sha256": "75d77b187f896ed3a2b21112199d52e066c336d34f8956656b162395811ec56b",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "restrictions": [
+        "No automatic third-party reproduction/relicensing permission",
+        "Cite the two verified primary bibliographic sources; original short paraphrases only",
+        "Do not reuse the old paper reference list as pre-verified literature"
+      ]
+    }
+  ]
+}

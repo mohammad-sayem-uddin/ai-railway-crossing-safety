@@ -1,0 +1,24 @@
+# Mission 29 Path A: authorized empirical research requirements
+
+**BLOCKED.** No new genuine originals, independently verified identities/rights, qualified human appointments or current canonical authorization were found. The unchanged five-event pilot remains PILOT_NOT_READY. This is a plan, not execution authority.
+
+| Step | Exact prerequisite / existing action | Current state | What follows only when evidenced |
+|---|---|---|---|
+| 1 Source identity | ACT-01 original acquisition/member/custodian ledger; exact recording/event/camera/source-clock/origin/provenance; signed-off inventory within actual authority | Missing; 63 documentary references remain unknown | Separately authorized canonical verification; old hashes are not fresh identities |
+| 2 Rights | ACT-02 actual owner/applicable exact-member license chain, all ten dimensions separate, scope/actor/operation/purpose/environment/storage/recipient/output/validity/expiry/revocation | 62 unknown; one collection-level partial; 630 unknown dimensions | Accept only each independently verified purpose within exact scope |
+| 3 External circumstances | ACT-03/04 actual institution/participant/privacy/recording/site applicability, with attributable approval or non-applicability where relevant | Nine unknown | Do not assume a universal approval or exemption |
+| 4 Primary reviewer | ACT-05 actual identity, appointment/delegation, boundary/tool competence, experience, participation disposition, conflicts/exposure/access/current validity | None verified | Authenticated, qualified source-bound first-pass assignment |
+| 5 Independent review | Distinct actual physical person, independent first-pass seal, required risks and clear-boundary risk audit | None verified | Mandatory six RD043 triggers retained; no fixed audit percentage |
+| 6 Adjudication | Separate actual qualified adjudicator and current adjudication authority; exact independent parents when adjudicating | Missing | Separate immutable human adjudication; unresolved stays UNCERTAIN |
+| 7 Source presentation | Accepted neutral player with original PTS and canonical source grant at each use | Interface only | Blind first pass; hide candidates/old/model/comparison values |
+| 8 Identity/time | Actual authenticated physical identity, current scoped role, trusted time/revocation | Missing | No CLI timestamp or username stands in for independent trust |
+| 9 Storage | Accepted authenticated immutable observations, append-only corrections, independent anchors/backups and atomic WP03/WP04 transaction/recovery | Missing | Local SQLite alone does not establish protected human storage |
+| 10 Audit/revocation | Current source/person/assignment/evidence/grant status and exact logs/output/recipients | Missing | Fail closed on unavailable/revoked/expired authority; preserve originals |
+| 11 Canonical operation authorization | ACT-06 exact source/model/cache/actor/role/purpose/environment/time/log/output package and existing canonical path | None verified | Separate preflight/readiness from permission; no grant issued here |
+| 12 Human review | First genuine five-event/ten-source hard-case pilot, then actual scoped review; T1 frog/approach, T2 physical entry deferred, T3 locomotive-unit clearance, T4 tail | Not performed | No software-generated observations, inferred times or acoustic GT shift |
+| 13 GT promotion | Complete genuine source-linked batch, active 8.1 acceptance, independent review/dispute disposition and separate current promotion authorization/receipt | Not performed | No fixture, incomplete batch or legacy annotation becomes GT |
+| 14 Real-data evaluation | Exact verified source/model/cache lineage, frozen operative protocol/config, current per-operation permission, genuine GT and per-metric eligibility | Not performed | Descriptive independent-camera outputs only; no official split, new fitting/calibration or physical deployment |
+
+The five fixed events remain train005, train021, engine001, train001 and no-train001, front/back each. No new recordings, R04 expansion, threshold or repeated RD decision is requested. R04 remains eleven events; historical duplicate references remain excluded. T2/occupancy and RD046 scientific sufficiency stay deferred. Canonical 8.1’s existing 30-second session plausibility floor is unchanged; never pad actual duration.
+
+Canonical authorization is necessary for execution, not a circular prerequisite for entering authorization review. Future adjudication parents/complete GT are needed at their actual later stages, not before a blind first pass. Optional external audit and public release are not universal private-pilot prerequisites. All 27 operation selections retain 21 conditional and six denied/deferred outcomes. No Path A step is marked complete by this table; source-free document preparation is distinct from these empirical stages.

@@ -1,0 +1,3399 @@
+{
+  "schema": "mission29-scientific-evidence/1",
+  "baseline": "65811b6f3c54eeeb1a86b4fd8c8a861f7d675423",
+  "crossing": "crossing_A",
+  "candidate_events": [
+    "train_events/event_001",
+    "train_events/event_002",
+    "train_events/event_003",
+    "train_events/event_004",
+    "train_events/event_005",
+    "train_events/event_006",
+    "train_events/event_007",
+    "train_events/event_008",
+    "train_events/event_009",
+    "train_events/event_010",
+    "train_events/event_011",
+    "train_events/event_012",
+    "train_events/event_013",
+    "train_events/event_014",
+    "train_events/event_015",
+    "train_events/event_016",
+    "train_events/event_017",
+    "train_events/event_018",
+    "train_events/event_019",
+    "train_events/event_020",
+    "train_events/event_021",
+    "train_events/event_022",
+    "train_events/event_023",
+    "no_train_events/event_001",
+    "no_train_events/event_002",
+    "no_train_events/event_003",
+    "engine_events/event_001"
+  ],
+  "R04_events": [
+    "train_events/event_001",
+    "train_events/event_002",
+    "train_events/event_005",
+    "train_events/event_006",
+    "train_events/event_007",
+    "train_events/event_009",
+    "train_events/event_011",
+    "train_events/event_012",
+    "train_events/event_013",
+    "train_events/event_014",
+    "train_events/event_017"
+  ],
+  "pilot_events": [
+    "train_events/event_005",
+    "train_events/event_021",
+    "engine_events/event_001",
+    "train_events/event_001",
+    "no_train_events/event_001"
+  ],
+  "pilot_source_ids": [
+    "doc:v2:train_events/event_005:front:video",
+    "doc:v2:train_events/event_005:back:video",
+    "doc:v2:train_events/event_021:front:video",
+    "doc:v2:train_events/event_021:back:video",
+    "doc:v2:engine_events/event_001:front:video",
+    "doc:v2:engine_events/event_001:back:video",
+    "doc:v2:train_events/event_001:front:video",
+    "doc:v2:train_events/event_001:back:video",
+    "doc:v2:no_train_events/event_001:front:video",
+    "doc:v2:no_train_events/event_001:back:video"
+  ],
+  "inventory_signed_off": false,
+  "genuine_verified_recording_count": 0,
+  "new_genuine_originals": [],
+  "items": [
+    {
+      "id": "doc:v2:train_events/event_001:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_001",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_001/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_001:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_001:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_001:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_001",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_001/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_001:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_001/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_001:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_002:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_002",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_002/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_002:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_002/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_002:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_002:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_002",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_002/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_002:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_002/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_002:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_003:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_003",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_003/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_003:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_003/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_003:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_003:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_003",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_003/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_003:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_003/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_003:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_004:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_004",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_004/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_004:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_004/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_004:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_004:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_004",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_004/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_004:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_004/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_004:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_005:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_005",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_005/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_005:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_005:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_005:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_005",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_005/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_005:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_005/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_005:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_006:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_006",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_006/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_006:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_006/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_006:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_006:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_006",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_006/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_006:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_006/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_006:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_007:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_007",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_007/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_007:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_007/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_007:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_007:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_007",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_007/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_007:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_007/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_007:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_008:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_008",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_008/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_008:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_008/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_008:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_008:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_008",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_008/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_008:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_008/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_008:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_009:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_009",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_009/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_009:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_009:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_009:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_009",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_009/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_009:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_009/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_009:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_010:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_010",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_010/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_010:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_010/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_010:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_010:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_010",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_010/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_010:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_010/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_010:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_011:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_011",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_011/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_011:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_011/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_011:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_011:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_011",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_011/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_011:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_011/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_011:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_012:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_012",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_012/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_012:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_012/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_012:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_012:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_012",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_012/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_012:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_012/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_012:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_013:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_013",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_013/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_013:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_013/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_013:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_013:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_013",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_013/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_013:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_013/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_013:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_014:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_014",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_014/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_014:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_014/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_014:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_014:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_014",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_014/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_014:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_014/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_014:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_015:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_015",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_015/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_015:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_015/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_015:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_015:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_015",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_015/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_015:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_015/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_015:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_016:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_016",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_016/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_016:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_016/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_016:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_016:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_016",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_016/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_016:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_016/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_016:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_017:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_017",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_017/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_017:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_017/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_017:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_017:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_017",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_017/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_017:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_017/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_017:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_018:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_018",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_018/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_018:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_018/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_018:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_018:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_018",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_018/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_018:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_018/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_018:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_019:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_019",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_019/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_019:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_019/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_019:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_019:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_019",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_019/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_019:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_019/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_019:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_020:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_020",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_020/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_020:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_020/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_020:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_020:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_020",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_020/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_020:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_020/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_020:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_021:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_021",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_021/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_021:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_021/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_021:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_021:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_021",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_021/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_021:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_021/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_021:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_022:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_022",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_022/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_022:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_022/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_022:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_022:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_022",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_022/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_022:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_022/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_022:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_023:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_023",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_023/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_023:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_023/camera_front.mov",
+      "reference_parent": "doc:v2:train_events/event_023:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:train_events/event_023:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "train_events/event_023",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/train_events/event_023/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:train_events/event_023:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/train_events/event_023/camera_back.mov",
+      "reference_parent": "doc:v2:train_events/event_023:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:no_train_events/event_001:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "no_train_events/event_001",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_001/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:no_train_events/event_001:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov",
+      "reference_parent": "doc:v2:no_train_events/event_001:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:no_train_events/event_001:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "no_train_events/event_001",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_001/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:no_train_events/event_001:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov",
+      "reference_parent": "doc:v2:no_train_events/event_001:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:no_train_events/event_002:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "no_train_events/event_002",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_002/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:no_train_events/event_002:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/no_train_events/event_002/camera_front.mov",
+      "reference_parent": "doc:v2:no_train_events/event_002:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:no_train_events/event_002:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "no_train_events/event_002",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_002/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:no_train_events/event_002:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/no_train_events/event_002/camera_back.mov",
+      "reference_parent": "doc:v2:no_train_events/event_002:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:no_train_events/event_003:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "no_train_events/event_003",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_003/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:no_train_events/event_003:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov",
+      "reference_parent": "doc:v2:no_train_events/event_003:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:no_train_events/event_003:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "no_train_events/event_003",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/no_train_events/event_003/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:no_train_events/event_003:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov",
+      "reference_parent": "doc:v2:no_train_events/event_003:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:engine_events/event_001:front:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "engine_events/event_001",
+      "camera": "front",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/engine_events/event_001/raw_media/front",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:engine_events/event_001:front:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/engine_events/event_001/camera_front.mov",
+      "reference_parent": "doc:v2:engine_events/event_001:front:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:v2:engine_events/event_001:back:video",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "engine_events/event_001",
+      "camera": "back",
+      "eligibility": "CANDIDATE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+          "section": "events/engine_events/event_001/raw_media/back",
+          "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:v2:engine_events/event_001:back:video",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/v2/engine_events/event_001/camera_back.mov",
+      "reference_parent": "doc:v2:engine_events/event_001:back:video",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:excluded:historical_duplicate_010:front",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "engine_events/event_historical_duplicate_010",
+      "camera": "front",
+      "eligibility": "EXCLUDED",
+      "evidence": [
+        {
+          "path": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+          "section": "\u00a74 historical duplicate",
+          "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "doc:excluded:historical_duplicate_010:back",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": "engine_events/event_historical_duplicate_010",
+      "camera": "back",
+      "eligibility": "EXCLUDED",
+      "evidence": [
+        {
+          "path": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+          "section": "\u00a74 historical duplicate",
+          "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "doc:collection:layer_b_v1",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": null,
+      "camera": null,
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/archive/REAL_DATASET_INVENTORY.md",
+          "section": "\u00a72 21 original events; aliases not reconciled",
+          "document_sha256": "fc3ef7faea43a2eaf0560204df0047e81ccf0ed1480bbde855dd40be23c28327",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:collection:layer_b_v1",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/layer_b/videos/",
+      "reference_parent": "doc:collection:layer_b_v1",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:collection:horn_positive",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": null,
+      "camera": null,
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+          "section": "\u00a75.1 87 files /86 unique; no complete individual-source rights registry",
+          "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:collection:horn_positive",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/audio/train_horn/positive/",
+      "reference_parent": "doc:collection:horn_positive",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:collection:horn_negative",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": null,
+      "camera": null,
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+          "section": "\u00a75.2 97 files /95 unique; no complete individual-source rights registry",
+          "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:collection:horn_negative",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/audio/train_horn/negative/",
+      "reference_parent": "doc:collection:horn_negative",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:collection:esc50",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": null,
+      "camera": null,
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "evidence": [
+        {
+          "path": "README.md",
+          "section": "Training Corpus and Third-Party Backbones",
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_PARTIALLY_DOCUMENTED",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "doc:collection:vision_v1",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": null,
+      "camera": null,
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "evidence": [
+        {
+          "path": "configs/vision.yaml",
+          "section": "dataset_root; no exact-asset license established",
+          "document_sha256": "be46784c46a10b879ad9e318c9b13499bac616d1546c0df7c75fde6c55af5e26",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:collection:vision_v1",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "data/raw/vision/v1/baler.v1i.yolov8",
+      "reference_parent": "doc:collection:vision_v1",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:model:vision_frozen",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": null,
+      "camera": null,
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md",
+          "section": "Reproducibility Statement; exact bytes not accessed",
+          "document_sha256": "03444930ec0d73e9dad16a2b510511c61e9a1302e3e6a25cf83307d81a26ea78",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:model:vision_frozen",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+      "reference_parent": "doc:model:vision_frozen",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "doc:model:audio_v3",
+      "item_type": "SOURCE_DOCUMENTARY_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "event": null,
+      "camera": null,
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "evidence": [
+        {
+          "path": "docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md",
+          "section": "AudioV3 reference; candidate document not live model authority",
+          "document_sha256": "8386c2b295166eb01da644251f1eb5f0d584e207d6dac33f0dcd7849ef56168e",
+          "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+          "line": 1,
+          "document_sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "physical_identity_verified": false,
+      "rights_status": "RIGHTS_UNKNOWN",
+      "manuscript_use": "DOCUMENTARY_SCOPE_ONLY",
+      "limitation": "Historical name/path/hash/alias is not current recording identity, rights, source availability or formal inventory signoff"
+    },
+    {
+      "id": "protected:doc:model:audio_v3",
+      "item_type": "PROTECTED_RESOURCE_POINTER",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "resource_reference": "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt",
+      "reference_parent": "doc:model:audio_v3",
+      "resource_opened_or_hashed": false,
+      "manuscript_use": "EXCLUDE_ORIGINAL_ASSET"
+    },
+    {
+      "id": "H29-VISION",
+      "item_type": "HISTORICAL_RESULT_DOCUMENT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "evidence": [
+        {
+          "path": "README.md",
+          "line": 102,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "README.md",
+          "line": 106,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "configs/frozen_experiment_v1.yaml",
+          "line": 15,
+          "document_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "independently_reproduced": false,
+      "manuscript_use": "HISTORICAL_LIMITATION_NOTE_ONLY"
+    },
+    {
+      "id": "H29-AUDIO-README",
+      "item_type": "HISTORICAL_RESULT_DOCUMENT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "evidence": [
+        {
+          "path": "README.md",
+          "line": 117,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "configs/frozen_experiment_v1.yaml",
+          "line": 25,
+          "document_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "independently_reproduced": false,
+      "manuscript_use": "HISTORICAL_LIMITATION_NOTE_ONLY"
+    },
+    {
+      "id": "H29-AUDIO-REPORT",
+      "item_type": "HISTORICAL_RESULT_DOCUMENT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "evidence": [
+        {
+          "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+          "line": 178,
+          "document_sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+          "line": 188,
+          "document_sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+          "line": 80,
+          "document_sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "independently_reproduced": false,
+      "manuscript_use": "HISTORICAL_LIMITATION_NOTE_ONLY"
+    },
+    {
+      "id": "H29-AUDIO-V2",
+      "item_type": "HISTORICAL_RESULT_DOCUMENT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "evidence": [
+        {
+          "path": "configs/frozen_experiment_v1.yaml",
+          "line": 27,
+          "document_sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "src/railway_detection/experiments/frozen_config.py",
+          "line": 33,
+          "document_sha256": "bcbe3684192664e4cb8b8d4221389cf4d13ee2a7f1c72cdc815f0a671f23e3bd",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "src/railway_detection/experiments/frozen_config.py",
+          "line": 377,
+          "document_sha256": "bcbe3684192664e4cb8b8d4221389cf4d13ee2a7f1c72cdc815f0a671f23e3bd",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "src/railway_detection/evaluation/replay_producer.py",
+          "line": 207,
+          "document_sha256": "855818b3dcc73ddab9b2669736e2dbfb5df861e986d0e6acc7697129bc3bed43",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "independently_reproduced": false,
+      "manuscript_use": "PROHIBITION_NOTE_ONLY"
+    },
+    {
+      "id": "H29-SYNC010",
+      "item_type": "HISTORICAL_RESULT_DOCUMENT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "evidence": [
+        {
+          "path": "docs/PHASE5_OUTPUT_AUDIT_AND_R04_FEASIBILITY.md",
+          "line": 147,
+          "document_sha256": "8472df7943cc61d3125f3d3544b5b21470dcf304cde5d07db2ca54e55e4c6997",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/R04_CALIBRATION_VALIDATION_REPORT.md",
+          "line": 130,
+          "document_sha256": "9e4e80d599b85933b582ee733fc32f2849d452bd666caa39bcc3625b96521ae3",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/R04_ALL_EVENT_CALIBRATION_INVESTIGATION.md",
+          "line": 273,
+          "document_sha256": "3869fabf410de0b373de227a57b28d9738a0eecd2b134926f56ae67fa68134ff",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "independently_reproduced": false,
+      "manuscript_use": "HISTORICAL_LIMITATION_NOTE_ONLY"
+    },
+    {
+      "id": "H29-T0",
+      "item_type": "HISTORICAL_RESULT_DOCUMENT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "evidence": [
+        {
+          "path": "docs/DATASET_ANNOTATION_QUALITY_AUDIT.md",
+          "line": 59,
+          "document_sha256": "286661120451ab4c8650f66ada22b84576f7efd20bb0467ec08af42d2ad57273",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "README.md",
+          "line": 162,
+          "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md",
+          "line": 163,
+          "document_sha256": "03444930ec0d73e9dad16a2b510511c61e9a1302e3e6a25cf83307d81a26ea78",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/SAME_CAMERA_FEASIBILITY_CENSORING_AND_ENGINE_EXCLUSION_20261101_M4E3.md",
+          "line": 54,
+          "document_sha256": "bc6fa789784d9bcfd9426a167b1c222d01685d63671fd7ef42b153b66d8fa75e",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "independently_reproduced": false,
+      "manuscript_use": "HISTORICAL_LIMITATION_NOTE_ONLY"
+    },
+    {
+      "id": "H29-M4M5",
+      "item_type": "HISTORICAL_RESULT_DOCUMENT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/HISTORICAL_BENCHMARK_CAUSALITY_IMPACT_AUDIT.md",
+          "line": 22,
+          "document_sha256": "08b201c78a4c6ca6b4ed2638cc76824f2accfd771a0a3261849b31e8b4f37154",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/phase2/EXPERIMENT_DESIGN_CONSOLIDATED.md",
+          "line": 73,
+          "document_sha256": "f9ae618bb1d61afe7610d28c3a3399293f5b28a76d9abb12ad8dfb53285c2d1b",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "independently_reproduced": false,
+      "manuscript_use": "HISTORICAL_LIMITATION_NOTE_ONLY"
+    },
+    {
+      "id": "H29-MTR",
+      "item_type": "HISTORICAL_RESULT_DOCUMENT",
+      "scientific_class": "HISTORICAL_RESULT_WITH_LIMITATIONS",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MTR_ARITHMETIC_CENSORING_RECHALLENGE.md",
+          "line": 26,
+          "document_sha256": "3cbe0dbafb966e187086bed12d3ce4605461ea752f2eb0dc573e9160da072162",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/HISTORICAL_BENCHMARK_CAUSALITY_IMPACT_AUDIT.md",
+          "line": 243,
+          "document_sha256": "08b201c78a4c6ca6b4ed2638cc76824f2accfd771a0a3261849b31e8b4f37154",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "independently_reproduced": false,
+      "manuscript_use": "HISTORICAL_LIMITATION_NOTE_ONLY"
+    },
+    {
+      "id": "software28:synthetic_data_provenance",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_data_provenance",
+      "cases": 21,
+      "passed": 21,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_evaluation_pipeline",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_evaluation_pipeline",
+      "cases": 18,
+      "passed": 18,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_human_review",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_human_review",
+      "cases": 30,
+      "passed": 30,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_metric_contracts",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_metric_contracts",
+      "cases": 15,
+      "passed": 15,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission17d",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission17d",
+      "cases": 238,
+      "passed": 238,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission18a",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission18a",
+      "cases": 65,
+      "passed": 65,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission18b",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission18b",
+      "cases": 26,
+      "passed": 26,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission22",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission22",
+      "cases": 62,
+      "passed": 62,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission23",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission23",
+      "cases": 23,
+      "passed": 23,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission24",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission24",
+      "cases": 191,
+      "passed": 191,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission25",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission25",
+      "cases": 148,
+      "passed": 148,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission26",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission26",
+      "cases": 98,
+      "passed": 98,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission27",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission27",
+      "cases": 63,
+      "passed": 63,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_mission28",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_mission28",
+      "cases": 23,
+      "passed": 23,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_preservation",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_preservation",
+      "cases": 18,
+      "passed": 18,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_reporting",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_reporting",
+      "cases": 8,
+      "passed": 8,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_security",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_security",
+      "cases": 46,
+      "passed": 46,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:synthetic_tooling",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "synthetic_tooling",
+      "cases": 15,
+      "passed": 15,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_0",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_0",
+      "cases": 21,
+      "passed": 21,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_1",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_1",
+      "cases": 54,
+      "passed": 54,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_2",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_2",
+      "cases": 53,
+      "passed": 53,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_3",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_3",
+      "cases": 65,
+      "passed": 65,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_4",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_4",
+      "cases": 57,
+      "passed": 57,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_5",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_5",
+      "cases": 58,
+      "passed": 58,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_6",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_6",
+      "cases": 107,
+      "passed": 107,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_7",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_7",
+      "cases": 23,
+      "passed": 23,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_8",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_8",
+      "cases": 102,
+      "passed": 102,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_9",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_9",
+      "cases": 25,
+      "passed": 25,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_10",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_10",
+      "cases": 73,
+      "passed": 73,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_11",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_11",
+      "cases": 21,
+      "passed": 21,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_12",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_12",
+      "cases": 38,
+      "passed": 38,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_13",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_13",
+      "cases": 37,
+      "passed": 37,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_14",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_14",
+      "cases": 104,
+      "passed": 104,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_15",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_15",
+      "cases": 86,
+      "passed": 86,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_16",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_16",
+      "cases": 227,
+      "passed": 227,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_17",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_17",
+      "cases": 25,
+      "passed": 25,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_18",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_18",
+      "cases": 172,
+      "passed": 172,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_19",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_19",
+      "cases": 210,
+      "passed": 210,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_20",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_20",
+      "cases": 93,
+      "passed": 93,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_21",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_21",
+      "cases": 102,
+      "passed": 102,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_22",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_22",
+      "cases": 232,
+      "passed": 232,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_23",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_23",
+      "cases": 59,
+      "passed": 59,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_24",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_24",
+      "cases": 29,
+      "passed": 29,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_25",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_25",
+      "cases": 149,
+      "passed": 149,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_26",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_26",
+      "cases": 156,
+      "passed": 156,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_27",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_27",
+      "cases": 47,
+      "passed": 47,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_28",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_28",
+      "cases": 52,
+      "passed": 52,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "software28:legacy_29",
+      "item_type": "RESOURCE_FREE_SOFTWARE_VALIDATION_RECEIPT",
+      "scientific_class": "CONSTRUCTED_TEST_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+          "line": 1,
+          "document_sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+          "scope": "DOCUMENTARY_OR_CODE_REFERENCE_NOT_FRESH_PROTECTED_SOURCE_VERIFICATION"
+        }
+      ],
+      "group": "legacy_29",
+      "cases": 29,
+      "passed": 29,
+      "real_train_events": null,
+      "manuscript_use": "QUALIFIED_SOFTWARE_VALIDATION_ONLY",
+      "limitation": "Constructed or source/metadata tests under cooperative guards, not an experiment on genuine recordings or proof of field safety"
+    },
+    {
+      "id": "protected-tests-118",
+      "item_type": "PROTECTED_ACCEPTANCE_DEPENDENCIES",
+      "scientific_class": "PROTECTED_RESOURCE_NOT_ACCESSED",
+      "case_ids_reference": "MISSION_28_TEST_CLASSIFICATION_REGISTER.json",
+      "count": 118,
+      "manuscript_use": "LIMITATION_ONLY"
+    },
+    {
+      "id": "L29-DATASHEETS",
+      "item_type": "PRIMARY_LITERATURE_BIBLIOGRAPHIC_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "title": "Datasheets for Datasets",
+      "url": "https://arxiv.org/abs/1803.09010v8",
+      "bibliographic_primary_page_checked": "2026-11-06",
+      "project_data_rights_or_empirical_support": false,
+      "manuscript_use": "ATTRIBUTED_CONCEPTUAL_CONTEXT_ONLY"
+    },
+    {
+      "id": "L29-MODELCARDS",
+      "item_type": "PRIMARY_LITERATURE_BIBLIOGRAPHIC_REFERENCE",
+      "scientific_class": "DOCUMENTARY_REFERENCE_ONLY",
+      "title": "Model Cards for Model Reporting",
+      "url": "https://arxiv.org/abs/1810.03993v2",
+      "bibliographic_primary_page_checked": "2026-11-06",
+      "project_data_rights_or_empirical_support": false,
+      "manuscript_use": "ATTRIBUTED_CONCEPTUAL_CONTEXT_ONLY"
+    }
+  ]
+}

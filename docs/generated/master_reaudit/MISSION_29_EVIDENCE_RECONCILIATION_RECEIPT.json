@@ -1,0 +1,434 @@
+{
+  "schema": "mission29-evidence-delta/1",
+  "parent_receipt": "MISSION_28_GENUINE_EVIDENCE_DISCOVERY_RECEIPT.json",
+  "fingerprint_index": "MISSION_27_DOCUMENTARY_SEARCH_RECEIPT.json",
+  "text_documents_fingerprinted": 541,
+  "unchanged": 541,
+  "new": [],
+  "changed": [],
+  "missing": [],
+  "root_report_document_xml_unchanged": true,
+  "embedded_media_read": false,
+  "mission28_json_records_inspected": [
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_ADVERSARIAL_CASE_RECEIPT.json",
+      "sha256": "2446535bd134bc24fce7c4a7a52f9fb18807e06f376242ab0a943524f55eba19",
+      "fields": [
+        "schema",
+        "cases",
+        "new_cases",
+        "passed",
+        "protected_source_access",
+        "genuine_positive_verification_or_pilot_tested",
+        "inherited_63_mission27_cases_preserved"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_CLI_VERIFICATION_RECEIPT.json",
+      "sha256": "e60dcb4be62baf6c33dd1664794a73775edabae6dedf507e0e618c796b00893b",
+      "fields": [
+        "schema",
+        "commands",
+        "repeated_json_identical",
+        "generated_json_markdown_pilot_match",
+        "mission27_historical_view_matches",
+        "policy_denials",
+        "pilot_executed",
+        "new_grants",
+        "genuine_evidence_submitted",
+        "clock"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_DOCUMENT_BINDING.json",
+      "sha256": "2401558bb59f6efc7c1697a8034553a15c8313c91f1764de4c0c150cc95d7932",
+      "fields": [
+        "schema",
+        "discovery_sha256"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_EXACT_SOURCE_RIGHTS_VERIFICATION_REGISTER.json",
+      "sha256": "2cc9d6404819a32fc18f78a22cbc3644bf9b45eafa84a07347eed417e5a9e6e4",
+      "fields": [
+        "schema",
+        "rights_dimensions",
+        "sources",
+        "counts",
+        "source_status_upgrades",
+        "independently_verified",
+        "accepted_exact_source_purposes",
+        "collection_terms_do_not_identify_members",
+        "software_terms_do_not_establish_recording_or_checkpoint_rights"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_EXECUTION_REGISTER.json",
+      "sha256": "817ef04c0fe399d1d17e077a9d9aaca2b9db700e3d6df83104ab27ee4c841caa",
+      "fields": [
+        "schema",
+        "date",
+        "timezone",
+        "head",
+        "tracking",
+        "live",
+        "branch",
+        "mission27_documentary",
+        "mission27_implementation",
+        "mission27_final",
+        "preserved_work",
+        "historical_artifacts",
+        "request_sha256",
+        "phase_history",
+        "current_status",
+        "final_validation"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_EXTERNAL_APPLICABILITY_VERIFICATION.json",
+      "sha256": "7bd111f7809a4a2ab3920e41192ba920f577244f1b236c1e08ba4c40aebf3599",
+      "fields": [
+        "schema",
+        "requirements",
+        "new_decisions",
+        "requests_sent"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_FINAL_PILOT_READINESS_DECISION.json",
+      "sha256": "2bd1374689e9e9201ec261af319529d2258035d196ccf6d34a142a375d6a20c5",
+      "fields": [
+        "schema",
+        "state",
+        "events",
+        "sources",
+        "prerequisites",
+        "missing_services",
+        "optional_external_audit_is_universal_blocker",
+        "release_permission_required_for_private_pilot",
+        "T2",
+        "canonical_schema",
+        "canonical_plausibility_floor_seconds",
+        "RD046",
+        "authorization",
+        "execution_receipt",
+        "grant_issued",
+        "execution_permitted"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_FINAL_VALIDATION.json",
+      "sha256": "aa3733e971ad8e38b6098c90728f7860a0201874e95046b45f96999dc9cf7e76",
+      "fields": [
+        "schema",
+        "date",
+        "timezone",
+        "status",
+        "mission27_baseline",
+        "mission27_documentary_commit",
+        "mission27_implementation_commit",
+        "mission27_final_delivery",
+        "implementation_delivery_commit",
+        "final_documentation_delivery",
+        "seven_questions",
+        "evidence_discovery",
+        "sources_and_rights",
+        "people_and_external",
+        "pilot",
+        "operations",
+        "intake_integrity",
+        "full_guarded_audit",
+        "selected_acceptance",
+        "focused_regression",
+        "adversarial",
+        "static",
+        "cli",
+        "scientific_preservation",
+        "preservation",
+        "git",
+        "artifact_sha256"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_FOCUSED_REGRESSION_RECEIPT.json",
+      "sha256": "cdcf17cb6492b8f7b9d4c3c01e9e4c7cceb81f38e9d8a2774d96437bfa4140ac",
+      "fields": [
+        "process_errors",
+        "schema",
+        "audit",
+        "source_bindings",
+        "all_test_files",
+        "groups",
+        "totals",
+        "not_executed",
+        "requested",
+        "execution_complete",
+        "source_bindings_unchanged",
+        "status"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_GENUINE_EVIDENCE_DISCOVERY_RECEIPT.json",
+      "sha256": "e4d98882d55a864aa5a888026089b840e1d2001210a45cfc962e0886bfcfabc0",
+      "fields": [
+        "schema",
+        "date",
+        "baseline",
+        "previous_search",
+        "permitted_text_files_checked",
+        "unchanged_files",
+        "new_files",
+        "changed_files",
+        "missing_files",
+        "delta_review",
+        "root_report_xml_unchanged",
+        "embedded_docx_media_read",
+        "prior_mission27_json_records_parsed",
+        "tracked_document_filename_check",
+        "actual_new_original_evidence_items",
+        "official_submissions",
+        "private_accounts_accessed",
+        "scope"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_HUMAN_REVIEW_SERVICE_REGISTER.json",
+      "sha256": "75a78ea472955556cadaefe1c75ac00bda7bb2ade628a56e84f24b7116f01d2f",
+      "fields": [
+        "schema",
+        "services",
+        "new_services_or_alternate_authority_created"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_IMPLEMENTATION_VALIDATION.json",
+      "sha256": "6762f239bc85925bf27df99a862f9de0652a1415a4c49e6f3e32f381b9fe3fe9",
+      "fields": [
+        "schema",
+        "status",
+        "reproduced_defects",
+        "initial_constructed_reproducer_counts",
+        "focused_frozen_counts",
+        "guarded_audit",
+        "guarded_audit_status",
+        "new_mission28_cases",
+        "all_previous_3591_selected_ids_preserved",
+        "all_previous_3528_mission26_selected_ids_preserved",
+        "same_118_protected_ids",
+        "source_bindings_unchanged",
+        "static_receipt",
+        "files_sha256",
+        "final_selected_profile",
+        "pilot_state",
+        "new_original_evidence_items",
+        "independently_verified_originals",
+        "actual_qualified_reviewers",
+        "grants_issued",
+        "pilot_executed",
+        "new_database_or_alternate_authority",
+        "mission27_schema_and_verifier_interfaces_unchanged",
+        "final_frozen_selected_acceptance"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_INTAKE_DEFECT_REPRODUCTION_RECEIPT.json",
+      "sha256": "8032dbc249d0cfb8d4cf00d791bdee8e9708f3fc880f6506bac68b8039d7b928",
+      "fields": [
+        "process_errors",
+        "schema",
+        "audit",
+        "source_bindings",
+        "all_test_files",
+        "groups",
+        "totals",
+        "not_executed",
+        "requested",
+        "execution_complete",
+        "source_bindings_unchanged",
+        "status"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_OPERATION_ACTIVATION_REVIEW.json",
+      "sha256": "bda426a3e42696ee477540a2944bc9041c3bda3f4d19731999816b3ada8d3e6a",
+      "fields": [
+        "schema",
+        "clock_meaning",
+        "operations",
+        "conditional",
+        "denied_deferred",
+        "ready_for_authorization_review",
+        "authorized",
+        "executed",
+        "new_grants"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_PROTECTED_DEPENDENCY_EVIDENCE.json",
+      "sha256": "bc7c8a49d042ecb7d455b9d71d532e5141dbf75625e4e2dd2b72667de1572ed2",
+      "fields": [
+        "tests/test_phase11_9_synthetic_pilot.py::test_pilot_writes_nothing_to_production_review_directory",
+        "tests/unit/test_leg_exec.py::test_real_repository_state_is_consistent_whether_or_not_leg_exec_has_run",
+        "tests/unit/test_phase14_benchmark_suite.py::test_benchmark_command_writes_a_complete_unclaiming_report",
+        "tests/unit/test_phase14_benchmark_suite.py::test_target_claim_through_the_command_is_not_granted_to_a_dev_machine",
+        "tests/unit/test_readiness_audit.py::test_real_audit_summarizes_the_legacy_corpus_without_touching_it",
+        "tests/unit/test_readiness_audit.py::test_leg_exec_preflight_verifies_inputs_and_never_writes",
+        "tests/unit/test_readiness_audit.py::test_legacy_records_with_forged_stage21_version_string_are_rejected",
+        "tests/unit/test_reproducibility_audit.py::test_audit_command_writes_outside_the_repository_only"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_RESEARCHER_ACTION_REGISTER.json",
+      "sha256": "04b741d8c67f8ee501d3e21dfd2bc3b3cbebbcf02cc863d3edecc37f2832e273",
+      "fields": [
+        "schema",
+        "actions",
+        "requests_sent",
+        "RD001_055_reopened"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_AUDIT_RECEIPT.json",
+      "sha256": "5df48460aca8666fedf93c846448e236f322e2f481f402ab74d54cb98a7cdc37",
+      "fields": [
+        "process_errors",
+        "schema",
+        "audit",
+        "source_bindings",
+        "all_test_files",
+        "groups",
+        "totals",
+        "not_executed",
+        "requested",
+        "execution_complete",
+        "source_bindings_unchanged",
+        "status"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+      "sha256": "e0e0621981754d76e0f67f22e98042b7538cb402feeec9307a352b92c8393e4d",
+      "fields": [
+        "process_errors",
+        "schema",
+        "audit",
+        "source_bindings",
+        "all_test_files",
+        "groups",
+        "totals",
+        "not_executed",
+        "requested",
+        "execution_complete",
+        "source_bindings_unchanged",
+        "status"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_REVIEWER_IDENTITY_AND_QUALIFICATION_REGISTER.json",
+      "sha256": "0a72cea8177d17bdbfafbb35884bfb4f9f450ce61f77cc6154a3cedecacce079",
+      "fields": [
+        "schema",
+        "roles",
+        "actual_people",
+        "appointed",
+        "qualified",
+        "note"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_SOURCE_IDENTITY_VERIFICATION_REGISTER.json",
+      "sha256": "0db4cfba8e6463aeb23ef7ac98ab6d8f2ad84794693e508e1ba14a7075f1f799",
+      "fields": [
+        "schema",
+        "crossing",
+        "candidate_events",
+        "R04_events",
+        "inventory_signoff",
+        "counts",
+        "sources",
+        "documentary_conflicts",
+        "new_original_evidence"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_STATIC_VALIDATION.json",
+      "sha256": "454444ac97d5b9d3bd863d8b407e8559940f5b3cf06237170fe8584f2227897f",
+      "fields": [
+        "schema",
+        "files_sha256",
+        "whole_repository_type_claim",
+        "ast",
+        "ruff",
+        "mypy",
+        "dependencies",
+        "git_connectivity",
+        "imports",
+        "canonical_validator_sha256",
+        "preflight_engine_sha256"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_TEST_CLASSIFICATION_REGISTER.json",
+      "sha256": "ba998678ccf6a534d3f25363f68c4b4c56f6f59c0b695778bb9c374725391708",
+      "fields": [
+        "schema",
+        "shared_source_sha256",
+        "shared_digest",
+        "modules",
+        "scope"
+      ]
+    },
+    {
+      "path": "docs/generated/master_reaudit/MISSION_28_UPDATED_READINESS_DASHBOARD.json",
+      "sha256": "66f475939d4db5905d11e1d1bd7dcd695fc2aa670e5fa68490bd51d63edbb636",
+      "fields": [
+        "schema",
+        "catalog_digest",
+        "inventory",
+        "source_rights",
+        "human_roles",
+        "landmarks",
+        "external_requirements",
+        "operations",
+        "experiments",
+        "documentary_conflicts",
+        "authorized_but_not_executed",
+        "executed_operations",
+        "new_grants",
+        "protected_resources_accessed",
+        "documentary_package_digest",
+        "documentary_evidence_found",
+        "evidence_stages",
+        "reviewers_appointed",
+        "reviewers_qualified",
+        "source_identities_verified",
+        "human_review_ready",
+        "operations_ready_for_authorization_review",
+        "operations_authorized",
+        "operations_executed",
+        "submission_register",
+        "source_identity_register",
+        "rights_verification_register",
+        "reviewer_register",
+        "external_resolution_register",
+        "missing_evidence_requests",
+        "expired_evidence",
+        "revoked_evidence",
+        "unverified_dates_are_not_inferred_current",
+        "trusted_adapters_enabled",
+        "historical_mission26_modified",
+        "evidence_scope",
+        "discovery_digest",
+        "new_original_evidence_received",
+        "pilot"
+      ]
+    }
+  ],
+  "new_genuine_originals": [],
+  "originals_independently_verified": [],
+  "official_intake_items_created": 0,
+  "protected_resource_contents_or_private_accounts_searched": false,
+  "source": "Current user attachment is task authority for analysis/drafting/Git delivery, not source rights or a reviewer appointment.",
+  "unchanged_documents_rescanned_for_discovery": false,
+  "targeted_document_reading_reason": "Mission29 phases C/D/F require historical-result, scientific-claim and publication-rights audits; targeted source reading is separate from discovery."
+}
