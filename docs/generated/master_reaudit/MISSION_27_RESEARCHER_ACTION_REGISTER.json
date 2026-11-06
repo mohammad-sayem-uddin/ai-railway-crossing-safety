@@ -1,0 +1,132 @@
+{
+  "schema": "mission27-actions/1",
+  "requests": [
+    {
+      "id": "ACT-01",
+      "priority": 1,
+      "responsible_party": "Researcher",
+      "why_required": "Establish actual custody and project context",
+      "blocks": "All genuine source/review work",
+      "exact_evidence": [
+        "Identify actual recorder, custodian, institutional involvement, site/jurisdiction and original acquisition records",
+        "Provide a member-level manifest mapping the 27 candidate events and 54 camera references; retain two duplicate exclusions and R04 exactly 11",
+        "Obtain attributable inventory completeness/signoff; link historical references without claiming fresh media verification"
+      ],
+      "acceptable_documentary_form": "Existing original acquisition ledger and attributable custodian declaration; actual source/member/clock/origin manifest",
+      "issuer_or_verifier": "Actual recorder/custodian verifies origins; researcher signs inventory only within evidenced authority",
+      "can_proceed_without": "Documentary intake, handbook, source-free tests and conditional pilot preparation",
+      "status": "AWAITING_GENUINE_EVIDENCE",
+      "sent": false,
+      "evidence_received": []
+    },
+    {
+      "id": "ACT-02",
+      "priority": 1,
+      "responsible_party": "Data owner",
+      "why_required": "Establish exact-source rights and permitted uses",
+      "blocks": "M19-PERM-01..11,14,15,17,19..23,26,27 as individually applicable",
+      "exact_evidence": [
+        "For each source/member provide owner or applicable license chain and restrictions for all ten rights dimensions",
+        "Specify exact source, purpose, actor/role, operation, environment, validity/expiry/revocation, storage, recipients and output conditions",
+        "Provide exact downloaded ESC-50 member/license/attribution mapping, vision development dataset terms and separate model/checkpoint lineage; do not substitute software licenses"
+      ],
+      "acceptable_documentary_form": "Original owner declaration/agreement, permission correspondence with attributable sender, or applicable versioned license plus exact asset/member manifest",
+      "issuer_or_verifier": "Actual owner/licensor or legitimate delegate issues; independent qualified rights verifier checks authenticity and scope",
+      "can_proceed_without": "Documentary engineering; partial upstream/software license documentation remains useful but grants no exact-source use",
+      "status": "AWAITING_GENUINE_EVIDENCE",
+      "sent": false,
+      "evidence_received": []
+    },
+    {
+      "id": "ACT-03",
+      "priority": 2,
+      "responsible_party": "University/institution",
+      "why_required": "Resolve actual applicability without assumed approval requirements",
+      "blocks": "Human participation/identifiable-data and institution-bound research where applicable",
+      "exact_evidence": [
+        "Given ACT-01 context, determine institutional/ethics/consent/privacy applicability with reasons and scope",
+        "Provide the relevant maintained rule and attributable project-specific approval or non-applicability determination",
+        "Document validity/expiry, participant/data-handling conditions and any actual external dependencies"
+      ],
+      "acceptable_documentary_form": "Research office/ethics/privacy determination or attributable policy-based non-applicability, conditional on actual involvement",
+      "issuer_or_verifier": "Actual institution/policy/ethics/privacy authority if involved; actual participants for applicable participation documentation",
+      "can_proceed_without": "Source-free implementation; external release stays separately gated",
+      "status": "AWAITING_GENUINE_EVIDENCE",
+      "sent": false,
+      "evidence_received": []
+    },
+    {
+      "id": "ACT-04",
+      "priority": 2,
+      "responsible_party": "Recording/site owner",
+      "why_required": "Resolve recording/property/site permission scope",
+      "blocks": "Affected source use and any site access; no new collection or deployment planned",
+      "exact_evidence": [
+        "Identify legitimate recording/property/crossing authority and actual access circumstances",
+        "Supply existing scoped recording/site permission or attributable non-applicability with restrictions",
+        "Supply independently reviewable physical T2 landmark and source/camera mapping evidence only through a separately authorized process"
+      ],
+      "acceptable_documentary_form": "Original owner permission/site agreement, attributable applicability determination and physical landmark documentation",
+      "issuer_or_verifier": "Actual recording/property/railway authority if required; qualified actual landmark verifier",
+      "can_proceed_without": "T2 remains deferred; no physical-entry/occupancy claim; no blanket hold on unrelated source-free work",
+      "status": "AWAITING_GENUINE_EVIDENCE",
+      "sent": false,
+      "evidence_received": []
+    },
+    {
+      "id": "ACT-05",
+      "priority": 2,
+      "responsible_party": "Human reviewers",
+      "why_required": "Appoint and qualify real people with independent review capacity",
+      "blocks": "M19-PERM-19,20,21,26,27 and their source access",
+      "exact_evidence": [
+        "Nominate actual primary, distinct independent second reviewer and separate adjudicator; document researcher and promotion delegation",
+        "Provide identity, explicit assignment, relevant experience and assessed boundary/tool competence",
+        "Provide independence/exposure/conflict declarations, participation disposition and current exact-source access scope, validity/expiry/revocation"
+      ],
+      "acceptable_documentary_form": "Attributable appointment/delegation letter and evidence of competence; signed or otherwise independently authenticated declarations; scoped assignments",
+      "issuer_or_verifier": "Actual appointing authority issues assignments; independent competent verifier checks physical identities, qualifications and conflicts",
+      "can_proceed_without": "Handbook and empty intake interface; mandatory second review cannot be waived by naming one person twice",
+      "status": "AWAITING_GENUINE_EVIDENCE",
+      "sent": false,
+      "evidence_received": []
+    },
+    {
+      "id": "ACT-06",
+      "priority": 3,
+      "responsible_party": "Researcher",
+      "why_required": "Prepare exact pilot deployment and authorization review after evidence is verified",
+      "blocks": "M19-PERM-02,19,20,26,27; promotion/export remain separate",
+      "exact_evidence": [
+        "Bind proposed five-event/ten-source pilot, real reviewers, protocol/schema, trusted identity/time/revocation/player/storage and logging/output policy",
+        "Obtain independent integration acceptance and current operation-specific canonical authorization review; this mission issues no grants",
+        "Before any external release, obtain actual owner/release authority review for recipients and outputs; retain separate raw-release denial and R-PUB"
+      ],
+      "acceptable_documentary_form": "Attributable deployment acceptance plus existing canonical authorization package with exact source/actor/operation/purpose/environment/time; separate release package if proposed",
+      "issuer_or_verifier": "Actual delegated project/data authority and deployment operator; actual release authority for future export",
+      "can_proceed_without": "Evidence intake and source-free preflight can proceed; successful readiness alone cannot execute",
+      "status": "AWAITING_GENUINE_EVIDENCE",
+      "sent": false,
+      "evidence_received": []
+    },
+    {
+      "id": "ACT-07",
+      "priority": 4,
+      "responsible_party": "External auditor, if appointed",
+      "why_required": "Establish optional external audit independence",
+      "blocks": "External audit only; absence does not invent a universal blocker",
+      "exact_evidence": [
+        "Only if actually appointable, provide attributable external appointment, qualification, independence/conflicts and exact audit source-access scope",
+        "Document validity, expiry, revocation and participation/data-handling requirements"
+      ],
+      "acceptable_documentary_form": "Actual appointment and independently verifiable credential/conflict/access evidence",
+      "issuer_or_verifier": "Actual appointing authority and auditor; independent verifier checks declarations",
+      "can_proceed_without": "All unrelated source-free preparation; required independent second review still needs ACT-05",
+      "status": "AWAITING_GENUINE_EVIDENCE",
+      "sent": false,
+      "evidence_received": []
+    }
+  ],
+  "requests_sent": false,
+  "adopted_decisions_reopened": false
+}

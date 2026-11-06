@@ -1,0 +1,3088 @@
+{
+  "schema": "mission27-source-identity/1",
+  "baseline": "884be41dcd6fe957ad4426afc8611a64f0d149bc",
+  "crossing": "crossing_A",
+  "inventory_signoff": false,
+  "candidate_events": [
+    "train_events/event_001",
+    "train_events/event_002",
+    "train_events/event_003",
+    "train_events/event_004",
+    "train_events/event_005",
+    "train_events/event_006",
+    "train_events/event_007",
+    "train_events/event_008",
+    "train_events/event_009",
+    "train_events/event_010",
+    "train_events/event_011",
+    "train_events/event_012",
+    "train_events/event_013",
+    "train_events/event_014",
+    "train_events/event_015",
+    "train_events/event_016",
+    "train_events/event_017",
+    "train_events/event_018",
+    "train_events/event_019",
+    "train_events/event_020",
+    "train_events/event_021",
+    "train_events/event_022",
+    "train_events/event_023",
+    "no_train_events/event_001",
+    "no_train_events/event_002",
+    "no_train_events/event_003",
+    "engine_events/event_001"
+  ],
+  "R04_events": [
+    "train_events/event_001",
+    "train_events/event_002",
+    "train_events/event_005",
+    "train_events/event_006",
+    "train_events/event_007",
+    "train_events/event_009",
+    "train_events/event_011",
+    "train_events/event_012",
+    "train_events/event_013",
+    "train_events/event_014",
+    "train_events/event_017"
+  ],
+  "counts": {
+    "candidate_events": 27,
+    "train": 23,
+    "no_train": 3,
+    "engine_only": 1,
+    "camera_references": 54,
+    "excluded_duplicate_camera_references": 2,
+    "collection_model_references": 7,
+    "independently_verified": 0
+  },
+  "documentary_conflicts": [
+    {
+      "subject": "lighting",
+      "older": "V2 archive reports night/low-light event labels",
+      "later": "paper says zero night recordings",
+      "resolution": "UNRESOLVED; no media inspection and no robustness assertion"
+    },
+    {
+      "subject": "event010",
+      "older": "V1 event010 duplicate excluded; V2 event010 mapped from11.mov",
+      "resolution": "No guessed physical alias equality; preserve qualified V2 candidate and duplicate exclusion"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "doc:v2:train_events/event_001:front:video",
+      "event": "train_events/event_001",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "historical_digest": "d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_001/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_001:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_001:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_001:back:video",
+      "event": "train_events/event_001",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_001/camera_back.mov",
+      "historical_digest": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_001/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_001:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_001:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_002:front:video",
+      "event": "train_events/event_002",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_002/camera_front.mov",
+      "historical_digest": "69811c9e515515e93e25597244d2d1e8b4f1976d874a27cfb794076c5226a161",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_002/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_002:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_002:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_002:back:video",
+      "event": "train_events/event_002",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_002/camera_back.mov",
+      "historical_digest": "964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_002/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_002:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_002:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_003:front:video",
+      "event": "train_events/event_003",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_003/camera_front.mov",
+      "historical_digest": "7a12b86be8511738d4d8539476cdba1c90270159fd65d0931189e367e3550ca5",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_003/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_003:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_003:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_003:back:video",
+      "event": "train_events/event_003",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_003/camera_back.mov",
+      "historical_digest": "172d99ef4a2488abcac7715bd4098c28b2cc1388b6aa286df19246d0e297a395",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_003/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_003:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_003:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_004:front:video",
+      "event": "train_events/event_004",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_004/camera_front.mov",
+      "historical_digest": "85215975b328cec583678fef3d51579f66953b779b35da56bd2aef3065954e49",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_004/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_004:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_004:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_004:back:video",
+      "event": "train_events/event_004",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_004/camera_back.mov",
+      "historical_digest": "6ccfa9b6fe74adf01cf9aeac3faba73194446398e3c7c74b057d778eddb1ed60",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_004/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_004:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_004:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_005:front:video",
+      "event": "train_events/event_005",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "historical_digest": "015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_005/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_005:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_005:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_005:back:video",
+      "event": "train_events/event_005",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_005/camera_back.mov",
+      "historical_digest": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_005/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_005:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_005:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_006:front:video",
+      "event": "train_events/event_006",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_006/camera_front.mov",
+      "historical_digest": "abae4c6f357171fdf972aa49d7fd4590d86c35cb95394e4c88e7274db0664c12",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_006/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_006:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_006:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_006:back:video",
+      "event": "train_events/event_006",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_006/camera_back.mov",
+      "historical_digest": "c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_006/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_006:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_006:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_007:front:video",
+      "event": "train_events/event_007",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_007/camera_front.mov",
+      "historical_digest": "26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_007/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_007:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_007:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_007:back:video",
+      "event": "train_events/event_007",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_007/camera_back.mov",
+      "historical_digest": "24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_007/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_007:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_007:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_008:front:video",
+      "event": "train_events/event_008",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_008/camera_front.mov",
+      "historical_digest": "5f0151fd09dd35636afc1a641c05426c5483871a44b8ee5883e15dad173b0e16",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_008/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_008:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_008:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_008:back:video",
+      "event": "train_events/event_008",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_008/camera_back.mov",
+      "historical_digest": "0ab126213b94d53fc1733658eefdaaf5a5cfe8dd9492d6234a50a19d5e642de2",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_008/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_008:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_008:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_009:front:video",
+      "event": "train_events/event_009",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+      "historical_digest": "7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_009/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_009:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_009:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_009:back:video",
+      "event": "train_events/event_009",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_009/camera_back.mov",
+      "historical_digest": "4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_009/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_009:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_009:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_010:front:video",
+      "event": "train_events/event_010",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_010/camera_front.mov",
+      "historical_digest": "9967e3666086e1f0f14f20d22bbf36e7eec5a5491622edbfb2f465f247ce1b46",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_010/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_010:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_010:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_010:back:video",
+      "event": "train_events/event_010",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_010/camera_back.mov",
+      "historical_digest": "566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_010/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_010:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_010:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_011:front:video",
+      "event": "train_events/event_011",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_011/camera_front.mov",
+      "historical_digest": "6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_011/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_011:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_011:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_011:back:video",
+      "event": "train_events/event_011",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_011/camera_back.mov",
+      "historical_digest": "3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_011/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_011:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_011:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_012:front:video",
+      "event": "train_events/event_012",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_012/camera_front.mov",
+      "historical_digest": "840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_012/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_012:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_012:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_012:back:video",
+      "event": "train_events/event_012",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_012/camera_back.mov",
+      "historical_digest": "d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_012/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_012:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_012:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_013:front:video",
+      "event": "train_events/event_013",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_013/camera_front.mov",
+      "historical_digest": "3869d489098aeb5f9251b9c698cb236e8fc0b6ee7be7b3342c14a5dbff140e2d",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_013/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_013:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_013:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_013:back:video",
+      "event": "train_events/event_013",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_013/camera_back.mov",
+      "historical_digest": "e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_013/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_013:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_013:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_014:front:video",
+      "event": "train_events/event_014",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_014/camera_front.mov",
+      "historical_digest": "adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_014/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_014:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_014:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_014:back:video",
+      "event": "train_events/event_014",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_014/camera_back.mov",
+      "historical_digest": "46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_014/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_014:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_014:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_015:front:video",
+      "event": "train_events/event_015",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_015/camera_front.mov",
+      "historical_digest": "309203acd4bdc8ddb6a26e7ecbe97f73267724c9870b202290f0ee1cbaa32e99",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_015/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_015:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_015:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_015:back:video",
+      "event": "train_events/event_015",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_015/camera_back.mov",
+      "historical_digest": "57e827d111540c3c7f9463efaee3461ee6cba6818ab33231745ea9b22024b03a",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_015/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_015:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_015:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_016:front:video",
+      "event": "train_events/event_016",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_016/camera_front.mov",
+      "historical_digest": "3a0d71da27ba66aeb3c76a58cfbf349c136176c3d0425a5b14a4ce1cb30270ff",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_016/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_016:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_016:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_016:back:video",
+      "event": "train_events/event_016",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_016/camera_back.mov",
+      "historical_digest": "08a9f8695dfe0fd1a1f4c380366ba9e83d11714c1c4ba2da2be4713d580dafff",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_016/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_016:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_016:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_017:front:video",
+      "event": "train_events/event_017",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_017/camera_front.mov",
+      "historical_digest": "188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_017/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_017:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_017:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_017:back:video",
+      "event": "train_events/event_017",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_017/camera_back.mov",
+      "historical_digest": "7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_017/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_017:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_017:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_018:front:video",
+      "event": "train_events/event_018",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_018/camera_front.mov",
+      "historical_digest": "ed376931b62de4a18249ed3054b7930ae64ebab9dc322c639538e52760a0f102",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_018/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_018:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_018:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_018:back:video",
+      "event": "train_events/event_018",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_018/camera_back.mov",
+      "historical_digest": "a7040a317018132f209b460ffa43d794e1e423cda5b5ce48a789043fe7dc4d27",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_018/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_018:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_018:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_019:front:video",
+      "event": "train_events/event_019",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_019/camera_front.mov",
+      "historical_digest": "697f3c9ef9572e4b8be74e4719ec3911a2781837cd3ab08a1c3a663cb8cbd0c3",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_019/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_019:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_019:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_019:back:video",
+      "event": "train_events/event_019",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_019/camera_back.mov",
+      "historical_digest": "f906e43305fcd183ff9e0638a246cc4df84192d7691befd96d35b17d630b9aef",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_019/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_019:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_019:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_020:front:video",
+      "event": "train_events/event_020",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_020/camera_front.mov",
+      "historical_digest": "3b45ba8f056227359d27c4d7da80dfd9ddb202dacdccd9d34797c4f5fbd8ecba",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_020/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_020:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_020:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_020:back:video",
+      "event": "train_events/event_020",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_020/camera_back.mov",
+      "historical_digest": "ea0f90528bced198f23b24e6006f32aebbb19f8173f7fc78721f8b96286ad2c2",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_020/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_020:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_020:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_021:front:video",
+      "event": "train_events/event_021",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_021/camera_front.mov",
+      "historical_digest": "380dcddbcd4fefab43f27134a5965e2b724b3c3cc707ad2bce514b0defb4c518",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_021/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_021:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_021:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_021:back:video",
+      "event": "train_events/event_021",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_021/camera_back.mov",
+      "historical_digest": "4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_021/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_021:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_021:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_022:front:video",
+      "event": "train_events/event_022",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_022/camera_front.mov",
+      "historical_digest": "c5512850372e940ca7e627e2cf28b2becf21ecb5074adbc9679f663c37ed68e2",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_022/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_022:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_022:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_022:back:video",
+      "event": "train_events/event_022",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_022/camera_back.mov",
+      "historical_digest": "1e008a154ecfb4c1c96d03414d4c29042c0a4adaf1ac5cb94d00b7783b58567d",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_022/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_022:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_022:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_023:front:video",
+      "event": "train_events/event_023",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_023/camera_front.mov",
+      "historical_digest": "cb855aa632bac4a032496a7ccc0a40a28b631807231254775a2a24f85d81564b",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_023/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_023:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_023:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:train_events/event_023:back:video",
+      "event": "train_events/event_023",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/train_events/event_023/camera_back.mov",
+      "historical_digest": "a36d099f479e81bef2cfa31ac4492bf0cd01c97eac5378d85c96a89f58e49766",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/train_events/event_023/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:train_events/event_023:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:train_events/event_023:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:no_train_events/event_001:front:video",
+      "event": "no_train_events/event_001",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov",
+      "historical_digest": "58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/no_train_events/event_001/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:no_train_events/event_001:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "no_train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:no_train_events/event_001:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:no_train_events/event_001:back:video",
+      "event": "no_train_events/event_001",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov",
+      "historical_digest": "5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/no_train_events/event_001/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:no_train_events/event_001:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "no_train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:no_train_events/event_001:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:no_train_events/event_002:front:video",
+      "event": "no_train_events/event_002",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/no_train_events/event_002/camera_front.mov",
+      "historical_digest": "9196bd13700d26bb8b0b03ac8034150e0537b202b2690c21bef4943cceab0b97",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/no_train_events/event_002/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:no_train_events/event_002:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "no_train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:no_train_events/event_002:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:no_train_events/event_002:back:video",
+      "event": "no_train_events/event_002",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/no_train_events/event_002/camera_back.mov",
+      "historical_digest": "7b578008c037648c37dfb7f2b029c3c192dd4680198d655b6d6ac11734426126",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/no_train_events/event_002/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:no_train_events/event_002:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "no_train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:no_train_events/event_002:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:no_train_events/event_003:front:video",
+      "event": "no_train_events/event_003",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov",
+      "historical_digest": "969c8b118996d56d5593f8a3cb6ef9e16e571d4829076824952663d719239205",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/no_train_events/event_003/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:no_train_events/event_003:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "no_train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:no_train_events/event_003:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:no_train_events/event_003:back:video",
+      "event": "no_train_events/event_003",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov",
+      "historical_digest": "4914515714eb1ca8a282f61112afcfb11391dd2ec08543796611e22b884b4d9c",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/no_train_events/event_003/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:no_train_events/event_003:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "no_train_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:no_train_events/event_003:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:engine_events/event_001:front:video",
+      "event": "engine_events/event_001",
+      "camera": "front",
+      "documentary_path": "data/raw/layer_b/v2/engine_events/event_001/camera_front.mov",
+      "historical_digest": "d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/engine_events/event_001/raw_media/front",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:engine_events/event_001:front:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "engine_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:engine_events/event_001:front:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:v2:engine_events/event_001:back:video",
+      "event": "engine_events/event_001",
+      "camera": "back",
+      "documentary_path": "data/raw/layer_b/v2/engine_events/event_001/camera_back.mov",
+      "historical_digest": "80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72",
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "CANDIDATE_ONLY",
+      "parent": {
+        "path": "docs/PHASE11_3_REVIEW_INVENTORY.json",
+        "section": "events/engine_events/event_001/raw_media/back",
+        "document_sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:v2:engine_events/event_001:back:video",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Single fixed crossing documentary claim; actual recorder/rights chain unverified",
+      "collection_membership": {
+        "documentary": "engine_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:v2:engine_events/event_001:back:video",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No protected use under Mission26",
+        "No formal inventory signoff",
+        "Independent camera-local clocks",
+        "Embedded audio availability unverified; not training eligibility"
+      ]
+    },
+    {
+      "source_id": "doc:excluded:historical_duplicate_010:front",
+      "event": "engine_events/event_historical_duplicate_010",
+      "camera": "front",
+      "documentary_path": null,
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "EXCLUDED",
+      "parent": {
+        "path": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "section": "\u00a74 historical duplicate",
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:excluded:historical_duplicate_010:front",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "engine_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:excluded:historical_duplicate_010:front",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    },
+    {
+      "source_id": "doc:excluded:historical_duplicate_010:back",
+      "event": "engine_events/event_historical_duplicate_010",
+      "camera": "back",
+      "documentary_path": null,
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "EXCLUDED",
+      "parent": {
+        "path": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "section": "\u00a74 historical duplicate",
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:excluded:historical_duplicate_010:back",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "engine_events",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:excluded:historical_duplicate_010:back",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    },
+    {
+      "source_id": "doc:collection:layer_b_v1",
+      "event": null,
+      "camera": null,
+      "documentary_path": "data/raw/layer_b/videos/",
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "parent": {
+        "path": "docs/archive/REAL_DATASET_INVENTORY.md",
+        "section": "\u00a72 21 original events; aliases not reconciled",
+        "document_sha256": "fc3ef7faea43a2eaf0560204df0047e81ccf0ed1480bbde855dd40be23c28327",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:collection:layer_b_v1",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "HISTORICAL_COLLECTION_REFERENCE",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:collection:layer_b_v1",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    },
+    {
+      "source_id": "doc:collection:horn_positive",
+      "event": null,
+      "camera": null,
+      "documentary_path": "data/raw/audio/train_horn/positive/",
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "parent": {
+        "path": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "section": "\u00a75.1 87 files /86 unique; no complete individual-source rights registry",
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:collection:horn_positive",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "AUDIO_COLLECTION_REFERENCE",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:collection:horn_positive",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    },
+    {
+      "source_id": "doc:collection:horn_negative",
+      "event": null,
+      "camera": null,
+      "documentary_path": "data/raw/audio/train_horn/negative/",
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "parent": {
+        "path": "docs/archive/REAL_DATASET_V2_INVENTORY.md",
+        "section": "\u00a75.2 97 files /95 unique; no complete individual-source rights registry",
+        "document_sha256": "ee018546665d3da903c4af864fb8f4f789276036e19f79aba659027698b983f7",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:collection:horn_negative",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "AUDIO_COLLECTION_REFERENCE",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:collection:horn_negative",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    },
+    {
+      "source_id": "doc:collection:esc50",
+      "event": null,
+      "camera": null,
+      "documentary_path": null,
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "parent": {
+        "path": "README.md",
+        "section": "Training Corpus and Third-Party Backbones",
+        "document_sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:collection:esc50",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "THIRD_PARTY_COLLECTION_REFERENCE",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:collection:esc50",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    },
+    {
+      "source_id": "doc:collection:vision_v1",
+      "event": null,
+      "camera": null,
+      "documentary_path": "data/raw/vision/v1/baler.v1i.yolov8",
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "parent": {
+        "path": "configs/vision.yaml",
+        "section": "dataset_root; no exact-asset license established",
+        "document_sha256": "be46784c46a10b879ad9e318c9b13499bac616d1546c0df7c75fde6c55af5e26",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:collection:vision_v1",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "VISION_DEVELOPMENT_COLLECTION_REFERENCE",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:collection:vision_v1",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    },
+    {
+      "source_id": "doc:model:vision_frozen",
+      "event": null,
+      "camera": null,
+      "documentary_path": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "parent": {
+        "path": "docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md",
+        "section": "Reproducibility Statement; exact bytes not accessed",
+        "document_sha256": "03444930ec0d73e9dad16a2b510511c61e9a1302e3e6a25cf83307d81a26ea78",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:model:vision_frozen",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "CHECKPOINT_REFERENCE",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:model:vision_frozen",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    },
+    {
+      "source_id": "doc:model:audio_v3",
+      "event": null,
+      "camera": null,
+      "documentary_path": "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt",
+      "historical_digest": null,
+      "fresh_media_digest": null,
+      "live_identity_verified": false,
+      "status": "UNRESOLVED_DOCUMENTARY_REFERENCE",
+      "eligibility": "UNRESOLVED_REFERENCE_ONLY",
+      "parent": {
+        "path": "docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md",
+        "section": "AudioV3 reference; candidate document not live model authority",
+        "document_sha256": "8386c2b295166eb01da644251f1eb5f0d584e207d6dac33f0dcd7849ef56168e",
+        "status": "DOCUMENTARY_NOT_LIVE_SOURCE_VERIFICATION"
+      },
+      "individual_recording_identity": {
+        "documentary_reference": "doc:model:audio_v3",
+        "verified": false
+      },
+      "original_acquisition_reference": null,
+      "declared_recording_origin": "Documented reference only; membership/ownership not verified",
+      "collection_membership": {
+        "documentary": "CHECKPOINT_REFERENCE",
+        "independently_verified": false
+      },
+      "source_relationship": "Front/back documentary pairing only; no verified common origin, synchronization or physical alias",
+      "timestamp_convention": {
+        "protocol": "Independent camera-local source PTS; no acoustic shift",
+        "source_timebase": null,
+        "source_origin": null,
+        "verification": "DECLARED_PROTOCOL_NOT_VERIFIED_SOURCE_CLOCK"
+      },
+      "inventory_completeness": false,
+      "rights_register": "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json#doc:model:audio_v3",
+      "missing": [
+        "Original acquisition/member manifest from actual custodian",
+        "Attributable event/camera/recording relationship and clock/origin declaration",
+        "Exact-asset owner/license chain",
+        "Current identity verification and formal inventory signoff"
+      ],
+      "restrictions": [
+        "No current operation grant",
+        "Collection counts do not establish per-file identities",
+        "No implied model/data license transfer"
+      ]
+    }
+  ]
+}

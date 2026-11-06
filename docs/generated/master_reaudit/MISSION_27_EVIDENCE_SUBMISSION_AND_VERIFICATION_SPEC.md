@@ -1,0 +1,41 @@
+# Mission 27 documentary evidence intake and activation design
+
+Prepared 2026-11-06, America/New_York. Metadata references only. This design does not authenticate any original document, appoint a reviewer, issue a grant or activate genuine review. AI-authored packages and constructed tests are not source permissions, signatures, institutional decisions or human observations.
+
+## Evidence contract and stages
+
+Every item carries stable evidence_id, evidence_type, exact subject, source_reference, issuing_authority (nullable if unknown), exact resource/operation/actor/role/purpose/environment and distinct rights dimensions, documented_date (nullable), valid_from/expires (nullable), parent_reference, supersedes_reference, revokes_reference, unresolved_conflicts, classification and schema. References are never opened. Parent references are metadata digests of earlier journal items, not raw-media digests. Corrections require new IDs, same-subject/scope supersession and immutable parent links. Separate sources/purposes need separate scoped evidence; do not transfer a collection license to an unidentified member.
+
+Stages are SUBMITTED → PARSED → STRUCTURALLY_VALID → ATTRIBUTABLE → INDEPENDENTLY_VERIFIED → ACCEPTED_FOR_SPECIFIC_PURPOSE. Each step is separately recorded; syntactic acceptance is no authenticity finding. EXPIRED, REVOKED and REJECTED terminate further advancement; resubmission requires a new linked item. Unknown expiry is not EXPIRED and cannot satisfy current permission. Snapshot time may make an evidenced expiry effective without deleting its history. Administrative rejection/revocation may conservatively block use; it cannot establish an external revocation decision. Independently accepted revocation evidence links the exact prior item. Superseding or unresolved revocation references invalidate current acceptance until separately resolved.
+
+Unknown issuer is permitted at submission and structural stages, but attribution and later stages require an independently authenticated actual issuer/delegation. No issuer is invented. An external DocumentaryVerifier must authenticate the original, exact subject/metadata digest, scope/stage, canonical physical verifier identity independent of issuer/subject/actor, current validity/expiry/revocation and conflicts. Signed references alone are insufficient. No genuine verifier adapter ships; CLI high-trust stages refuse. Missing service is not a successful verification.
+
+Rights evidence requires explicit purposes/dimensions and applicable conditions. All ten dimensions remain independent. Null dates remain unknown. A license with no fixed expiry needs a future verified applicability/current-validity attestation interval; the software's bounded verification interval is not a fabricated legal license expiry. Current source identity, human qualification, conflict/independence, participation and operation-specific grant remain separate requirements.
+
+## Local submission and audit workflow
+
+The application evidence CLI will initialize a dedicated external documentary SQLite journal, accept bounded strict JSON from stdin, append metadata, advance structural stages and inspect an exact externally retained head. It will not accept an evidence-file path, media path, arbitrary source opener, credential, signature generator, human observation or --verified flag. Store authentic originals in an actually approved custodian service; submit their attributable references only when allowed. Restrict access to confidential correspondence and personal credentials there; do not publish them to Git.
+
+Use the shipped JSON schema for structural tooling and runtime validation for state/lineage/transaction semantics. User-supplied classification cannot convert fixtures into genuine evidence. The constructed ledger mode is accessible only in tests, requires explicit synthetic IDs and remains non-promotable. No constructed evidence items are deposited into the official project submission register.
+
+Each write uses BEGIN IMMEDIATE, validates the expected retained prefix, verifies referenced earlier items and uses a unique request ID. Exact retries retrieve the original result; changed bodies under the same request or evidence ID refuse. All validation, record append and commit occur atomically; failed validation rolls back. Audit records bind sequence, request, canonical command, previous hash and current hash. Reopening/replay must match the independently retained expected head; changed/truncated/rehashed history refuses. A retained hash detects substitution relative to that retained value; local SQLite/Python is not an OS sandbox, authenticated original archive or hostile-administrator protection. Backups, external anchors, concurrency ownership and disaster recovery require the actual deployment service.
+
+Evidence intake is separate from the existing WP03/WP04 shared review transaction. It issues no authority receipt and cannot write review observations. Genuine review adapters must atomically recheck current identity, assignment, source authorization and expected review prefix, then bind human submission, audit, quota and receipt in the existing canonical transaction. Never distribute these into independently committed writes. Recover a lost response through exact idempotent receipt recovery and retained-prefix verification; a retry is not new source execution.
+
+## Missing genuine review integrations
+
+| Port | Required deployment acceptance | Current dependency |
+|---|---|---|
+| HumanIdentityProvider | Actual physical identity/session; role/delegation; expiry/revocation and aliases | No provider or identities supplied |
+| DocumentaryVerifier + existing EvidenceVerifier | Original/issuer authentication; exact digest/scope/purpose; qualifications/conflicts and independent current verification | No authenticating service or original appointments/permissions supplied |
+| BlindSourcePlayer | Canonical grant at every use; exact source identity/PTS; neutral presentation; no prior/candidate/model data; exposure audit | No player/broker deployment acceptance or source grant |
+| HumanObservationStore | Human-submission authentication; immutable originals/corrections; exact independent second-review and separate adjudication parents; atomic WP04 commit; externally retained anchors | No genuine storage/attestation integration; constructed journal is not substituted |
+| CanonicalPublisher | Complete active-schema batch, exact current promotion permission and externally verified canonical receipt; scoped recipients/output export | No live publisher; promotion blocked |
+
+`ActivationPorts` describes these dependencies and always refuses activation in this shipped configuration. Interface availability is insufficient: separately accepted deployment, actual evidence, canonical 8.1 compatibility and operation-specific authorization must exist. No caller JSON can wire services. Trusted time and current revocation must be enforced at point of use. Revoked assignments deny further source use and invalidate readiness, while preserving historical observations. The UI must prevent prior-observation exposure before independent seal; a local administrative dashboard must never be used as the blind player.
+
+## Canonical preflight integration
+
+Mission 27 composes Mission 26's bound catalog/dashboard and exact preflight engine with new documentary registers, preserving 21 conditional and six denied/deferred selections. It supplies no claims because independently verified evidence is absent; none is synthesized from a parsed document. A future accepted documentary attestation must be mapped by a deployment-owned adapter to the exact Mission26 Request digest and each of its sixteen evidence kinds, with canonical existing authorization checked separately at point of use. Purpose acceptance never issues a grant. Source-free readiness, authorization, execution and scientific validity remain separate.
+
+The handbook/pilot retain T2 deferral, physical-entry requirement, independent PTS clocks, no acoustic GT shifts, immutable disagreements, UNCERTAIN, risk triggers, M4/M5/MTR and per-metric denominators. No active 8.1 validator, 30-second plausibility rule, scientific threshold or comparator is changed.
