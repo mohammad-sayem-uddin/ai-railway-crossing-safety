@@ -6372,5 +6372,31 @@
     "hits": [],
     "method": "Read only word/document.xml; embedded images/media not read; protected results copy not accessed",
     "classification": "RESEARCH_REPORT_NOT_OWNER_PERMISSION"
+  },
+  "tracked_original_document_filename_check": {
+    "command": [
+      "git",
+      "ls-files",
+      "--",
+      "*LICENSE*",
+      "*license*",
+      "*README*",
+      "*agreement*",
+      "*consent*",
+      "*permission*",
+      "*acquisition*"
+    ],
+    "tracked_filenames": [
+      "README.md",
+      "docs/archive/README.md",
+      "docs/generated/phase5/mission13_probes/README.md",
+      "docs/generated/phase5/mission14_evidence/README.md",
+      "research/README.md",
+      "results/archive/old_test_dataset/README.md",
+      "scripts/README.md"
+    ],
+    "finding": "No tracked original owner/permission/consent/acquisition agreement or project dataset license document identified; README filenames are not proof of permission. Protected resource contents remain unexamined.",
+    "declared_vision_dataset_reference": "configs/vision.yaml:4-5 names baler.v1i.yolov8; no source-owner URL or exact-asset license established",
+    "audio_documentary_reference": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md:72,278-279 mentions Freesound-origin IDs; this does not establish current member rights or exact project source identity"
   }
 }

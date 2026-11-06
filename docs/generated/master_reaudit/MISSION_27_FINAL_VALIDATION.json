@@ -1,0 +1,290 @@
+{
+  "schema": "mission27-final-validation/1",
+  "date": "2026-11-06",
+  "timezone": "America/New_York",
+  "status": "ELIGIBLE_EVIDENCE_READINESS_ENGINEERING_COMPLETE;GENUINE_HUMAN_REVIEW_BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+  "baseline": "884be41dcd6fe957ad4426afc8611a64f0d149bc",
+  "mission26": {
+    "inventory": "d714c1c62109d42000da0a275fb05295d9548390",
+    "implementation": "64d766d81e652c94523433b8e4212946413368e7",
+    "final_delivery": "884be41dcd6fe957ad4426afc8611a64f0d149bc"
+  },
+  "documentary_delivery_commit": "d5d81d9eee0f7136a23aec9793e823487ee89f00",
+  "implementation_delivery_commit": "d796f60b5108be73d25c4590745a51916cb03de1",
+  "final_documentation_delivery": "Containing final documentation commit; exact local/tracking/live hash verified and reported in final delivery message",
+  "evidence_acquisition": {
+    "searched_text_documents": 541,
+    "mission26_json_registers_parsed": 16,
+    "root_docx": "word/document.xml only; embedded media not read",
+    "local_license_texts_reverified": 9,
+    "documentary_findings": 15,
+    "original_field_permission_or_appointment_items_submitted": 0,
+    "independently_verified_exact_source_permissions": 0,
+    "purpose_acceptances": 0,
+    "source_rows": 63,
+    "rights_unknown": 62,
+    "rights_partially_documented": 1,
+    "rights_dimension_assessments": 630,
+    "all_dimension_statuses": "RIGHTS_UNKNOWN",
+    "candidate_events": 27,
+    "train": 23,
+    "no_train": 3,
+    "engine_only": 1,
+    "R04_exact_events": 11,
+    "documentary_camera_references": 54,
+    "excluded_duplicate_camera_references": 2,
+    "historical_original_name_aliases_retained": 46,
+    "historical_engine_origin_claims_retained": 2,
+    "live_source_identities_verified": 0,
+    "inventory_signoff": false,
+    "known_expired_items": 0,
+    "known_revoked_items": 0,
+    "missing_dates_are_not_inferred_valid": true
+  },
+  "human_and_external": {
+    "role_categories": 6,
+    "actual_people_appointed": 0,
+    "actual_people_qualified": 0,
+    "external_rows": 9,
+    "external_status": "UNKNOWN_REQUIRES_VERIFICATION",
+    "universal_approval_or_exemption_assumed": false,
+    "genuine_adapters_enabled": false,
+    "human_review_ready": false,
+    "external_requests_prepared": 7,
+    "external_requests_sent": 0
+  },
+  "pilot": {
+    "status": "PROPOSED_CONDITIONAL_NOT_EXECUTED",
+    "events": 5,
+    "documentary_source_references": 10,
+    "independently_verified_sources": 0,
+    "new_recordings": 0,
+    "new_human_observations": 0,
+    "new_adjudications": 0,
+    "promoted_gt": 0
+  },
+  "scientific_preservation": {
+    "RD_directions": 55,
+    "T2": "DEFERRED_PHYSICAL_ROADWAY_ENTRY",
+    "lens_plane_substitution": false,
+    "acoustic_gt_shift": false,
+    "invented_exit_landmark": false,
+    "M4": "PRIMARY",
+    "M5": "NEVER_PROTECTED_M5 integer failure companion",
+    "MTR": "FEASIBILITY_SCREEN",
+    "per_metric_denominators": true,
+    "canonical_schema": "8.1.0-stage2.1",
+    "canonical_plausibility_floor_seconds": 30,
+    "canonical_validator_changed": false,
+    "RD046_scientific_duration_sufficiency": "DEFERRED",
+    "new_scientific_thresholds": 0,
+    "comparator": "INACTIVE",
+    "crossing": "crossing_A",
+    "empirical_performance_safety_claims": false
+  },
+  "operations": {
+    "total": 27,
+    "conditional_preserved": 21,
+    "denied_deferred_preserved": 6,
+    "preflight_blocked": 21,
+    "execution_not_permitted": 6,
+    "ready_for_authorization_review": 0,
+    "authorized": 0,
+    "executed": 0,
+    "new_grants": 0
+  },
+  "full_guarded_audit": {
+    "receipt": "MISSION_27_RESOURCE_AUDIT_RECEIPT.json",
+    "status": "NONPASSING",
+    "counts": {
+      "tests": 3709,
+      "failures": 87,
+      "errors": 31,
+      "skipped": 0,
+      "passed": 3591
+    },
+    "groups": 48,
+    "test_modules": 162,
+    "source_bindings_unchanged": true,
+    "protected_failures_and_errors_are_not_successful_execution": true
+  },
+  "selected_acceptance": {
+    "receipt": "MISSION_27_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+    "status": "PASSED_SELECTED_RESOURCE_FREE",
+    "counts": {
+      "tests": 3591,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 3591
+    },
+    "groups": 47,
+    "executed_test_modules": 161,
+    "source_bindings_unchanged": true,
+    "exact_case_coverage_verified": true,
+    "all_previous_3528_cases_preserved": true,
+    "same_118_protected_case_ids_preserved": true,
+    "not_executed_protected_dependencies": 118,
+    "not_executed_unknown": 0,
+    "new_mission27_cases_included_once": 63,
+    "included_subsets_never_summed": {
+      "synthetic_data_provenance": 21,
+      "synthetic_evaluation_pipeline": 18,
+      "synthetic_human_review": 30,
+      "synthetic_metric_contracts": 15,
+      "synthetic_mission17d": 238,
+      "synthetic_mission18a": 65,
+      "synthetic_mission18b": 26,
+      "synthetic_mission22": 62,
+      "synthetic_mission23": 23,
+      "synthetic_mission24": 191,
+      "synthetic_mission25": 148,
+      "synthetic_mission26": 98,
+      "synthetic_mission27": 63,
+      "synthetic_preservation": 18,
+      "synthetic_reporting": 8,
+      "synthetic_security": 46,
+      "synthetic_tooling": 15
+    },
+    "whole_repository_acceptance": false
+  },
+  "baseline_selected_acceptance": {
+    "receipt": "MISSION_27_BASELINE_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+    "counts": {
+      "tests": 3528,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 3528
+    }
+  },
+  "adversarial": {
+    "receipt": "MISSION_27_ADVERSARIAL_CASE_RECEIPT.json",
+    "new_cases": 63,
+    "passed": 63,
+    "required_case_categories_mapped": 23,
+    "constructed_non_promotable_only": true,
+    "genuine_positive_review_or_permission_not_tested": true
+  },
+  "static": {
+    "receipt": "MISSION_27_STATIC_VALIDATION.json",
+    "ruff_python_files": 10,
+    "ast": {
+      "files": 10,
+      "errors": 0
+    },
+    "mypy_source_files": 8,
+    "mypy_exit": 0,
+    "imports": {
+      "modules": [
+        "railway_detection.application.evidence_intake.__init__",
+        "railway_detection.application.evidence_intake.cli",
+        "railway_detection.application.evidence_intake.intake",
+        "railway_detection.application.evidence_intake.ports",
+        "railway_detection.application.evidence_intake.reporting",
+        "railway_detection.application.cli",
+        "railway_detection.application.preflight.catalog",
+        "railway_detection.safety.resource_free_acceptance"
+      ],
+      "errors": 0
+    },
+    "pip_check_exit": 0,
+    "whole_repository_type_claim": false
+  },
+  "cli": {
+    "receipt": "MISSION_27_DEMONSTRATION_RECEIPT.json",
+    "expected_actual_exits": [
+      0,
+      0,
+      0,
+      0,
+      3,
+      3,
+      2
+    ],
+    "three_json_reports_identical": true,
+    "generated_dashboard_matches": true,
+    "policy_denials": 0
+  },
+  "development_runs_not_summed": {
+    "first_full_guarded_audit": {
+      "path": "/private/tmp/m27_frozen_audit_20261106/receipt.json",
+      "sha256": "d45c3b4abd969774294bb33a744cc80daceadb5bd51b9701cc45a64b98aaf5f3",
+      "counts": {
+        "tests": 3709,
+        "failures": 88,
+        "errors": 31,
+        "skipped": 0,
+        "passed": 3590
+      },
+      "extra_failure": "Missing legacy inventory entries for two new test modules; repaired with conservative UNKNOWN entries and bound YAML input; complete corrected audit/selection rerun"
+    },
+    "focused_regression": {
+      "receipt": "MISSION_27_FOCUSED_REGRESSION_RECEIPT.json",
+      "counts": {
+        "tests": 505,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 505
+      },
+      "scope": "Intermediate 60-case intake plus M24/M25/M26/media-opener regression; final three expiry cases are included in frozen audit/acceptance"
+    },
+    "inventory_repair": {
+      "path": "/private/tmp/m27_inventory_repair_20261106/receipt.json",
+      "counts": {
+        "tests": 67,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 67
+      }
+    }
+  },
+  "preservation": {
+    "researcher_files_unchanged_unstaged": 7,
+    "mission21_through26_artifacts_unchanged": 93,
+    "protected_resources_opened_decoded_hashed_or_processed": 0,
+    "real_review_corpus_accessed": false,
+    "no_training_calibration_inference_replay_real_evaluation_split_annotation_adjudication_promotion_release_or_actuation": true,
+    "python_guards_not_os_isolation": true,
+    "historical_dangling_git_objects_preserved": true
+  },
+  "git": {
+    "branch": "main",
+    "connectivity_exit": 0,
+    "implementation_local_tracking_live_match": true,
+    "delivery": "Exact authorized staging, normal commits/pushes only; no reset/clean/amend/rebase/force/history rewriting"
+  },
+  "artifact_sha256": {
+    "MISSION_27_ADVERSARIAL_CASE_RECEIPT.json": "86b7178a21b0e57d9ce31c45e08962cf20d9cd2683207e829fb21f5d3b5f96d0",
+    "MISSION_27_BASELINE_RESOURCE_FREE_EXECUTION_RECEIPT.json": "5c8386565afb4ccce4cf600feab7370fe74bc9820099ec0e853369afba92436a",
+    "MISSION_27_DEMONSTRATION_RECEIPT.json": "28f842524332c78cd5604326add937f64ec73c3c73ee451e4627489c4e154a13",
+    "MISSION_27_DOCUMENTARY_SEARCH_RECEIPT.json": "4f0be6867049f95cb20ebbd3ddba6460ad6b75f70149b3ebe5db75aa6a8bdad8",
+    "MISSION_27_DOCUMENT_BINDING.json": "29e71322ba5d023b4412180fd586f38bc99be0097ae84b35c8e5fec92f9c0aea",
+    "MISSION_27_EVIDENCE_INTAKE_SCHEMA.json": "defe0bc4742db231aa7ac606a60417362da3e858a5bf2abb5b9ad95da9f2db13",
+    "MISSION_27_EVIDENCE_REGISTER.json": "bc917b6a3c7a89b947af4dc5a834d725a7a49689f37ebb481992e8c8778b095a",
+    "MISSION_27_EVIDENCE_SUBMISSION_AND_VERIFICATION_SPEC.md": "15903e7fc9f4c58ef28c0e9ec7c32d059616c795743237e71d25cd85b19074f0",
+    "MISSION_27_EXECUTION_REGISTER.json": "69e6a63dce5ab40e9f511a322c89018275092439629553e782d6d011b69a8df6",
+    "MISSION_27_EXTERNAL_REQUIREMENTS_RESOLUTION.json": "09c00b116f78c90cca32879648c57c86c14d885530e549b23ba3b2aef273369a",
+    "MISSION_27_FOCUSED_REGRESSION_RECEIPT.json": "e1bcf5d01672b39b784f0e5bbb33fc991f8fd013cefc6a947ca20b64612f7f73",
+    "MISSION_27_GENUINE_EVIDENCE_ACQUISITION_REPORT.md": "9ef664ef8bcdd530d2fc7e86ecf7478bfa2ad035a1b09c143e32c78f7cfb0172",
+    "MISSION_27_GENUINE_REVIEW_PILOT_PROTOCOL.md": "e496d887458e9cb84fff7fd6499073acaa5a2a0f8b872d31422b68f259749aa0",
+    "MISSION_27_HUMAN_REVIEWER_HANDBOOK.md": "c0fcf3a3419f7cf5d365935f3d3656cababbd655cb8c7fab186d1302c7a7add6",
+    "MISSION_27_IMPLEMENTATION_VALIDATION.json": "d085385bffa2797d01e1251945d60d6d3f3bdf52ef92ae64321b37420764f88c",
+    "MISSION_27_OPERATION_ACTIVATION_REVIEW.json": "f65fed1dc7e2f0998f801ad3f061a737d343b3c1e01771f4902ff736c345dad0",
+    "MISSION_27_PROTECTED_DEPENDENCY_EVIDENCE.json": "b63b0b74d491e0b39a26f91460060f21e92d93e0016b089b1558d155c92e0bed",
+    "MISSION_27_RESEARCHER_ACTION_PACKAGE.md": "8e563949333b432efe1b5fcf45b3f0384444db6c0e93712ee53d3b39ed34776c",
+    "MISSION_27_RESEARCHER_ACTION_REGISTER.json": "b68460933fbb94d414fc3c68cb35796fc6f2632caca75dc1777e0bbd2da97b22",
+    "MISSION_27_RESOURCE_AUDIT_RECEIPT.json": "b74bf5cc8653c4e571e30a951f29d885f0717f6a16389e795be77c02bd539a77",
+    "MISSION_27_RESOURCE_FREE_EXECUTION_RECEIPT.json": "aded52a2af7840d068adea2df4cc030292731b91e87cd1827abf58dfa64bd608",
+    "MISSION_27_REVIEWER_APPOINTMENT_AND_QUALIFICATION_REGISTER.json": "e98b68cc83a3c26b12e5bb4d29fa581c8864d9d2f72ebd2c74356ff388ce9245",
+    "MISSION_27_SCIENTIFIC_DECISION_PRESERVATION.json": "27ae967e4cb0fbace5e919afaecc9569e818cf48906c29bcebc70a0f56c58fde",
+    "MISSION_27_SOURCE_IDENTITY_AND_PROVENANCE_REGISTER.json": "ea984a4579019499604dcf56f6d6af4e36bbad4986b11989b559b6ba9c41c179",
+    "MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json": "42c957ae552da8fd5507594bae1bda13b84ee01a76695aa0daf9dd9a8ba4958b",
+    "MISSION_27_STATIC_VALIDATION.json": "a38eff6c6b739a4f13ff9b8078ea98e5459a9694ee9216af94d1b61e051e47e9",
+    "MISSION_27_TEST_CLASSIFICATION_REGISTER.json": "91095591ec14e588907518fbeb391c48661a7c4428dbbbcf5ca65c63fbb312bb",
+    "MISSION_27_UPDATED_READINESS_DASHBOARD.json": "7cfbd1dcfb43ed69236102bd5623870a4355f812581bf4d22af22cb7ea306af4",
+    "MISSION_27_UPDATED_READINESS_DASHBOARD.md": "dd2d0044bd51432f0c533d8d7da858f90669c597269b7b01054d965cf210fef8"
+  }
+}

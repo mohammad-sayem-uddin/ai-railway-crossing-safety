@@ -114,5 +114,26 @@
     "docs/generated/master_reaudit/MISSION_26_TEST_CLASSIFICATION_REGISTER.json": "e7aa362ae8de6faec001a552142eef78e33452085154ee3137f1a5f09e7c8fc5"
   },
   "working_tree_porcelain": " M docs/generated/master_reaudit/MISSION_17I_MISSION18_ACCEPTANCE_AND_DEPENDENCY_REGISTER.md\n?? docs/generated/master_reaudit/MISSION_18A_CONVENTION_B_SYNTHETIC_INTEGRATION_REPORT.md\n?? docs/generated/master_reaudit/MISSION_18A_INTEGRATION_ACCEPTANCE_RECORD.md\n?? docs/generated/master_reaudit/MISSION_18A_R2_RESEARCHER_SELECTION_AND_ADOPTION_RECORD.md\n?? docs/generated/master_reaudit/MISSION_18A_R_RESEARCHER_DECISION_PREPARATION.md\n?? docs/generated/master_reaudit/MISSION_19_MASTER_AUTHORIZATION_REGISTER.json\n?? docs/generated/master_reaudit/MISSION_19_MASTER_PROJECT_AUTHORIZATION_AND_RESEARCH_DECISION_PACKET.md",
-  "request_sha256": "b8dc3f263206eff2ba1c94b401b4b340f06afaac6d7bdd108f3cf55f8e37fb31"
+  "request_sha256": "b8dc3f263206eff2ba1c94b401b4b340f06afaac6d7bdd108f3cf55f8e37fb31",
+  "phase_history": [
+    {
+      "phase": "A-D and F/I/J documentary preparation",
+      "commit": "d5d81d9eee0f7136a23aec9793e823487ee89f00",
+      "local_tracking_live_verified": true
+    },
+    {
+      "phase": "E/G/H/K metadata intake and activation-readiness engineering, corrected audit and classification",
+      "commit": "d796f60b5108be73d25c4590745a51916cb03de1",
+      "local_tracking_live_verified": true
+    },
+    {
+      "phase": "L final selected acceptance and preservation",
+      "receipt": "MISSION_27_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+      "passed": 3591,
+      "protected_not_executed": 118,
+      "status": "PASSED_SELECTED_RESOURCE_FREE"
+    }
+  ],
+  "current_status": "ELIGIBLE_ENGINEERING_COMPLETE;GENUINE_REVIEW_BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+  "final_validation": "MISSION_27_FINAL_VALIDATION.json"
 }
