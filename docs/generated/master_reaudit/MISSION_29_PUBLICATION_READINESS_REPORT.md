@@ -52,7 +52,7 @@ YOLOv8n still-image mAP50 .9946 and mAP50:95 .8550 over 487 objects are document
 
 ## 13. Software validation
 
-Mission28 selected guarded acceptance passed 3,614/3,614 with 118 protected dependencies excluded and unknown classifications zero. Mission29 adds a finite claims/pathway/publication checker with 35 constructed consistency/refusal cases. Final source-bound results appear in MISSION_29_FINAL_VALIDATION.json and execution/classification receipts. Counts from overlapping subsets/runs are never added. Guarded software checks do not establish detector accuracy, human accuracy, railway safety or whole-repository acceptance.
+Mission28 selected guarded acceptance passed 3,614/3,614 with 118 protected dependencies excluded and unknown classifications zero. Mission29 adds a finite claims/pathway/publication checker with 35 constructed consistency/refusal cases. Mission29 selected acceptance passed 3,649/3,649 (zero failures, setup errors or skips), with the same 118 protected dependencies excluded and unknown classifications zero. All Mission28/27/26 selected IDs ran once within this superset. The full guarded audit separately recorded 3,649 passes, 87 protected-dependency failures and 31 protected-dependency setup errors, zero skips. Final source-bound results appear in MISSION_29_FINAL_VALIDATION.json and execution/classification receipts. Counts from overlapping subsets/runs are never added. Guarded software checks do not establish detector accuracy, human accuracy, railway safety or whole-repository acceptance.
 
 ## 14. Threats to validity
 

@@ -1,27 +1,276 @@
 {
   "schema": "mission29-final-validation/1",
-  "status": "GUARDED_AUDIT_COMPLETE;DELIVERED_COMMIT_SELECTED_ACCEPTANCE_PENDING",
-  "current_pathway": "PATH_B_DEFENSIBLE_MANUSCRIPT_PREPARATION",
-  "external_submission_authorized": false,
-  "empirical_experiments_executed": false,
+  "date": "2026-11-07",
+  "timezone": "America/New_York",
+  "status": "ELIGIBLE_MISSION29_WORK_COMPLETE;PATH_A_BLOCKED;PATH_B_ORIGINAL_PREPARATION_ONLY",
+  "mission28_final_delivery": "65811b6f3c54eeeb1a86b4fd8c8a861f7d675423",
+  "mission28_implementation": "69ec20f6aa8a7b0fa090ec8824bebecf024a8a3e",
+  "implementation_delivery_commit": "890f60e12e8d3b58c58f160397b68964c7f3252a",
+  "final_documentation_delivery": "Containing commit; exact local/tracking/live hash verified and reported in final delivery response",
+  "scientific_decision": {
+    "reference": "MISSION_29_FINAL_SCIENTIFIC_EXECUTION_DECISION.json",
+    "current_pathway": "PATH_B_DEFENSIBLE_MANUSCRIPT_PREPARATION",
+    "manuscript_preparation_possible": true,
+    "external_submission_authorized": false,
+    "protected_release_authorized": false,
+    "path_a": "BLOCKED",
+    "pilot": "PILOT_NOT_READY",
+    "core_engineering_freeze_recommended": true,
+    "new_material_core_defects_demonstrated": 0,
+    "actual_experiments_executed": 0,
+    "new_grants": 0,
+    "next_milestone": "Human revision and rights/claim review of the prepared methods draft; pursue ACT-01/02 originals in parallel, with core engineering frozen"
+  },
+  "evidence_reconciliation": {
+    "receipt": "MISSION_29_EVIDENCE_RECONCILIATION_RECEIPT.json",
+    "permitted_text_documents": 541,
+    "unchanged": 541,
+    "new": 0,
+    "changed": 0,
+    "missing": 0,
+    "root_document_xml_unchanged": true,
+    "embedded_media_read": false,
+    "new_genuine_originals": 0,
+    "originals_independently_verified": 0,
+    "accepted_exact_source_purposes": 0,
+    "requests_sent": 0,
+    "ACT01_07": "unchanged; ACT07 only if actually appointed"
+  },
+  "scientific_evidence": {
+    "classified_items_not_recordings": 182,
+    "genuine_verified_recordings": 0,
+    "documentary_source_references": 63,
+    "rights_unknown": 62,
+    "rights_partially_documented": 1,
+    "unknown_individual_rights_dimensions": 630,
+    "external_questions_unresolved": 9,
+    "actual_qualified_appointed_reviewers": 0,
+    "historical_result_rows": 8,
+    "scientific_claims": 24,
+    "artifact_specific_publication_assessments": 9,
+    "human_authors": null,
+    "venue": null,
+    "publication_acceptance_guaranteed": false,
+    "publication_readiness_sections": 18,
+    "new_original_methods_draft": "MISSION_29_METHODS_MANUSCRIPT_PREPARATION_DRAFT.md"
+  },
   "full_guarded_audit": {
-    "tests": 3767,
-    "failures": 87,
-    "errors": 31,
+    "receipt": "MISSION_29_RESOURCE_AUDIT_RECEIPT.json",
+    "status": "NONPASSING",
+    "counts": {
+      "tests": 3767,
+      "failures": 87,
+      "errors": 31,
+      "skipped": 0,
+      "passed": 3649
+    },
+    "groups": 50,
+    "modules": 165,
+    "source_bindings_unchanged": true,
+    "failure_and_error_ids_exact_same_118_protected_dependencies": true,
+    "successful_protected_execution": false
+  },
+  "selected_acceptance": {
+    "receipt": "MISSION_29_RESOURCE_FREE_EXECUTION_RECEIPT.json",
+    "status": "PASSED_SELECTED_RESOURCE_FREE",
+    "counts": {
+      "tests": 3649,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 3649
+    },
+    "groups": 49,
+    "executed_modules": 164,
+    "source_bindings_unchanged": true,
+    "same_closure_as_audit": true,
+    "requested_collected_junit_cases_equal_once": true,
+    "protected_dependencies_not_executed": 118,
+    "unknown_classifications": 0,
     "skipped": 0,
-    "passed": 3649
+    "whole_repository_acceptance": false,
+    "new_mission29_cases": 35,
+    "prior_selected_scopes_executed_once_in_superset": {
+      "26": 3528,
+      "27": 3591,
+      "28": 3614
+    },
+    "included_subsets_never_added": {
+      "synthetic_data_provenance": 21,
+      "synthetic_evaluation_pipeline": 18,
+      "synthetic_human_review": 30,
+      "synthetic_metric_contracts": 15,
+      "synthetic_mission17d": 238,
+      "synthetic_mission18a": 65,
+      "synthetic_mission18b": 26,
+      "synthetic_mission22": 62,
+      "synthetic_mission23": 23,
+      "synthetic_mission24": 191,
+      "synthetic_mission25": 148,
+      "synthetic_mission26": 98,
+      "synthetic_mission27": 63,
+      "synthetic_mission28": 23,
+      "synthetic_mission29": 35,
+      "synthetic_preservation": 18,
+      "synthetic_reporting": 8,
+      "synthetic_security": 46,
+      "synthetic_tooling": 15
+    },
+    "WP01_WP10_relevant_tests": "Included in the exact selected case set; no duplicate total"
   },
-  "focused_artifact_checks": {
-    "passed": 35,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
+  "focused_checks": {
+    "receipt": "MISSION_29_FOCUSED_REGRESSION_RECEIPT.json",
+    "counts": {
+      "tests": 35,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 35
+    },
+    "not_added_to_selected_total": true,
+    "adversarial_receipt": "MISSION_29_ADVERSARIAL_CASE_RECEIPT.json",
+    "claims_pathway_publication_checks": "35 constructed consistency/refusal cases; no original evidence verification"
   },
-  "classified_selection": {
-    "selected": 3649,
-    "protected": 118,
-    "unknown": 0
+  "document_checker": {
+    "schema": "mission29-documentary-validation/1",
+    "package_digest": "9ba32116ba9d4444bee5d2ea8064062bc43b2c2d5b54e408c62c6d0beb2a7ea7",
+    "valid": true,
+    "issues": [],
+    "current_pathway": "PATH_B_DEFENSIBLE_MANUSCRIPT_PREPARATION",
+    "assurance": "Documentary consistency only; not source authenticity, legal clearance, canonical authorization or empirical scientific validity",
+    "new_grants": 0
   },
-  "final_selected_acceptance": "PENDING",
-  "not_whole_repository_acceptance": true
+  "deterministic_cli": {
+    "receipt": "MISSION_29_CLI_VERIFICATION_RECEIPT.json",
+    "exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "identical_reports": true,
+    "mission28_readiness_unchanged": true,
+    "policy_denials": 0,
+    "new_grants": 0
+  },
+  "static": {
+    "receipt": "MISSION_29_STATIC_VALIDATION.json",
+    "ruff_exit": 0,
+    "ruff_files": 4,
+    "scoped_mypy_exit": 0,
+    "mypy_sources": 3,
+    "ast": {
+      "files": 4,
+      "errors": 0
+    },
+    "imports": {
+      "modules": [
+        "scripts.validate_mission29_research_decision",
+        "railway_detection.application.cli",
+        "railway_detection.safety.resource_free_acceptance"
+      ],
+      "errors": 0
+    },
+    "dependencies_exit": 0,
+    "whole_repository_type_claim": false,
+    "coarse_inventory_old_164_entries_preserved": true,
+    "coarse_inventory_new_entry": "UNKNOWN, not auto-safe; separate current executed per-case register has unknown zero"
+  },
+  "scientific_preservation": {
+    "RD001_055_reopened": false,
+    "operation_selections": 27,
+    "conditional": 21,
+    "denied_deferred": 6,
+    "candidate_events": 27,
+    "train": 23,
+    "no_train": 3,
+    "engine_only": 1,
+    "excluded_duplicate_camera_references": 2,
+    "R04_exact_events": 11,
+    "pilot_events": 5,
+    "pilot_sources": 10,
+    "inventory_signed_off": false,
+    "crossing": "crossing_A",
+    "independent_camera_primary": true,
+    "fusion": "EXPLORATORY_ONLY",
+    "audio": "SUPPORTING_ONLY",
+    "physical_T2_and_occupancy": "DEFERRED",
+    "RD046_sufficiency": "DEFERRED",
+    "canonical_schema": "8.1.0-stage2.1",
+    "plausibility_seconds": 30,
+    "M4": "PRIMARY",
+    "M5": "INTEGER_COMPANION",
+    "MTR": "FEASIBILITY_SCREEN",
+    "per_metric_denominators": true,
+    "new_scientific_thresholds": 0,
+    "acoustic_GT_shift": false,
+    "invented_exit": false,
+    "comparator": "INACTIVE",
+    "empirical_safety_or_performance_claims": false,
+    "unchanged_core_source_sha256": {
+      "src/railway_detection/annotation/stage2_1_schema.py": "9ef0dc1d7ba400437d3592820376d08c5ff5d59d8bb471c88864363e0e7ce509",
+      "src/railway_detection/application/preflight/engine.py": "d25d8b4ab9d0bbd828dfa9ce653510788391e90f7c30c22c3bc2ad2c6ea33d1d",
+      "src/railway_detection/annotation/evidence_review/contracts.py": "0572203059798c457b8a8f89d7d2f93348416ee7459262f9201f72c94f562afe",
+      "src/railway_detection/annotation/evidence_review/lifecycle.py": "8f0e31b10b3203ae835605ea67becb74c2f877503f77327e5e1d757ea4de059a",
+      "src/railway_detection/annotation/evidence_review/journal.py": "b2ea5f601650d5e546055ec4f8e4bcec999be7aeaf32eecdc1b6b4b5efacd610",
+      "src/railway_detection/application/evidence_intake/intake.py": "d1133c0ad229443d8fc1a8b72b9db16ae63b0e3f54eec46bb63ff4f24992db33",
+      "src/railway_detection/application/evidence_intake/pilot.py": "624a5435f86b65ce07f125847973c213fb581d0c3f4b9f56a34e0cd4071b8975"
+    }
+  },
+  "preservation": {
+    "seven_researcher_files_unchanged_unstaged": true,
+    "historical_Mission21_28_artifacts_unchanged": 151,
+    "raw_media_checkpoints_caches_protected_review_corpus_accessed": false,
+    "training_calibration_inference_replay_real_evaluation_split_annotation_adjudication_GT_promotion_raw_release_hardware": false,
+    "python_guards_are_not_OS_isolation": true,
+    "historical_dangling_objects_still_exist": true
+  },
+  "git": {
+    "branch": "main",
+    "implementation_local_tracking_live_match": true,
+    "connectivity_exit": 0,
+    "normal_exact_path_commit_push_only": true,
+    "history_rewrite": false
+  },
+  "required_deliverables": {
+    "expected": 12,
+    "present": 12
+  },
+  "artifact_sha256": {
+    "MISSION_29_ADVERSARIAL_CASE_RECEIPT.json": "2e5462bed209ca52c9535f1bcef394029a4eecc3ad0aba027d1e126b0cd247a3",
+    "MISSION_29_CLI_VERIFICATION_RECEIPT.json": "6b15c3644c23b124bae552ab5cacd3e974c64c310aae1e0c9ff35cc5801dd3b0",
+    "MISSION_29_DOCUMENT_BINDING.json": "0b69664246c8d2b6d6f31043bffd21000fb2820fd11f9357630aaed926b92e93",
+    "MISSION_29_ENGINEERING_FREEZE_ASSESSMENT.md": "cafbcb2cd4dd1e75bd96febb75f914ca1e35e446a7712313a6f5aa9e5e542c4f",
+    "MISSION_29_EVIDENCE_RECONCILIATION_RECEIPT.json": "494bb12ead63732f489eb6dcdd226aa1e2ec0a7afe7b903162a86ecb320df069",
+    "MISSION_29_EXECUTION_REGISTER.json": "37ecfc1f2a7eccd94e188fcf183061e35f0ba08f438b63cf9622de2d3f0633dc",
+    "MISSION_29_FINAL_EVIDENCE_RECONCILIATION.md": "f5c6d0f75abbe872d3214e6775a19b4e06f6ac6ab0b5bc607ad467ee30521c5d",
+    "MISSION_29_FINAL_SCIENTIFIC_EXECUTION_DECISION.json": "d3d4901dc80ff7a8ffdc84b256c1c13715d3185dbe1141b44918be6b208516dd",
+    "MISSION_29_FOCUSED_REGRESSION_RECEIPT.json": "55bdde36ce885c7a20ceb1a0f784a58b61b79d48579d217f33a7e21765caaac8",
+    "MISSION_29_FUTURE_EXPERIMENT_EXECUTION_PLAN.md": "b71cfabec134bbb05df547b5022a5ea6f5029514329ef7e14bda4d1c066738d7",
+    "MISSION_29_FUTURE_EXPERIMENT_REGISTER.json": "4f4bafbf0b2ebebc739336f968665cd3741b1a5356d6bf45c6402b8f8792766c",
+    "MISSION_29_HISTORICAL_RESULTS_AUDIT.md": "135733e460847dfa03c9a992e2855e51491912162eaa10bbe2a444e6fb390fb1",
+    "MISSION_29_HISTORICAL_RESULTS_REGISTER.json": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+    "MISSION_29_METHODS_MANUSCRIPT_PREPARATION_DRAFT.md": "5991a829289f2578b81f3a5f98b39844b90900862f4bd330ad73df8e30b6ca60",
+    "MISSION_29_PATH_A_EMPIRICAL_RESEARCH_REQUIREMENTS.md": "294cacf0f3b8b3a622b81af395c6f1c78866433e22b4704401f7de274ec936ed",
+    "MISSION_29_PATH_B_PUBLICATION_ASSESSMENT.md": "859825cc1a08be85764a0e0404fb473ddc9d717d58d39c72ef6108aab4f7b0ab",
+    "MISSION_29_PROTECTED_DEPENDENCY_EVIDENCE.json": "bbc6aed662271643de9cd8eea8e18d42de95068cd0f637f2b68340af36ccbaf0",
+    "MISSION_29_PUBLICATION_READINESS_REPORT.md": "327319868080f0e10fffc3d2ff3dd9fab72960dfac49c9711f64c8c8e2f3bb1d",
+    "MISSION_29_PUBLICATION_RIGHTS_REGISTER.json": "7e7337643478622a68890e174954f8a54f1560586f06de04ed173e045a0614a2",
+    "MISSION_29_RESEARCHER_ACTION_DELTA.md": "7ce72b66fae99be54adef9275a1426c08844b3adae47e841dcb2c4168d157b4b",
+    "MISSION_29_RESEARCHER_ACTION_REGISTER.json": "23dd3a064a5d545e8810647141318896fda2c6b399890d4832e21cda553c021e",
+    "MISSION_29_RESOURCE_AUDIT_RECEIPT.json": "a7b7f5fa74bf3a8813ae885adf425637788422a55e353d96ce46d3315c17bfcf",
+    "MISSION_29_RESOURCE_FREE_EXECUTION_RECEIPT.json": "8b03d9198336e3e87c7035558d4db138045b51430bcbc2bcdf1c78de032458b2",
+    "MISSION_29_RESUMPTION_VERIFICATION.json": "89536b3c0abd0e7d459bb46b83682d059ebd126210af0834a11c6fd21997fd25",
+    "MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+    "MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+    "MISSION_29_STATIC_VALIDATION.json": "a20dcd75e49d46f85a61946f0fa13158fac87244984e9dfb81811e5c0ceb4a09",
+    "MISSION_29_TEST_CLASSIFICATION_REGISTER.json": "53868d5d3d4ab7bfdbbf82a4bdab20a0945950ac31a9c0370bc9c9259fa060a4"
+  },
+  "audit_started_date": "2026-11-06",
+  "resumption_verification": {
+    "receipt": "MISSION_29_RESUMPTION_VERIFICATION.json",
+    "client_completion_date": "2026-11-07",
+    "all_541_documentary_fingerprints_unchanged": true,
+    "source_bindings_match_completed_run": true,
+    "test_rerun_needed": false
+  }
 }

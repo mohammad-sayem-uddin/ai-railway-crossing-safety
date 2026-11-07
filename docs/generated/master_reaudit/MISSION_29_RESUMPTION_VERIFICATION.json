@@ -1,0 +1,37 @@
+{
+  "schema": "mission29-resumption-verification/1",
+  "client_completion_date": "2026-11-07",
+  "timezone": "America/New_York",
+  "date_source": "Client-provided date; not a trusted authorization clock",
+  "reason": "User resumed Mission29 after the acceptance run completed; verify documentary/source continuity before final delivery without repeating the passed test run",
+  "original_audit_date": "2026-11-06",
+  "permitted_text_fingerprints": 541,
+  "unchanged": 541,
+  "new": [],
+  "changed": [],
+  "missing": [],
+  "text_search_repeated": false,
+  "root_document_xml_unchanged": true,
+  "embedded_media_read": false,
+  "preserved_researcher_files": 7,
+  "preserved_historical_Mission21_28_artifacts": 151,
+  "current_source_bindings_match_completed_selected_run": true,
+  "selected_counts": {
+    "tests": 3649,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 3649
+  },
+  "selected_status": "PASSED_SELECTED_RESOURCE_FREE",
+  "classification": {
+    "selected": 3649,
+    "protected": 118,
+    "unknown": 0
+  },
+  "delivered_local_tracking_live_head": "890f60e12e8d3b58c58f160397b68964c7f3252a",
+  "new_genuine_evidence": [],
+  "protected_resources_accessed": false,
+  "new_grants": 0,
+  "repeat_test_run_needed": false
+}
