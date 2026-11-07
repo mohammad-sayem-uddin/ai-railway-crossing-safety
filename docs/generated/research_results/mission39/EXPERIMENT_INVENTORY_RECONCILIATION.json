@@ -33,15 +33,18 @@
     "CURRENT_EXPERIMENT_DIRECTION": 5,
     "ADMIN_EXCLUDED": 1
   },
-  "current_execution": "FRONT_AND_BACK_ORIGINAL_INFERENCE_COMPLETE_EACH_5_OF_5;GT_EVALUATION_UNAVAILABLE",
-  "empirical_inference_experiment_stages_executed": 2,
+  "current_execution": "FRONT_AND_BACK_VISION_AND_FRONT_AUDIO_INFERENCE_COMPLETE;B2_INPUT_ASSEMBLY_COMPLETE;GT_EVALUATIONS_UNAVAILABLE",
+  "empirical_inference_experiment_stages_executed": 3,
   "complete_GT_dependent_evaluations": 0,
   "source_event_counts": {
     "front": 5,
     "back": 5,
-    "audio": 0,
-    "multimodal": 0
+    "audio": 5,
+    "multimodal": 0,
+    "multimodal_input_assembly": 5
   },
   "unique_physical_pilot_events": 5,
-  "unique_camera_source_members_processed": 10
+  "unique_camera_source_members_processed": 10,
+  "B2_input_assembly_complete": true,
+  "B2_decision_replays": 0
 }

@@ -30,13 +30,13 @@ limitations:
   test counts; its complete regression command still executes every file under a separate inherited access
   policy.
 summary:
-  total_test_files: 167
-  unknown: 53
-  metadata_only: 17
+  total_test_files: 168
   processed_data_access: 2
+  unknown: 54
+  metadata_only: 17
   raw_media_access: 4
-  synthetic_only: 77
   model_checkpoint_access: 14
+  synthetic_only: 77
   safe_for_synthetic_runner: 94
 test_files:
   tests/integration/test_phase0_smoke.py:
@@ -3789,6 +3789,24 @@ test_files:
     safe_for_synthetic_runner: false
     reason: 'tests/synthetic_mission38/test_front_runtime.py: changed/new source; UNKNOWN pending executed
       evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission39/test_audio_feature_parity.py:
+    sha256: c14b1b8d833228bf974c48ecfb8663c48307abeba100b354ac3d8e4b59416b42
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission39/test_audio_feature_parity.py: changed/new source; UNKNOWN pending
+      executed evidence review'
     access_paths: []
     blocked_attempts: {}
     access_dirs: []

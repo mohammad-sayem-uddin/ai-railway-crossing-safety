@@ -1,0 +1,104 @@
+{
+  "schema": "mission39-held-out-acoustic-result-validation/1",
+  "valid": true,
+  "original_audio_members": 5,
+  "unique_physical_events": 5,
+  "total_windows": 423,
+  "predicted_train_windows": 80,
+  "B2_input_frames": 1079,
+  "B2_frames_with_both_stream_records": 634,
+  "B2_decision_replay_executed": false,
+  "accepted_GT_metrics_calculated": false,
+  "checks": [
+    {
+      "event": "train_events/event_005",
+      "hashes_and_row_counts_valid": true,
+      "generic_serializer_roundtrip_valid": true,
+      "existing_descriptive_audio_parser_valid": true,
+      "native_audio_origin_zero_and_contiguous": true,
+      "PCM_length_matches_generated_verified_resampling_rule": true,
+      "all_emitted_windows_within_prior_header_duration": true,
+      "window_end_causal": true,
+      "all_B2_input_records_causal": true
+    },
+    {
+      "event": "train_events/event_021",
+      "hashes_and_row_counts_valid": true,
+      "generic_serializer_roundtrip_valid": true,
+      "existing_descriptive_audio_parser_valid": true,
+      "native_audio_origin_zero_and_contiguous": true,
+      "PCM_length_matches_generated_verified_resampling_rule": true,
+      "all_emitted_windows_within_prior_header_duration": true,
+      "window_end_causal": true,
+      "all_B2_input_records_causal": true
+    },
+    {
+      "event": "engine_events/event_001",
+      "hashes_and_row_counts_valid": true,
+      "generic_serializer_roundtrip_valid": true,
+      "existing_descriptive_audio_parser_valid": true,
+      "native_audio_origin_zero_and_contiguous": true,
+      "PCM_length_matches_generated_verified_resampling_rule": true,
+      "all_emitted_windows_within_prior_header_duration": true,
+      "window_end_causal": true,
+      "all_B2_input_records_causal": true
+    },
+    {
+      "event": "train_events/event_001",
+      "hashes_and_row_counts_valid": true,
+      "generic_serializer_roundtrip_valid": true,
+      "existing_descriptive_audio_parser_valid": true,
+      "native_audio_origin_zero_and_contiguous": true,
+      "PCM_length_matches_generated_verified_resampling_rule": true,
+      "all_emitted_windows_within_prior_header_duration": true,
+      "window_end_causal": true,
+      "all_B2_input_records_causal": true
+    },
+    {
+      "event": "no_train_events/event_001",
+      "hashes_and_row_counts_valid": true,
+      "generic_serializer_roundtrip_valid": true,
+      "existing_descriptive_audio_parser_valid": true,
+      "native_audio_origin_zero_and_contiguous": true,
+      "PCM_length_matches_generated_verified_resampling_rule": true,
+      "all_emitted_windows_within_prior_header_duration": true,
+      "window_end_causal": true,
+      "all_B2_input_records_causal": true
+    }
+  ],
+  "logs": {
+    "audio_followup/logs/initial.stderr.txt.gz": {
+      "gzip_sha256": "587e8a6b5b297eeb715217e66e136b373b647b8732519681e69d6095a7b4a143",
+      "original_sha256": "47957bd522bdc13814630a9ba4179b39d598fe1061f2cc61901233edd52b7fbc",
+      "original_bytes": 1689
+    },
+    "audio_followup/logs/initial.stdout.txt.gz": {
+      "gzip_sha256": "f093f1c0000c51c10a9b00cebc1c10a06e4d22e2a59658de8ddee330385e50b4",
+      "original_sha256": "fedd722beb500be17d7dc97b00576bd5da5942b5ea170da53193363773ab74b1",
+      "original_bytes": 7252
+    },
+    "audio_followup/logs/retry.stderr.txt.gz": {
+      "gzip_sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0
+    },
+    "audio_followup/logs/retry.stdout.txt.gz": {
+      "gzip_sha256": "60039967000669346958ac7d7075183badfdd1c0d632f8a456c52e7e5a960fa7",
+      "original_sha256": "9925c543aae0d434e3babde10d2b67023dad6d403c2c35c31a1eea1d076b38d3",
+      "original_bytes": 8184
+    }
+  },
+  "consolidated_run_manifest_sha256": "9f0c4fb064a9f6b318240becf034bff993ef0fe30651122450651975b592aee7",
+  "initial_attempt": {
+    "successful": 2,
+    "failed_before_inference": 3,
+    "not_counted_as_success": true
+  },
+  "retry": {
+    "attempted": 3,
+    "successful": 3,
+    "existing_successes_reused": true
+  },
+  "model_feature_reporting_limit": "Existing code uses 10*log10(max(E,eps)); historical V3 prose says natural log. Frozen runtime is retained, no training-feature equivalence claim or silent feature change",
+  "software": "No production/config/test changes; existing final full run source bindings remain applicable; five generated resampling checks separate, never added to3807"
+}

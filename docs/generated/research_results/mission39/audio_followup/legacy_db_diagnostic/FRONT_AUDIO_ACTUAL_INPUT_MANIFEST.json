@@ -1,0 +1,82 @@
+{
+  "manifest_version": "1.0.0",
+  "created_at": "2026-11-07T21:20:30.070523+00:00",
+  "cohort": "FIXED_FIVE_FRONT",
+  "events": {
+    "train_events/event_005": {
+      "event_id": "train_events/event_005",
+      "front_vision_cache": {
+        "path": "docs/generated/research_results/mission39/predictions/train_events_event_005_front.jsonl",
+        "sha256": "d37937591414b6d88bd0af1ce644d98d9b1a276a038a6ec9ea3fe59012e6d84e",
+        "byte_size": 91989,
+        "line_count": 398
+      },
+      "front_audio_cache": {
+        "path": "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl",
+        "sha256": "f25c6dd2aa8def558bff13e46d8551c9063a648a01aabc133bc10943e2e4b6f9",
+        "byte_size": 18007,
+        "line_count": 158
+      }
+    },
+    "train_events/event_021": {
+      "event_id": "train_events/event_021",
+      "front_vision_cache": {
+        "path": "docs/generated/research_results/mission39/predictions/train_events_event_021_front.jsonl",
+        "sha256": "01241b124c6ca527b45f6679a23131f02121605e06f2d28544d89570122a300d",
+        "byte_size": 62440,
+        "line_count": 267
+      },
+      "front_audio_cache": {
+        "path": "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl",
+        "sha256": "63ab14cd7ea45261f01fb767b96b1c117c462fc794ece1ab5f7ce33490542c90",
+        "byte_size": 12135,
+        "line_count": 105
+      }
+    },
+    "engine_events/event_001": {
+      "event_id": "engine_events/event_001",
+      "front_vision_cache": {
+        "path": "docs/generated/research_results/mission39/predictions/engine_events_event_001_front.jsonl",
+        "sha256": "b0946e375d4d28d5f3422f216879ddf9090a07ad328e03c9fe398dc7922db910",
+        "byte_size": 9109,
+        "line_count": 40
+      },
+      "front_audio_cache": {
+        "path": "docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl",
+        "sha256": "79291bef95ff0c02e5a2c94160bd97cfbde3b5002b572bc391f599047b265f1b",
+        "byte_size": 1586,
+        "line_count": 14
+      }
+    },
+    "train_events/event_001": {
+      "event_id": "train_events/event_001",
+      "front_vision_cache": {
+        "path": "docs/generated/research_results/mission39/predictions/train_events_event_001_front.jsonl",
+        "sha256": "29d7f4d2af6e6f6af065e397e34e17d419a2278b2668fffa36a56e55fa79e56f",
+        "byte_size": 58413,
+        "line_count": 250
+      },
+      "front_audio_cache": {
+        "path": "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl",
+        "sha256": "bbac2a93bc313dee65131a9353981af70d15552dd6ebc1f6477a29b8f935b1ce",
+        "byte_size": 11434,
+        "line_count": 98
+      }
+    },
+    "no_train_events/event_001": {
+      "event_id": "no_train_events/event_001",
+      "front_vision_cache": {
+        "path": "docs/generated/research_results/mission39/predictions/no_train_events_event_001_front.jsonl",
+        "sha256": "8827a30f84bc6a1090ec858820f9073bf03571b13503ccdfa452b00403e516b2",
+        "byte_size": 28018,
+        "line_count": 124
+      },
+      "front_audio_cache": {
+        "path": "docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl",
+        "sha256": "8c151feec4f5bc5fb5922b2b7a186738c31885645ef43c743fd07024657e74e7",
+        "byte_size": 5503,
+        "line_count": 48
+      }
+    }
+  }
+}

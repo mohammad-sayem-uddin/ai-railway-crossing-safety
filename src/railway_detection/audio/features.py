@@ -107,6 +107,8 @@ def compute_log_mel_spectrogram(
     f_min: float = 0.0,
     f_max: float | None = None,
     eps: float = 1e-10,
+    *,
+    log_scale: str = "db",
 ) -> np.ndarray:
     """Extract Log-Mel spectrogram from an audio waveform.
 
@@ -119,10 +121,14 @@ def compute_log_mel_spectrogram(
         f_min: Minimum frequency in Hz.
         f_max: Maximum frequency in Hz (defaults to sample_rate / 2).
         eps: Small constant to avoid log(0).
+        log_scale: Legacy decibel output ("db"), or V3 training's
+            natural logarithm of energy plus epsilon ("natural").
 
     Returns:
-        Log-Mel spectrogram of shape (n_mels, n_frames) in dB scale.
+        Log-Mel spectrogram of shape (n_mels, n_frames) at the requested scale.
     """
+    if log_scale not in {"db", "natural"}:
+        raise ValueError("log_scale must be 'db' or 'natural'")
     stft = compute_stft(waveform, n_fft=n_fft, hop_length=hop_length)
     power_spectrum = np.abs(stft) ** 2.0
 
@@ -135,5 +141,9 @@ def compute_log_mel_spectrogram(
     )
 
     mel_spec = np.dot(filterbank, power_spectrum)
+    if log_scale == "natural":
+        # Match scripts/preprocess_audio_dataset_v3.py, including epsilon
+        # addition rather than flooring. V3 normalization was fitted here.
+        return np.log(mel_spec + eps)
     log_mel = 10.0 * np.log10(np.maximum(mel_spec, eps))
     return log_mel

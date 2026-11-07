@@ -1,0 +1,58 @@
+{
+  "schema_version": "phase5-media-access-authorization/2",
+  "authorization_id": "AUTH-MEDIA-ACCESS-M39-V3-PARITY-CORRECTED-20261107T213725Z",
+  "authorization_class": "AUTH-MEDIA-ACCESS",
+  "status": "APPROVED",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "authorized_at_utc": "2026-11-07T21:37:25.107470+00:00",
+  "expires_at_utc": "2026-11-08T21:37:25.107470+00:00",
+  "revoked": true,
+  "authorization_statement": "Proceed with the existing B1_audio experiment using the legitimate held-out acoustic sources.",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "agent_transcription",
+    "identity": "Codex local technical operator",
+    "transcription_source": "Ongoing explicit researcher direction to proceed with held-out embedded B1_audio; correct demonstrated training/runtime feature mismatch under existing intended protocol, preserve superseded diagnostics and exact five sources; maintained authority already confirmed"
+  },
+  "scope": {
+    "operations": [
+      "READ_RAW_MEDIA",
+      "AUDIO_EXTRACTION",
+      "FEATURE_EXTRACTION",
+      "INFERENCE"
+    ],
+    "datasets": [
+      "layer_b"
+    ],
+    "events": [
+      "train_events/event_005",
+      "train_events/event_021",
+      "engine_events/event_001",
+      "train_events/event_001",
+      "no_train_events/event_001"
+    ],
+    "media_types": [
+      "video"
+    ],
+    "purpose": "Existing B1 supporting acoustic predictions on fixed five held-out front containers; B2 upstream input assembly from saved front predictions; no GT-dependent replay/evaluation"
+  },
+  "restrictions": {
+    "path_prefixes": [
+      "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_021/camera_front.mov",
+      "data/raw/layer_b/v2/engine_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov"
+    ]
+  },
+  "bindings": {
+    "protocol_document": {
+      "path": "docs/generated/research_results/mission39/audio_followup/OP39_A_CORRECTED_SCOPE.md",
+      "sha256": "a53c56fd8fc2cc2eea3890b9803a3d420a3463ef04ff49f85033a8ee155b222f"
+    }
+  },
+  "record_sha256": "a3c3c41b6b687b5560758af1c9706503b253d4b59c83ebb09774d95045b15343"
+}

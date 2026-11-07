@@ -1,0 +1,33 @@
+{
+  "status": "EXECUTED_DIAGNOSTICS_SUPERSEDED_FOR_INTENDED_V3_FEATURE_TRANSFORM",
+  "reason": "Runtime dB features conflict with actual V3 training natural-log source; results retained, not selected by favorable performance",
+  "raw_diagnostic_windows": 423,
+  "raw_diagnostic_model_positive_windows": 80,
+  "hashes": {
+    "legacy_db_diagnostic/FRONT_AUDIO_ACTUAL_INPUT_MANIFEST.json": "79883db36c01bf7b705720f703135bc3b5106284e95df2c89e04faa28839d43d",
+    "legacy_db_diagnostic/B1_AUDIO_EVENT_SUMMARY.csv": "cf83c243ff1ac8de1264844a0bd395143fc8d42e19880f41a15640141f4a081a",
+    "legacy_db_diagnostic/B2_FRONT_INPUT_ASSEMBLY_SUMMARY.csv": "b7669823d1e67b02e72f5f96568f9694e76e399a0522f31579c7671eb55669c6",
+    "legacy_db_diagnostic/AUDIO_AND_B2_INPUT_RESULT_VALIDATION.json": "5bc3bb7da722e96d21b7942f832b63fc8a136b87b0c45368abaf4bf2cd264641",
+    "legacy_db_diagnostic/ACTUAL_AUDIO_RUN_MANIFEST.json": "9f0c4fb064a9f6b318240becf034bff993ef0fe30651122450651975b592aee7",
+    "legacy_db_diagnostic/assemblies/engine_events_event_001_B2_front_inputs.jsonl": "1b6342c9c54599fc242feb98ae420a1fa03a2ef863f0ba570ea5117695465275",
+    "legacy_db_diagnostic/assemblies/train_events_event_005_B2_front_inputs.jsonl": "39b538621b1bcf303d8f4e846b9863a5970d60ec5e76415fbabfb8801229daea",
+    "legacy_db_diagnostic/assemblies/train_events_event_021_B2_front_inputs.jsonl": "85681028c1a6a4d56bfa4c2405d6ab6c886a95cd8281b5547a0307892df79b6e",
+    "legacy_db_diagnostic/assemblies/no_train_events_event_001_B2_front_inputs.jsonl": "95e4cbff099ae994008050995d235069ce4a801a9dc435032c9582bd330c453a",
+    "legacy_db_diagnostic/assemblies/train_events_event_001_B2_front_inputs.jsonl": "a1d220e2631e6d29d76a914810d35c344f610c969e4e8d92ad77da2477394b6a",
+    "legacy_db_diagnostic/figures/B1_AUDIO_WINDOW_PREDICTIONS.png": "293c280328b84707d9cd662a5dac1d66784601a9f3d51d09b75438e0e8e83514",
+    "legacy_db_diagnostic/figures/B1_AUDIO_SOURCE_PROBABILITIES.png": "06cc81090ffef1513d11219a52fbb6942d9561468821edc7c2a9d0233cf3f66a",
+    "legacy_db_diagnostic/figures/B2_FRONT_INPUT_COVERAGE.png": "1ab127a088fa5d0c1c9625be1835efc7d57d40419bfe7a59994c3767dac24c5d",
+    "legacy_db_diagnostic/predictions/train_events_event_005_front_audio.jsonl": "67849474d0255b813b02f37147969636c3eb5d7587a2af65ccee6ea4ecc8fd8b",
+    "legacy_db_diagnostic/predictions/no_train_events_event_001_front_audio.jsonl": "fad1efa4309400839565ab061bceb721cfae66d0e690ab390b48b2479d646956",
+    "legacy_db_diagnostic/predictions/train_events_event_001_front_audio.jsonl": "ea5d7e586db31368dadac796479fd2338fdf7007ee5db6fab2a71bb9661b0561",
+    "legacy_db_diagnostic/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl": "bbac2a93bc313dee65131a9353981af70d15552dd6ebc1f6477a29b8f935b1ce",
+    "legacy_db_diagnostic/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl": "79291bef95ff0c02e5a2c94160bd97cfbde3b5002b572bc391f599047b265f1b",
+    "legacy_db_diagnostic/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl": "8c151feec4f5bc5fb5922b2b7a186738c31885645ef43c743fd07024657e74e7",
+    "legacy_db_diagnostic/predictions/engine_events_event_001_front_audio.jsonl": "625190cbb31559a37e049cb6850be86858f445735d7e032dd2dacea116ac9da0",
+    "legacy_db_diagnostic/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl": "63ab14cd7ea45261f01fb767b96b1c117c462fc794ece1ab5f7ce33490542c90",
+    "legacy_db_diagnostic/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl": "f25c6dd2aa8def558bff13e46d8551c9063a648a01aabc133bc10943e2e4b6f9",
+    "legacy_db_diagnostic/predictions/train_events_event_021_front_audio.jsonl": "b67289168bb82d925c6921dbcebf275c9483155c1a16ccd282dd1e320460b7ee",
+    "legacy_db_diagnostic/B2_FRONT_RESULTS.md.snapshot.txt": "84373b5cb2d60d67cfe91d73ccddcc0f42f8c4f2f4b94fe678f6bce7234f8edc",
+    "legacy_db_diagnostic/B1_AUDIO_RESULTS.md.snapshot.txt": "fe3a70d693f3da03bf343b62e2089ecdf65c587186cc6df9f56f946e00463ff5"
+  }
+}

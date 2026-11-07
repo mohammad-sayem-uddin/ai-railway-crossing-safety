@@ -279,6 +279,7 @@ class PyTorchTrainHornClassifier:
             n_mels=64,
             f_min=80.0,
             f_max=8000.0,
+            log_scale="natural",
         )
         norm_mel = (log_mel - self.mean) / self.std
         tensor = torch.from_numpy(norm_mel).float().unsqueeze(0).to(self.device)

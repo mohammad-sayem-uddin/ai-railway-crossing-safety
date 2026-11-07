@@ -1,0 +1,48 @@
+{
+  "schema": "mission39-held-out-acoustic-reconciliation/1",
+  "researcher_direction": "Use embedded held-out evaluation audio; standalone 87 recordings remain development; reconcile actual manifests before choosing members",
+  "development_recordings": 87,
+  "video_manifest_records": 56,
+  "eligible_documentary_members": 54,
+  "physical_candidate_events": 27,
+  "duplicate_exclusions": [
+    {
+      "event": "engine_events/event_historical_duplicate_010",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/engine_events/event_historical_duplicate_010/camera_front.mov",
+      "sha256": "feda74d909d5a888c3467f51b92366f2f2686a1b0a49c0c7e0357c6d23b68f06",
+      "disposition": "PRESERVED_HISTORICAL_DUPLICATE_EXCLUSION"
+    },
+    {
+      "event": "engine_events/event_historical_duplicate_010",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/engine_events/event_historical_duplicate_010/camera_back.mov",
+      "sha256": "f9a1beb31578cd705d21c709a57e98abfed94d4e0078c65179522d26340a79b8",
+      "disposition": "PRESERVED_HISTORICAL_DUPLICATE_EXCLUSION"
+    }
+  ],
+  "fixed_front_members_selected_for_B1": 5,
+  "back_audio_not_selected": true,
+  "legacy_path_status": "data/raw/layer_b/videos is RETIRED_DELETED in maintained summary; active replacement is data/raw/layer_b/v2",
+  "all_eligible_paths_and_hashes_match_annotation_inventory": true,
+  "inspected_V3_training_path_hash_overlap": 0,
+  "inspection_scope": "Documentary manifests only; no source bytes opened or freshly hashed/probed",
+  "ledger_sha256": {
+    "data/manifests/real_world_v2_video_manifest.json": "d8ddfdf861f5045d466049c187a8443f0e5b9e7d2fd65f240ac6f6d543a1ad66",
+    "data/manifests/real_world_v2_video_manifest.jsonl": "bfd86e04b996d1edfe030a48689e99c423ba5bfeadd906dc33b03ba49fd54e7d",
+    "data/manifests/layer_b_v2_annotation_inventory.json": "5585e22ecc7841e2cca4d8e56b9d61999e252e1efaf5dfa6e57d81471b809a56",
+    "data/manifests/layer_b_v2_audio_audit.json": "2d0473fd80ed296f786cd04951c6ede6fb761e71160b80ffde2379826860155d",
+    "data/manifests/dataset_inventory_summary.json": "d43476d73f6d6fbe3c6c4efbcd25b01defbb22902c6245ccb76dcb59dba160f4",
+    "data/manifests/train_horn_audio_manifest.json": "bdb0b0521e6c7707e4ccadcb9f9a494ea2145279adaa02e8e5f9c1379d4ed85b",
+    "data/manifests/train_horn_audio_manifest.jsonl": "cb6efb19fa534c2777d24aadfd7d69d498f848d36e39666c6d8bbbc2961ff0c7",
+    "data/manifests/audio_training_dataset_v3.json": "0bc4c3a608a876c186fc9f4a34220cdd7e089eb3ce9f48dfd5180b0ce534e732"
+  },
+  "fixed_events": [
+    "train_events/event_005",
+    "train_events/event_021",
+    "engine_events/event_001",
+    "train_events/event_001",
+    "no_train_events/event_001"
+  ],
+  "scope_basis": "Existing B1 front-audio implementation/condition mapping and fixed five-event pilot, not an expanded 27-event run"
+}

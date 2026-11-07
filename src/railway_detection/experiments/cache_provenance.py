@@ -523,6 +523,8 @@ def build_audio_preprocessing_config(
         "n_mels": int(aud.n_mels),
         "f_min": float(aud.f_min),
         "f_max": float(aud.f_max),
+        "log_scale": "natural",
+        "log_epsilon": 1e-10,
         "expected_feature_shape": [
             int(aud.expected_feature_shape[0]),
             int(aud.expected_feature_shape[1]),

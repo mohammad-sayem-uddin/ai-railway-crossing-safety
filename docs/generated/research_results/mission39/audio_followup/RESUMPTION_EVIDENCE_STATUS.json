@@ -1,0 +1,25 @@
+{
+  "temporary_workspace_reset_observed": true,
+  "original_private_AUTH35_V_paths": {
+    "receipt.json": "/private/tmp/mission35_source_verification_6r_s002i/receipt.json",
+    "validation.json": "/private/tmp/mission35_source_verification_6r_s002i/validation.json",
+    "authorization.json": "/private/tmp/mission35_source_verification_6r_s002i/authorization.json",
+    "artifact_sha256.json": "/private/tmp/mission35_source_verification_6r_s002i/artifact_sha256.json",
+    "tools.json": "/private/tmp/mission35_source_verification_6r_s002i/tools.json",
+    "results.json": "/private/tmp/mission35_source_verification_6r_s002i/results.json",
+    "access_log.jsonl": "/private/tmp/mission35_source_verification_6r_s002i/access_log.jsonl"
+  },
+  "currently_available": {
+    "receipt.json": false,
+    "validation.json": false,
+    "authorization.json": false,
+    "artifact_sha256.json": false,
+    "tools.json": false,
+    "results.json": false,
+    "access_log.jsonl": false
+  },
+  "previously_completed_verification_not_repeated": true,
+  "prior_original_and_audio_diagnostic_records_persisted_in_repository": true,
+  "corrected_source_identity_requirement": "Re-decode native audio timing and extract PCM under current scope; require exact equality with persisted earlier clock ledger and PCM hash, then ensure current source stat stability",
+  "interrupted_full_test_attempt": "Unfinished temporary receipts lost; no completion or passing total inferred. A fresh full run against corrected code is being retained in repository evidence."
+}

@@ -1,0 +1,6 @@
+event,stage,frames,frames_with_both_stream_records,frames_with_vision_records,frames_with_audio_records,decision_replay,GT_comparison
+train_events/event_005,B2_INPUT_ASSEMBLY_ONLY,398,236,398,236,NOT_EXECUTED,UNAVAILABLE
+train_events/event_021,B2_INPUT_ASSEMBLY_ONLY,267,158,267,158,NOT_EXECUTED,UNAVAILABLE
+engine_events/event_001,B2_INPUT_ASSEMBLY_ONLY,40,21,40,21,NOT_EXECUTED,UNAVAILABLE
+train_events/event_001,B2_INPUT_ASSEMBLY_ONLY,250,147,250,147,NOT_EXECUTED,UNAVAILABLE
+no_train_events/event_001,B2_INPUT_ASSEMBLY_ONLY,124,72,124,72,NOT_EXECUTED,UNAVAILABLE
