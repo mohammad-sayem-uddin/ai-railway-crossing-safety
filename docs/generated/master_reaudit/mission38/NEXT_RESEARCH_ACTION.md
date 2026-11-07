@@ -1,0 +1,7 @@
+# Mission 38 next actual research action
+
+**Activate the real source-only human-reference session.** Complete the concise [appointment/acceptance sheet](HUMAN_REFERENCE_SESSION_STATUS.md) with actual primary/distinct-second identities, competence/exposure/independence, acceptance and exact assignments, and approve the existing browser/source-use/clock/storage method. Then actual people produce their own independent source-linked observations. Stage-specific adjudication/acceptance follows actual evidence; no front first pass is relabeled completed canonical GT.
+
+In parallel, [OP38-I](B0_FRONT_RUNTIME_ADMISSION.md) is a concrete narrow request for the existing five-front prediction/cache-generation leg. Supply its actual operation approval under the current canonical raw-media process; do not repeat source ownership/device assertions or interpret expired AUTH35-V as inference permission. The implemented front-only path no longer needs audio assets, and the exact model has loaded successfully on CPU. Missing human truth does not prevent that separately approved inference leg, but it still prevents its reference-dependent metric comparison.
+
+After matching reference acceptance and current descriptive authorization/cache/protocol/config/metric bindings, execute the frozen five-event B0_front. Presently: **EMPIRICAL_EXPERIMENT_EXECUTED=0**. No real reviewers, reference, predictions or metrics can be supplied by another software rehearsal or manuscript package.

@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 from collections.abc import Mapping
 from dataclasses import replace
+from importlib.metadata import version
 from pathlib import Path
 from typing import Any
 
@@ -86,6 +87,29 @@ def deserialize_evidence_record(data: dict[str, Any]) -> EvidenceRecord:
     )
 
 
+def serialize_front_visual_record(record: EvidenceRecord) -> dict[str, Any]:
+    """Use the existing descriptive front-cache row, retaining native clock metadata."""
+    if record.modality != Modality.VISION or record.source_id != "camera_1":
+        raise ValueError("front visual evidence required; back/audio cannot be substituted")
+    if not record.available:
+        raise ValueError("unavailable evidence cannot become an empty negative cache row")
+    if record.metadata.get("timestamp_basis") != "source_pts":
+        raise ValueError("native PTS evidence required")
+    detections = []
+    for det in record.detections:
+        if det.bbox_xyxy is None or type(det.metadata.get("class_id")) is not int:
+            raise ValueError("original prediction class ID and bounding box required")
+        detections.append({
+            "class_id": det.metadata["class_id"], "class_name": det.label,
+            "confidence": det.confidence, "bbox_xyxy": list(det.bbox_xyxy),
+        })
+    return {
+        "frame_index": record.metadata["frame_index"],
+        "timestamp_sec": record.timestamp_s, "camera_id": "camera_front",
+        "detections": detections, "metadata": dict(record.metadata),
+    }
+
+
 class LayerBEventProcessor:
     """Processes raw Layer B video and audio into synchronized multimodal frames."""
 
@@ -95,11 +119,15 @@ class LayerBEventProcessor:
         processed_audio_dir: Path | str = "data/processed/layer_b/audio",
         cache_dir: Path | str = "results/experiments/cache",
         config: FrozenExperimentConfig | None = None,
+        *,
+        vision_only: bool = False,
     ) -> None:
         self.repo_root = Path(repo_root)
+        self.vision_only = vision_only
         self.processed_audio_dir = self.repo_root / processed_audio_dir
         self.cache_dir = self.repo_root / cache_dir
-        self.processed_audio_dir.mkdir(parents=True, exist_ok=True)
+        if not vision_only:
+            self.processed_audio_dir.mkdir(parents=True, exist_ok=True)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
         if config is not None:
@@ -113,7 +141,10 @@ class LayerBEventProcessor:
             )
 
         # Enforce checkpoint immutability and timing safeguards
-        self.config.verify_all_safeguards(self.repo_root)
+        if vision_only:
+            self.config.verify_all_safeguards(self.repo_root, vision_only=True)
+        else:
+            self.config.verify_all_safeguards(self.repo_root)
 
         self._yolo_model: Any = None
         self._audio_classifier: PyTorchTrainHornClassifier | None = None
@@ -128,6 +159,8 @@ class LayerBEventProcessor:
     def _get_audio_pipeline(
         self, checkpoint_path: Path, threshold: float | None = None
     ) -> AudioEvidencePipeline:
+        if getattr(self, "vision_only", False):
+            raise ConfigError("vision-only processor cannot initialize audio")
         target_thresh = (
             float(threshold) if threshold is not None else self.config.audio.operating_threshold
         )
@@ -148,6 +181,8 @@ class LayerBEventProcessor:
 
     def extract_audio(self, event_dir: Path) -> dict[str, Path | None]:
         """Extract mono 16kHz WAV from front and back videos for an event."""
+        if getattr(self, "vision_only", False):
+            raise ConfigError("vision-only processor cannot extract audio")
         cohort = event_dir.parent.name
         event_id = event_dir.name
         event_audio_dir = self.processed_audio_dir / cohort / event_id
@@ -219,6 +254,14 @@ class LayerBEventProcessor:
                 if type(video_stream_index) is not int or video_stream_index < 0:
                     raise ValueError("PTS cache provenance requires an explicit video stream index")
                 preproc.update(timestamp_basis="source_pts", video_stream_index=video_stream_index)
+                preproc.update(
+                    backend_version=version("ultralytics"),
+                    prediction_options={
+                        "rect": False, "half": False,
+                        "device": self.config.experiment.device,
+                        "seed": self.config.experiment.seed,
+                    },
+                )
         elif modality == "audio":
             model_arch = self.config.checkpoints.audio_v3.model_name
             ckpt_sha = self.config.checkpoints.audio_v3.expected_sha256
@@ -363,7 +406,15 @@ class LayerBEventProcessor:
             logger.warning("Video file not found for inference: %s", video_path)
             return []
 
+        if source_pts:
+            import torch
+            torch.manual_seed(self.config.experiment.seed)
         yolo = self._get_yolo_model(checkpoint_path)
+        if (
+            source_pts and getattr(self, "vision_only", False)
+            and yolo.names != self.config.checkpoints.vision.class_mapping
+        ):
+            raise ConfigError("loaded model class mapping differs from frozen configuration")
         records = []
 
         try:
@@ -373,7 +424,17 @@ class LayerBEventProcessor:
                 frame_options.update(source_pts=True, video_stream_index=video_stream_index)
             for frame in frame_generator(video_path, **frame_options):
                 try:
-                    preds = yolo.predict(frame.image, conf=conf, verbose=False)
+                    if source_pts:
+                        preds = yolo.predict(
+                            frame.image, conf=conf, verbose=False,
+                            imgsz=list(self.config.vision.image_size),
+                            device=self.config.experiment.device,
+                            seed=self.config.experiment.seed,
+                            rect=False, half=False,
+                            save=False, save_txt=False, save_crop=False,
+                        )
+                    else:
+                        preds = yolo.predict(frame.image, conf=conf, verbose=False)
                     detections: list[Detection] = []
                     if preds and len(preds) > 0 and preds[0].boxes is not None:
                         for box in preds[0].boxes:
@@ -386,6 +447,7 @@ class LayerBEventProcessor:
                                     label=label_name,
                                     confidence=score,
                                     bbox_xyxy=xyxy,
+                                    metadata={"class_id": cls_id} if source_pts else {},
                                 )
                             )
 
@@ -436,6 +498,31 @@ class LayerBEventProcessor:
                 )
 
         return records
+
+    def process_front_vision(
+        self, event_dir: Path, *, video_stream_index: int, run_id: str,
+        git_commit: str,
+        use_cache: bool = True,
+    ) -> list[EvidenceRecord]:
+        """Existing front-only B0 inference leg; no audio, back source or GT access.
+
+        Media authorization remains at run_vision_inference/frame_generator.
+        This does not grant inference or descriptive evaluation permission.
+        """
+        provenance = self.build_stream_provenance(
+            cohort=event_dir.parent.name, event_id=event_dir.name,
+            source_id="camera_1", modality="vision", run_id=run_id,
+            source_pts=True, video_stream_index=video_stream_index,
+            git_commit=git_commit,
+        )
+        return self.run_vision_inference(
+            event_dir / "camera_front.mov",
+            self.repo_root / self.config.checkpoints.vision.path, "camera_1",
+            target_fps=self.config.vision.sampling_fps,
+            conf=self.config.vision.confidence_threshold_approach,
+            use_cache=use_cache, provenance=provenance,
+            source_pts=True, video_stream_index=video_stream_index,
+        )
 
     def run_audio_inference(
         self,

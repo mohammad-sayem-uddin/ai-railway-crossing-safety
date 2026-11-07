@@ -175,9 +175,14 @@ class FrozenExperimentConfig:
     def metadata(self) -> ExperimentMetadataConfig:
         return self.experiment
 
-    def verify_all_safeguards(self, repo_root: Path | str = ".") -> None:
+    def verify_all_safeguards(
+        self, repo_root: Path | str = ".", *, vision_only: bool = False
+    ) -> None:
         """Execute full battery of checkpoint integrity and timing checks."""
-        verify_checkpoint_integrity(self, repo_root=repo_root)
+        if vision_only:
+            verify_checkpoint_integrity(self, repo_root=repo_root, vision_only=True)
+        else:
+            verify_checkpoint_integrity(self, repo_root=repo_root)
         verify_timing_safeguards(self)
 
 
@@ -358,7 +363,7 @@ def load_frozen_config(config_path: Path | str | None = None) -> FrozenExperimen
 
 
 def verify_checkpoint_integrity(
-    config: FrozenExperimentConfig, repo_root: Path | str = "."
+    config: FrozenExperimentConfig, repo_root: Path | str = ".", *, vision_only: bool = False
 ) -> None:
     """Strictly verify checkpoint presence, expected hashes, and hard prohibition of Audio V2."""
     root = Path(repo_root)
@@ -387,6 +392,10 @@ def verify_checkpoint_integrity(
             f"YOLO vision checkpoint SHA-256 mismatch! "
             f"Expected {config.checkpoints.vision.expected_sha256}, got {v_hash}"
         )
+
+    if vision_only:
+        # A visual-only run must not open unrelated audio or retired weights.
+        return
 
     # 2. Audio V3 checkpoint verification
     a_path = root / config.checkpoints.audio_v3.path

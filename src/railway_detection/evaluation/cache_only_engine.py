@@ -19,6 +19,7 @@ import json
 import math
 import os
 from dataclasses import dataclass, field, replace
+from fractions import Fraction
 from pathlib import Path
 from typing import Any
 
@@ -274,13 +275,35 @@ def _validate_visual_record(record: Any, index: int) -> EvidenceRecord:
             metadata={"class_id": class_id, "frame_index": frame_index},
         ))
 
+    metadata: dict[str, Any] = {"camera_id": camera_id, "frame_index": frame_index}
+    clock = record.get("metadata", {})
+    if isinstance(clock, dict) and clock.get("timestamp_basis") == "source_pts":
+        pts, tb, stream = clock.get("pts_ticks"), clock.get("timebase"), clock.get("stream_index")
+        if (
+            type(pts) is not int or pts < 0
+            or not isinstance(tb, list) or len(tb) != 2
+            or any(type(x) is not int or x <= 0 for x in tb)
+            or type(stream) is not int or stream < 0
+        ):
+            raise CacheReplayRefusal("invalid original PTS metadata", code="RECORD_INVALID")
+        if float(pts * Fraction(*tb)) != timestamp:
+            raise CacheReplayRefusal("PTS/timestamp mismatch", code="RECORD_INVALID_TIMESTAMP")
+        if (
+            (clock.get("stream_start_pts") is not None
+             and type(clock["stream_start_pts"]) is not int)
+            or clock.get("frame_index", frame_index) != frame_index
+        ):
+            raise CacheReplayRefusal("PTS/frame identity mismatch", code="RECORD_INVALID")
+        metadata.update({key: clock.get(key) for key in (
+            "timestamp_basis", "pts_ticks", "timebase", "stream_index", "stream_start_pts"
+        )})
     return EvidenceRecord(
         timestamp_s=timestamp,
         source_id=SOURCE_IDS["front_vision"],
         modality=Modality.VISION,
         available=True,
         detections=tuple(detections),
-        metadata={"camera_id": camera_id, "frame_index": frame_index},
+        metadata=metadata,
     )
 
 
@@ -559,7 +582,7 @@ class CacheOnlyReplayEngine:
                 f"Event '{event_key}' entry must be a JSON object",
                 code="MANIFEST_INVALID_EVENT",
             )
-        event_required = {"event_id", "front_vision_cache", "front_audio_cache"}
+        event_required = {"event_id", "front_vision_cache"}
         event_missing = event_required - set(event_entry)
         if event_missing:
             raise CacheIntegrityError(
@@ -568,6 +591,8 @@ class CacheOnlyReplayEngine:
             )
 
         for cache_key in ("front_vision_cache", "front_audio_cache"):
+            if cache_key not in event_entry:
+                continue
             cache_info = event_entry[cache_key]
             if not isinstance(cache_info, dict):
                 raise CacheIntegrityError(
@@ -716,6 +741,11 @@ class CacheOnlyReplayEngine:
     def load_audio_records(self, event_id: str) -> list[EvidenceRecord]:
         """Load validated audio evidence records for an event."""
         entry = self._get_event_entry(event_id)
+        if "front_audio_cache" not in entry:
+            raise CacheReplayRefusal(
+                "selected condition requires an actual audio cache",
+                code="CONDITION_STREAM_MISSING", event_id=event_id,
+            )
         cache_info = entry["front_audio_cache"]
         raw_records = self._load_cache_stream(cache_info, event_id, "front_audio")
         provenance = {
