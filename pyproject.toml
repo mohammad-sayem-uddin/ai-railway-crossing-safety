@@ -20,6 +20,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+pts = [
+    "av>=18.1,<19",
+]
 dev = [
     "pytest>=8.0",
     "ruff>=0.6",

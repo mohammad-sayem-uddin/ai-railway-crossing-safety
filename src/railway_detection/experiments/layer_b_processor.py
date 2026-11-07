@@ -15,6 +15,7 @@ from typing import Any
 
 from railway_detection.audio.model import PyTorchTrainHornClassifier
 from railway_detection.audio.pipeline import AudioEvidencePipeline
+from railway_detection.config.exceptions import ConfigError
 from railway_detection.data.audio_extractor import extract_audio_from_video
 from railway_detection.data.contracts import LayerBEvent
 from railway_detection.data.layer_b import load_event_bundle
@@ -199,8 +200,12 @@ class LayerBEventProcessor:
         audio_threshold: float | None = None,
         git_commit: str | None = None,
         injector_version: str | None = None,
+        source_pts: bool = False,
+        video_stream_index: int | None = None,
     ) -> ControlledCacheProvenance:
         """Build a deterministic 14-field ControlledCacheProvenance from the frozen config."""
+        if source_pts and modality != "vision":
+            raise ValueError("source_pts applies only to vision provenance")
         if modality == "vision":
             model_arch = self.config.checkpoints.vision.model_name
             ckpt_sha = self.config.checkpoints.vision.expected_sha256
@@ -210,6 +215,10 @@ class LayerBEventProcessor:
                 confidence_threshold_approach=conf_threshold,
                 roi_config=roi_config,
             )
+            if source_pts:
+                if type(video_stream_index) is not int or video_stream_index < 0:
+                    raise ValueError("PTS cache provenance requires an explicit video stream index")
+                preproc.update(timestamp_basis="source_pts", video_stream_index=video_stream_index)
         elif modality == "audio":
             model_arch = self.config.checkpoints.audio_v3.model_name
             ckpt_sha = self.config.checkpoints.audio_v3.expected_sha256
@@ -275,10 +284,30 @@ class LayerBEventProcessor:
         provenance: ControlledCacheProvenance | None = None,
         allow_historical_unverified_cache: bool = False,
         reuse_policy: str = CACHE_REUSE_ISOLATED_RUN,
+        source_pts: bool = False,
+        video_stream_index: int | None = None,
     ) -> list[EvidenceRecord]:
         """Sample frames at target_fps and run YOLOv8n inference."""
         cohort = video_path.parent.parent.name
+        if not source_pts and video_stream_index is not None:
+            raise ConfigError("explicit stream selection requires source_pts=True")
+        if source_pts and use_cache and provenance is None:
+            raise CacheProvenanceError(
+                "PTS_PROVENANCE_REQUIRED", "PTS cache reuse/write requires exact timing provenance."
+            )
         if provenance is not None:
+            pts_basis = provenance.preprocessing_config.get("timestamp_basis") == "source_pts"
+            prov_stream = provenance.preprocessing_config.get("video_stream_index")
+            if pts_basis != source_pts or (
+                source_pts and (
+                    type(video_stream_index) is not int or video_stream_index < 0
+                    or prov_stream != video_stream_index
+                )
+            ):
+                raise CacheProvenanceError(
+                    "PROVENANCE_PREPROCESSING_MISMATCH",
+                    "PTS mode/stream does not match cache provenance.",
+                )
             if provenance.modality != "vision":
                 raise CacheProvenanceError(
                     "PROVENANCE_MODALITY_MISMATCH",
@@ -304,6 +333,8 @@ class LayerBEventProcessor:
                     "PROVENANCE_PREPROCESSING_MISMATCH",
                     f"Vision conf {conf} != provenance confidence threshold {prov_conf}",
                 )
+        if source_pts:
+            require_media_authorization(video_path, "INFERENCE", declared_media=True)
         if use_cache:
             if provenance is not None:
                 controlled_file = self.cache_dir / provenance.cache_filename()
@@ -327,6 +358,8 @@ class LayerBEventProcessor:
                     return records
 
         if not video_path.exists():
+            if source_pts:
+                raise ConfigError(f"PTS inference source is unavailable: {video_path}")
             logger.warning("Video file not found for inference: %s", video_path)
             return []
 
@@ -335,7 +368,10 @@ class LayerBEventProcessor:
 
         try:
             require_media_authorization(video_path, "INFERENCE", declared_media=True)
-            for frame in frame_generator(video_path, target_fps=target_fps, source_id=source_id):
+            frame_options: dict[str, Any] = {"target_fps": target_fps, "source_id": source_id}
+            if source_pts:
+                frame_options.update(source_pts=True, video_stream_index=video_stream_index)
+            for frame in frame_generator(video_path, **frame_options):
                 try:
                     preds = yolo.predict(frame.image, conf=conf, verbose=False)
                     detections: list[Detection] = []
@@ -353,6 +389,15 @@ class LayerBEventProcessor:
                                 )
                             )
 
+                    metadata: dict[str, Any] = {"frame_index": frame.frame_index}
+                    if source_pts:
+                        if frame.pts_ticks is None or frame.timebase is None:
+                            raise ConfigError("native PTS frame metadata missing")
+                        metadata.update(
+                            timestamp_basis="source_pts", pts_ticks=frame.pts_ticks,
+                            timebase=list(frame.timebase), stream_index=frame.stream_index,
+                            stream_start_pts=frame.stream_start_pts,
+                        )
                     records.append(
                         EvidenceRecord(
                             timestamp_s=frame.timestamp_s,
@@ -360,12 +405,16 @@ class LayerBEventProcessor:
                             modality=Modality.VISION,
                             available=True,
                             detections=tuple(detections),
-                            metadata={"frame_index": frame.frame_index},
+                            metadata=metadata,
                         )
                     )
                 except Exception as frame_exc:
+                    if source_pts:
+                        raise ConfigError(f"PTS inference frame failed: {frame_exc}") from frame_exc
                     logger.warning("Error processing frame %d in %s: %s", frame.frame_index, video_path, frame_exc)
         except Exception as vid_exc:
+            if source_pts:
+                raise
             logger.error("Error reading video %s: %s", video_path, vid_exc)
 
         # Write cache
