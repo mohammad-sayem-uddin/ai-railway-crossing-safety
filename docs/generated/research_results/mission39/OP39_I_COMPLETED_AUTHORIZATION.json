@@ -1,0 +1,56 @@
+{
+  "schema_version": "phase5-media-access-authorization/2",
+  "authorization_id": "AUTH-MEDIA-ACCESS-M39-FIVE-FRONT-20261107T202434Z",
+  "authorization_class": "AUTH-MEDIA-ACCESS",
+  "status": "APPROVED",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "authorized_at_utc": "2026-11-07T20:24:34.727633+00:00",
+  "expires_at_utc": "2026-11-08T20:24:34.727633+00:00",
+  "revoked": true,
+  "authorization_statement": "Yes\u2014record my direction under that authority and exact scope",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "agent_transcription",
+    "identity": "Codex local technical operator",
+    "transcription_source": "Actual researcher reply to OP39-I authority/scope question in the current Mission39 conversation; exact five-front scope bound by protocol_document"
+  },
+  "scope": {
+    "operations": [
+      "READ_RAW_MEDIA",
+      "INFERENCE"
+    ],
+    "datasets": [
+      "layer_b"
+    ],
+    "events": [
+      "train_events/event_005",
+      "train_events/event_021",
+      "engine_events/event_001",
+      "train_events/event_001",
+      "no_train_events/event_001"
+    ],
+    "media_types": [
+      "video"
+    ],
+    "purpose": "Mission39 existing five-front B0 prediction/cache generation and local derived results; no GT-dependent evaluation, new training or raw-media release"
+  },
+  "restrictions": {
+    "path_prefixes": [
+      "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_021/camera_front.mov",
+      "data/raw/layer_b/v2/engine_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov"
+    ]
+  },
+  "bindings": {
+    "protocol_document": {
+      "path": "docs/generated/research_results/mission39/OP39_B0_FRONT_OPERATION_SCOPE.md",
+      "sha256": "5745021bddb63c56e025763b605b234a08968465ac234bc9255991230b886d02"
+    }
+  },
+  "record_sha256": "746fce2080017db317416d9c9c0821a517e81cc1918673e961256a8ae393781a"
+}

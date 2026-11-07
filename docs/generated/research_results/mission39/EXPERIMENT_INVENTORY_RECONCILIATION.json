@@ -1,0 +1,47 @@
+{
+  "register_rows": 156,
+  "type1_rows": 129,
+  "type2_rows": 26,
+  "type3_rows": 1,
+  "current_defined_experiment_directions": 5,
+  "current_defined_research_analysis_rows": 16,
+  "original_buckets": {
+    "HISTORICAL_RECORD_VERIFICATION": 34,
+    "RETIRED_HISTORY": 39,
+    "ENABLING_PREREQUISITE_OR_ANALYSIS": 23,
+    "DEFERRED_OR_UNADOPTED_SCOPE": 44,
+    "CLOSED_SUPPORT_EVIDENCE": 10,
+    "CURRENT_CONDITIONAL_RESEARCH": 5,
+    "PAUSED_PUBLICATION": 1
+  },
+  "classifications": {
+    "SCIENTIFICALLY_UNDEFINED": 40,
+    "SUPERSEDED_OR_INVALID": 39,
+    "EXECUTABLE_AFTER_EXISTING_INPUT": 52,
+    "EXECUTABLE_NOW": 10,
+    "DEFERRED_BY_RESEARCHER": 15,
+    "EXECUTABLE_AFTER_OPERATION_SCOPE": 0,
+    "BLOCKED_BY_GENUINE_TECHNICAL_DEFECT": 0
+  },
+  "programme_roles": {
+    "HISTORICAL_EVIDENCE_VERIFICATION": 34,
+    "RETIRED_ALIAS_OR_RUN": 39,
+    "SUPPORT_OR_ADMIN": 7,
+    "CURRENT_RESEARCH_ANALYSIS_OR_REFERENCE_ACTIVITY": 16,
+    "OPTIONAL_UNADOPTED_OR_DEFERRED": 44,
+    "COMPLETED_SUPPORT": 10,
+    "CURRENT_EXPERIMENT_DIRECTION": 5,
+    "ADMIN_EXCLUDED": 1
+  },
+  "current_execution": "FRONT_AND_BACK_ORIGINAL_INFERENCE_COMPLETE_EACH_5_OF_5;GT_EVALUATION_UNAVAILABLE",
+  "empirical_inference_experiment_stages_executed": 2,
+  "complete_GT_dependent_evaluations": 0,
+  "source_event_counts": {
+    "front": 5,
+    "back": 5,
+    "audio": 0,
+    "multimodal": 0
+  },
+  "unique_physical_pilot_events": 5,
+  "unique_camera_source_members_processed": 10
+}

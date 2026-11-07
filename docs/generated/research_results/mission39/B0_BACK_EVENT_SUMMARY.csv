@@ -1,0 +1,6 @@
+event,camera,planned_cohort,sampled_frames,frames_with_model_detections,predicted_objects,predicted_front,predicted_rear,predicted_side,first_sample_pts_s,last_sample_pts_s,wall_processing_s,cpu_processing_s,sampled_frame_processing_rate_fps,actual_video_index,timebase,canonical_GT_metrics
+train_events/event_005,back,train_events,391,0,0,0,0,0,0.0,78.00666666666666,40.689911958994344,96.5338,9.609261391227243,0,1/600,UNAVAILABLE
+train_events/event_021,back,train_events,307,230,230,1,4,225,0.0,61.20333333333333,54.007292042006156,73.436739,5.6844175738568685,1,1/600,UNAVAILABLE
+engine_events/event_001,back,engine_events,49,13,14,14,0,0,0.0,9.6,8.807500750001054,11.969333999999975,5.563439776033415,1,1/600,UNAVAILABLE
+train_events/event_001,back,train_events,231,7,7,0,0,7,0.0,46.015,58.846923624994815,288.48285,3.9254388465922183,0,1/600,UNAVAILABLE
+no_train_events/event_001,back,no_train_events,122,24,25,25,0,0,0.0,24.221666666666668,12.043689375001122,41.24339800000001,10.12978633052703,0,1/600,UNAVAILABLE

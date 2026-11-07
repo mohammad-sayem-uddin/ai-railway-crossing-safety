@@ -1,0 +1,99 @@
+{
+  "schema": "mission39-original-back-result-validation/1",
+  "empirical_original_inference_executed": true,
+  "original_back_events": 5,
+  "total_sampled_frames": 1100,
+  "frames_with_model_detections": 274,
+  "predicted_objects": 276,
+  "sum_event_wall_s": 174.3953177509975,
+  "manifest_sha256": "f74b59261d5fa8adf15704ec6ee33d38b41f0ed2088c731b294f73ebf253e2a3",
+  "checks": [
+    {
+      "event": "train_events/event_005",
+      "prediction_sha256": "d15ab150ae4f7c1a240b1b8ca7cd454dbf74197a536ce3c94043c4984598bd97",
+      "records": 391,
+      "all_rows_existing_evidence_serializer_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e"
+    },
+    {
+      "event": "train_events/event_021",
+      "prediction_sha256": "f1dff4399e2e16ab12a808fc01e137c1698f598d7ad777d8659988d7fdc5cc1a",
+      "records": 307,
+      "all_rows_existing_evidence_serializer_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f"
+    },
+    {
+      "event": "engine_events/event_001",
+      "prediction_sha256": "13b4f642e50d456c4a46d63efa1764a7adc30d9e8fe7bc7961f846174c4a883e",
+      "records": 49,
+      "all_rows_existing_evidence_serializer_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72"
+    },
+    {
+      "event": "train_events/event_001",
+      "prediction_sha256": "5af446d81f3638cb1dc2d737cbc1dd2d525ee385ec114dae21f71789925ac317",
+      "records": 231,
+      "all_rows_existing_evidence_serializer_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1"
+    },
+    {
+      "event": "no_train_events/event_001",
+      "prediction_sha256": "72c22b5f492f49ceded30519bb8402e8f16741559994802ecedd905cf427c32f",
+      "records": 122,
+      "all_rows_existing_evidence_serializer_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9"
+    }
+  ],
+  "logs": {
+    "stdout": {
+      "original_sha256": "bfdc4c3149c68468434d11c04d5fffa9e67df3e4149ea3bfed772f1b16b7c6c5",
+      "gzip_sha256": "e7a5b815e9c2e6cbe1062bf68d82902f106105bab1fcf568a1149288f4ddc6b3",
+      "original_bytes": 110124,
+      "path": "logs/B0_BACK.stdout.txt.gz"
+    },
+    "stderr": {
+      "original_sha256": "43c298d176526effe8482d44e08ccb99c7434b471c35b0c47d30999bf21c7f07",
+      "gzip_sha256": "b71a6aa275e2caab58a5e516aab893fd26b3e0c37add3868d1777167668355f5",
+      "original_bytes": 880,
+      "path": "logs/B0_BACK.stderr.txt.gz"
+    }
+  },
+  "actual_command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python /tmp/m39_predict_back.py > /private/tmp/m39_actual_back_inference_stdout.txt 2> /private/tmp/m39_actual_back_inference_stderr.txt",
+  "invocation_source_sha256": "16203f3a3776156ba4d33214fc13cc51b0b1484f8b8be4f8bd63a71b2d73fdb5",
+  "reference_dependent_metrics_calculated": false,
+  "source_stat_checks_reused_prior_identity": true,
+  "original_hash_or_probe_repeated": false,
+  "checkpoint_initializer_integrity_enforced": true,
+  "confidence_scores_are_not_accuracy": true,
+  "human_review_scope": {
+    "reported_complete": "Five front recordings only",
+    "back_human_review": "NOT_REPORTED",
+    "back_accepted_canonical_GT": "NOT_ESTABLISHED",
+    "raw_manifest_global_human_review_flag": "Refers to the reported five-front workflow, not back observations",
+    "normalized_manifest": "Explicit front-only reported review context, back human status NOT_REPORTED; exact original raw manifest retained"
+  },
+  "raw_manifest_sha256": "faed8c55b6f53aa41c03e2eb1ec107715b95774fb67f1351f494e8b34fc1e186",
+  "all_back_source_ids_are_camera_2": true,
+  "all_generic_evidence_round_trips_exact": true,
+  "raw_and_contextual_manifest_data_identical_except_explained_context": true
+}

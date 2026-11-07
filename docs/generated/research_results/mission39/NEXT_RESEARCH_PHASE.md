@@ -1,0 +1,11 @@
+# Next research phase
+
+**B0_front and B0_back original-source inference are each complete on five sources.** Review the actual separate camera results, tables and figures. Ten source views represent five physical pilot events; do not pool cameras as independent events or claim back superiority from larger raw counts. Existing predictions can be reused for later eligible comparisons without rerunning the raw stages unnecessarily.
+
+**Next concrete input: identify the actual adopted acoustic recordings/member manifest for B1_audio.** The existing register specifies “approved acoustic sources” but no exact selection. A source-location question is pending; do not choose replacement audio or assume front visual/video inputs supply the required acoustic experiment. The existing Audio V3 model digest and stored normalization/0.37 threshold now match the frozen configuration under safe metadata inspection. No original audio or model forward pass occurred in that inspection. Once actual acoustic members/clock/feature role and applicable scope are supplied, execute the existing B1 audio condition, then the established B2_front supporting-audio condition. No new model/training/split/threshold is needed or adopted.
+
+M4/M5/MTR/T1/warning/control/engine correctness and other reference-dependent comparisons remain unavailable without accepted canonical field values and current descriptive bindings. Human review remains researcher-reported complete for the five-front workflow; no generic repeat or new-reviewer request. Do not reconstruct missing observations from AI. No back human review is asserted.
+
+Optional R04 stays separately adopted exact-eleven work with accepted clock mapping/operation scope; event_010 stays excluded. Undefined/retired ideas remain enumerated, not revived. The two single-use actual inference scopes are closed; new original operations need their own current bindings. The complete software validation retains 118 historical protected dependencies rather than bypassing them for a green result.
+
+Professor evidence-folder/manuscript/journal work remains deferred until a later mission after researcher review of genuine results. The actual programme is not claimed fully complete: two raw inference directions executed; audio/multimodal inputs and eligible reference-dependent analyses remain unresolved.

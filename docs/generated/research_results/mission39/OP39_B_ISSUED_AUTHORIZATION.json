@@ -1,0 +1,56 @@
+{
+  "schema_version": "phase5-media-access-authorization/2",
+  "authorization_id": "AUTH-MEDIA-ACCESS-M39-FIVE-BACK-20261107T204353Z",
+  "authorization_class": "AUTH-MEDIA-ACCESS",
+  "status": "APPROVED",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "authorized_at_utc": "2026-11-07T20:43:53.355828+00:00",
+  "expires_at_utc": "2026-11-08T20:43:53.355828+00:00",
+  "revoked": false,
+  "authorization_statement": "Approve the exact five-back prediction scope",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "agent_transcription",
+    "identity": "Codex local technical operator",
+    "transcription_source": "Actual researcher reply to OP39-B scope question in the current Mission39 conversation; exact five-back scope bound by protocol_document"
+  },
+  "scope": {
+    "operations": [
+      "READ_RAW_MEDIA",
+      "INFERENCE"
+    ],
+    "datasets": [
+      "layer_b"
+    ],
+    "events": [
+      "train_events/event_005",
+      "train_events/event_021",
+      "engine_events/event_001",
+      "train_events/event_001",
+      "no_train_events/event_001"
+    ],
+    "media_types": [
+      "video"
+    ],
+    "purpose": "Mission39 existing five-back B0 prediction/cache generation and local derived results; no GT-dependent evaluation, new training or raw-media release"
+  },
+  "restrictions": {
+    "path_prefixes": [
+      "data/raw/layer_b/v2/train_events/event_005/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_021/camera_back.mov",
+      "data/raw/layer_b/v2/engine_events/event_001/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_001/camera_back.mov",
+      "data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov"
+    ]
+  },
+  "bindings": {
+    "protocol_document": {
+      "path": "docs/generated/research_results/mission39/OP39_B0_BACK_OPERATION_SCOPE.md",
+      "sha256": "cfd15ecd8080e585ef0760e5262b27e297950216119b7a962607c6f79d274f5d"
+    }
+  },
+  "record_sha256": "5ac1c89a2333d6a3106f9f922ab186212de1185709d673a2f43f637ad7edcd14"
+}

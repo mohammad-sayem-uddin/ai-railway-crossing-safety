@@ -1,0 +1,50 @@
+{
+  "schema": "mission39-delivery-validation/1",
+  "valid": true,
+  "counts": {
+    "front": {
+      "records": 1079,
+      "objects": 13,
+      "frames_with_detections": 13
+    },
+    "back": {
+      "records": 1100,
+      "objects": 276,
+      "frames_with_detections": 274
+    }
+  },
+  "prior_artifacts_preserved": 262,
+  "original_private_evidence_preserved": 7,
+  "production_code_config_unchanged": true,
+  "only_source_binding_changes": [
+    "tests/synthetic_mission29/test_claims_pathway.py",
+    "tests/test_access_classification.yaml"
+  ],
+  "current_bindings_match_final_full_test_run": true,
+  "full_test_counts": {
+    "tests": 3807,
+    "failures": 87,
+    "errors": 31,
+    "skipped": 0,
+    "passed": 3689
+  },
+  "canonical_media_slot_absent": true,
+  "both_actual_single_use_scopes_closed": true,
+  "all_prediction_hashes_native_pts_and_serializers_valid": true,
+  "back_manifest_context_only_clarification_verified": true,
+  "lossless_logs_valid": true,
+  "markdown_documents": 10,
+  "relative_links_valid": 50,
+  "json_documents": 19,
+  "csv_rows": {
+    "B0_BACK_EVENT_SUMMARY.csv": 5,
+    "B0_BACK_PREDICTED_CLASS_SUMMARY.csv": 15,
+    "B0_FRONT_EVENT_SUMMARY.csv": 5,
+    "B0_FRONT_PREDICTED_CLASS_SUMMARY.csv": 15,
+    "EXPERIMENT_EXECUTION_MATRIX.csv": 156,
+    "software_validation/TEST_CASE_OUTCOMES.csv": 3807
+  },
+  "conditional_audio_multimodal_files_absent": true,
+  "original_media_model_reaccess_in_this_validation": false,
+  "git_delivery": "Containing commit, exact hash and final status verified after local commit; no push"
+}

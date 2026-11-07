@@ -10,10 +10,31 @@ from scripts import validate_mission29_research_decision as check
 
 @pytest.fixture
 def package():
-    return check.load()
+    # Unit mutations exercise the original document package, not live admission.
+    # Later legitimate code changes make its supporting-source manifest stale;
+    # the real loader must continue refusing that drift. Never refresh old hashes.
+    binding = check.closed_json(
+        check._text("docs/generated/master_reaudit/" + check.BINDING)
+    )
+    result = {}
+    for key, name in check.INPUTS.items():
+        body = check._text("docs/generated/master_reaudit/" + name)
+        assert check.sha(body) == binding["input_sha256"][name]
+        result[key] = check.closed_json(body)
+    return result
+
+
+def test_live_loader_still_refuses_changed_supporting_source(monkeypatch):
+    original = check._text
+    monkeypatch.setattr(
+        check, "_text", lambda name: original(name) + " " if name == "README.md" else original(name)
+    )
+    with pytest.raises(ValueError, match="stale supporting documentary/code source: README.md"):
+        check.load()
 
 
 def test_current_bounded_methods_preparation_is_consistent_and_deterministic(package):
+    """Semantic consistency of the historical fixture; no live readiness claim."""
     a = check.report(package)
     assert a == check.report(copy.deepcopy(package))
     assert a["valid"] and a["new_grants"] == 0
