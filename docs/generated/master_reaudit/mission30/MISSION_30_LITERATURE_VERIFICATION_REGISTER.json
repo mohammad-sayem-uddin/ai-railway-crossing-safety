@@ -1,0 +1,162 @@
+{
+  "schema": "mission30-literature-verification/1",
+  "status": "HUMAN_REVIEW_REQUIRED_NOT_SUBMISSION_AUTHORIZED",
+  "references": [
+    {
+      "citation_id": "1",
+      "existing_in_mission29": true,
+      "authors": [
+        "Timnit Gebru",
+        "Jamie Morgenstern",
+        "Briana Vecchione",
+        "Jennifer Wortman Vaughan",
+        "Hanna Wallach",
+        "Hal Daumé III",
+        "Kate Crawford"
+      ],
+      "title": "Datasheets for Datasets",
+      "year": 2021,
+      "first_preprint_year": 2018,
+      "venue": "Communications of the ACM, December 2021 (as identified by primary arXiv record)",
+      "primary_record": "https://arxiv.org/abs/1803.09010v8",
+      "doi": null,
+      "version": "v8, revised 2021-12-01",
+      "verified_fields": [
+        "authors",
+        "title",
+        "year",
+        "venue_statement",
+        "primary_record",
+        "version"
+      ],
+      "claim_supported": "Dataset documentation provides collection, composition and intended-use context.",
+      "support_location": "Primary-record abstract and publication comment",
+      "manuscript_section": "2. Related Work",
+      "limits": "Context only; does not authenticate this project, grant rights or establish novelty.",
+      "verification_status": "VERIFIED_PRIMARY_BIBLIOGRAPHIC_RECORD_AND_STATED_CONTEXT",
+      "verification_date": "2026-11-07",
+      "full_systematic_literature_review": false,
+      "verbatim_passages_reproduced": 0,
+      "third_party_figures_reproduced": 0
+    },
+    {
+      "citation_id": "2",
+      "existing_in_mission29": true,
+      "authors": [
+        "Margaret Mitchell",
+        "Simone Wu",
+        "Andrew Zaldivar",
+        "Parker Barnes",
+        "Lucy Vasserman",
+        "Ben Hutchinson",
+        "Elena Spitzer",
+        "Inioluwa Deborah Raji",
+        "Timnit Gebru"
+      ],
+      "title": "Model Cards for Model Reporting",
+      "year": 2019,
+      "venue": "Conference on Fairness, Accountability, and Transparency (FAT* '19)",
+      "primary_record": "https://arxiv.org/abs/1810.03993v2",
+      "doi": "10.1145/3287560.3287596",
+      "version": "v2, revised 2019-01-14",
+      "verified_fields": [
+        "authors",
+        "title",
+        "year",
+        "venue",
+        "doi",
+        "primary_record",
+        "version"
+      ],
+      "claim_supported": "Model reporting connects intended use with evaluation context and limitations.",
+      "support_location": "Primary-record abstract, journal-reference and related-DOI fields",
+      "manuscript_section": "2. Related Work",
+      "limits": "No implementation validation, asset authentication or railway performance evidence.",
+      "verification_status": "VERIFIED_PRIMARY_BIBLIOGRAPHIC_RECORD_AND_STATED_CONTEXT",
+      "verification_date": "2026-11-07",
+      "full_systematic_literature_review": false,
+      "verbatim_passages_reproduced": 0,
+      "third_party_figures_reproduced": 0
+    },
+    {
+      "citation_id": "3",
+      "existing_in_mission29": false,
+      "authors": [
+        "Geir Kjetil Sandve",
+        "Anton Nekrutenko",
+        "James Taylor",
+        "Eivind Hovig"
+      ],
+      "title": "Ten Simple Rules for Reproducible Computational Research",
+      "year": 2013,
+      "venue": "PLOS Computational Biology",
+      "volume": "9",
+      "issue": "10",
+      "article_number": "e1003285",
+      "primary_record": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285",
+      "doi": "10.1371/journal.pcbi.1003285",
+      "verified_fields": [
+        "authors",
+        "title",
+        "year",
+        "venue",
+        "volume",
+        "issue",
+        "article_number",
+        "doi",
+        "primary_record"
+      ],
+      "claim_supported": "Recording procedures, versions and analysis details supports computational reproducibility.",
+      "support_location": "Primary article citation and discussion of computational tracking",
+      "manuscript_section": "2. Related Work",
+      "limits": "Additional contextual reference, not proof of this workflow or empirical reproduction.",
+      "verification_status": "VERIFIED_PRIMARY_BIBLIOGRAPHIC_RECORD_AND_STATED_CONTEXT",
+      "verification_date": "2026-11-07",
+      "full_systematic_literature_review": false,
+      "verbatim_passages_reproduced": 0,
+      "third_party_figures_reproduced": 0
+    }
+  ],
+  "unverified_candidates_excluded_from_bibliography": [
+    {
+      "topic": "FAIR metadata and access principles",
+      "attempted_primary_url": "https://www.nature.com/articles/sdata201618",
+      "verification_status": "PRIMARY_FETCH_FAILED_AUTHORIZATION_REDIRECT",
+      "authors": null,
+      "doi": null,
+      "publication_year": null,
+      "manuscript_citation": null,
+      "next_action": "Human verification or a readable primary record before any citation is introduced; no credentials or private service access attempted."
+    }
+  ],
+  "missing_literature_areas": [
+    {
+      "topic": "Event-independent video splits and leakage-aware evaluation",
+      "current_status": "TOPIC_FOR_VERIFICATION_NOT_A_CITATION",
+      "next_action": "Identify original studies, verify bibliographic fields and actual supporting passages, and assess comparability before changing novelty or efficacy claims."
+    },
+    {
+      "topic": "Human annotation reliability and uncertainty handling",
+      "current_status": "TOPIC_FOR_VERIFICATION_NOT_A_CITATION",
+      "next_action": "Identify original studies, verify bibliographic fields and actual supporting passages, and assess comparability before changing novelty or efficacy claims."
+    },
+    {
+      "topic": "Review-interface human factors and actual deployment burden",
+      "current_status": "TOPIC_FOR_VERIFICATION_NOT_A_CITATION",
+      "next_action": "Identify original studies, verify bibliographic fields and actual supporting passages, and assess comparability before changing novelty or efficacy claims."
+    },
+    {
+      "topic": "Provenance and access-scope workflows beyond reporting templates",
+      "current_status": "TOPIC_FOR_VERIFICATION_NOT_A_CITATION",
+      "next_action": "Identify original studies, verify bibliographic fields and actual supporting passages, and assess comparability before changing novelty or efficacy claims."
+    },
+    {
+      "topic": "Single-site railway descriptive evaluation and domain-specific limitations",
+      "current_status": "TOPIC_FOR_VERIFICATION_NOT_A_CITATION",
+      "next_action": "Identify original studies, verify bibliographic fields and actual supporting passages, and assess comparability before changing novelty or efficacy claims."
+    }
+  ],
+  "recommended_additional_literature_topics_are_not_new_verified_references": true,
+  "journal_target": null,
+  "submission_performed": false
+}

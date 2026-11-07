@@ -1,0 +1,1303 @@
+{
+  "schema": "mission30-manuscript-claim-crosswalk/1",
+  "status": "HUMAN_REVIEW_REQUIRED_NOT_SUBMISSION_AUTHORIZED",
+  "canonical_register": {
+    "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+    "line": 2,
+    "section_or_anchor": "\"schema\"",
+    "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+    "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+  },
+  "canonical_claims_unchanged": true,
+  "claims": [
+    {
+      "claim_id": "C29-01",
+      "canonical_claim_text": "The repository implements source/provenance, human-review and operation-specific preflight contracts.",
+      "canonical_classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "canonical_manuscript_use": "METHOD_ONLY",
+      "canonical_evidence_ids": [
+        "software28:synthetic_mission24",
+        "software28:synthetic_mission25",
+        "software28:synthetic_mission26",
+        "software28:synthetic_mission27",
+        "software28:synthetic_mission28"
+      ],
+      "canonical_limitations": [
+        "Local code and constructed validation, not accepted genuine services or actual source authorization"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 5,
+          "section_or_anchor": "\"id\": \"C29-01\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2630,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission24\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2649,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission25\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2668,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission26\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2687,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission27\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2706,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission28\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "5. Implemented Software Architecture",
+      "manuscript_line": 100,
+      "manuscript_wording": "The architecture comprises existing canonical schema and metric validation, governance/preflight, provenance and review-event contracts, documentary evidence intake, a human-review lifecycle and guarded resource-free acceptance. The version 8.1 canonical validator retains its existing 30-second review-duration plausibility floor. That software condition is not a newly validated scientific sufficiency threshold; the relevant sufficiency decision remains deferred. [D6, D9]",
+      "disposition": "METHOD_WITH_LIMITATIONS",
+      "required_qualification": [
+        "Local code and constructed validation, not accepted genuine services or actual source authorization"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-02",
+      "canonical_claim_text": "Mission28 selected resource-free acceptance passed 3614 cases with 118 protected dependencies unexecuted.",
+      "canonical_classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "canonical_manuscript_use": "SOFTWARE_VALIDATION_ONLY",
+      "canonical_evidence_ids": [
+        "software28:synthetic_mission28",
+        "protected-tests-118"
+      ],
+      "canonical_limitations": [
+        "Exact baseline receipt scope; never a detection score, an experiment or whole-repository acceptance"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 24,
+          "section_or_anchor": "\"id\": \"C29-02\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2706,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission28\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 3371,
+          "section_or_anchor": "\"id\": \"protected-tests-118\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "8. Software Validation",
+      "manuscript_line": 169,
+      "manuscript_wording": "| Mission28 selected acceptance | 3,614 | 0 | 0 | 0 | 118 excluded |",
+      "disposition": "SOFTWARE_VALIDATION_ONLY",
+      "required_qualification": [
+        "Exact baseline receipt scope; never a detection score, an experiment or whole-repository acceptance"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-03",
+      "canonical_claim_text": "The documentary plan contains 23 train, 3 control and 1 engine candidate at crossing_A, plus excluded duplicate references.",
+      "canonical_classification": "DOCUMENTARY_ONLY",
+      "canonical_manuscript_use": "SCOPE_ONLY",
+      "canonical_evidence_ids": [
+        "doc:v2:train_events/event_001:front:video"
+      ],
+      "canonical_limitations": [
+        "No verified physical identity, availability, ownership or formal inventory signoff"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 40,
+          "section_or_anchor": "\"id\": \"C29-03\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 71,
+          "section_or_anchor": "\"id\": \"doc:v2:train_events/event_001:front:video\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "3. Research Context and Scope",
+      "manuscript_line": 49,
+      "manuscript_wording": "The documented research setting is one crossing, `crossing_A`. The candidate inventory comprises 23 train candidates, three no-train candidates and one engine-only candidate, totaling 27. Two duplicate camera references remain excluded. The restricted R04 exploratory subset contains exactly 11 events. A proposed hard-case pilot contains five events and ten camera references. These are documentary inventory and planning counts, not authenticated recordings, signed-off acquisition counts or verified experimental sample sizes. [D1]",
+      "disposition": "DOCUMENTARY_SCOPE_ONLY",
+      "required_qualification": [
+        "No verified physical identity, availability, ownership or formal inventory signoff"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-04",
+      "canonical_claim_text": "Legacy reported still-image mAP50=.9946 and mAP50:95=.855 describe a leakage-flagged development_fallback split.",
+      "canonical_classification": "HISTORICAL_DIAGNOSTIC_ONLY",
+      "canonical_manuscript_use": "HISTORICAL_LIMITATION_ONLY",
+      "canonical_evidence_ids": [
+        "H29-VISION"
+      ],
+      "canonical_limitations": [
+        "Reported 487 objects are not train events; no new reproduction or event/cross-site inference"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 55,
+          "section_or_anchor": "\"id\": \"C29-04\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2249,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 5,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "7. Historical Results and Provenance Limitations",
+      "manuscript_line": 144,
+      "manuscript_wording": "| H29-VISION | YOLOv8n mAP50 0.9946; mAP50:95 0.8550; 487 objects and 3,165 cropped images | `development_fallback`; leakage risk true; ungrouped fallback allowed; no event-independent generalization |",
+      "disposition": "HISTORICAL_LIMITATION_ONLY",
+      "required_qualification": [
+        "Reported 487 objects are not train events; no new reproduction or event/cross-site inference"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-05",
+      "canonical_claim_text": "Legacy reports contain F1=.869 and AUC=.961 at .3700; split labels and detailed precision differ.",
+      "canonical_classification": "HISTORICAL_DIAGNOSTIC_ONLY",
+      "canonical_manuscript_use": "HISTORICAL_LIMITATION_ONLY",
+      "canonical_evidence_ids": [
+        "H29-AUDIO-README",
+        "H29-AUDIO-REPORT"
+      ],
+      "canonical_limitations": [
+        "Checkpoint is configuration-declared only; preserve validation/test/window/recording distinctions; not event protection"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 70,
+          "section_or_anchor": "\"id\": \"C29-05\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2276,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-README\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 68,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-README\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2297,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-REPORT\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 119,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-REPORT\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "7. Historical Results and Provenance Limitations",
+      "manuscript_line": 155,
+      "manuscript_wording": "For Audio V3, the detailed report describes threshold selection on validation at 0.3700 with validation F1 0.9942. It reports test-window F1 0.8690 and AUC 0.9613 over 182 windows from 26 recordings, and recording-level F1 0.8667/AUC 0.9408 using max-window pooling. These are attributed report counts and outcomes, not authenticated assets examined here. The README instead labels its rounded 0.869/0.961 pair as validation. The rounded AUC and split-role disagreement are different issues: numerical closeness does not reconcile the label or establish replication. Configuration-declared checkpoint hashes were not verified against weights. Historical mel-band and transform-setting descriptions also conflict. Audio V2 remains prohibited, irrespective of earlier favorable scores.",
+      "disposition": "HISTORICAL_LIMITATION_ONLY",
+      "required_qualification": [
+        "Checkpoint is configuration-declared only; preserve validation/test/window/recording distinctions; not event protection"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-06",
+      "canonical_claim_text": "The system has validated event-level train detection performance.",
+      "canonical_classification": "REQUIRES_FUTURE_EXPERIMENT",
+      "canonical_manuscript_use": "FUTURE_WORK",
+      "canonical_evidence_ids": [
+        "H29-VISION"
+      ],
+      "canonical_limitations": [
+        "No genuine source/GT/authorized evaluation; exclude positive performance assertion"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 86,
+          "section_or_anchor": "\"id\": \"C29-06\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2249,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 5,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "9. Future Authorized Empirical Protocol",
+      "manuscript_line": 189,
+      "manuscript_wording": "The future protocol is conditional and was not executed for this manuscript. Table 7 summarizes dependency groups, not newly approved experiments. The fixed pilot precedes broader scoped review only after its actual prerequisites and authorization are satisfied. Future adjudication parents and completed ground truth are required at their later stages, not circularly before a first blind observation. [D6, D7]",
+      "disposition": "FUTURE_ONLY_POSITIVE_ASSERTION_EXCLUDED",
+      "required_qualification": [
+        "No genuine source/GT/authorized evaluation; exclude positive performance assertion"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-07",
+      "canonical_claim_text": "Primary analysis retains independent camera clocks; front approach and back clearance outcomes remain separate.",
+      "canonical_classification": "DOCUMENTARY_ONLY",
+      "canonical_manuscript_use": "METHOD_ONLY",
+      "canonical_evidence_ids": [
+        "H29-M4M5"
+      ],
+      "canonical_limitations": [
+        "Methodology direction only; old front-only draft is not a replacement; no camera performance validated"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 101,
+          "section_or_anchor": "\"id\": \"C29-07\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2417,
+          "section_or_anchor": "\"id\": \"H29-M4M5\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 388,
+          "section_or_anchor": "\"id\": \"H29-M4M5\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "3. Research Context and Scope",
+      "manuscript_line": 51,
+      "manuscript_wording": "The adopted direction retains independent-camera primary analysis. Front approach and back clearance outcomes retain their own source-clock and observation requirements. Cross-camera fusion remains exploratory within the exact R04 scope. Audio supplies supporting evidence and cannot independently initiate gate lowering or grant clearance. The engine-only candidate remains separate from train-event metric denominators. These are protocol constraints, not demonstrated camera or audio performance. [D2, D7]",
+      "disposition": "METHOD_ONLY",
+      "required_qualification": [
+        "Methodology direction only; old front-only draft is not a replacement; no camera performance validated"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-08",
+      "canonical_claim_text": "Front/rear/side appearance classes validate train direction.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-VISION"
+      ],
+      "canonical_limitations": [
+        "View labels are not validated direction truth"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 116,
+          "section_or_anchor": "\"id\": \"C29-08\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2249,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 5,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "7. Historical Results and Provenance Limitations",
+      "manuscript_line": 153,
+      "manuscript_wording": "The README attributes the vision scores to a development-fallback partition and reports image-level leakage risk. Object and cropped-image counts are not independent train events. Its single-class train description also differs from the frozen configuration's front/rear/side mapping. That asset-description inconsistency remains unresolved; appearance classes do not validate travel direction. A stricter current grouping configuration cannot retrospectively repair the reported split.",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "View labels are not validated direction truth"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-09",
+      "canonical_claim_text": "The system is robust in all weather.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-VISION",
+        "H29-AUDIO-REPORT"
+      ],
+      "canonical_limitations": [
+        "No controlled weather evaluation; confuser categories are not field-weather validation"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 131,
+          "section_or_anchor": "\"id\": \"C29-09\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2249,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 5,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2297,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-REPORT\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 119,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-REPORT\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "11. Threats to Validity",
+      "manuscript_line": 237,
+      "manuscript_wording": "**External validity and reproducibility.** The empirical scope is one crossing and the related-work review is bounded. No cross-site, weather, night, fog/rain or real-time field evaluation is available. No human-review accuracy, measured zero premature-opening outcome or railway safety improvement is established. Source rights and asset availability also prevent full empirical reproduction. These limitations remain visible rather than being treated as completed future work. [D2–D7]",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "No controlled weather evaluation; confuser categories are not field-weather validation"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-10",
+      "canonical_claim_text": "Night performance has been established.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-T0"
+      ],
+      "canonical_limitations": [
+        "Night/zero-night documentary conflict unresolved; no inspected source or authorized stratified evaluation"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 147,
+          "section_or_anchor": "\"id\": \"C29-10\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2384,
+          "section_or_anchor": "\"id\": \"H29-T0\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 322,
+          "section_or_anchor": "\"id\": \"H29-T0\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "11. Threats to Validity",
+      "manuscript_line": 237,
+      "manuscript_wording": "**External validity and reproducibility.** The empirical scope is one crossing and the related-work review is bounded. No cross-site, weather, night, fog/rain or real-time field evaluation is available. No human-review accuracy, measured zero premature-opening outcome or railway safety improvement is established. Source rights and asset availability also prevent full empirical reproduction. These limitations remain visible rather than being treated as completed future work. [D2–D7]",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "Night/zero-night documentary conflict unresolved; no inspected source or authorized stratified evaluation"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-11",
+      "canonical_claim_text": "Fog and rain detection performance is demonstrated.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-AUDIO-REPORT"
+      ],
+      "canonical_limitations": [
+        "ESC-50 rain/audio category does not establish real crossing performance under rain/fog"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 162,
+          "section_or_anchor": "\"id\": \"C29-11\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2297,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-REPORT\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 119,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-REPORT\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "11. Threats to Validity",
+      "manuscript_line": 237,
+      "manuscript_wording": "**External validity and reproducibility.** The empirical scope is one crossing and the related-work review is bounded. No cross-site, weather, night, fog/rain or real-time field evaluation is available. No human-review accuracy, measured zero premature-opening outcome or railway safety improvement is established. Source rights and asset availability also prevent full empirical reproduction. These limitations remain visible rather than being treated as completed future work. [D2–D7]",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "ESC-50 rain/audio category does not establish real crossing performance under rain/fog"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-12",
+      "canonical_claim_text": "Restricted R04 fusion remains exploratory for exactly eleven events, with no event010 expansion.",
+      "canonical_classification": "DOCUMENTARY_ONLY",
+      "canonical_manuscript_use": "METHOD_ONLY",
+      "canonical_evidence_ids": [
+        "H29-SYNC010"
+      ],
+      "canonical_limitations": [
+        "No fresh alignment, fusion improvement or primary/generalization claim; acoustic offsets do not shift GT"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 177,
+          "section_or_anchor": "\"id\": \"C29-12\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2357,
+          "section_or_anchor": "\"id\": \"H29-SYNC010\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 250,
+          "section_or_anchor": "\"id\": \"H29-SYNC010\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "9. Future Authorized Empirical Protocol",
+      "manuscript_line": 200,
+      "manuscript_wording": "The primary analyses retain independent camera clocks and camera-local eligibility. R04 fusion is exploratory for exactly 11 events. Audio remains supporting; the back-camera audio condition remains dependent on actual availability. The eight-mask/stateless comparator is inactive until its scientific mapping is separately adopted. No new recording, training, calibration, official split or comparator rule is authorized by this plan.",
+      "disposition": "METHOD_ONLY",
+      "required_qualification": [
+        "No fresh alignment, fusion improvement or primary/generalization claim; acoustic offsets do not shift GT"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-13",
+      "canonical_claim_text": "Audio is supporting evidence only and cannot independently authorize lowering or clearance under the adopted policy.",
+      "canonical_classification": "DOCUMENTARY_ONLY",
+      "canonical_manuscript_use": "METHOD_ONLY",
+      "canonical_evidence_ids": [
+        "H29-AUDIO-README"
+      ],
+      "canonical_limitations": [
+        "Policy role, not proof of field horn accuracy or hardware safety"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 192,
+          "section_or_anchor": "\"id\": \"C29-13\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2276,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-README\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 68,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-README\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "3. Research Context and Scope",
+      "manuscript_line": 51,
+      "manuscript_wording": "The adopted direction retains independent-camera primary analysis. Front approach and back clearance outcomes retain their own source-clock and observation requirements. Cross-camera fusion remains exploratory within the exact R04 scope. Audio supplies supporting evidence and cannot independently initiate gate lowering or grant clearance. The engine-only candidate remains separate from train-event metric denominators. These are protocol constraints, not demonstrated camera or audio performance. [D2, D7]",
+      "disposition": "METHOD_ONLY",
+      "required_qualification": [
+        "Policy role, not proof of field horn accuracy or hardware safety"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-14",
+      "canonical_claim_text": "Real-data premature opening was measured as zero.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-M4M5"
+      ],
+      "canonical_limitations": [
+        "Non-evaluable/null is not measured zero; missing approved T4 and authorization"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 207,
+          "section_or_anchor": "\"id\": \"C29-14\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2417,
+          "section_or_anchor": "\"id\": \"H29-M4M5\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 388,
+          "section_or_anchor": "\"id\": \"H29-M4M5\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "7. Historical Results and Provenance Limitations",
+      "manuscript_line": 159,
+      "manuscript_wording": "Historical M4/M5 documentation reports missing approved T4 clearance truth and non-computable outcomes. An unavailable rate or count cannot support a measured zero or an improvement claim. MTR timing accounts depend on simulation stepping, sampling and censoring conventions. Recording pre-roll is not physical approach lead-in. Historical values around 3.6–3.8 seconds are therefore not adopted as a railway standard, a new threshold or a newly validated physical measurement.",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "Non-evaluable/null is not measured zero; missing approved T4 and authorization"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-15",
+      "canonical_claim_text": "M4 is primary, M5 is an integer NEVER_PROTECTED_M5 companion, and MTR is a feasibility screen with metric-specific eligibility.",
+      "canonical_classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "canonical_manuscript_use": "METHOD_ONLY",
+      "canonical_evidence_ids": [
+        "software28:synthetic_metric_contracts",
+        "H29-M4M5",
+        "H29-MTR"
+      ],
+      "canonical_limitations": [
+        "Sampled software contracts are not continuous physical safety proof; no new numerical cutoff or global exclusion"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 222,
+          "section_or_anchor": "\"id\": \"C29-15\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2516,
+          "section_or_anchor": "\"id\": \"software28:synthetic_metric_contracts\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2417,
+          "section_or_anchor": "\"id\": \"H29-M4M5\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 388,
+          "section_or_anchor": "\"id\": \"H29-M4M5\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2438,
+          "section_or_anchor": "\"id\": \"H29-MTR\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 440,
+          "section_or_anchor": "\"id\": \"H29-MTR\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "9. Future Authorized Empirical Protocol",
+      "manuscript_line": 202,
+      "manuscript_wording": "M4 remains primary, M5 the integer `NEVER_PROTECTED_M5` companion, and MTR a feasibility screen. Each metric requires its own evaluable denominator, with explicit censoring, uncertainty and null reasons. M5's zero-origin and coverage requirements do not become universal exclusions for other metrics. The engine-only candidate is not pooled into train outcomes. Candidate no-train controls require confirmed exposure before exposure-based reporting; a small documentary control inventory does not establish an hourly false-alarm rate.",
+      "disposition": "METHOD_WITH_LIMITATIONS",
+      "required_qualification": [
+        "Sampled software contracts are not continuous physical safety proof; no new numerical cutoff or global exclusion"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-16",
+      "canonical_claim_text": "Full roadway occupancy has been validated or calculated.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-M4M5"
+      ],
+      "canonical_limitations": [
+        "Physical entry and same-camera/synchronization requirements remain deferred"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 239,
+          "section_or_anchor": "\"id\": \"C29-16\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2417,
+          "section_or_anchor": "\"id\": \"H29-M4M5\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 388,
+          "section_or_anchor": "\"id\": \"H29-M4M5\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "11. Threats to Validity",
+      "manuscript_line": 235,
+      "manuscript_wording": "**Protocol and software validity.** Physical T2 remains deferred and occupancy was not evaluated. The 35 new consistency/refusal checks use constructed artifacts only. Existing selected tests cover bounded software behavior rather than all possible failures, actual service integrations or human competence. Python guards provide no OS-isolation certification. The workflow has not been evaluated against alternative governance approaches, and no comparative effectiveness or novelty claim is supported.",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "Physical entry and same-camera/synchronization requirements remain deferred"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-17",
+      "canonical_claim_text": "Legacy lens-plane or road-centerline labels are validated physical T2.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-SYNC010"
+      ],
+      "canonical_limitations": [
+        "T2 remains physical-roadway-entry deferred; no invented exit landmark"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 254,
+          "section_or_anchor": "\"id\": \"C29-17\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2357,
+          "section_or_anchor": "\"id\": \"H29-SYNC010\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 250,
+          "section_or_anchor": "\"id\": \"H29-SYNC010\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "9. Future Authorized Empirical Protocol",
+      "manuscript_line": 204,
+      "manuscript_wording": "Physical T2 and occupancy remain deferred. Lens-plane observations cannot be relabeled as physical roadway entry, and no new exit landmark is introduced. Acoustic timing does not shift ground truth. No new scientific threshold or inferential test is proposed. If authorized descriptive evaluation later occurs, error analysis must separate model errors from unavailable truth, source-clock uncertainty, truncation and unresolved human disagreement. Actual logs, identities and output provenance would be retained for the exact authorized scope.",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "T2 remains physical-roadway-entry deferred; no invented exit landmark"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-18",
+      "canonical_claim_text": "Historical timing or unit tests establish real-time field operation.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-MTR"
+      ],
+      "canonical_limitations": [
+        "No real-time field latency measurement or deployment acceptance; simulated convention is not hardware response"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 269,
+          "section_or_anchor": "\"id\": \"C29-18\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2438,
+          "section_or_anchor": "\"id\": \"H29-MTR\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 440,
+          "section_or_anchor": "\"id\": \"H29-MTR\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "11. Threats to Validity",
+      "manuscript_line": 237,
+      "manuscript_wording": "**External validity and reproducibility.** The empirical scope is one crossing and the related-work review is bounded. No cross-site, weather, night, fog/rain or real-time field evaluation is available. No human-review accuracy, measured zero premature-opening outcome or railway safety improvement is established. Source rights and asset availability also prevent full empirical reproduction. These limitations remain visible rather than being treated as completed future work. [D2–D7]",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "No real-time field latency measurement or deployment acceptance; simulated convention is not hardware response"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-19",
+      "canonical_claim_text": "The implementation improves railway safety.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "software28:synthetic_mission24"
+      ],
+      "canonical_limitations": [
+        "Engineering refusals/tests do not measure safety benefit or certification"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 284,
+          "section_or_anchor": "\"id\": \"C29-19\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2630,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission24\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "11. Threats to Validity",
+      "manuscript_line": 237,
+      "manuscript_wording": "**External validity and reproducibility.** The empirical scope is one crossing and the related-work review is bounded. No cross-site, weather, night, fog/rain or real-time field evaluation is available. No human-review accuracy, measured zero premature-opening outcome or railway safety improvement is established. Source rights and asset availability also prevent full empirical reproduction. These limitations remain visible rather than being treated as completed future work. [D2–D7]",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "Engineering refusals/tests do not measure safety benefit or certification"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-20",
+      "canonical_claim_text": "The system generalizes to other crossings.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-VISION"
+      ],
+      "canonical_limitations": [
+        "Single fixed crossing; development leakage and no multi-site independent evaluation"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 299,
+          "section_or_anchor": "\"id\": \"C29-20\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2249,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 5,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "10. Discussion",
+      "manuscript_line": 225,
+      "manuscript_wording": "A single-site descriptive design would constrain interpretation even after genuine observations became available. It could describe eligible events at that site under the frozen protocol; it would not by itself establish other-site generalization, robust weather or night performance, field latency or safety benefit. No such outcomes are claimed here.",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "Single fixed crossing; development leakage and no multi-site independent evaluation"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-21",
+      "canonical_claim_text": "The human review procedure has demonstrated annotation accuracy.",
+      "canonical_classification": "REQUIRES_FUTURE_EXPERIMENT",
+      "canonical_manuscript_use": "FUTURE_WORK",
+      "canonical_evidence_ids": [
+        "software28:synthetic_mission25"
+      ],
+      "canonical_limitations": [
+        "No actual appointed/qualified reviewers or independent human observations; no inferred agreement/tolerance"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 314,
+          "section_or_anchor": "\"id\": \"C29-21\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2649,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission25\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "6. Rights and Human-Review Protocol",
+      "manuscript_line": 134,
+      "manuscript_wording": "Source presentation should retain original clock provenance while withholding model candidates and earlier comparison values during the blind first pass. Applicable independent-review triggers and risk audit remain those already adopted; no fixed audit percentage is introduced. Adjudication follows independent observations, and ground-truth promotion remains a separately authorized operation. The protocol has not demonstrated annotation accuracy or inter-reviewer agreement: there are no genuine observations from which to estimate either. [D2, D6]",
+      "disposition": "FUTURE_ONLY_POSITIVE_ASSERTION_EXCLUDED",
+      "required_qualification": [
+        "No actual appointed/qualified reviewers or independent human observations; no inferred agreement/tolerance"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-22",
+      "canonical_claim_text": "Declared checkpoint hashes and Git presence guarantee scientific reproducibility.",
+      "canonical_classification": "NOT_SUPPORTED",
+      "canonical_manuscript_use": "EXCLUDE",
+      "canonical_evidence_ids": [
+        "H29-AUDIO-README",
+        "H29-VISION"
+      ],
+      "canonical_limitations": [
+        "Configuration declarations and code presence do not prove actual assets, rights, source lineage, GT or repeated experiments"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 329,
+          "section_or_anchor": "\"id\": \"C29-22\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2276,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-README\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 68,
+          "section_or_anchor": "\"id\": \"H29-AUDIO-README\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2249,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_HISTORICAL_RESULTS_REGISTER.json",
+          "line": 5,
+          "section_or_anchor": "\"id\": \"H29-VISION\"",
+          "sha256": "ff69a9b8e81cf1a1758a424ac6dda5e5e5c7e2a042d3b1a0d252de4fc0e6ca19",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "10. Discussion",
+      "manuscript_line": 210,
+      "manuscript_wording": "Provenance uncertainty changes the interpretation of a metric even when its numeric value is transcribed accurately. A leakage-flagged still-image result cannot answer an event-independent question, and a validation/test-label conflict cannot be resolved by choosing the higher score. Likewise, precise configuration hashes improve reference specificity without proving that the specified checkpoint was available or used. These distinctions explain why the historical notes belong in limitations rather than a new performance-results section.",
+      "disposition": "POSITIVE_ASSERTION_EXCLUDED_LIMITATION_ONLY",
+      "required_qualification": [
+        "Configuration declarations and code presence do not prove actual assets, rights, source lineage, GT or repeated experiments"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-23",
+      "canonical_claim_text": "The workflow distinguishes submission, verification, purpose acceptance, preflight, authorization and execution.",
+      "canonical_classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "canonical_manuscript_use": "METHOD_ONLY",
+      "canonical_evidence_ids": [
+        "software28:synthetic_mission26",
+        "software28:synthetic_mission27",
+        "software28:synthetic_mission28"
+      ],
+      "canonical_limitations": [
+        "Cooperative software behavior; no OS isolation, genuine deployment or institutional approval established"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 345,
+          "section_or_anchor": "\"id\": \"C29-23\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2668,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission26\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2687,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission27\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 2706,
+          "section_or_anchor": "\"id\": \"software28:synthetic_mission28\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "4. Evidence Provenance Model",
+      "manuscript_line": 73,
+      "manuscript_wording": "Verification, readiness and authorization answer different questions (Table 2). Document submission initiates a reviewable record. Verification requires attributable evidence and a competent verifier. Purpose acceptance concerns a specific supported use. Readiness evaluates prerequisites, while authorization is an exact operation decision. Execution and its output provenance follow only within that authorized scope. [D2, D6, D9]",
+      "disposition": "METHOD_WITH_LIMITATIONS",
+      "required_qualification": [
+        "Cooperative software behavior; no OS isolation, genuine deployment or institutional approval established"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    },
+    {
+      "claim_id": "C29-24",
+      "canonical_claim_text": "Dataset/model documentation can describe intended use, provenance and limitations without converting a reference into project permission.",
+      "canonical_classification": "SUPPORTED_WITH_EXPLICIT_LIMITATIONS",
+      "canonical_manuscript_use": "METHOD_ONLY",
+      "canonical_evidence_ids": [
+        "L29-DATASHEETS",
+        "L29-MODELCARDS"
+      ],
+      "canonical_limitations": [
+        "Primary literature is conceptual context, not verification of this project or evidence of novelty"
+      ],
+      "source_records": [
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SCIENTIFIC_CLAIMS_REGISTER.json",
+          "line": 362,
+          "section_or_anchor": "\"id\": \"C29-24\"",
+          "sha256": "4abcffc5a6c8e0eb89fda43b494122e1d1562889b4e01e4e456382d8a74ac099",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 3379,
+          "section_or_anchor": "\"id\": \"L29-DATASHEETS\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        },
+        {
+          "path": "docs/generated/master_reaudit/MISSION_29_SOURCE_SCIENTIFIC_EVIDENCE_REGISTER.json",
+          "line": 3389,
+          "section_or_anchor": "\"id\": \"L29-MODELCARDS\"",
+          "sha256": "efc16e58e6114d30d53229776b57834f4581920974d8663b68636e0814cd6f9d",
+          "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+        }
+      ],
+      "current_wording_verified_against_exact_register": true,
+      "manuscript_section": "2. Related Work",
+      "manuscript_line": 45,
+      "manuscript_wording": "These references provide reporting and reproducibility context rather than a comparative evaluation of authorization workflows. The discussion remains insufficient for a claim of novelty or comprehensive related-work coverage. Further literature verification should address event-independent video evaluation, annotation reliability, human factors in review and provenance/access workflows. Domain-specific railway evidence and any applicable legal or institutional requirements require separate assessment. The accompanying literature register identifies these gaps; no unverified candidate is used as a citation here.",
+      "disposition": "CONTEXT_ONLY",
+      "required_qualification": [
+        "Primary literature is conceptual context, not verification of this project or evidence of novelty"
+      ],
+      "positive_empirical_assertion_included": false,
+      "independent_empirical_validation": false,
+      "editorial_review": "Retain supported method/documentary/history scope only; unsupported assertion appears solely as an explicit limitation or future requirement."
+    }
+  ],
+  "additional_exact_support": [
+    {
+      "path": "README.md",
+      "line": 99,
+      "section_or_anchor": "Ultralytics YOLOv8n single-class",
+      "sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "README.md",
+      "line": 102,
+      "section_or_anchor": "mAP@0.5} = 0.9946",
+      "sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "README.md",
+      "line": 106,
+      "section_or_anchor": "development_fallback",
+      "sha256": "d40b6918989c53bea5ed75fefc575b6e92dd884436cd1994def1ec27ad045854",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "configs/frozen_experiment_v1.yaml",
+      "line": 17,
+      "section_or_anchor": "class_mapping:",
+      "sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+      "line": 174,
+      "section_or_anchor": "Validation F1",
+      "sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+      "line": 178,
+      "section_or_anchor": "Window-Level Test Performance",
+      "sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "docs/AUDIO_MODEL_V3_ESC50_REPORT.md",
+      "line": 197,
+      "section_or_anchor": "Recording-Level Test Performance",
+      "sha256": "d8656f2a6a8325a5420d471b71748d4ade5e0b8b1fa8a4f03af6e1feccd207b0",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "src/railway_detection/annotation/stage2_1_schema.py",
+      "line": 50,
+      "section_or_anchor": "MIN_PLAUSIBLE_REVIEW_DURATION_S =",
+      "sha256": "9ef0dc1d7ba400437d3592820376d08c5ff5d59d8bb471c88864363e0e7ce509",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "src/railway_detection/application/preflight/engine.py",
+      "line": 140,
+      "section_or_anchor": "class PreflightEngine:",
+      "sha256": "d25d8b4ab9d0bbd828dfa9ce653510788391e90f7c30c22c3bc2ad2c6ea33d1d",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "src/railway_detection/annotation/evidence_review/contracts.py",
+      "line": 98,
+      "section_or_anchor": "class EvidenceVerifier",
+      "sha256": "0572203059798c457b8a8f89d7d2f93348416ee7459262f9201f72c94f562afe",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "src/railway_detection/annotation/evidence_review/lifecycle.py",
+      "line": 72,
+      "section_or_anchor": "class ReviewLifecycle:",
+      "sha256": "8f0e31b10b3203ae835605ea67becb74c2f877503f77327e5e1d757ea4de059a",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "src/railway_detection/application/evidence_intake/intake.py",
+      "line": 215,
+      "section_or_anchor": "class DocumentaryJournal:",
+      "sha256": "d1133c0ad229443d8fc1a8b72b9db16ae63b0e3f54eec46bb63ff4f24992db33",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "src/railway_detection/safety/resource_free_acceptance.py",
+      "line": 44,
+      "section_or_anchor": "def bindings(",
+      "sha256": "4a14b62217303c597e1a92e889607c281429f6ff1f5b6540ec28106255fddee3",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    },
+    {
+      "path": "scripts/validate_mission29_research_decision.py",
+      "line": 356,
+      "section_or_anchor": "def report(",
+      "sha256": "aa4819517845f0dbcb3d0b66db25534f8382f99b0fb60a6367c8f9d77cf99bd5",
+      "scope": "PERMITTED_DOCUMENTARY_OR_SOURCE_TEXT_NOT_PHYSICAL_SOURCE_VERIFICATION"
+    }
+  ],
+  "new_mission30_empirical_claims": 0,
+  "additional_literature_scope": "Reference 3 adds reproducibility context only; no canonical C29 ID or evidence is rewritten."
+}

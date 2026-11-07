@@ -1,0 +1,239 @@
+{
+  "schema": "mission30-manuscript-validation/1",
+  "date": "2026-11-07",
+  "timezone": "America/New_York",
+  "status": "HUMAN_REVIEW_REQUIRED_NOT_SUBMISSION_AUTHORIZED",
+  "baseline_commit": "20d2c9b3edbd62201ca9ce57afaab5167f8bc987",
+  "task_sha256": "7f47b3a48160f15e00900e8caa08bd27de053d0a50ca1058f3b01a3f592c9020",
+  "title": "Provenance and Authorization Gates for Single-Site Railway-Crossing Research: An Implemented Workflow and Documentary Case Study",
+  "word_counts": {
+    "main_visible_text": 4211,
+    "definition": "Whitespace-delimited visible rendered words Abstract through Conclusion, including headings/keywords/contribution/tables/captions; excluding front matter/Mermaid/references/evidence ledger",
+    "whole_raw_markdown_whitespace_tokens": 4918,
+    "abstract_whitespace_words": 205
+  },
+  "structure": {
+    "front_matter_present": true,
+    "numbered_sections": [
+      "1. Introduction",
+      "2. Related Work",
+      "3. Research Context and Scope",
+      "4. Evidence Provenance Model",
+      "5. Implemented Software Architecture",
+      "6. Rights and Human-Review Protocol",
+      "7. Historical Results and Provenance Limitations",
+      "8. Software Validation",
+      "9. Future Authorized Empirical Protocol",
+      "10. Discussion",
+      "11. Threats to Validity",
+      "12. Ethical, Legal and Publication Limitations",
+      "13. Conclusion"
+    ],
+    "references_and_evidence_ledger": true
+  },
+  "claims": {
+    "canonical_count": 24,
+    "accounted_for": 24,
+    "unique_ids": true,
+    "canonical_text_classes_and_limits_unchanged": true,
+    "exact_current_hash_and_line_bindings_checked": true,
+    "unsupported_positive_empirical_assertions_included": 0,
+    "source_authenticity_independently_verified": false,
+    "semantic_review": "AI-assisted internal editorial review; actual human factual verification pending"
+  },
+  "historical_results": {
+    "canonical_categories": 8,
+    "accounted_for": 8,
+    "source_document_hashes_match": true,
+    "exact_reported_metrics_and_conflicts_retained": true,
+    "independently_reproduced": false
+  },
+  "citations": {
+    "external_defined": [
+      "1",
+      "2",
+      "3"
+    ],
+    "external_cited": [
+      "1",
+      "2",
+      "3"
+    ],
+    "documentary_defined": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "documentary_cited": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "unresolved_citations": 0,
+    "uncited_bibliography_entries": 0,
+    "verified_primary_references": 3,
+    "inaccessible_candidate_excluded": 1,
+    "systematic_literature_review": false
+  },
+  "visuals": {
+    "main_tables": 7,
+    "supplementary_crosswalk_tables": 1,
+    "original_conceptual_diagrams": 3,
+    "mermaid_fences_and_simple_flowchart_structure_checked": true,
+    "renderer_or_independent_visual_approval": false,
+    "raw_or_third_party_figures_reproduced": false
+  },
+  "human_controls": {
+    "author_placeholder": true,
+    "affiliations_and_corresponding_author_placeholders": true,
+    "author_checklist_open_items": 17,
+    "rights_checklist_open_items": 13,
+    "AI_listed_as_author": false,
+    "human_approvals_inferred": false,
+    "AI_use_disclosure_pending_human_approval": true,
+    "new_permissions_or_submissions": 0,
+    "external_submission_authorized": false,
+    "protected_release_authorized": false
+  },
+  "privacy": {
+    "known_protected_path_patterns_absent_from_manuscript": true,
+    "private_identity_or_original_asset_reproduced": false,
+    "protected_resources_accessed": false,
+    "manual_content_scope_review": "Internal editorial review; actual release authority approval pending"
+  },
+  "markdown": {
+    "distribution_version": "4.2.0",
+    "temporary_tool_location": "Outside repository; project environment and dependencies unchanged",
+    "parsed_files": {
+      "MISSION_30_PUBLICATION_RIGHTS_REVIEW_CHECKLIST.md": {
+        "parser": "markdown-it-py CommonMark with GFM table rule",
+        "parsed": true,
+        "tables": 1,
+        "fences": 0
+      },
+      "MISSION_30_TABLES_AND_FIGURES_REGISTER.md": {
+        "parser": "markdown-it-py CommonMark with GFM table rule",
+        "parsed": true,
+        "tables": 1,
+        "fences": 0
+      },
+      "MISSION_30_HISTORICAL_RESULT_ACCURACY_AUDIT.md": {
+        "parser": "markdown-it-py CommonMark with GFM table rule",
+        "parsed": true,
+        "tables": 0,
+        "fences": 0
+      },
+      "MISSION_30_HUMAN_AUTHOR_COMPLETION_CHECKLIST.md": {
+        "parser": "markdown-it-py CommonMark with GFM table rule",
+        "parsed": true,
+        "tables": 0,
+        "fences": 0
+      },
+      "MISSION_30_FINAL_MANUSCRIPT.md": {
+        "parser": "markdown-it-py CommonMark with GFM table rule",
+        "parsed": true,
+        "tables": 7,
+        "fences": 3
+      },
+      "MISSION_30_ABSTRACT_AND_KEYWORDS.md": {
+        "parser": "markdown-it-py CommonMark with GFM table rule",
+        "parsed": true,
+        "tables": 0,
+        "fences": 0
+      },
+      "MISSION_30_FINAL_DELIVERY_REPORT.md": {
+        "parser": "markdown-it-py CommonMark with GFM table rule",
+        "parsed": true,
+        "tables": 0,
+        "fences": 0
+      },
+      "MISSION_30_EDITORIAL_QUALITY_REVIEW.md": {
+        "parser": "markdown-it-py CommonMark with GFM table rule",
+        "parsed": true,
+        "tables": 1,
+        "fences": 0
+      }
+    },
+    "links_checked_for_local_existence": 19,
+    "syntax_claim": "CommonMark/GFM parsing and structural checks, not typeset or independent visual approval"
+  },
+  "json": {
+    "all_current_json_parsed": true,
+    "duplicate_field_check": "Checked in final integrity verification"
+  },
+  "editorial_scores_1_to_5": {
+    "Scientific accuracy": 4,
+    "Evidence traceability": 4,
+    "Clarity": 4,
+    "Organization": 4,
+    "Technical precision": 4,
+    "Reproducibility": 2,
+    "Related-work adequacy": 2,
+    "Limitations": 5,
+    "Citation integrity": 4,
+    "Publication suitability": 2
+  },
+  "editorial_score_mean": 3.5,
+  "editorial_scores_are_not_external_peer_review": true,
+  "preservation": {
+    "original_Mission29_manuscript_sha256": "5991a829289f2578b81f3a5f98b39844b90900862f4bd330ad73df8e30b6ca60",
+    "prior_paths_hash_checked": 187,
+    "researcher_files_unchanged": 7,
+    "Mission21_28_artifacts_unchanged": 151,
+    "Mission29_artifacts_unchanged": 29,
+    "source_config_test_and_named_runtime_bindings_unchanged": true,
+    "shared_binding_digest": "bce47b613f22d147dbd7ef584796c37752f7f3b0abb9002a31536f36cfc53fff",
+    "Mission29_selected_receipt_sha256": "8b03d9198336e3e87c7035558d4db138045b51430bcbc2bcdf1c78de032458b2",
+    "Mission29_selection": {
+      "selected": 3649,
+      "protected": 118,
+      "unknown": 0
+    },
+    "broad_guarded_audit_rerun": false,
+    "new_software_tests_or_empirical_experiments": 0,
+    "software_changes": 0,
+    "core_engineering_freeze_preserved": true
+  },
+  "deliverables": {
+    "expected": 11,
+    "present_after_this_write": 11,
+    "names": [
+      "MISSION_30_ABSTRACT_AND_KEYWORDS.md",
+      "MISSION_30_EDITORIAL_QUALITY_REVIEW.md",
+      "MISSION_30_FINAL_DELIVERY_REPORT.md",
+      "MISSION_30_FINAL_MANUSCRIPT.md",
+      "MISSION_30_HISTORICAL_RESULT_ACCURACY_AUDIT.md",
+      "MISSION_30_HUMAN_AUTHOR_COMPLETION_CHECKLIST.md",
+      "MISSION_30_LITERATURE_VERIFICATION_REGISTER.json",
+      "MISSION_30_MANUSCRIPT_CLAIM_CROSSWALK.json",
+      "MISSION_30_MANUSCRIPT_VALIDATION.json",
+      "MISSION_30_PUBLICATION_RIGHTS_REVIEW_CHECKLIST.md",
+      "MISSION_30_TABLES_AND_FIGURES_REGISTER.md"
+    ]
+  },
+  "delivery_commit": "Containing commit; exact local/tracking/live verification reported after push",
+  "artifact_sha256": {
+    "MISSION_30_ABSTRACT_AND_KEYWORDS.md": "e50078ba67a6340a02147c1c6af20892ae4db82fb818ec9757a92e975dcdcbb2",
+    "MISSION_30_EDITORIAL_QUALITY_REVIEW.md": "84b0b6cc03e2f23cd68c73717544c7872b0d04bd127565704e157666b8fbdc66",
+    "MISSION_30_FINAL_DELIVERY_REPORT.md": "d15d8f2642d4dcb6a031ba80ded2f103f78cce6f16e76bfeb0f2f30eae34cd0f",
+    "MISSION_30_FINAL_MANUSCRIPT.md": "181dcbd8b621d82a18b938039f626cc02b9f4075b6cc6f773f062a488e3db9e5",
+    "MISSION_30_HISTORICAL_RESULT_ACCURACY_AUDIT.md": "2c53fd886d101617034c1896e96bfb62cb6a992113284da7c12caa0f73a66cf2",
+    "MISSION_30_HUMAN_AUTHOR_COMPLETION_CHECKLIST.md": "bdbd3481d883a7fc673860482ae645c9616371c226b092974814c5448aa566e3",
+    "MISSION_30_LITERATURE_VERIFICATION_REGISTER.json": "ad32684becd59b96420064a88b76fc09a726dc6d464f0c3ad7f12f562c7c7d47",
+    "MISSION_30_MANUSCRIPT_CLAIM_CROSSWALK.json": "28d884f8f2ac54e419e2820908a1911d5061a7f41f190eebdfe85fdbc2700111",
+    "MISSION_30_PUBLICATION_RIGHTS_REVIEW_CHECKLIST.md": "6dc89a28703e87bb99aa4c7968defacabafd785f115e534e19d9d378ebd7a675",
+    "MISSION_30_TABLES_AND_FIGURES_REGISTER.md": "b40dc4cded46621ebb36539dd3cf579f5b50a4c3ed04fcbad435a1812282c0d3"
+  }
+}
