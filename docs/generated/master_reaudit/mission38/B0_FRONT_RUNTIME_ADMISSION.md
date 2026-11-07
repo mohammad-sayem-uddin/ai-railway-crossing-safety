@@ -12,6 +12,10 @@
 
 All candidate paths remain `data/raw/layer_b/v2/<event>/camera_front.mov` for these exact five rows. crossing_A remains the existing site label, not a new physical-site verification. No back source, optional R04, audio, official split or extra cohort is added to B0_front.
 
+## Subsequent reported human first pass
+
+The later researcher statement reports separate five-front first passes by researcher and classmate and exact three-way agreement after comparison with AI annotations. Partial classmate familiarity is preserved. A subsequent clarification confirms neither person stored separate observations; the next reference step is prospective source-only recording by an eligible answer-unexposed reviewer, with distinct second review where required, not reconstruction from AI. [Human status](HUMAN_REFERENCE_SESSION_STATUS.md) now distinguishes this positive reported evidence from missing original paired observations/qualified independent-reference acceptance; AI is only a comparison reference. The earlier pending human-session statements below describe original technical admission or remaining formal method/access/acceptance scope, not a denial that reviews are now reported completed. No retrospective operation approval or inference/replay permission is inferred. Runtime/model/config/test facts remain unchanged; no engineering rerun.
+
 ## Actual connected route
 
 `camera_front.mov → frame_generator(source_pts=True, video_stream_index=...) → LayerBEventProcessor.run_vision_inference → EvidenceRecord → serialize_front_visual_record → existing front visual JSONL/cache manifest → CacheOnlyReplayEngine.load_visual_records/execute_replay(B0) → existing reference-dependent metric contract`.
