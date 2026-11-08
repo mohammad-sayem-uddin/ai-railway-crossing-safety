@@ -1,0 +1,164 @@
+{
+  "schema": "mission42-bounded-results-freeze/1",
+  "date": "2026-11-08",
+  "status": "DESCRIPTIVE_EVIDENCE_PACKAGE_PREPARED_FOR_PROFESSOR_REVIEW",
+  "baseline_actual": "268ec537382c591298693b4cf3686b46a40adca8",
+  "reported_baseline_is_M40": "e82269521c1222fef0826449e18a386a7a58a362",
+  "results_source": "Mission39 actual predictions/input assembly; Mission40–41 saved-output descriptors",
+  "B0_front": {
+    "members": 5,
+    "sampled_records": 1079,
+    "predicted_objects": 13,
+    "events": [
+      {
+        "event": "train_events/event_005",
+        "sampled_records": 398,
+        "predicted_objects": 0
+      },
+      {
+        "event": "train_events/event_021",
+        "sampled_records": 267,
+        "predicted_objects": 6
+      },
+      {
+        "event": "engine_events/event_001",
+        "sampled_records": 40,
+        "predicted_objects": 0
+      },
+      {
+        "event": "train_events/event_001",
+        "sampled_records": 250,
+        "predicted_objects": 6
+      },
+      {
+        "event": "no_train_events/event_001",
+        "sampled_records": 124,
+        "predicted_objects": 1
+      }
+    ]
+  },
+  "B0_back": {
+    "members": 5,
+    "sampled_records": 1100,
+    "predicted_objects": 276,
+    "events": [
+      {
+        "event": "train_events/event_005",
+        "sampled_records": 391,
+        "predicted_objects": 0
+      },
+      {
+        "event": "train_events/event_021",
+        "sampled_records": 307,
+        "predicted_objects": 230
+      },
+      {
+        "event": "engine_events/event_001",
+        "sampled_records": 49,
+        "predicted_objects": 14
+      },
+      {
+        "event": "train_events/event_001",
+        "sampled_records": 231,
+        "predicted_objects": 7
+      },
+      {
+        "event": "no_train_events/event_001",
+        "sampled_records": 122,
+        "predicted_objects": 25
+      }
+    ]
+  },
+  "B1_audio": {
+    "members": 5,
+    "windows": 423,
+    "model_positive_windows": 120,
+    "threshold": 0.37,
+    "feature_log_scale": "natural",
+    "events": [
+      {
+        "event": "train_events/event_005",
+        "windows": 158,
+        "model_positive_windows": 105
+      },
+      {
+        "event": "train_events/event_021",
+        "windows": 105,
+        "model_positive_windows": 4
+      },
+      {
+        "event": "engine_events/event_001",
+        "windows": 14,
+        "model_positive_windows": 0
+      },
+      {
+        "event": "train_events/event_001",
+        "windows": 98,
+        "model_positive_windows": 0
+      },
+      {
+        "event": "no_train_events/event_001",
+        "windows": 48,
+        "model_positive_windows": 11
+      }
+    ]
+  },
+  "B2_input_assembly": {
+    "events": [
+      {
+        "event": "train_events/event_005",
+        "input_frames": 398,
+        "both_stream_records": 236,
+        "no_audio_record": 162
+      },
+      {
+        "event": "train_events/event_021",
+        "input_frames": 267,
+        "both_stream_records": 158,
+        "no_audio_record": 109
+      },
+      {
+        "event": "engine_events/event_001",
+        "input_frames": 40,
+        "both_stream_records": 21,
+        "no_audio_record": 19
+      },
+      {
+        "event": "train_events/event_001",
+        "input_frames": 250,
+        "both_stream_records": 147,
+        "no_audio_record": 103
+      },
+      {
+        "event": "no_train_events/event_001",
+        "input_frames": 124,
+        "both_stream_records": 72,
+        "no_audio_record": 52
+      }
+    ],
+    "input_frames": 1079,
+    "both_stream_records": 634,
+    "no_audio_record": 445,
+    "decision_replay_executed": false,
+    "decision_events": 0,
+    "decision_frames": 0,
+    "initial_absence": 25,
+    "later_absence": 420
+  },
+  "canonical_GT": "NOT_ESTABLISHED",
+  "human_review": "Five fronts/exact agreement researcher-reported; separate observations not stored; classmate familiarity retained",
+  "new_original_inferences": 0,
+  "new_test_runs": 0,
+  "Mission40_reused_software_counts": {
+    "tests": 3815,
+    "passed": 3700,
+    "failed": 84,
+    "errors": 31,
+    "skipped": 0,
+    "blocked_nonpassing_subset": 115
+  },
+  "no_safety_accuracy_or_generalization_acceptance": true,
+  "no_external_contact_or_release_performed": true,
+  "no_new_grants": true,
+  "freeze_scope": "Saved model-output/input descriptors and auditable software evidence; entire research programme remains incomplete"
+}

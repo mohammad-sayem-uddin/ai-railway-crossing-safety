@@ -1,0 +1,43 @@
+{
+  "scope": "Generated PCM only; no original read/model inference",
+  "initial_run_issue": "Integral ratio assertion rejects normal resampling; samples were extracted but no inference on three failed members",
+  "discarded_generated_check": "An initial ceil rounding assertion failed on generated n=2564032: output854677 rather than ceil854678; no original media accessed",
+  "corrected_rule": "Nearest integer of native decoded samples*16000/48000, verified with generated samples matching all five source lengths; no timestamp shift or new scientific tolerance",
+  "checks": [
+    {
+      "generated_source_samples": 2564032,
+      "source_rate": 48000,
+      "target_rate": 16000,
+      "actual_target_samples": 854677,
+      "expected_nearest_rational_length": 854677
+    },
+    {
+      "generated_source_samples": 2393024,
+      "source_rate": 48000,
+      "target_rate": 16000,
+      "actual_target_samples": 797675,
+      "expected_nearest_rational_length": 797675
+    },
+    {
+      "generated_source_samples": 1182656,
+      "source_rate": 48000,
+      "target_rate": 16000,
+      "actual_target_samples": 394219,
+      "expected_nearest_rational_length": 394219
+    },
+    {
+      "generated_source_samples": 3819456,
+      "source_rate": 48000,
+      "target_rate": 16000,
+      "actual_target_samples": 1273152,
+      "expected_nearest_rational_length": 1273152
+    },
+    {
+      "generated_source_samples": 378816,
+      "source_rate": 48000,
+      "target_rate": 16000,
+      "actual_target_samples": 126272,
+      "expected_nearest_rational_length": 126272
+    }
+  ]
+}

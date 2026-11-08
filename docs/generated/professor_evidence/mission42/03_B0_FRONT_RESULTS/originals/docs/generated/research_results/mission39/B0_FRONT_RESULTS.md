@@ -1,0 +1,23 @@
+# B0_front actual original-source results
+
+**EMPIRICAL_EXPERIMENT_EXECUTED=1 — ORIGINAL INFERENCE STAGE COMPLETE, 5/5 FRONTS.** Reference-dependent replay/GT evaluation remains unexecuted; no complete accepted-GT B0 comparison is claimed. Actual selected original recordings produced **1079 sampled-frame records**, with **13 frames containing model detections** and **13 predicted objects**. Repeated-frame detections are not unique vehicles/trains or correct-positive labels.
+
+| Source/event | Sampled frames | Frames with model detections | Predicted objects front / rear / side | Observed pipeline wall seconds |
+|---|---:|---:|---|---:|
+| train_events/event_005 | 398 | 0 | 0 / 0 / 0 | 32.605 |
+| train_events/event_021 | 267 | 6 | 0 / 0 / 6 | 22.206 |
+| engine_events/event_001 | 40 | 0 | 0 / 0 / 0 | 3.440 |
+| train_events/event_001 | 250 | 6 | 1 / 0 / 5 | 18.744 |
+| no_train_events/event_001 | 124 | 1 | 1 / 0 / 0 | 21.314 |
+
+Event wall times sum to **98.308 seconds**; peak process RSS was 511,508,480 bytes. These are observed offline CPU pipeline values, not deployment/real-time guarantees or controlled hardware latency benchmarks. The engine case remains separate; the planned cohort labels are documentary source designations, not newly measured GT. The designated no-train source produced one model detection frame; it is not labeled a measured false-positive rate without the required accepted labels/exposure. Zero predictions on a source mean an actual empty model output, not established train absence or a computed missed-train rate.
+
+Exact model: experiments/vision/39f402dfe460/checkpoints/weights/best.pt; expected/previously verified SHA-256 3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd. Existing initializer enforced selected-weight integrity at the real run boundary; no separate audit/replacement or original-source rehash/probe was repeated. Frozen semantic config 999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e; code commit 9472535e252b8b74a6e78b79f064f762c3037e6e plus the recorded exact invocation source. Python/packages, actual effective backend arguments, CPU/seed and times are in [the run manifest](ACTUAL_RUN_MANIFEST.json). 5 FPS / 640×640 / confidence0.35 / CPU / seed42 / square letterbox preserved. Existing backend NMS defaults (IoU0.7/max_det300) were recorded, not silently changed.
+
+**Original source PTS is preserved in every saved record.** Validation checks all 1079 rows against exact PTS×rational timebase, positive timebase1/600, increasing sampled times and actual absolute indices (four fronts0, control front1). Original source stat identity matches completed AUTH35-V and is stable across each real inference; original media bytes are not copied. The existing descriptive-cache row validator accepts every saved row and retains original clock metadata. No synchronized back clock, capture timezone, physical T2 or human boundary is inferred.
+
+M4, M5, MTR, T1/warning, GT-based control/engine accuracy and agreement metrics remain **UNAVAILABLE**, not zero. Researcher human review remains reported complete; no separate observation records/canonical fields were fabricated or AI candidates promoted. Actual inference follows the genuine [issued authorization](OP39_I_ISSUED_AUTHORIZATION.json); its single-use scope is [closed](OP39_I_EXECUTION_RECEIPT.json), with issued/closed evidence retained and the canonical slot returned to baseline absence. No descriptive-replay or GT grant was issued.
+
+Supporting data: [event table](B0_FRONT_EVENT_SUMMARY.csv), [per-class prediction descriptors](B0_FRONT_PREDICTED_CLASS_SUMMARY.csv), [validation](B0_FRONT_RESULT_VALIDATION.json), five original-derived prediction JSONLs under predictions/, [class-count figure](figures/B0_FRONT_PREDICTED_OBJECTS.png), [processing-time figure](figures/B0_FRONT_PROCESSING_TIME.png). Actual stdout/stderr are retained losslessly as gzip logs with original hashes; [exact executed source](invocations/run_b0_front.py) records the real command path and preserves point-of-use guard checks. A new invocation requires its own current scope.
+
+Warnings retained: Ultralytics reports the deprecated half=False argument and normalizes it to its current precision scheme; no mid-run parameter change was made. Captured effective half is null after normalization; installed source maps explicit False to FP32. OpenCV/PyAV report duplicate native AVFoundation class registrations; all five sources nevertheless completed without a crash. These warnings and one offline CPU run do not establish universal decoder robustness. No original preview/render/audio extraction, retraining, threshold tuning, split, replay/GT metric, release or hardware operation occurred.

@@ -1,0 +1,1010 @@
+"""End-to-end tests for the Phase 12 official replay path (synthetic fixtures only).
+
+Everything runs in a fake repository root under pytest's tmp directory. The fixtures are
+shaped like an authorized official run so the full chain -- readiness, manifest, replay,
+clock-aware evaluation, provenance, atomic output, fail-closed behavior -- is exercised
+without creating any research result. The real repository is asserted untouched.
+"""
+
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from official_workspace import (
+    ALL_EVENTS,
+    BACK_OFFSET_S,
+    DEFAULT_MODES,
+    ENGINE,
+    NO_TRAIN,
+    NOW,
+    REPO_ROOT,
+    SPLIT,
+    TEST_EVENTS,
+    TRAIN,
+    TRAIN_ONLY,
+    VAL_ONLY,
+    Workspace,
+    build_workspace,
+    synthetic_streams,
+    write_json,
+)
+
+from railway_detection.cli.main import main as cli_main
+from railway_detection.evaluation import governance
+from railway_detection.evaluation.clock_aware import (
+    ClockModelError,
+    EventReplay,
+    SystemReplay,
+    derive_boundary_flags,
+    evaluate_event_replay,
+)
+from railway_detection.evaluation.evaluation_runner import (
+    EvaluationRefused,
+    Phase12EvaluationRunner,
+)
+from railway_detection.evaluation.ground_truth_loader import (
+    ApprovedEventGroundTruth,
+    GroundTruthLoadError,
+    load_approved_ground_truth_from_dir,
+)
+from railway_detection.evaluation.manifest_builder import (
+    EventSourceSpec,
+    build_evaluation_input_manifest,
+)
+from railway_detection.evaluation.output_contracts import EvaluationFailureReport
+from railway_detection.evaluation.replay_evidence import (
+    ReplayInputError,
+    build_replay_evidence_payload,
+    parse_replay_evidence,
+)
+from railway_detection.evaluation.replay_producer import RealEventReplayProducer, ReplayFailure
+from railway_detection.experiments.frozen_config import load_frozen_config
+from railway_detection.fusion.collector import MultimodalEvidenceCollector
+from railway_detection.simulation.runner import (
+    EventSimulationRunner,
+    SimulationRunResult,
+    SimulationStep,
+)
+
+WINDOW = "t1_entry_to_t4_clearance"  # fixture-only choice, as in official_workspace.PREMATURE
+DUAL_MODES = {**DEFAULT_MODES, TRAIN: "dual_camera"}
+CONFIG = load_frozen_config(REPO_ROOT / "configs/frozen_experiment_v1.yaml")
+
+
+@pytest.fixture
+def ws(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Workspace:
+    return build_workspace(tmp_path, monkeypatch)
+
+
+@pytest.fixture
+def dual_ws(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Workspace:
+    return build_workspace(tmp_path, monkeypatch, modes=DUAL_MODES, accepted_sync=(TRAIN,))
+
+
+def _snapshot(root: Path) -> dict[str, str]:
+    return {
+        str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in sorted(root.rglob("*"))
+        if p.is_file()
+    }
+
+
+def _failure(ws: Workspace, name: str = "out"):
+    out = ws.tmp / name
+    report = Phase12EvaluationRunner().run_official_safe(
+        repository_root=ws.root,
+        output_dir=out,
+        failure_report_path=ws.tmp / f"{name}.failure.json",
+    )
+    return report, out
+
+
+# ---------------------------------------------------------------- readiness & manifest
+
+
+@pytest.mark.parametrize("mode", ["single_camera", "independent_camera", "dual_camera"])
+def test_workspace_is_ready_in_every_camera_mode(tmp_path, monkeypatch, mode):
+    modes = {**DEFAULT_MODES, TRAIN: mode}
+    ws = build_workspace(
+        tmp_path, monkeypatch, modes=modes,
+        accepted_sync=(TRAIN,) if mode == "dual_camera" else (),
+    )
+    verdict = ws.assess()
+    assert verdict.ready, verdict.blockers
+    assert verdict.authorization_attestation_level == "recorded_statement_unsigned"
+
+
+def test_derived_manifest_reproduces_the_pinned_manifest(ws: Workspace):
+    pinned = json.loads((ws.root / "data/manifests/phase12_evaluation_inputs.json").read_text())
+    sources = {
+        e["event_id"]: EventSourceSpec(e["cohort"], e["source_path"]) for e in pinned["events"]
+    }
+    derived = build_evaluation_input_manifest(
+        ws.root, sources, "data/manifests/derived_inputs.json", now=NOW
+    )
+    assert derived["partitions"] == pinned["partitions"]
+    assert derived["camera_scope_by_event"] == pinned["camera_scope_by_event"]
+    assert derived["accepted_sync_events"] == pinned["accepted_sync_events"]
+    assert {e["event_id"]: e["source_sha256"] for e in derived["events"]} == {
+        e["event_id"]: e["source_sha256"] for e in pinned["events"]
+    }
+
+
+def test_premature_opening_decision_is_required_before_any_replay(ws: Workspace, monkeypatch):
+    (ws.root / governance.PROTOCOL_DECISION_RELATIVE).unlink()
+    monkeypatch.setattr(
+        "railway_detection.evaluation.replay_producer.parse_replay_evidence",
+        lambda *a, **k: pytest.fail("evidence must not be read while blocked"),
+    )
+    report, out = _failure(ws)
+    assert isinstance(report, EvaluationFailureReport)
+    assert report.blockers[0]["code"] == "OFFICIAL_PREREQUISITES_UNSATISFIED"
+    assert "PREMATURE_OPENING_DEFINITION_UNDECIDED" in report.blockers[0]["detail"]
+    assert not out.exists()
+
+
+# --------------------------------------------------------------------- replay execution
+
+
+def test_only_test_split_events_are_replayed_and_train_val_payloads_are_never_parsed(
+    ws: Workspace, monkeypatch
+):
+    seen: list[str] = []
+    real = parse_replay_evidence
+
+    def spy(payload, **kwargs):
+        seen.append(kwargs["expected_event_id"])
+        return real(payload, **kwargs)
+
+    monkeypatch.setattr("railway_detection.evaluation.replay_producer.parse_replay_evidence", spy)
+    # Corrupt the train/val payloads and re-pin + re-authorize: they must not matter.
+    for event_id in (TRAIN_ONLY, VAL_ONLY):
+        ws.rewrite_payload(event_id, lambda p: p.update({"streams": "garbage"}))
+    ws.record_authorization()
+    production = RealEventReplayProducer().produce(ws.root)
+    assert sorted(production.replays) == sorted(TEST_EVENTS)
+    assert sorted(seen) == sorted(TEST_EVENTS)
+    assert production.provenance["events_not_replayed"] == sorted([TRAIN_ONLY, VAL_ONLY])
+    assert production.provenance["split"] == {k: list(v) for k, v in sorted(SPLIT.items())}
+
+
+def test_replay_runs_without_labels(ws: Workspace, monkeypatch):
+    calls: list[dict] = []
+    original = EventSimulationRunner.run_frames
+
+    def spy(self, frames, event_id="x", scenario_name="n", entry_time_s=None,
+            clearance_time_s=None, profiler=None):
+        calls.append({"entry": entry_time_s, "clearance": clearance_time_s})
+        return original(self, frames, event_id, scenario_name, entry_time_s, clearance_time_s,
+                        profiler)
+
+    monkeypatch.setattr(EventSimulationRunner, "run_frames", spy)
+    RealEventReplayProducer().produce(ws.root)
+    assert calls and all(c == {"entry": None, "clearance": None} for c in calls)
+
+
+def test_camera_scope_decides_the_replayed_timelines(dual_ws: Workspace):
+    replays = RealEventReplayProducer().produce(dual_ws.root).replays
+    assert set(replays[TRAIN].systems) == {"fused"}
+    fused = replays[TRAIN].systems["fused"]
+    assert dict(fused.clock_offsets_s) == {"front": 0.0, "back": BACK_OFFSET_S}
+    assert fused.details["streams"] == ["front_vision", "back_vision", "front_audio"]
+    # Events decided independent are never fused, and never given an assumed offset.
+    for event_id in (NO_TRAIN, ENGINE):
+        assert set(replays[event_id].systems) == {"front", "back"}
+        assert dict(replays[event_id].systems["front"].clock_offsets_s) == {"front": 0.0}
+        assert dict(replays[event_id].systems["back"].clock_offsets_s) == {"back": 0.0}
+        assert replays[event_id].systems["back"].details["streams"] == ["back_vision"]
+
+
+def test_single_camera_replays_only_the_front_stream(tmp_path, monkeypatch):
+    modes = {**DEFAULT_MODES, TRAIN: "single_camera"}
+    ws = build_workspace(tmp_path, monkeypatch, modes=modes)
+    replay = RealEventReplayProducer().produce(ws.root).replays[TRAIN]
+    assert set(replay.systems) == {"front"}
+    assert set(replay.systems["front"].details["record_counts"]) == {"front_vision", "front_audio"}
+
+
+def test_replay_is_deterministic(ws: Workspace):
+    first = RealEventReplayProducer().produce(ws.root)
+    second = RealEventReplayProducer().produce(ws.root)
+    for event_id in TEST_EVENTS:
+        for name, system in first.replays[event_id].systems.items():
+            other = second.replays[event_id].systems[name].result
+            def trace(result):
+                return [(s.timestamp_s, s.crossing_state, s.gate_state) for s in result.steps]
+
+            assert trace(system.result) == trace(other)
+
+
+def test_derived_flags_equal_the_runners_own_flags(ws: Workspace):
+    """Replaying without labels and deriving flags later must match the in-runner computation."""
+    streams = synthetic_streams("train", "independent_camera")
+    records = streams["front_vision"] + streams["front_audio"]
+    collector = MultimodalEvidenceCollector(window_tolerance_s=0.25)
+    collector.add_evidence_batch(records)
+    frames = collector.generate_frames_from_history(0.0, 60.0, stride_s=CONFIG.timing.tick_s)
+    for entry, clearance in ((5.8, 20.0), (5.8, 40.0), (21.0, 30.0), (None, None)):
+        labelled = EventSimulationRunner(config=CONFIG).run_frames(
+            list(frames), "e", "s", entry_time_s=entry, clearance_time_s=clearance
+        )
+        blind = EventSimulationRunner(config=CONFIG).run_frames(list(frames), "e", "s")
+        derived = derive_boundary_flags(blind, entry, clearance)
+        assert derived.premature_opening_detected == labelled.premature_opening_detected
+        assert derived.warning_lead_time_s == labelled.warning_lead_time_s
+
+
+# ------------------------------------------------------ clock-aware evaluation semantics
+
+
+def _step(t: float, state: str = "TRAIN_PRESENT", gate: str = "CLOSED", blocked: bool = True):
+    return SimulationStep(t, state, gate, 0.0 if blocked else 90.0, blocked, None)  # type: ignore[arg-type]
+
+
+def _opening(t: float) -> SimulationStep:
+    return _step(t, state="GATE_OPENING", gate="OPENING", blocked=False)
+
+
+def _replay(mode: str, systems: dict[str, tuple[dict[str, float], list[SimulationStep]]]):
+    built = {}
+    for name, (offsets, steps) in systems.items():
+        built[name] = SystemReplay(
+            name,
+            offsets,
+            SimulationRunResult(
+                event_id="train_events/e",
+                scenario_name="s",
+                steps=steps,
+                total_duration_s=steps[-1].timestamp_s,
+                closed_duration_s=0.0,
+            ),
+        )
+    return EventReplay("train_events/e", "train_events", mode, built)
+
+
+def _truth(cameras: dict[str, str], values=None):
+    values = values or {"T1_danger_zone_entry": 5.0, "T4_tail_clearance": 10.0}
+    return ApprovedEventGroundTruth(
+        event_id="train_events/e", cohort="train_events", review_id="r", reviewer_id="s",
+        observable_boundaries=values, censored_boundaries=(), uncertain_boundaries=(),
+        not_applicable_boundaries=(), boundary_cameras=cameras,
+    )
+
+
+def test_cross_clock_metrics_are_not_evaluable_without_a_fused_timeline():
+    steps = [_step(float(t)) for t in range(0, 20)]
+    replay = _replay("independent_camera", {"front": ({"front": 0.0}, steps),
+                                            "back": ({"back": 0.0}, steps)})
+    truth = _truth({"T1_danger_zone_entry": "front", "T4_tail_clearance": "back"})
+    result = evaluate_event_replay(replay, truth, premature_opening_window=WINDOW)
+    assert result.premature_opening is None
+    assert "clock_mismatch" in result.metric_exclusions["premature_opening"]
+    assert "clock_mismatch" in result.metric_exclusions["excess_closed_duration"]
+    assert result.missed_train is not None  # T1 alone is on the front clock
+    assert "clearance_latency" not in result.metric_exclusions
+
+
+def test_fused_timeline_applies_the_validated_offset_to_each_boundary():
+    truth = _truth({"T1_danger_zone_entry": "front", "T4_tail_clearance": "back"})  # T1=5, T4=10
+
+    def with_opening_at(index: int, back_offset: float) -> bool | None:
+        steps = [_step(float(t)) for t in range(0, 20)]
+        steps[index] = _opening(float(index))
+        replay = _replay("dual_camera", {"fused": ({"front": 0.0, "back": back_offset}, steps)})
+        return evaluate_event_replay(
+            replay, truth, premature_opening_window=WINDOW
+        ).premature_opening
+
+    # Back clock 2 s behind master => T4 is 12 s on the master timeline.
+    assert with_opening_at(11, 2.0) is True  # 11 < 12: reopening during occupancy
+    assert with_opening_at(13, 2.0) is False  # after the master-clock tail clearance
+    # The same opening at 11 s is NOT premature if T4 were (wrongly) read unshifted at 10 s.
+    assert with_opening_at(11, 0.0) is False
+    # Opening before T1 on the master clock is outside the window.
+    assert with_opening_at(3, 2.0) is False
+
+
+def test_replay_evaluation_leaves_premature_opening_uncomputed_without_a_window():
+    steps = [_step(float(t)) for t in range(0, 20)]
+    steps[7] = _opening(7.0)
+    replay = _replay("dual_camera", {"fused": ({"front": 0.0, "back": 0.0}, steps)})
+    truth = _truth({"T1_danger_zone_entry": "front", "T4_tail_clearance": "back"})
+    undecided = evaluate_event_replay(replay, truth)
+    assert undecided.premature_opening is None
+    assert undecided.metric_exclusions["premature_opening"] == "premature_opening_window_undecided"
+    assert undecided.premature_opening_window is None
+    assert evaluate_event_replay(
+        replay, truth, premature_opening_window=WINDOW
+    ).premature_opening is True
+
+
+def test_missing_annotation_camera_and_inverted_order_are_refused():
+    steps = [_step(float(t)) for t in range(0, 20)]
+    replay = _replay("dual_camera", {"fused": ({"front": 0.0, "back": 0.0}, steps)})
+    with pytest.raises(ClockModelError) as info:
+        evaluate_event_replay(replay, _truth({}))
+    assert info.value.code == "GROUND_TRUTH_CAMERA_MISSING"
+    inverted = _replay("dual_camera", {"fused": ({"front": 0.0, "back": -9.0}, steps)})
+    with pytest.raises(ClockModelError) as info:
+        evaluate_event_replay(
+            inverted, _truth({"T1_danger_zone_entry": "front", "T4_tail_clearance": "back"})
+        )
+    assert info.value.code == "CLOCK_ORDER_INVALID"
+
+
+def test_replay_structure_is_validated():
+    steps = [_step(0.0), _step(1.0)]
+    fused_in_independent = _replay("independent_camera", {"fused": ({"front": 0.0}, steps)})
+    with pytest.raises(ClockModelError):
+        fused_in_independent.validate()
+    with pytest.raises(ClockModelError):
+        _replay("dual_camera", {"front": ({"front": 0.0}, steps)}).validate()
+
+
+def test_end_to_end_exclusions_name_the_clock_problem(ws: Workspace, tmp_path: Path):
+    result = Phase12EvaluationRunner().run_official(
+        repository_root=ws.root, output_dir=tmp_path / "o"
+    )
+    excluded = result.cohort_summary.exclusions
+    assert "clock_mismatch" in excluded["premature_opening"][0]["reason"]
+    assert excluded["premature_opening"][0]["event_id"] == TRAIN
+
+
+# ---------------------------------------------------------------- outputs and provenance
+
+
+def test_official_outputs_carry_full_provenance(dual_ws: Workspace, tmp_path: Path):
+    out = tmp_path / "official"
+    result = Phase12EvaluationRunner().run_official(repository_root=dual_ws.root, output_dir=out)
+    assert sorted(p.name for p in out.iterdir()) == [
+        "cohort_summary.json", "run_manifest.json", "single_evaluations.json", "tick_logs",
+    ]
+    manifest = json.loads((out / "run_manifest.json").read_text())
+    auth_file = dual_ws.root / governance.EVAL_AUTH_RELATIVE
+    auth_sha = hashlib.sha256(auth_file.read_bytes()).hexdigest()
+    assert manifest["authorization_status"] == "verified:recorded_statement_unsigned"
+    assert manifest["authorization_record_sha256"] == auth_sha
+    assert manifest["provenance"]["official_authorization_verified"] is True
+    assert manifest["provenance"]["frozen_config_sha256"] == dual_ws.config_hash
+    assert manifest["provenance"]["input_manifest_sha256"] == result.run_manifest["provenance"][
+        "input_manifest_sha256"
+    ] == hashlib.sha256(
+        (dual_ws.root / "data/manifests/phase12_evaluation_inputs.json").read_bytes()
+    ).hexdigest()
+    assert sorted(manifest["test_event_ids"]) == sorted(TEST_EVENTS)
+    assert manifest["premature_opening_window"] == WINDOW
+    versions = manifest["contract_versions"]
+    assert versions["promotion_receipt"].endswith("/2") and versions["replay_producer"]
+    assert set(versions) >= {"run_manifest", "input_manifest", "replay_evidence",
+                             "eval_authorization", "failure_report"}
+    assert manifest["metrics"]["premature_opening_definition"] == WINDOW
+    assert manifest["replay_provenance"]["protocol_profile"]["premature_opening_window"] == WINDOW
+    replay = manifest["replay_provenance"]
+    assert replay["authorization_record_sha256"] == auth_sha
+    assert replay["events_not_replayed"] == sorted([TRAIN_ONLY, VAL_ONLY])
+    train = replay["events"][TRAIN]
+    assert train["camera_mode"] == "dual_camera"
+    assert train["systems"]["fused"]["clock_offsets_s"] == {"front": 0.0, "back": BACK_OFFSET_S}
+    assert train["calibration_manifest_status"] == "CANDIDATE_UNVALIDATED_DO_NOT_MERGE"
+    assert train["acceptance_basis"] == "researcher R04 decision (accepted_sync_events)"
+    assert train["evidence"]["inference_run_id"] == "synthetic-fixture-run"
+    assert train["evidence"]["annotation_labels_used"] is False
+    assert replay["events"][NO_TRAIN]["camera_mode"] == "independent_camera"
+    assert set(replay["events"][NO_TRAIN]["systems"]) == {"front", "back"}
+    ticklogs = sorted(p.name for p in (out / "tick_logs").iterdir())
+    assert ticklogs == sorted(f"{e.replace('/', '__')}.ticklog.json" for e in TEST_EVENTS)
+    assert not list(tmp_path.glob(".official.partial"))
+
+
+def test_outputs_are_reproducible_byte_for_byte(ws: Workspace, tmp_path: Path):
+    Phase12EvaluationRunner().run_official(repository_root=ws.root, output_dir=tmp_path / "a")
+    Phase12EvaluationRunner().run_official(repository_root=ws.root, output_dir=tmp_path / "b")
+    for name in ("run_manifest.json", "cohort_summary.json", "single_evaluations.json"):
+        assert (tmp_path / "a" / name).read_bytes() == (tmp_path / "b" / name).read_bytes()
+    for log in (tmp_path / "a" / "tick_logs").iterdir():
+        assert log.read_bytes() == (tmp_path / "b" / "tick_logs" / log.name).read_bytes()
+
+
+def test_official_run_never_writes_into_the_workspace_evidence(ws: Workspace, tmp_path: Path):
+    before = _snapshot(ws.root)
+    Phase12EvaluationRunner().run_official(repository_root=ws.root, output_dir=tmp_path / "o")
+    assert _snapshot(ws.root) == before
+
+
+@pytest.mark.parametrize(
+    ("relative", "code"),
+    [
+        ("data/ground_truth/reviews/x", "OUTPUT_DIR_PROTECTED"),
+        ("data/raw/out", "OUTPUT_DIR_PROTECTED"),
+        ("configs/out", "OUTPUT_DIR_PROTECTED"),
+        ("experiments/out", "OUTPUT_DIR_PROTECTED"),
+    ],
+)
+def test_output_may_not_target_evidence_or_config_trees(ws: Workspace, relative: str, code: str):
+    before = _snapshot(ws.root)
+    with pytest.raises(EvaluationRefused) as info:
+        Phase12EvaluationRunner().run_official(repository_root=ws.root,
+                                               output_dir=ws.root / relative)
+    assert info.value.code == code
+    assert _snapshot(ws.root) == before
+
+
+def test_existing_nonempty_output_is_never_merged_into(ws: Workspace, tmp_path: Path):
+    out = tmp_path / "taken"
+    out.mkdir()
+    (out / "precious.txt").write_text("keep")
+    with pytest.raises(EvaluationRefused) as info:
+        Phase12EvaluationRunner().run_official(repository_root=ws.root, output_dir=out)
+    assert info.value.code == "OUTPUT_DIR_NOT_EMPTY"
+    assert [p.name for p in out.iterdir()] == ["precious.txt"]
+
+
+def test_write_failure_leaves_no_partial_official_outputs(
+    ws: Workspace, tmp_path: Path, monkeypatch
+):
+    original = Path.write_bytes
+    state = {"n": 0}
+
+    def flaky(self, data):
+        state["n"] += 1
+        if state["n"] == 3:
+            raise OSError("disk full (injected)")
+        return original(self, data)
+
+    monkeypatch.setattr(Path, "write_bytes", flaky)
+    out = tmp_path / "o"
+    report = Phase12EvaluationRunner().run_official_safe(
+        repository_root=ws.root, output_dir=out, failure_report_path=tmp_path / "f.json"
+    )
+    monkeypatch.undo()
+    assert isinstance(report, EvaluationFailureReport)
+    assert report.blockers[0]["code"] == "EVALUATION_RUNTIME_ERROR"
+    assert not out.exists() and not list(tmp_path.glob(".o.partial"))
+    assert json.loads((tmp_path / "f.json").read_text())["partial_outputs_written"] is False
+
+
+# ----------------------------------------------------------------------- fail-closed
+
+
+def test_without_recorded_authorization_nothing_is_read_or_written(tmp_path, monkeypatch):
+    ws = build_workspace(tmp_path, monkeypatch, authorize=False)
+    monkeypatch.setattr(
+        "railway_detection.evaluation.replay_producer.parse_replay_evidence",
+        lambda *a, **k: pytest.fail("evidence must not be read without authorization"),
+    )
+    report, out = _failure(ws)
+    assert report.blockers[0]["code"] == "OFFICIAL_PREREQUISITES_UNSATISFIED"
+    assert "EVAL_AUTH_NOT_GRANTED" in report.blockers[0]["detail"]
+    assert report.status == "FAILED" and report.partial_outputs_written is False
+    assert not out.exists()
+    assert json.loads((ws.tmp / "out.failure.json").read_text())["failure_stage"] == "readiness"
+
+
+def test_changing_authorized_evidence_voids_the_run(ws: Workspace):
+    ws.rewrite_payload(TRAIN, lambda p: p["provenance"].update({"inference_run_id": "other-run"}))
+    report, out = _failure(ws)
+    assert "EVAL_AUTH_BINDING_MISMATCH" in report.blockers[0]["detail"]
+    assert not out.exists()
+
+
+def test_unpinned_payload_edit_is_caught_by_source_hash(ws: Workspace):
+    path = ws.payload_path(TRAIN)
+    payload = json.loads(path.read_text())
+    payload["provenance"]["inference_run_id"] = "edited-after-pinning"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    report, out = _failure(ws)
+    assert report.blockers[0]["code"] == "SOURCE_HASH_MISMATCH"
+    assert report.failure_stage == "inputs"
+    assert not out.exists()
+
+
+def _break(ws: Workspace, event_id: str, mutate) -> None:
+    ws.rewrite_payload(event_id, mutate)
+    ws.record_authorization()  # an authorization over the *broken* payload is still refused
+
+
+@pytest.mark.parametrize(
+    ("mutate", "code"),
+    [
+        (lambda p: p.update({"event_id": "train_events/other"}), "IDENTITY_MISMATCH"),
+        (lambda p: p.update({"cohort": "no_train_events"}), "IDENTITY_MISMATCH"),
+        (lambda p: p.update({"camera_mode": "single_camera"}), "SCOPE_MISMATCH"),
+        (lambda p: p.update({"labels": {"T1_danger_zone_entry": 5.8}}), "PAYLOAD_INVALID"),
+        (lambda p: p.update({"ground_truth": {}}), "PAYLOAD_INVALID"),
+        (lambda p: p["provenance"].update({"annotation_labels_used": True}), "LABEL_LEAKAGE"),
+        (lambda p: p["provenance"].update({"frozen_config_canonical_sha256": "0" * 64}),
+         "PROVENANCE_MISMATCH"),
+        (lambda p: p["provenance"]["checkpoint_sha256"].update({"vision": "1" * 64}),
+         "PROVENANCE_MISMATCH"),
+        (lambda p: p["provenance"]["checkpoint_sha256"].update({"audio_v3": "2" * 64}),
+         "PROVENANCE_MISMATCH"),
+        (lambda p: p["provenance"]["checkpoint_sha256"].update(
+            {"audio_v3": CONFIG.checkpoints.prohibited_audio_v2.sha256}), "PROHIBITED_CHECKPOINT"),
+        (lambda p: p["provenance"].update({"audio_operating_threshold": 0.5}),
+         "PROVENANCE_MISMATCH"),
+        (lambda p: p["provenance"].update({"vision_confidence_threshold": 0.1}),
+         "PROVENANCE_MISMATCH"),
+        (lambda p: p["streams"]["front_vision"].update({"source_id": "camera_9"}),
+         "STREAM_INVALID"),
+        (lambda p: p["streams"]["front_vision"].update({"records": []}), "STREAM_INVALID"),
+        (lambda p: p["streams"].pop("back_vision"), "STREAM_INVALID"),
+        (lambda p: p["streams"]["front_vision"]["records"][0].update({"timestamp_s": -1.0}),
+         "RECORD_INVALID"),
+        (lambda p: p["streams"]["front_vision"]["records"][5].update(
+            {"detections": [{"label": "front", "confidence": 1.7, "bbox_xyxy": None,
+                             "metadata": {}}]}), "RECORD_INVALID"),
+        (lambda p: p["streams"]["front_vision"]["records"][0].update({"source_id": "camera_2"}),
+         "RECORD_INVALID"),
+        (lambda p: p.update({"schema_version": "phase12-replay-evidence/0"}), "PAYLOAD_INVALID"),
+    ],
+)
+def test_bad_payloads_fail_the_whole_run_with_a_structured_report(
+    ws: Workspace, mutate, code
+):
+    _break(ws, TRAIN, mutate)
+    report, out = _failure(ws)
+    assert isinstance(report, EvaluationFailureReport)
+    assert report.blockers[0]["code"] == code, report.blockers
+    assert report.failure_event_id == TRAIN
+    assert report.failure_stage == "evidence"
+    assert not out.exists()  # no partial official results
+    assert json.loads((ws.tmp / "out.failure.json").read_text())["status"] == "FAILED"
+
+
+@pytest.mark.parametrize("side", ["front", "back"])
+def test_evidence_must_describe_the_media_the_reviewer_observed(ws: Workspace, side: str):
+    _break(ws, TRAIN, lambda p: p["provenance"]["media_sha256"].update({side: "7" * 64}))
+    report, out = _failure(ws)
+    assert report.blockers[0]["code"] == "EVIDENCE_MEDIA_NOT_REVIEWED_MEDIA"
+    assert report.failure_event_id == TRAIN and report.failure_stage == "evidence"
+    assert not out.exists()
+
+
+def test_single_camera_scope_forbids_back_streams(tmp_path, monkeypatch):
+    ws = build_workspace(tmp_path, monkeypatch, modes={**DEFAULT_MODES, TRAIN: "single_camera"})
+    streams = synthetic_streams("train", "independent_camera")  # includes back_vision
+    payload = build_replay_evidence_payload(
+        event_id=TRAIN, cohort="train_events", camera_mode="single_camera", streams=streams,
+        provenance=json.loads(ws.payload_path(TRAIN).read_text())["provenance"],
+    )
+    _break(ws, TRAIN, lambda p: p.update(payload))
+    report, _ = _failure(ws)
+    assert report.blockers[0]["code"] == "SCOPE_VIOLATION"
+
+
+def test_failure_in_a_later_event_returns_no_replays(ws: Workspace, monkeypatch):
+    original = EventSimulationRunner.run_frames
+    count = {"n": 0}
+
+    def boom(self, *args, **kwargs):
+        count["n"] += 1
+        if count["n"] == 4:
+            raise RuntimeError("decision engine exploded (injected)")
+        return original(self, *args, **kwargs)
+
+    monkeypatch.setattr(EventSimulationRunner, "run_frames", boom)
+    with pytest.raises(ReplayFailure) as info:
+        RealEventReplayProducer().produce(ws.root)
+    assert info.value.code == "REPLAY_ERROR" and info.value.event_id in TEST_EVENTS
+    count["n"] = 0
+    report, out = _failure(ws)
+    assert report.blockers[0]["code"] == "REPLAY_ERROR"
+    assert report.failure_event_id in TEST_EVENTS
+    assert not out.exists()
+
+
+def test_manifest_read_for_replay_must_be_the_one_authorization_binds(ws: Workspace, monkeypatch):
+    import dataclasses
+
+    from railway_detection.evaluation import replay_producer
+    from railway_detection.evaluation.input_contracts import load_evaluation_input_manifest
+
+    def tampered(path, *, verify_sources):
+        loaded = load_evaluation_input_manifest(path, verify_sources=verify_sources)
+        return dataclasses.replace(loaded, manifest_sha256="d" * 64)
+
+    monkeypatch.setattr(replay_producer, "load_evaluation_input_manifest", tampered)
+    with pytest.raises(ReplayFailure) as info:
+        RealEventReplayProducer().produce(ws.root)
+    assert info.value.code == "MANIFEST_BINDING_MISMATCH"
+
+
+def test_approved_truth_for_train_and_val_events_is_never_consumed(
+    ws: Workspace, tmp_path: Path, monkeypatch
+):
+    from railway_detection.evaluation import ground_truth_loader
+
+    real_loader = ground_truth_loader.load_approved_ground_truth_from_dir
+
+    def with_extras(reviews_dir, **kwargs):
+        loaded = real_loader(reviews_dir, **kwargs)
+        template = next(item for item in loaded if item.event_id == TRAIN)
+        extras = [
+            dataclasses.replace(template, event_id=event_id)
+            for event_id in (TRAIN_ONLY, VAL_ONLY)
+        ]
+        return [*loaded, *extras]
+
+    import dataclasses
+
+    monkeypatch.setattr(ground_truth_loader, "load_approved_ground_truth_from_dir", with_extras)
+    result = Phase12EvaluationRunner().run_official(
+        repository_root=ws.root, output_dir=tmp_path / "o"
+    )
+    assert sorted(result.run_manifest["test_event_ids"]) == sorted(TEST_EVENTS)
+    assert result.run_manifest["test_event_count"] == 3
+
+
+def test_a_forged_permit_cannot_unlock_the_runner_directly(ws: Workspace):
+    from railway_detection.evaluation.evaluation_runner import _OfficialPermit
+    from railway_detection.evaluation.input_contracts import EvidenceClassification
+
+    production = RealEventReplayProducer().produce(ws.root)
+    forged = _OfficialPermit("a" * 64, "recorded_statement_unsigned", "b" * 64)
+    truth = [
+        t for t in load_approved_ground_truth_from_dir(
+            ws.root / "data/ground_truth/reviews", qualify_event_ids=True
+        )
+    ]
+    with pytest.raises(EvaluationRefused, match="only through run_official"):
+        Phase12EvaluationRunner().run(
+            event_split=SPLIT,
+            camera_scope=DEFAULT_MODES,
+            accepted_sync_events=set(),
+            ground_truth=truth,
+            simulation_results=production.replays,
+            evidence_classification=EvidenceClassification.REAL,
+            input_manifest_sha256="b" * 64,
+            _permit=forged,
+        )
+
+
+# -------------------------------------------------------------- dual-camera constraints
+
+
+def test_dual_camera_needs_accepted_sync_and_supported_calibration_at_readiness(
+    tmp_path, monkeypatch
+):
+    ws = build_workspace(
+        tmp_path, monkeypatch, modes=DUAL_MODES, accepted_sync=(TRAIN,),
+        calibration_verdicts={TRAIN: "PROVISIONAL"},
+    )
+    verdict = ws.assess()
+    assert "R04_ACCEPTED_EVENT_NOT_SUPPORTED" in verdict.blocker_codes
+
+
+def test_dual_camera_without_accepted_sync_is_refused_by_the_decision_contract(
+    tmp_path, monkeypatch
+):
+    ws = build_workspace(tmp_path, monkeypatch, modes=DUAL_MODES, accepted_sync=())
+    assert "R04_SCOPE_DECISION_INVALID" in ws.assess().blocker_codes
+
+
+def test_calibrated_media_must_match_the_evidence_provenance(dual_ws: Workspace):
+    _break(dual_ws, TRAIN, lambda p: p["provenance"]["media_sha256"].update({"back": "9" * 64}))
+    report, out = _failure(dual_ws)
+    assert report.blockers[0]["code"] == "SYNC_MEDIA_MISMATCH"
+    assert report.failure_stage == "synchronization" and not out.exists()
+
+
+def test_media_changed_since_calibration_blocks_fusion(dual_ws: Workspace):
+    media = dual_ws.root / dual_ws.media[TRAIN]["back_relative"]
+    media.write_bytes(b"swapped after calibration")
+    report, out = _failure(dual_ws)
+    assert report.blockers[0]["code"] == "SYNC_CALIBRATION_REJECTED"
+    assert not out.exists()
+
+
+def _set_back_uncertainty(ws: Workspace, value) -> None:
+    import yaml
+
+    path = ws.root / governance.CALIBRATION_MANIFEST_RELATIVE
+    manifest = yaml.safe_load(path.read_text())
+    manifest["events"][TRAIN]["camera_back"]["uncertainty_s"] = value
+    path.write_text(yaml.safe_dump(manifest), encoding="utf-8")
+
+
+@pytest.mark.parametrize(
+    ("uncertainty", "status", "bound"),
+    [(0.05, "aligned", None), (0.5, "aligned", None), (1.0, "partially_aligned", 1.0),
+     (2.0, "partially_aligned", 2.0)],
+)
+def test_alignment_status_follows_protocol_v9_section_7(
+    dual_ws: Workspace, uncertainty, status, bound
+):
+    _set_back_uncertainty(dual_ws, uncertainty)
+    replay = RealEventReplayProducer().produce(dual_ws.root).replays[TRAIN]
+    assert replay.provenance["alignment_status"] == status
+    assert replay.provenance["latency_error_bound_s"] == bound
+
+
+@pytest.mark.parametrize("uncertainty", [2.01, 5.0, None])
+def test_unaligned_events_are_refused_for_joint_metrics(dual_ws: Workspace, uncertainty):
+    _set_back_uncertainty(dual_ws, uncertainty)
+    report, out = _failure(dual_ws)
+    assert report.blockers[0]["code"] == "SYNC_UNALIGNED"
+    assert report.failure_event_id == TRAIN and not out.exists()
+
+
+def test_cameras_are_never_fused_without_a_validated_aligner(ws: Workspace):
+    producer = RealEventReplayProducer()
+    config = load_frozen_config(ws.root / "configs/frozen_experiment_v1.yaml")
+    evidence = parse_replay_evidence(
+        json.loads(ws.payload_path(TRAIN).read_text()),
+        expected_event_id=TRAIN, expected_cohort="train_events",
+        expected_camera_mode="independent_camera", config=config,
+    )
+    from railway_detection.experiments.frozen_config import TimingIntegrityError
+
+    with pytest.raises(TimingIntegrityError):
+        producer._run_system(config, evidence, "fused",
+                             ("front_vision", "back_vision"), aligner=None)
+
+
+# ------------------------------------------------------------------ identity & loading
+
+
+def test_cohort_qualified_identity_resolves_duplicate_event_ids(tmp_path: Path):
+    """The real corpus has ``event_001`` in three cohorts; identity must be cohort-qualified."""
+    from railway_detection.evaluation.ground_truth_loader import load_approved_ground_truth
+    from test_phase11_9_synthetic_pilot import _build_pilot_record
+
+    records = [
+        _build_pilot_record(tmp_path, {"event_id": "event_001", "cohort": cohort,
+                                       "complexity": "simple"})
+        for cohort in ("train_events", "no_train_events", "engine_events")
+    ]
+    with pytest.raises(GroundTruthLoadError, match="Duplicate"):
+        load_approved_ground_truth(records)
+    qualified = load_approved_ground_truth(records, qualify_event_ids=True)
+    assert sorted(item.event_id for item in qualified) == [
+        "engine_events/event_001", "no_train_events/event_001", "train_events/event_001",
+    ]
+    assert {item.record_event_id for item in qualified} == {"event_001"}
+    train = next(item for item in qualified if item.cohort == "train_events")
+    assert train.boundary_cameras["T1_danger_zone_entry"] == "front"
+    assert train.boundary_cameras["T4_tail_clearance"] == "back"
+
+
+# ----------------------------------------------------------------------------- CLI
+
+
+def test_cli_run_succeeds_only_through_the_verified_path(ws: Workspace, tmp_path: Path):
+    out = tmp_path / "cli_out"
+    code = cli_main(["evaluation", "run", "--repository-root", str(ws.root),
+                     "--output-dir", str(out)])
+    assert code == 0
+    assert (out / "run_manifest.json").is_file()
+
+
+def test_cli_requires_an_output_dir_and_reports_failures(ws: Workspace, tmp_path: Path):
+    assert cli_main(["evaluation", "run", "--repository-root", str(ws.root)]) == 2
+    _break(ws, TRAIN, lambda p: p.update({"camera_mode": "single_camera"}))
+    out = tmp_path / "cli_fail"
+    assert cli_main(["evaluation", "run", "--repository-root", str(ws.root),
+                     "--output-dir", str(out)]) == 5
+    report = json.loads((tmp_path / "cli_fail.failure_report.json").read_text())
+    assert report["blockers"][0]["code"] == "SCOPE_MISMATCH"
+    assert not out.exists()
+
+
+def test_cli_blocked_when_prerequisites_are_missing(tmp_path, monkeypatch):
+    ws = build_workspace(tmp_path, monkeypatch, authorize=False)
+    out = tmp_path / "blocked_out"
+    assert cli_main(["evaluation", "run", "--repository-root", str(ws.root),
+                     "--output-dir", str(out)]) == 3
+    assert not out.exists()
+
+
+# ------------------------------------------------------------- the real repo is untouched
+
+
+def test_real_repository_run_is_blocked_and_leaves_everything_untouched(tmp_path: Path):
+    registry = REPO_ROOT / "results/experiment_registry.jsonl"
+    reviews = sorted((REPO_ROOT / "data/ground_truth/reviews").rglob("*_review.json"))
+    before = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in [registry, *reviews]}
+    out = tmp_path / "real_out"
+    assert cli_main(["evaluation", "run", "--repository-root", str(REPO_ROOT),
+                     "--output-dir", str(out)]) == 3
+    assert not out.exists()
+    report = Phase12EvaluationRunner().run_official_safe(
+        repository_root=REPO_ROOT, output_dir=out, failure_report_path=tmp_path / "f.json"
+    )
+    assert isinstance(report, EvaluationFailureReport)
+    assert report.blockers[0]["code"] == "OFFICIAL_PREREQUISITES_UNSATISFIED"
+    assert not out.exists()
+    assert {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in before} == before
+    assert not (REPO_ROOT / governance.EVAL_AUTH_RELATIVE).exists()
+    assert not (REPO_ROOT / "data/manifests/phase12_evaluation_inputs.json").exists()
+
+
+def test_payload_parser_rejects_copies_of_valid_payloads_with_extra_fields():
+    streams = synthetic_streams("train", "independent_camera")
+    good = build_replay_evidence_payload(
+        event_id=TRAIN, cohort="train_events", camera_mode="independent_camera", streams=streams,
+        provenance={
+            "frozen_config_canonical_sha256": CONFIG.canonical_hash,
+            "checkpoint_sha256": {
+                "vision": CONFIG.checkpoints.vision.expected_sha256,
+                "audio_v3": CONFIG.checkpoints.audio_v3.expected_sha256,
+            },
+            "vision_confidence_threshold": CONFIG.vision.confidence_threshold_approach,
+            "audio_operating_threshold": CONFIG.audio.operating_threshold,
+            "media_sha256": {"front": "a" * 64, "back": "b" * 64},
+            "inference_run_id": "r",
+            "annotation_labels_used": False,
+            "generated_by": "synthetic_test_fixture",
+        },
+    )
+    kwargs = dict(expected_event_id=TRAIN, expected_cohort="train_events",
+                  expected_camera_mode="independent_camera", config=CONFIG)
+    assert parse_replay_evidence(good, **kwargs).camera_mode == "independent_camera"
+    for extra in ("labels", "T1_danger_zone_entry", "boundaries", "adjudication_status"):
+        bad = copy.deepcopy(good)
+        bad[extra] = 1
+        with pytest.raises(ReplayInputError) as info:
+            parse_replay_evidence(bad, **kwargs)
+        assert info.value.code == "PAYLOAD_INVALID"
+
+
+def test_governance_workspace_constants_are_consistent():
+    assert set(ALL_EVENTS) == {TRAIN_ONLY, VAL_ONLY, *TEST_EVENTS}
+    assert write_json is not None
+
+
+# ------------------------------------------------- producer contract: fake-backend scenarios
+
+
+ONE_EVENT_SPLIT = {"train": [TRAIN_ONLY, NO_TRAIN], "val": [VAL_ONLY, ENGINE], "test": [TRAIN]}
+
+
+def test_single_event_test_cohort_replays_and_evaluates_exactly_that_event(
+    tmp_path, monkeypatch
+):
+    ws = build_workspace(tmp_path, monkeypatch, split=ONE_EVENT_SPLIT)
+    production = RealEventReplayProducer().produce(ws.root)
+    assert sorted(production.replays) == [TRAIN]
+    assert production.provenance["events_not_replayed"] == sorted(
+        [TRAIN_ONLY, NO_TRAIN, VAL_ONLY, ENGINE]
+    )
+    result = Phase12EvaluationRunner().run_official(
+        repository_root=ws.root, output_dir=tmp_path / "one"
+    )
+    assert result.run_manifest["test_event_count"] == 1
+    assert result.cohort_summary.total_events == 1
+    assert result.cohort_summary.no_train_events == 0  # no-train/engine events are not test events
+
+
+def test_multi_event_cohort_covers_every_cohort_kind(ws: Workspace, tmp_path: Path):
+    result = Phase12EvaluationRunner().run_official(
+        repository_root=ws.root, output_dir=tmp_path / "multi"
+    )
+    summary = result.cohort_summary
+    assert summary.total_events == 3
+    assert summary.eligible_events == 1 and summary.no_train_events == 1
+    assert summary.engine_events == 1
+    assert summary.false_alarm_evaluable_count == 1
+
+
+def test_missing_source_payload_is_a_structured_input_failure(ws: Workspace):
+    ws.payload_path(TRAIN).unlink()
+    report, out = _failure(ws)
+    assert report.blockers[0]["code"] == "INPUT_MISSING"
+    assert report.failure_stage == "inputs" and not out.exists()
+
+
+def test_corrupted_payload_that_still_matches_its_pinned_hash_is_refused(ws: Workspace):
+    path = ws.payload_path(TRAIN)
+    path.write_bytes(b"{ this is not json")
+    manifest_path = ws.root / "data/manifests/phase12_evaluation_inputs.json"
+    manifest = json.loads(manifest_path.read_text())
+    for event in manifest["events"]:
+        if event["event_id"] == TRAIN:
+            event["source_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    ws.record_authorization()
+    report, out = _failure(ws)
+    assert report.blockers[0]["code"] == "EVENT_INPUT_INVALID"
+    assert not out.exists()
+
+
+def test_a_non_object_payload_is_refused(ws: Workspace):
+    path = ws.payload_path(TRAIN)
+    path.write_text("[1, 2, 3]", encoding="utf-8")
+    manifest_path = ws.root / "data/manifests/phase12_evaluation_inputs.json"
+    manifest = json.loads(manifest_path.read_text())
+    next(e for e in manifest["events"] if e["event_id"] == TRAIN)["source_sha256"] = (
+        hashlib.sha256(path.read_bytes()).hexdigest()
+    )
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    ws.record_authorization()
+    report, _ = _failure(ws)
+    assert report.blockers[0]["code"] == "EVENT_INPUT_INVALID"
+
+
+@pytest.mark.parametrize("mode", ["triple_camera", "", "DUAL_CAMERA", None])
+def test_unsupported_camera_modes_are_refused_at_the_decision_contract(
+    tmp_path, monkeypatch, mode
+):
+    ws = build_workspace(tmp_path, monkeypatch)
+    path = ws.root / governance.R04_DECISION_RELATIVE
+    decision = json.loads(path.read_text())
+    decision["event_modes"][TRAIN] = mode
+    path.write_text(json.dumps(decision), encoding="utf-8")
+    verdict = ws.assess()
+    assert not verdict.ready
+    assert "R04_SCOPE_DECISION_INVALID" in verdict.blocker_codes
+
+
+def test_failure_report_is_canonical_complete_and_free_of_payload_content(ws: Workspace):
+    _break(ws, TRAIN, lambda p: p["provenance"].update({"annotation_labels_used": True}))
+    report, out = _failure(ws)
+    raw = (ws.tmp / "out.failure.json").read_bytes()
+    parsed = json.loads(raw)
+    assert parsed == report.to_dict()
+    assert raw == json.dumps(parsed, sort_keys=True, separators=(",", ":"),
+                             ensure_ascii=True).encode() + b"\n"
+    assert parsed["status"] == "FAILED" and parsed["partial_outputs_written"] is False
+    assert parsed["failure_event_id"] == TRAIN and parsed["failure_stage"] == "evidence"
+    assert parsed["evidence_classification"] == "real"
+    # a failure report never embeds the evidence it rejected
+    assert "records" not in raw.decode() and "detections" not in raw.decode()
+    assert not out.exists()
+
+
+def test_repeated_failures_are_idempotent_and_never_accumulate_staging(ws: Workspace):
+    ws.payload_path(TRAIN).unlink()
+    first, out = _failure(ws)
+    second, _ = _failure(ws)
+    assert first.to_dict() == second.to_dict()
+    assert not out.exists() and not list(ws.tmp.glob(".out.partial"))
+
+
+def test_stale_staging_directory_from_a_crash_is_cleared_not_merged(ws: Workspace, tmp_path):
+    stale = tmp_path / ".o.partial"
+    stale.mkdir()
+    (stale / "leftover.json").write_text("{}")
+    result = Phase12EvaluationRunner().run_official(repository_root=ws.root,
+                                                    output_dir=tmp_path / "o")
+    assert not stale.exists()
+    assert not (tmp_path / "o" / "leftover.json").exists()
+    assert (tmp_path / "o" / "run_manifest.json").is_file()
+    assert result.output_dir == tmp_path / "o"
+
+
+def test_review_records_changing_between_readiness_and_loading_are_detected(
+    ws: Workspace, monkeypatch, tmp_path
+):
+    from railway_detection.evaluation import ground_truth_loader
+
+    real = ground_truth_loader.load_approved_ground_truth_with_hashes
+
+    def swapped(reviews_dir, **kwargs):
+        truths, hashes = real(reviews_dir, **kwargs)
+        first = sorted(hashes)[0]
+        return truths, {**hashes, first: "f" * 64}  # a record "changed" after the assessment
+
+    monkeypatch.setattr(ground_truth_loader, "load_approved_ground_truth_with_hashes", swapped)
+    report, out = _failure(ws)
+    assert report.blockers[0]["code"] == "INPUT_CHANGED_DURING_VALIDATION"
+    assert report.failure_stage == "ground_truth" and not out.exists()
+
+
+def test_loader_digests_describe_the_exact_bytes_that_were_parsed(ws: Workspace):
+    from railway_detection.evaluation.ground_truth_loader import (
+        load_approved_ground_truth_with_hashes,
+    )
+
+    reviews = ws.root / "data/ground_truth/reviews"
+    truths, hashes = load_approved_ground_truth_with_hashes(reviews, qualify_event_ids=True)
+    assert len(truths) == 3
+    for relative, digest in hashes.items():
+        assert digest == hashlib.sha256((reviews / relative).read_bytes()).hexdigest()

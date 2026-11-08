@@ -1,0 +1,101 @@
+{
+  "schema": "mission39-corrected-B1-and-B2-input-validation/1",
+  "valid": true,
+  "windows": 423,
+  "predicted_train_windows": 120,
+  "B2_input_frames": 1079,
+  "B2_paired_input_frames": 634,
+  "B2_decision_replays": 0,
+  "accepted_GT_metrics": 0,
+  "checks": [
+    {
+      "event": "train_events/event_005",
+      "all_actual_artifact_hashes_valid": true,
+      "all_serializers_valid": true,
+      "all_causal_window_end_times_valid": true,
+      "all_B2_parent_timestamps_causal": true,
+      "corrected_PCM_matches_persisted_original_diagnostic": true,
+      "complete_native_clock_ledger_matches_persisted_original": true,
+      "source_stat_stable": true
+    },
+    {
+      "event": "train_events/event_021",
+      "all_actual_artifact_hashes_valid": true,
+      "all_serializers_valid": true,
+      "all_causal_window_end_times_valid": true,
+      "all_B2_parent_timestamps_causal": true,
+      "corrected_PCM_matches_persisted_original_diagnostic": true,
+      "complete_native_clock_ledger_matches_persisted_original": true,
+      "source_stat_stable": true
+    },
+    {
+      "event": "engine_events/event_001",
+      "all_actual_artifact_hashes_valid": true,
+      "all_serializers_valid": true,
+      "all_causal_window_end_times_valid": true,
+      "all_B2_parent_timestamps_causal": true,
+      "corrected_PCM_matches_persisted_original_diagnostic": true,
+      "complete_native_clock_ledger_matches_persisted_original": true,
+      "source_stat_stable": true
+    },
+    {
+      "event": "train_events/event_001",
+      "all_actual_artifact_hashes_valid": true,
+      "all_serializers_valid": true,
+      "all_causal_window_end_times_valid": true,
+      "all_B2_parent_timestamps_causal": true,
+      "corrected_PCM_matches_persisted_original_diagnostic": true,
+      "complete_native_clock_ledger_matches_persisted_original": true,
+      "source_stat_stable": true
+    },
+    {
+      "event": "no_train_events/event_001",
+      "all_actual_artifact_hashes_valid": true,
+      "all_serializers_valid": true,
+      "all_causal_window_end_times_valid": true,
+      "all_B2_parent_timestamps_causal": true,
+      "corrected_PCM_matches_persisted_original_diagnostic": true,
+      "complete_native_clock_ledger_matches_persisted_original": true,
+      "source_stat_stable": true
+    }
+  ],
+  "logs": {
+    "audio_followup/logs/initial.stderr.txt.gz": {
+      "gzip_sha256": "587e8a6b5b297eeb715217e66e136b373b647b8732519681e69d6095a7b4a143",
+      "uncompressed_sha256": "47957bd522bdc13814630a9ba4179b39d598fe1061f2cc61901233edd52b7fbc",
+      "uncompressed_bytes": 1689
+    },
+    "audio_followup/logs/retry.stdout.txt.gz": {
+      "gzip_sha256": "60039967000669346958ac7d7075183badfdd1c0d632f8a456c52e7e5a960fa7",
+      "uncompressed_sha256": "9925c543aae0d434e3babde10d2b67023dad6d403c2c35c31a1eea1d076b38d3",
+      "uncompressed_bytes": 8184
+    },
+    "audio_followup/logs/corrected.stderr.txt.gz": {
+      "gzip_sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    "audio_followup/logs/retry.stderr.txt.gz": {
+      "gzip_sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    "audio_followup/logs/corrected.stdout.txt.gz": {
+      "gzip_sha256": "0f91df3a40d333bd3e66444f18fa2feb8299ccd358f8889428f93af95528b1aa",
+      "uncompressed_sha256": "9d4489d6317d0b10be91acb6f23962d28c7ea9d3e68b13a729e5b1c56505892b",
+      "uncompressed_bytes": 13587
+    },
+    "audio_followup/logs/initial.stdout.txt.gz": {
+      "gzip_sha256": "f093f1c0000c51c10a9b00cebc1c10a06e4d22e2a59658de8ddee330385e50b4",
+      "uncompressed_sha256": "fedd722beb500be17d7dc97b00576bd5da5942b5ea170da53193363773ab74b1",
+      "uncompressed_bytes": 7252
+    }
+  },
+  "corrected_run_sha256": "a5fd32c095a6c93522d072addf0e8a44708c4415ae6173196c93b88dc6f1f04d",
+  "source_code_sha256": {
+    "src/railway_detection/audio/features.py": "d056eed02cba5f5114ba9e8d69dc2a415612e879fa81b5fe60ce11cd1f97d161",
+    "src/railway_detection/audio/model.py": "9f81244c25fb0732e6cdb1d840f0f85281f96beb86355e41c8fde9be3e060309",
+    "src/railway_detection/experiments/cache_provenance.py": "bfabfac7872205aa350a09bd896288c40ede8111b838ef2b971d215ab8f6f4bd"
+  },
+  "diagnostic_old_log_scale_not_part_of_final_results": true
+}

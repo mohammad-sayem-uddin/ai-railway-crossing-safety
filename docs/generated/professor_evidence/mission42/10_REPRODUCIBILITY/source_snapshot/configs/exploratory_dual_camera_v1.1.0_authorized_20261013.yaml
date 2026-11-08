@@ -1,0 +1,110 @@
+# Exploratory Dual-Camera Configuration — AUTHORIZED EXECUTION RECORD
+#
+# THIS IS NOT THE FROZEN PRIMARY EXPERIMENT CONFIGURATION.
+#
+# This file is a new, separately versioned copy of
+# configs/exploratory_dual_camera_v1_supported_subset.yaml (version 1.0.0,
+# canonical hash ce42a13bb6c4758c8f3e2a092de492a2bec724c50fc03aa58768ad86ea0e6269).
+# That original file is UNCHANGED and remains on disk exactly as audited in
+# Phase 6 and Phase 7 of docs/R04_IMPLEMENTATION_AND_UNBLOCK_REPORT.md --
+# it is never edited in place, including for authorization, per the
+# researcher's explicit instruction. This file exists solely to carry the
+# one field that differs: the authorization sign-off.
+#
+# AUTHORIZATION RECORD:
+#   Authorized by: the repository owner (research session user), via an
+#     explicit Phase 8 instruction: "I authorize execution of the
+#     restricted 11-event exploratory dual-camera ablation, subject to all
+#     safeguards below. This authorization does NOT extend to full-cohort
+#     B3, B4, B6, or B7. Those remain blocked."
+#   Authorized on: 2026-10-13
+#   Scope of authorization: EXACTLY the 11 events listed under
+#     included_events_calibration_supported below, and no other condition.
+#
+# Content below is otherwise byte-for-byte identical to v1.0.0 except:
+#   - exploratory_metadata.version: "1.0.0" -> "1.1.0"
+#   - exploratory_metadata.authorized_for_execution: false -> true
+#   - exploratory_metadata.authorization_record: added (new field)
+#
+# This file has its own canonical hash, distinct from both the frozen
+# primary configuration and the unauthorized v1.0.0 exploratory
+# configuration, computed identically (canonical JSON of this file's
+# content, excluding the hash field itself).
+
+exploratory_metadata:
+  name: "exploratory_dual_camera_v1_supported_subset"
+  version: "1.1.0"
+  description: >
+    Restricted dual-camera fusion configuration covering only the 11
+    train_events currently classified CALIBRATION_SUPPORTED by
+    railway_detection.data.sync_calibration under the single predeclared
+    acceptance rule in that module. Exploratory only; not a substitute for
+    full-cohort R04 resolution.
+  base_config: "configs/frozen_experiment_v1.yaml"
+  base_config_canonical_hash: "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e"
+  calibration_manifest: "data/manifests/camera_sync_offsets_candidate.yaml"
+  calibration_manifest_version: "0.2.0_CANDIDATE"
+  calibration_manifest_status: "CANDIDATE_UNVALIDATED_DO_NOT_MERGE"
+  requires_allow_candidate_status: true
+  authorized_for_execution: true
+  authorization_record:
+    authorized_by: "repository owner (research session user)"
+    authorized_on: "2026-10-13"
+    authorization_statement: >
+      "I authorize execution of the restricted 11-event exploratory
+      dual-camera ablation, subject to all safeguards below. This
+      authorization does NOT extend to full-cohort B3, B4, B6, or B7.
+      Those remain blocked."
+    unauthorized_source_config: "configs/exploratory_dual_camera_v1_supported_subset.yaml"
+    unauthorized_source_config_hash: "ce42a13bb6c4758c8f3e2a092de492a2bec724c50fc03aa58768ad86ea0e6269"
+  authorization_note: >
+    This file supersedes the unauthorized v1.0.0 ONLY for the purpose of
+    satisfying the config-side authorization gate for this one, specific,
+    already-reviewed run. It does not change scope, included events,
+    excluded events, or any reporting constraint from v1.0.0.
+
+included_events_calibration_supported:
+  - train_events/event_001
+  - train_events/event_002
+  - train_events/event_005
+  - train_events/event_006
+  - train_events/event_007
+  - train_events/event_009
+  - train_events/event_011
+  - train_events/event_012
+  - train_events/event_013
+  - train_events/event_014
+  - train_events/event_017
+
+excluded_events_provisional:
+  - engine_events/event_001
+  - no_train_events/event_003
+  - train_events/event_003
+  - train_events/event_016
+  - train_events/event_018
+  - train_events/event_019
+  - train_events/event_021
+
+excluded_events_ambiguous:
+  - no_train_events/event_001
+  - no_train_events/event_002
+  - train_events/event_004
+  - train_events/event_008
+  - train_events/event_010
+  - train_events/event_015
+  - train_events/event_020
+  - train_events/event_022
+  - train_events/event_023
+
+negative_controls_always_excluded_from_dual_camera_metrics:
+  - no_train_events/event_001
+  - no_train_events/event_002
+  - no_train_events/event_003
+
+reporting_constraints:
+  - "Any MTR/POR or other safety metric computed under this configuration must be labeled: 'n=11, CALIBRATION_SUPPORTED subset only, NOT full-cohort'."
+  - "No claim of full-cohort (27-event) dual-camera coverage may be made from results produced under this configuration."
+  - "Negative controls (3 no_train_events) must never be scored into a dual-camera detection-rate denominator under this configuration, consistent with the primary frozen configuration's evaluation firewall."
+  - "This configuration does not change, and must never be used to justify changing, ground-truth annotation approval status."
+  - "Acoustic-lag reproducibility (the basis of the CALIBRATION_SUPPORTED verdict) is NOT independent validation of true camera hardware synchronization. No visual-landmark verification exists for any of the 11 events. See docs/R04_CALIBRATION_VALIDATION_REPORT.md and the Phase 7 section of docs/R04_IMPLEMENTATION_AND_UNBLOCK_REPORT.md for the full physical-uncertainty discussion."
+  - "Do not calculate or claim ground-truth performance metrics (MTR, POR, or similar) from this run's outputs. Do not treat model predictions as annotations. Do not approve or alter ground-truth candidates."

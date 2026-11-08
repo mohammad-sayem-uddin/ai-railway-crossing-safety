@@ -1,0 +1,21 @@
+# OP39-A — held-out embedded pilot audio and B2 input assembly
+
+The researcher explicitly directs: “Use the embedded audio from the eligible held-out video sources for B1_audio, subject to the existing experiment protocol and operation scope” and “Proceed with the existing B1_audio experiment using the legitimate held-out acoustic sources.” This records that current direction under the already confirmed maintained authority raihankabirrahu@gmail.com; it is not a fresh assumed identity or a request to repeat approval. No personal signature or reviewer appointment is inferred.
+
+The maintained inventory retires data/raw/layer_b/videos and maps the replacement to data/raw/layer_b/v2. B1 is the existing front-audio condition. Exactly the unchanged five pilot fronts are selected below; the other 49 documentary candidate camera members are not added to this run. Standalone horn recordings, ESC-50 training/development audio and excluded duplicates are not evaluation inputs.
+
+| Event | Actual container path | Previously verified container SHA-256 | Audio absolute stream index |
+|---|---|---|---:|
+| train_events/event_005 | data/raw/layer_b/v2/train_events/event_005/camera_front.mov | 015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613 | 1 |
+| train_events/event_021 | data/raw/layer_b/v2/train_events/event_021/camera_front.mov | 380dcddbcd4fefab43f27134a5965e2b724b3c3cc707ad2bce514b0defb4c518 | 1 |
+| engine_events/event_001 | data/raw/layer_b/v2/engine_events/event_001/camera_front.mov | d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28 | 1 |
+| train_events/event_001 | data/raw/layer_b/v2/train_events/event_001/camera_front.mov | d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b | 1 |
+| no_train_events/event_001 | data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov | 58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f | 0 |
+
+Operations: READ_RAW_MEDIA, AUDIO_EXTRACTION, FEATURE_EXTRACTION and INFERENCE on only these five front containers. Audio-only decode/clock inspection; no video frame decode/render, source playback, new source hash/header probe, back-audio, new training, calibration, threshold change, GT annotation/promotion, raw release or hardware operation. Reuse completed AUTH35-V byte/header identity and verify source stat stability. Decode the named audio stream to inspect native PTS continuity, then use the existing FFmpeg PCM16/16kHz/mono acoustic transformation in memory; no raw/derived audio file is copied into results, the raw tree or a synthetic-fixture location. Apply unchanged existing AudioEvidencePipeline and PyTorchTrainHornClassifier, 1s windows/0.5s hop, frozen log-Mel parameters, normalization and threshold0.37, CPU/seed42. Enforce actual point-of-use raw guard; exact chosen-model identity is enforced at run boundary, without a separate repeat audit or model substitution.
+
+Reuse existing saved five-front prediction records for B2's existing front/audio collector stage only where actual same-container source clock checks hold. Preserve original vision times, causal audio window-end times, uncertainty/unavailability and missing evidence. Use existing collector at the layer-B assembly tolerance0.25s/stride0.2s; do not call guarded descriptive replay/metrics through another route. No full B2 replay, comparative superiority, clearance, safety, accepted human GT or physical synchronization claim.
+
+Output: fresh owner-only private local derived prediction/clock/assembly/log run under data/cache/b1_audio/mission39_audio_<unique>, with metadata/prediction/assembly summaries and figures under docs/generated/research_results/mission39. No source waveforms, spectrogram arrays, copied raw media or external upload/push. Record each actual member failure and continue unrelated members. No silent fallback or replacement audio.
+
+Lifetime: one five-front acoustic invocation, closing on completion/failure/withdrawal; 24-hour outer limit. Record current genuine direction in the existing canonical authorization schema, preserve issued/closed evidence, and restore the previously absent slot on closure. Canonical descriptive evaluation remains separately gated and unissued.

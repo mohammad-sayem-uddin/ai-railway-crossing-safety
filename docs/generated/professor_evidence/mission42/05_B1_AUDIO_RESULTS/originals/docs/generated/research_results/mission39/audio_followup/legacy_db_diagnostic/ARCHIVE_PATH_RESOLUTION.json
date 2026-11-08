@@ -1,0 +1,21 @@
+{
+  "reason": "Original immutable manifests retain their original output paths. Resolve those references through this explicit archive map to view superseded dB artifacts; current live paths contain corrected natural-log results.",
+  "original_to_archived_path": {
+    "audio_followup/predictions/train_events_event_005_front_audio.jsonl": "audio_followup/legacy_db_diagnostic/predictions/train_events_event_005_front_audio.jsonl",
+    "audio_followup/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl": "audio_followup/legacy_db_diagnostic/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl",
+    "audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl": "audio_followup/legacy_db_diagnostic/assemblies/train_events_event_005_B2_front_inputs.jsonl",
+    "audio_followup/predictions/train_events_event_021_front_audio.jsonl": "audio_followup/legacy_db_diagnostic/predictions/train_events_event_021_front_audio.jsonl",
+    "audio_followup/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl": "audio_followup/legacy_db_diagnostic/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl",
+    "audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl": "audio_followup/legacy_db_diagnostic/assemblies/train_events_event_021_B2_front_inputs.jsonl",
+    "audio_followup/predictions/engine_events_event_001_front_audio.jsonl": "audio_followup/legacy_db_diagnostic/predictions/engine_events_event_001_front_audio.jsonl",
+    "audio_followup/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl": "audio_followup/legacy_db_diagnostic/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl",
+    "audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl": "audio_followup/legacy_db_diagnostic/assemblies/engine_events_event_001_B2_front_inputs.jsonl",
+    "audio_followup/predictions/train_events_event_001_front_audio.jsonl": "audio_followup/legacy_db_diagnostic/predictions/train_events_event_001_front_audio.jsonl",
+    "audio_followup/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl": "audio_followup/legacy_db_diagnostic/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl",
+    "audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl": "audio_followup/legacy_db_diagnostic/assemblies/train_events_event_001_B2_front_inputs.jsonl",
+    "audio_followup/predictions/no_train_events_event_001_front_audio.jsonl": "audio_followup/legacy_db_diagnostic/predictions/no_train_events_event_001_front_audio.jsonl",
+    "audio_followup/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl": "audio_followup/legacy_db_diagnostic/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl",
+    "audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl": "audio_followup/legacy_db_diagnostic/assemblies/no_train_events_event_001_B2_front_inputs.jsonl"
+  },
+  "native_clock_paths_unchanged": true
+}

@@ -1,0 +1,11 @@
+# Software validation after the Audio V3 parity correction
+
+The complete corrected-code run attempted all 168 modules in 53 groups: **3815 cases; 3697 passed; 87 raw failures; 31 raw errors; 0 skipped.** The118 nonpassing case IDs exactly match the earlier protected-dependency baseline. They are a subset of raw failures/errors, not additional tests or passes. No new unresolved software failure; whole-repository passing acceptance is not claimed.
+
+Actual summed JUnit duration: 432.454s, excluding orchestration overhead. [Full receipt](audio_followup/software_validation/CORRECTED_CODE_FULL_RUN_RECEIPT.json), [commands/durations/hashes](audio_followup/software_validation/CORRECTED_CODE_VALIDATION_SUMMARY.json), [per-case outcomes](audio_followup/software_validation/CORRECTED_CODE_TEST_CASE_OUTCOMES.csv) and all actual group JUnit XMLs are retained losslessly as gzip. The [current plot](audio_followup/software_validation/CORRECTED_CODE_TEST_OUTCOMES.png) is software evidence, not model performance. Eight new parity cases are included once, not added again as a focused total. Generated resampling checks are separate technical evidence.
+
+An interrupted earlier full attempt lost temporary outputs and is not counted as a completed run. The earlier delivered stable run remains historical at 3807 cases/3689 passes/87failures/31errors/0skips with its original receipts unchanged. Earlier initial 3806 totals also remain separate. No overlapping totals are added.
+
+Material fix: V3 runtime natural-log features match actual training source; legacy dB API stays compatible and audio cache identity names the trained transform. No weights/threshold/window/config change. The new tests compare actual training-source features on silence/tone/noise/quiet, classifier input normalization, legacy API compatibility, invalid-scale refusal and cache tagging. Scoped syntax/lint checks show no new issues; existing8 model and23 cache style findings remain. [Static receipt](audio_followup/STATIC_VALIDATION.json).
+
+All modules ran through the inherited guarded runner without module exclusions. Protected original/checkpoint/registry dependencies remain blocked, never disabled or counted as passed. Python hooks are not OS isolation; software checks do not establish GT, rights or safety. No extra whole-suite run is needed for subsequent document-only edits.

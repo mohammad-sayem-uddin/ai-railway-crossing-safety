@@ -1,0 +1,25 @@
+{
+  "changed_source_bindings": [
+    "tests/unit/test_phase14_benchmark_suite.py",
+    "tests/test_phase11_9_synthetic_pilot.py",
+    "tests/test_access_classification.yaml"
+  ],
+  "production_config_and_source_unchanged": true,
+  "files": {
+    "tests/test_phase11_9_synthetic_pilot.py": {
+      "AST_valid": true,
+      "baseline_ruff_findings": 20,
+      "current_ruff_findings": 20,
+      "new_ruff_findings": 0
+    },
+    "tests/unit/test_phase14_benchmark_suite.py": {
+      "AST_valid": true,
+      "baseline_ruff_findings": 0,
+      "current_ruff_findings": 0,
+      "new_ruff_findings": 0
+    }
+  },
+  "pip_check_exit": 0,
+  "pip_check_output": "No broken requirements found.\n",
+  "scope": "Only justified test fixture/inventory changes; no whole-repository typing claim"
+}

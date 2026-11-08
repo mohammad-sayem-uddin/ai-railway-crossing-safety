@@ -1,0 +1,550 @@
+{
+  "schema": "mission39-exact-held-out-member-location/1",
+  "scope": "User-requested inventory reconciliation: exact manifest file paths and filesystem stat only, no media bytes/decoder/hash/probe",
+  "members": 54,
+  "located": 54,
+  "missing": [],
+  "records": [
+    {
+      "event": "train_events/event_001",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 55307977,
+      "symlink": false,
+      "sha256": "d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "train_events/event_001",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_001/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 307285865,
+      "symlink": false,
+      "sha256": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "train_events/event_002",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_002/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 35947506,
+      "symlink": false,
+      "sha256": "69811c9e515515e93e25597244d2d1e8b4f1976d874a27cfb794076c5226a161",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_002",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_002/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 33397322,
+      "symlink": false,
+      "sha256": "964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_003",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_003/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 36797256,
+      "symlink": false,
+      "sha256": "7a12b86be8511738d4d8539476cdba1c90270159fd65d0931189e367e3550ca5",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_003",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_003/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 35822761,
+      "symlink": false,
+      "sha256": "172d99ef4a2488abcac7715bd4098c28b2cc1388b6aa286df19246d0e297a395",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_004",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_004/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 83172830,
+      "symlink": false,
+      "sha256": "85215975b328cec583678fef3d51579f66953b779b35da56bd2aef3065954e49",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_004",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_004/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 86118013,
+      "symlink": false,
+      "sha256": "6ccfa9b6fe74adf01cf9aeac3faba73194446398e3c7c74b057d778eddb1ed60",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_005",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 87775307,
+      "symlink": false,
+      "sha256": "015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "train_events/event_005",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_005/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 85838261,
+      "symlink": false,
+      "sha256": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "train_events/event_006",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_006/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 149828230,
+      "symlink": false,
+      "sha256": "abae4c6f357171fdf972aa49d7fd4590d86c35cb95394e4c88e7274db0664c12",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_006",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_006/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 139914925,
+      "symlink": false,
+      "sha256": "c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_007",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_007/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 42155723,
+      "symlink": false,
+      "sha256": "26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_007",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_007/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 37930769,
+      "symlink": false,
+      "sha256": "24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_008",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_008/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 65016634,
+      "symlink": false,
+      "sha256": "5f0151fd09dd35636afc1a641c05426c5483871a44b8ee5883e15dad173b0e16",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_008",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_008/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 68634610,
+      "symlink": false,
+      "sha256": "0ab126213b94d53fc1733658eefdaaf5a5cfe8dd9492d6234a50a19d5e642de2",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_009",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 47574730,
+      "symlink": false,
+      "sha256": "7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_009",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_009/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 41839664,
+      "symlink": false,
+      "sha256": "4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_010",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_010/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 26815732,
+      "symlink": false,
+      "sha256": "9967e3666086e1f0f14f20d22bbf36e7eec5a5491622edbfb2f465f247ce1b46",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_010",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_010/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 26315866,
+      "symlink": false,
+      "sha256": "566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_011",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_011/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 42116210,
+      "symlink": false,
+      "sha256": "6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_011",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_011/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 41726426,
+      "symlink": false,
+      "sha256": "3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_012",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_012/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 83226731,
+      "symlink": false,
+      "sha256": "840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_012",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_012/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 78081362,
+      "symlink": false,
+      "sha256": "d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_013",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_013/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 81066566,
+      "symlink": false,
+      "sha256": "3869d489098aeb5f9251b9c698cb236e8fc0b6ee7be7b3342c14a5dbff140e2d",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_013",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_013/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 81066061,
+      "symlink": false,
+      "sha256": "e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_014",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_014/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 60580154,
+      "symlink": false,
+      "sha256": "adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_014",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_014/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 59315994,
+      "symlink": false,
+      "sha256": "46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_015",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_015/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 35028875,
+      "symlink": false,
+      "sha256": "309203acd4bdc8ddb6a26e7ecbe97f73267724c9870b202290f0ee1cbaa32e99",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_015",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_015/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 24635515,
+      "symlink": false,
+      "sha256": "57e827d111540c3c7f9463efaee3461ee6cba6818ab33231745ea9b22024b03a",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_016",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_016/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 51795611,
+      "symlink": false,
+      "sha256": "3a0d71da27ba66aeb3c76a58cfbf349c136176c3d0425a5b14a4ce1cb30270ff",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_016",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_016/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 49978515,
+      "symlink": false,
+      "sha256": "08a9f8695dfe0fd1a1f4c380366ba9e83d11714c1c4ba2da2be4713d580dafff",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_017",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_017/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 90527364,
+      "symlink": false,
+      "sha256": "188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_017",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_017/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 92415591,
+      "symlink": false,
+      "sha256": "7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_018",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_018/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 65211388,
+      "symlink": false,
+      "sha256": "ed376931b62de4a18249ed3054b7930ae64ebab9dc322c639538e52760a0f102",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_018",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_018/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 57815481,
+      "symlink": false,
+      "sha256": "a7040a317018132f209b460ffa43d794e1e423cda5b5ce48a789043fe7dc4d27",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_019",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_019/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 66718917,
+      "symlink": false,
+      "sha256": "697f3c9ef9572e4b8be74e4719ec3911a2781837cd3ab08a1c3a663cb8cbd0c3",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_019",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_019/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 56520873,
+      "symlink": false,
+      "sha256": "f906e43305fcd183ff9e0638a246cc4df84192d7691befd96d35b17d630b9aef",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_020",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_020/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 32144279,
+      "symlink": false,
+      "sha256": "3b45ba8f056227359d27c4d7da80dfd9ddb202dacdccd9d34797c4f5fbd8ecba",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_020",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_020/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 33206479,
+      "symlink": false,
+      "sha256": "ea0f90528bced198f23b24e6006f32aebbb19f8173f7fc78721f8b96286ad2c2",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_021",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_021/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 114484143,
+      "symlink": false,
+      "sha256": "380dcddbcd4fefab43f27134a5965e2b724b3c3cc707ad2bce514b0defb4c518",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "train_events/event_021",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_021/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 192728342,
+      "symlink": false,
+      "sha256": "4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "train_events/event_022",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_022/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 94118824,
+      "symlink": false,
+      "sha256": "c5512850372e940ca7e627e2cf28b2becf21ecb5074adbc9679f663c37ed68e2",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_022",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_022/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 145328169,
+      "symlink": false,
+      "sha256": "1e008a154ecfb4c1c96d03414d4c29042c0a4adaf1ac5cb94d00b7783b58567d",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_023",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/train_events/event_023/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 87855225,
+      "symlink": false,
+      "sha256": "cb855aa632bac4a032496a7ccc0a40a28b631807231254775a2a24f85d81564b",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "train_events/event_023",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/train_events/event_023/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 143820805,
+      "symlink": false,
+      "sha256": "a36d099f479e81bef2cfa31ac4492bf0cd01c97eac5378d85c96a89f58e49766",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "no_train_events/event_001",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 77423791,
+      "symlink": false,
+      "sha256": "58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "no_train_events/event_001",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 52777527,
+      "symlink": false,
+      "sha256": "5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "no_train_events/event_002",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/no_train_events/event_002/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 24000151,
+      "symlink": false,
+      "sha256": "9196bd13700d26bb8b0b03ac8034150e0537b202b2690c21bef4943cceab0b97",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "no_train_events/event_002",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/no_train_events/event_002/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 41988052,
+      "symlink": false,
+      "sha256": "7b578008c037648c37dfb7f2b029c3c192dd4680198d655b6d6ac11734426126",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "no_train_events/event_003",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 51737519,
+      "symlink": false,
+      "sha256": "969c8b118996d56d5593f8a3cb6ef9e16e571d4829076824952663d719239205",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "no_train_events/event_003",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 71485099,
+      "symlink": false,
+      "sha256": "4914515714eb1ca8a282f61112afcfb11391dd2ec08543796611e22b884b4d9c",
+      "hash_basis": "HISTORICAL_MANIFEST_NOT_FRESHLY_HASHED"
+    },
+    {
+      "event": "engine_events/event_001",
+      "camera": "front",
+      "path": "data/raw/layer_b/v2/engine_events/event_001/camera_front.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 16126940,
+      "symlink": false,
+      "sha256": "d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    },
+    {
+      "event": "engine_events/event_001",
+      "camera": "back",
+      "path": "data/raw/layer_b/v2/engine_events/event_001/camera_back.mov",
+      "regular_file_exists": true,
+      "byte_size_metadata": 31051927,
+      "symlink": false,
+      "sha256": "80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72",
+      "hash_basis": "AUTH35_V_VERIFIED"
+    }
+  ],
+  "no_inventory_expansion_or_new_recording": true
+}

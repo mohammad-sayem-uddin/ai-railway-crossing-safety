@@ -1,0 +1,14 @@
+{
+  "schema": "mission39-audio-scope-completion/1",
+  "authorization_id": "AUTH-MEDIA-ACCESS-M39-PILOT-AUDIO-20261107T211431Z",
+  "actual_user_direction": "Proceed with the existing B1_audio experiment using the legitimate held-out acoustic sources.",
+  "completed_utc": "2026-11-07T21:16:54.742984+00:00",
+  "run_id": "mission39_audio_20261107T211608Z",
+  "successful_original_members": 2,
+  "attempted_members": 5,
+  "canonical_slot_returned_to_absent": true,
+  "subsequent_guard_refusal_verified": true,
+  "issued_record_sha256": "330719a9319e0bbfe7c6c42d475a8dc3fca3e2b476bf8ce6a7e3e76f4bbde474",
+  "closed_record_sha256": "4d38de400ea8d330cd4ad29abd07ae53c6adbddc649d9d59400959da82ada4d4",
+  "no_GT_or_descriptive_replay_grant": true
+}

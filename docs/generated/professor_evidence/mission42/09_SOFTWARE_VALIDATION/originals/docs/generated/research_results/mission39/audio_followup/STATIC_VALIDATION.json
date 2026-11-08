@@ -1,0 +1,31 @@
+{
+  "files": {
+    "src/railway_detection/audio/features.py": {
+      "AST_valid": true,
+      "current_ruff_issues": 0,
+      "preexisting_ruff_issues": 0,
+      "new_ruff_issues": 0
+    },
+    "src/railway_detection/audio/model.py": {
+      "AST_valid": true,
+      "current_ruff_issues": 8,
+      "preexisting_ruff_issues": 8,
+      "new_ruff_issues": 0
+    },
+    "src/railway_detection/experiments/cache_provenance.py": {
+      "AST_valid": true,
+      "current_ruff_issues": 23,
+      "preexisting_ruff_issues": 23,
+      "new_ruff_issues": 0
+    },
+    "tests/synthetic_mission39/test_audio_feature_parity.py": {
+      "AST_valid": true,
+      "current_ruff_issues": 0,
+      "preexisting_ruff_issues": 0,
+      "new_ruff_issues": 0
+    }
+  },
+  "pip_check_exit": 0,
+  "pip_check_stdout": "No broken requirements found.\n",
+  "scope": "Scoped syntax/lint baseline comparison and installed dependencies; not whole-repository typing"
+}

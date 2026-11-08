@@ -1,0 +1,602 @@
+{
+  "schema": "mission38-focused-validation/1",
+  "date": "2026-11-07",
+  "timezone": "America/New_York",
+  "baseline_commit": "5067d766e4baded179bb5e140ceed3f5ef8daf9a",
+  "request_sha256": "535d21e811baedc65029d8262438fb4e773c23bebfcf57b425e0e11c801da457",
+  "status": "PASSED_SELECTED_RESOURCE_FREE",
+  "empirical_experiment_executed": 0,
+  "original_sources_processed": 0,
+  "actual_reference_observations": 0,
+  "real_checkpoint_loaded": true,
+  "real_checkpoint_forward_passes": 0,
+  "checkpoint_rehashed": false,
+  "totals": {
+    "tests": 51,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 51
+  },
+  "groups": [
+    {
+      "group": "synthetic_mission38",
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "--confcutdir=tests/synthetic_mission38",
+        "-p",
+        "mission22_policy",
+        "-p",
+        "mission23_profile",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--continue-on-collection-errors",
+        "--basetemp=/private/tmp/m38_accepted_runtime_k0e0h_i6/synthetic_mission38/temp",
+        "--junitxml=/private/tmp/m38_accepted_runtime_k0e0h_i6/synthetic_mission38/pytest.xml",
+        "-q",
+        "tests/synthetic_mission38/test_front_runtime.py"
+      ],
+      "selected": [
+        "tests/synthetic_mission38/test_front_runtime.py"
+      ],
+      "exit_code": 0,
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_vision_constructor_checks_only_selected_fixture_weights",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_vision_constructor_still_refuses_changed_selected_weights",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_front_entrypoint_binds_frozen_arguments_and_controlled_cache",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_pts_survives_actual_descriptive_cache_reader_and_b0_replay",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_cache_reader_rejects_corrupted_original_clock[changes0]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_cache_reader_rejects_corrupted_original_clock[changes1]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_cache_reader_rejects_corrupted_original_clock[changes2]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_cache_reader_rejects_corrupted_original_clock[changes3]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_cache_reader_rejects_corrupted_original_clock[changes4]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_cache_reader_rejects_corrupted_original_clock[changes5]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_cache_reader_rejects_corrupted_original_clock[changes6]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_cache_reader_rejects_corrupted_original_clock[changes7]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_export_does_not_relabel_back_or_unavailable_or_legacy_evidence",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_front_operation_refusal_precedes_model_or_decoder",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission38.test_front_runtime",
+          "name": "test_front_only_manifest_does_not_fabricate_audio_for_b1",
+          "outcome": "passed",
+          "diagnostic": ""
+        }
+      ],
+      "collected_nodeids": [
+        "tests/synthetic_mission38/test_front_runtime.py::test_vision_constructor_checks_only_selected_fixture_weights",
+        "tests/synthetic_mission38/test_front_runtime.py::test_vision_constructor_still_refuses_changed_selected_weights",
+        "tests/synthetic_mission38/test_front_runtime.py::test_front_entrypoint_binds_frozen_arguments_and_controlled_cache",
+        "tests/synthetic_mission38/test_front_runtime.py::test_pts_survives_actual_descriptive_cache_reader_and_b0_replay",
+        "tests/synthetic_mission38/test_front_runtime.py::test_cache_reader_rejects_corrupted_original_clock[changes0]",
+        "tests/synthetic_mission38/test_front_runtime.py::test_cache_reader_rejects_corrupted_original_clock[changes1]",
+        "tests/synthetic_mission38/test_front_runtime.py::test_cache_reader_rejects_corrupted_original_clock[changes2]",
+        "tests/synthetic_mission38/test_front_runtime.py::test_cache_reader_rejects_corrupted_original_clock[changes3]",
+        "tests/synthetic_mission38/test_front_runtime.py::test_cache_reader_rejects_corrupted_original_clock[changes4]",
+        "tests/synthetic_mission38/test_front_runtime.py::test_cache_reader_rejects_corrupted_original_clock[changes5]",
+        "tests/synthetic_mission38/test_front_runtime.py::test_cache_reader_rejects_corrupted_original_clock[changes6]",
+        "tests/synthetic_mission38/test_front_runtime.py::test_cache_reader_rejects_corrupted_original_clock[changes7]",
+        "tests/synthetic_mission38/test_front_runtime.py::test_export_does_not_relabel_back_or_unavailable_or_legacy_evidence",
+        "tests/synthetic_mission38/test_front_runtime.py::test_front_operation_refusal_precedes_model_or_decoder",
+        "tests/synthetic_mission38/test_front_runtime.py::test_front_only_manifest_does_not_fabricate_audio_for_b1"
+      ],
+      "policy_denials": []
+    },
+    {
+      "group": "synthetic_mission37",
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "--confcutdir=tests/synthetic_mission37",
+        "-p",
+        "mission22_policy",
+        "-p",
+        "mission23_profile",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--continue-on-collection-errors",
+        "--basetemp=/private/tmp/m38_accepted_runtime_k0e0h_i6/synthetic_mission37/temp",
+        "--junitxml=/private/tmp/m38_accepted_runtime_k0e0h_i6/synthetic_mission37/pytest.xml",
+        "-q",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_survives_decode_inference_serialization_and_collector_output",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_missing_frame_clock_cannot_return_empty_success_or_write_cache",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_prediction_failure_is_not_silently_a_negative_result"
+      ],
+      "selected": [
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_survives_decode_inference_serialization_and_collector_output",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_missing_frame_clock_cannot_return_empty_success_or_write_cache",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_prediction_failure_is_not_silently_a_negative_result"
+      ],
+      "exit_code": 0,
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_survives_decode_inference_serialization_and_collector_output",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_missing_frame_clock_cannot_return_empty_success_or_write_cache",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_prediction_failure_is_not_silently_a_negative_result",
+          "outcome": "passed",
+          "diagnostic": ""
+        }
+      ],
+      "collected_nodeids": [
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_survives_decode_inference_serialization_and_collector_output",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_missing_frame_clock_cannot_return_empty_success_or_write_cache",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_prediction_failure_is_not_silently_a_negative_result"
+      ],
+      "policy_denials": []
+    },
+    {
+      "group": "legacy_0",
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "--noconftest",
+        "-p",
+        "mission22_policy",
+        "-p",
+        "mission23_profile",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--continue-on-collection-errors",
+        "--basetemp=/private/tmp/m38_accepted_runtime_k0e0h_i6/legacy_0/temp",
+        "--junitxml=/private/tmp/m38_accepted_runtime_k0e0h_i6/legacy_0/pytest.xml",
+        "-q",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators",
+        "tests/unit/test_frozen_config_safeguards.py::test_missing_checkpoint_fails",
+        "tests/unit/test_frozen_config_safeguards.py::test_corrupted_checkpoint_hash_fails"
+      ],
+      "selected": [
+        "tests/unit/test_cache_only_replay.py::TestValidInputs",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators",
+        "tests/unit/test_frozen_config_safeguards.py::test_missing_checkpoint_fails",
+        "tests/unit/test_frozen_config_safeguards.py::test_corrupted_checkpoint_hash_fails"
+      ],
+      "exit_code": 0,
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_valid_manifest_loads",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_valid_visual_records_load",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_valid_audio_records_load",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_zero_timestamp_preserved",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_zero_confidence_detection_valid",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_empty_detections_valid",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_deterministic_replay",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_b0_condition_vision_only",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_b1_condition_audio_only",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_multi_modality_integration",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_b1_ignores_strong_visual_detections",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_record_provenance_preserved",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_zero_stride_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_output_root_outside_replays_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_manifest_data_is_deep_copy",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_run_id_changes_with_stride",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_repeated_events_do_not_share_state",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_list_events",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestValidInputs",
+          "name": "test_replay_all_events",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_batch_records_per_event_outcome",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_visual_record_valid",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_visual_record_zero_timestamp",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_visual_record_boolean_frame_index_rejected",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_visual_record_nan_timestamp_rejected",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_visual_record_not_dict_rejected",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_visual_record_bad_bbox_rejected",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_audio_record_valid",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_audio_record_no_horn",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_audio_record_zero_confidence_no_detection",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_audio_record_nan_confidence_rejected",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_only_replay.TestRecordValidators",
+          "name": "test_audio_record_missing_field_rejected",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_frozen_config_safeguards",
+          "name": "test_missing_checkpoint_fails",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_frozen_config_safeguards",
+          "name": "test_corrupted_checkpoint_hash_fails",
+          "outcome": "passed",
+          "diagnostic": ""
+        }
+      ],
+      "collected_nodeids": [
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_valid_manifest_loads",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_valid_visual_records_load",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_valid_audio_records_load",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_zero_timestamp_preserved",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_zero_confidence_detection_valid",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_empty_detections_valid",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_deterministic_replay",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_b0_condition_vision_only",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_b1_condition_audio_only",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_multi_modality_integration",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_b1_ignores_strong_visual_detections",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_record_provenance_preserved",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_zero_stride_refused",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_output_root_outside_replays_refused",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_manifest_data_is_deep_copy",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_run_id_changes_with_stride",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_repeated_events_do_not_share_state",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_list_events",
+        "tests/unit/test_cache_only_replay.py::TestValidInputs::test_replay_all_events",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_batch_records_per_event_outcome",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_visual_record_valid",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_visual_record_zero_timestamp",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_visual_record_boolean_frame_index_rejected",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_visual_record_nan_timestamp_rejected",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_visual_record_not_dict_rejected",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_visual_record_bad_bbox_rejected",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_audio_record_valid",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_audio_record_no_horn",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_audio_record_zero_confidence_no_detection",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_audio_record_nan_confidence_rejected",
+        "tests/unit/test_cache_only_replay.py::TestRecordValidators::test_audio_record_missing_field_rejected",
+        "tests/unit/test_frozen_config_safeguards.py::test_missing_checkpoint_fails",
+        "tests/unit/test_frozen_config_safeguards.py::test_corrupted_checkpoint_hash_fails"
+      ],
+      "policy_denials": []
+    }
+  ],
+  "final_original_receipt": {
+    "path": "/private/tmp/m38_accepted_runtime_k0e0h_i6/receipt.json",
+    "sha256": "ce7b25e758a2745173193d4a86b44e9a6e84acca4af29c13eb8155805973d4ab"
+  },
+  "first_nonpassing": {
+    "path": "/private/tmp/m38_runtime_checks_i4_yiwfg/receipt.json",
+    "sha256": "39d01b35a3ef8f58e1cf14bf2cf692748efea97a7fc5c2c11429edd5cf25313e",
+    "totals": {
+      "tests": 17,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 15
+    },
+    "process_errors": 2,
+    "groups": [
+      {
+        "group": "synthetic_mission38",
+        "exit_code": 1,
+        "tests": 14,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0,
+        "policy_denials": []
+      },
+      {
+        "group": "synthetic_mission37",
+        "exit_code": 0,
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "policy_denials": []
+      },
+      {
+        "group": "legacy_0",
+        "exit_code": 4,
+        "tests": 0,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "policy_denials": []
+      }
+    ],
+    "explanation": "Mandatory-audio manifest integration defect fixed; unavailable-evidence fixture corrected; mistyped legacy class selector corrected. No protected access or scientific result."
+  },
+  "junit_sha256": {
+    "COMPATIBILITY_TEST_RESULTS.xml": "85fad791234c497b09115b94d449a37452b3b40c9cbd76ef4d39a922f9424ed8",
+    "AFFECTED_PTS_TEST_RESULTS.xml": "b325367a3b6b1de2a8ac3df9259d8a000611476f81147414ba8bcab28c0face3",
+    "FRONT_RUNTIME_TEST_RESULTS.xml": "a162e55af5dfcf6319928e7c14d893bc2c2bca23956fd5f69bd061f52ad73be3"
+  },
+  "implementation_sha256": {
+    "src/railway_detection/experiments/frozen_config.py": "cdd72e81a196fd3f621c75568eee3dd0a5fd54628141741534dc03c47ab983f0",
+    "src/railway_detection/experiments/layer_b_processor.py": "ccca3ac21f80f7200eda2781b7667e374455880cda0655dbe293ad448a6a1d67",
+    "src/railway_detection/evaluation/cache_only_engine.py": "41eb5123144a38695b7f36360c3a9da803f7e20764bc14c5c270e5e846e47e73",
+    "tests/synthetic_mission38/test_front_runtime.py": "1916b7bf27d906d9c7d0bef443e11dc52de1e333d4424e9dc677e32a5f35f16e"
+  },
+  "source_binding_changes": {
+    "modules": {
+      "tests/synthetic_mission38/test_front_runtime.py": {
+        "before": null,
+        "after": "1916b7bf27d906d9c7d0bef443e11dc52de1e333d4424e9dc677e32a5f35f16e"
+      }
+    },
+    "shared_source_sha256": {
+      "src/railway_detection/evaluation/cache_only_engine.py": {
+        "before": "e61343cc3849b1fd8bcac316b9314e41850bb9f8fe797dcbc2d62fc764d76cd9",
+        "after": "41eb5123144a38695b7f36360c3a9da803f7e20764bc14c5c270e5e846e47e73"
+      },
+      "src/railway_detection/experiments/layer_b_processor.py": {
+        "before": "644a28d89217463583f5931e6bf6ee569b71fe54952474435a160adc99c4c08b",
+        "after": "ccca3ac21f80f7200eda2781b7667e374455880cda0655dbe293ad448a6a1d67"
+      },
+      "src/railway_detection/experiments/frozen_config.py": {
+        "before": "bcbe3684192664e4cb8b8d4221389cf4d13ee2a7f1c72cdc815f0a671f23e3bd",
+        "after": "cdd72e81a196fd3f621c75568eee3dd0a5fd54628141741534dc03c47ab983f0"
+      }
+    }
+  },
+  "current_shared_source_digest": "8af0ee089b3205e27b645347c83ba4f33d5a88f21a0caaec0769605f36fb2fcc",
+  "static": {
+    "ruff_test": "PASS",
+    "ruff_scoped_modules": "PASS with existing E501/UP015 ignored; baseline=current 23 E501 plus one UP015",
+    "mypy_frozen_and_cache": "PASS",
+    "mypy_processor": "Same preexisting bbox tuple error as Mission37; no new mypy errors",
+    "dependency_check": "PASS"
+  },
+  "model_loading": {
+    "original_receipt": "/private/tmp/m38_model_load_rawkz_mv/receipt.json",
+    "original_receipt_sha256": "4c3780f17c1932bc2802b7ec59ba48b3a4c9a747a612b240cbf6ccaac15b6c02",
+    "versioned_receipt_sha256": "4c3780f17c1932bc2802b7ec59ba48b3a4c9a747a612b240cbf6ccaac15b6c02",
+    "actual_command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python /tmp/m38_model_load.py > /tmp/m38_model_stdout.txt 2> /tmp/m38_model_stderr.txt",
+    "invocation_source_sha256": "1c39ee408b9e22ea7000134f905132afb39975a23cdca5cf36837abdadae46e9",
+    "stdout_sha256": "20de3b2b3d63c7d62d08fff16066c5ee82d995b6709cc2a470745b23bac5ef6a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "forward_passes": 0
+  },
+  "live_governance_record_checks": {
+    "data/governance/AUTH-MEDIA-ACCESS.json": "ABSENT",
+    "data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json": "ABSENT"
+  },
+  "preservation": {
+    "earlier_pinned_artifacts_unchanged": 250,
+    "seven_original_researcher_paths_preserved": true,
+    "private_AUTH35_V_files_unchanged": 7,
+    "vision_reader_and_browser_unchanged": true,
+    "mission37_evidence_unchanged": true,
+    "frozen_config_and_policy_yaml_unchanged": true
+  },
+  "assurance": "Scoped generated-fixture software integration and actual CPU model initialization only; no original-source runtime/empirical/whole-repository acceptance. Python guards are not OS isolation."
+}

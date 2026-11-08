@@ -1,0 +1,88 @@
+{
+  "schema": "mission39-original-front-result-validation/1",
+  "empirical_original_inference_executed": true,
+  "original_front_events": 5,
+  "total_sampled_frames": 1079,
+  "frames_with_model_detections": 13,
+  "predicted_objects": 13,
+  "sum_event_wall_s": 98.30799970802036,
+  "manifest_sha256": "8d0b268c3d61da25603f96ee88af25b9d7c9a58f029a2ff7f32787ef9d33a083",
+  "checks": [
+    {
+      "event": "train_events/event_005",
+      "prediction_sha256": "d37937591414b6d88bd0af1ce644d98d9b1a276a038a6ec9ea3fe59012e6d84e",
+      "records": 398,
+      "all_rows_existing_cache_parser_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613"
+    },
+    {
+      "event": "train_events/event_021",
+      "prediction_sha256": "01241b124c6ca527b45f6679a23131f02121605e06f2d28544d89570122a300d",
+      "records": 267,
+      "all_rows_existing_cache_parser_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "380dcddbcd4fefab43f27134a5965e2b724b3c3cc707ad2bce514b0defb4c518"
+    },
+    {
+      "event": "engine_events/event_001",
+      "prediction_sha256": "b0946e375d4d28d5f3422f216879ddf9090a07ad328e03c9fe398dc7922db910",
+      "records": 40,
+      "all_rows_existing_cache_parser_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "d91b7d7f9cf4ddb9842d58185b59aed6e45de323a7c364dc15b62398269a0a28"
+    },
+    {
+      "event": "train_events/event_001",
+      "prediction_sha256": "29d7f4d2af6e6f6af065e397e34e17d419a2278b2668fffa36a56e55fa79e56f",
+      "records": 250,
+      "all_rows_existing_cache_parser_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b"
+    },
+    {
+      "event": "no_train_events/event_001",
+      "prediction_sha256": "8827a30f84bc6a1090ec858820f9073bf03571b13503ccdfa452b00403e516b2",
+      "records": 124,
+      "all_rows_existing_cache_parser_valid": true,
+      "all_original_pts_timebase_consistent": true,
+      "strictly_increasing_sampled_pts": true,
+      "exact_absolute_video_index": true,
+      "source_identity_stat_stable_from_invocation": true,
+      "source_hash_reused_from_completed_AUTH35_V": "58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f"
+    }
+  ],
+  "logs": {
+    "stdout": {
+      "original_sha256": "11aea0f28a9cfd10c48e946bbd6dbe8872192a9642e6e89915863b31dae95d1b",
+      "gzip_sha256": "9829c7b0c289e84ecde45e259ed77145e57b9e6a6bc02776b26a4842b9005eac",
+      "original_bytes": 108130,
+      "path": "logs/B0_FRONT.stdout.txt.gz"
+    },
+    "stderr": {
+      "original_sha256": "7af2847d49d4796ed8f2db165cf329de6f7ea5971f6ebaa85f12ac8d532b65e2",
+      "gzip_sha256": "8059504bdd738cbcba82299cf27b9f34165d3a7151eea2601b7328212c71303b",
+      "original_bytes": 880,
+      "path": "logs/B0_FRONT.stderr.txt.gz"
+    }
+  },
+  "actual_command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python /tmp/m39_predict_front.py > /private/tmp/m39_actual_inference_stdout.txt 2> /private/tmp/m39_actual_inference_stderr.txt",
+  "invocation_source_sha256": "b3f5715f7e74e8526098845964cca3eeea0de7c0fe9a7de6388fbd80d5d1a475",
+  "reference_dependent_metrics_calculated": false,
+  "source_stat_checks_reused_prior_identity": true,
+  "original_hash_or_probe_repeated": false,
+  "checkpoint_initializer_integrity_enforced": true,
+  "confidence_scores_are_not_accuracy": true
+}

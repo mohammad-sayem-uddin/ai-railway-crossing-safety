@@ -1,0 +1,7 @@
+{
+  "elapsed_wall_s": 462.597616458,
+  "clock": "time.perf_counter",
+  "includes_orchestration": true,
+  "reason_for_rerun": "Completed earlier receipt survived interruption, but temporary JUnit/timing evidence did not; retain all completed group artifacts incrementally",
+  "prior_completed_receipt": "COMPLETED_PRE_RESUMPTION_RUN_RECEIPT.json"
+}

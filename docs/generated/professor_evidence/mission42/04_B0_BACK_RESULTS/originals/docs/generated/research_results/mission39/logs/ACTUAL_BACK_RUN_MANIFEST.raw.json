@@ -1,0 +1,227 @@
+{
+  "experiment_id": "M31-NEXT-B0_back-FIVE",
+  "stage": "ORIGINAL_SOURCE_INFERENCE_AND_DESCRIPTIVE_PREDICTIONS",
+  "reference_dependent_evaluation_executed": false,
+  "run_id": "mission39_back_20261107T204353Z",
+  "git_commit": "9472535e252b8b74a6e78b79f064f762c3037e6e",
+  "invocation_source_sha256": "16203f3a3776156ba4d33214fc13cc51b0b1484f8b8be4f8bd63a71b2d73fdb5",
+  "checkpoint_sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+  "canonical_config_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+  "packages": {
+    "torch": "2.13.0",
+    "ultralytics": "8.4.121",
+    "av": "18.1.0",
+    "numpy": "2.4.6",
+    "opencv-python": "5.0.0.93"
+  },
+  "device": "cpu",
+  "seed": 42,
+  "output_base": "/Users/sayemuddin/Desktop/Train_automation/data/cache/b0_back/mission39_back_20261107T204353Z",
+  "started_utc": "2026-11-07T20:43:53.679266+00:00",
+  "events": [
+    {
+      "event": "train_events/event_005",
+      "source_id": "doc:v2:train_events/event_005:back:video",
+      "source_sha256_from_AUTH35_V": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e",
+      "source_stat_stable": true,
+      "status": "COMPLETED_ORIGINAL_INFERENCE",
+      "camera": "back",
+      "absolute_video_index": 0,
+      "sampled_frames": 391,
+      "frames_with_detections": 0,
+      "first_sample_s": 0.0,
+      "last_sample_s": 78.00666666666666,
+      "wall_s": 40.689911958994344,
+      "cpu_s": 96.5338,
+      "predicted_classes": {
+        "0": {
+          "label": "front",
+          "detections": 0,
+          "mean_confidence": null
+        },
+        "1": {
+          "label": "rear",
+          "detections": 0,
+          "mean_confidence": null
+        },
+        "2": {
+          "label": "side",
+          "detections": 0,
+          "mean_confidence": null
+        }
+      },
+      "prediction_sha256": "d15ab150ae4f7c1a240b1b8ca7cd454dbf74197a536ce3c94043c4984598bd97",
+      "prediction_file": "predictions/train_events_event_005_back.jsonl",
+      "pts_preserved": true,
+      "GT_dependent_metrics": "UNAVAILABLE_NO_ACCEPTED_CANONICAL_FIELDS"
+    },
+    {
+      "event": "train_events/event_021",
+      "source_id": "doc:v2:train_events/event_021:back:video",
+      "source_sha256_from_AUTH35_V": "4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f",
+      "source_stat_stable": true,
+      "status": "COMPLETED_ORIGINAL_INFERENCE",
+      "camera": "back",
+      "absolute_video_index": 1,
+      "sampled_frames": 307,
+      "frames_with_detections": 230,
+      "first_sample_s": 0.0,
+      "last_sample_s": 61.20333333333333,
+      "wall_s": 54.007292042006156,
+      "cpu_s": 73.436739,
+      "predicted_classes": {
+        "0": {
+          "label": "front",
+          "detections": 1,
+          "mean_confidence": 0.3927728235721588
+        },
+        "1": {
+          "label": "rear",
+          "detections": 4,
+          "mean_confidence": 0.8102764338254929
+        },
+        "2": {
+          "label": "side",
+          "detections": 225,
+          "mean_confidence": 0.8323510191175673
+        }
+      },
+      "prediction_sha256": "f1dff4399e2e16ab12a808fc01e137c1698f598d7ad777d8659988d7fdc5cc1a",
+      "prediction_file": "predictions/train_events_event_021_back.jsonl",
+      "pts_preserved": true,
+      "GT_dependent_metrics": "UNAVAILABLE_NO_ACCEPTED_CANONICAL_FIELDS"
+    },
+    {
+      "event": "engine_events/event_001",
+      "source_id": "doc:v2:engine_events/event_001:back:video",
+      "source_sha256_from_AUTH35_V": "80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72",
+      "source_stat_stable": true,
+      "status": "COMPLETED_ORIGINAL_INFERENCE",
+      "camera": "back",
+      "absolute_video_index": 1,
+      "sampled_frames": 49,
+      "frames_with_detections": 13,
+      "first_sample_s": 0.0,
+      "last_sample_s": 9.6,
+      "wall_s": 8.807500750001054,
+      "cpu_s": 11.969333999999975,
+      "predicted_classes": {
+        "0": {
+          "label": "front",
+          "detections": 14,
+          "mean_confidence": 0.8050166900668826
+        },
+        "1": {
+          "label": "rear",
+          "detections": 0,
+          "mean_confidence": null
+        },
+        "2": {
+          "label": "side",
+          "detections": 0,
+          "mean_confidence": null
+        }
+      },
+      "prediction_sha256": "13b4f642e50d456c4a46d63efa1764a7adc30d9e8fe7bc7961f846174c4a883e",
+      "prediction_file": "predictions/engine_events_event_001_back.jsonl",
+      "pts_preserved": true,
+      "GT_dependent_metrics": "UNAVAILABLE_NO_ACCEPTED_CANONICAL_FIELDS"
+    },
+    {
+      "event": "train_events/event_001",
+      "source_id": "doc:v2:train_events/event_001:back:video",
+      "source_sha256_from_AUTH35_V": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1",
+      "source_stat_stable": true,
+      "status": "COMPLETED_ORIGINAL_INFERENCE",
+      "camera": "back",
+      "absolute_video_index": 0,
+      "sampled_frames": 231,
+      "frames_with_detections": 7,
+      "first_sample_s": 0.0,
+      "last_sample_s": 46.015,
+      "wall_s": 58.846923624994815,
+      "cpu_s": 288.48285,
+      "predicted_classes": {
+        "0": {
+          "label": "front",
+          "detections": 0,
+          "mean_confidence": null
+        },
+        "1": {
+          "label": "rear",
+          "detections": 0,
+          "mean_confidence": null
+        },
+        "2": {
+          "label": "side",
+          "detections": 7,
+          "mean_confidence": 0.5212609427315849
+        }
+      },
+      "prediction_sha256": "5af446d81f3638cb1dc2d737cbc1dd2d525ee385ec114dae21f71789925ac317",
+      "prediction_file": "predictions/train_events_event_001_back.jsonl",
+      "pts_preserved": true,
+      "GT_dependent_metrics": "UNAVAILABLE_NO_ACCEPTED_CANONICAL_FIELDS"
+    },
+    {
+      "event": "no_train_events/event_001",
+      "source_id": "doc:v2:no_train_events/event_001:back:video",
+      "source_sha256_from_AUTH35_V": "5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9",
+      "source_stat_stable": true,
+      "status": "COMPLETED_ORIGINAL_INFERENCE",
+      "camera": "back",
+      "absolute_video_index": 0,
+      "sampled_frames": 122,
+      "frames_with_detections": 24,
+      "first_sample_s": 0.0,
+      "last_sample_s": 24.221666666666668,
+      "wall_s": 12.043689375001122,
+      "cpu_s": 41.24339800000001,
+      "predicted_classes": {
+        "0": {
+          "label": "front",
+          "detections": 25,
+          "mean_confidence": 0.4821837019920349
+        },
+        "1": {
+          "label": "rear",
+          "detections": 0,
+          "mean_confidence": null
+        },
+        "2": {
+          "label": "side",
+          "detections": 0,
+          "mean_confidence": null
+        }
+      },
+      "prediction_sha256": "72c22b5f492f49ceded30519bb8402e8f16741559994802ecedd905cf427c32f",
+      "prediction_file": "predictions/no_train_events_event_001_back.jsonl",
+      "pts_preserved": true,
+      "GT_dependent_metrics": "UNAVAILABLE_NO_ACCEPTED_CANONICAL_FIELDS"
+    }
+  ],
+  "canonical_gt": "NOT_ESTABLISHED",
+  "reported_human_review_complete": true,
+  "effective_prediction_options": {
+    "imgsz": [
+      640,
+      640
+    ],
+    "conf": 0.35,
+    "iou": 0.7,
+    "max_det": 300,
+    "rect": false,
+    "half": null,
+    "device": "cpu",
+    "agnostic_nms": false,
+    "classes": null,
+    "augment": false,
+    "seed": 42,
+    "mode": "predict",
+    "task": "detect"
+  },
+  "finished_utc": "2026-11-07T20:46:48.073542+00:00",
+  "original_events_completed": 5,
+  "planned_events": 5,
+  "peak_rss_bytes": 465780736
+}

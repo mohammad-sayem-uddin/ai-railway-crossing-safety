@@ -1,0 +1,187 @@
+{
+  "schema": "mission41-unissued-existing-schema-preparation/1",
+  "status": "UNISSUED_NOT_EXECUTABLE",
+  "canonical_destination": "data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json",
+  "candidate_fields": {
+    "schema_version": "phase5-descriptive-eval-execution-authorization/1",
+    "authorization_id": "AUTH-DESCRIPTIVE-EVAL-EXEC-M41-B2-FIVE",
+    "authorization_class": "AUTH-DESCRIPTIVE-EVAL-EXEC",
+    "status": null,
+    "authorized_by": "raihankabirrahu@gmail.com",
+    "authorized_at_utc": null,
+    "expires_at_utc": null,
+    "revoked": false,
+    "authorization_statement": "The researcher authorizes continued work on the existing research programme. Execute B2 descriptive replay if legitimately permitted.",
+    "attestation": {
+      "type": "RECORDED_RESEARCHER_STATEMENT",
+      "signature": null
+    },
+    "recorded_by": {
+      "kind": "agent_transcription",
+      "identity": "Codex local technical operator",
+      "transcription_source": "Actual Mission41 user attachment, sections1/3/4 and final directive; authority correspondence previously explicitly confirmed in this conversation"
+    },
+    "scope": {
+      "operation": "descriptive_cache_only_replay",
+      "conditions": [
+        "B2"
+      ],
+      "events": [
+        "train_events/event_005",
+        "train_events/event_021",
+        "engine_events/event_001",
+        "train_events/event_001",
+        "no_train_events/event_001"
+      ],
+      "metric_scope": [
+        "blocked_seconds",
+        "clearance_latency_s",
+        "closure_episodes",
+        "excess_closed_duration_s",
+        "exposure_s",
+        "missed_train",
+        "premature_opening",
+        "total_closed_s",
+        "warning_lead_time_s"
+      ],
+      "purpose": "Existing five-event front/audio descriptive decision replay with frozen settings; retain only local derived research outputs; no raw access, new inference/training, release or physical operation",
+      "field_or_physical_operations_authorized": false
+    },
+    "bindings": {
+      "evaluation_manifest_sha256": "61155c9b5143c815c407a9a19c8821893a61e40b24846f9742607da61aa50fe7",
+      "metric_scope_sha256": "1e10c02db10336cb8f436f5c791b20b2f58301cfd3d517e1ddf6a2d713562c36",
+      "model_config_provenance_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+      "promotion_receipt_sha256": null,
+      "protocol_sha256": null
+    },
+    "record_sha256": null
+  },
+  "known_input_references": [
+    {
+      "event": "train_events/event_005",
+      "stream": "front_vision_cache",
+      "path": "docs/generated/research_results/mission39/predictions/train_events_event_005_front.jsonl",
+      "sha256": "d37937591414b6d88bd0af1ce644d98d9b1a276a038a6ec9ea3fe59012e6d84e",
+      "byte_size": 91989,
+      "line_count": 398
+    },
+    {
+      "event": "train_events/event_005",
+      "stream": "front_audio_cache",
+      "path": "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl",
+      "sha256": "ec77e5d3c120c0e76866c85586810c0c80fe04276cf40a2cef9f79b86a0dca88",
+      "byte_size": 17956,
+      "line_count": 158
+    },
+    {
+      "event": "train_events/event_021",
+      "stream": "front_vision_cache",
+      "path": "docs/generated/research_results/mission39/predictions/train_events_event_021_front.jsonl",
+      "sha256": "01241b124c6ca527b45f6679a23131f02121605e06f2d28544d89570122a300d",
+      "byte_size": 62440,
+      "line_count": 267
+    },
+    {
+      "event": "train_events/event_021",
+      "stream": "front_audio_cache",
+      "path": "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl",
+      "sha256": "3516c7bb915ec63575f16e6077335eba1db622364b27ef6fdd6419a7ca631029",
+      "byte_size": 12018,
+      "line_count": 105
+    },
+    {
+      "event": "engine_events/event_001",
+      "stream": "front_vision_cache",
+      "path": "docs/generated/research_results/mission39/predictions/engine_events_event_001_front.jsonl",
+      "sha256": "b0946e375d4d28d5f3422f216879ddf9090a07ad328e03c9fe398dc7922db910",
+      "byte_size": 9109,
+      "line_count": 40
+    },
+    {
+      "event": "engine_events/event_001",
+      "stream": "front_audio_cache",
+      "path": "docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl",
+      "sha256": "8f17238c6e8e2d5b1d35f0fc92b0a9833ce2699363ab79239032071cc5ef486f",
+      "byte_size": 1576,
+      "line_count": 14
+    },
+    {
+      "event": "train_events/event_001",
+      "stream": "front_vision_cache",
+      "path": "docs/generated/research_results/mission39/predictions/train_events_event_001_front.jsonl",
+      "sha256": "29d7f4d2af6e6f6af065e397e34e17d419a2278b2668fffa36a56e55fa79e56f",
+      "byte_size": 58413,
+      "line_count": 250
+    },
+    {
+      "event": "train_events/event_001",
+      "stream": "front_audio_cache",
+      "path": "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl",
+      "sha256": "b363d1b86f5036e4dc64548d1615ced65e5b525c9de0c20a5953f38fe63ce1fa",
+      "byte_size": 11241,
+      "line_count": 98
+    },
+    {
+      "event": "no_train_events/event_001",
+      "stream": "front_vision_cache",
+      "path": "docs/generated/research_results/mission39/predictions/no_train_events_event_001_front.jsonl",
+      "sha256": "8827a30f84bc6a1090ec858820f9073bf03571b13503ccdfa452b00403e516b2",
+      "byte_size": 28018,
+      "line_count": 124
+    },
+    {
+      "event": "no_train_events/event_001",
+      "stream": "front_audio_cache",
+      "path": "docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl",
+      "sha256": "4a5124774e879354ac3ebcf72d2ed90630954f3f25ac841fbeea4c50a5d2f31c",
+      "byte_size": 5435,
+      "line_count": 48
+    }
+  ],
+  "missing_binding_facts": [
+    "promotion_receipt_sha256",
+    "protocol_sha256"
+  ],
+  "issuance_fields_intentionally_unfilled": [
+    "status",
+    "authorized_at_utc",
+    "expires_at_utc",
+    "record_sha256"
+  ],
+  "authority_basis": "Existing explicit Mission41 conditional direction and previously confirmed identity; not a new signature or newly invented approval",
+  "current_instruction_sufficient_for_scoped_intent": true,
+  "current_instruction_cannot_supply_GT_receipt_or_live_profile": true,
+  "metric_scope_must_be_exact_nine_fields": true,
+  "metric_subset_not_supported": true,
+  "canonical_record_written": false,
+  "promotion_record_fabricated": false,
+  "protocol_record_present": false,
+  "live_protocol_issue": {
+    "code": "PREMATURE_OPENING_DEFINITION_UNDECIDED",
+    "detail": "PREMATURE_OPENING_DEFINITION_UNDECIDED: no documented value or researcher choice for ['premature_opening_window']; see docs/PREMATURE_OPENING_DECISION_EVIDENCE.md"
+  },
+  "already_selected_M4_candidate_profile": {
+    "censoring_treatment": "exclude_censored_from_point_estimates",
+    "continuous_metric_weighting": "event_weighted",
+    "false_alarm_measure": "event_level_plus_stream_time_and_episodes",
+    "premature_opening_window": "first_blocked_to_t4_clearance"
+  },
+  "already_selected_M4_candidate_profile_sha256": "6b5edb4852fc0d16a10ac1975f3f18d6feb28fe91638971da7d3761a7a6d42ca",
+  "candidate_is_not_live_protocol_binding": true,
+  "scientific_M4_choice_not_reopened": true,
+  "full_live_binding_scan_called": false,
+  "why_no_new_confirmation_question": "Another permission answer would not create the absent accepted-reference promotion receipt or missing live protocol binding. Existing scope intent/identity already supplied; no redundant approval request.",
+  "checkpoint_identity_basis": "Reuse prior actual Mission39 verification and unchanged frozen configuration; no checkpoint bytes read or newly hashed",
+  "model_identities": {
+    "vision": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+    "audio_v3": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782"
+  },
+  "source_code_ledger": {
+    "src/railway_detection/evaluation/descriptive_exec_gate.py": "d3543539fd1e993950316d2d303b8e280a3d0a76d4803e20e3a425f26b1a0c3b",
+    "src/railway_detection/evaluation/cache_only_engine.py": "41eb5123144a38695b7f36360c3a9da803f7e20764bc14c5c270e5e846e47e73",
+    "src/railway_detection/evaluation/execution_gate.py": "e01116c8c95c6479d0ce6a1d310d39715437d0b60261e91444e424166a1d3e0b",
+    "src/railway_detection/evaluation/protocol_choices.py": "ea1bae0c2f393f07e6cdef17def95bc26d478c3e0a66fd726a01e31e8b8fe7e6",
+    "configs/frozen_experiment_v1.yaml": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+    "configs/decision_policy_v1.yaml": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575"
+  }
+}

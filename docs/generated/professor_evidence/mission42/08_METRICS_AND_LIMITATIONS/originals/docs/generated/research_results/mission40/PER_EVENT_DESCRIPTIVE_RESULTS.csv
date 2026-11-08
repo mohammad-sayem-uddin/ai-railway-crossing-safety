@@ -1,0 +1,6 @@
+event,planned_role,front_sampled_records,front_frames_with_model_outputs,front_predicted_objects,back_sampled_records,back_frames_with_model_outputs,back_predicted_objects,audio_windows,audio_score_ge_frozen_threshold_windows,audio_mean_model_score,audio_unwindowed_tail_samples,audio_sample_rate_hz,audio_last_full_window_end_s,B2_input_frames,B2_frames_with_both_stream_records,B2_frames_without_audio_record,GT_censoring_state,GT_uncertainty_state,decision_replay
+train_events/event_005,TRAIN_CANDIDATE,398,0,0,391,0,0,158,105,0.5062080604979132,1152,16000,79.5,398,236,162,UNKNOWN_NO_ACCEPTED_RECORD,UNKNOWN_NO_ACCEPTED_RECORD,NOT_EXECUTED
+train_events/event_021,TRAIN_CANDIDATE,267,6,6,307,230,230,105,4,0.1250460368004583,6677,16000,53.0,267,158,109,UNKNOWN_NO_ACCEPTED_RECORD,UNKNOWN_NO_ACCEPTED_RECORD,NOT_EXECUTED
+engine_events/event_001,ENGINE_SEPARATE,40,0,0,49,13,14,14,0,0.06316276786050626,6272,16000,7.5,40,21,19,UNKNOWN_NO_ACCEPTED_RECORD,UNKNOWN_NO_ACCEPTED_RECORD,NOT_EXECUTED
+train_events/event_001,TRAIN_CANDIDATE,250,6,6,231,7,7,98,0,0.058333845657049396,5675,16000,49.5,250,147,103,UNKNOWN_NO_ACCEPTED_RECORD,UNKNOWN_NO_ACCEPTED_RECORD,NOT_EXECUTED
+no_train_events/event_001,DESIGNATED_CONTROL,124,1,1,122,24,25,48,11,0.29118438631606597,2219,16000,24.5,124,72,52,UNKNOWN_NO_ACCEPTED_RECORD,UNKNOWN_NO_ACCEPTED_RECORD,NOT_EXECUTED

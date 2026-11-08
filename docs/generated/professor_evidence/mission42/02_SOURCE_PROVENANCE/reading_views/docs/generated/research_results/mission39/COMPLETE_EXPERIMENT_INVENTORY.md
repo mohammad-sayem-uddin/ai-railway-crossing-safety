@@ -1,0 +1,21 @@
+# Reading copy — COMPLETE_EXPERIMENT_INVENTORY.md
+
+Derived presentation copy: local links are adapted for this package. Evidence text and historical status retain their original scope. Consult the current executive guide for the final result status. [Byte-identical original](../../../../../originals/docs/generated/research_results/mission39/COMPLETE_EXPERIMENT_INVENTORY.md). Original SHA-256: `2b23c7cfe69c30adeb3661626e81d0f62a82012dba09e1e5906e44eacd9ccb41`.
+
+# Complete existing experiment inventory
+
+The Mission31 master register has **156 activity rows**, not 156 new experiments: 129 Type1 research rows, 26 Type2 technical rows and one paused administrative row. All 156 unique IDs are retained exactly once in [the execution matrix](../../../../../../10_REPRODUCIBILITY/originals/docs/generated/research_results/mission39/EXPERIMENT_EXECUTION_MATRIX.csv); no row or retired alias is silently omitted.
+
+There are **five current adopted experiment directions**: B0_front, B0_back, supporting B1_audio, B2_front and separately optional exact-eleven R04. Four are the prioritized conditions; R04 remains optional and is not automatically activated. There are also **16 defined current research/reference/analysis rows** in the enabling bucket; these include metrics and human/reference tasks, not sixteen extra model runs. The two additional CURRENT_CONDITIONAL_PLAN rows are inactive/deferred B0_back_stateless and B2_back.
+
+Original buckets: {"CLOSED_SUPPORT_EVIDENCE": 10, "CURRENT_CONDITIONAL_RESEARCH": 5, "DEFERRED_OR_UNADOPTED_SCOPE": 44, "ENABLING_PREREQUISITE_OR_ANALYSIS": 23, "HISTORICAL_RECORD_VERIFICATION": 34, "PAUSED_PUBLICATION": 1, "RETIRED_HISTORY": 39}. Historical verification (34), retired history (39), closed support (10), deferred/unadopted (44) and paused publication (1) are kept distinct from the five current directions and 23 enabling activities. Old vision/audio run namespaces do not authorize retraining or prove completion.
+
+Current classification counts: {"BLOCKED_BY_GENUINE_TECHNICAL_DEFECT": 0, "DEFERRED_BY_RESEARCHER": 15, "EXECUTABLE_AFTER_EXISTING_INPUT": 52, "EXECUTABLE_AFTER_OPERATION_SCOPE": 0, "EXECUTABLE_NOW": 10, "SCIENTIFICALLY_UNDEFINED": 40, "SUPERSEDED_OR_INVALID": 39}. EXECUTABLE_NOW rows are already completed source-free support evidence reused in this mission; they do not imply empirical model execution. B0_front inference was genuinely approved and executed on all five originals; the separate back scope was also genuinely approved, executed and closed. GT-dependent outputs remain unavailable because no accepted field records were supplied. Full software validation is reported separately. Counts update only on genuine execution.
+
+The researcher explicitly confirms HUMAN_REVIEW_REPORTED_COMPLETE=1, FIVE_FRONT_EVENTS_REVIEWED=5, RESEARCHER_CLASSMATE_REPORTED_EXACT_AGREEMENT=1 and ORIGINAL_SEPARATE_OBSERVATION_RECORDS_STORED=0. This decision is preserved in [human status](../../../../../../07_HUMAN_REVIEW/originals/docs/generated/research_results/mission39/HUMAN_REVIEW_STATUS.json); no repeat or generic new reviewer request is made. Formally accepted canonical GT is not established; AI proposals remain separate.
+
+Definitions/dependencies reuse Mission31 master register/dependency map and Missions35–38 decisions, with Mission39's current direction controlling workflow priority. Source permissions and GT are applied per operation/metric. No audio/back dependency blocks front inference; no publication/institution/hardware requirement is invented.
+
+## Actual execution update
+
+B0_front and independent B0_back inference are each complete on five sources; B1 acoustic inference is now complete on the five front audio tracks with the intended training-compatible transform. B2 real paired input assembly is complete on five events; decision replay remains unexecuted. Three original-source inference directions, one derived input stage, zero accepted-GT evaluations. The same five physical pilot events and ten camera members remain the scope; no new independent events are counted. The other documentary candidate members are not automatically executed. Reference-dependent analyses and optional separately adopted exact-eleven R04 remain conditional. See the current results reports and follow-up validation.

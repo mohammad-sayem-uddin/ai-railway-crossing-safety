@@ -1,0 +1,58 @@
+{
+  "schema_version": "phase5-media-access-authorization/2",
+  "authorization_id": "AUTH-MEDIA-ACCESS-M39-PILOT-AUDIO-20261107T211431Z",
+  "authorization_class": "AUTH-MEDIA-ACCESS",
+  "status": "APPROVED",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "authorized_at_utc": "2026-11-07T21:14:31.229030+00:00",
+  "expires_at_utc": "2026-11-08T21:14:31.229030+00:00",
+  "revoked": false,
+  "authorization_statement": "Proceed with the existing B1_audio experiment using the legitimate held-out acoustic sources.",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "agent_transcription",
+    "identity": "Codex local technical operator",
+    "transcription_source": "Actual Mission39 follow-up reply identifies held-out embedded audio, directs inventory reconciliation and B1 execution; maintained authority attribution previously explicitly confirmed, no scope from closed visual grants reused"
+  },
+  "scope": {
+    "operations": [
+      "READ_RAW_MEDIA",
+      "AUDIO_EXTRACTION",
+      "FEATURE_EXTRACTION",
+      "INFERENCE"
+    ],
+    "datasets": [
+      "layer_b"
+    ],
+    "events": [
+      "train_events/event_005",
+      "train_events/event_021",
+      "engine_events/event_001",
+      "train_events/event_001",
+      "no_train_events/event_001"
+    ],
+    "media_types": [
+      "video"
+    ],
+    "purpose": "Existing B1 supporting acoustic predictions on fixed five held-out front containers; B2 upstream input assembly from saved front predictions; no GT-dependent replay/evaluation"
+  },
+  "restrictions": {
+    "path_prefixes": [
+      "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_021/camera_front.mov",
+      "data/raw/layer_b/v2/engine_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov"
+    ]
+  },
+  "bindings": {
+    "protocol_document": {
+      "path": "docs/generated/research_results/mission39/audio_followup/OP39_A_EMBEDDED_AUDIO_SCOPE.md",
+      "sha256": "a7351e4dead7c602c27102113f15b555e4f0c600ff930998c7ff62293edeedad"
+    }
+  },
+  "record_sha256": "87f1a679a86b1d5caed7dcbd99e04d6b4eb537e94ef60fd27054d249695dd3d3"
+}

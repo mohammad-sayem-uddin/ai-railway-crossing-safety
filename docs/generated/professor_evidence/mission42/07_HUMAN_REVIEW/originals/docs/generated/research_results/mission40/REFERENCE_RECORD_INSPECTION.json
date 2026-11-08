@@ -1,0 +1,52 @@
+{
+  "schema": "mission40-reference-record-inspection/1",
+  "inspected_text_documents": 32,
+  "all_prior32_text_fingerprints_unchanged": true,
+  "text_sha256": {
+    "data/ground_truth/reviews/train_events/event_005_review.json": "d79c5a4b4a3d6e0139ce300e6de4a6d34250fdef1495a69c3c60badc3d829af9",
+    "data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json": "9c84dbaa36f567ae4f38cfadc19e4921b4856da904ede1b2a8c72d96e665c279",
+    "data/ground_truth/proposals/train_events/event_005_review_sheet.md": "fe47f2ee0b58962acb9f51b7b7a9b77983693ae8191f9621efb0048d6cdc0429",
+    "data/ground_truth/proposals/train_events/event_005_proposal_v1.json": "18767763ea2e0c265196e63faa1c3ac5325d01b0ed70499d521b8097ecb998f2",
+    "data/ground_truth/proposals/train_events/event_005_proposal_v2.json": "5df7d8fea5bc049c179a08bc42f41b74e4f1f9bcc10ceed15ae01a96e4c3f3a5",
+    "data/ground_truth/proposals/train_events/event_005_proposal_v3.json": "e6c8b2b021980772eda36eeb82b4b80702c16823ab9c732ca74d80c1ccfeb99d",
+    "data/ground_truth/proposals/train_events/event_005_proposal_v4.json": "020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5",
+    "data/ground_truth/reviews/train_events/event_021_review.json": "c6e689b00b5001191660b4b71c8df43d205b84f1b7d23af066298152d85b563f",
+    "data/ground_truth/reviews/train_events/event_021_review.INVALIDATION_NOTICE.json": "bc998b38cd8b8c581aba1766628a5111502913c1885563ea02502213a5727119",
+    "data/ground_truth/proposals/train_events/event_021_review_sheet.md": "5b391d04c5150139db6c4603577dbbdb82402f0123b5911221ee18e2c52628c4",
+    "data/ground_truth/proposals/train_events/event_021_proposal_v1.json": "db1af9e7fd7bd199f0fbe8be4e69fc5e85657599846528ef3505b7d4c19cece4",
+    "data/ground_truth/proposals/train_events/event_021_proposal_v2.json": "65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395",
+    "data/ground_truth/reviews/engine_events/event_001_review.json": "3493e125e86c7642d47dca13ddfe3a91fad926b6e6d0fd9e9662968d1bca3edd",
+    "data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json": "a36abc84f6e870516ac7028084b9401af11bcf2edb5bd15077499d2e767f63a0",
+    "data/ground_truth/proposals/engine_events/event_001_review_sheet.md": "b0780dd070c3c985b27ff9e1d2bfa37443002d60b35d96ec105e6310d8af1ae3",
+    "data/ground_truth/proposals/engine_events/event_001_proposal_v1.json": "303a86d1d76e3b438e7ceaae0b1771eee657e7c994b33065928ca7118e935851",
+    "data/ground_truth/proposals/engine_events/event_001_proposal_v2.json": "c72f555b8a12ece3110d94dfc64eea50e234cf084bdfcd8cea22f156e02ff54d",
+    "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json": "aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a",
+    "data/ground_truth/reviews/train_events/event_001_review.json": "a0edd4a670e1706391309392661559e93a310d5c9f39d17cf094173cfb5e1cc6",
+    "data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json": "a8dc487476c5a472012155847c14fe9db6c1066d2f7408b1f190cbf8dfd3af29",
+    "data/ground_truth/proposals/train_events/event_001_review_sheet.md": "6d039e31d60aab3eaf397c5e749190b922b2c81d031746c833c596a3b25ea6f3",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v2.json": "97c536c0ddf56f1d42c7073bb5ea887deba86e6103aa3c080e8abdaa76d2d866",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v3.json": "55ecf604d531abac03fb5d610673b274a2b7e54484f07e403834eeb6a442d834",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v4.json": "32e4fb33e5fe0122a9a598b8e0f09044413bf5950b0cb24b8403ba276dcc6b98",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v5.json": "e4edcf823121253f4183feeb6a7a3b83095956f8d1994fdd4840dddb3b94a208",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v6.json": "0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703",
+    "data/ground_truth/reviews/no_train_events/event_001_review.json": "7387acbf17e6ca2eda6b814e3d9f30683aecffe863b14637cc4ff4bf51015243",
+    "data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json": "a93765bd21297ac189cc3598463bfc0c65418f7d9ccf149f1b01b3fd24eb3404",
+    "data/ground_truth/proposals/no_train_events/event_001_review_sheet.md": "0e7175df42c9c218b6a385d73fb4c6daf8dd891c4121e2a97227922eb17147ab",
+    "data/ground_truth/proposals/no_train_events/event_001_proposal_v1.json": "b57f62b60a382dca5a92ab5d2b228dbccc7227ee5451bc69cf509883dcd878e8",
+    "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json": "6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2",
+    "data/ground_truth/reviews/_INTEGRITY_NOTICE.md": "342c56719c141dc15c8509d1088c8a6baf0535a0a56a3202d75135c5d6fa7e99"
+  },
+  "active_unexcused_records": 0,
+  "active_schema_counts": {},
+  "read_repository_blockers": [
+    {
+      "code": "STAGE21_RECORDS_MISSING",
+      "detail": "no active review records found; 27 legacy record(s) are invalidated by verified notices and are not counted"
+    }
+  ],
+  "canonical_promotion_receipt_present": false,
+  "descriptive_authorization_present": false,
+  "accepted_GT_fields_available": false,
+  "human_report": "Reported five-front review complete and exact agreement; separate observations not stored; classmate partial familiarity retained; no repeat review or AI reconstruction",
+  "scope": "Existing repository text records/notices only; no raw source/model reads, promotion execution or values reconstructed from AI"
+}

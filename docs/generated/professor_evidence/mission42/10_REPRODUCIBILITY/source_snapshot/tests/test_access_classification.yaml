@@ -1,0 +1,3850 @@
+schema_version: 2.0.0
+generator: scripts/classify_test_access.py
+method: Each file run alone under railway_detection.safety.access_guard_plugin, which blocks reads of
+  raw media, model weights, processed data and results and records every attempt; plus an AST scan for
+  protected-path literals and child-process calls.
+categories_definition:
+  SYNTHETIC_ONLY: Observed to read nothing in the repository except source/test code; every data file
+    it touches is created in a temporary directory.
+  METADATA_ONLY: Observed to read repository metadata (configs, docs, ground-truth / manifest / governance
+    JSON) but no media, model weights, processed data or results.
+  MODEL_CHECKPOINT_ACCESS: Attempted to read model weights (blocked by the guard when classified).
+  PROCESSED_DATA_ACCESS: Attempted to read processed data, caches, results or experiment artifacts (blocked
+    by the guard when classified).
+  RAW_MEDIA_ACCESS: Attempted to read raw media or a media-suffixed repository file (blocked by the guard
+    when classified).
+  UNKNOWN: Access could not be established (collection error, timeout, spawned child process, or no test
+    executed). Treated as unsafe.
+limitations:
+- 'Python-level guard only: native code that opens files without builtins.open, io.open, os.open, os.scandir/listdir,
+  subprocess arguments or cv2.VideoCapture is not observed.'
+- A test that fails early on its first blocked read may hide later reads; the category is still at least
+  what was observed. Re-run the generator after any test change.
+- The classification is bound to each file's SHA-256; a changed file is STALE and not run.
+- Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
+  a text run-log).
+- Mission22 inventories new/changed test files conservatively as UNKNOWN, with zero invented classifier
+  test counts; its complete regression command still executes every file under a separate inherited access
+  policy.
+- Mission22 inventories new/changed test files conservatively as UNKNOWN, with zero invented classifier
+  test counts; its complete regression command still executes every file under a separate inherited access
+  policy.
+summary:
+  total_test_files: 168
+  raw_media_access: 4
+  model_checkpoint_access: 14
+  synthetic_only: 76
+  unknown: 55
+  processed_data_access: 2
+  metadata_only: 17
+  safe_for_synthetic_runner: 93
+test_files:
+  tests/integration/test_phase0_smoke.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 1 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 216de34d682d9cb1778ed100e2a35d856b4061d12b7f7bff9afabcfb4c5b54b3
+    spawns_child_process: false
+    static_hints:
+    - '/results/dataset_validation
+
+      split_output_root: '
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 1
+  tests/integration/test_vision_train_mock.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 3 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: d8f4b61d938f6b1bd82386135a7f887f8a776e8c6e8cf7d4f2dcdfc11b74935e
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 3
+  tests/smoke/test_cli_smoke.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 1 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 4768e29891a23c3eee21c9669a9c4bb66041d9c6f25b14875c995a5e1e0378a2
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 1
+  tests/test_annotation_workflow.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 16 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 0a0b2947cda6605415f4d7691fb4b74e9e4574a3f5408db4a99a4c778e9e1ea5
+    spawns_child_process: false
+    static_hints:
+    - /data/raw/event_001
+    - camera_back.mov
+    - camera_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 16
+  tests/test_candidate_split_queue.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 5 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: bb5f817cdec85c8f77dd75ce9790b2e4ced3a228508a0062cd617f8233122cc9
+    spawns_child_process: false
+    static_hints:
+    - /back.mov
+    - /front.mov
+    - camera_back.mov
+    - camera_front.mov
+    - train_events/front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/test_fault_injection_scenarios.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 12 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 3628bd9a6ac2840b367be5552cbb946c7e934b16bee990c237eb2743c4068b28
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 12
+  tests/test_forensic_regressions.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 4 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 9c5eefa09cf019eb4da56a6652ba77e4f2d26fff5e7ffa962d8a335cbc3fcffc
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 4
+  tests/test_mission10_second_review.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 33 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: d2815256a21851c2f78694dfbeb6379367a77b21fd2233802f46607cdcf7678c
+    spawns_child_process: false
+    static_hints:
+    - _back.mov
+    - _front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 33
+  tests/test_mission4b_review_operations.py:
+    access_dirs:
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    - data/manifests
+    - docs
+    - docs/generated
+    access_paths:
+    - data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/engine_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_001_review.json
+    - data/ground_truth/reviews/train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_002_review.json
+    - data/ground_truth/reviews/train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_004_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_004_review.json
+    - data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_005_review.json
+    - data/ground_truth/reviews/train_events/event_006_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_006_review.json
+    - data/ground_truth/reviews/train_events/event_007_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_007_review.json
+    - data/ground_truth/reviews/train_events/event_008_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_008_review.json
+    - data/ground_truth/reviews/train_events/event_009_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_009_review.json
+    - data/ground_truth/reviews/train_events/event_010_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_010_review.json
+    - data/ground_truth/reviews/train_events/event_011_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_011_review.json
+    - data/ground_truth/reviews/train_events/event_012_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_012_review.json
+    - data/ground_truth/reviews/train_events/event_013_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_013_review.json
+    - data/ground_truth/reviews/train_events/event_014_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_014_review.json
+    - data/ground_truth/reviews/train_events/event_015_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_015_review.json
+    - data/ground_truth/reviews/train_events/event_016_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_016_review.json
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 57 repository metadata file(s) (e.g. data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json,
+      data/ground_truth/reviews/engine_events/event_001_review.json, data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json);
+      no media, weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: bfcf3077429070441418d846036f1c419c7d1e3cafeed9d8f99e1f6d93c110ce
+    spawns_child_process: false
+    static_hints:
+    - _back.mov
+    - _front.mov
+    - distinct-second_back.mov
+    - distinct-second_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 11
+  tests/test_phase11_11_adjudication_session.py:
+    sha256: d852f0eea251d4a5233c48fa024199d2da1d12cb48e9b39886c9440ae3d1468e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/test_phase11_11_adjudication_session.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/test_phase11_12_readiness_blocker_report.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 7 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 253b9e51111efaee975c3bac8495c3ca332020900c115f20b25d8e28bc6fa4e6
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 7
+  tests/test_phase11_12_readiness_cli.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 11 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 8f08c7cd84e2c7aceaaff682f1784ebd36108a7d58972149f35341f53e89ca74
+    spawns_child_process: false
+    static_hints:
+    - a.mov
+    - b.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 11
+  tests/test_phase11_12_readiness_gate.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 12 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 79995913dac265376d05ce66ae6df2ad0d71b924c90ba3b6ca5dceee5647d2a4
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 12
+  tests/test_phase11_1_annotation_integrity_safeguards.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 11 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: b010196c9b66489e97cd147c6a6fdce1633fe8fe27bbcdecf2240c39cb4aba5b
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 11
+  tests/test_phase11_2_stage21_promotion_gate.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 33 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 0ff18fd5d9428a7d1142db13e00d9307bf19d8987eabdcc04998d0c31a2bdf65
+    spawns_child_process: false
+    static_hints:
+    - /nonexistent/back.mov
+    - /nonexistent/front.mov
+    - _back.mov
+    - _front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 33
+  tests/test_phase11_3_pending_decisions_not_defaulted.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 9 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: af42f367a33933d970b4536a0fa314561dd54097012ba1ec783b741b7a4c8f8d
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/test_phase11_5_adjudication.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 6 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 9c72aa875e264f0e5a456fe07ff74fd2ce7736df49260ee0f1a52ae614d7f2ee
+    spawns_child_process: false
+    static_hints:
+    - data/raw/layer_b/v2/train_events/event_999/camera_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 6
+  tests/test_phase11_6_invalidation_dry_run.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 8 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 42a47d1752ee2aff09c34a261c5cc091c45e18a31ed8f8e0a8b72f210c21e33c
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 8
+  tests/test_phase11_6a_invalidation_notice_writer.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 18 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 22d389dccb7bf16652615a0765ed588044a113da9533a4b3da5370a9726ef9f8
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 18
+  tests/test_phase11_6c_notice_writer_hardening.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 25 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 86fa2580afaca0ac9d9d0e40a83590f51a8f33d759ad5264dc22d4ab9c829980
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 25
+  tests/test_phase11_7_governance_controls.py:
+    access_dirs:
+    - data/ground_truth
+    access_paths:
+    - data/ground_truth/authorized_reviewers.json
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. data/ground_truth/authorized_reviewers.json); no
+      media, weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 87f00bae6ea6bafc7ef7e9d989f49638eb7ed25e0c5f478e1bd7edf7d521bd4e
+    spawns_child_process: false
+    static_hints:
+    - _back.mov
+    - _front.mov
+    - nope_back.mov
+    - nope_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 27
+  tests/test_phase11_8_review_workflow_integration.py:
+    access_dirs:
+    - docs
+    access_paths:
+    - docs/PHASE11_3_ANNOTATION_REVIEW_WORKFLOW.md
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. docs/PHASE11_3_ANNOTATION_REVIEW_WORKFLOW.md); no
+      media, weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: b1fbcc8e41d8c17c6c3396721796ecdf7fd070e5cd59a7d3a82ffee8868e645e
+    spawns_child_process: false
+    static_hints:
+    - _back.mov
+    - _front.mov
+    - nonexistent_front.mov
+    - synthetic_event_001_back.mov
+    - synthetic_event_001_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 14
+  tests/test_phase11_9_synthetic_pilot.py:
+    sha256: b6bfec7630b0aee5275dcec5b00860b1fe0b19443d950dbeb4ab2256346d55d8
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/test_phase11_9_synthetic_pilot.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/test_phase11_cohort_qualified_identity.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 6 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 0e6a458560272fb6f93d1a1c8cf45e20d2f07083baa5a4303d1cf1964fa89335
+    spawns_child_process: false
+    static_hints:
+    - /b.mov
+    - /f.mov
+    - event_001_back.mov
+    - event_001_front.mov
+    - no_train_events/b.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 6
+  tests/test_phase12_ground_truth_loader.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 9 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 96fc4fc7976827cbdccb963bc2867276c49cd4f72a29ea1bc2edaf73af8506ee
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/test_stage21_timing_pilot.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 37 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 2b74ead95ce4933dc7c483a71a3be4b43c4acb703b46f370821fe2af5b5c2992
+    spawns_child_process: false
+    static_hints:
+    - data/raw/layer_b
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 37
+  tests/unit/test_access_classification_tools.py:
+    sha256: 43656ed61ca83a981a81b06aacff30c0ac65ecc95e151a6462c19688f551c6e9
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_access_classification_tools.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/unit/test_audio_entrypoint_gate.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 3 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: da336d1b138bd8f6866e8019c5ebd81e115457beab51fc898f050bd3c2e9a147
+    spawns_child_process: false
+    static_hints:
+    - data/processed/layer_b/event_001.wav
+    - layer_b/videos/event_001/camera_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 3
+  tests/unit/test_audio_leakage_and_preprocessing.py:
+    access_dirs:
+    - data/manifests
+    - data/processed/audio/train_horn/features/negative
+    - data/processed/audio/train_horn/features/positive
+    - data/raw/audio/train_horn/positive
+    access_paths:
+    - data/processed/audio/train_horn/features/negative/neg_133_w004.npy
+    - data/processed/audio/train_horn/features/positive/pos_001_w000.npy
+    - data/raw/audio/train_horn/positive/1.mp3
+    - data/manifests/audio_training_dataset.json
+    - data/manifests/train_horn_audio_manifest.json
+    blocked_attempts:
+      PROCESSED_DATA: 2
+      RAW_MEDIA: 1
+    category: RAW_MEDIA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 3 blocked read(s) of PROCESSED_DATA/RAW_MEDIA locations; e.g. data/raw/audio/train_horn/positive/1.mp3
+      via io.open in test_raw_source_files_remain_unchanged (call).
+    safe_for_synthetic_runner: false
+    sha256: 223d5f7cfce8ec22f5cad3721fae109bbb32ee6346d77447a1fb526278be340f
+    spawns_child_process: false
+    static_hints:
+    - .mov
+    tests:
+      failed: 3
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/unit/test_audio_normalization_regression.py:
+    access_dirs:
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints
+    access_paths:
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt
+    blocked_attempts:
+      MODEL_CHECKPOINT: 3
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 3 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt
+      via open in test_actual_checkpoint_normalization_metadata (call).
+    safe_for_synthetic_runner: false
+    sha256: 3c57502de15979167f71241627b81a26532acdde0341638b255769e0d3a84fee
+    spawns_child_process: false
+    static_hints:
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt
+    tests:
+      failed: 3
+      errors: 0
+      skipped: 0
+      passed: 3
+  tests/unit/test_audio_preprocessor.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 12 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: ec3ef9c62d5e3ae94d371bd4c9430c49e086cc55d3be7651780e58908d2f7eb5
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 12
+  tests/unit/test_audio_training.py:
+    access_dirs:
+    - data/manifests
+    access_paths:
+    - data/manifests/audio_training_dataset.json
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. data/manifests/audio_training_dataset.json); no
+      media, weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 87a82a751080435d8e3487d8bd358289bb30f095998ab34f71a30c5317452a8a
+    spawns_child_process: false
+    static_hints:
+    - data/processed/layer_b/event_001.wav
+    - layer_b/videos/event_001/camera_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/unit/test_audio_v2_pipeline.py:
+    access_dirs:
+    - data/manifests
+    - data/processed/audio/v2/features/positive
+    - data/splits/audio/v2
+    - experiments/audio/RUN_20261008_AUDIO_V2/checkpoints
+    access_paths:
+    - data/processed/audio/v2/features/positive/pos_001_w000.npy
+    - experiments/audio/RUN_20261008_AUDIO_V2/checkpoints/best.pt
+    - data/manifests/audio_training_dataset_v2.json
+    - data/manifests/audio_training_v2_selection.json
+    - data/manifests/real_world_v2_video_manifest.json
+    - data/splits/audio/v2/dataset_split.json
+    blocked_attempts:
+      MODEL_CHECKPOINT: 1
+      PROCESSED_DATA: 1
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT/PROCESSED_DATA locations; e.g. experiments/audio/RUN_20261008_AUDIO_V2/checkpoints/best.pt
+      via open in test_v2_model_checkpoint_and_inference (call).
+    safe_for_synthetic_runner: false
+    sha256: 658541dc8e9570e90a93c80b62a76540f441f981ffd55f4cae35a84bf08459f0
+    spawns_child_process: false
+    static_hints:
+    - checkpoints/best.pt
+    - experiments/audio/RUN_20261008_AUDIO_V2
+    tests:
+      failed: 2
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/unit/test_audio_v3_pipeline.py:
+    access_dirs:
+    - data/manifests
+    - data/processed/audio/v3/features/positive
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints
+    access_paths:
+    - data/processed/audio/v3/features/positive/pos_Train whistle of Bangladesh Railway  Broad Gauge locomotives
+      sound  60 61 63 64 & 65 - 128-2_w000.npy
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt
+    - data/manifests/audio_training_dataset_v3.json
+    - data/manifests/audio_v3_selection.json
+    blocked_attempts:
+      MODEL_CHECKPOINT: 1
+      PROCESSED_DATA: 1
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT/PROCESSED_DATA locations; e.g. experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt
+      via open in test_v3_model_checkpoint_and_inference (call).
+    safe_for_synthetic_runner: false
+    sha256: c6291aaf6d564aa7e37b4d2695462389b4ad0aaea73813ac537f969e5b12d109
+    spawns_child_process: false
+    static_hints:
+    - checkpoints/best.pt
+    - data/raw/audio/train_horn/negative
+    - data/raw/layer_b
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50
+    tests:
+      failed: 2
+      errors: 0
+      skipped: 0
+      passed: 4
+  tests/unit/test_cache_only_replay.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 82 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 1c64de5ffe8e22e7141c9e93232fdaf39e29c14c93cdf70547466b26efe6917f
+    spawns_child_process: false
+    static_hints:
+    - camera_front.mov
+    - data/cache/event_001.mov
+    - results/replays
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 82
+  tests/unit/test_cache_phase12_adapter.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 18 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 4bc523253a3241b45fb412f570805bf5ae714c8255c5e8d856ac914d0f54a31b
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 18
+  tests/unit/test_cli.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 5 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 906892681eeecc58caf18aaba0aef2d9b16581f7f8900730d0c478cf673b30b5
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/unit/test_collector_fail_closed_fusion.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 8 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: d1152fe7beb78b46f60fcfcaef9e5c88bb63a50c6a4c67a90d6c6c776e1c45c9
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 8
+  tests/unit/test_config.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 6 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: f53965e0fc8bbba83707c631d861d8162f5444f535734307ba81a268dcf1a4e7
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 6
+  tests/unit/test_contracts.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 6 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 020355e3c6bda6109adff8710206da7de1bc375b2cb48c237168e6ccfd3fbcc9
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 6
+  tests/unit/test_dashboard_server.py:
+    access_dirs:
+    - experiments
+    access_paths:
+    - experiments/vision
+    blocked_attempts:
+      PROCESSED_DATA: 1
+    category: PROCESSED_DATA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 1 blocked read(s) of PROCESSED_DATA locations; e.g. experiments/vision via scandir
+      in test_dashboard_server_endpoints (call).
+    safe_for_synthetic_runner: false
+    sha256: 017fa082114013e051058db028ef1394fb31e6bc1aa726cf5f24fe98dcb9b593
+    spawns_child_process: false
+    static_hints:
+    - "\r\nContent-Disposition: form-data; name=\"video\"; filename=\"fixture.mp4\"\r\nContent-Type: video/mp4\r\
+      \n\r\n"
+    - "\r\nContent-Disposition: form-data; name=\"video\"; filename=\"sample.mp4\"\r\nContent-Type: video/mp4\r\
+      \n\r\n"
+    - fixture.mp4
+    - sample.mp4
+    tests:
+      failed: 1
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/unit/test_decision_engine.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 8 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 900398d3242356b21309d0a444e471e04283ed88a506e601ee95365df2878963
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 8
+  tests/unit/test_descriptive_exec_gate.py:
+    access_dirs:
+    - configs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
+      processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 6cb1fdecd4e0d70c980da41bfd3b8afbb0b2c9c1416a39c25eacc0e7d782b3c9
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 41
+  tests/unit/test_descriptive_only.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 18 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 7c6bc04fdb36f72e0dacc1376a0a579b0fdd13eb40f7ce11e172b095be96bcba
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 18
+  tests/unit/test_diagnostic_trace.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 5 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: c45a033bd898f5d5a47df6487c37aec9a85a730c6de1b29cf85d746327ffc764
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/unit/test_event_metrics.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 8 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 1489ac7c6bf84f11bd79f2b1543ff9251d418175578b14abf9d42e8c1868bd5d
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 8
+  tests/unit/test_experiment_registry_isolation.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 7 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: ebaf9b2d58adca2bce47b2fc0fa28ea2bb442fabae7c5e9fd8911a8dc22f2e5e
+    spawns_child_process: false
+    static_hints:
+    - 'Registry path injection and tracked-artifact isolation.
+
+
+      Guards the defect where CLI tests appended mock records to the tracked
+
+      ``results/experiment_registry.jsonl`` research artifact.
+
+      '
+    - results/experiment_registry.jsonl
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 7
+  tests/unit/test_experiment_runner_v2.py:
+    access_dirs:
+    - configs
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts:
+      MODEL_CHECKPOINT: 4
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 4 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in test_b4_full_policy_execution (call).
+    safe_for_synthetic_runner: false
+    sha256: 9468dba6ccd6cf97a84c3c5ea4c4f7913cd6fcd17fbd65bc454c54f25c18ef30
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 4
+      errors: 0
+      skipped: 0
+      passed: 1
+  tests/unit/test_exploratory_subset_authorization_gate.py:
+    access_dirs:
+    - configs
+    - data/manifests
+    - data/raw/layer_b/v2/train_events/event_001
+    access_paths:
+    - data/raw/layer_b/v2/train_events/event_001/camera_front.mov
+    - configs/exploratory_dual_camera_v1_supported_subset.yaml
+    - data/manifests/camera_sync_offsets_candidate.yaml
+    blocked_attempts:
+      RAW_MEDIA: 1
+    category: RAW_MEDIA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 1 blocked read(s) of RAW_MEDIA locations; e.g. data/raw/layer_b/v2/train_events/event_001/camera_front.mov
+      via media-guard:HASH_RAW_MEDIA in test_dry_run_validates_all_eleven_events_against_live_manifest
+      (call).
+    safe_for_synthetic_runner: false
+    sha256: 9375bab3442e56f861a4c7627ff41772680caeb76ec9b419fcc35f2479f6bc45
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 1
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/unit/test_failure_analysis.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 9 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: ae823dd4f0cc5c79dbd1821b70e898caee80025858802b60b88e8c94ea0de8a8
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/unit/test_failure_injector.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 11 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 24013e61609d999874c95596792d3bb2822e0ab61b5b636a2b0d0be9ba066bae
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 11
+  tests/unit/test_frozen_config_safeguards.py:
+    access_dirs:
+    - configs
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts:
+      MODEL_CHECKPOINT: 5
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 5 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in test_production_checkpoints_integrity_verified (call).
+    safe_for_synthetic_runner: false
+    sha256: 0c67cad7f8677722f47946db65f7cec9647ee979a72cdecce2f705fe80b5eec7
+    spawns_child_process: false
+    static_hints:
+    - best.pt
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints
+    - experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    tests:
+      failed: 5
+      errors: 0
+      skipped: 0
+      passed: 13
+  tests/unit/test_independent_safety_invariants.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 11 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: e81f5f560bfe0e35990cced2c069964c8b71f30c09d3f663d195d777d7b13110
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 11
+  tests/unit/test_layer_b_loader.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 10 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 49c8c9ad74a86a4279f17f1f6ef21ff93d6e85c0ce9d6f6f4233a2e9d23dc78d
+    spawns_child_process: false
+    static_hints:
+    - camera_1.mp4
+    - camera_2.mp4
+    - camera_front.mp4
+    - camera_rear.mp4
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 10
+  tests/unit/test_leg_exec.py:
+    access_dirs:
+    - configs
+    - data/governance
+    - data/ground_truth
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    - docs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    - data/governance/leg_exec_authorization.json
+    - data/ground_truth/authorized_reviewers.json
+    - data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/engine_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_001_review.json
+    - data/ground_truth/reviews/train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_002_review.json
+    - data/ground_truth/reviews/train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_004_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_004_review.json
+    - data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_005_review.json
+    - data/ground_truth/reviews/train_events/event_006_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_006_review.json
+    - data/ground_truth/reviews/train_events/event_007_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_007_review.json
+    - data/ground_truth/reviews/train_events/event_008_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_008_review.json
+    - data/ground_truth/reviews/train_events/event_009_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_009_review.json
+    - data/ground_truth/reviews/train_events/event_010_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_010_review.json
+    - data/ground_truth/reviews/train_events/event_011_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_011_review.json
+    - data/ground_truth/reviews/train_events/event_012_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_012_review.json
+    - data/ground_truth/reviews/train_events/event_013_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_013_review.json
+    - data/ground_truth/reviews/train_events/event_014_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_014_review.json
+    - data/ground_truth/reviews/train_events/event_015_review.INVALIDATION_NOTICE.json
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 58 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml, data/governance/leg_exec_authorization.json,
+      data/ground_truth/authorized_reviewers.json); no media, weights, processed data or results were
+      requested.
+    safe_for_synthetic_runner: true
+    sha256: 19efa24de8ff77c38284f587e9d157eed0baeafe05da57308bfc11786eec2ff1
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 27
+  tests/unit/test_legacy_reconciliation.py:
+    access_dirs:
+    - data/ground_truth/proposals/engine_events
+    - data/ground_truth/proposals/no_train_events
+    - data/ground_truth/proposals/train_events
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    access_paths:
+    - data/ground_truth/proposals/engine_events/event_001_proposal_v1.json
+    - data/ground_truth/proposals/engine_events/event_001_proposal_v3.json
+    - data/ground_truth/proposals/no_train_events/event_001_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json
+    - data/ground_truth/proposals/no_train_events/event_002_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json
+    - data/ground_truth/proposals/no_train_events/event_003_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v5.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v6.json
+    - data/ground_truth/proposals/train_events/event_002_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_002_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_003_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_003_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_004_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_004_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_005_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_005_proposal_v4.json
+    - data/ground_truth/proposals/train_events/event_006_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_006_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_007_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_007_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_008_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_008_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_009_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_009_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_010_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_010_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_011_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_011_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_012_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_012_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_013_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_013_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_014_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_014_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_015_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_015_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_016_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_016_proposal_v2.json
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 81 repository metadata file(s) (e.g. data/ground_truth/proposals/engine_events/event_001_proposal_v1.json,
+      data/ground_truth/proposals/engine_events/event_001_proposal_v3.json, data/ground_truth/proposals/no_train_events/event_001_proposal_v1.json);
+      no media, weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 61b197cad06f3c15481cd92056afab94fe5d48c88dbffcd0c7c1f308e1a6a881
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/unit/test_manifest.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 11 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: ccd966a2e1dd185d1e886d2538814aae55fee08185d46c9e2e5cad11ebc4cf16
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 11
+  tests/unit/test_media_authorization.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 72 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 24ac758b866012cdadbb42e59db155d10d716d21dce356698e9df2c96d59c0d7
+    spawns_child_process: false
+    static_hints:
+    - camera_front.mov
+    - clip.mov
+    - data/raw/layer_b/loose.mov
+    - data/raw/layer_b/v2
+    - data/raw/layer_b/v2/train_events/
+    - data/raw/vision/
+    - elsewhere.mov
+    - ghost.mov
+    - innocent.mov
+    - not under data/raw
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 72
+  tests/unit/test_media_opener_coverage.py:
+    sha256: 6d44921cd6ed43d5bbffad50d372cc8fc17839381e1ab740cf8dcbd086fd3d59
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_media_opener_coverage.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/unit/test_metadata_only_audit.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 13 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: f206504d9f1f38a0329f3e615131f1ef0ce02fdb3b3e78ab2e5d39caddc4609e
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 13
+  tests/unit/test_mission10_back_stream_scope.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 11 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 9ac980148273b7194fd0a2d76158a4a38ea74aae8041d318812bfc5bf9d3d4de
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 11
+  tests/unit/test_mission10_m4_m5_differential.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 13 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 62cc73d66dcf25ecd775147f2aa1489edf55fb156495341cd0178f9336194410
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 13
+  tests/unit/test_mission2_pipeline_integrity.py:
+    access_dirs:
+    - configs
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts:
+      MODEL_CHECKPOINT: 9
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 9 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in TestB7eDelayedTimestamps::test_experiment_runner_b7e_without_schedule_fails_closed_before_simulation
+      (call).
+    safe_for_synthetic_runner: false
+    sha256: a72f0aa3e5afb0bc7fc01ccecf9f01f8de8b671f021b9977bad4b1e5d889bcdf
+    spawns_child_process: false
+    static_hints:
+    - camera_front.mov
+    - models/vision/best.pt
+    tests:
+      failed: 9
+      errors: 0
+      skipped: 0
+      passed: 31
+  tests/unit/test_mission3_reproducibility_and_provenance.py:
+    access_dirs:
+    - configs
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts:
+      MODEL_CHECKPOINT: 1
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 1 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in test_layer_b_processor_build_stream_provenance_and_parameter_checks (call).
+    safe_for_synthetic_runner: false
+    sha256: 88c7d357a803025687c0c1097dcba06a3a44ea9843436ddf2877b387c44f62dd
+    spawns_child_process: false
+    static_hints:
+    - best.pt
+    - camera_front.mov
+    - clip.mp4
+    - data/train_events/event_001/camera_front.mov
+    tests:
+      failed: 1
+      errors: 0
+      skipped: 0
+      passed: 32
+  tests/unit/test_mission4a_governance_and_stage21_safety.py:
+    access_dirs:
+    - configs
+    - data/ground_truth
+    - data/ground_truth/reviews
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    - data/manifests
+    - docs
+    - docs/generated
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    - data/ground_truth/authorized_reviewers.json
+    - data/ground_truth/reviews/_INTEGRITY_NOTICE.md
+    - data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/engine_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_001_review.json
+    - data/ground_truth/reviews/train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_002_review.json
+    - data/ground_truth/reviews/train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_004_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_004_review.json
+    - data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_005_review.json
+    - data/ground_truth/reviews/train_events/event_006_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_006_review.json
+    - data/ground_truth/reviews/train_events/event_007_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_007_review.json
+    - data/ground_truth/reviews/train_events/event_008_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_008_review.json
+    - data/ground_truth/reviews/train_events/event_009_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_009_review.json
+    - data/ground_truth/reviews/train_events/event_010_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_010_review.json
+    - data/ground_truth/reviews/train_events/event_011_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_011_review.json
+    - data/ground_truth/reviews/train_events/event_012_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_012_review.json
+    - data/ground_truth/reviews/train_events/event_013_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_013_review.json
+    - data/ground_truth/reviews/train_events/event_014_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_014_review.json
+    blocked_attempts:
+      MODEL_CHECKPOINT: 2
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in test_controlled_cache_integration_across_processor_and_preflight (call).
+    safe_for_synthetic_runner: false
+    sha256: 50af9ae67ed07f0e82ec743093824e7491df8fe86f50145f7a773273462d74c9
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 2
+      errors: 0
+      skipped: 0
+      passed: 11
+  tests/unit/test_mission4d_governance_integrity.py:
+    access_dirs:
+    - configs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
+      processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: f93d700fdbb2d13c2b65ae09508b6a354da141acf068880bba8c02d1e230e38a
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 14
+  tests/unit/test_mission4e2_m4_occupancy_contract.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 57 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: cd574f6b08eff581338b667347c6cd4612d3658bfdc0e8afe224526ce7dc0bfa
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 57
+  tests/unit/test_mission5a1_audit_regressions.py:
+    sha256: 5e7d87a0e815732e73b3c147d85cc841cbbcfd2692cd0a1d4d209e80aa565f40
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_mission5a1_audit_regressions.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/unit/test_mission5a_production.py:
+    sha256: b2f1419eedd97fca302b672ee3ce1153c526c1c2939bcd37e6268025c11d335e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_mission5a_production.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/unit/test_phase10_1_safety_checks.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 7 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: fa638d17a27e28ccedac0c199d68da777cdb19718f019332bf88d04d937adcf7
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 7
+  tests/unit/test_phase10_1_unresolved_events_investigation.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 3 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: b8c2a7d46929462e259d38d056c73336952815c58275f8a0e3b95121f929c309
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 3
+  tests/unit/test_phase10_candidate_policy.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 9 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 212747a133e546bae3d647380aab4243b8ced676b34e5c5019eab17ee35e5848
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/unit/test_phase12_documented_metrics.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 6 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: a6381a5406861c2adc770a82e237854f6c4e1d1dfdb8f11561d94c1ad4b0dfc9
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 6
+  tests/unit/test_phase12_evaluation_runner.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 19 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 06dfabb1c5eb12ee177b279d2d0a153afb77dd49a823bc34ef08eedae246270e
+    spawns_child_process: false
+    static_hints:
+    - missing_media.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 19
+  tests/unit/test_phase12_governance.py:
+    access_dirs:
+    - configs
+    - data/ground_truth
+    - data/ground_truth/reviews
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    - results
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - results/experiment_registry.jsonl
+    - configs/decision_policy_v1.yaml
+    - configs/frozen_experiment_v1.yaml
+    - data/ground_truth/authorized_reviewers.json
+    - data/ground_truth/reviews/PHASE2_VERIFICATION_REPORT.md
+    - data/ground_truth/reviews/_INTEGRITY_NOTICE.md
+    - data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/engine_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_001_review.json
+    - data/ground_truth/reviews/train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_002_review.json
+    - data/ground_truth/reviews/train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_004_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_004_review.json
+    - data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_005_review.json
+    - data/ground_truth/reviews/train_events/event_006_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_006_review.json
+    - data/ground_truth/reviews/train_events/event_007_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_007_review.json
+    - data/ground_truth/reviews/train_events/event_008_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_008_review.json
+    - data/ground_truth/reviews/train_events/event_009_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_009_review.json
+    - data/ground_truth/reviews/train_events/event_010_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_010_review.json
+    - data/ground_truth/reviews/train_events/event_011_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_011_review.json
+    - data/ground_truth/reviews/train_events/event_012_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_012_review.json
+    - data/ground_truth/reviews/train_events/event_013_review.INVALIDATION_NOTICE.json
+    blocked_attempts:
+      MODEL_CHECKPOINT: 1
+      PROCESSED_DATA: 1
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: static_review_mission14_not_executed
+    reason: 'Static review by Mission 14 (file NOT executed): three tests (the real-repository readiness
+      assessment, the blocker-diagnostics test and the real-repository blocker-class test) call assess_official_phase12_readiness(REPO_ROOT),
+      which reaches execution_gate.verify_checkpoint_integrity and opens and hashes the vision, audio-v3
+      and prohibited audio-v2 checkpoints and reads review records. All other tests use the synthetic
+      workspace fixture and are mirrored in test_phase12_governance_synthetic.py. Dynamic fields below
+      are retained from the earlier guarded run (before Mission 12 edits).'
+    safe_for_synthetic_runner: false
+    sha256: 9489001c714b6f35e986d8cd36e60e1bb36697d9005534023d92a4f22e2dd64d
+    spawns_child_process: false
+    static_hints:
+    - results/experiment_registry.jsonl
+    tests:
+      failed: 2
+      errors: 0
+      skipped: 0
+      passed: 74
+  tests/unit/test_phase12_governance_synthetic.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 74 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 8439b56e4d1db010f6a2961511b9de984c9b14d1e02b97b68a3461ea99ec6df6
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 74
+  tests/unit/test_phase12_input_contracts.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 4 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: bcfbcc46901b2f4f39532c0e507ddd84798bbebb5b48bf3ad3de136ac8cd2907
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 4
+  tests/unit/test_phase12_metric_arithmetic.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 22 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: e8edd1fbf63ca36f6f5320860183fd8b2d67948f8b6c5700ee229b502291e3e5
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 22
+  tests/unit/test_phase12_official_replay.py:
+    access_dirs:
+    - configs
+    - results
+    access_paths:
+    - results/experiment_registry.jsonl
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts:
+      PROCESSED_DATA: 1
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: static_review_mission14_not_executed
+    reason: 'Static review by Mission 14 (file NOT executed): test_real_repository_run_is_blocked_and_leaves_everything_untouched
+      runs the official path on the real repository via cli_main and run_official_safe(repository_root=REPO_ROOT),
+      reaching the readiness gate''s checkpoint integrity check, reading results/experiment_registry.jsonl
+      and every review record; the module also loads the real frozen configuration at import. All other
+      tests use the synthetic workspace and are mirrored in test_phase12_official_replay_synthetic.py.
+      Dynamic fields below are retained from the earlier guarded run (before Mission 12 edits).'
+    safe_for_synthetic_runner: false
+    sha256: 434ca3f262fdf65071da3a2a9132f34f871e21ef99abbcab27ef0fb9dfaa9384
+    spawns_child_process: false
+    static_hints:
+    - data/raw/out
+    - experiments/out
+    - results/experiment_registry.jsonl
+    tests:
+      failed: 1
+      errors: 0
+      skipped: 0
+      passed: 87
+  tests/unit/test_phase12_official_replay_synthetic.py:
+    access_dirs:
+    - configs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
+      processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 79b17c97b197e4892a4fa45e19a7ae6e2c2fda6cd0fab6b4ca83b5e74619129e
+    spawns_child_process: false
+    static_hints:
+    - data/raw/out
+    - experiments/out
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 87
+  tests/unit/test_phase13_engineering.py:
+    access_dirs:
+    - configs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
+      processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 4ff85158010c41c84342aa1d53a7f0c78c1fe4e3d62a5bace246794e16bff56b
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 14
+  tests/unit/test_phase13_experiment_engine.py:
+    access_dirs:
+    - configs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
+      processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 740a8bfbb8faace3414dff2fd94cfd327491845db62e7d1deb7addf83ba9d342
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 31
+  tests/unit/test_phase14_benchmark.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 18 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: bd79ac29a619e56126db9e3d87345671e9796e86facf1123038264cc9a325190
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 18
+  tests/unit/test_phase14_benchmark_suite.py:
+    sha256: 42a33edcf3e3985c5c0dd1f31de27826ceafe6b575f710c6a17ebb576d31a2dd
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_phase14_benchmark_suite.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/unit/test_phase14_profiler.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 12 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 98a7b35b3b796d0bf74be10945ca217405998922cd0e0a221c107fee9f5845fb
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 12
+  tests/unit/test_phase15_capture_session.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 31 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: a616034baa909e8f19eaa31cbca0281011c17ca464df57c5514f779262d9c091
+    spawns_child_process: false
+    static_hints:
+    - ../escape.mov
+    - /abs/cam.mov
+    - data/raw/vision/x.mov
+    - session/cam_back.mov
+    - session/cam_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 31
+  tests/unit/test_phase15_capture_session_manifest.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 3 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 9c8b427859dc07b0af758d34e17f5671d36295e881c8bd16ac91947a4ea17203
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 3
+  tests/unit/test_phase15_capture_session_v2.py:
+    access_dirs:
+    - docs/schemas
+    access_paths:
+    - docs/schemas/phase15-capture-session-2.schema.json
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. docs/schemas/phase15-capture-session-2.schema.json);
+      no media, weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 6db32d5c34b5c5a4d8d123c3cb5de5a90cc34fa1d96051fdca4238b64f664469
+    spawns_child_process: false
+    static_hints:
+    - ../escape.mov
+    - data/raw/x.mov
+    - s/cam_back.mov
+    - s/cam_front.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 66
+  tests/unit/test_phase16_manuscript_correction.py:
+    access_dirs:
+    - docs
+    access_paths:
+    - docs/PHASE16_MANUSCRIPT_CORRECTION_v1.md
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. docs/PHASE16_MANUSCRIPT_CORRECTION_v1.md); no media,
+      weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 0cc02fedec02e31fc2908c21d3ca7fc66e15d5c72fa1fc0b8e8195876ed2b248
+    spawns_child_process: false
+    static_hints:
+    - '[evidence: experiments/vision/39f402dfe460/evaluation/metrics.json]'
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 2
+  tests/unit/test_phase1_metric_closure.py:
+    sha256: 844d90ec15173b4659cc08f968e282306c2db63533bb3fbcc7f0026a53bb387e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_phase1_metric_closure.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/unit/test_phase2_protocol_consolidation.py:
+    access_dirs:
+    - configs
+    - docs
+    - docs/generated/phase2
+    access_paths:
+    - configs/decision_policy_v1.yaml
+    - configs/frozen_experiment_v1.yaml
+    - docs/EXPERIMENT_DESIGN_FINAL.md
+    - docs/FINAL_GROUND_TRUTH_PROTOCOL.md
+    - docs/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md
+    - docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md
+    - docs/generated/phase2/EXPERIMENT_DESIGN_CONSOLIDATED.md
+    - docs/generated/phase2/FINAL_GROUND_TRUTH_PROTOCOL_v7.1.1_PROPOSED.md
+    - docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md
+    - docs/generated/phase2/PAPER_REVISION_CONSOLIDATED.md
+    - docs/generated/phase2/v7_working_tree_vs_v7.1.1_PROPOSED.diff
+    - docs/generated/phase2/v9_working_tree_vs_v9.1.1_PROPOSED.diff
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 12 repository metadata file(s) (e.g. configs/decision_policy_v1.yaml, configs/frozen_experiment_v1.yaml,
+      docs/EXPERIMENT_DESIGN_FINAL.md); no media, weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 79acda74ad8e83c2120247f7690ecdfca3eaab17b8fb2ed9394e1c15178740d1
+    spawns_child_process: false
+    static_hints:
+    - " M docs/a.md\n?? new.py\n?? clip.mov\n M x.mov\n"
+    - docs/clip.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 110
+  tests/unit/test_phase3_sensor_health_decision_policy.py:
+    access_dirs:
+    - configs
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts:
+      MODEL_CHECKPOINT: 1
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 1 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in test_scenario_12_unverified_cross_camera_fusion_rejected (call).
+    safe_for_synthetic_runner: false
+    sha256: e6ca69f4e12f51c3be29cf80b3a3cb5c71d83b69e018b9b10d5872532b3ce5d6
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 1
+      errors: 0
+      skipped: 0
+      passed: 19
+  tests/unit/test_phase4_integration_preflight.py:
+    access_dirs:
+    - configs
+    - data/raw/layer_b/v2
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - data/raw/layer_b/v2/train_events
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts:
+      MODEL_CHECKPOINT: 2
+      RAW_MEDIA: 2
+    category: RAW_MEDIA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 4 blocked read(s) of MODEL_CHECKPOINT/RAW_MEDIA locations; e.g. data/raw/layer_b/v2/train_events
+      via listdir in test_active_cohort_event_and_stream_resolution (call).
+    safe_for_synthetic_runner: false
+    sha256: 4875dc2d4e2d45d306ceab55d84c6b725216a4df2ac70dd4d0ebd757f2ef59ab
+    spawns_child_process: true
+    static_hints:
+    - Missing data/raw/layer_b/v2 directory
+    - Verify that all 27 active events have valid extractable audio streams in camera_front.mov.
+    - camera_back.mov
+    - camera_front.mov
+    - data/raw/layer_b/v2
+    tests:
+      failed: 4
+      errors: 0
+      skipped: 0
+      passed: 4
+  tests/unit/test_phase5_review_tooling.py:
+    access_dirs:
+    - configs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
+      processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 26b76613e931111f8f8e616e56ea420b9b68f3d81f37d479070e1c15f5947eba
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 36
+  tests/unit/test_phase5_synthetic_evaluation.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 17 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 1a8f4e14a23d554d4fc6e7620b42bd878c8224395de3106a671c7f461e2b51a1
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 17
+  tests/unit/test_phase9_class_ambiguity_hypothesis.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 5 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 59f019ab2379c0e647c2091be573b0e9693747866bc51f639eebdcc7a359645d
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 5
+  tests/unit/test_production_dual_camera_integration.py:
+    access_dirs:
+    - configs
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts:
+      MODEL_CHECKPOINT: 4
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 4 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in test_synchronization_applied_exactly_once (call).
+    safe_for_synthetic_runner: false
+    sha256: 5f94c6333cf809c898e8a08b10fc113069e5f5c82d4c0c9d018da9a4f5c2ec2c
+    spawns_child_process: false
+    static_hints:
+    - data/raw/layer_b/v2/train_events/event_900/camera_back.mov
+    - data/raw/layer_b/v2/train_events/event_900/camera_front.mov
+    tests:
+      failed: 4
+      errors: 0
+      skipped: 0
+      passed: 1
+  tests/unit/test_r04_evidence.py:
+    access_dirs:
+    - results/r04_sync_estimation
+    - scratch/r04_visual_review/train_events/event_020
+    access_paths:
+    - results/r04_sync_estimation/calibration_verdicts.json
+    - scratch/r04_visual_review/train_events/event_020/review_record.json
+    blocked_attempts:
+      PROCESSED_DATA: 3
+    category: PROCESSED_DATA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 3 blocked read(s) of PROCESSED_DATA locations; e.g. results/r04_sync_estimation/calibration_verdicts.json
+      via io.open in test_r04_inventory_is_event_level_and_fail_closed (call).
+    safe_for_synthetic_runner: false
+    sha256: fc0a4fe7c0eeeca6b33363cd2963c3c69acc309ce03f5e3128a52bb0d79df316
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 3
+      errors: 0
+      skipped: 0
+      passed: 2
+  tests/unit/test_readiness_audit.py:
+    access_dirs:
+    - configs
+    - data/governance
+    - data/ground_truth
+    - data/ground_truth/proposals
+    - data/ground_truth/proposals/engine_events
+    - data/ground_truth/proposals/no_train_events
+    - data/ground_truth/proposals/train_events
+    - data/ground_truth/reviews
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    - data/ground_truth/snapshots
+    - data/manifests
+    - docs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    - data/governance/leg_exec_authorization.json
+    - data/ground_truth/authorized_reviewers.json
+    - data/ground_truth/proposals/ANNOTATION_BATCH_REVIEW_INDEX.md
+    - data/ground_truth/proposals/engine_events/event_001_proposal_v1.json
+    - data/ground_truth/proposals/engine_events/event_001_proposal_v2.json
+    - data/ground_truth/proposals/engine_events/event_001_proposal_v3.json
+    - data/ground_truth/proposals/engine_events/event_001_review_sheet.md
+    - data/ground_truth/proposals/no_train_events/event_001_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json
+    - data/ground_truth/proposals/no_train_events/event_001_review_sheet.md
+    - data/ground_truth/proposals/no_train_events/event_002_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json
+    - data/ground_truth/proposals/no_train_events/event_002_review_sheet.md
+    - data/ground_truth/proposals/no_train_events/event_003_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json
+    - data/ground_truth/proposals/no_train_events/event_003_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_001_proposal.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v3.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v4.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v5.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v6.json
+    - data/ground_truth/proposals/train_events/event_001_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_002_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_002_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_002_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_003_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_003_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_003_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_004_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_004_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_004_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_005_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_005_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_005_proposal_v3.json
+    - data/ground_truth/proposals/train_events/event_005_proposal_v4.json
+    - data/ground_truth/proposals/train_events/event_005_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_006_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_006_proposal_v2.json
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 152 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml, data/governance/leg_exec_authorization.json,
+      data/ground_truth/authorized_reviewers.json); no media, weights, processed data or results were
+      requested.
+    safe_for_synthetic_runner: true
+    sha256: 6b3c1bd7397e01e87e7607a4a59a57ba5b43d632a67719b95a597961560de87a
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 18
+  tests/unit/test_real_dataset_inventory.py:
+    access_dirs:
+    - data/manifests
+    - data/raw/audio/train_horn/negative
+    - data/raw/layer_b/v2
+    - docs/archive
+    access_paths:
+    - data/raw/audio/train_horn/negative/README.md
+    - data/raw/layer_b/v2/train_events
+    - data/manifests/real_world_v2_video_manifest.json
+    - data/manifests/train_horn_audio_manifest.json
+    - docs/archive/AUDIO_MODEL_PRETRAINING_CHECKLIST.md
+    blocked_attempts:
+      RAW_MEDIA: 2
+    category: RAW_MEDIA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 2 blocked read(s) of RAW_MEDIA locations; e.g. data/raw/layer_b/v2/train_events
+      via listdir in test_layer_b_event_bundles_loadable (call).
+    safe_for_synthetic_runner: false
+    sha256: 39749c481a863b6c46d195dd5c228248f14b4c1d8c7f2fad8e3b15db1fa21c25
+    spawns_child_process: false
+    static_hints:
+    - data/raw/audio/
+    - data/raw/layer_b
+    - data/raw/layer_b/v2 must exist
+    - data/raw/layer_b/v2/
+    - data/raw/vision
+    tests:
+      failed: 2
+      errors: 0
+      skipped: 0
+      passed: 6
+  tests/unit/test_reproducibility_audit.py:
+    access_dirs:
+    - .
+    - configs
+    - data/governance
+    - data/ground_truth
+    - data/ground_truth/proposals
+    - data/ground_truth/proposals/engine_events
+    - data/ground_truth/proposals/no_train_events
+    - data/ground_truth/proposals/train_events
+    - data/ground_truth/reviews
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    - data/ground_truth/snapshots
+    - data/manifests
+    - docs
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    - results
+    access_paths:
+    - experiments
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - results/experiment_registry.jsonl
+    - configs/audio.yaml
+    - configs/decision_policy_v1.yaml
+    - configs/decision_policy_v2_candidate.yaml
+    - configs/exploratory_dual_camera_v1.1.0_authorized_20261013.yaml
+    - configs/exploratory_dual_camera_v1_supported_subset.yaml
+    - configs/frozen_experiment_v1.yaml
+    - configs/fusion.yaml
+    - configs/simulation.yaml
+    - configs/vision.yaml
+    - data/governance/leg_exec_authorization.json
+    - data/ground_truth/authorized_reviewers.json
+    - data/ground_truth/proposals/ANNOTATION_BATCH_REVIEW_INDEX.md
+    - data/ground_truth/proposals/engine_events/event_001_proposal_v1.json
+    - data/ground_truth/proposals/engine_events/event_001_proposal_v2.json
+    - data/ground_truth/proposals/engine_events/event_001_proposal_v3.json
+    - data/ground_truth/proposals/engine_events/event_001_review_sheet.md
+    - data/ground_truth/proposals/no_train_events/event_001_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json
+    - data/ground_truth/proposals/no_train_events/event_001_review_sheet.md
+    - data/ground_truth/proposals/no_train_events/event_002_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json
+    - data/ground_truth/proposals/no_train_events/event_002_review_sheet.md
+    - data/ground_truth/proposals/no_train_events/event_003_proposal_v1.json
+    - data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json
+    - data/ground_truth/proposals/no_train_events/event_003_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_001_proposal.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v3.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v4.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v5.json
+    - data/ground_truth/proposals/train_events/event_001_proposal_v6.json
+    - data/ground_truth/proposals/train_events/event_001_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_002_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_002_proposal_v2.json
+    - data/ground_truth/proposals/train_events/event_002_review_sheet.md
+    - data/ground_truth/proposals/train_events/event_003_proposal_v1.json
+    - data/ground_truth/proposals/train_events/event_003_proposal_v2.json
+    blocked_attempts:
+      MODEL_CHECKPOINT: 8
+      PROCESSED_DATA: 9
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 17 blocked read(s) of MODEL_CHECKPOINT/PROCESSED_DATA locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via io.open in test_both_policy_hash_conventions_are_recorded (call).
+    safe_for_synthetic_runner: false
+    sha256: 866c2b65cba8cf181179ceb639be0ec0c1c6545da2a814659145ca5da4cc9e02
+    spawns_child_process: false
+    static_hints:
+    - results/experiment_registry.jsonl
+    tests:
+      failed: 9
+      errors: 0
+      skipped: 0
+      passed: 13
+  tests/unit/test_research_contracts.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 71 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 907227ceafd27913ff4f4655972773042e6e3706be90fcfaf70d640fcbed49b9
+    spawns_child_process: false
+    static_hints:
+    - data/raw/video/event.mp4
+    - docs/../data/raw/private.txt
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 71
+  tests/unit/test_research_scripts.py:
+    access_dirs:
+    - experiments/vision/39f402dfe460/checkpoints
+    - experiments/vision/39f402dfe460/evaluation
+    - research/templates
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/results.csv
+    - experiments/vision/39f402dfe460/evaluation/failure_analysis.json
+    - experiments/vision/39f402dfe460/evaluation/metrics.json
+    - research/templates/ablation_template.csv
+    blocked_attempts:
+      MODEL_CHECKPOINT: 1
+      PROCESSED_DATA: 2
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 3 blocked read(s) of MODEL_CHECKPOINT/PROCESSED_DATA locations; e.g. experiments/vision/39f402dfe460/checkpoints/results.csv
+      via open in test_training_figures_generation (call).
+    safe_for_synthetic_runner: false
+    sha256: 77120007913ebd57ee5d233ccba6ea6f7e3ccb23e968a4a62d4d8df570387642
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 3
+      errors: 0
+      skipped: 0
+      passed: 4
+  tests/unit/test_security_dashboard.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 50 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 9513dee5d8587c382e60e877f0db88959325e46a83f1906704edd4ae14a3b6ce
+    spawns_child_process: false
+    static_hints:
+    - /elsewhere/video_tests/run1/annotated.mp4
+    - /experiments/%252e%252e/data/governance/auth.json
+    - /experiments/%2e%2e/configs/secret.yaml
+    - /experiments/../configs/secret.yaml
+    - /experiments/VISION/run1/CHECKPOINTS/weights/best.pt
+    - /experiments/VISION/run1/EVALUATION/pr.png
+    - /experiments/other/run1/evaluation/pr.png
+    - /experiments/vision
+    - /experiments/vision/run1/checkpoints/weights/best.pt
+    - /experiments/vision/run1/evaluation
+    - /experiments/vision/run1/evaluation/..%2fcheckpoints%2fweights%2fbest.pt
+    - /experiments/vision/run1/evaluation/../checkpoints/weights/best.pt
+    - /experiments/vision/run1/evaluation/missing.png
+    - /experiments/vision/run1/evaluation/pr.png
+    - /experiments/vision/run1/evaluation/weights.png
+    - /experiments/vision/run1/weights_plot.png
+    - /outputs/video_tests/rawdir/camera_front.mov
+    - /outputs/video_tests/run1/annotated.mp4
+    - /outputs/video_tests/run1/annotated.mp4%00.json
+    - /outputs/video_tests/run1/link.mp4
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 50
+  tests/unit/test_security_evaluation_input.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 24 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: c23e48835e83ac386375d8cb832250fb60bf4ea4790d2398f807d54c6d67c7a5
+    spawns_child_process: false
+    static_hints:
+    - camera_front.mov
+    - data/raw/layer_b
+    - manifest.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 24
+  tests/unit/test_security_governance_regressions.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 25 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: a162aac2715c039159d013d631a2ed70d2977d20994ede2e4aefb7693078eaa2
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 25
+  tests/unit/test_security_media_boundary.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 55 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: fa55238f3613f5d24d52a64d37a8b73b6e2b74ed5c193ec1cd7bc36f4b6ff064
+    spawns_child_process: false
+    static_hints:
+    - .mov
+    - .mp4
+    - /nonexistent/elsewhere/clip.mov
+    - absent.mov
+    - camera_back.mov
+    - camera_front.mov
+    - "clip\0.mov"
+    - clip.json.mov
+    - clip.mov
+    - clip.mov.bak
+    - clip.mp4
+    - dangling.mov
+    - data/raw/layer_b/new.jpg
+    - data/raw/layer_b/v2
+    - data/raw/layer_b/v2/train_events/event_001/camera_front.mov
+    - experiments/vision/run1/x.jpg
+    - innocent.mov
+    - results/x.jpg
+    - train_events/event_001/camera_front.mov
+    - x.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 55
+  tests/unit/test_security_path_identity.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 52 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 49ace47e5ea572e5c8d2f30b72ccae0880be32c055a4a428e13b6bcf01a09725
+    spawns_child_process: false
+    static_hints:
+    - data/processed/cache
+    - data/processed/cache/escape/stolen.jsonl
+    - data/processed/cache/ok.jsonl
+    - data/raw/new
+    - experiments/new
+    - experiments/x
+    - results/x
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 52
+  tests/unit/test_security_scratch_scripts.py:
+    access_dirs:
+    - scratch
+    access_paths:
+    - scratch/analyze_audio.py
+    - scratch/analyze_forensic_results.py
+    - scratch/analyze_train_events.py
+    - scratch/audit_train_events.py
+    - scratch/compute_candidates.py
+    - scratch/dense_event_measurer.py
+    - scratch/extract_frames.py
+    - scratch/forensic_event_auditor.py
+    - scratch/generate_v7_proposals.py
+    - scratch/measure_ground_truth_v7.py
+    - scratch/physical_frame_inspector.py
+    - scratch/run_phase2_verification.py
+    - scratch/run_unit_tests.py
+    blocked_attempts: {}
+    category: METADATA_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Reads 13 repository metadata file(s) (e.g. scratch/analyze_audio.py, scratch/analyze_forensic_results.py,
+      scratch/analyze_train_events.py); no media, weights, processed data or results were requested.
+    safe_for_synthetic_runner: true
+    sha256: 8b9539bb10059d91e852d66efcbe96de1e85a084261b7dfbb84ad43d2031c398
+    spawns_child_process: false
+    static_hints:
+    - clip.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 24
+  tests/unit/test_simulation_runner_profiling.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 9 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 74819580de67ae9b60956e8e1c53126fb4218d3d82c705959e79a138dbf67830
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/unit/test_split.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 4 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 14388189098564e24609b9e19580e47ed5bad6383109ce1af3c45dd2f28d2bda
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 4
+  tests/unit/test_sync_calibration_classifier.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 20 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 6f60e04c04afadeacf9a6166feb58b0bdf8bb484b3b3c4e6e5414da8e136709e
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 20
+  tests/unit/test_sync_offset_estimator.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 14 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 95bb96ecd34cbdbb57823ffbb8b62373a49de01ca29a7800190fb46e32498872
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 14
+  tests/unit/test_temporal_evidence.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 9 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 9ef3e6e8d6a972e53c21cf800d5b1a2d061d3fd8fff81847fa1433ce53b271c1
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/unit/test_validated_sync_aligner.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 28 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: f1ace671f3a7ae3a2a700e9e27d799a687d9f2be0162eb506b77a2daee58bf22
+    spawns_child_process: false
+    static_hints:
+    - ../../outside/camera.mov
+    - /outside/camera.mov
+    - data/raw/layer_b/v2/train_events/event_001/camera_back.mov
+    - data/raw/layer_b/v2/train_events/event_001/camera_front.mov
+    - data/raw/layer_b/v2/train_events/event_001/escaped.mov
+    - data/raw/layer_b/v2/train_events/event_002/camera_back.mov
+    - data/raw/layer_b/v2/train_events/event_002/camera_front.mov
+    - outside-media.mov
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 28
+  tests/unit/test_validator.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 8 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: f39a91331ef7537dbabd8c651bc5cb803a9135d798c919e8c19351daafedfdb3
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 8
+  tests/unit/test_video_demo.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 7 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 15b5e408b0de19204d0c873a48b4c8bade38d2b93c2a7a3c6f9a8fdee57cdf79
+    spawns_child_process: false
+    static_hints:
+    - best.pt
+    - non_existent.mp4
+    - outputs/processed_video.mp4
+    - sample.mp4
+    - test_train_video.mp4
+    - train_clip.mp4
+    - weights/best.pt
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 7
+  tests/unit/test_video_reader.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 8 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 764526903d42323e4c38a75eaf13a25faf7c3358155a8d5ec0eaaf939f12a428
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 8
+  tests/unit/test_vision_adapter.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 3 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: f254c9f36203efaafb8fbd236b216876d111c76aa68d4e71624c43408aa73ffe
+    spawns_child_process: false
+    static_hints:
+    - best.pt
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 3
+  tests/unit/test_vision_evaluator.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 9 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: eacc7572797babb773a593d9df96b411c06ccadca85fec72409c07fe759cb5e2
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/unit/test_yolo_adapter.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 9 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 1f384e0da24ce094783c7316d1924852a7ebaade9511aacb09bb894c3c7012ea
+    spawns_child_process: false
+    static_hints:
+    - best.pt
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 9
+  tests/synthetic_data_provenance/test_manifest.py:
+    sha256: b2a5248d975bdb24d01599c50f3737d04b50c1c7e848c7b83cd30c809bae88c9
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_data_provenance/test_manifest.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_evaluation_pipeline/test_orchestration.py:
+    sha256: ddeea2e6902b4a13af1425cad19bb560b196b7bb89708f8d2df6d377bbf41804
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_evaluation_pipeline/test_orchestration.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_human_review/test_adapters.py:
+    sha256: 6d6b9591efa865f7fb73ec5d67efaec72479106b91bc8ab1d679faf93e8b3e12
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_human_review/test_adapters.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_human_review/test_domain.py:
+    sha256: d4346b6a01451f6c07cee94e8af723bc039b5c0a44ef13284f09e72d1778d24e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_human_review/test_domain.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_human_review/test_persistence.py:
+    sha256: 367906b22d6e69342f7d9efe8d6042fa3fb4d3c1c523c44a0052f2068d6186f4
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_human_review/test_persistence.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_metric_contracts/test_reporting.py:
+    sha256: 8e06301fdb0dcf7908ebb9637e8b5e5a3aa173270f88d23dd6c412a514447aef
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_metric_contracts/test_reporting.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_convention_b.py:
+    sha256: 2aa21e462217ee7126afc98a4d5a26633e50da6063fbf8418b9205d695fae658
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_convention_b.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_grouped_cv.py:
+    sha256: 81018f5539a144e650d5206c9cf9bda5ca8474230773310b781b5e733c42c12d
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_grouped_cv.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_isolation.py:
+    sha256: 5d9424894bb70979695114bb72b9955885b6448874f6c8eddbfddf8622c52986
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_isolation.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_mission17f_regressions.py:
+    sha256: 9b5cb17c176079275d8261cd6f33906268524f009b37c2a28a116d22590f5ff4
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_mission17f_regressions.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission17d/test_mission17g_hardening.py:
+    sha256: 5e6e62b3cf8f8b85dc3532d03fb6942fe02f7a51bd3fa60d18c6cc994cd7ddaa
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission17d/test_mission17g_hardening.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission18a/test_convention_b_integration.py:
+    sha256: 236d4e2255fa12ddd02f7172bda9438d20cecdc5b21d6c5b96fc5cf065d19eab
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission18a/test_convention_b_integration.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission18a/test_isolation.py:
+    sha256: bc8ef206b442012f6b5655403326a9ce1c542f48d932ed37b39f6d23016d163f
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission18a/test_isolation.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission18b/test_provenance.py:
+    sha256: 8010ba783b4a351c1888b08905f8b0031d090cea0724c47245b01cfafdb59044
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission18b/test_provenance.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_crash_and_adversarial.py:
+    sha256: 75ab5aac4b157686571f5137c6b0c55e54d7660dcd278dee1ed077eedf7d5d5f
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_crash_and_adversarial.py: new or changed source; original
+      classifier evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes
+      the complete inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_metric_bridge.py:
+    sha256: 62ca81c05586579b8eeb8d19c9074b1c82ef7db37f3be522e40f863b413db37e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_metric_bridge.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_review_service.py:
+    sha256: d01d172fd2382ccaed6e06f09536743c06db45086007e3c061a874b91fd55e8f
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_review_service.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_workflow.py:
+    sha256: 939a69c695a5c483a72aa3a31d098f9b928b3b1967f6e721114fc476763826fd
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_workflow.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_preservation/test_snapshot.py:
+    sha256: 09aecea3dff47298dad46810c7b6daf786f61cb010a53256fd9249a78cf14dcf
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_preservation/test_snapshot.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_reporting/test_drafts.py:
+    sha256: 805290c1a6f15664f9c45307770bdceeee9f4c47e048e2585e40a529368b3865
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_reporting/test_drafts.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_security/test_broker.py:
+    sha256: f3d430a8aebfe2451a55a24362f08ae41cde601614b4a776109c3b96509d26c2
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_security/test_broker.py: new or changed source; original classifier evidence
+      is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete inventory
+      separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_security/test_composed_workflow.py:
+    sha256: b1314dc95a62b8dfca94fb7fb513fad22f113c5a359b6917ac605835ec67f34f
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_security/test_composed_workflow.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_security/test_transactions.py:
+    sha256: b4f5abda2f76d9ccf80a6223d1d69f19a221138630325202abfbc50180ef54e9
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_security/test_transactions.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_tooling/test_restored_mypy.py:
+    sha256: a9d02f3566ef1b6d492972278222d4da2b708b192495dd8768074da5c7cefd9b
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_tooling/test_restored_mypy.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission22/test_regression_policy.py:
+    sha256: 7606cfa12aa4d52a8f37a56c7548352d92ea50039ead8e91c29a91e29e393711
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission22/test_regression_policy.py: new or changed source; original classifier
+      evidence is stale. Conservatively UNKNOWN pending reclassification; Mission22 executes the complete
+      inventory separately under its inherited policy.'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission23/test_acceptance_contract.py:
+    sha256: 0128e93da0744a31a8f2ad875bf155558a4e3847cd0a23311b814378aca72a6e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission23/test_acceptance_contract.py: changed/new source; UNKNOWN pending
+      executed evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission23/test_demo_hardening.py:
+    sha256: f7c653bcd4c062ed83c8145ea1eb6f9a7ed77e6b723262986328e054b8d1d53c
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission23/test_demo_hardening.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission23/test_fixture_adapters.py:
+    sha256: a50f9433ae5b9115f6801142f07b24a365046fe7b626f1bdbd37d784efd2c161
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission23/test_fixture_adapters.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission24/test_application.py:
+    sha256: ae4d771a5db0362a2e6f40f0290dee731190f382f249be7addca9c5b770073cf
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission24/test_application.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission24/test_authorization.py:
+    sha256: 1c588eb166f6a4608162047dbc4005d884fcb7af26ca9f296b32181b9e0d1692
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission24/test_authorization.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission24/test_cli.py:
+    sha256: 715f5d7a23e269940aac291129a53a61be35dcc821d5cf5db76ac0ab51f05ab0
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission24/test_cli.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission24/test_comparator.py:
+    sha256: 69eace8a7a8d504fbc46660f6427742523e17a64163ac11b71587a5691223ee6
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission24/test_comparator.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission24/test_review_interfaces.py:
+    sha256: 98cac154f2e3d1466618532cd6fb864ceb8f9aefa8695912b5e0ca5e9b4340fb
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission24/test_review_interfaces.py: changed/new source; UNKNOWN pending
+      executed evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission25/test_contracts.py:
+    sha256: 22424d0359932bf7ce697f9733f73d3dc89f424295cee893ae81ae55b095f99a
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission25/test_contracts.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission25/test_integration.py:
+    sha256: 2f576950447418a8cbeca5d93cff1baf451d84f244c39a4a4a1b873b04cec287
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission25/test_integration.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission25/test_journal.py:
+    sha256: cb722087dfb48719f7ee0ca26a2fdd14c7d9b30b86e4a7d1003ec9f50b6db183
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission25/test_journal.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission25/test_lifecycle.py:
+    sha256: 611782011bd0f3c9e35b2e0d28d64f1d1f12a11dd37b86fa0dc39270be900fe7
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission25/test_lifecycle.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission26/test_engine.py:
+    sha256: 2fa1ed6d544635fcc36fedadfece36db29b10f5a0426f808834886ea61f61e34
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission26/test_engine.py: changed/new source; UNKNOWN pending executed evidence
+      review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission26/test_inventory_cli.py:
+    sha256: 1a18e2396abd4536bc284bdf0fceb8c3f1739fbf50cd633ed9ff97f99f1e30f7
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission26/test_inventory_cli.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission27/test_dashboard_cli.py:
+    sha256: 7a147ac1602f91e84300751890cb8cee47c41c4d00eea87313936f6783921acb
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission27/test_dashboard_cli.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission27/test_documentary_intake.py:
+    sha256: a7de4cba7ecfb0aacb93c11302d800db07179f62db7a6d7060b8547c257f60a9
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission27/test_documentary_intake.py: changed/new source; UNKNOWN pending
+      executed evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission28/test_intake_integrity.py:
+    sha256: e56bc823259d471dfef8fdaebece18b3294bdec7401cb9c4324b54fca4aa331c
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission28/test_intake_integrity.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission28/test_pilot_readiness.py:
+    sha256: 4c653b5c7d3b445d02e7ff274359ed20ce04f1d0e09254d80f2cdc64aa3fc5a3
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission28/test_pilot_readiness.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission29/test_claims_pathway.py:
+    sha256: a4e676311863d69d06087cb88406748c740e1b70dcd0bc23c3f498ecf871d2f0
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission29/test_claims_pathway.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission37/test_source_pts.py:
+    sha256: 5e7f62e810dc7fd4575235c59082163c303f585f9b2abfab56eaffbf036fd50b
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission37/test_source_pts.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission38/test_front_runtime.py:
+    sha256: 1916b7bf27d906d9c7d0bef443e11dc52de1e333d4424e9dc677e32a5f35f16e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission38/test_front_runtime.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+  tests/synthetic_mission39/test_audio_feature_parity.py:
+    sha256: c14b1b8d833228bf974c48ecfb8663c48307abeba100b354ac3d8e4b59416b42
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission39/test_audio_feature_parity.py: changed/new source; UNKNOWN pending
+      executed evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
+amendments:
+- mission: 14
+  tool: docs/generated/phase5/mission14_tools/classify_selected.py
+  dynamic_files:
+  - tests/unit/test_media_authorization.py
+  - tests/unit/test_media_opener_coverage.py
+  - tests/unit/test_phase12_governance_synthetic.py
+  - tests/unit/test_phase12_official_replay_synthetic.py
+  - tests/unit/test_security_dashboard.py
+  - tests/unit/test_security_evaluation_input.py
+  - tests/unit/test_security_governance_regressions.py
+  - tests/unit/test_security_media_boundary.py
+  - tests/unit/test_security_path_identity.py
+  - tests/unit/test_security_scratch_scripts.py
+  static_files:
+  - tests/unit/test_phase12_governance.py
+  - tests/unit/test_phase12_official_replay.py
+- mission: 14
+  tool: docs/generated/phase5/mission14_tools/classify_selected.py
+  dynamic_files:
+  - tests/unit/test_access_classification_tools.py
+  static_files: []
+- mission: 14
+  tool: docs/generated/phase5/mission14_tools/classify_selected.py
+  dynamic_files:
+  - tests/unit/test_security_dashboard.py
+  - tests/unit/test_security_evaluation_input.py
+  - tests/unit/test_security_governance_regressions.py
+  - tests/unit/test_security_media_boundary.py
+  - tests/unit/test_security_path_identity.py
+  - tests/unit/test_security_scratch_scripts.py
+  static_files: []

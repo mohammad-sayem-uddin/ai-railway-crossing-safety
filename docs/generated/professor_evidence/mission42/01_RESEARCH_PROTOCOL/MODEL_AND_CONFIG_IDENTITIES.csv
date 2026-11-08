@@ -1,0 +1,6 @@
+artifact,repository_reference,sha256,identity_scope
+Vision YOLOv8n checkpoint,experiments/vision/39f402dfe460/checkpoints/weights/best.pt,3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd,"Prior verified checkpoint identity; reused, not read or copied in M42"
+Audio V3 checkpoint,experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt,ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782,"Prior actual acoustic run; reused, not read or copied in M42"
+Frozen YAML bytes,configs/frozen_experiment_v1.yaml,b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a,Current exact text bytes verified and copied
+Canonical frozen config,configs/frozen_experiment_v1.yaml parsed canonical semantic form,999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e,Recorded canonical identity; distinct from raw YAML hash
+Decision policy bytes,configs/decision_policy_v1.yaml,c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575,Current exact text bytes verified and copied

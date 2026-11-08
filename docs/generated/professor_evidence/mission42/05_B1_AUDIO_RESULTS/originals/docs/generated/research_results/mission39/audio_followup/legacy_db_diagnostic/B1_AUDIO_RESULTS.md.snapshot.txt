@@ -1,0 +1,25 @@
+# B1_audio actual held-out acoustic predictions
+
+**ORIGINAL_ACOUSTIC_INFERENCE_COMPLETE=5/5; AUDIO_WINDOWS=423; MODEL_POSITIVE_WINDOWS=80; ACCEPTED_GT_EVALUATIONS=0.** Audio embedded in the existing five pilot front containers was actually decoded and passed through the existing CompactTrainHornCNN. No video imagery or standalone development recording entered the classifier. These are correlated window predictions, not 80 horns/trains or a measured accuracy estimate.
+
+| Existing front-container event | 1s windows, 0.5s hop | Predicted train windows, threshold0.37 | Mean model probability | Successful member pipeline wall seconds |
+|---|---:|---:|---:|---:|
+| train_events/event_005 | 158 | 78 | 0.410896 | 0.689 |
+| train_events/event_021 | 105 | 1 | 0.031441 | 0.458 |
+| engine_events/event_001 | 14 | 0 | 0.034075 | 0.105 |
+| train_events/event_001 | 98 | 0 | 0.000715 | 0.320 |
+| no_train_events/event_001 | 48 | 1 | 0.052009 | 0.490 |
+
+The designated control has one positive window; engine has zero. These are actual model findings, without a measured FP/FN, horn truth, exposure or event-presence claim. Whole windows only; unwindowed tails are retained as sample counts in [the event table](B1_AUDIO_EVENT_SUMMARY.csv), not padded. Engine stays separate. Per-event wall times include source timing decode, FFmpeg conversion, inference, serialization and B2 input assembly; exclude model initialization and failed-attempt overhead. They do not establish real-time performance.
+
+The [inventory reconciliation](audio_followup/HELD_OUT_ACOUSTIC_RECONCILIATION_RECEIPT.json) maps 56 historical container rows to54 candidate members/27events with two duplicate exclusions. The old videos/ root is retired; actual members are in data/raw/layer_b/v2/. The existing B1 front condition limits this run to five fixed fronts; no expanded cohort or back-audio run is implied. All87 standalone horn recordings remain development. The inspected V3 training manifest has no LayerB member path/container-hash overlap; this bounded check does not independently prove global origin independence or waveform nonoverlap.
+
+Model/checkpoint/config are unchanged. Exact AudioV3 SHA ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782; semantic frozen config999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e. Existing 16kHz mono PCM16 FFmpeg transform, 1s/0.5s windows, 64×61 log-Mel, FFT512/hop256/80–8000Hz, stored mean−1.600999355316162/std5.1239728927612305 and threshold0.37; CPU/seed42. No tuning or new feature transformation. Existing runtime computes10*log10 power while historical V3 report prose says natural log; this previously documented lineage conflict is retained as a limitation, not silently corrected or claimed resolved by successful inference.
+
+Audio was converted into memory using the existing FFmpeg transform, with no derived WAV file placed in raw/processed/synthetic locations. Each actual audio stream's native PTS was decoded and checked contiguous from0 with timebase1/48000; absolute indices1,1,1,1,0. Integer sample offsets map each window causally to its actual end. All emitted windows end within the previously verified stream duration. AAC decoded tail and resampling sample rounding are recorded, not physical-clock or T2 validation. Original container hashes reuse AUTH35-V; stat identity remains stable. No original rehash/header-probe or front model rerun.
+
+Initial invocation: two members succeeded; three stopped before classifier inference because a technical check incorrectly required an integral resampling ratio. The failed manifest/logs are preserved. Generated PCM checks establish nearest-integer output sample counts, then only the three failed members were retried successfully under a separately closed scoped binding. The two successes were reused. No failed attempt is counted as a successful experiment or an extra event. Five generated checks are not added to the prior3807 software cases.
+
+[Actual run union](audio_followup/ACTUAL_AUDIO_RUN_MANIFEST.json), separate initial/retry manifests, exact invocation sources, issued/closed authorization records, native clock ledgers and actual generic/descriptive prediction JSONLs are retained under audio_followup/. [Result validation](audio_followup/AUDIO_AND_B2_INPUT_RESULT_VALIDATION.json) checks every row/hash/causal end and source parent. Both one-invocation capabilities are closed; no current raw-media or descriptive evaluation grant remains. No GT/replay metric or human record was created.
+
+Figures: [window predictions](figures/B1_AUDIO_WINDOW_PREDICTIONS.png), [actual source probability traces](figures/B1_AUDIO_SOURCE_PROBABILITIES.png). Model probabilities are not correctness probabilities or calibrated safety evidence.

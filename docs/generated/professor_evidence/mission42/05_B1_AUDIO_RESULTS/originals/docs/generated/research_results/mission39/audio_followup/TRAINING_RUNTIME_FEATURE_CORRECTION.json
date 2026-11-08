@@ -1,0 +1,39 @@
+{
+  "schema": "mission39-audio-feature-parity-correction/1",
+  "training_source": "scripts/preprocess_audio_dataset_v3.py",
+  "training_sha256": "8172f043b6d5048d88b5aaf4a9fe6c25089957a586aff98aad266d7075f64a64",
+  "runtime_baseline": "10*log10(max(mel_energy,epsilon))",
+  "intended_V3_training_transform": "log(mel_energy+epsilon)",
+  "frozen_parameters_unchanged": [
+    "checkpoint",
+    "normalization",
+    "threshold0.37",
+    "sample_rate16000",
+    "window1.0",
+    "hop0.5",
+    "FFT512",
+    "mel64",
+    "feature_hop256",
+    "80-8000Hz",
+    "five pilot fronts"
+  ],
+  "justification": "Actual training source/report require natural logarithm; correct train/inference parity, no outcome-based tuning or new experiment",
+  "changes": {
+    "src/railway_detection/audio/features.py": "Explicit natural-log option while legacy default dB API stays compatible",
+    "src/railway_detection/audio/model.py": "V3 classifier uses actual training natural-log features",
+    "src/railway_detection/experiments/cache_provenance.py": "Names natural log and epsilon in audio cache identity so old dB caches cannot alias",
+    "tests/synthetic_mission39/test_audio_feature_parity.py": "Generated silence/tone/noise/quiet parity against actual training source, classifier input normalization, old API compatibility and cache tagging"
+  },
+  "focused_receipt_private": "/private/tmp/m39_audio_parity_255qvmty",
+  "focused_result": "8 passed, 0 failed/errors/skips; no production sources/model weights accessed by tests",
+  "initial_diagnostic_results_preserved": true,
+  "no_new_training_or_threshold_tuning": true,
+  "earlier_focused_temp_receipt_currently_available": false,
+  "current_retained_parity_evidence": {
+    "path": "software_validation/junit/synthetic_mission39.xml.gz",
+    "sha256": "c1ed48080a9023eb1d151d189b251e83083b07c0dc5f8645edc4e6fb5b371a3c",
+    "cases": 8,
+    "part_of_complete_full_run": true,
+    "uncompressed_xml_sha256": "3ef70b134039ed48b325286129844558cc5e81267885f0db5f7631cb27ff92cc"
+  }
+}

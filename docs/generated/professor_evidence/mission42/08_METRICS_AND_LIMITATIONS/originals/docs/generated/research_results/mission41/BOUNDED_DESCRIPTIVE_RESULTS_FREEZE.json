@@ -1,0 +1,81 @@
+{
+  "schema": "mission41-bounded-descriptive-freeze/1",
+  "status": "BOUNDED_MODEL_OUTPUT_DESCRIPTORS_READY_FOR_RESEARCHER_REVIEW",
+  "researcher_accepted": false,
+  "source_delivery_commits": [
+    "c4d65916128dcc12857e4e5b89f98452e118d9c9",
+    "e82269521c1222fef0826449e18a386a7a58a362"
+  ],
+  "physical_events": 5,
+  "unique_camera_members": 10,
+  "source_payload_sha256": {
+    "docs/generated/research_results/mission39/predictions/train_events_event_005_front.jsonl": "d37937591414b6d88bd0af1ce644d98d9b1a276a038a6ec9ea3fe59012e6d84e",
+    "docs/generated/research_results/mission39/predictions/train_events_event_021_front.jsonl": "01241b124c6ca527b45f6679a23131f02121605e06f2d28544d89570122a300d",
+    "docs/generated/research_results/mission39/predictions/engine_events_event_001_front.jsonl": "b0946e375d4d28d5f3422f216879ddf9090a07ad328e03c9fe398dc7922db910",
+    "docs/generated/research_results/mission39/predictions/train_events_event_001_front.jsonl": "29d7f4d2af6e6f6af065e397e34e17d419a2278b2668fffa36a56e55fa79e56f",
+    "docs/generated/research_results/mission39/predictions/no_train_events_event_001_front.jsonl": "8827a30f84bc6a1090ec858820f9073bf03571b13503ccdfa452b00403e516b2",
+    "docs/generated/research_results/mission39/predictions/train_events_event_005_back.jsonl": "d15ab150ae4f7c1a240b1b8ca7cd454dbf74197a536ce3c94043c4984598bd97",
+    "docs/generated/research_results/mission39/predictions/train_events_event_021_back.jsonl": "f1dff4399e2e16ab12a808fc01e137c1698f598d7ad777d8659988d7fdc5cc1a",
+    "docs/generated/research_results/mission39/predictions/engine_events_event_001_back.jsonl": "13b4f642e50d456c4a46d63efa1764a7adc30d9e8fe7bc7961f846174c4a883e",
+    "docs/generated/research_results/mission39/predictions/train_events_event_001_back.jsonl": "5af446d81f3638cb1dc2d737cbc1dd2d525ee385ec114dae21f71789925ac317",
+    "docs/generated/research_results/mission39/predictions/no_train_events_event_001_back.jsonl": "72c22b5f492f49ceded30519bb8402e8f16741559994802ecedd905cf427c32f",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio.jsonl": "f8544acff0ef71246e892c0dd4d828ef89acbe7cdeefc31967df93e11ead1527",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl": "418e8dc15cecdbed3ebd4b3c971dbc8edfa7fe4586249fc700452af19c494ef2",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio.jsonl": "b5eb0db0e4050ffba471c7be513131f471471a73010277a8763ac3fabd122932",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl": "7008fa26af4d194963b2924fa0273b811cbee8f6f34f7f3e676c6781c31fddab",
+    "docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio.jsonl": "032c870fdf67749ae91a7f67552f4907bd33df3145960841f8e3329242486f13",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl": "aaa1d70fee053e82b2c646913e926c300ccf47e523dd92008bac72dea3ba343b",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio.jsonl": "b907ee84724c1b5f41734af54fe46ed174a8137a9823e8d72d96410857defb82",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl": "466187ac47d648888debdf4d9ff1af1990c53c676689ae378f018a82863cd126",
+    "docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio.jsonl": "7825a461cd83eddfb56d1e3ef7d68ccadc82806c21c80bef133f695aed7c6d37",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl": "4690168edf2c1c15e94c83b569fb9b8fb63a43e965d748cb7b79a69f781d628f"
+  },
+  "reused_completed_tables": {
+    "B0_FRONT_EVENT_SUMMARY.csv": {
+      "sha256": "b4203ddbf91169aa1f3c830fe811c50b4caf486123601a470b367722fd6b046d",
+      "rows": 5
+    },
+    "B0_BACK_EVENT_SUMMARY.csv": {
+      "sha256": "574136d669f695a8de43f0cf4074675e8959abd4b91ebcfb066da45412c34f3f",
+      "rows": 5
+    },
+    "B0_FRONT_PREDICTED_CLASS_SUMMARY.csv": {
+      "sha256": "85dce3ba1d9e218e8f41c313edb34122d6a8390a40ac672611f6a537a32e71b0",
+      "rows": 15
+    },
+    "B0_BACK_PREDICTED_CLASS_SUMMARY.csv": {
+      "sha256": "547a3a63c66a3b81cbebac0dd20ea3f5489c87db0482f9f35e047bee7378adbb",
+      "rows": 15
+    },
+    "B1_AUDIO_EVENT_SUMMARY.csv": {
+      "sha256": "b82edc34914405d9145d24af9d24522896f5383916ab39360baa3e1b5c4a78e5",
+      "rows": 5
+    },
+    "B2_FRONT_INPUT_ASSEMBLY_SUMMARY.csv": {
+      "sha256": "b7669823d1e67b02e72f5f96568f9694e76e399a0522f31579c7671eb55669c6",
+      "rows": 5
+    }
+  },
+  "descriptor_artifact_sha256": {
+    "EXISTING_PROCESSING_TIME_DETAIL.csv": "19e5bc79dba8a70c2c3de0321080591375f5215ba2bb3445ea0f893bca4945eb",
+    "VISUAL_CONFIDENCE_CONTINUITY_SUMMARY.csv": "39b750a68f3de8d76d49c4c56e27b0c9a80a31ddb08410e1c58b494fc2f4bd2a",
+    "SAMPLED_CLOCK_CADENCE.csv": "0423654be72f9dc57585f5a75f91476fd522064d768da641f1f34d46f439bdae",
+    "AUDIO_MODEL_LABEL_RUNS.csv": "c943bfc6e0a5ace27925e4ecf42c1a9b3d8a309a33df6598b637bab7b4e4edba",
+    "EXISTING_PROCESSING_TIME_AGGREGATES.csv": "9a1661fcedc921de244d9812d50394a0b1cf8c3c0e0b6e834859fb8818b4988d",
+    "VISUAL_SAMPLE_RUNS.csv": "5747855fc603ce45ece0c765b38d8d2d577f4ec8ac1a94d2206d8a640c06d6da",
+    "B2_INPUT_AUDIO_RECORD_RUNS.csv": "c7dd9947ed9d055c30339d9d9c75734c7f21474f1eb4dba02b7285fba2b7870b",
+    "B2_INPUT_RECORD_ABSENCE_BREAKDOWN.csv": "bc0ae385348c90b42d17ca65726099aef6ab34135005c787ae29f6f240e0c94c"
+  },
+  "frozen_config_canonical_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+  "checkpoint_identities": {
+    "vision": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+    "audio_v3": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782"
+  },
+  "checkpoint_identity_basis": "Existing actual Mission39 verification, not a fresh checkpoint read/hash",
+  "B2_decision_replay": false,
+  "ACCEPTED_CANONICAL_GT": "NOT_ESTABLISHED",
+  "metric_scope": "Model-output/source-clock/observed processing-time/input-record descriptors only; no GT performance, fusion superiority or safety result",
+  "operational_or_release_authorization": false,
+  "raw_inference_repeated": false,
+  "source_time_and_processing_time_distinguished": true
+}

@@ -1,0 +1,6 @@
+event,initial_no_audio_record_frames,initial_last_assembly_time_s,first_causal_audio_window_end_s,later_single_frame_absence_runs,later_no_audio_record_frames,total_no_audio_record_input_frames,decision_frames,interpretation
+train_events/event_005,5,0.8,1.0,157,157,162,NOT_EXECUTED,Existing input stage only; no padding or negative-evidence substitution
+train_events/event_021,5,0.8,1.0,104,104,109,NOT_EXECUTED,Existing input stage only; no padding or negative-evidence substitution
+engine_events/event_001,5,0.8,1.0,14,14,19,NOT_EXECUTED,Existing input stage only; no padding or negative-evidence substitution
+train_events/event_001,5,0.8,1.0,98,98,103,NOT_EXECUTED,Existing input stage only; no padding or negative-evidence substitution
+no_train_events/event_001,5,0.8,1.0,47,47,52,NOT_EXECUTED,Existing input stage only; no padding or negative-evidence substitution

@@ -1,0 +1,19 @@
+# B2_front actual input-stage results
+
+**PAIRED_INPUT_ASSEMBLY_COMPLETE=5/5; INPUT_FRAMES=1079; DECISION_REPLAY_EXECUTED=0; ACCEPTED_GT_COMPARISON=0.** Real new acoustic predictions and byte-bound saved original front vision predictions were processed through the existing multimodal collector. This is the executed B2 input stage, not a completed fusion decision experiment or proof of superiority. No synthetic input, new class mapping, back camera or cross-camera synchronization was introduced.
+
+| Existing event | Input frames at0.2s stride | Frames containing both stream records |
+|---|---:|---:|
+| train_events/event_005 | 398 | 236 |
+| train_events/event_021 | 267 | 158 |
+| engine_events/event_001 | 40 | 21 |
+| train_events/event_001 | 250 | 147 |
+| no_train_events/event_001 | 124 | 72 |
+
+Across five events,634 frames contain both streams;445 have no audio record inside the existing causal0.25s assembly window. Audio inference uses the frozen0.5s hop. These are actual collector input-coverage counts, not missing recordings, fusion accuracy, source-health validation or a reason to interpolate/carry forward evidence. Empty intervals are retained; no collector parameter was changed to increase coverage. Source-health flags from batch ingestion are not used to infer real-world availability or performance.
+
+Front records retain original PTS; audio records retain actual native audio origin plus causal PCM window-end positions. Both streams come from the same container per event. Existing native audio timing checks establish contiguous zero-origin samples for this assembly only; no physical synchronization claim. All assembly parent timestamps are causal and every front/prediction hash is bound. No vision inference was repeated. Original output files remain unchanged.
+
+[Input-stage table](B2_FRONT_INPUT_ASSEMBLY_SUMMARY.csv), [coverage figure](figures/B2_FRONT_INPUT_COVERAGE.png), actual assemblies and [validation](audio_followup/AUDIO_AND_B2_INPUT_RESULT_VALIDATION.json) are retained. A [real hash-bound front/audio manifest](audio_followup/FRONT_AUDIO_ACTUAL_INPUT_MANIFEST.json) references actual outputs for the existing cache-only route; it is not an authorization or accepted-GT manifest. The layer-B assembly tolerance0.25s differs from the cache-replay collector's existing0.5s; this report executes the former stage and does not substitute it for replay.
+
+Full B2 decision replay remains unexecuted: CacheOnlyReplayEngine.execute_replay calls the actual AUTH-DESCRIPTIVE-EVAL-EXEC gate, which requires current promotion receipt, exact evaluation manifest/protocol/config/checkpoint bindings and genuine authorization. Missing accepted canonical field records/promotion are not manufactured from reported agreement or AI. Reference-dependent M4/M5/MTR/T1/warning/control/engine metrics remain unavailable. No alternate ungated decision-engine route is used, and no comparative benefit is asserted. Optional exact-eleven R04 stays separate and inactive.

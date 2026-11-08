@@ -1,0 +1,11 @@
+{
+  "HUMAN_REVIEW_REPORTED_COMPLETE": 1,
+  "FIVE_FRONT_EVENTS_REVIEWED": 5,
+  "RESEARCHER_CLASSMATE_REPORTED_EXACT_AGREEMENT": 1,
+  "ORIGINAL_SEPARATE_OBSERVATION_RECORDS_STORED": 0,
+  "FORMALLY_ACCEPTED_CANONICAL_GT": "NOT_ESTABLISHED",
+  "basis": "Mission39 explicit researcher confirmation; human review considered complete for current workflow; no repeat review requested",
+  "partial_classmate_familiarity": "Preserved; no fully blind/qualified role inferred",
+  "ai_annotations": "Separate comparison reference, never automatically accepted human GT",
+  "agreement_metrics_calculated": false
+}

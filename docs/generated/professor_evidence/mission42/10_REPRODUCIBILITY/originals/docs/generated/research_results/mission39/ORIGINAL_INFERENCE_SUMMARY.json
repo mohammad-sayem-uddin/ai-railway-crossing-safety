@@ -1,0 +1,39 @@
+{
+  "schema": "mission39-original-inference-summary/1",
+  "EMPIRICAL_EXPERIMENT_EXECUTED": 1,
+  "original_inference_directions_executed": 3,
+  "accepted_GT_dependent_evaluations_executed": 0,
+  "physical_pilot_events": 5,
+  "unique_original_camera_sources": 10,
+  "cameras": {
+    "front": {
+      "events": 5,
+      "sampled_records": 1079,
+      "frames_with_detections": 13,
+      "predicted_objects": 13,
+      "event_wall_s": 98.30799970802036
+    },
+    "back": {
+      "events": 5,
+      "sampled_records": 1100,
+      "frames_with_detections": 274,
+      "predicted_objects": 276,
+      "event_wall_s": 174.3953177509975
+    },
+    "front_embedded_audio": {
+      "events": 5,
+      "windows": 423,
+      "model_positive_windows": 120,
+      "feature_log_scale": "natural"
+    }
+  },
+  "front_and_back_are_independent_native_clocks": true,
+  "no_pooled_accuracy_or_synchronization": true,
+  "human_review_report_scope": "FIVE_FRONTS_ONLY",
+  "canonical_GT": "NOT_ESTABLISHED",
+  "audio_original_inputs_processed": 5,
+  "multimodal_experiments_executed": 0,
+  "R04_activated": false,
+  "B2_real_input_assemblies": 5,
+  "B2_input_frames": 1079
+}

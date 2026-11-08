@@ -1,0 +1,48 @@
+{
+  "schema": "mission38-model-loading-compatibility/1",
+  "authority": "Mission38 section4.3 requested model-loading compatibility; technical initialization only, no source use or prediction",
+  "checkpoint": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+  "sha256_from_mission37": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd",
+  "checkpoint_rehashed": false,
+  "reference_receipt": "docs/generated/master_reaudit/mission37/CHECKPOINT_VERIFICATION_RECEIPT.json",
+  "current_file_identity": {
+    "device": 16777231,
+    "inode": 69038163,
+    "size": 24493159,
+    "mtime_ns": 1787085133925811716
+  },
+  "original_frames_decoded": 0,
+  "forward_passes": 0,
+  "model_loaded": true,
+  "started_utc": "2026-11-07T18:53:37.327228+00:00",
+  "python": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "packages": {
+    "torch": "2.13.0",
+    "torchvision": "0.28.0",
+    "ultralytics": "8.4.121",
+    "av": "18.1.0",
+    "numpy": "2.4.6",
+    "opencv-python": "5.0.0.93"
+  },
+  "cuda_available": false,
+  "mps_available": true,
+  "peak_rss_before_bytes": 264372224,
+  "status": "LOADED_ON_CPU_NO_FORWARD_PASS",
+  "model_class": "ultralytics.nn.tasks.DetectionModel",
+  "class_mapping": {
+    "0": "front",
+    "1": "rear",
+    "2": "side"
+  },
+  "task": "detect",
+  "parameter_count": 3011433,
+  "parameter_storage_bytes": 12045732,
+  "buffer_storage_bytes": 42056,
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "evaluation_mode": true,
+  "elapsed_s": 2.460743999996339,
+  "peak_rss_after_bytes": 293634048,
+  "physical_memory_bytes": 8589934592,
+  "finished_utc": "2026-11-07T18:53:39.824473+00:00"
+}

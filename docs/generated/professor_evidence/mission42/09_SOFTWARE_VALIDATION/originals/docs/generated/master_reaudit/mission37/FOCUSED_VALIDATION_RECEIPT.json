@@ -1,0 +1,542 @@
+{
+  "schema": "mission37-focused-validation/1",
+  "date": "2026-11-07",
+  "timezone": "America/New_York",
+  "status": "PASSED_SELECTED_RESOURCE_FREE",
+  "baseline_commit": "f277e28652838ac556abfd7ebe194f9a6e5152c6",
+  "request_sha256": "026a362d5cbdbb1926f5c059d28a59d7871fca6e1b3d53ef8fdb0c89a457875d",
+  "empirical_experiment_executed": 0,
+  "original_video_decodes": 0,
+  "model_forward_passes": 0,
+  "actual_human_observations": 0,
+  "final_test_receipt": {
+    "path": "/private/tmp/m37_final_delivery_shwegdxf/receipt.json",
+    "sha256": "1bca0df53248f8ec2099f9ee11d3dbe4fa126465e408504a7758fc72a61856f0"
+  },
+  "totals": {
+    "tests": 52,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 52
+  },
+  "groups": [
+    {
+      "group": "synthetic_mission37",
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "--confcutdir=tests/synthetic_mission37",
+        "-p",
+        "mission22_policy",
+        "-p",
+        "mission23_profile",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--continue-on-collection-errors",
+        "--basetemp=/private/tmp/m37_final_delivery_shwegdxf/synthetic_mission37/temp",
+        "--junitxml=/private/tmp/m37_final_delivery_shwegdxf/synthetic_mission37/pytest.xml",
+        "-q",
+        "tests/synthetic_mission37/test_source_pts.py"
+      ],
+      "selected": [
+        "tests/synthetic_mission37/test_source_pts.py"
+      ],
+      "exit_code": 0,
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_real_generated_decode_keeps_nonzero_irregular_pts_and_nondefault_timebase",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_absolute_video_stream_index_one_is_selected_and_audio_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_sampling_uses_presentation_grid_not_nominal_fps",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_missing_or_invalid_original_timestamp_is_not_fps_fallback[None-timebase0]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_missing_or_invalid_original_timestamp_is_not_fps_fallback[1-None]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_missing_or_invalid_original_timestamp_is_not_fps_fallback[1-timebase2]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_missing_or_invalid_original_timestamp_is_not_fps_fallback[-1-timebase3]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_missing_or_invalid_original_timestamp_is_not_fps_fallback[True-timebase4]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_duplicate_or_backwards_pts_refused_even_for_unsampled_frames[ticks0]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_duplicate_or_backwards_pts_refused_even_for_unsampled_frames[ticks1]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_invalid_sampling_or_stream_parameters[kwargs0]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_invalid_sampling_or_stream_parameters[kwargs1]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_invalid_sampling_or_stream_parameters[kwargs2]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_invalid_sampling_or_stream_parameters[kwargs3]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_invalid_sampling_or_stream_parameters[kwargs4]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_invalid_sampling_or_stream_parameters[kwargs5]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_survives_decode_inference_serialization_and_collector_output",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_missing_frame_clock_cannot_return_empty_success_or_write_cache",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_prediction_failure_is_not_silently_a_negative_result",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_pts_legacy_cache_identity_cannot_be_reused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_existing_media_authority_refusal_precedes_pts_decoder",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_empty_pts_stream_fails_closed",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_neutral_browser_navigation_uses_actual_pts_without_source_labels",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.synthetic_mission37.test_source_pts",
+          "name": "test_browser_refuses_unblinded_display_token_before_source_access",
+          "outcome": "passed",
+          "diagnostic": ""
+        }
+      ],
+      "collected_nodeids": [
+        "tests/synthetic_mission37/test_source_pts.py::test_real_generated_decode_keeps_nonzero_irregular_pts_and_nondefault_timebase",
+        "tests/synthetic_mission37/test_source_pts.py::test_absolute_video_stream_index_one_is_selected_and_audio_refused",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_sampling_uses_presentation_grid_not_nominal_fps",
+        "tests/synthetic_mission37/test_source_pts.py::test_missing_or_invalid_original_timestamp_is_not_fps_fallback[None-timebase0]",
+        "tests/synthetic_mission37/test_source_pts.py::test_missing_or_invalid_original_timestamp_is_not_fps_fallback[1-None]",
+        "tests/synthetic_mission37/test_source_pts.py::test_missing_or_invalid_original_timestamp_is_not_fps_fallback[1-timebase2]",
+        "tests/synthetic_mission37/test_source_pts.py::test_missing_or_invalid_original_timestamp_is_not_fps_fallback[-1-timebase3]",
+        "tests/synthetic_mission37/test_source_pts.py::test_missing_or_invalid_original_timestamp_is_not_fps_fallback[True-timebase4]",
+        "tests/synthetic_mission37/test_source_pts.py::test_duplicate_or_backwards_pts_refused_even_for_unsampled_frames[ticks0]",
+        "tests/synthetic_mission37/test_source_pts.py::test_duplicate_or_backwards_pts_refused_even_for_unsampled_frames[ticks1]",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_invalid_sampling_or_stream_parameters[kwargs0]",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_invalid_sampling_or_stream_parameters[kwargs1]",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_invalid_sampling_or_stream_parameters[kwargs2]",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_invalid_sampling_or_stream_parameters[kwargs3]",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_invalid_sampling_or_stream_parameters[kwargs4]",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_invalid_sampling_or_stream_parameters[kwargs5]",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_survives_decode_inference_serialization_and_collector_output",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_missing_frame_clock_cannot_return_empty_success_or_write_cache",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_prediction_failure_is_not_silently_a_negative_result",
+        "tests/synthetic_mission37/test_source_pts.py::test_pts_legacy_cache_identity_cannot_be_reused",
+        "tests/synthetic_mission37/test_source_pts.py::test_existing_media_authority_refusal_precedes_pts_decoder",
+        "tests/synthetic_mission37/test_source_pts.py::test_empty_pts_stream_fails_closed",
+        "tests/synthetic_mission37/test_source_pts.py::test_neutral_browser_navigation_uses_actual_pts_without_source_labels",
+        "tests/synthetic_mission37/test_source_pts.py::test_browser_refuses_unblinded_display_token_before_source_access"
+      ],
+      "policy_denials": []
+    },
+    {
+      "group": "legacy_0",
+      "command": [
+        "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "--noconftest",
+        "-p",
+        "mission22_policy",
+        "-p",
+        "mission23_profile",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--continue-on-collection-errors",
+        "--basetemp=/private/tmp/m37_final_delivery_shwegdxf/legacy_0/temp",
+        "--junitxml=/private/tmp/m37_final_delivery_shwegdxf/legacy_0/pytest.xml",
+        "-q",
+        "tests/unit/test_cache_phase12_adapter.py",
+        "tests/unit/test_media_authorization.py::test_frame_generator_refuses_on_first_iteration",
+        "tests/unit/test_mission3_reproducibility_and_provenance.py::test_historical_cache_compatibility_and_descriptive_only_enforcement",
+        "tests/unit/test_video_reader.py"
+      ],
+      "selected": [
+        "tests/unit/test_cache_phase12_adapter.py",
+        "tests/unit/test_media_authorization.py::test_frame_generator_refuses_on_first_iteration",
+        "tests/unit/test_mission3_reproducibility_and_provenance.py::test_historical_cache_compatibility_and_descriptive_only_enforcement",
+        "tests/unit/test_video_reader.py"
+      ],
+      "exit_code": 0,
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_valid_b0_mapping_preserves_identity_and_provenance",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_condition_stream_contract_is_preserved[B0-expected_streams0]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_condition_stream_contract_is_preserved[B1-expected_streams1]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_condition_stream_contract_is_preserved[B2-expected_streams2]",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_valid_mapping_is_deterministic",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_wrong_source_type_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_missing_event_id_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_wrong_condition_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_wrong_result_type_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_misbound_result_event_id_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_nonfinite_duration_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_missing_manifest_provenance_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_official_classification_refused_without_authority",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_official_payload_conversion_refused_without_frozen_bindings",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_batch_mapping_is_atomic_on_failure",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_batch_identity_mismatch_refused",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_batch_valid_mapping_returns_all_events",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_cache_phase12_adapter",
+          "name": "test_adapter_has_no_official_runner_or_media_loader_path",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_media_authorization",
+          "name": "test_frame_generator_refuses_on_first_iteration",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_mission3_reproducibility_and_provenance",
+          "name": "test_historical_cache_compatibility_and_descriptive_only_enforcement",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_video_reader",
+          "name": "test_timestamps_from_fps",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_video_reader",
+          "name": "test_timestamps_reject_nonpositive_fps",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_video_reader",
+          "name": "test_select_all_frames_when_no_sampling",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_video_reader",
+          "name": "test_select_by_stride",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_video_reader",
+          "name": "test_select_by_target_fps",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_video_reader",
+          "name": "test_target_fps_and_stride_conflict",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_video_reader",
+          "name": "test_empty_and_invalid_inputs",
+          "outcome": "passed",
+          "diagnostic": ""
+        },
+        {
+          "class": "tests.unit.test_video_reader",
+          "name": "test_deterministic_selection",
+          "outcome": "passed",
+          "diagnostic": ""
+        }
+      ],
+      "collected_nodeids": [
+        "tests/unit/test_cache_phase12_adapter.py::test_valid_b0_mapping_preserves_identity_and_provenance",
+        "tests/unit/test_cache_phase12_adapter.py::test_condition_stream_contract_is_preserved[B0-expected_streams0]",
+        "tests/unit/test_cache_phase12_adapter.py::test_condition_stream_contract_is_preserved[B1-expected_streams1]",
+        "tests/unit/test_cache_phase12_adapter.py::test_condition_stream_contract_is_preserved[B2-expected_streams2]",
+        "tests/unit/test_cache_phase12_adapter.py::test_valid_mapping_is_deterministic",
+        "tests/unit/test_cache_phase12_adapter.py::test_wrong_source_type_refused",
+        "tests/unit/test_cache_phase12_adapter.py::test_missing_event_id_refused",
+        "tests/unit/test_cache_phase12_adapter.py::test_wrong_condition_refused",
+        "tests/unit/test_cache_phase12_adapter.py::test_wrong_result_type_refused",
+        "tests/unit/test_cache_phase12_adapter.py::test_misbound_result_event_id_refused",
+        "tests/unit/test_cache_phase12_adapter.py::test_nonfinite_duration_refused",
+        "tests/unit/test_cache_phase12_adapter.py::test_missing_manifest_provenance_refused",
+        "tests/unit/test_cache_phase12_adapter.py::test_official_classification_refused_without_authority",
+        "tests/unit/test_cache_phase12_adapter.py::test_official_payload_conversion_refused_without_frozen_bindings",
+        "tests/unit/test_cache_phase12_adapter.py::test_batch_mapping_is_atomic_on_failure",
+        "tests/unit/test_cache_phase12_adapter.py::test_batch_identity_mismatch_refused",
+        "tests/unit/test_cache_phase12_adapter.py::test_batch_valid_mapping_returns_all_events",
+        "tests/unit/test_cache_phase12_adapter.py::test_adapter_has_no_official_runner_or_media_loader_path",
+        "tests/unit/test_media_authorization.py::test_frame_generator_refuses_on_first_iteration",
+        "tests/unit/test_mission3_reproducibility_and_provenance.py::test_historical_cache_compatibility_and_descriptive_only_enforcement",
+        "tests/unit/test_video_reader.py::test_timestamps_from_fps",
+        "tests/unit/test_video_reader.py::test_timestamps_reject_nonpositive_fps",
+        "tests/unit/test_video_reader.py::test_select_all_frames_when_no_sampling",
+        "tests/unit/test_video_reader.py::test_select_by_stride",
+        "tests/unit/test_video_reader.py::test_select_by_target_fps",
+        "tests/unit/test_video_reader.py::test_target_fps_and_stride_conflict",
+        "tests/unit/test_video_reader.py::test_empty_and_invalid_inputs",
+        "tests/unit/test_video_reader.py::test_deterministic_selection"
+      ],
+      "policy_denials": []
+    }
+  ],
+  "earlier_nonpassing_runs": [
+    {
+      "private_receipt": "/private/tmp/m37_pts_checks_4wm388os/receipt.json",
+      "sha256": "c8e39449979ee82d7d24e46d7f62ad3a1e44826362ef04252780bedff961122c",
+      "totals": {
+        "tests": 29,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 27
+      },
+      "reason": "Two new test API errors corrected: vision_records and build_stream_provenance",
+      "policy_denials": 0
+    },
+    {
+      "private_receipt": "/private/tmp/m37_pts_checks_wslwack7/receipt.json",
+      "sha256": "af57ba4d0fa66b1d5b018d5de04ecabbe410c617491a720fc2012993e5598395",
+      "totals": {
+        "tests": 50,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 49
+      },
+      "reason": "One legacy test instantiated real multimodal processor; production checkpoint open blocked by audit guard; excluded from permitted fixture selection rather than weakening the guard",
+      "policy_denials": 2
+    }
+  ],
+  "final_junit_sha256": {
+    "PTS_TEST_RESULTS.xml": "52f8ff5b5cacd1a471957f770f2aff6697d5b3d5d71ba41330131bbf044ce684",
+    "COMPATIBILITY_TEST_RESULTS.xml": "af4516be39b7bbf4047a68e25d492150b128af76b9f5aee21894991d08302d4a"
+  },
+  "implementation_sha256": {
+    "pyproject.toml": "9f0f518e142b944a2402a0843e8e7a7e1bf6fabd99eb1cf46f7f9074c393db0b",
+    "src/railway_detection/vision/video.py": "ff0a96c686cb3fef3762a9b2456d48feff5c9839e6498197164251d293455e33",
+    "src/railway_detection/experiments/layer_b_processor.py": "644a28d89217463583f5931e6bf6ee569b71fe54952474435a160adc99c4c08b",
+    "scripts/review_source_pts.py": "ebc7b02126e717160815d3c6cb132d9c9d8def4f166dbb7a6e3bc11badd979a8",
+    "tests/synthetic_mission37/test_source_pts.py": "5e7f62e810dc7fd4575235c59082163c303f585f9b2abfab56eaffbf036fd50b"
+  },
+  "current_shared_source_digest": "da132a95e873a8dcf92c08e8aa5ae6924eb132c2f1b9e210d8a733bd320abe61",
+  "source_binding_changes": {
+    "modules": {
+      "tests/synthetic_mission37/test_source_pts.py": {
+        "before": null,
+        "after": "5e7f62e810dc7fd4575235c59082163c303f585f9b2abfab56eaffbf036fd50b"
+      }
+    },
+    "shared_source_sha256": {
+      "src/railway_detection/vision/video.py": {
+        "before": "caa7bd2ed84a17483cd6808f7f8315f5fddc71a307499dd0cfff0c356fb5c464",
+        "after": "ff0a96c686cb3fef3762a9b2456d48feff5c9839e6498197164251d293455e33"
+      },
+      "scripts/review_source_pts.py": {
+        "before": null,
+        "after": "ebc7b02126e717160815d3c6cb132d9c9d8def4f166dbb7a6e3bc11badd979a8"
+      },
+      "pyproject.toml": {
+        "before": "75d77b187f896ed3a2b21112199d52e066c336d34f8956656b162395811ec56b",
+        "after": "9f0f518e142b944a2402a0843e8e7a7e1bf6fabd99eb1cf46f7f9074c393db0b"
+      },
+      "src/railway_detection/experiments/layer_b_processor.py": {
+        "before": "4ceab3b8657d827c078bed38886fe3eabe42795a3a27378eaea0a7803c129985",
+        "after": "644a28d89217463583f5931e6bf6ee569b71fe54952474435a160adc99c4c08b"
+      }
+    }
+  },
+  "unchanged_historical_artifacts": 240,
+  "original_private_AUTH35_V_files_unchanged": 7,
+  "seven_original_worktree_paths_unchanged": true,
+  "static": {
+    "ruff_new_modules_test": "PASS",
+    "ruff_processor_without_E501": "PASS",
+    "processor_preexisting_E501_count": 14,
+    "mypy_video_and_browser": "PASS",
+    "mypy_processor": "NONPASSING: same preexisting bbox tuple error as HEAD; no new errors",
+    "dependencies": "python -m pip check PASS",
+    "gui": "mocked display/navigation over generated codec data; native GUI and genuine presentation not accepted"
+  },
+  "assurance": "Narrow constructed-fixture software checks only; old Mission29 test source bindings no longer current; no whole-repository or empirical acceptance"
+}

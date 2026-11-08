@@ -1,0 +1,189 @@
+{
+  "schema": "mission41-descriptive-execution-register/1",
+  "actual_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src .venv/bin/python docs/generated/research_results/mission41/invocations/analyze_descriptors.py",
+  "invocation_sha256": "8787e35f053f28b8b9ce889631881fdbd296bebb228de4c88f72c5849ee87bcc",
+  "source_payload_sha256": {
+    "docs/generated/research_results/mission39/predictions/train_events_event_005_front.jsonl": "d37937591414b6d88bd0af1ce644d98d9b1a276a038a6ec9ea3fe59012e6d84e",
+    "docs/generated/research_results/mission39/predictions/train_events_event_021_front.jsonl": "01241b124c6ca527b45f6679a23131f02121605e06f2d28544d89570122a300d",
+    "docs/generated/research_results/mission39/predictions/engine_events_event_001_front.jsonl": "b0946e375d4d28d5f3422f216879ddf9090a07ad328e03c9fe398dc7922db910",
+    "docs/generated/research_results/mission39/predictions/train_events_event_001_front.jsonl": "29d7f4d2af6e6f6af065e397e34e17d419a2278b2668fffa36a56e55fa79e56f",
+    "docs/generated/research_results/mission39/predictions/no_train_events_event_001_front.jsonl": "8827a30f84bc6a1090ec858820f9073bf03571b13503ccdfa452b00403e516b2",
+    "docs/generated/research_results/mission39/predictions/train_events_event_005_back.jsonl": "d15ab150ae4f7c1a240b1b8ca7cd454dbf74197a536ce3c94043c4984598bd97",
+    "docs/generated/research_results/mission39/predictions/train_events_event_021_back.jsonl": "f1dff4399e2e16ab12a808fc01e137c1698f598d7ad777d8659988d7fdc5cc1a",
+    "docs/generated/research_results/mission39/predictions/engine_events_event_001_back.jsonl": "13b4f642e50d456c4a46d63efa1764a7adc30d9e8fe7bc7961f846174c4a883e",
+    "docs/generated/research_results/mission39/predictions/train_events_event_001_back.jsonl": "5af446d81f3638cb1dc2d737cbc1dd2d525ee385ec114dae21f71789925ac317",
+    "docs/generated/research_results/mission39/predictions/no_train_events_event_001_back.jsonl": "72c22b5f492f49ceded30519bb8402e8f16741559994802ecedd905cf427c32f",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio.jsonl": "f8544acff0ef71246e892c0dd4d828ef89acbe7cdeefc31967df93e11ead1527",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl": "418e8dc15cecdbed3ebd4b3c971dbc8edfa7fe4586249fc700452af19c494ef2",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio.jsonl": "b5eb0db0e4050ffba471c7be513131f471471a73010277a8763ac3fabd122932",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl": "7008fa26af4d194963b2924fa0273b811cbee8f6f34f7f3e676c6781c31fddab",
+    "docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio.jsonl": "032c870fdf67749ae91a7f67552f4907bd33df3145960841f8e3329242486f13",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl": "aaa1d70fee053e82b2c646913e926c300ccf47e523dd92008bac72dea3ba343b",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio.jsonl": "b907ee84724c1b5f41734af54fe46ed174a8137a9823e8d72d96410857defb82",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl": "466187ac47d648888debdf4d9ff1af1990c53c676689ae378f018a82863cd126",
+    "docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio.jsonl": "7825a461cd83eddfb56d1e3ef7d68ccadc82806c21c80bef133f695aed7c6d37",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl": "4690168edf2c1c15e94c83b569fb9b8fb63a43e965d748cb7b79a69f781d628f"
+  },
+  "reused_completed_tables": {
+    "B0_FRONT_EVENT_SUMMARY.csv": {
+      "sha256": "b4203ddbf91169aa1f3c830fe811c50b4caf486123601a470b367722fd6b046d",
+      "rows": 5
+    },
+    "B0_BACK_EVENT_SUMMARY.csv": {
+      "sha256": "574136d669f695a8de43f0cf4074675e8959abd4b91ebcfb066da45412c34f3f",
+      "rows": 5
+    },
+    "B0_FRONT_PREDICTED_CLASS_SUMMARY.csv": {
+      "sha256": "85dce3ba1d9e218e8f41c313edb34122d6a8390a40ac672611f6a537a32e71b0",
+      "rows": 15
+    },
+    "B0_BACK_PREDICTED_CLASS_SUMMARY.csv": {
+      "sha256": "547a3a63c66a3b81cbebac0dd20ea3f5489c87db0482f9f35e047bee7378adbb",
+      "rows": 15
+    },
+    "B1_AUDIO_EVENT_SUMMARY.csv": {
+      "sha256": "b82edc34914405d9145d24af9d24522896f5383916ab39360baa3e1b5c4a78e5",
+      "rows": 5
+    },
+    "B2_FRONT_INPUT_ASSEMBLY_SUMMARY.csv": {
+      "sha256": "b7669823d1e67b02e72f5f96568f9694e76e399a0522f31579c7671eb55669c6",
+      "rows": 5
+    }
+  },
+  "new_descriptive_processing": [
+    {
+      "activity": "Selected-row visual confidence continuity and output runs",
+      "plan_ids": [
+        "M31-VISION-CONFIDENCE",
+        "M31-EVENT-TIMING"
+      ],
+      "summary_rows": 40,
+      "run_rows": 78,
+      "ground_truth_required": false
+    },
+    {
+      "activity": "Observed source-local sampled-clock intervals",
+      "plan_ids": [
+        "M31-EVENT-TIMING",
+        "M31-TECH-DATA-VALIDATION"
+      ],
+      "rows": 28,
+      "ground_truth_required": false
+    },
+    {
+      "activity": "Supporting audio score-label runs",
+      "plan_ids": [
+        "M31-NEXT-B1_audio"
+      ],
+      "rows": 74,
+      "ground_truth_required": false
+    },
+    {
+      "activity": "Existing B2 input audio-record gaps",
+      "plan_ids": [
+        "M31-NEXT-B2_front"
+      ],
+      "rows": 847,
+      "ground_truth_required": false
+    },
+    {
+      "activity": "Existing observed processing-time aggregates",
+      "plan_ids": [
+        "M31-EVENT-TIMING",
+        "M31-TECH-REPRO-BINDING"
+      ],
+      "detail_rows": 15,
+      "aggregate_rows": 3,
+      "ground_truth_required": false
+    }
+  ],
+  "original_inference_reruns": 0,
+  "decision_replays": 0,
+  "physical_events": 5,
+  "unique_camera_members": 10,
+  "visual_records": 2179,
+  "audio_windows": 423,
+  "B2_input_frames": 1079,
+  "B2_paired_input_frames": 634,
+  "B2_input_frames_without_audio_record": 445,
+  "new_scientific_experiments": 0,
+  "new_thresholds": 0,
+  "new_inferential_tests": 0,
+  "model_only_descriptors_not_accuracy": true,
+  "engine_and_control_rows_separate": true,
+  "true_trailing_car_dropout": "UNAVAILABLE",
+  "physical_synchronization": "NOT_ESTABLISHED",
+  "sampling_and_processing_clocks_distinguished": true,
+  "checks": [
+    {
+      "event": "train_events/event_005",
+      "stream": "front",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 397
+    },
+    {
+      "event": "train_events/event_021",
+      "stream": "front",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 266
+    },
+    {
+      "event": "engine_events/event_001",
+      "stream": "front",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 39
+    },
+    {
+      "event": "train_events/event_001",
+      "stream": "front",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 249
+    },
+    {
+      "event": "no_train_events/event_001",
+      "stream": "front",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 123
+    },
+    {
+      "event": "train_events/event_005",
+      "stream": "back",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 390
+    },
+    {
+      "event": "train_events/event_021",
+      "stream": "back",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 306
+    },
+    {
+      "event": "engine_events/event_001",
+      "stream": "back",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 48
+    },
+    {
+      "event": "train_events/event_001",
+      "stream": "back",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 230
+    },
+    {
+      "event": "no_train_events/event_001",
+      "stream": "back",
+      "retained_prediction_sha256_valid": true,
+      "strict_native_PTS_monotonic": true,
+      "sampled_intervals": 121
+    }
+  ]
+}

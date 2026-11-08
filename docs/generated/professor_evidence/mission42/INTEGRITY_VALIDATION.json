@@ -1,0 +1,62 @@
+{
+  "schema": "mission42-package-integrity/1",
+  "status": "PASSED_DOCUMENTARY_AND_SAVED_EVIDENCE_CHECKS",
+  "date": "2026-11-08",
+  "original_copies": 979,
+  "derived_reading_copies": 60,
+  "prior_artifacts_unchanged": 846,
+  "seven_researcher_paths_unchanged": true,
+  "all_462_maintained_source_binding_files_unchanged": true,
+  "actual_result_counts_match_expected": true,
+  "audio_clock_prediction_cache_and_assembly_hashes_verified": 20,
+  "raw_media_checkpoints_private_caches_copied_or_read": false,
+  "new_inference_or_software_tests": 0,
+  "human_report_preserved_without_reconstruction": true,
+  "B2_decision_replay_executed": false,
+  "accepted_GT": "NOT_ESTABLISHED",
+  "historical_M40_JUnit_counts_verified_from_53_group_files": {
+    "tests": 3815,
+    "passed": 3700,
+    "failed": 84,
+    "errors": 31,
+    "skipped": 0
+  },
+  "figure_visual_QA": [
+    "M39 B0 front object counts",
+    "M39 B0 back object counts",
+    "M39 corrected acoustic score traces",
+    "M41 B2 input absence breakdown",
+    "M40 software outcomes"
+  ],
+  "figure_QA_scope": "Five primary existing plots viewed; all copied figures byte-verified. No plot redrawn or interpreted as correctness.",
+  "format_QA": "Package-local verifier checks all JSON/JSONL/CSV/XML/gzip parseability and adapted/new Markdown links. Immutable originals retain historical links.",
+  "integrity_anchor": "All files except index itself in PACKAGE_FILES.sha256; manifest and index anchored by containing Git commit",
+  "copied_original_evidence_not_rewritten": true,
+  "no_professor_contact_or_external_release": true,
+  "no_push": true,
+  "actual_package_verifier_result": {
+    "valid": true,
+    "files": 1068,
+    "checksummed_files": 1067,
+    "manifest_entries": 1066,
+    "portable_links": 350,
+    "parsed": {
+      "csv": 31,
+      "json": 90,
+      "jsonl": 52,
+      "xml": 111,
+      "other_gzip": 189
+    },
+    "Mission40_retained_JUnit": {
+      "tests": 3815,
+      "passed": 3700,
+      "failures": 84,
+      "errors": 31,
+      "skipped": 0
+    },
+    "new_tests_or_inference_executed": 0,
+    "scope": "Package-local integrity only; not independent authenticity, GT acceptance or empirical correctness"
+  },
+  "actual_verifier_command": "python3 10_REPRODUCIBILITY/verify_package.py",
+  "portable_invocation_checked_from_different_working_directory": true
+}

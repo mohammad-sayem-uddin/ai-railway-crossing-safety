@@ -1,0 +1,13 @@
+# Reading copy — NEXT_RESEARCH_ACTION.md
+
+Derived presentation copy: local links are adapted for this package. Evidence text and historical status retain their original scope. Consult the current executive guide for the final result status. [Byte-identical original](../../../../../originals/docs/generated/master_reaudit/mission37/NEXT_RESEARCH_ACTION.md). Original SHA-256: `98d230d3d8786ad16c608f62ce0646394c501ccc8d3af1b5773bc4a25a462cc3`.
+
+# Next research action
+
+**Arrange and approve the actual neutral human-reference session.** Return the concise unfilled input table in [HUMAN_REVIEW_EXECUTION_PACKAGE.md](../../../../../../07_HUMAN_REVIEW/reading_views/docs/generated/master_reaudit/mission37/HUMAN_REVIEW_EXECUTION_PACKAGE.md) with the actual primary and distinct second reviewer assignments/acceptances, competence/exposure/independence and source-use method/scope. Then those actual people inspect the approved sources with exact PTS and independently seal their own observations. Separate adjudication applies at its actual stage; full canonical pilot rules remain intact.
+
+The working visual frame browser is now `scripts/review_source_pts.py`; the decoder and inference handoff retain source PTS. Exact checkpoint bytes and static three-class metadata are verified. Those technical facts do not appoint people, authorize original presentation/inference, approve the native GUI or create GT. No further ownership/device declaration, completed-source re-verification, broad audit, empty rehearsal or manuscript package is requested.
+
+In parallel, the researcher can supply the narrowly scoped source/model inference and B0 descriptive-evaluation permission under the existing rules. After legitimate matching reference acceptance, bind actual initialization/preprocessing/CPU/seed/source-clock/cache/replay/output/version identities to the selected run. Do not run the multimodal constructor just to force audio requirements onto visual B0, bypass guards, fabricate a split or import model answers into human notes.
+
+Then execute the unchanged five-front B0_front, preserve actual commands/logs/source/model/config/clock provenance, eligible metric denominators/null reasons and genuine failures. Until those actual inputs exist: **EMPIRICAL_EXPERIMENT_EXECUTED=0**. No inference result is implied by passing fixture tests.

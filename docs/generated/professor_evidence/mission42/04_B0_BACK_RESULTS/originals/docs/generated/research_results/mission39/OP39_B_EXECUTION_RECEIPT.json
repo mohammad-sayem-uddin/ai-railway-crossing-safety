@@ -1,0 +1,15 @@
+{
+  "schema": "mission39-inference-scope-completion/1",
+  "authorization_id": "AUTH-MEDIA-ACCESS-M39-FIVE-BACK-20261107T204353Z",
+  "approval_statement": "Approve the exact five-back prediction scope",
+  "completed_utc": "2026-11-07T20:49:01.072909+00:00",
+  "actual_run_id": "mission39_back_20261107T204353Z",
+  "actual_original_events_completed": 5,
+  "sampled_prediction_records": 1100,
+  "canonical_slot_returned_to_absent": true,
+  "subsequent_primitive_guard_refusal_verified": true,
+  "issued_record_sha256": "f954d0d8bb477cdadc4c66a54b31a956479fa3f0ddf6c185d2384b80fdc6f64f",
+  "closed_record_sha256": "3036bb35e91585f7eccfd6adeb7684a5d09a3c5096ac467701861608ffecec2c",
+  "runtime_integrity": "Existing selected-weight constructor checksum enforced once at actual run boundary; no standalone audit or original-source rehash/probe repeated",
+  "new_GT_or_descriptive_replay_grant": false
+}

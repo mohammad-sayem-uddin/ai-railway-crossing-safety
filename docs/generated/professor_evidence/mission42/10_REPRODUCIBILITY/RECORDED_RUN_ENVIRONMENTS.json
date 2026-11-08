@@ -1,0 +1,48 @@
+[
+  {
+    "source_manifest": "docs/generated/research_results/mission39/ACTUAL_RUN_MANIFEST.json",
+    "source_sha256": "8d0b268c3d61da25603f96ee88af25b9d7c9a58f029a2ff7f32787ef9d33a083",
+    "run_id": "mission39_20261107T202523Z",
+    "git_commit": "9472535e252b8b74a6e78b79f064f762c3037e6e",
+    "packages": {
+      "torch": "2.13.0",
+      "ultralytics": "8.4.121",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "opencv-python": "5.0.0.93"
+    },
+    "actual_command": null,
+    "invocation_source_sha256": "b3f5715f7e74e8526098845964cca3eeea0de7c0fe9a7de6388fbd80d5d1a475",
+    "command_limit": "If actual_command is absent here, use retained execution receipts/stdout and invocation source; no command reconstructed as actual."
+  },
+  {
+    "source_manifest": "docs/generated/research_results/mission39/ACTUAL_BACK_RUN_MANIFEST.json",
+    "source_sha256": "f74b59261d5fa8adf15704ec6ee33d38b41f0ed2088c731b294f73ebf253e2a3",
+    "run_id": "mission39_back_20261107T204353Z",
+    "git_commit": "9472535e252b8b74a6e78b79f064f762c3037e6e",
+    "packages": {
+      "torch": "2.13.0",
+      "ultralytics": "8.4.121",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "opencv-python": "5.0.0.93"
+    },
+    "actual_command": null,
+    "invocation_source_sha256": "16203f3a3776156ba4d33214fc13cc51b0b1484f8b8be4f8bd63a71b2d73fdb5",
+    "command_limit": "If actual_command is absent here, use retained execution receipts/stdout and invocation source; no command reconstructed as actual."
+  },
+  {
+    "source_manifest": "docs/generated/research_results/mission39/audio_followup/CORRECTED_AUDIO_RUN_MANIFEST.json",
+    "source_sha256": "a5fd32c095a6c93522d072addf0e8a44708c4415ae6173196c93b88dc6f1f04d",
+    "run_id": "mission39_audio_20261107T213726Z",
+    "git_commit": "9d32242e02eafaf2b80dca41ff69e8c5f693f010",
+    "packages": {
+      "torch": "2.13.0",
+      "av": "18.1.0",
+      "numpy": "2.4.6"
+    },
+    "actual_command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python docs/generated/research_results/mission39/audio_followup/invocations/run_embedded_audio_corrected.py > /private/tmp/m39_corrected_audio_stdout.txt 2> /private/tmp/m39_corrected_audio_stderr.txt",
+    "invocation_source_sha256": "11a4b94dadbd6968e3d7f9bc5174279e787d5e38e1d010a9edc5832ee8027c2e",
+    "command_limit": "If actual_command is absent here, use retained execution receipts/stdout and invocation source; no command reconstructed as actual."
+  }
+]

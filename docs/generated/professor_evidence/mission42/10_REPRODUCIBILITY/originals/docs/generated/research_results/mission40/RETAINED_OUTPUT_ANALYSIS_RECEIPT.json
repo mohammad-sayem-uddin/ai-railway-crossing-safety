@@ -1,0 +1,87 @@
+{
+  "schema": "mission40-retained-output-analysis/1",
+  "events": 5,
+  "unique_camera_members": 10,
+  "front_records": 1079,
+  "back_records": 1100,
+  "front_objects": 13,
+  "back_objects": 276,
+  "audio_windows": 423,
+  "audio_score_ge_threshold": 120,
+  "B2_input_frames": 1079,
+  "B2_paired_input_frames": 634,
+  "B2_frames_without_audio_record": 445,
+  "B2_decision_events": 0,
+  "B2_decision_frames": 0,
+  "engine_control_roles_kept_separate": true,
+  "new_inference_or_replay": false,
+  "source_payload_sha256": {
+    "docs/generated/research_results/mission39/predictions/train_events_event_005_front.jsonl": "d37937591414b6d88bd0af1ce644d98d9b1a276a038a6ec9ea3fe59012e6d84e",
+    "docs/generated/research_results/mission39/predictions/train_events_event_005_back.jsonl": "d15ab150ae4f7c1a240b1b8ca7cd454dbf74197a536ce3c94043c4984598bd97",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio.jsonl": "f8544acff0ef71246e892c0dd4d828ef89acbe7cdeefc31967df93e11ead1527",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl": "ec77e5d3c120c0e76866c85586810c0c80fe04276cf40a2cef9f79b86a0dca88",
+    "docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_005_front_audio_clock.jsonl": "94891b217e65e86d9153091caa586df348fc4a907f378f4bc10af15ffa8628f9",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl": "418e8dc15cecdbed3ebd4b3c971dbc8edfa7fe4586249fc700452af19c494ef2",
+    "docs/generated/research_results/mission39/predictions/train_events_event_021_front.jsonl": "01241b124c6ca527b45f6679a23131f02121605e06f2d28544d89570122a300d",
+    "docs/generated/research_results/mission39/predictions/train_events_event_021_back.jsonl": "f1dff4399e2e16ab12a808fc01e137c1698f598d7ad777d8659988d7fdc5cc1a",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio.jsonl": "b5eb0db0e4050ffba471c7be513131f471471a73010277a8763ac3fabd122932",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl": "3516c7bb915ec63575f16e6077335eba1db622364b27ef6fdd6419a7ca631029",
+    "docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_021_front_audio_clock.jsonl": "b8093481fc604d549c55e50dec210d168fd2d0f702513129a9ac249b560447c9",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl": "7008fa26af4d194963b2924fa0273b811cbee8f6f34f7f3e676c6781c31fddab",
+    "docs/generated/research_results/mission39/predictions/engine_events_event_001_front.jsonl": "b0946e375d4d28d5f3422f216879ddf9090a07ad328e03c9fe398dc7922db910",
+    "docs/generated/research_results/mission39/predictions/engine_events_event_001_back.jsonl": "13b4f642e50d456c4a46d63efa1764a7adc30d9e8fe7bc7961f846174c4a883e",
+    "docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio.jsonl": "032c870fdf67749ae91a7f67552f4907bd33df3145960841f8e3329242486f13",
+    "docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl": "8f17238c6e8e2d5b1d35f0fc92b0a9833ce2699363ab79239032071cc5ef486f",
+    "docs/generated/research_results/mission39/audio_followup/clock_ledgers/engine_events_event_001_front_audio_clock.jsonl": "311b77f9ab793ac28c8737c476480e4280a6fa0f7383b8fc9bebab6026594230",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl": "aaa1d70fee053e82b2c646913e926c300ccf47e523dd92008bac72dea3ba343b",
+    "docs/generated/research_results/mission39/predictions/train_events_event_001_front.jsonl": "29d7f4d2af6e6f6af065e397e34e17d419a2278b2668fffa36a56e55fa79e56f",
+    "docs/generated/research_results/mission39/predictions/train_events_event_001_back.jsonl": "5af446d81f3638cb1dc2d737cbc1dd2d525ee385ec114dae21f71789925ac317",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio.jsonl": "b907ee84724c1b5f41734af54fe46ed174a8137a9823e8d72d96410857defb82",
+    "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl": "b363d1b86f5036e4dc64548d1615ced65e5b525c9de0c20a5953f38fe63ce1fa",
+    "docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_001_front_audio_clock.jsonl": "466e5db34402ab6200d50ba0a139cb57343822c4dec02198da60a4d762f99f5d",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl": "466187ac47d648888debdf4d9ff1af1990c53c676689ae378f018a82863cd126",
+    "docs/generated/research_results/mission39/predictions/no_train_events_event_001_front.jsonl": "8827a30f84bc6a1090ec858820f9073bf03571b13503ccdfa452b00403e516b2",
+    "docs/generated/research_results/mission39/predictions/no_train_events_event_001_back.jsonl": "72c22b5f492f49ceded30519bb8402e8f16741559994802ecedd905cf427c32f",
+    "docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio.jsonl": "7825a461cd83eddfb56d1e3ef7d68ccadc82806c21c80bef133f695aed7c6d37",
+    "docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl": "4a5124774e879354ac3ebcf72d2ed90630954f3f25ac841fbeea4c50a5d2f31c",
+    "docs/generated/research_results/mission39/audio_followup/clock_ledgers/no_train_events_event_001_front_audio_clock.jsonl": "fbeb53cf870d59cc0d0724b9fc23178b86fdeede7c2b748bded053d5ac637c6e",
+    "docs/generated/research_results/mission39/audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl": "4690168edf2c1c15e94c83b569fb9b8fb63a43e965d748cb7b79a69f781d628f"
+  },
+  "checks": [
+    {
+      "event": "train_events/event_005",
+      "all_saved_payload_hashes_valid": true,
+      "visual_native_PTS_and_generic_serializers_valid": true,
+      "causal_audio_sample_times_valid": true,
+      "B2_all_parent_times_causal": true
+    },
+    {
+      "event": "train_events/event_021",
+      "all_saved_payload_hashes_valid": true,
+      "visual_native_PTS_and_generic_serializers_valid": true,
+      "causal_audio_sample_times_valid": true,
+      "B2_all_parent_times_causal": true
+    },
+    {
+      "event": "engine_events/event_001",
+      "all_saved_payload_hashes_valid": true,
+      "visual_native_PTS_and_generic_serializers_valid": true,
+      "causal_audio_sample_times_valid": true,
+      "B2_all_parent_times_causal": true
+    },
+    {
+      "event": "train_events/event_001",
+      "all_saved_payload_hashes_valid": true,
+      "visual_native_PTS_and_generic_serializers_valid": true,
+      "causal_audio_sample_times_valid": true,
+      "B2_all_parent_times_causal": true
+    },
+    {
+      "event": "no_train_events/event_001",
+      "all_saved_payload_hashes_valid": true,
+      "visual_native_PTS_and_generic_serializers_valid": true,
+      "causal_audio_sample_times_valid": true,
+      "B2_all_parent_times_causal": true
+    }
+  ]
+}

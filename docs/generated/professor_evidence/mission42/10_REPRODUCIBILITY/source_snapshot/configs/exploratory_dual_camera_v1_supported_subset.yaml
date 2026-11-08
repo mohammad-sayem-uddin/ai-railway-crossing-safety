@@ -1,0 +1,90 @@
+# Exploratory Dual-Camera Configuration — CALIBRATION_SUPPORTED Subset Only
+#
+# THIS IS NOT THE FROZEN PRIMARY EXPERIMENT CONFIGURATION.
+# It derives from configs/frozen_experiment_v1.yaml (canonical hash
+# 999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e, which
+# this file does not modify) and additionally restricts dual-camera
+# conditions (B3, B4, B6, B7) to the 11 events whose calibration candidate
+# currently carries the CALIBRATION_SUPPORTED verdict in
+# data/manifests/camera_sync_offsets_candidate.yaml (manifest version
+# 0.2.0_CANDIDATE), per docs/R04_CALIBRATION_VALIDATION_REPORT.md section 8
+# option B.
+#
+# This configuration has its own canonical hash, computed the same way as
+# the frozen configuration (canonical JSON of this file's content, excluding
+# the hash field itself). Running it does NOT require, and must never be
+# described as satisfying, full-cohort R04 resolution. Any result produced
+# under this configuration must be reported as covering exactly the 11
+# listed included_events and must explicitly exclude the 16 listed
+# excluded_events and all 3 negative controls from any dual-camera metric.
+#
+# Executing experiments under this configuration is NOT authorized by the
+# existence of this file. A human researcher decides when, or whether, to
+# run it, after reviewing docs/R04_IMPLEMENTATION_AND_UNBLOCK_REPORT.md.
+
+exploratory_metadata:
+  name: "exploratory_dual_camera_v1_supported_subset"
+  version: "1.0.0"
+  description: >
+    Restricted dual-camera fusion configuration covering only the 11
+    train_events currently classified CALIBRATION_SUPPORTED by
+    railway_detection.data.sync_calibration under the single predeclared
+    acceptance rule in that module. Exploratory only; not a substitute for
+    full-cohort R04 resolution.
+  base_config: "configs/frozen_experiment_v1.yaml"
+  base_config_canonical_hash: "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e"
+  calibration_manifest: "data/manifests/camera_sync_offsets_candidate.yaml"
+  calibration_manifest_version: "0.2.0_CANDIDATE"
+  calibration_manifest_status: "CANDIDATE_UNVALIDATED_DO_NOT_MERGE"
+  requires_allow_candidate_status: true
+  authorized_for_execution: false
+  authorization_note: >
+    Set authorized_for_execution to true, and record who and when in this
+    comment, only after a human researcher has explicitly decided to run
+    this exploratory configuration. This flag is not enforced by any
+    current loader; it exists as an explicit, auditable sign-off marker
+    for the person who turns this on.
+
+included_events_calibration_supported:
+  - train_events/event_001
+  - train_events/event_002
+  - train_events/event_005
+  - train_events/event_006
+  - train_events/event_007
+  - train_events/event_009
+  - train_events/event_011
+  - train_events/event_012
+  - train_events/event_013
+  - train_events/event_014
+  - train_events/event_017
+
+excluded_events_provisional:
+  - engine_events/event_001
+  - no_train_events/event_003
+  - train_events/event_003
+  - train_events/event_016
+  - train_events/event_018
+  - train_events/event_019
+  - train_events/event_021
+
+excluded_events_ambiguous:
+  - no_train_events/event_001
+  - no_train_events/event_002
+  - train_events/event_004
+  - train_events/event_008
+  - train_events/event_010
+  - train_events/event_015
+  - train_events/event_020
+  - train_events/event_022
+  - train_events/event_023
+
+negative_controls_always_excluded_from_dual_camera_metrics:
+  - no_train_events/event_001
+  - no_train_events/event_002
+  - no_train_events/event_003
+
+reporting_constraints:
+  - "Any MTR/POR or other safety metric computed under this configuration must be labeled: 'n=11, CALIBRATION_SUPPORTED subset only, NOT full-cohort'."
+  - "No claim of full-cohort (27-event) dual-camera coverage may be made from results produced under this configuration."
+  - "Negative controls (3 no_train_events) must never be scored into a dual-camera detection-rate denominator under this configuration, consistent with the primary frozen configuration's evaluation firewall."
+  - "This configuration does not change, and must never be used to justify changing, ground-truth annotation approval status."

@@ -1,0 +1,15 @@
+{
+  "scope": "Historical links outside selected evidence are printed as documentary references, not live package links. No unavailable private receipt is reconstructed.",
+  "references": [
+    {
+      "source": "docs/generated/master_reaudit/mission34/RESEARCHER_FINAL_PROVENANCE_ATTESTATION.md",
+      "target": "../mission33/RESEARCHER_FIRST_PERSON_RECORDING_AND_OWNERSHIP_DECLARATION.md",
+      "disposition": "DOCUMENTARY_REFERENCE_ONLY_NOT_INCLUDED"
+    },
+    {
+      "source": "docs/generated/master_reaudit/mission34/RESEARCHER_FINAL_PROVENANCE_ATTESTATION.md",
+      "target": "RESEARCH_RIGHTS_AND_OPERATION_AUTHORIZATION_MATRIX.csv",
+      "disposition": "DOCUMENTARY_REFERENCE_ONLY_NOT_INCLUDED"
+    }
+  ]
+}
