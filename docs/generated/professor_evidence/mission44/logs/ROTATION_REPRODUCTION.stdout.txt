@@ -1,0 +1,52 @@
+{
+  "schema": "mission44-display-rotation-defect-reproduction/1",
+  "fixture_origin": "Purely generated asymmetric pixels, not original railway media",
+  "ffmpeg_command": [
+    "ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-display_rotation:v:0",
+    "-90",
+    "-i",
+    "/private/tmp/m44_generated_rotation_vqaecj1e/generated_base.mp4",
+    "-c",
+    "copy",
+    "/private/tmp/m44_generated_rotation_vqaecj1e/generated_minus90.mp4"
+  ],
+  "fixture_sha256": "21099f15c3788350d4ef7ffe9537c3e72cbb348f695e3941c60ff6c79b4d8d7b",
+  "PyAV_rotation": -90,
+  "raw_coded_shape": [
+    48,
+    80,
+    3
+  ],
+  "source_pts_reader_before_fix_shape": [
+    48,
+    80,
+    3
+  ],
+  "OpenCV_legacy_display_shape": [
+    80,
+    48,
+    3
+  ],
+  "OpenCV_orientation_auto": 1.0,
+  "expected_native_display_shape": [
+    80,
+    48,
+    3
+  ],
+  "raw_pixels_equal_old_PTS_reader": true,
+  "expected_display_corner_signature_matches_legacy_OpenCV": true,
+  "legacy_exact_pixels_not_required": "Installed PyAV/OpenCV bundle different FFmpeg versions and differ slightly in YUV-to-BGR rounding; compare coded/display geometry and asymmetric spatial color ordering, not identical cross-backend RGB bytes",
+  "PTS": 0,
+  "timebase": "1/10240",
+  "defect_confirmed": true,
+  "real_sources_with_rotation_metadata": 44,
+  "affected_front": 24,
+  "affected_back": 20,
+  "no_model_forward_or_raw_source_access": true,
+  "installed_PyAV_property_documentation": "VideoFrame.rotation is DISPLAYMATRIX counterclockwise rotation in[-180,180] degrees",
+  "conclusion": "Source PTS route added inM37 drops display rotation formerly applied by OpenCV. Correct orthogonal source display interpretation is a decoder pixel-convention regression fix, not a new model/threshold."
+}

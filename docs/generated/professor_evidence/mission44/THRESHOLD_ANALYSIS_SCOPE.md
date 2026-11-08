@@ -1,0 +1,9 @@
+# Mission44 exploratory threshold-diagnostic scope
+
+Primary model/checkpoint, preprocessing, operating threshold0.37 and Mission43 results remain frozen and unchanged. Mission43's own analysis scope excluded sensitivity for that mission; it is retained byte-identically. The new Mission44 §4.2 explicitly requests conditional exploratory sensitivity and forbids presenting same-event optimization as independent validation.
+
+Existing V3 implementation scripts/train_audio_model_v3_esc50.py, lines648–684, already uses a0.0–1.0 inclusive101-point grid for evaluation ROC/PR diagnostics. Its actual calibration at lines394–416 is restricted to validation data. The frozen real-world configuration does not expose authority to recalibrate on these23 events. Historical proposed protocol constants are exploratory, not new safety criteria.
+
+Accordingly Mission44 reuses the existing diagnostic grid on the SAME23 researcher-adopted train-event horn labels and existing max-window scores, reporting TP/FP/FN/TN/precision/recall/F1/specificity and the FP/FN trade-off. This is a newly authorized exploratory analysis of saved scores, not adoption of101 operational thresholds, model improvement or new calibration. No checkpoint/config/primary result is changed. The exploratory best-F1 grid point, if displayed, is a resubstitution description and must not be recommended as a validated operating value; this explicitly answers potential overfit and preserves the original0.37 result.
+
+Engine-only remains separate. Three controls retain null horn labels and are excluded. No new split, independent-GT claim, p-value/CI/bootstrap, window-label invention or threshold-conditioned causal safety result. The diagnostic range is a preexisting plotting grid, not a newly invented matching tolerance or inferential threshold.

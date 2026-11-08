@@ -1,0 +1,7 @@
+camera,cohort,physical_events,recordings_with_objects,zero_object_recordings,predicted_objects,positive_sampled_frames
+front,train_events,23,16,7,327,320
+front,no_train_events,3,2,1,2,2
+front,engine_events,1,0,1,0,0
+back,train_events,23,17,6,966,759
+back,no_train_events,3,2,1,40,39
+back,engine_events,1,1,0,14,13

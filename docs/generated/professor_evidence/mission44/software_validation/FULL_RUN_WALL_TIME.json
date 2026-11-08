@@ -1,0 +1,6 @@
+{
+  "elapsed_wall_s": 437.1606746669986,
+  "clock": "time.perf_counter",
+  "includes_orchestration": true,
+  "reason_for_rerun": "Mission44 confirmed display-rotation regression fixed; affected source/tests changed, so execute full relevant programme after correction"
+}

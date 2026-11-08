@@ -1,0 +1,7 @@
+{
+  "closed_at_utc": "2026-11-08T14:44:19.412370+00:00",
+  "canonical_slot_absent": true,
+  "issued_record_sha256": "5c721fe3a9c78a1527d40395e47ff493620733fdeb45e258757643a77c182600",
+  "closed_record_sha256": "2d8cf7840fadafd4a6e39e7f19c31dd33a66a743a56858381edeb7795c1c0cbe",
+  "no_new_inference_or_GT_or_B2_grant": true
+}

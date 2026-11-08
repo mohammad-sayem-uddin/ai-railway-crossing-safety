@@ -1,0 +1,7 @@
+objc[15412]: Class AVFFrameReceiver is implemented in both /Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/av/.dylibs/libavdevice.62.3.102.dylib (0x109fb43a8) and /Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x10d32c3a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[15412]: Class AVFAudioReceiver is implemented in both /Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/av/.dylibs/libavdevice.62.3.102.dylib (0x109fb43f8) and /Users/sayemuddin/Desktop/Train_automation/.venv/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x10d32c3f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+Traceback (most recent call last):
+  File "/Users/sayemuddin/Desktop/Train_automation/docs/generated/professor_evidence/mission44/invocations/reproduce_rotation.py", line 19, in <module>
+    native=next(frame_generator(rot,source_pts=True));expected=np.ascontiguousarray(np.rot90(raw,k=rotation//90));assert rotation==-90 and legacy.shape==expected.shape and np.array_equal(legacy,expected)
+                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

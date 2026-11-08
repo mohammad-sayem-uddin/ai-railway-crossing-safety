@@ -1,0 +1,23 @@
+{
+  "schema": "mission44-deep-annotation-capabilities/1",
+  "events": 27,
+  "paired_hash_alignment_events": 27,
+  "schema_counts": {
+    "7.0.0": 26,
+    "8.0.0": 1
+  },
+  "events_with_boxes": 0,
+  "frames_with_box_reference": 0,
+  "events_with_event_train_label": 27,
+  "events_with_explicit_horn_status": 24,
+  "events_with_horn_onset": 13,
+  "events_with_horn_offset": 0,
+  "audio_windows_with_reference_labels": 0,
+  "events_with_boundary_frame_refs": 24,
+  "boundary_frame_references": 117,
+  "native_PTS_annotation_fields": 0,
+  "formal_object_occlusion_reference_records": 0,
+  "duplicate_JSON_keys": [],
+  "AI_assisted_reference_adoption_preserved": true,
+  "M43_capability_claims_confirmed_without_invented_labels": true
+}

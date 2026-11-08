@@ -1,0 +1,25 @@
+{
+  "schema": "mission44-rotation-focused-initial/1",
+  "initial_exact_scope": [
+    "tests/synthetic_mission44/test_display_rotation.py",
+    "tests/synthetic_mission37/test_source_pts.py",
+    "tests/synthetic_mission38/test_front_runtime.py"
+  ],
+  "initial_counts": {
+    "tests": 48,
+    "passed": 48,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "initial_XML": "logs/ROTATION_FOCUSED_INITIAL.xml",
+  "initial_new_test_source_sha256": "9699d0ca6a47ef53df7f357f795ff7802881c79a259dd62d23b616a6c8168145",
+  "final_new_test_source_sha256": "f593899a7a299d6d4ba5095846cd336e7281f8815e044e10ea2d738efcce7748",
+  "test_refinement": "Strengthened cache comparison to compare actual cache_key() results, not bound method objects, before final full validation. Initial48 overlaps final scope; never add counts.",
+  "new_tests": 9,
+  "new_source_paths": [
+    "src/railway_detection/vision/video.py",
+    "src/railway_detection/experiments/layer_b_processor.py"
+  ],
+  "no_original_data_or_models_in_tests": true
+}

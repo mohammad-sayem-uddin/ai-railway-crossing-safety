@@ -1,0 +1,2244 @@
+{
+  "schema": "mission44-actual-source-diagnostics/1",
+  "started_at_utc": "2026-11-08T14:42:43.160513+00:00",
+  "invocation_sha256": "5bc088b2497ccb4ae083f658512b3461ffae89d5f2fc649af4dd8249e8cf9c5f",
+  "selection_sha256": "135e0fe24c2da3c84f5de1fde8cc911721483f8ba50eeb88b3518a2d9044fc55",
+  "evidence_classification": "ACTUAL_ORIGINAL_SOURCE_NOT_SYNTHETIC",
+  "private_frame_directory": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_",
+  "private_frame_pixels_not_packaged": true,
+  "inference_runs": 0,
+  "model_checkpoint_access": false,
+  "original_container_hash_or_probe_repeated": false,
+  "visual_cases": [
+    {
+      "event": "train_events/event_005",
+      "camera": "front",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "source_sha256_from_M43": "015ec78146d474385e447232c9c4048263bf0491cfbf265e967bb0d6bf887613",
+      "selected_frames": [
+        {
+          "frame_index": 234,
+          "pts_ticks": 4683,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 7.805,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 39,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1188,
+          "pts_ticks": 23777,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 39.62833333333333,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 198,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 2141,
+          "pts_ticks": 42851,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 71.41833333333334,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 357,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_005_front_actual.png",
+      "private_contact_sheet_sha256": "73d769aaea6cda1fca02d7c1b80a8b1d79e2b86f4267c1948b0df7421f5c8ce2",
+      "source_stat_stable": true,
+      "wall_s": 7.660067167000307
+    },
+    {
+      "event": "train_events/event_005",
+      "camera": "back",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_005/camera_back.mov",
+      "source_sha256_from_M43": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e",
+      "selected_frames": [
+        {
+          "frame_index": 180,
+          "pts_ticks": 3600,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 6.0,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 30,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 234,
+          "pts_ticks": 4680,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 7.8,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 39,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1170,
+          "pts_ticks": 23402,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 39.00333333333333,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 195,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 2106,
+          "pts_ticks": 42124,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 70.20666666666666,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 351,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_005_back_actual.png",
+      "private_contact_sheet_sha256": "2c6a18f0070e3657edf816cb6b0d4ff2fb23c3232da16a68e4d99bb4f2d143d3",
+      "source_stat_stable": true,
+      "wall_s": 7.780299250000098
+    },
+    {
+      "event": "train_events/event_008",
+      "camera": "front",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_008/camera_front.mov",
+      "source_sha256_from_M43": "5f0151fd09dd35636afc1a641c05426c5483871a44b8ee5883e15dad173b0e16",
+      "selected_frames": [
+        {
+          "frame_index": 72,
+          "pts_ticks": 1441,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 2.401666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 12,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 174,
+          "pts_ticks": 3483,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 5.805,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 29,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 882,
+          "pts_ticks": 17653,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 29.421666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 147,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1583,
+          "pts_ticks": 31683,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 52.805,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 264,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_008_front_actual.png",
+      "private_contact_sheet_sha256": "a716dcfa77b6a328de8bc06e5d4fcd667f268d2d02d09e8f9ffb76a85f3a4b2a",
+      "source_stat_stable": true,
+      "wall_s": 6.188124958000117
+    },
+    {
+      "event": "train_events/event_009",
+      "camera": "front",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+      "source_sha256_from_M43": "7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db",
+      "selected_frames": [
+        {
+          "frame_index": 126,
+          "pts_ticks": 2522,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 4.203333333333333,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 21,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 642,
+          "pts_ticks": 12849,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 21.415,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 107,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1152,
+          "pts_ticks": 23057,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 38.428333333333335,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 192,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_009_front_actual.png",
+      "private_contact_sheet_sha256": "337335cfa1fdd5f34bad684d321c441f3f07363ff9fc956c924cc8c6debc6130",
+      "source_stat_stable": true,
+      "wall_s": 4.717430250000689
+    },
+    {
+      "event": "train_events/event_009",
+      "camera": "back",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_009/camera_back.mov",
+      "source_sha256_from_M43": "4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8",
+      "selected_frames": [
+        {
+          "frame_index": 108,
+          "pts_ticks": 2160,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 3.6,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 18,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 558,
+          "pts_ticks": 11161,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 18.601666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 93,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1008,
+          "pts_ticks": 20162,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 33.60333333333333,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 168,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_009_back_actual.png",
+      "private_contact_sheet_sha256": "951de5e8c105c82a7cfb49b48f07dad0a5d5c3a07bb04c273251d7f1d5e0c92f",
+      "source_stat_stable": true,
+      "wall_s": 3.6770717920007883
+    },
+    {
+      "event": "train_events/event_010",
+      "camera": "back",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_010/camera_back.mov",
+      "source_sha256_from_M43": "566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a",
+      "selected_frames": [
+        {
+          "frame_index": 66,
+          "pts_ticks": 1320,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 2.2,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 11,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 90,
+          "pts_ticks": 1800,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 3.0,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 15,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 348,
+          "pts_ticks": 6961,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 11.601666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 58,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 630,
+          "pts_ticks": 12601,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 21.001666666666665,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 105,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_010_back_actual.png",
+      "private_contact_sheet_sha256": "60825cfbdb0fc1b8d76c4fe5fc3aee17fe72c114ef789acc372d7c1f97a4edc3",
+      "source_stat_stable": true,
+      "wall_s": 2.6395200839997415
+    },
+    {
+      "event": "train_events/event_011",
+      "camera": "back",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_011/camera_back.mov",
+      "source_sha256_from_M43": "3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46",
+      "selected_frames": [
+        {
+          "frame_index": 96,
+          "pts_ticks": 1920,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 3.2,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 16,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 108,
+          "pts_ticks": 2160,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 3.6,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 18,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 558,
+          "pts_ticks": 11161,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 18.601666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 93,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1002,
+          "pts_ticks": 20042,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 33.403333333333336,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 167,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_011_back_actual.png",
+      "private_contact_sheet_sha256": "da095cd417c7c58c15b1930104ccdd5b525319e81606e29e3b1a3d8c1eb8930a",
+      "source_stat_stable": true,
+      "wall_s": 3.695251499999358
+    },
+    {
+      "event": "train_events/event_012",
+      "camera": "front",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_012/camera_front.mov",
+      "source_sha256_from_M43": "840b6661622bca1d018a37fd86c0e5c04a812f50eec4e08e1acc5924d4b62fe0",
+      "selected_frames": [
+        {
+          "frame_index": 90,
+          "pts_ticks": 1801,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 3.0016666666666665,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 15,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 222,
+          "pts_ticks": 4443,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 7.405,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 37,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1122,
+          "pts_ticks": 22456,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 37.42666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 187,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 2021,
+          "pts_ticks": 40449,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 67.415,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 337,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_012_front_actual.png",
+      "private_contact_sheet_sha256": "29dff53844fe846732cb7e11e8e210f7c8f2794e0964dcac020c9410027581ff",
+      "source_stat_stable": true,
+      "wall_s": 8.138358124999286
+    },
+    {
+      "event": "train_events/event_015",
+      "camera": "front",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_015/camera_front.mov",
+      "source_sha256_from_M43": "309203acd4bdc8ddb6a26e7ecbe97f73267724c9870b202290f0ee1cbaa32e99",
+      "selected_frames": [
+        {
+          "frame_index": 90,
+          "pts_ticks": 1801,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 3.0016666666666665,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 15,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 126,
+          "pts_ticks": 2522,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 4.203333333333333,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 21,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 462,
+          "pts_ticks": 9247,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 15.411666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 77,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 834,
+          "pts_ticks": 16692,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 27.82,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 139,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_015_front_actual.png",
+      "private_contact_sheet_sha256": "080c77e388f8f4745bb16979a282443db3912f9f5ce392e83e4a42c79dab707d",
+      "source_stat_stable": true,
+      "wall_s": 3.7277718330005882
+    },
+    {
+      "event": "train_events/event_015",
+      "camera": "back",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_015/camera_back.mov",
+      "source_sha256_from_M43": "57e827d111540c3c7f9463efaee3461ee6cba6818ab33231745ea9b22024b03a",
+      "selected_frames": [
+        {
+          "frame_index": 66,
+          "pts_ticks": 1320,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 2.2,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 11,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 114,
+          "pts_ticks": 2280,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 3.8,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 19,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 330,
+          "pts_ticks": 6601,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 11.001666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 55,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 594,
+          "pts_ticks": 11881,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 19.801666666666666,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 99,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_015_back_actual.png",
+      "private_contact_sheet_sha256": "da40a5debd6dd4ca2546a51c293a54dde3197c00b55cfa5c21a294d9fe24f77f",
+      "source_stat_stable": true,
+      "wall_s": 2.368766000001415
+    },
+    {
+      "event": "train_events/event_017",
+      "camera": "front",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_017/camera_front.mov",
+      "source_sha256_from_M43": "188ff5ffd34d71080f8cdbaf08f03837703b0c79b47bbebbbf07d4d3028ebfe3",
+      "selected_frames": [
+        {
+          "frame_index": 84,
+          "pts_ticks": 1681,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 2.8016666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 14,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 240,
+          "pts_ticks": 4803,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 8.005,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 40,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1224,
+          "pts_ticks": 24498,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 40.83,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 204,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 2201,
+          "pts_ticks": 44052,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 73.42,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 367,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_017_front_actual.png",
+      "private_contact_sheet_sha256": "359b93f8f588c2b6e521d7fe23435965935ab39d722ef80b1371d9590305b610",
+      "source_stat_stable": true,
+      "wall_s": 8.959888167000827
+    },
+    {
+      "event": "train_events/event_019",
+      "camera": "back",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_019/camera_back.mov",
+      "source_sha256_from_M43": "f906e43305fcd183ff9e0638a246cc4df84192d7691befd96d35b17d630b9aef",
+      "selected_frames": [
+        {
+          "frame_index": 96,
+          "pts_ticks": 1920,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 3.2,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 16,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 150,
+          "pts_ticks": 3000,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 5.0,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 25,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 762,
+          "pts_ticks": 15241,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 25.401666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 127,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 1374,
+          "pts_ticks": 27483,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 45.805,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 229,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_019_back_actual.png",
+      "private_contact_sheet_sha256": "5500404e20bc07f58dca26d7e8321fe46869360682c94184071812cfb6f2f6fd",
+      "source_stat_stable": true,
+      "wall_s": 5.59200241599865
+    },
+    {
+      "event": "train_events/event_020",
+      "camera": "front",
+      "case_type": "ZERO_OBJECT_TRAIN_RECORDING",
+      "source_path": "data/raw/layer_b/v2/train_events/event_020/camera_front.mov",
+      "source_sha256_from_M43": "3b45ba8f056227359d27c4d7da80dfd9ddb202dacdccd9d34797c4f5fbd8ecba",
+      "selected_frames": [
+        {
+          "frame_index": 66,
+          "pts_ticks": 1321,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 2.2016666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 11,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 84,
+          "pts_ticks": 1681,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 2.8016666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 14,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 426,
+          "pts_ticks": 8526,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 14.21,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 71,
+          "model_objects": 0
+        },
+        {
+          "frame_index": 762,
+          "pts_ticks": 15251,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 25.418333333333333,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 127,
+          "model_objects": 0
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/train_events_event_020_front_actual.png",
+      "private_contact_sheet_sha256": "b2f28d4aef6181ba3c8c6518305077be90acda146cc76376fc5a6faafb0d7c33",
+      "source_stat_stable": true,
+      "wall_s": 3.2626417920000677
+    },
+    {
+      "event": "no_train_events/event_001",
+      "camera": "front",
+      "case_type": "DETECTIONS_ON_ADOPTED_NO_TRAIN_CONTROL",
+      "source_path": "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov",
+      "source_sha256_from_M43": "58b03f81169df9e67acf24627d7311e1f3a214c81647f41b03979442b2a4045f",
+      "selected_frames": [
+        {
+          "frame_index": 414,
+          "pts_ticks": 8280,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 13.8,
+          "image_dimensions": [
+            3840,
+            2160
+          ],
+          "inference_prediction_row": 69,
+          "model_objects": 1
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/no_train_events_event_001_front_actual.png",
+      "private_contact_sheet_sha256": "a029c11b31c0e1358c6380e465bb46829aeb014fd42b411528ec2aa3997e7010",
+      "source_stat_stable": true,
+      "wall_s": 8.37325837500066
+    },
+    {
+      "event": "no_train_events/event_001",
+      "camera": "back",
+      "case_type": "DETECTIONS_ON_ADOPTED_NO_TRAIN_CONTROL",
+      "source_path": "data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov",
+      "source_sha256_from_M43": "5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9",
+      "selected_frames": [
+        {
+          "frame_index": 72,
+          "pts_ticks": 1441,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 2.401666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 12,
+          "model_objects": 1
+        },
+        {
+          "frame_index": 78,
+          "pts_ticks": 1561,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 2.6016666666666666,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 13,
+          "model_objects": 1
+        },
+        {
+          "frame_index": 564,
+          "pts_ticks": 11290,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 18.816666666666666,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 94,
+          "model_objects": 1
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/no_train_events_event_001_back_actual.png",
+      "private_contact_sheet_sha256": "895e79e7b4cf6510fd1c7e58d49a4c04ffc1dc3a7ae4cb7bb9cc6c0b6c0e0388",
+      "source_stat_stable": true,
+      "wall_s": 3.1775192500008416
+    },
+    {
+      "event": "no_train_events/event_003",
+      "camera": "front",
+      "case_type": "DETECTIONS_ON_ADOPTED_NO_TRAIN_CONTROL",
+      "source_path": "data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov",
+      "source_sha256_from_M43": "969c8b118996d56d5593f8a3cb6ef9e16e571d4829076824952663d719239205",
+      "selected_frames": [
+        {
+          "frame_index": 384,
+          "pts_ticks": 7687,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 12.811666666666667,
+          "image_dimensions": [
+            1920,
+            1080
+          ],
+          "inference_prediction_row": 64,
+          "model_objects": 1
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/no_train_events_event_003_front_actual.png",
+      "private_contact_sheet_sha256": "fe75a0b96135da15d625426057f69b2227419159bd91b96a6aa1c1a16f22669c",
+      "source_stat_stable": true,
+      "wall_s": 2.3528857919991424
+    },
+    {
+      "event": "no_train_events/event_003",
+      "camera": "back",
+      "case_type": "DETECTIONS_ON_ADOPTED_NO_TRAIN_CONTROL",
+      "source_path": "data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov",
+      "source_sha256_from_M43": "4914515714eb1ca8a282f61112afcfb11391dd2ec08543796611e22b884b4d9c",
+      "selected_frames": [
+        {
+          "frame_index": 486,
+          "pts_ticks": 9721,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 16.201666666666668,
+          "image_dimensions": [
+            3840,
+            2160
+          ],
+          "inference_prediction_row": 81,
+          "model_objects": 1
+        },
+        {
+          "frame_index": 636,
+          "pts_ticks": 12721,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 21.201666666666668,
+          "image_dimensions": [
+            3840,
+            2160
+          ],
+          "inference_prediction_row": 106,
+          "model_objects": 1
+        },
+        {
+          "frame_index": 642,
+          "pts_ticks": 12841,
+          "timebase": [
+            1,
+            600
+          ],
+          "timestamp_s": 21.401666666666667,
+          "image_dimensions": [
+            3840,
+            2160
+          ],
+          "inference_prediction_row": 107,
+          "model_objects": 1
+        }
+      ],
+      "status": "ACTUAL_SELECTED_FRAMES_DECODED",
+      "private_contact_sheet": "/private/tmp/mission44_actual_source_diagnostics_u4nrwe3_/no_train_events_event_003_back_actual.png",
+      "private_contact_sheet_sha256": "f77b01e01c101f39d36be9f929676bcb9aeb17d24d1bba2159d4965709c197de",
+      "source_stat_stable": true,
+      "wall_s": 12.77900258400041
+    }
+  ],
+  "audio_cases": [
+    {
+      "event": "train_events/event_001",
+      "error_type": "FN",
+      "source_path": "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "source_sha256_from_M43": "d80bd6565b066eddb099325db790823d0dfd6b416380965f5f2b280ea1af832b",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+      "windows": [
+        {
+          "event": "train_events/event_001",
+          "error_type": "FN",
+          "window_index": 4,
+          "window_start_s": 2.0,
+          "causal_window_end_s": 3.0,
+          "model_score_from_M43": 0.24748830497264862,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.09256195679778455,
+          "absolute_peak_normalized_pcm": 0.347442626953125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.08788049253078317,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 353.56575921117013,
+          "spectral_flatness": 0.019084727290969855,
+          "natural_log_mel_mean": -0.8965056164588823,
+          "natural_log_mel_std": 2.291480542030697,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_001",
+          "error_type": "FN",
+          "window_index": 12,
+          "window_start_s": 6.0,
+          "causal_window_end_s": 7.0,
+          "model_score_from_M43": 0.07803571969270706,
+          "selection": "CONTAINS_ADOPTED_ONSET_IF_FRONT_CLOCK",
+          "rms_normalized_pcm": 0.24906800755991157,
+          "absolute_peak_normalized_pcm": 0.855133056640625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.07887992999562472,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 369.3231120894197,
+          "spectral_flatness": 0.019362572674668795,
+          "natural_log_mel_mean": 1.1567306376214725,
+          "natural_log_mel_std": 2.4707889707759603,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_001",
+          "error_type": "FN",
+          "window_index": 13,
+          "window_start_s": 6.5,
+          "causal_window_end_s": 7.5,
+          "model_score_from_M43": 0.05294474586844444,
+          "selection": "CONTAINS_ADOPTED_ONSET_IF_FRONT_CLOCK",
+          "rms_normalized_pcm": 0.26509602971729584,
+          "absolute_peak_normalized_pcm": 0.855133056640625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.08050503156447278,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 395.00552792317814,
+          "spectral_flatness": 0.0319548577067499,
+          "natural_log_mel_mean": 1.613356832217804,
+          "natural_log_mel_std": 2.235970005073017,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_001",
+          "error_type": "FN",
+          "window_index": 25,
+          "window_start_s": 12.5,
+          "causal_window_end_s": 13.5,
+          "model_score_from_M43": 0.17910267412662506,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.1101540331491159,
+          "absolute_peak_normalized_pcm": 0.851287841796875,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.15538471154447153,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 945.0810302102064,
+          "spectral_flatness": 0.16408604892733414,
+          "natural_log_mel_mean": 0.24002781289997985,
+          "natural_log_mel_std": 2.045642518939579,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_001",
+          "error_type": "FN",
+          "window_index": 30,
+          "window_start_s": 15.0,
+          "causal_window_end_s": 16.0,
+          "model_score_from_M43": 0.1747315675020218,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.10552598360571307,
+          "absolute_peak_normalized_pcm": 0.76666259765625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.1658853678354897,
+          "dominant_non_DC_frequency_hz": 375.0,
+          "spectral_centroid_hz": 938.9267530096229,
+          "spectral_flatness": 0.15249767754603952,
+          "natural_log_mel_mean": 0.3776045156090343,
+          "natural_log_mel_std": 1.8886284829322646,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "c54aa98098b9db88af3f2a382faa3f703e92acbce57c570dc86b781a8eb7a1b8",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 797675,
+      "duration_s": 49.8546875,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.18557262499962235
+    },
+    {
+      "event": "train_events/event_003",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_003/camera_front.mov",
+      "source_sha256_from_M43": "7a12b86be8511738d4d8539476cdba1c90270159fd65d0931189e367e3550ca5",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_003",
+          "error_type": "FP",
+          "window_index": 7,
+          "window_start_s": 3.5,
+          "causal_window_end_s": 4.5,
+          "model_score_from_M43": 0.9144926071166992,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.28871992954377607,
+          "absolute_peak_normalized_pcm": 0.895050048828125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.089818113632102,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 419.47715762684146,
+          "spectral_flatness": 0.045077131025581994,
+          "natural_log_mel_mean": 2.0200400978759663,
+          "natural_log_mel_std": 2.043648257183803,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_003",
+          "error_type": "FP",
+          "window_index": 8,
+          "window_start_s": 4.0,
+          "causal_window_end_s": 5.0,
+          "model_score_from_M43": 0.7337711453437805,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.26134637464625815,
+          "absolute_peak_normalized_pcm": 0.880401611328125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.08456778548659291,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 406.11016979806755,
+          "spectral_flatness": 0.044852021108864305,
+          "natural_log_mel_mean": 1.7448924482725248,
+          "natural_log_mel_std": 2.072286764500156,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_003",
+          "error_type": "FP",
+          "window_index": 9,
+          "window_start_s": 4.5,
+          "causal_window_end_s": 5.5,
+          "model_score_from_M43": 0.7687584161758423,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.20480065056816105,
+          "absolute_peak_normalized_pcm": 0.9180908203125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.08431776986061629,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 360.748112602159,
+          "spectral_flatness": 0.0403362453115556,
+          "natural_log_mel_mean": 1.2110826227761629,
+          "natural_log_mel_std": 2.0265754408240135,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "a57d6549248f23798e46f83202558d986cc68a6c9a11f1a034f62085b33fcc60",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 533483,
+      "duration_s": 33.3426875,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_003/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.07537750000119559
+    },
+    {
+      "event": "train_events/event_007",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_007/camera_front.mov",
+      "source_sha256_from_M43": "26cc6236447deda9f0a870d7645744f63a5cbd3ee5bbf4150808a6f73aec8c4c",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_007",
+          "error_type": "FP",
+          "window_index": 64,
+          "window_start_s": 32.0,
+          "causal_window_end_s": 33.0,
+          "model_score_from_M43": 0.9870243072509766,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.1639685153956564,
+          "absolute_peak_normalized_pcm": 0.700775146484375,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.11519469966872929,
+          "dominant_non_DC_frequency_hz": 1312.5,
+          "spectral_centroid_hz": 945.429062826566,
+          "spectral_flatness": 0.036162344503830574,
+          "natural_log_mel_mean": 0.13402063168299985,
+          "natural_log_mel_std": 2.2771013527300594,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_007",
+          "error_type": "FP",
+          "window_index": 65,
+          "window_start_s": 32.5,
+          "causal_window_end_s": 33.5,
+          "model_score_from_M43": 0.9903380274772644,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.13592693411821696,
+          "absolute_peak_normalized_pcm": 0.552581787109375,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.14344646540408776,
+          "dominant_non_DC_frequency_hz": 1312.5,
+          "spectral_centroid_hz": 1179.6633129821291,
+          "spectral_flatness": 0.013113968223825457,
+          "natural_log_mel_mean": -0.5269319434513302,
+          "natural_log_mel_std": 2.3338460232831273,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_007",
+          "error_type": "FP",
+          "window_index": 66,
+          "window_start_s": 33.0,
+          "causal_window_end_s": 34.0,
+          "model_score_from_M43": 0.9279100894927979,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.06929536059019961,
+          "absolute_peak_normalized_pcm": 0.30560302734375,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.1061316332270767,
+          "dominant_non_DC_frequency_hz": 968.75,
+          "spectral_centroid_hz": 1123.3718157303174,
+          "spectral_flatness": 0.015519128345101439,
+          "natural_log_mel_mean": -2.750203229378884,
+          "natural_log_mel_std": 2.8352129753749433,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "619299105022d857ae1189026b32f581372167eb211c82e3aeb9165442e24bbe",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 612331,
+      "duration_s": 38.2706875,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_007/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.07928249999895343
+    },
+    {
+      "event": "train_events/event_008",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_008/camera_front.mov",
+      "source_sha256_from_M43": "5f0151fd09dd35636afc1a641c05426c5483871a44b8ee5883e15dad173b0e16",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_008",
+          "error_type": "FP",
+          "window_index": 52,
+          "window_start_s": 26.0,
+          "causal_window_end_s": 27.0,
+          "model_score_from_M43": 0.8109110593795776,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.13985576770196467,
+          "absolute_peak_normalized_pcm": 0.61065673828125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.13519594974685917,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 556.6506795542225,
+          "spectral_flatness": 0.09668419471773541,
+          "natural_log_mel_mean": 0.8387504551585674,
+          "natural_log_mel_std": 1.6069399960985817,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_008",
+          "error_type": "FP",
+          "window_index": 72,
+          "window_start_s": 36.0,
+          "causal_window_end_s": 37.0,
+          "model_score_from_M43": 0.6057658791542053,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.11312792839211633,
+          "absolute_peak_normalized_pcm": 0.592193603515625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.12882055128445527,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 597.1614354362731,
+          "spectral_flatness": 0.13856915098067685,
+          "natural_log_mel_mean": 0.5731717370205806,
+          "natural_log_mel_std": 1.574410642526445,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_008",
+          "error_type": "FP",
+          "window_index": 92,
+          "window_start_s": 46.0,
+          "causal_window_end_s": 47.0,
+          "model_score_from_M43": 0.6700693964958191,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.1411519306591039,
+          "absolute_peak_normalized_pcm": 0.66973876953125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.11625726607912995,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 477.21188078772354,
+          "spectral_flatness": 0.0667975119616354,
+          "natural_log_mel_mean": 0.6255424106732543,
+          "natural_log_mel_std": 1.8336395239341736,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "8476ad9b9bd7edc4edab0b5424ad97309d1c905fae70ed634e8ec04860e21ea4",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 942059,
+      "duration_s": 58.8786875,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_008/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.10109129199918243
+    },
+    {
+      "event": "train_events/event_009",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+      "source_sha256_from_M43": "7a4407f8ef68ea7e5cd550cba771233996d749d9dced1a3cc7ffcacb5abfc4db",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_009",
+          "error_type": "FP",
+          "window_index": 38,
+          "window_start_s": 19.0,
+          "causal_window_end_s": 20.0,
+          "model_score_from_M43": 0.5235195159912109,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.1164368354830959,
+          "absolute_peak_normalized_pcm": 0.525787353515625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.05706606662916432,
+          "dominant_non_DC_frequency_hz": 62.5,
+          "spectral_centroid_hz": 267.537435436557,
+          "spectral_flatness": 0.029257909723672714,
+          "natural_log_mel_mean": -0.5187088437187295,
+          "natural_log_mel_std": 2.17077411028941,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_009",
+          "error_type": "FP",
+          "window_index": 49,
+          "window_start_s": 24.5,
+          "causal_window_end_s": 25.5,
+          "model_score_from_M43": 0.5480438470840454,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.09796811844492513,
+          "absolute_peak_normalized_pcm": 0.491912841796875,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.060816301018813676,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 287.60439509066026,
+          "spectral_flatness": 0.04116642293862129,
+          "natural_log_mel_mean": -0.878518962121679,
+          "natural_log_mel_std": 2.164095557554503,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_009",
+          "error_type": "FP",
+          "window_index": 56,
+          "window_start_s": 28.0,
+          "causal_window_end_s": 29.0,
+          "model_score_from_M43": 0.5820420980453491,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.11061867703177237,
+          "absolute_peak_normalized_pcm": 0.7713623046875,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.06431651978248641,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 517.4097780186547,
+          "spectral_flatness": 0.0805354951154406,
+          "natural_log_mel_mean": -0.666986006149082,
+          "natural_log_mel_std": 2.3061664444444725,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "0fccc0adb9140c460cd4682f5310c3cd22f07c0ad3c749aec3ddd2787b9f835c",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 686400,
+      "duration_s": 42.9,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.0894083330003923
+    },
+    {
+      "event": "train_events/event_010",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_010/camera_front.mov",
+      "source_sha256_from_M43": "9967e3666086e1f0f14f20d22bbf36e7eec5a5491622edbfb2f465f247ce1b46",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_010",
+          "error_type": "FP",
+          "window_index": 13,
+          "window_start_s": 6.5,
+          "causal_window_end_s": 7.5,
+          "model_score_from_M43": 0.3855275809764862,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.1580413340851827,
+          "absolute_peak_normalized_pcm": 0.7818603515625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.07725482842677667,
+          "dominant_non_DC_frequency_hz": 62.5,
+          "spectral_centroid_hz": 400.3640437761856,
+          "spectral_flatness": 0.06368559490928555,
+          "natural_log_mel_mean": 0.5158089080689177,
+          "natural_log_mel_std": 1.9915995872320957,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_010",
+          "error_type": "FP",
+          "window_index": 14,
+          "window_start_s": 7.0,
+          "causal_window_end_s": 8.0,
+          "model_score_from_M43": 0.35172906517982483,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.14852981414074623,
+          "absolute_peak_normalized_pcm": 0.75323486328125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.07337958622413901,
+          "dominant_non_DC_frequency_hz": 62.5,
+          "spectral_centroid_hz": 358.1627504779009,
+          "spectral_flatness": 0.05915164571341883,
+          "natural_log_mel_mean": 0.33082119453842684,
+          "natural_log_mel_std": 1.923036163437598,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_010",
+          "error_type": "FP",
+          "window_index": 28,
+          "window_start_s": 14.0,
+          "causal_window_end_s": 15.0,
+          "model_score_from_M43": 0.44725754857063293,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.16496892346431216,
+          "absolute_peak_normalized_pcm": 0.754913330078125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.07531720732545784,
+          "dominant_non_DC_frequency_hz": 62.5,
+          "spectral_centroid_hz": 369.6358642761817,
+          "spectral_flatness": 0.046568488672050413,
+          "natural_log_mel_mean": 0.4647098829379772,
+          "natural_log_mel_std": 2.1074849594343372,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "a174614cee7d70b526c2d03165e90392c20f1597c9b13b5989638c83cb84285d",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 384320,
+      "duration_s": 24.02,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_010/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.06572112499998184
+    },
+    {
+      "event": "train_events/event_011",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_011/camera_front.mov",
+      "source_sha256_from_M43": "6107ebf5eb2b35da216878d35287d54288a078ff2957184675429eb2cc2a7fc0",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_011",
+          "error_type": "FP",
+          "window_index": 41,
+          "window_start_s": 20.5,
+          "causal_window_end_s": 21.5,
+          "model_score_from_M43": 0.38162413239479065,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.10040768810865673,
+          "absolute_peak_normalized_pcm": 0.7708740234375,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.07812988311769485,
+          "dominant_non_DC_frequency_hz": 62.5,
+          "spectral_centroid_hz": 504.70544192153284,
+          "spectral_flatness": 0.07778043889703184,
+          "natural_log_mel_mean": -0.3578628129383695,
+          "natural_log_mel_std": 2.1252520630358425,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_011",
+          "error_type": "FP",
+          "window_index": 66,
+          "window_start_s": 33.0,
+          "causal_window_end_s": 34.0,
+          "model_score_from_M43": 0.45015743374824524,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.09970630702845999,
+          "absolute_peak_normalized_pcm": 0.530059814453125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.0711294455903494,
+          "dominant_non_DC_frequency_hz": 62.5,
+          "spectral_centroid_hz": 401.6944601762931,
+          "spectral_flatness": 0.0572001134057433,
+          "natural_log_mel_mean": -0.5955877049463519,
+          "natural_log_mel_std": 2.286809395713033,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_011",
+          "error_type": "FP",
+          "window_index": 70,
+          "window_start_s": 35.0,
+          "causal_window_end_s": 36.0,
+          "model_score_from_M43": 0.379672110080719,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.09304278897666486,
+          "absolute_peak_normalized_pcm": 0.723388671875,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.061628851803237704,
+          "dominant_non_DC_frequency_hz": 62.5,
+          "spectral_centroid_hz": 494.2092369375747,
+          "spectral_flatness": 0.05369486086092366,
+          "natural_log_mel_mean": -1.1816007965360165,
+          "natural_log_mel_std": 2.5089623919988786,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "4e8ae8b1f7b02ccb5f3cc2ce13bb4fd02044f980ee4ff89d54b2b539671f904d",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 603115,
+      "duration_s": 37.6946875,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_011/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.08122091599943815
+    },
+    {
+      "event": "train_events/event_014",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_014/camera_front.mov",
+      "source_sha256_from_M43": "adfbf0cd5118015d807b97596956cd22131c4c02c0acb9bebbe3a104789b7cf5",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_014",
+          "error_type": "FP",
+          "window_index": 20,
+          "window_start_s": 10.0,
+          "causal_window_end_s": 11.0,
+          "model_score_from_M43": 0.493081271648407,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.1503759616412292,
+          "absolute_peak_normalized_pcm": 0.61651611328125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.05619101193824614,
+          "dominant_non_DC_frequency_hz": 62.5,
+          "spectral_centroid_hz": 223.31075414437288,
+          "spectral_flatness": 0.029768987333448748,
+          "natural_log_mel_mean": -0.08520636784681371,
+          "natural_log_mel_std": 1.9937483037330612,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_014",
+          "error_type": "FP",
+          "window_index": 46,
+          "window_start_s": 23.0,
+          "causal_window_end_s": 24.0,
+          "model_score_from_M43": 0.5166463255882263,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.20343684535105025,
+          "absolute_peak_normalized_pcm": 0.829010009765625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.08900556284767798,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 407.96698546166226,
+          "spectral_flatness": 0.06513479373335775,
+          "natural_log_mel_mean": 1.309166136238693,
+          "natural_log_mel_std": 1.958720875162237,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_014",
+          "error_type": "FP",
+          "window_index": 97,
+          "window_start_s": 48.5,
+          "causal_window_end_s": 49.5,
+          "model_score_from_M43": 0.45633140206336975,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.13783400194659615,
+          "absolute_peak_normalized_pcm": 0.7391357421875,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.14569660603787737,
+          "dominant_non_DC_frequency_hz": 656.25,
+          "spectral_centroid_hz": 919.9520768658043,
+          "spectral_flatness": 0.1567875795266563,
+          "natural_log_mel_mean": 0.8638143470260576,
+          "natural_log_mel_std": 1.9413913280721924,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "6c6f95305d534356333b89f3d8be9e8348acf5401dab584fede4abd3db50fcbb",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 880619,
+      "duration_s": 55.0386875,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_014/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.10032924999904935
+    },
+    {
+      "event": "train_events/event_016",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_016/camera_front.mov",
+      "source_sha256_from_M43": "3a0d71da27ba66aeb3c76a58cfbf349c136176c3d0425a5b14a4ce1cb30270ff",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_016",
+          "error_type": "FP",
+          "window_index": 42,
+          "window_start_s": 21.0,
+          "causal_window_end_s": 22.0,
+          "model_score_from_M43": 0.7093350887298584,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.14451872883365502,
+          "absolute_peak_normalized_pcm": 0.87335205078125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.13419588724295267,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 717.3815052025166,
+          "spectral_flatness": 0.14781687127654483,
+          "natural_log_mel_mean": 0.9162767485105989,
+          "natural_log_mel_std": 1.8676389611737378,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_016",
+          "error_type": "FP",
+          "window_index": 48,
+          "window_start_s": 24.0,
+          "causal_window_end_s": 25.0,
+          "model_score_from_M43": 0.42563989758491516,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.12838146449852966,
+          "absolute_peak_normalized_pcm": 0.85931396484375,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.139133695855991,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 769.9077358190337,
+          "spectral_flatness": 0.16120644082205435,
+          "natural_log_mel_mean": 0.8274179295248952,
+          "natural_log_mel_std": 1.7931577927468194,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_016",
+          "error_type": "FP",
+          "window_index": 63,
+          "window_start_s": 31.5,
+          "causal_window_end_s": 32.5,
+          "model_score_from_M43": 0.43204814195632935,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.1395489062081273,
+          "absolute_peak_normalized_pcm": 0.866485595703125,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.12463278954934684,
+          "dominant_non_DC_frequency_hz": 625.0,
+          "spectral_centroid_hz": 680.0170714183998,
+          "spectral_flatness": 0.09849895641001147,
+          "natural_log_mel_mean": 1.0317444856096551,
+          "natural_log_mel_std": 1.827510878207988,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "7f28b16b03c38eb29278cba90b6c649e3558d00e6635626e7eed007441176052",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 749888,
+      "duration_s": 46.868,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_016/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.08963433299868484
+    },
+    {
+      "event": "train_events/event_019",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_019/camera_front.mov",
+      "source_sha256_from_M43": "697f3c9ef9572e4b8be74e4719ec3911a2781837cd3ab08a1c3a663cb8cbd0c3",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_019",
+          "error_type": "FP",
+          "window_index": 33,
+          "window_start_s": 16.5,
+          "causal_window_end_s": 17.5,
+          "model_score_from_M43": 0.53764408826828,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.15504952839566621,
+          "absolute_peak_normalized_pcm": 0.55615234375,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.0388149259328708,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 197.21017776868973,
+          "spectral_flatness": 0.01121787767441632,
+          "natural_log_mel_mean": -0.4785664766815594,
+          "natural_log_mel_std": 2.3968676007054137,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_019",
+          "error_type": "FP",
+          "window_index": 35,
+          "window_start_s": 17.5,
+          "causal_window_end_s": 18.5,
+          "model_score_from_M43": 0.550014078617096,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.16304914720036986,
+          "absolute_peak_normalized_pcm": 0.826873779296875,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.04500281267579224,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 283.4613205869209,
+          "spectral_flatness": 0.027333193030147845,
+          "natural_log_mel_mean": -0.3757657279200619,
+          "natural_log_mel_std": 2.493327655991102,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_019",
+          "error_type": "FP",
+          "window_index": 36,
+          "window_start_s": 18.0,
+          "causal_window_end_s": 19.0,
+          "model_score_from_M43": 0.46308398246765137,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.17010960010586798,
+          "absolute_peak_normalized_pcm": 0.86090087890625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.04312769548096756,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 243.96639516605046,
+          "spectral_flatness": 0.02291697753738337,
+          "natural_log_mel_mean": -0.28642455326795624,
+          "natural_log_mel_std": 2.4635996900523423,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "acc76ba2957e058f84496f51927594d6fff786eb28a41933cf5b36f4df45cd52",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 965269,
+      "duration_s": 60.3293125,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_019/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.1059138750006241
+    },
+    {
+      "event": "train_events/event_023",
+      "error_type": "FP",
+      "source_path": "data/raw/layer_b/v2/train_events/event_023/camera_front.mov",
+      "source_sha256_from_M43": "cb855aa632bac4a032496a7ccc0a40a28b631807231254775a2a24f85d81564b",
+      "adopted_annotation": "data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+      "windows": [
+        {
+          "event": "train_events/event_023",
+          "error_type": "FP",
+          "window_index": 1,
+          "window_start_s": 0.5,
+          "causal_window_end_s": 1.5,
+          "model_score_from_M43": 0.7862588167190552,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.05860373155094498,
+          "absolute_peak_normalized_pcm": 0.2291259765625,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.05344084005250328,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 217.1673665957101,
+          "spectral_flatness": 0.007217755166714508,
+          "natural_log_mel_mean": -2.5647265956590157,
+          "natural_log_mel_std": 2.6022067787511594,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_023",
+          "error_type": "FP",
+          "window_index": 8,
+          "window_start_s": 4.0,
+          "causal_window_end_s": 5.0,
+          "model_score_from_M43": 0.6605033874511719,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.18944591482442624,
+          "absolute_peak_normalized_pcm": 0.76318359375,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.05937871116944809,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 264.5833459587474,
+          "spectral_flatness": 0.019514703397949702,
+          "natural_log_mel_mean": 0.4273351448512226,
+          "natural_log_mel_std": 2.2753245471441623,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        },
+        {
+          "event": "train_events/event_023",
+          "error_type": "FP",
+          "window_index": 9,
+          "window_start_s": 4.5,
+          "causal_window_end_s": 5.5,
+          "model_score_from_M43": 0.714557945728302,
+          "selection": "TOP_EXISTING_SCORE",
+          "rms_normalized_pcm": 0.1388308649396156,
+          "absolute_peak_normalized_pcm": 0.603240966796875,
+          "clipped_sample_fraction": 0.0,
+          "zero_crossing_fraction": 0.0641915119694981,
+          "dominant_non_DC_frequency_hz": 93.75,
+          "spectral_centroid_hz": 253.5497106056639,
+          "spectral_flatness": 0.024035238067468916,
+          "natural_log_mel_mean": -0.08057081802718812,
+          "natural_log_mel_std": 2.153181656800529,
+          "PCM_input_identity_matches_M43": true,
+          "signal_category_or_window_truth": "NOT_ESTABLISHED; numerical descriptors are not a horn label"
+        }
+      ],
+      "status": "ACTUAL_PCM_IDENTITY_AND_SIGNAL_DIAGNOSTICS_COMPLETE",
+      "audio_stream_index": 1,
+      "pcm_sha256": "d196d7f59fbb78fa54cd6e9cb57fb4de640fa3ba78249d734c80031d07f1b8d9",
+      "PCM_matches_prior_model_input": true,
+      "PCM_retained": false,
+      "sample_count": 717461,
+      "duration_s": 44.8413125,
+      "ffmpeg_command": [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/Users/sayemuddin/Desktop/Train_automation/data/raw/layer_b/v2/train_events/event_023/camera_front.mov",
+        "-map",
+        "0:1",
+        "-vn",
+        "-acodec",
+        "pcm_s16le",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-f",
+        "s16le",
+        "pipe:1"
+      ],
+      "ffmpeg_stderr": "",
+      "source_stat_stable": true,
+      "wall_s": 0.09188333299971418
+    }
+  ],
+  "finished_at_utc": "2026-11-08T14:44:19.412840+00:00",
+  "decoded_selected_frames": 57,
+  "visual_cases_completed": 17,
+  "audio_cases_completed": 11,
+  "operator_human_listening_performed": false,
+  "sound_category_not_inferred_from_spectrum": true
+}

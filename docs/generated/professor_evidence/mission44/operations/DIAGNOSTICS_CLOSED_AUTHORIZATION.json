@@ -1,0 +1,92 @@
+{
+  "schema_version": "phase5-media-access-authorization/2",
+  "authorization_id": "AUTH-MEDIA-ACCESS-M44-DIAGNOSTICS-20261108T144243Z",
+  "authorization_class": "AUTH-MEDIA-ACCESS",
+  "status": "CLOSED",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "authorized_at_utc": "2026-11-08T14:42:43.162976+00:00",
+  "expires_at_utc": "2026-11-08T14:44:19.411325+00:00",
+  "revoked": false,
+  "authorization_statement": "Mission44 user explicitly requests targeted original-frame and acoustic-source error investigation, reusing full27 predictions. Previously confirmed authority attribution persists; this recorded transcription covers the exact diagnostic members/method and creates no inference, GT or replay permission.",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "agent_transcription",
+    "identity": "Codex local technical operator",
+    "transcription_source": "Actual Mission44 brief \u00a7\u00a73.4/4.1 and final instruction; request SHA256 28384ae4df609f84e99fc3b8ec028d650e607e81e54d7b418ec148fdda8e42c8; exact SOURCE_DIAGNOSTIC_PLAN.json and hash-bound scope"
+  },
+  "scope": {
+    "operations": [
+      "READ_RAW_MEDIA",
+      "FRAME_EXTRACTION",
+      "AUDIO_EXTRACTION",
+      "FEATURE_EXTRACTION"
+    ],
+    "datasets": [
+      "layer_b"
+    ],
+    "events": [
+      "no_train_events/event_001",
+      "no_train_events/event_003",
+      "train_events/event_001",
+      "train_events/event_003",
+      "train_events/event_005",
+      "train_events/event_007",
+      "train_events/event_008",
+      "train_events/event_009",
+      "train_events/event_010",
+      "train_events/event_011",
+      "train_events/event_012",
+      "train_events/event_014",
+      "train_events/event_015",
+      "train_events/event_016",
+      "train_events/event_017",
+      "train_events/event_019",
+      "train_events/event_020",
+      "train_events/event_023"
+    ],
+    "media_types": [
+      "video"
+    ],
+    "purpose": "Mission44 bounded actual-source frame/signal diagnostics on named zero-output/control/audio-error cases; no model inference/retraining/calibration, GT creation, raw/PCM retention in professor package, playback release or B2 decision replay"
+  },
+  "restrictions": {
+    "path_prefixes": [
+      "data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov",
+      "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov",
+      "data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_003/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_005/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_007/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_008/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_009/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_010/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_010/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_011/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_011/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_012/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_014/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_015/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_015/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_016/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_017/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_019/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_019/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_020/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_023/camera_front.mov"
+    ]
+  },
+  "bindings": {
+    "protocol_document": {
+      "path": "docs/generated/professor_evidence/mission44/SOURCE_DIAGNOSTIC_SCOPE.md",
+      "sha256": "2eefe3279a40821d1bf379aa4652ee9ac2c3e4e6108fcc99f97f719e86a12ebb"
+    }
+  },
+  "record_sha256": "2d8cf7840fadafd4a6e39e7f19c31dd33a66a743a56858381edeb7795c1c0cbe"
+}
