@@ -31,13 +31,13 @@ limitations:
   policy.
 summary:
   total_test_files: 168
-  processed_data_access: 2
-  unknown: 54
-  metadata_only: 17
   raw_media_access: 4
   model_checkpoint_access: 14
-  synthetic_only: 77
-  safe_for_synthetic_runner: 94
+  synthetic_only: 76
+  unknown: 55
+  processed_data_access: 2
+  metadata_only: 17
+  safe_for_synthetic_runner: 93
 test_files:
   tests/integration/test_phase0_smoke.py:
     access_dirs: []
@@ -520,26 +520,23 @@ test_files:
       skipped: 0
       passed: 14
   tests/test_phase11_9_synthetic_pilot.py:
-    access_dirs: []
+    sha256: b6bfec7630b0aee5275dcec5b00860b1fe0b19443d950dbeb4ab2256346d55d8
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/test_phase11_9_synthetic_pilot.py: changed/new source; UNKNOWN pending executed evidence
+      review'
     access_paths: []
     blocked_attempts: {}
-    category: SYNTHETIC_ONLY
-    child_processes_guarded: false
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: 13 test(s) executed; no repository file outside source/test code was read; all data is created
-      in temporary directories.
-    safe_for_synthetic_runner: true
-    sha256: ac11b986fc377491c388f29a6b4de9a75fed62dfcff9a6de3a8433a0b95622d0
+    access_dirs: []
+    static_hints: []
     spawns_child_process: false
-    static_hints:
-    - _back.mov
-    - _front.mov
-    - again_front.mov
+    child_processes_guarded: false
     tests:
+      passed: 0
       failed: 0
       errors: 0
       skipped: 0
-      passed: 13
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/test_phase11_cohort_qualified_identity.py:
     access_dirs: []
     access_paths: []
@@ -1979,7 +1976,7 @@ test_files:
       skipped: 0
       passed: 18
   tests/unit/test_phase14_benchmark_suite.py:
-    sha256: d6ce14b8f0ea08844fc66c2a5d523ff3d2311f23ce43643cff85f7d0e31521ad
+    sha256: 42a33edcf3e3985c5c0dd1f31de27826ceafe6b575f710c6a17ebb576d31a2dd
     category: UNKNOWN
     safe_for_synthetic_runner: false
     reason: 'tests/unit/test_phase14_benchmark_suite.py: changed/new source; UNKNOWN pending executed

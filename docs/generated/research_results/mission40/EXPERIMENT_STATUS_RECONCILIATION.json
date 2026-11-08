@@ -1,0 +1,28 @@
+{
+  "schema": "mission40-experiment-status-reconciliation/1",
+  "original_register_rows": 156,
+  "retained_unique_activity_ids": 156,
+  "status_counts": {
+    "SCIENTIFICALLY_UNDEFINED": 40,
+    "SUPERSEDED_OR_INVALID": 39,
+    "BLOCKED_BY_GENUINE_INPUT": 31,
+    "INCOMPLETE": 4,
+    "BLOCKED_BY_CANONICAL_GT": 15,
+    "COMPLETED_WITH_LIMITATIONS": 11,
+    "DEFERRED_BY_RESEARCHER": 15,
+    "BLOCKED_BY_OPERATION_SCOPE": 1,
+    "COMPLETED_VALID": 0,
+    "BLOCKED_BY_TECHNICAL_DEFECT": 0
+  },
+  "current_defined_experiment_directions": 5,
+  "prior_original_inference_stages_complete": 3,
+  "prior_B2_input_assembly_complete": true,
+  "current_full_B2_decision_replays_complete": 0,
+  "accepted_GT_evaluations_complete": 0,
+  "new_original_experiments_Mission40": 0,
+  "actual_original_events_processed_Mission40": 0,
+  "actual_decision_frames_processed_Mission40": 0,
+  "optional_R04": "DEFERRED_NOT_ACTIVATED_EXACT_ELEVEN_EVENT010_EXCLUDED",
+  "activity_rows_are_not_independent_experiments": true,
+  "unexecuted_B2_result_file_must_be_absent": true
+}

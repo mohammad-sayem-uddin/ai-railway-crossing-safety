@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 from pathlib import Path
 
 import pytest
+import yaml
 
 from railway_detection.cli.main import main as cli_main
 from railway_detection.optimization.benchmark import BenchmarkProtocol, BenchmarkProtocolError
@@ -288,6 +290,31 @@ def _copy_config_tree(tmp_path: Path) -> Path:
     return root
 
 
+def _synthetic_cli_repository(tmp_path: Path) -> Path:
+    """Exercise real config/hash code using constructed, non-inference artifacts."""
+    from railway_detection.experiments.frozen_config import load_frozen_config
+
+    root = _copy_config_tree(tmp_path)
+    config_path = root / "configs/frozen_experiment_v1.yaml"
+    config = yaml.safe_load(config_path.read_text())
+    for label in ("vision", "audio_v3"):
+        entry = config["checkpoints"][label]
+        payload = f"constructed {label} fingerprint fixture; never loaded".encode()
+        path = root / entry["path"]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(payload)
+        entry["expected_sha256"] = hashlib.sha256(payload).hexdigest()
+    config_path.write_text(yaml.safe_dump(config, sort_keys=False))
+    policy_path = root / "configs/decision_policy_v1.yaml"
+    policy = yaml.safe_load(policy_path.read_text())
+    policy["policy_metadata"]["reference_frozen_config_sha256"] = load_frozen_config(
+        config_path
+    ).canonical_hash
+    policy_path.write_text(yaml.safe_dump(policy, sort_keys=False))
+    assert artifact_fingerprints(root)["verified"] is True
+    return root
+
+
 def test_missing_or_altered_checkpoints_fail_verification(tmp_path):
     root = _copy_config_tree(tmp_path)
     missing = artifact_fingerprints(root)
@@ -379,11 +406,14 @@ def test_mismatched_outputs_properties_errors_and_self_comparison_are_all_refuse
 
 
 def test_benchmark_command_writes_a_complete_unclaiming_report(tmp_path):
+    root = _synthetic_cli_repository(tmp_path)
     out = tmp_path / "bench.json"
     code = cli_main(
         [
             "benchmark",
             "run",
+            "--repository-root",
+            str(root),
             "--output",
             str(out),
             "--warmup",
@@ -403,7 +433,10 @@ def test_benchmark_command_writes_a_complete_unclaiming_report(tmp_path):
     assert report["is_target_hardware_evidence"] is False
     assert set(report["stage_latency_ms"]) == {"frame_assembly", "decision_replay", "item_total"}
     assert report["derived_per_frame"]["throughput_frames_per_s"] > 0
-    assert report["environment"]["code_revision"]
+    # This constructed artifact tree is unversioned; report that truthfully.
+    # The separate real-source environment test still requires its 40-char HEAD.
+    assert report["environment"]["code_revision"] is None
+    assert report["environment"]["worktree_dirty"] is None
     assert report["memory"]["process_peak_rss_bytes"] > 0
     assert report["limitations"]
     again = tmp_path / "bench2.json"
@@ -411,6 +444,8 @@ def test_benchmark_command_writes_a_complete_unclaiming_report(tmp_path):
         [
             "benchmark",
             "run",
+            "--repository-root",
+            str(root),
             "--output",
             str(again),
             "--warmup",
@@ -435,11 +470,14 @@ def test_benchmark_command_refuses_to_write_into_repository_trees(tmp_path, tree
 
 
 def test_target_claim_through_the_command_is_not_granted_to_a_dev_machine(tmp_path):
+    root = _synthetic_cli_repository(tmp_path)
     out = tmp_path / "claim.json"
     cli_main(
         [
             "benchmark",
             "run",
+            "--repository-root",
+            str(root),
             "--output",
             str(out),
             "--iterations",

@@ -1,0 +1,57 @@
+{
+  "schema": "mission40-B2-real-admission/1",
+  "checked_utc": "2026-11-07T22:06:23.051164+00:00",
+  "actual_method": "CacheOnlyReplayEngine.execute_replay",
+  "repo_root": "/Users/sayemuddin/Desktop/Train_automation",
+  "condition": "B2",
+  "event_admission_attempted": "train_events/event_005",
+  "all_existing_input_events": [
+    "train_events/event_005",
+    "train_events/event_021",
+    "engine_events/event_001",
+    "train_events/event_001",
+    "no_train_events/event_001"
+  ],
+  "input_manifest_path": "docs/generated/research_results/mission39/audio_followup/FRONT_AUDIO_ACTUAL_INPUT_MANIFEST.json",
+  "input_manifest_sha256": "61155c9b5143c815c407a9a19c8821893a61e40b24846f9742607da61aa50fe7",
+  "all_actual_input_hashes_sizes_rows_verified": true,
+  "admission": {
+    "status": "REFUSED_BEFORE_DECISION_REPLAY",
+    "code": "AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED",
+    "detail": "no recorded AUTH-DESCRIPTIVE-EVAL-EXEC at data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json; descriptive execution on real-data caches is blocked until a researcher records one."
+  },
+  "B2_decision_replay_executed": false,
+  "actual_events_processed": 0,
+  "actual_decision_frames_processed": 0,
+  "existing_input_frames": 1079,
+  "existing_paired_input_frames": 634,
+  "output_directory_created": false,
+  "missing_current_records": [
+    "data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json",
+    "data/governance/stage21_promotion_receipt.json"
+  ],
+  "required_bindings": [
+    "evaluation_manifest_sha256",
+    "metric_scope_sha256",
+    "model_config_provenance_sha256",
+    "promotion_receipt_sha256",
+    "protocol_sha256"
+  ],
+  "metric_scope": [
+    "blocked_seconds",
+    "clearance_latency_s",
+    "closure_episodes",
+    "excess_closed_duration_s",
+    "exposure_s",
+    "missed_train",
+    "premature_opening",
+    "total_closed_s",
+    "warning_lead_time_s"
+  ],
+  "metric_scope_sha256": "1e10c02db10336cb8f436f5c791b20b2f58301cfd3d517e1ddf6a2d713562c36",
+  "frozen_config_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+  "gate_removed_or_patched": false,
+  "new_authorization_or_GT_records_created": false,
+  "raw_media_or_model_access": false,
+  "real_input_replay_in_synthetic_root": false
+}

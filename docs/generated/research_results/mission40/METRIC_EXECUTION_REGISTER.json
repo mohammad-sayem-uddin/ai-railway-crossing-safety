@@ -1,0 +1,991 @@
+{
+  "schema": "mission40-metric-execution-register/1",
+  "per_event": [
+    {
+      "metric": "FRONT_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "train_events/event_005",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 0,
+      "denominator": 398,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/train_events_event_005_front.jsonl",
+        "predictions/train_events_event_005_back.jsonl",
+        "audio_followup/predictions/train_events_event_005_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "train_events/event_005",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 0,
+      "denominator": 391,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/train_events_event_005_front.jsonl",
+        "predictions/train_events_event_005_back.jsonl",
+        "audio_followup/predictions/train_events_event_005_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_PREDICTED_OBJECTS",
+      "event": "train_events/event_005",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 0,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/train_events_event_005_front.jsonl",
+        "predictions/train_events_event_005_back.jsonl",
+        "audio_followup/predictions/train_events_event_005_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_PREDICTED_OBJECTS",
+      "event": "train_events/event_005",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 0,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/train_events_event_005_front.jsonl",
+        "predictions/train_events_event_005_back.jsonl",
+        "audio_followup/predictions/train_events_event_005_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "AUDIO_SCORE_GE_FROZEN_THRESHOLD",
+      "event": "train_events/event_005",
+      "camera": "front_embedded_audio",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 105,
+      "denominator": 158,
+      "unit": "overlapping 1-second windows",
+      "input_references": [
+        "predictions/train_events_event_005_front.jsonl",
+        "predictions/train_events_event_005_back.jsonl",
+        "audio_followup/predictions/train_events_event_005_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "B2_PAIRED_INPUT_COVERAGE",
+      "event": "train_events/event_005",
+      "camera": "front_native_clock",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 236,
+      "denominator": 398,
+      "unit": "input assembly frames",
+      "input_references": [
+        "predictions/train_events_event_005_front.jsonl",
+        "predictions/train_events_event_005_back.jsonl",
+        "audio_followup/predictions/train_events_event_005_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "train_events/event_021",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 6,
+      "denominator": 267,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/train_events_event_021_front.jsonl",
+        "predictions/train_events_event_021_back.jsonl",
+        "audio_followup/predictions/train_events_event_021_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "train_events/event_021",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 230,
+      "denominator": 307,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/train_events_event_021_front.jsonl",
+        "predictions/train_events_event_021_back.jsonl",
+        "audio_followup/predictions/train_events_event_021_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_PREDICTED_OBJECTS",
+      "event": "train_events/event_021",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 6,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/train_events_event_021_front.jsonl",
+        "predictions/train_events_event_021_back.jsonl",
+        "audio_followup/predictions/train_events_event_021_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_PREDICTED_OBJECTS",
+      "event": "train_events/event_021",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 230,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/train_events_event_021_front.jsonl",
+        "predictions/train_events_event_021_back.jsonl",
+        "audio_followup/predictions/train_events_event_021_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "AUDIO_SCORE_GE_FROZEN_THRESHOLD",
+      "event": "train_events/event_021",
+      "camera": "front_embedded_audio",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 4,
+      "denominator": 105,
+      "unit": "overlapping 1-second windows",
+      "input_references": [
+        "predictions/train_events_event_021_front.jsonl",
+        "predictions/train_events_event_021_back.jsonl",
+        "audio_followup/predictions/train_events_event_021_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "B2_PAIRED_INPUT_COVERAGE",
+      "event": "train_events/event_021",
+      "camera": "front_native_clock",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 158,
+      "denominator": 267,
+      "unit": "input assembly frames",
+      "input_references": [
+        "predictions/train_events_event_021_front.jsonl",
+        "predictions/train_events_event_021_back.jsonl",
+        "audio_followup/predictions/train_events_event_021_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "engine_events/event_001",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 0,
+      "denominator": 40,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/engine_events_event_001_front.jsonl",
+        "predictions/engine_events_event_001_back.jsonl",
+        "audio_followup/predictions/engine_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "engine_events/event_001",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 13,
+      "denominator": 49,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/engine_events_event_001_front.jsonl",
+        "predictions/engine_events_event_001_back.jsonl",
+        "audio_followup/predictions/engine_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_PREDICTED_OBJECTS",
+      "event": "engine_events/event_001",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 0,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/engine_events_event_001_front.jsonl",
+        "predictions/engine_events_event_001_back.jsonl",
+        "audio_followup/predictions/engine_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_PREDICTED_OBJECTS",
+      "event": "engine_events/event_001",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 14,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/engine_events_event_001_front.jsonl",
+        "predictions/engine_events_event_001_back.jsonl",
+        "audio_followup/predictions/engine_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "AUDIO_SCORE_GE_FROZEN_THRESHOLD",
+      "event": "engine_events/event_001",
+      "camera": "front_embedded_audio",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 0,
+      "denominator": 14,
+      "unit": "overlapping 1-second windows",
+      "input_references": [
+        "predictions/engine_events_event_001_front.jsonl",
+        "predictions/engine_events_event_001_back.jsonl",
+        "audio_followup/predictions/engine_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "B2_PAIRED_INPUT_COVERAGE",
+      "event": "engine_events/event_001",
+      "camera": "front_native_clock",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 21,
+      "denominator": 40,
+      "unit": "input assembly frames",
+      "input_references": [
+        "predictions/engine_events_event_001_front.jsonl",
+        "predictions/engine_events_event_001_back.jsonl",
+        "audio_followup/predictions/engine_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "train_events/event_001",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 6,
+      "denominator": 250,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/train_events_event_001_front.jsonl",
+        "predictions/train_events_event_001_back.jsonl",
+        "audio_followup/predictions/train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "train_events/event_001",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 7,
+      "denominator": 231,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/train_events_event_001_front.jsonl",
+        "predictions/train_events_event_001_back.jsonl",
+        "audio_followup/predictions/train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_PREDICTED_OBJECTS",
+      "event": "train_events/event_001",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 6,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/train_events_event_001_front.jsonl",
+        "predictions/train_events_event_001_back.jsonl",
+        "audio_followup/predictions/train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_PREDICTED_OBJECTS",
+      "event": "train_events/event_001",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 7,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/train_events_event_001_front.jsonl",
+        "predictions/train_events_event_001_back.jsonl",
+        "audio_followup/predictions/train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "AUDIO_SCORE_GE_FROZEN_THRESHOLD",
+      "event": "train_events/event_001",
+      "camera": "front_embedded_audio",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 0,
+      "denominator": 98,
+      "unit": "overlapping 1-second windows",
+      "input_references": [
+        "predictions/train_events_event_001_front.jsonl",
+        "predictions/train_events_event_001_back.jsonl",
+        "audio_followup/predictions/train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "B2_PAIRED_INPUT_COVERAGE",
+      "event": "train_events/event_001",
+      "camera": "front_native_clock",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 147,
+      "denominator": 250,
+      "unit": "input assembly frames",
+      "input_references": [
+        "predictions/train_events_event_001_front.jsonl",
+        "predictions/train_events_event_001_back.jsonl",
+        "audio_followup/predictions/train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "no_train_events/event_001",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 1,
+      "denominator": 124,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/no_train_events_event_001_front.jsonl",
+        "predictions/no_train_events_event_001_back.jsonl",
+        "audio_followup/predictions/no_train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_MODEL_OUTPUT_FRAMES",
+      "event": "no_train_events/event_001",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 24,
+      "denominator": 122,
+      "unit": "sampled frames",
+      "input_references": [
+        "predictions/no_train_events_event_001_front.jsonl",
+        "predictions/no_train_events_event_001_back.jsonl",
+        "audio_followup/predictions/no_train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "FRONT_RAW_PREDICTED_OBJECTS",
+      "event": "no_train_events/event_001",
+      "camera": "front",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 1,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/no_train_events_event_001_front.jsonl",
+        "predictions/no_train_events_event_001_back.jsonl",
+        "audio_followup/predictions/no_train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "BACK_RAW_PREDICTED_OBJECTS",
+      "event": "no_train_events/event_001",
+      "camera": "back",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 25,
+      "denominator": null,
+      "unit": "per-frame objects",
+      "input_references": [
+        "predictions/no_train_events_event_001_front.jsonl",
+        "predictions/no_train_events_event_001_back.jsonl",
+        "audio_followup/predictions/no_train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "AUDIO_SCORE_GE_FROZEN_THRESHOLD",
+      "event": "no_train_events/event_001",
+      "camera": "front_embedded_audio",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 11,
+      "denominator": 48,
+      "unit": "overlapping 1-second windows",
+      "input_references": [
+        "predictions/no_train_events_event_001_front.jsonl",
+        "predictions/no_train_events_event_001_back.jsonl",
+        "audio_followup/predictions/no_train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "B2_PAIRED_INPUT_COVERAGE",
+      "event": "no_train_events/event_001",
+      "camera": "front_native_clock",
+      "executed": true,
+      "requires_accepted_GT": false,
+      "numerator": 72,
+      "denominator": 124,
+      "unit": "input assembly frames",
+      "input_references": [
+        "predictions/no_train_events_event_001_front.jsonl",
+        "predictions/no_train_events_event_001_back.jsonl",
+        "audio_followup/predictions/no_train_events_event_001_front_audio.jsonl",
+        "audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl"
+      ],
+      "excluded_inputs": [
+        "superseded dB-scale predictions",
+        "back audio",
+        "other cohort members"
+      ],
+      "missing_observations": "No accepted human state/value records; not needed for this raw descriptor",
+      "censoring": "Human boundary censoring unknown; no imputed state",
+      "uncertainty": "Descriptive counts only; correlated frames/windows, no new inferential interval",
+      "interpretation": "Model output/input descriptor, not correctness or event-detection rate"
+    },
+    {
+      "metric": "M4_PRIMARY",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Accepted eligible T4 and causal replay opening/blocked history",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "M5_INTEGER_COMPANION",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Accepted reference and full required coverage under existing contract",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "MTR_FEASIBILITY",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Accepted lead-in/screen/control exposure and exact eligible population",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "T1_WARNING_OUTCOME",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Accepted camera-local T1 and actual warning/replay history",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "CONTROL_TRUTH_AND_FALSE_ALARMS",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Confirmed control truth/exposure and legitimate decision outputs",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "ENGINE_TRUTH_AND_TIMING",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Accepted engine boundary/identity evidence and legitimate decision outputs",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "FP_FN_ACCURACY_PRECISION_RECALL_F1",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Accepted field/class labels and eligibility matching outputs",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "HUMAN_AGREEMENT",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Original separate paired observations and existing canonical fields",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "BOUNDARY_CENSORING_UNCERTAINTY",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Retained accepted boundary states/rationales/clock evidence",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    },
+    {
+      "metric": "B2_DECISION_OUTPUTS",
+      "event": "NO_ELIGIBLE_POPULATION_ESTABLISHED",
+      "camera": "PER_METRIC_SCOPE",
+      "executed": false,
+      "requires_accepted_GT": true,
+      "numerator": null,
+      "denominator": null,
+      "unit": "UNAVAILABLE",
+      "input_references": [
+        "REFERENCE_RECORD_INSPECTION.json",
+        "B2_REPLAY_ADMISSION_RECEIPT.json"
+      ],
+      "excluded_inputs": [
+        "AI candidates as truth",
+        "invalidated schema6 reviews",
+        "reconstructed absent observations"
+      ],
+      "missing_observations": "Current AUTH-DESCRIPTIVE-EVAL-EXEC and promoted reference/manifest/protocol/metric/config binding",
+      "censoring": "UNKNOWN, not assumed uncensored",
+      "uncertainty": "UNAVAILABLE; do not infer zero error or an interval",
+      "interpretation": "Unavailable, never zero-filled"
+    }
+  ],
+  "actual_new_model_inferences": 0,
+  "actual_decision_replays": 0,
+  "available_descriptor_rows": 30,
+  "unavailable_evaluation_families": 10,
+  "new_inferential_tests": 0,
+  "accepted_GT_metrics": 0
+}

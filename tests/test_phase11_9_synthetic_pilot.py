@@ -180,11 +180,26 @@ def test_three_events_pass_full_workflow_with_zero_violations(tmp_path):
         assert violations == [], f"{event['event_id']}: {[v.code for v in violations]}"
 
 
-def test_pilot_writes_nothing_to_production_review_directory(tmp_path):
+def test_pilot_writes_nothing_to_production_review_directory(tmp_path, monkeypatch):
+    # This synthetic workflow must neither depend on nor open the live corpus.
+    production = Path(__file__).resolve().parents[1] / "data/ground_truth/reviews"
+    original_open = Path.open
+
+    def refuse_production_open(path, *args, **kwargs):
+        absolute = path.absolute()
+        assert absolute != production and production not in absolute.parents
+        return original_open(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", refuse_production_open)
+    monkeypatch.chdir(tmp_path)
+    reviews = tmp_path / "data/ground_truth/reviews"
+    reviews.mkdir(parents=True)
+    for index in range(2):
+        (reviews / f"sentinel_{index}_review.json").write_text(f"sentinel {index}")
+    before = {p.name: p.read_bytes() for p in reviews.iterdir()}
     for event in SYNTHETIC_EVENTS:
         _build_pilot_record(tmp_path, event)
-    count = sum(1 for _ in Path("data/ground_truth/reviews").rglob("*_review.json"))
-    assert count == 27  # exactly the 27 legacy records, nothing added
+    assert {p.name: p.read_bytes() for p in reviews.iterdir()} == before
 
 
 # --- Unit 3: failure modes ---
