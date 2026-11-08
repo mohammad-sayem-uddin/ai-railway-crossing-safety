@@ -1,0 +1,33 @@
+{
+  "schema": "mission41-exact-B2-admission/1",
+  "operation": "descriptive_cache_only_replay",
+  "condition": "B2",
+  "manifest_sha256": "61155c9b5143c815c407a9a19c8821893a61e40b24846f9742607da61aa50fe7",
+  "actual_refusal": {
+    "code": "AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED",
+    "detail": "no recorded AUTH-DESCRIPTIVE-EVAL-EXEC at data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json; descriptive execution on real-data caches is blocked until a researcher records one."
+  },
+  "B2_executed": false,
+  "decision_events": 0,
+  "decision_frames": 0,
+  "canonical_authorization_created": false,
+  "output_directory_created": false,
+  "existing_input_frames": 1079,
+  "existing_paired_input_frames": 634,
+  "existing_input_frames_without_audio_record": 445,
+  "known_bindings": {
+    "evaluation_manifest_sha256": "61155c9b5143c815c407a9a19c8821893a61e40b24846f9742607da61aa50fe7",
+    "metric_scope_sha256": "1e10c02db10336cb8f436f5c791b20b2f58301cfd3d517e1ddf6a2d713562c36",
+    "model_config_provenance_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+    "promotion_receipt_sha256": null,
+    "protocol_sha256": null
+  },
+  "live_protocol_issue": {
+    "code": "PREMATURE_OPENING_DEFINITION_UNDECIDED",
+    "detail": "PREMATURE_OPENING_DEFINITION_UNDECIDED: no documented value or researcher choice for ['premature_opening_window']; see docs/PREMATURE_OPENING_DECISION_EVIDENCE.md"
+  },
+  "algorithm_vs_governance": "Raw decision state computation does not intrinsically need human GT; this existing governed operation is intentionally promotion-bound and metric-scope-fixed. No model-only operation or metric subset is exposed by schema1.",
+  "source_hashes_verified": true,
+  "production_code_changed": false,
+  "raw_source_or_checkpoint_access": false
+}

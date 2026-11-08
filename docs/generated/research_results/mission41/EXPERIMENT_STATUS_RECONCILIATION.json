@@ -1,0 +1,24 @@
+{
+  "original_activity_rows": 156,
+  "status_counts": {
+    "SCIENTIFICALLY_UNDEFINED": 40,
+    "SUPERSEDED_OR_INVALID": 39,
+    "INCOMPLETE": 35,
+    "BLOCKED_BY_CANONICAL_GT": 15,
+    "COMPLETED_WITH_LIMITATIONS": 11,
+    "DEFERRED_BY_RESEARCHER": 15,
+    "BLOCKED_BY_OPERATION_SCOPE": 1,
+    "COMPLETED_VALID": 0,
+    "BLOCKED_BY_TECHNICAL_DEFECT": 0
+  },
+  "current_scientific_directions": 5,
+  "original_inference_stages_complete_with_limitations": 3,
+  "B2_input_assembly_complete": true,
+  "B2_decision_replay_complete": false,
+  "new_original_experiments": 0,
+  "accepted_GT_evaluations": 0,
+  "completed_model_only_descriptor_families": 5,
+  "scope": "Five physical events; activity rows are not independent experiments",
+  "M40_genuine_input_category_mapping": "31 rows become INCOMPLETE under the requested Mission41 vocabulary, with exact prior missing-input reasons retained; not resolved",
+  "optional_R04": "Not activated; exactly eleven; event_010 excluded"
+}
