@@ -41,7 +41,7 @@ from railway_detection.fusion.collector import MultimodalEvidenceCollector, Mult
 from railway_detection.fusion.evidence import Detection, EvidenceRecord, Modality
 from railway_detection.safety.media_guard import require_media_authorization
 from railway_detection.utils.logging import get_logger
-from railway_detection.vision.video import frame_generator
+from railway_detection.vision.video import SOURCE_DISPLAY_ROTATION_POLICY, frame_generator
 
 logger = get_logger("experiments.layer_b_processor")
 
@@ -253,7 +253,10 @@ class LayerBEventProcessor:
             if source_pts:
                 if type(video_stream_index) is not int or video_stream_index < 0:
                     raise ValueError("PTS cache provenance requires an explicit video stream index")
-                preproc.update(timestamp_basis="source_pts", video_stream_index=video_stream_index)
+                preproc.update(
+                    timestamp_basis="source_pts", video_stream_index=video_stream_index,
+                    orientation_policy=SOURCE_DISPLAY_ROTATION_POLICY,
+                )
                 preproc.update(
                     backend_version=version("ultralytics"),
                     prediction_options={
@@ -341,15 +344,17 @@ class LayerBEventProcessor:
         if provenance is not None:
             pts_basis = provenance.preprocessing_config.get("timestamp_basis") == "source_pts"
             prov_stream = provenance.preprocessing_config.get("video_stream_index")
+            prov_orientation = provenance.preprocessing_config.get("orientation_policy")
             if pts_basis != source_pts or (
                 source_pts and (
                     type(video_stream_index) is not int or video_stream_index < 0
                     or prov_stream != video_stream_index
+                    or prov_orientation != SOURCE_DISPLAY_ROTATION_POLICY
                 )
             ):
                 raise CacheProvenanceError(
                     "PROVENANCE_PREPROCESSING_MISMATCH",
-                    "PTS mode/stream does not match cache provenance.",
+                    "PTS mode/stream/orientation policy does not match cache provenance.",
                 )
             if provenance.modality != "vision":
                 raise CacheProvenanceError(
@@ -459,6 +464,9 @@ class LayerBEventProcessor:
                             timestamp_basis="source_pts", pts_ticks=frame.pts_ticks,
                             timebase=list(frame.timebase), stream_index=frame.stream_index,
                             stream_start_pts=frame.stream_start_pts,
+                            display_rotation_degrees=getattr(frame, "display_rotation_deg", 0),
+                            image_coordinate_basis=SOURCE_DISPLAY_ROTATION_POLICY,
+                            input_image_size=[int(frame.image.shape[1]), int(frame.image.shape[0])],
                         )
                     records.append(
                         EvidenceRecord(

@@ -21,6 +21,7 @@ from railway_detection.utils.logging import get_logger
 logger = get_logger("vision.video")
 
 VIDEO_EXTENSIONS = {".mp4", ".avi", ".mov", ".mkv"}
+SOURCE_DISPLAY_ROTATION_POLICY = "orthogonal_display_matrix_rotation_v1"
 
 
 @dataclass(frozen=True)
@@ -33,6 +34,7 @@ class VideoFrame:
     timebase: tuple[int, int] | None = None
     stream_index: int | None = None
     stream_start_pts: int | None = None
+    display_rotation_deg: int = 0
 
 
 def timestamps_for_frames(frame_indices: list[int], native_fps: float) -> list[float]:
@@ -211,15 +213,24 @@ def _source_pts_frames(
                     if stamp < due:
                         continue
                     due = anchor + ((stamp - anchor) * rate // 1 + 1) / rate
+                rotation = getattr(frame, "rotation", 0)
+                if type(rotation) is not int or rotation % 90:
+                    raise ConfigError("unsupported nonorthogonal source display rotation")
+                image = frame.to_ndarray(format="bgr24")
+                if rotation % 360:
+                    import numpy as np
+
+                    image = np.ascontiguousarray(np.rot90(image, k=rotation // 90))
                 yield VideoFrame(
                     frame_index=index,
                     timestamp_s=float(stamp),
-                    image=frame.to_ndarray(format="bgr24"),
+                    image=image,
                     source_id=source_id,
                     pts_ticks=pts,
                     timebase=(tb.numerator, tb.denominator),
                     stream_index=selected.index,
                     stream_start_pts=selected.start_time,
+                    display_rotation_deg=rotation,
                 )
             if previous is None:
                 raise ConfigError("video stream contains no decoded presentation frames")
