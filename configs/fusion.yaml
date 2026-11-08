@@ -1,4 +1,8 @@
-# Phase 0 placeholder schema only. No fusion policy is executed yet.
+# SUPERSEDED Phase-0 placeholder schema only. No fusion policy is executed from this file.
+# Marked superseded 2026-11-08 (repository maintenance documentation correction).
+# The executed configuration is configs/frozen_experiment_v1.yaml together with
+# configs/decision_policy_v1.yaml (frozen thresholds: vision 0.35, audio 0.3700).
+# The 0.5 thresholds below were never the operating point. Retained for traceability.
 policy_version: "0.0.0"
 
 source_roles:

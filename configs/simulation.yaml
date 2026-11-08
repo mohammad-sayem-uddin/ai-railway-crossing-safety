@@ -1,4 +1,7 @@
-# Phase 0 placeholder schema only. No simulation runner is executed yet.
+# SUPERSEDED Phase-0 placeholder schema only. No simulation runner is executed from this file.
+# Marked superseded 2026-11-08 (repository maintenance documentation correction).
+# Simulation/replay is implemented in src/railway_detection/simulation/ and runs under
+# configs/frozen_experiment_v1.yaml + configs/decision_policy_v1.yaml. Retained for traceability.
 scenario_name: normal
 mock_data: true
 
