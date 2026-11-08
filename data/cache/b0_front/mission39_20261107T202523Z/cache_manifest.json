@@ -1,0 +1,52 @@
+{
+  "manifest_version": "1.0.0",
+  "created_at": "2026-11-07T20:25:23.872773+00:00",
+  "cohort": "fixed_five_front",
+  "events": {
+    "train_events/event_005": {
+      "event_id": "train_events/event_005",
+      "front_vision_cache": {
+        "path": "data/cache/b0_front/mission39_20261107T202523Z/train_events_event_005_front.jsonl",
+        "sha256": "d37937591414b6d88bd0af1ce644d98d9b1a276a038a6ec9ea3fe59012e6d84e",
+        "byte_size": 91989,
+        "line_count": 398
+      }
+    },
+    "train_events/event_021": {
+      "event_id": "train_events/event_021",
+      "front_vision_cache": {
+        "path": "data/cache/b0_front/mission39_20261107T202523Z/train_events_event_021_front.jsonl",
+        "sha256": "01241b124c6ca527b45f6679a23131f02121605e06f2d28544d89570122a300d",
+        "byte_size": 62440,
+        "line_count": 267
+      }
+    },
+    "engine_events/event_001": {
+      "event_id": "engine_events/event_001",
+      "front_vision_cache": {
+        "path": "data/cache/b0_front/mission39_20261107T202523Z/engine_events_event_001_front.jsonl",
+        "sha256": "b0946e375d4d28d5f3422f216879ddf9090a07ad328e03c9fe398dc7922db910",
+        "byte_size": 9109,
+        "line_count": 40
+      }
+    },
+    "train_events/event_001": {
+      "event_id": "train_events/event_001",
+      "front_vision_cache": {
+        "path": "data/cache/b0_front/mission39_20261107T202523Z/train_events_event_001_front.jsonl",
+        "sha256": "29d7f4d2af6e6f6af065e397e34e17d419a2278b2668fffa36a56e55fa79e56f",
+        "byte_size": 58413,
+        "line_count": 250
+      }
+    },
+    "no_train_events/event_001": {
+      "event_id": "no_train_events/event_001",
+      "front_vision_cache": {
+        "path": "data/cache/b0_front/mission39_20261107T202523Z/no_train_events_event_001_front.jsonl",
+        "sha256": "8827a30f84bc6a1090ec858820f9073bf03571b13503ccdfa452b00403e516b2",
+        "byte_size": 28018,
+        "line_count": 124
+      }
+    }
+  }
+}

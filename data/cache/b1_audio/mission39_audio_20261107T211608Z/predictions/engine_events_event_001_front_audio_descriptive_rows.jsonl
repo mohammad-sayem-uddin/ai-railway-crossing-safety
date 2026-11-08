@@ -1,0 +1,14 @@
+{"window_index":0,"start_sec":0.0,"end_sec":1.0,"horn_confidence":0.14050057530403137,"is_horn_detected":false}
+{"window_index":1,"start_sec":0.5,"end_sec":1.5,"horn_confidence":0.05300256982445717,"is_horn_detected":false}
+{"window_index":2,"start_sec":1.0,"end_sec":2.0,"horn_confidence":0.06502058357000351,"is_horn_detected":false}
+{"window_index":3,"start_sec":1.5,"end_sec":2.5,"horn_confidence":0.0048823305405676365,"is_horn_detected":false}
+{"window_index":4,"start_sec":2.0,"end_sec":3.0,"horn_confidence":0.006230225786566734,"is_horn_detected":false}
+{"window_index":5,"start_sec":2.5,"end_sec":3.5,"horn_confidence":0.15093274414539337,"is_horn_detected":false}
+{"window_index":6,"start_sec":3.0,"end_sec":4.0,"horn_confidence":0.04071265086531639,"is_horn_detected":false}
+{"window_index":7,"start_sec":3.5,"end_sec":4.5,"horn_confidence":0.004911423660814762,"is_horn_detected":false}
+{"window_index":8,"start_sec":4.0,"end_sec":5.0,"horn_confidence":0.0036774761974811554,"is_horn_detected":false}
+{"window_index":9,"start_sec":4.5,"end_sec":5.5,"horn_confidence":0.00022454008285421878,"is_horn_detected":false}
+{"window_index":10,"start_sec":5.0,"end_sec":6.0,"horn_confidence":0.0028591430746018887,"is_horn_detected":false}
+{"window_index":11,"start_sec":5.5,"end_sec":6.5,"horn_confidence":0.00229918141849339,"is_horn_detected":false}
+{"window_index":12,"start_sec":6.0,"end_sec":7.0,"horn_confidence":0.001039806753396988,"is_horn_detected":false}
+{"window_index":13,"start_sec":6.5,"end_sec":7.5,"horn_confidence":0.0007610676111653447,"is_horn_detected":false}
