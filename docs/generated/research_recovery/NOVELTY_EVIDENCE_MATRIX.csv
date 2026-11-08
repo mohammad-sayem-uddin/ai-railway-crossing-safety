@@ -1,0 +1,11 @@
+proposed_contribution,original_evidence,implemented,experimentally_demonstrated,remaining_proof,status
+Bangladesh-specific railway crossing dataset,RESEARCH_CONCEPT S13 #1 (conditional on no comparable public dataset),PARTIAL (27 events 1 site daytime),NO,Literature verification; dataset characterization; scale/diversity unattainable on current data,WEAKENED_BY_DATA
+Multi-view detection organized by approach/occupancy/departure roles,RESEARCH_CONCEPT S13 #2; S6.4; D-001/D-002,YES,PERCEPTION_ONLY,Layer B role-based evaluation with box/boundary reference,UNPROVEN_AT_SYSTEM_LEVEL
+Audio-assisted train detection as fallback in crossing safety,RESEARCH_CONCEPT S13 #3; S7; IDEA_LOG I-003,YES,PARTIAL (event-label agreement; specificity 0%),Decision-level fallback benefit with vision degraded/removed,UNPROVEN
+State-aware fail-safe decision logic with explicit failure-mode testing,RESEARCH_CONCEPT S13 #4; S4/S5; HAZARD_MODEL,YES,NO (synthetic only),Authorized B2 replay + fault-injection on original-data caches,UNPROVEN
+Safety-oriented failure analysis under component failures,RESEARCH_CONCEPT S13 #5; S10.2; EXPERIMENT_PLAN DE-EXP-2,YES (injector),NO,B7-style removal/fault experiments,UNPROVEN
+Cross-crossing generalization via location-aware splitting,RESEARCH_CONCEPT S13 #6; S8; D-005,SPLIT CODE ONLY,NO - IMPOSSIBLE ON CURRENT DATA,New multi-site data or formal withdrawal of claim,INVALIDATED
+Temporal safety metrics M4/M5/MTR + asymmetric sensor authority (RULE_2),MASTER_SCIENTIFIC_NOVELTY_AUDIT 2026-11-02 (audit-era redefinition),METRICS FORMALIZED; RULE_2 IMPLEMENTED,NO (metrics never computed on original data),Replay unblocking + premature_opening_window decision,UNPROVEN_AUDIT_ERA_CLAIM
+YOLOv8n transfer learning; log-mel CNN; 2-frame confirmation,-,YES,YES (standard practice),None - explicitly NOT novel per 2026-11-02 audit ('STANDARD PRACTICE RE-BADGED'),NOT_NOVEL
+Weighted multimodal fusion formula,docx report S7 only (2026-08-31),NO,NO,Would require implementation + evaluation; contradicts Protocol V2 rule-based freeze,UNSUPPORTED_CLAIM
+Conditional cascade architecture,No source (external hypothesis),NO,NO,None - not part of this project,ABSENT

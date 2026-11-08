@@ -1,0 +1,38 @@
+file_path,type,date_or_version,used_for,key_content
+docs/archive/RESEARCH_CONCEPT.md,founding concept,2026-08-10,Original target; novelty; roles; FSM; failure injection,Goal 'not simply to detect trains'; S13 hedged novelty; S17 weak-version warning; S19 unresolved questions
+docs/archive/RESEARCH_PROTOCOL_V2.md,protocol (authoritative),2026-08-13,Research questions; methodology; baselines,Primary RQ with 'change'; B0-B7; audio authority S13; supersession banner
+docs/archive/EXPERIMENT_PLAN.md,experiment plan,2026-08-10,Original experiments; failure injection,A-G ladder context; DE-EXP-2 fault set; M-EXP-1 fusion comparison
+docs/archive/IDEA_LOG.md,idea log,2026-08-10,Modality roles,I-003 audio as fail-safe; I-009 learned fusion deferred
+docs/RESEARCH_DECISIONS.md,decision log,2026-08-10 / 2026-08-13,Design decisions,D-001 viewpoint classes; D-004 asymmetric logic; D-007 YOLO non-novel; D-011 Layer A/B boundary
+docs/HAZARD_MODEL.md,hazard model,2026-08-13,Fail-safe specification,Invariants; hazard register incl conflicting cameras; simulation-only scope note
+Railway_Crossing_Automation_Research_Report.docx,progress report,2026-08-31,Early claims (handle with care),5-layer architecture; 10-state table; weighted fusion formula (never implemented); Layer A benchmark 99.46% mAP; overclaims later retracted
+README.md,readme (rewritten),modified 2026-11-03,Audit-era status,Contains BLK-DOC-01 single-class contradiction; evaluation-not-authorized framing
+INDEPENDENT_RESEARCH_DESIGN_AUDIT.md,independent audit,2026-10-13,Taxonomy conflict,CF-01/CF-02 zero performance evidence from tests; CF-03 B/E series unreconciled
+docs/EXPERIMENT_DESIGN_FINAL.md,experiment design,2026-10-13,Audit-era narrowed RQ,RQ1 stateful vs stateless reopening; E1-E10 taxonomy
+docs/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL.md,protocol v9,2026-10-12,Audit-era protocol,'Better outcomes' wording; 1-or-2 sites hedge
+docs/generated/master_reaudit/MASTER_SCIENTIFIC_NOVELTY_AUDIT.md,novelty audit,2026-11-02,Novelty redefinition,M4/M5/MTR + RULE_2 as novelty; standard-practice list; daytime single-site note; retracted overclaims
+src/railway_detection/fusion/rules.py,code (frozen v1),691-line engine pair; rules 94 lines,Architecture; defect,11 states; RULE_1-10; label overlap L57-59; thresholds 0.35/0.37
+src/railway_detection/fusion/decision_engine.py,code (frozen v1),,Decision logic,MultimodalDecisionEngine.evaluate_frame L107; dwells; RULE_7/9 behaviour
+src/railway_detection/fusion/collector.py,code,,Sync/collection,0.5s window; R04 fail-closed; duplicate/out-of-order rejection
+src/railway_detection/fusion/source_tracker.py,code,,Fail-safe health,Health states; 2.0s staleness; 2-frame recovery
+src/railway_detection/fusion/rules_v2_candidate.py,code (candidate),,Defect fix,Unambiguous label sets; RULE_3B/3C; not authorized
+src/railway_detection/evaluation/cache_only_engine.py,code,,Replay conditions,B0/B1/B2 front-centric condition definitions; hash gate
+src/railway_detection/evaluation/descriptive_exec_gate.py,code,,B2 blocker,AUTH-DESCRIPTIVE-EVAL-EXEC requirement (~L143)
+src/railway_detection/simulation/failure_injector.py,code,,Failure experiments,8 fault modes incl dual dropout and false detection
+src/railway_detection/experiments/layer_b_processor.py,code,,Input assembly,Offline .mov -> MultimodalFrame assembly (front+audio in M39/M43)
+configs/frozen_experiment_v1.yaml,config (frozen),,Executed configuration,Checkpoints sha-pinned; thresholds; R04_UNRESOLVED sync
+configs/decision_policy_v1.yaml,config (frozen),,Executed policy,RULE_1-9 parameters; staleness 2.0s; clearance 3.0s
+configs/decision_policy_v2_candidate.yaml,config (candidate),,Candidate policy,CANDIDATE_UNDER_RESEARCH_REVIEW_NOT_AUTHORIZED_FOR_DEPLOYMENT
+configs/fusion.yaml,config (placeholder),,Documentation drift,Phase-0 placeholder; not executed
+docs/PHASE11_EVENT_INVENTORY.csv,legacy inventory (INVALID),,Dataset audit warning,All rows INVALID_FABRICATED_APPROVAL - never cite as GT
+docs/generated/research_results/mission39/MISSION_39_FINAL_RESULTS_REPORT.md,mission report,2026-11-07,Mission 39,5-event pilot numbers; log/dB defect fix; human-review status
+docs/generated/research_results/mission40/MISSION_40_FINAL_REPORT.md,mission report,2026-11-08,Mission 40,B2 refused; test triage 3815/3700/84/31
+docs/generated/research_results/mission41/B2_EXECUTION_ADMISSION_ANALYSIS.md,admission analysis,2026-11-08,B2 requirements,5 hash bindings (3 verified; 2 null); premature_opening_window undecided
+docs/generated/professor_evidence/mission42/PROFESSOR_PACKAGE_COMPLETION_REPORT.md,mission report,2026-11-08,Mission 42,1068-file package; no new experiments
+docs/generated/professor_evidence/mission43/MISSION_43_FINAL_REPORT.md,mission report,2026-11-08,Mission 43,Full-cohort table; audio comparison; partially complete verdict
+docs/generated/professor_evidence/mission43/ACTUAL_FULL_COHORT_RESULTS.json,machine-readable results,2026-11-08,Mission 43 verification,All counts and audio metrics; B2 decisions 0; canonical_GT NOT_ESTABLISHED
+docs/generated/professor_evidence/mission43/B2_CURRENT_ADMISSION_RECEIPT.json,admission receipt,2026-11-08,B2 blocker verbatim,AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED + detail
+docs/generated/professor_evidence/mission43/ANNOTATION_AND_REFERENCE_VERIFICATION.md,annotation audit,2026-11-08,Annotation capability,Adopted AI-assisted reference; no boxes/windows; paired-event horn fields
+docs/generated/professor_evidence/mission43/MULTIMODAL_EXPERIMENT_REPORT.md,mission report,2026-11-08,B2 assembly scope,Front/audio assemblies only; +1 frame reconciliation; missing governance files named
+docs/generated/professor_evidence/mission44/ANNOTATION_CAPABILITY_SUMMARY.json,capability audit,2026-11-08,Annotation capability counts,boxes 0; window labels 0; horn onset 13; offset 0; boundary refs 117/24 events
+.git/logs/HEAD,git reflog,78 commits,Mission lineage,Mission 17B -> 43 commit subjects; local HEAD 0454e38 vs remote fc3c29a (Mission 32)

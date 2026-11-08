@@ -1,0 +1,21 @@
+element,original_specification,source,status,evidence_or_blocker
+Dataset acquisition,~4000 real images; 30+ crossings; Layer B synchronized bundles,RESEARCH_CONCEPT S8,PARTIALLY_EXECUTED_SCOPE_COLLAPSED,"Actual: 1 site (crossing_A), 27 events, daytime only"
+Event selection and categories,Train passages; no-train controls; engine case; approach/occupancy/departure phases,RESEARCH_CONCEPT; Protocol V2,EXECUTED,23 train / 3 no-train / 1 engine (Mission 43)
+Camera source strategy,Two spatially separated role-differentiated cameras,RESEARCH_CONCEPT S3.2; D-002,IMPLEMENTED_EXECUTED_INFERENCE,Sync unresolved full cohort (R04); 11-event CALIBRATION_SUPPORTED subset authorized
+Audio source strategy,Embedded audio + standalone horn recordings; SNR stress +10..-5 dB,RESEARCH_CONCEPT S7,IMPLEMENTED_EXECUTED,87 standalone horn recordings development-only; embedded front audio evaluated
+Image preprocessing,640x640; inference 5 FPS; source PTS preserved,configs/vision.yaml; frozen_experiment_v1,IMPLEMENTED_EXECUTED,PTS implemented Mission 37; verified M39/M43
+Audio preprocessing,"16kHz mono; log-mel 64 mels [64,61]; 1.0s window 0.5s hop",configs/audio.yaml; frozen_experiment_v1,IMPLEMENTED_EXECUTED_WITH_DEFECT_FIXED,Natural-log vs dB parity defect fixed Mission 39
+Model selection,YOLOv8n baseline; CompactTrainHornCNN V3; validation-only; sha-pinned frozen checkpoints,D-007; frozen_experiment_v1,IMPLEMENTED_EXECUTED,Prohibited checkpoint list enforced in code
+Training methodology,Grouped splits (crossing_id / session_id) 70/15/15,configs/vision.yaml; configs/audio.yaml,IMPLEMENTED,Single-site data makes vision grouping degenerate
+Inference methodology,Frozen config and thresholds (vision 0.35; audio 0.37),frozen_experiment_v1.yaml,IMPLEMENTED_EXECUTED,Missions 39 and 43
+Temporal analysis,Multi-frame confirmation; persistence; dwell/debounce,RESEARCH_CONCEPT S10; decision_policy_v1,IMPLEMENTED_NOT_EVALUATED_ON_ORIGINAL_DATA,Synthetic fixtures only
+Fusion methodology,Rule-based predeclared transparent; calibration validation-only; learned fusion deferred,Protocol V2 S15-16; I-009,IMPLEMENTED_NOT_EVALUATED,Fusion behaviour never evaluated; 0 decision frames
+Conditional cascade rules,-,-,NEVER_DOCUMENTED,0 matches repo-wide
+Fail-safe mechanisms,Hazard invariants; fault clamp; degraded hold; recovery-never-to-open,HAZARD_MODEL.md; D-004,IMPLEMENTED_NOT_DEMONSTRATED,Synthetic/fixture tests only
+Evaluation methodology,Event-level outcomes vs one-component-difference baselines B0-B7; M4/M5/MTR; 9-metric descriptive set,Protocol V2 S19-20; Mission 41 scope freeze,BLOCKED,AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED
+Ground-truth strategy,Layer B event labels + T0-T4 boundaries; Stage 2.1 review and promotion to canonical GT,Protocol V2; FINAL_GROUND_TRUTH_PROTOCOL,BLOCKED,Promotion never occurred; canonical GT NOT_ESTABLISHED
+Validation strategy,Held-out crossings; cross-crossing generalization,RESEARCH_CONCEPT S8; D-005,INVALIDATED_BY_DATA,Single site; 'held-out crossings' wording prohibited by later protocol
+Baselines,B0 single-cam no-temporal .. B6 full; B7 removals + faults,Protocol V2 S19,PROPOSED_NEVER_EXECUTED_AS_DECISION_CONDITIONS,Taxonomy drift B vs E series unreconciled (CF-03)
+Ablation experiments,Paired ablations,Protocol V2 S20; concept S10.1 A-G ladder,PROPOSED_NOT_EXECUTED_ON_ORIGINAL_DATA,Roadmap EXP-01..EXP-10
+Robustness / failure injection,DE-EXP-2 fault set with expected safe behaviours,EXPERIMENT_PLAN; RESEARCH_CONCEPT S10.2,IMPLEMENTED_NOT_EXECUTED_ON_ORIGINAL_DATA,failure_injector.py implemented
+Synthetic fault simulation,Constructed/synthetic programme,Missions 17-28 lineage (git log),EXECUTED_SYNTHETIC_ONLY,Extensive fixture programme; zero original-data weight

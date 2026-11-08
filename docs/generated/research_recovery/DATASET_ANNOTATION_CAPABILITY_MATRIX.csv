@@ -1,0 +1,19 @@
+capability_or_item,exists,count_or_status,source,supports,does_not_support
+Physical events,YES,27 (23 train / 3 no-train / 1 engine),mission43 ACTUAL_FULL_COHORT_RESULTS.json,Event-level inference and agreement studies,Independent-event statistics beyond 27 (54 sources are not 54 events)
+Camera sources,YES,54 (27 front + 27 back); all digests verified; 2 historical duplicates excluded,mission43 MISSION_43_FINAL_REPORT.md,Front and back inference,Synchronized dual-camera decision claims (sync unresolved)
+Event-level train labels,YES,27/27,mission44 ANNOTATION_CAPABILITY_SUMMARY.json,Event classification denominators,Frame-level scoring
+Horn status labels,YES,24 explicit (13 present / 11 absent_observed); 3 null,mission43 ANNOTATION_AND_REFERENCE_VERIFICATION.md,Exploratory event-level audio agreement (23 train events),Treating no-train as no-horn (explicitly prohibited)
+Horn onset,YES,13 events,mission44 summary,Coarse event timing discussion,Window/boundary accuracy
+Horn offset,NO,0 events,mission44 summary,-,Acoustic boundary evaluation
+Boundary frame references,PARTIAL,117 references across 24 events (candidates),mission44 summary,Candidate boundary analysis,Canonical T0-T4 timing / M4-M5-MTR scoring
+Frame-level bounding boxes,NO,0 events / 0 frames,mission43 + mission44,-,Image AP/mAP; box TP/FP/FN; per-class correctness
+Audio window labels,NO,0 windows,mission43 (UNAVAILABLE_NO_WINDOW_LABELS),-,Window-level audio accuracy
+Native-PTS annotation fields,NO,0,mission44 summary,-,Canonical clock/state validation from annotations
+Front-member horn binding,NO,Horn fields reference paired event only,mission43 verification,Event-level agreement (exploratory),Front-microphone ground-truth claims
+Researcher adoption receipt,YES,RESEARCHER_ANNOTATION_ADOPTION.json binds 27 versions/hashes,mission43,Treating content as researcher-adopted AI-assisted reference,Canonical GT; Stage 2.1 promotion; independent human GT
+Independent human observation records,NO,0 stored (MISSIONS 39-43),mission39 HUMAN_REVIEW_STATUS.json et al.,-,Inter-rater statistics; independent GT claims
+Stage 2.1 promotion receipt,NO,Absent: data/governance/stage21_promotion_receipt.json,mission43 B2 receipt,-,Canonical evaluation of any kind
+Legacy Phase-11 inventory,INVALID,All 27 rows INVALID_FABRICATED_APPROVAL / fabrication_flag=True,docs/PHASE11_EVENT_INVENTORY.csv,Historical audit trail only,Any ground-truth use (prohibited)
+Layer A still-image dataset,YES,YOLO descriptor splits; 487-object test benchmark (training era),experiments/vision/*/descriptor; docx report,Perception benchmarking (Layer A claims only),System/event-level claims (D-011 boundary)
+Standalone horn recordings,YES,87 recordings - development data only,mission39 reconciliation,Audio development,Evaluation substitution
+Unseen_Video folder,YES,2 screen recordings (Aug 2026),Mac inventory,-,Evaluation corpus use
