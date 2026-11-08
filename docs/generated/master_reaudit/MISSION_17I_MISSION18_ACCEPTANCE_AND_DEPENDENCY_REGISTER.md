@@ -71,3 +71,19 @@ Proposed synthetic acceptance: start with positive fixtures and deliberately mis
 **18B readiness:** current constructed grouping/receipt/role adapters are conditionally implementable under the same review/authorization/ownership/static/workload conditions. Full fitted-artifact and OOF provenance readiness is NO until B05/B06 are separately designed, implemented and tested. No official split, fitting or real calibration is authorized.
 
 **Mission 18 may not begin automatically.** Deliver 17I, stop for researcher review, retain all pending decisions and protected boundaries. Document completeness freezes the engineering questions and expected tests; it does not turn pending external facts into completed requirements.
+
+
+## 7. Mission 18A-R2 — submitted selections; authority unverified
+
+This is a later documentation update to the historical 17I register. The original rows and their historical evidence are preserved above. The current user statement explicitly selects A for all 14 decisions in the [18A-R packet](MISSION_18A_R_RESEARCHER_DECISION_PREPARATION.md); the [R2 record](MISSION_18A_R2_RESEARCHER_SELECTION_AND_ADOPTION_RECORD.md) preserves its exact wording and metadata limits.
+
+| Subject | Updated decision status | Remaining dependency |
+|---|---|---|
+| 18A-R/R01–R14 | A for every row; **SUBMITTED — AUTHORITY UNVERIFIED** | Actual decision-maker/project authority and scoped adoption not established |
+| AG01–AG05 / A01–A07 scope | Proposed selections now supplied; no choices inferred by the assistant | Verify adoption before any implementation; all integration tests remain NOT TESTED |
+| E01/E02/E04 choices | R02/R03/R12/R13=A submitted | Adoption unverified; isolation/ownership/workload implementation remains unbuilt |
+| E03 limited-stage disposition | R14=A submitted; **not adopted or waived by this entry** | Authority verification outstanding; Mypy analysis remains unavailable in the historical evidence |
+| Mission 18A execution | **BLOCKED; no implementation instruction in R2** | R2 expressly permits documentation/verification only; a later explicit implementation instruction is required |
+| Mission 18B | Not started or authorized by R2 | Separate scope/authorization and existing dependencies remain |
+
+These packet IDs are local to **18A-R**; they do not replace the older R01–R08 scientific/governance decision IDs, approve their broader subjects, or change RD001–RD055. Formal adoption status is **NOT_ADOPTED_PENDING_AUTHORITY_VERIFICATION**. The current conversation is a genuine user-origin selection source; it does not supply a named decision-maker, verified project role/delegation, decision date, signature or external source identifier. No such field is inferred. See the R2 record for the exact evidence needed; no new credential/signature service is imposed.
