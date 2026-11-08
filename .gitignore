@@ -139,3 +139,29 @@ outputs/*.jpg
 # --- Logs ---
 *.log
 logs/
+
+# ==============================================================================
+# Repository maintenance additions (2026-11-08)
+# Narrow additions only. Evidence-bearing trees (results/, experiments/,
+# docs/generated/, data/ground_truth/, configs/) remain deliberately tracked.
+# Derived experiment caches under data/cache/ and results/experiments/cache/
+# are intentional versioned artifacts and are NOT ignored.
+# ==============================================================================
+
+# --- Additional tool caches ---
+.tox/
+.nox/
+
+# --- Additional macOS artifacts ---
+.AppleDouble
+.LSOverride
+
+# --- Temporary files ---
+*.tmp
+*.temp
+
+# --- Additional credential bundles (defense in depth; .env* covered above) ---
+*.p12
+*.pfx
+id_rsa
+id_ed25519
