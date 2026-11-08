@@ -1,0 +1,9 @@
+# Quantitative endpoints and unavailable values
+
+The executed reference comparison is exploratory max-window audio output versus researcher-adopted event horn labels, N=23 train events, engine separate, null controls excluded. Confusion={'tp': 12, 'fp': 10, 'fn': 1, 'tn': 0}; precision=54.55%; recall=92.31%; specificity=0.00%; F1=0.6857; ROC-AUC=0.6846; AP=0.7739. [Raw metric payload](AUDIO_ADOPTED_EVENT_LABEL_METRICS.json), [independent exact-count/ranking check](METRIC_CALCULATION_CROSSCHECK.json), [curve input/data](AUDIO_EVENT_CURVE_DATA.json).
+
+This denominator is neither27 universally nor2600 windows. Two-class metrics are not calculated for the single engine or unknown-control labels. Max-window scores are ranking values, not calibrated event correctness probabilities. No calibration claim, significance, confidence interval, bootstrap or threshold choice is introduced. Rates are serialized to 4 decimals by the existing metric API; exact counts and full inputs are retained.
+
+Raw model descriptors include per-event/class objects/confidences, no-detection samples, native sampled cadence, acoustic windows/positive counts and input presence. All are valid at their declared observational unit. They do not imply independent frame/window sample size or false-positive correctness.
+
+[Metric execution register](METRIC_EXECUTION_REGISTER.csv) gives exact remaining dependencies: image frame boxes/class-instance labels and matching coverage are absent; audio window labels/offsets are absent; control horn labels are null; human separate observation records were not stored; canonical timing/clock/state/promotion and actual guarded replay are absent. Thus image mAP/AP/box correctness, acoustic window metrics, human agreement and M4/M5/MTR/T1-warning stay null, not zero. The candidate-derived adopted event comparison is not secretly promoted to independent canonical GT.

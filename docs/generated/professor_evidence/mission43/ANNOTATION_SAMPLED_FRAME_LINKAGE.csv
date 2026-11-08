@@ -1,0 +1,145 @@
+event,camera,annotation_field,annotation_value_s,annotation_frame_index,annotation_native_fps,candidate_observable,ambiguity_flag,exact_frame_in_inference_samples,decoded_source_pts_s,annotation_minus_exact_sample_pts_s,comparison_status,canonical_GT
+train_events/event_001,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_001,front,T1_danger_zone_entry,5.8,174,29.97002997002997,True,False,True,5.805,-0.004999999999999893,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_001,front,T2_crossing_occupancy_start,6.5,195,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_001,back,T3_locomotive_unit_clearance,3.6,216,59.94005994005994,True,False,True,3.6016666666666666,-0.0016666666666664831,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_001,back,T4_tail_clearance,45.0,2697,59.94005994005994,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_001,back,T_scene_clear,,,59.94005994005994,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_002,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_002,front,T1_danger_zone_entry,2.9,87,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_002,front,T2_crossing_occupancy_start,3.6,108,29.97002997002997,True,False,True,3.6033333333333335,-0.0033333333333334103,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_002,back,T3_locomotive_unit_clearance,3.4,102,30.0,True,False,True,3.4,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_002,back,T4_tail_clearance,28.8,864,30.0,True,False,True,28.803333333333335,-0.0033333333333338544,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_002,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_003,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_003,front,T1_danger_zone_entry,2.1,63,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_003,front,T2_crossing_occupancy_start,2.8,84,29.97002997002997,True,False,True,2.8016666666666667,-0.0016666666666669272,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_003,back,T3_locomotive_unit_clearance,3.2,96,30.0,True,False,True,3.2,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_003,back,T4_tail_clearance,30.5,915,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_003,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_004,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_004,front,T1_danger_zone_entry,2.1,63,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_004,front,T2_crossing_occupancy_start,2.9,87,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_004,back,T3_locomotive_unit_clearance,3.1,93,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_004,back,T4_tail_clearance,76.8,2304,30.0,True,False,True,76.80666666666667,-0.006666666666674814,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_004,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_005,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_005,front,T1_danger_zone_entry,,,29.97002997002997,False,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_005,front,T2_crossing_occupancy_start,,,29.97002997002997,False,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_005,back,T3_locomotive_unit_clearance,6.0,180,30.0,True,False,True,6.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_005,back,T4_tail_clearance,,,30.0,False,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_005,back,T_scene_clear,,,30.0,False,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_006,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_006,front,T1_danger_zone_entry,2.5,75,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_006,front,T2_crossing_occupancy_start,3.3,99,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_006,back,T3_locomotive_unit_clearance,3.8,114,30.0,True,False,True,3.8,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_006,back,T4_tail_clearance,125.8,3774,30.0,True,False,True,125.81166666666667,-0.011666666666670267,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_006,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_007,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_007,front,T1_danger_zone_entry,2.6,78,29.97002997002997,True,False,True,2.6016666666666666,-0.0016666666666664831,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_007,front,T2_crossing_occupancy_start,3.4,102,29.97002997002997,True,False,True,3.401666666666667,-0.0016666666666669272,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_007,back,T3_locomotive_unit_clearance,3.3,99,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_007,back,T4_tail_clearance,33.5,1005,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_007,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_008,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_008,front,T1_danger_zone_entry,2.4,72,29.97002997002997,True,False,True,2.401666666666667,-0.0016666666666669272,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_008,front,T2_crossing_occupancy_start,3.2,96,29.97002997002997,True,False,True,3.2016666666666667,-0.0016666666666664831,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_008,back,T3_locomotive_unit_clearance,3.2,96,30.0,True,False,True,3.2,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_008,back,T4_tail_clearance,61.2,1836,30.0,True,False,True,61.20666666666666,-0.006666666666660603,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_008,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_009,front,T0_first_visible,1.5,45,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_009,front,T1_danger_zone_entry,4.2,126,29.97002997002997,True,False,True,4.203333333333333,-0.0033333333333329662,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_009,front,T2_crossing_occupancy_start,5.0,150,29.97002997002997,True,False,True,5.003333333333333,-0.0033333333333329662,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_009,back,T3_locomotive_unit_clearance,3.6,108,30.0,True,False,True,3.6,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_009,back,T4_tail_clearance,36.4,1092,30.0,True,False,True,36.403333333333336,-0.003333333333337407,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_009,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_010,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_010,front,T1_danger_zone_entry,2.7,81,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_010,front,T2_crossing_occupancy_start,3.5,105,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_010,back,T3_locomotive_unit_clearance,3.1,93,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_010,back,T4_tail_clearance,22.4,672,30.0,True,False,True,22.401666666666667,-0.0016666666666687036,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_010,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_011,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_011,front,T1_danger_zone_entry,2.8,84,29.97002997002997,True,False,True,2.8016666666666667,-0.0016666666666669272,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_011,front,T2_crossing_occupancy_start,3.6,108,29.97002997002997,True,False,True,3.6033333333333335,-0.0033333333333334103,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_011,back,T3_locomotive_unit_clearance,3.3,99,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_011,back,T4_tail_clearance,29.4,882,30.0,True,False,True,29.403333333333332,-0.0033333333333338544,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_011,back,T_scene_clear,32.5,975,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_012,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_012,front,T1_danger_zone_entry,3.1,93,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_012,front,T2_crossing_occupancy_start,3.9,117,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_012,back,T3_locomotive_unit_clearance,3.7,111,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_012,back,T4_tail_clearance,69.2,2076,30.0,True,False,True,69.20666666666666,-0.006666666666660603,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_012,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_013,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_013,front,T1_danger_zone_entry,3.2,96,29.97002997002997,True,False,True,3.2016666666666667,-0.0016666666666664831,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_013,front,T2_crossing_occupancy_start,4.0,120,29.97002997002997,True,False,True,4.003333333333333,-0.0033333333333329662,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_013,back,T3_locomotive_unit_clearance,3.9,117,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_013,back,T4_tail_clearance,70.8,2124,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_013,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_014,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_014,front,T1_danger_zone_entry,2.6,78,29.97002997002997,True,False,True,2.6016666666666666,-0.0016666666666664831,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_014,front,T2_crossing_occupancy_start,3.4,102,29.97002997002997,True,False,True,3.401666666666667,-0.0016666666666669272,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_014,back,T3_locomotive_unit_clearance,3.6,108,30.0,True,False,True,3.6,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_014,back,T4_tail_clearance,51.2,1536,30.0,True,False,True,51.205,-0.0049999999999954525,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_014,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_015,front,T0_first_visible,1.5,45,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_015,front,T1_danger_zone_entry,4.2,126,29.97002997002997,True,False,True,4.203333333333333,-0.0033333333333329662,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_015,front,T2_crossing_occupancy_start,5.0,150,29.97002997002997,True,False,True,5.003333333333333,-0.0033333333333329662,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_015,back,T3_locomotive_unit_clearance,3.8,114,30.0,True,False,True,3.8,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_015,back,T4_tail_clearance,19.5,585,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_015,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_016,front,T0_first_visible,1.5,45,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_016,front,T1_danger_zone_entry,4.2,126,29.97002997002997,True,False,True,4.203333333333333,-0.0033333333333329662,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_016,front,T2_crossing_occupancy_start,5.0,150,29.97002997002997,True,False,True,5.003333333333333,-0.0033333333333329662,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_016,back,T3_locomotive_unit_clearance,3.4,102,30.0,True,False,True,3.4,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_016,back,T4_tail_clearance,44.1,1323,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_016,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_017,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_017,front,T1_danger_zone_entry,2.8,84,29.97002997002997,True,False,True,2.8016666666666667,-0.0016666666666669272,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_017,front,T2_crossing_occupancy_start,3.6,108,29.97002997002997,True,False,True,3.6033333333333335,-0.0033333333333334103,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_017,back,T3_locomotive_unit_clearance,4.2,126,30.0,True,False,True,4.2,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_017,back,T4_tail_clearance,82.5,2475,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_017,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_018,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_018,front,T1_danger_zone_entry,2.7,81,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_018,front,T2_crossing_occupancy_start,3.5,105,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_018,back,T3_locomotive_unit_clearance,3.8,114,30.0,True,False,True,3.8,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_018,back,T4_tail_clearance,50.8,1524,30.0,True,False,True,50.805,-0.005000000000002558,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_018,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_019,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_019,front,T1_danger_zone_entry,3.0,90,29.97002997002997,True,False,True,3.0016666666666665,-0.0016666666666664831,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_019,front,T2_crossing_occupancy_start,3.8,114,29.97002997002997,True,False,True,3.8033333333333332,-0.0033333333333334103,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_019,back,T3_locomotive_unit_clearance,3.3,99,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_019,back,T4_tail_clearance,47.2,1416,30.0,True,False,True,47.205,-0.0049999999999954525,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_019,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_020,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_020,front,T1_danger_zone_entry,2.3,69,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_020,front,T2_crossing_occupancy_start,3.1,93,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_020,back,T3_locomotive_unit_clearance,3.2,96,30.0,True,False,True,3.2,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_020,back,T4_tail_clearance,28.7,861,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_020,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_021,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_021,front,T1_danger_zone_entry,3.2,96,29.97002997002997,True,False,True,3.203333333333333,-0.0033333333333329662,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_021,front,T2_crossing_occupancy_start,4.1,123,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_021,back,T3_locomotive_unit_clearance,3.6,108,30.0,True,False,True,3.6,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_021,back,T4_tail_clearance,60.1,1803,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_021,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_022,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_022,front,T1_danger_zone_entry,2.5,75,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_022,front,T2_crossing_occupancy_start,3.3,99,29.97002997002997,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_022,back,T3_locomotive_unit_clearance,3.4,102,30.0,True,False,True,3.4,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_022,back,T4_tail_clearance,45.1,1353,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_022,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_023,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_023,front,T1_danger_zone_entry,2.8,84,29.97002997002997,True,False,True,2.8016666666666667,-0.0016666666666669272,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_023,front,T2_crossing_occupancy_start,3.6,108,29.97002997002997,True,False,True,3.6033333333333335,-0.0033333333333334103,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_023,back,T3_locomotive_unit_clearance,3.3,99,30.0,True,False,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+train_events/event_023,back,T4_tail_clearance,43.4,1302,30.0,True,False,True,43.401666666666664,-0.0016666666666651508,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+train_events/event_023,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+engine_events/event_001,front,T0_first_visible,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+engine_events/event_001,front,T1_danger_zone_entry,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+engine_events/event_001,front,T2_crossing_occupancy_start,0.0,0,29.97002997002997,True,True,True,0.0,0.0,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+engine_events/event_001,front,T3_locomotive_unit_clearance,6.2,186,29.97002997002997,True,False,True,6.205,-0.004999999999999893,EXACT_REFERENCED_FRAME_DIAGNOSTIC,False
+engine_events/event_001,back,T4_tail_clearance,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False
+engine_events/event_001,back,T_scene_clear,,,30.0,False,True,False,,,NO_EXACT_FRAME_IN_SAMPLED_OUTPUT; no interpolation or tolerance introduced,False

@@ -1,0 +1,40 @@
+{
+  "schema": "mission43-current-full-validation-reconciliation/1",
+  "current_full_run_executed": true,
+  "initial_and_final_counts": {
+    "tests": 3815,
+    "failures": 84,
+    "errors": 31,
+    "skipped": 0,
+    "passed": 3700
+  },
+  "same_code_no_fix_second_rerun_needed": true,
+  "actual_JUnit_outcomes": {
+    "passed": 3700,
+    "failures": 84,
+    "errors": 31
+  },
+  "all3815_case_ids_preserved": true,
+  "outcome_changes_from_M40": [],
+  "nonpassing": 115,
+  "explicit_protected_exceptions": 110,
+  "indirect_protected_context": 5,
+  "new_material_software_defects_demonstrated": 0,
+  "tests_modified_or_disabled": 0,
+  "source_bindings_unchanged": true,
+  "not_executed": {},
+  "whole_repository_full_pass": false,
+  "policy": "Complete inherited guarded audit programme, not unrestricted protected-data acceptance; no synthetic fixture counted as an original experiment",
+  "additional_normal_readonly_integration": {
+    "tests": 15,
+    "passed": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "original_records_unchanged": true,
+    "same_fifteen_cases_were_guarded_audit_nonpasses": true,
+    "not_added_to3815_total": true
+  },
+  "guarded_nonpasses_without_separate_passing_current_context": 100,
+  "meaning": "115 remain nonpassing in the full resource-free audit;15 also pass unchanged in separately authorized actual-metadata context. No universal full-pass claim."
+}

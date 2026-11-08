@@ -1,0 +1,3394 @@
+{
+  "schema": "mission43-annotation-inspection/1",
+  "user_manual_verification_report_received": true,
+  "events": [
+    {
+      "event": "train_events/event_001",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_001_review.json",
+      "legacy_review_sha256": "a0edd4a670e1706391309392661559e93a310d5c9f39d17cf094173cfb5e1cc6",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+      "active_proposal_sha256": "0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_001_proposal_v2.json",
+          "sha256": "97c536c0ddf56f1d42c7073bb5ea887deba86e6103aa3c080e8abdaa76d2d866",
+          "schema": "5.0.0",
+          "proposal_id": "proposal_event_001_v2",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_001_proposal_v3.json",
+          "sha256": "55ecf604d531abac03fb5d610673b274a2b7e54484f07e403834eeb6a442d834",
+          "schema": "5.0.0",
+          "proposal_id": "proposal_event_001_v3",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_001_proposal_v4.json",
+          "sha256": "32e4fb33e5fe0122a9a598b8e0f09044413bf5950b0cb24b8403ba276dcc6b98",
+          "schema": "5.0.0",
+          "proposal_id": "proposal_event_001_v4",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_001_proposal_v5.json",
+          "sha256": "e4edcf823121253f4183feeb6a7a3b83095956f8d1994fdd4840dddb3b94a208",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_001_v5",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+          "sha256": "0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_001_v6",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 5.8,
+          "frame_index": 174,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 6.5,
+          "frame_index": 195,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "frame_index": 216,
+          "reference_camera": "back",
+          "native_fps": 59.94005994005994,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 45.0,
+          "frame_index": 2697,
+          "reference_camera": "back",
+          "native_fps": 59.94005994005994,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#7) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 59.94005994005994,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 6.66,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_002",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_002_review.json",
+      "legacy_review_sha256": "437e0d2dec08179aa5194633bcca56bb2cb37c464048566fbe09b2745dcaa239",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_002_proposal_v2.json",
+      "active_proposal_sha256": "3079950c376a2085d747e9287badd92b3ef3915f305ddd250cb5325cf9e02ea3",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_002_proposal_v1.json",
+          "sha256": "afc33aae5c74e05a0ba50de460c22da7987461c70603b71cc0e4706462bcc82a",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_002_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_002_proposal_v2.json",
+          "sha256": "3079950c376a2085d747e9287badd92b3ef3915f305ddd250cb5325cf9e02ea3",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_002_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.9,
+          "frame_index": 87,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "frame_index": 108,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "frame_index": 102,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 28.8,
+          "frame_index": 864,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 2.5,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_003",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_003_review.json",
+      "legacy_review_sha256": "308d22669e2bee899c3d621c66388e4753e0c0ba5d656a56d497ddf23944ab5b",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+      "active_proposal_sha256": "8042807536dc178e3c672385c5854336e6cf35c6141ebaf55728d7d9468c3674",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_003_proposal_v1.json",
+          "sha256": "6f81141460925e73ee1531fd7cec192d8fbba7924068c9d84368fb5118007748",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_003_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+          "sha256": "8042807536dc178e3c672385c5854336e6cf35c6141ebaf55728d7d9468c3674",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_003_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.1,
+          "frame_index": 63,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.8,
+          "frame_index": 84,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "frame_index": 96,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 30.5,
+          "frame_index": 915,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_004",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_004_review.json",
+      "legacy_review_sha256": "d47aabda3fa81f7c530e1603a89f8c5fb26ffe8103edd33ead00bfe7bd237f4d",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_004_proposal_v2.json",
+      "active_proposal_sha256": "b5f892f737ceec53bcc5b00966107be03031e44d488d71d5dad06f04131301d3",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_004_proposal_v1.json",
+          "sha256": "194cec501129d0a2f37f7a6651c8d2a97fac05eb4a9a8e4147fa881ee21ce137",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_004_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_004_proposal_v2.json",
+          "sha256": "b5f892f737ceec53bcc5b00966107be03031e44d488d71d5dad06f04131301d3",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_004_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.1,
+          "frame_index": 63,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.9,
+          "frame_index": 87,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.1,
+          "frame_index": 93,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 76.8,
+          "frame_index": 2304,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#14) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 0.96,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_005",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_005_review.json",
+      "legacy_review_sha256": "d79c5a4b4a3d6e0139ce300e6de4a6d34250fdef1495a69c3c60badc3d829af9",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_005_proposal_v4.json",
+      "active_proposal_sha256": "020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_005_proposal_v1.json",
+          "sha256": "18767763ea2e0c265196e63faa1c3ac5325d01b0ed70499d521b8097ecb998f2",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_005_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_005_proposal_v2.json",
+          "sha256": "5df7d8fea5bc049c179a08bc42f41b74e4f1f9bcc10ceed15ae01a96e4c3f3a5",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_005_v2",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_005_proposal_v3.json",
+          "sha256": "e6c8b2b021980772eda36eeb82b4b80702c16823ab9c732ca74d80c1ccfeb99d",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_005_v3",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_005_proposal_v4.json",
+          "sha256": "020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_005_v4",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Left-censored stream arrival on camera_front.mov (Frame 0): mid-consist passenger vehicle (Dining Car 1402) occupies full frame at t=0.00s. Locomotive arrival occurred before front recording start (t < 0.00s); excluded from detection-latency denominator. On independent camera_back.mov stream, locomotive pilot is observed entering at t=0.50s (Frame 15).",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Unobservable: Locomotive entered danger zone prior to camera_front.mov recording start (mid-consist vehicle occupies Frame 0).",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Unobservable: Locomotive occupied crossing lens plane prior to camera_front.mov recording start.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 6.0,
+          "frame_index": 180,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Exit Boundary Convention: Lead locomotive enters camera_back.mov at t=0.50s (Frame 15). At t=5.60s (Frame 168), the locomotive rear coupler passes an intermediate trackside landmark (white signal/relay cabinet). Under the canonical exit boundary definition (docs/FINAL_GROUND_TRUTH_PROTOCOL.md \u00a72.1 and \u00a72.4), T3 and T4 must denote clearance of the exact same conceptual departure boundary plane. The canonical danger-zone departure boundary plane is the transverse departure boundary plane, which the lead locomotive trailing coupler clears at t=6.00s (Frame 180). Setting T3=6.00s (Frame 180) aligns T3 with canonical exit-plane semantics and resolves the landmark ambiguity from proposal v3.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Unobservable (right-censored): camera_back.mov recording terminates prematurely at t=78.107s (Frame 2342) while trailing passenger coaches 1084 and 1032 are still actively traversing the field of view. The rear buffer of the final rail vehicle never cleared the crossing boundary during recording. Replaces invalid 75.8s candidate from proposal v2.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Unobservable: recording terminates at 78.107s while train actively occupies track.",
+          "ambiguity_flag": false
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 1.28,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_006",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_006_review.json",
+      "legacy_review_sha256": "d7f1d5594d4d1d6d8675e9f97140139d8a400d7081d315832a5b15c6195a6b5e",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_006_proposal_v2.json",
+      "active_proposal_sha256": "039a65f4fd4dab3b7f52413201969b742dc18e819b92f043c200f24b3a52ac6d",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_006_proposal_v1.json",
+          "sha256": "867cc9cefac2575e0d85fc38b819599dc3382453373a487b34854f98b75035f0",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_006_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_006_proposal_v2.json",
+          "sha256": "039a65f4fd4dab3b7f52413201969b742dc18e819b92f043c200f24b3a52ac6d",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_006_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.5,
+          "frame_index": 75,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "frame_index": 99,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.8,
+          "frame_index": 114,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 125.8,
+          "frame_index": 3774,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#24) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 121.28,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_007",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_007_review.json",
+      "legacy_review_sha256": "ba40869a4abc7d9db8295782a15c5bd2c380f8d9c31afa9bfc3e07dfddb8a536",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+      "active_proposal_sha256": "88ac5f83e7561fb0f308ef143fee023cb27e98edf6ce67b2c110081c5269f785",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_007_proposal_v1.json",
+          "sha256": "9e85dae1fecae266a6672ea9d8c20852f04b27251d44f66dd53f9f4fc2cd710e",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_007_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+          "sha256": "88ac5f83e7561fb0f308ef143fee023cb27e98edf6ce67b2c110081c5269f785",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_007_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.6,
+          "frame_index": 78,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "frame_index": 102,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "frame_index": 99,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 33.5,
+          "frame_index": 1005,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#6) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_008",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_008_review.json",
+      "legacy_review_sha256": "d97bcc8d68630d9e886e34577c3622b83f5115c682c0d8dc5edfc5521cbf54cf",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+      "active_proposal_sha256": "bb29b1848bb8685ba3bf91e393556c16edb0816767586866999587f1c9bf7330",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_008_proposal_v1.json",
+          "sha256": "7a1794ad10925832dbc86c2dcc51a1518e04c3a4907b30b71a36d280c23685fb",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_008_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+          "sha256": "bb29b1848bb8685ba3bf91e393556c16edb0816767586866999587f1c9bf7330",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_008_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.4,
+          "frame_index": 72,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "frame_index": 96,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "frame_index": 96,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 61.2,
+          "frame_index": 1836,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#11) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_009",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_009_review.json",
+      "legacy_review_sha256": "06660001cfa9299eb5d299b64089413c96df99284171648e0d0e0f43b0dd860e",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+      "active_proposal_sha256": "b26fb9f09b8b76ec00d942a55994695494f99d9e1d16df7fc6429e7706bcd115",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_009_proposal_v1.json",
+          "sha256": "50fa3b4d7fb3c3836308792b89622b69865d03cf0d4b9435ea3c82acea8c968d",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_009_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+          "sha256": "b26fb9f09b8b76ec00d942a55994695494f99d9e1d16df7fc6429e7706bcd115",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_009_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 1.5,
+          "frame_index": 45,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.",
+          "ambiguity_flag": false
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.2,
+          "frame_index": 126,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 5.0,
+          "frame_index": 150,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "frame_index": 108,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 36.4,
+          "frame_index": 1092,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#6) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_010",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_010_review.json",
+      "legacy_review_sha256": "f64bbe72f11b17910f3d3cc98d08a7303b77ef37cdf2a2ca9b97509aae6c85b4",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+      "active_proposal_sha256": "315a70fd902de301864c9badf5b70f22f8928a68bb0cab6dfb0c9a1d39528dc7",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_010_proposal_v1.json",
+          "sha256": "c76bcbcba2d6b0029bc5cc28292ec2561d062f2cd5ce80e6ecbe316baead59f8",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_010_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+          "sha256": "315a70fd902de301864c9badf5b70f22f8928a68bb0cab6dfb0c9a1d39528dc7",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_010_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.7,
+          "frame_index": 81,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.5,
+          "frame_index": 105,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.1,
+          "frame_index": 93,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 22.4,
+          "frame_index": 672,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#4) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_011",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_011_review.json",
+      "legacy_review_sha256": "28fcf1f5c8824a42782d964e012552e46e245bce67fb64c72a421276ef6ebb4c",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+      "active_proposal_sha256": "b93b4743dbec6a618040cdb6285dd17c40ac0736b1969e086e6a71e8b4a611ac",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_011_proposal_v1.json",
+          "sha256": "65dbab48c62ed17e8b32920c30414741ceaca29ee2ee27115aac2d00091bc81d",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_011_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+          "sha256": "b93b4743dbec6a618040cdb6285dd17c40ac0736b1969e086e6a71e8b4a611ac",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_011_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.8,
+          "frame_index": 84,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "frame_index": 108,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "frame_index": 99,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 29.4,
+          "frame_index": 882,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 32.5,
+          "frame_index": 975,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Train completely recedes past visible corridor sightlines under viaduct on camera_back.mov.",
+          "ambiguity_flag": false
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_012",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_012_review.json",
+      "legacy_review_sha256": "b369f6863f00212cbc9a988c5d42035fe540f150793f60b058731abeaf69eeba",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_012_proposal_v2.json",
+      "active_proposal_sha256": "a45da6b905de79b36db6382c5dc80bacf6646cfe3b3529c619479c3b2e6b8227",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_012_proposal_v1.json",
+          "sha256": "6e86617b863993292a990f6b01422b84ee5f32544e3ef84fbe89d12ce2600ca7",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_012_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_012_proposal_v2.json",
+          "sha256": "a45da6b905de79b36db6382c5dc80bacf6646cfe3b3529c619479c3b2e6b8227",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_012_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.1,
+          "frame_index": 93,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.9,
+          "frame_index": 117,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.7,
+          "frame_index": 111,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 69.2,
+          "frame_index": 2076,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#13) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 6.78,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_013",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_013_review.json",
+      "legacy_review_sha256": "8d5dfc1f03b7bc2dd9bbc42199fda6c2935e60c9c1292de19d5df31bab7cce76",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_013_proposal_v2.json",
+      "active_proposal_sha256": "cdb691cbfa415a05ce3dd390a71f6903964a865ee459cdc6d31c6c9edbc679fe",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_013_proposal_v1.json",
+          "sha256": "7c81e2ea16237763e97f13d0f6499e6d949af068b4028c4e60c0cd9354cdf0a0",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_013_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_013_proposal_v2.json",
+          "sha256": "cdb691cbfa415a05ce3dd390a71f6903964a865ee459cdc6d31c6c9edbc679fe",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_013_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "frame_index": 96,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.0,
+          "frame_index": 120,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.9,
+          "frame_index": 117,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 70.8,
+          "frame_index": 2124,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#13) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 4.22,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_014",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_014_review.json",
+      "legacy_review_sha256": "2717a61b0a6d328ab6977aa9320a2c78990d76f4b6887203e675445844ab7d5a",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+      "active_proposal_sha256": "e6fe8f81e6b59154675b455cb6d20cd1698345d5321c0bb30db9c3f94efd112f",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_014_proposal_v1.json",
+          "sha256": "cb0da818f88ceebd1f0ad1163cadc6ff6602cce2a7e25165ceda531759d97805",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_014_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+          "sha256": "e6fe8f81e6b59154675b455cb6d20cd1698345d5321c0bb30db9c3f94efd112f",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_014_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.6,
+          "frame_index": 78,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "frame_index": 102,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "frame_index": 108,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 51.2,
+          "frame_index": 1536,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_015",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_015_review.json",
+      "legacy_review_sha256": "9a90a1a6ed1eb77801b1250d2368ee6916508c38c08fb86f951682cf55bd9c8a",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+      "active_proposal_sha256": "e698947778110ac5a44102ccc7a6cc81a2a41f423e48a9e9810328043131c86f",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_015_proposal_v1.json",
+          "sha256": "4b06cdcc1f988ad88a5ff67f27eefa99bdf449cf588a6c7e5b476157de8e47ff",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_015_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+          "sha256": "e698947778110ac5a44102ccc7a6cc81a2a41f423e48a9e9810328043131c86f",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_015_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 1.5,
+          "frame_index": 45,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.",
+          "ambiguity_flag": false
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.2,
+          "frame_index": 126,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 5.0,
+          "frame_index": 150,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.8,
+          "frame_index": 114,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 19.5,
+          "frame_index": 585,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#3) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 14.85,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_016",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_016_review.json",
+      "legacy_review_sha256": "c25a8e4bb4f9667927a2c2e88d76aa40e09612baffd75a8bb8171ff4381db1af",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+      "active_proposal_sha256": "f404feeb5d43513aeeb76804454efd1d2e98f5bc4b264337ab77258d0d5d22ea",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_016_proposal_v1.json",
+          "sha256": "31638c2b72cbf6488c7bf07e1f89b3cb9a7008b8e0fde1fa17431d0e5f4c4aed",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_016_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+          "sha256": "f404feeb5d43513aeeb76804454efd1d2e98f5bc4b264337ab77258d0d5d22ea",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_016_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 1.5,
+          "frame_index": 45,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "First visual emergence: locomotive nose appears in camera view at Frame 45 (t=1.50s). Not left-censored; physical entry observable.",
+          "ambiguity_flag": false
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.2,
+          "frame_index": 126,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 5.0,
+          "frame_index": 150,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "frame_index": 102,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 44.1,
+          "frame_index": 1323,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_017",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_017_review.json",
+      "legacy_review_sha256": "f2ee23c67348984283e30f18735d57feb1cedbd822056bfec12a5466eee8d859",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_017_proposal_v2.json",
+      "active_proposal_sha256": "1a40c8bfc2a289db4a0cfe18edb5563f1ceddc0d24fde8a982420b888ee2ea02",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_017_proposal_v1.json",
+          "sha256": "61af15db5229f9e92e5f68435ff87b17666cc66e3f292255ba55e0f422114feb",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_017_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_017_proposal_v2.json",
+          "sha256": "1a40c8bfc2a289db4a0cfe18edb5563f1ceddc0d24fde8a982420b888ee2ea02",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_017_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.8,
+          "frame_index": 84,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "frame_index": 108,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.2,
+          "frame_index": 126,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 82.5,
+          "frame_index": 2475,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#15) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 0.83,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_018",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_018_review.json",
+      "legacy_review_sha256": "a954c637fc7430ba5fcaf1de98c3407f6f8a9f2cd984f7cb5fadaeef3e60efaf",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_018_proposal_v2.json",
+      "active_proposal_sha256": "3ee97a958b356c40a266223dbe78a2018586c9f0d099bc5ca5df0fe0ee23edd1",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_018_proposal_v1.json",
+          "sha256": "a86de72b6e2a8f989c7d5768a9a3d5939da84457441f49f48d35c4bc50ea37e5",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_018_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_018_proposal_v2.json",
+          "sha256": "3ee97a958b356c40a266223dbe78a2018586c9f0d099bc5ca5df0fe0ee23edd1",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_018_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.7,
+          "frame_index": 81,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.5,
+          "frame_index": 105,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.8,
+          "frame_index": 114,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 50.8,
+          "frame_index": 1524,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 5.95,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_019",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_019_review.json",
+      "legacy_review_sha256": "278b49f9c241b10189274c19a9634e58a5c8dfc4e45530239d2778f662fe29f2",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+      "active_proposal_sha256": "0deff3cad109ffd0199577f57a223affa3738d7d2974268e2ea7f7ebb4460908",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_019_proposal_v1.json",
+          "sha256": "11212faa5d43441593c669b4d3acd08927d015b31de883dd173ac7d414138547",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_019_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+          "sha256": "0deff3cad109ffd0199577f57a223affa3738d7d2974268e2ea7f7ebb4460908",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_019_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.0,
+          "frame_index": 90,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.8,
+          "frame_index": 114,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "frame_index": 99,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 47.2,
+          "frame_index": 1416,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#9) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_020",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_020_review.json",
+      "legacy_review_sha256": "b98c257804fd2ba0acb21a10de90c9dc4595fc3a898ce1c41a86beedc3ccf9e9",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_020_proposal_v2.json",
+      "active_proposal_sha256": "3b2537abc0bcd5c0c3554bb44e71b9f4b53fc5ab7744a9d64c55bd5f3345cb3c",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_020_proposal_v1.json",
+          "sha256": "f8c5240576ab3d6a6a5d29894df44b8d4329ca07f90757ef7e3c50dc3b421fa0",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_020_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_020_proposal_v2.json",
+          "sha256": "3b2537abc0bcd5c0c3554bb44e71b9f4b53fc5ab7744a9d64c55bd5f3345cb3c",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_020_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.3,
+          "frame_index": 69,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.1,
+          "frame_index": 93,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "frame_index": 96,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 28.7,
+          "frame_index": 861,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#5) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 0.58,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_021",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_021_review.json",
+      "legacy_review_sha256": "c6e689b00b5001191660b4b71c8df43d205b84f1b7d23af066298152d85b563f",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_021_proposal_v2.json",
+      "active_proposal_sha256": "65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_021_proposal_v1.json",
+          "sha256": "db1af9e7fd7bd199f0fbe8be4e69fc5e85657599846528ef3505b7d4c19cece4",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_021_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_021_proposal_v2.json",
+          "sha256": "65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_021_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.2,
+          "frame_index": 96,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 4.1,
+          "frame_index": 123,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "frame_index": 108,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 60.1,
+          "frame_index": 1803,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#11) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 51.39,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_022",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_022_review.json",
+      "legacy_review_sha256": "30f0ec6c8f2825a6644bebe3ce8ab97a9352cfeabb8a721da30a235403f134c4",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_022_proposal_v2.json",
+      "active_proposal_sha256": "29e01ea7bbc866dd4165fd33443ddd3841178d72a4b11773f9d7c53f65a6e857",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_022_proposal_v1.json",
+          "sha256": "1eda8a5c3170c7462ffb7493b4663048e9f00c4a80331ced29d45084c9295a91",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_022_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_022_proposal_v2.json",
+          "sha256": "29e01ea7bbc866dd4165fd33443ddd3841178d72a4b11773f9d7c53f65a6e857",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_022_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.5,
+          "frame_index": 75,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "frame_index": 99,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.4,
+          "frame_index": 102,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 45.1,
+          "frame_index": 1353,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "present",
+        "horn_onset_s": 2.37,
+        "horn_uncertainty_s": 0.25,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "train_events/event_023",
+      "cohort": "train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/train_events/event_023_review.json",
+      "legacy_review_sha256": "e19f917c28920161535e9322a984fa35fecd8fba552557a017062b727b3854d6",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+      "active_proposal_sha256": "cacdace3383b6829060cc4f9c5d3e9c12a76787312e6b5c7c2d1964bfd0b7a38",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/train_events/event_023_proposal_v1.json",
+          "sha256": "394a9240644d552d86322d1117cffb126f51390e3c9683e64097df67774d6528",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_023_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+          "sha256": "cacdace3383b6829060cc4f9c5d3e9c12a76787312e6b5c7c2d1964bfd0b7a38",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_023_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 2.8,
+          "frame_index": 84,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.6,
+          "frame_index": 108,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 3.3,
+          "frame_index": 99,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 43.4,
+          "frame_index": 1302,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#8) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.horn_status",
+        "timestamps.T0_first_visible",
+        "timestamps.T1_danger_zone_entry",
+        "timestamps.T2_crossing_occupancy_start",
+        "timestamps.T3_locomotive_unit_clearance",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "no_train_events/event_001",
+      "cohort": "no_train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/no_train_events/event_001_review.json",
+      "legacy_review_sha256": "7387acbf17e6ca2eda6b814e3d9f30683aecffe863b14637cc4ff4bf51015243",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json",
+      "active_proposal_sha256": "6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/no_train_events/event_001_proposal_v1.json",
+          "sha256": "b57f62b60a382dca5a92ab5d2b228dbccc7227ee5451bc69cf509883dcd878e8",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_001_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json",
+          "sha256": "6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_001_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T1_danger_zone_entry": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.train_present",
+        "train_metadata.horn_status",
+        "timestamps.all"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": null,
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": "No train present in recording. Ambient road traffic horns (CNG/rickshaw) present in audio."
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "no_train_events/event_002",
+      "cohort": "no_train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/no_train_events/event_002_review.json",
+      "legacy_review_sha256": "619efd3ec467f0f23f0b70ef885fd7771fb84dcd052b1175c4c9fca4745ace95",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json",
+      "active_proposal_sha256": "0fd3a48a0c30675e46635795c6aacdbaed294a0d21ad510462fd4848db1de956",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/no_train_events/event_002_proposal_v1.json",
+          "sha256": "d550396dee73d49a05a2e6bcecf076ffd3724ba24240e0d62273d01fbea50e09",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_002_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json",
+          "sha256": "0fd3a48a0c30675e46635795c6aacdbaed294a0d21ad510462fd4848db1de956",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_002_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T1_danger_zone_entry": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.train_present",
+        "train_metadata.horn_status",
+        "timestamps.all"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": null,
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": "No train present in recording. Ambient road traffic horns (CNG/rickshaw) present in audio."
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "no_train_events/event_003",
+      "cohort": "no_train_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/no_train_events/event_003_review.json",
+      "legacy_review_sha256": "8f163c525e32ddf4623718093b2909bcaf1b20b320d8a75985fd7310ee19ce2b",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json",
+      "active_proposal_sha256": "e7619841db2308290bde1cb3267e485a2edcf07bae389a1798c50a5aaabd670f",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/no_train_events/event_003_proposal_v1.json",
+          "sha256": "b458f190b177ece3b16d158a3e7e41180a123fe53930433e2055e83783a34ebf",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_003_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json",
+          "sha256": "e7619841db2308290bde1cb3267e485a2edcf07bae389a1798c50a5aaabd670f",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_003_v2",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T1_danger_zone_entry": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        },
+        "T_scene_clear": {
+          "applicable": false,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": null,
+          "native_fps": null,
+          "rationale": "Not applicable: no train present.",
+          "ambiguity_flag": false
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.train_present",
+        "train_metadata.horn_status",
+        "timestamps.all"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": null,
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": "No train present in recording. Ambient road traffic horns (CNG/rickshaw) present in audio."
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    },
+    {
+      "event": "engine_events/event_001",
+      "cohort": "engine_events",
+      "researcher_reported_manual_verification": true,
+      "report_origin": "Mission43 user brief \u00a7\u00a72,7; no verification date or individual field values inferred",
+      "legacy_review_path": "data/ground_truth/reviews/engine_events/event_001_review.json",
+      "legacy_review_sha256": "3493e125e86c7642d47dca13ddfe3a91fad926b6e6d0fd9e9662968d1bca3edd",
+      "legacy_schema": "6.0.0",
+      "legacy_claimed_adjudication": "APPROVED",
+      "invalidation_disposition": "INVALIDATED",
+      "invalidation_targets_current_bytes": true,
+      "active_proposal_path": "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json",
+      "active_proposal_sha256": "aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a",
+      "active_proposal_matches_inventory": true,
+      "active_proposal_schema": "8.0.0",
+      "active_proposal_is_AI_candidate": true,
+      "active_proposal_both_source_hashes_match": true,
+      "stored_proposal_versions": [
+        {
+          "path": "data/ground_truth/proposals/engine_events/event_001_proposal_v1.json",
+          "sha256": "303a86d1d76e3b438e7ceaae0b1771eee657e7c994b33065928ca7118e935851",
+          "schema": "6.0.0",
+          "proposal_id": "proposal_event_001_v1",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/engine_events/event_001_proposal_v2.json",
+          "sha256": "c72f555b8a12ece3110d94dfc64eea50e234cf084bdfcd8cea22f156e02ff54d",
+          "schema": "7.0.0",
+          "proposal_id": "proposal_event_001_v2",
+          "AI_origin": true
+        },
+        {
+          "path": "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json",
+          "sha256": "aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a",
+          "schema": "8.0.0",
+          "proposal_id": "proposal_event_001_v3",
+          "AI_origin": true
+        }
+      ],
+      "proposed_timestamps": {
+        "T0_first_visible": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Locomotive already visible on tracks at recording start (Frame 0). Left-censored.",
+          "ambiguity_flag": true
+        },
+        "T1_danger_zone_entry": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Locomotive front already occupies crossing danger zone at t=0.00s. Left-censored landmark traversal.",
+          "ambiguity_flag": true
+        },
+        "T2_crossing_occupancy_start": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 0.0,
+          "frame_index": 0,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Locomotive pilot occupies crossing road lane at t=0.00s. Left-censored.",
+          "ambiguity_flag": true
+        },
+        "T3_locomotive_unit_clearance": {
+          "applicable": true,
+          "candidate_observable": true,
+          "value_s": 6.2,
+          "frame_index": 186,
+          "reference_camera": "front",
+          "native_fps": 29.97002997002997,
+          "rationale": "Trailing coupler/buffer of single locomotive clears roadway crossing plane on camera_front.mov at t=6.20s (Frame 186). On camera_back.mov, locomotive remains in frame through t=9.80s.",
+          "ambiguity_flag": false
+        },
+        "T4_tail_clearance": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Unobservable (right-censored): camera_back.mov recording terminates at t=9.80s (Frame 294) while locomotive body and rear buffer remain actively visible and detected in the departure field of view (conf=0.88). The trailing buffer never clears the crossing departure boundary during available media. Corrects proposal v2 error that misattributed 6.20s front clearance to the back camera.",
+          "ambiguity_flag": true
+        },
+        "T_scene_clear": {
+          "applicable": true,
+          "candidate_observable": false,
+          "value_s": null,
+          "frame_index": null,
+          "reference_camera": "back",
+          "native_fps": 30.0,
+          "rationale": "Unobservable (right-censored): recording terminates at t=9.80s while locomotive is still receding along departure tracks.",
+          "ambiguity_flag": true
+        }
+      },
+      "legacy_adjudicated_fields": [
+        "train_metadata.train_type",
+        "train_metadata.trailing_cars_count",
+        "train_metadata.horn_status",
+        "timestamps.T3_coincidence_rule",
+        "timestamps.T4_tail_clearance",
+        "timestamps.T_scene_clear",
+        "camera_alignment.offset_s"
+      ],
+      "candidate_horn_fields": {
+        "horn_status": "absent_observed",
+        "horn_onset_s": null,
+        "horn_uncertainty_s": null,
+        "horn_reason": null
+      },
+      "frame_bbox_ground_truth_records": 0,
+      "acoustic_window_label_records": 0,
+      "accepted_canonical_GT": false,
+      "manual_report_to_exact_version": "RESEARCHER_ADOPTION_OF_EXISTING_ACTIVE_PROPOSAL; all AI annotations approved in current reply",
+      "metric_status": "UNAVAILABLE_MISSING_ELIGIBLE_SOURCE_LINKED_ACCEPTED_REFERENCE_AND_MATCHING_CONTRACT",
+      "researcher_approval_received": true,
+      "reference_content_status": "RESEARCHER_ADOPTED_AI_ASSISTED_REFERENCE",
+      "canonical_status": "NOT_ESTABLISHED; candidate schema and missing canonical boundary/assignment/acceptance evidence"
+    }
+  ],
+  "annotation_text_sha256": {
+    "data/ground_truth/reviews/train_events/event_001_review.json": "a0edd4a670e1706391309392661559e93a310d5c9f39d17cf094173cfb5e1cc6",
+    "data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json": "a8dc487476c5a472012155847c14fe9db6c1066d2f7408b1f190cbf8dfd3af29",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v6.json": "0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v2.json": "97c536c0ddf56f1d42c7073bb5ea887deba86e6103aa3c080e8abdaa76d2d866",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v3.json": "55ecf604d531abac03fb5d610673b274a2b7e54484f07e403834eeb6a442d834",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v4.json": "32e4fb33e5fe0122a9a598b8e0f09044413bf5950b0cb24b8403ba276dcc6b98",
+    "data/ground_truth/proposals/train_events/event_001_proposal_v5.json": "e4edcf823121253f4183feeb6a7a3b83095956f8d1994fdd4840dddb3b94a208",
+    "data/ground_truth/reviews/train_events/event_002_review.json": "437e0d2dec08179aa5194633bcca56bb2cb37c464048566fbe09b2745dcaa239",
+    "data/ground_truth/reviews/train_events/event_002_review.INVALIDATION_NOTICE.json": "bfb6ee106bd81baeff1d09e05877f19054ca75cffad354b64daba851695f16f1",
+    "data/ground_truth/proposals/train_events/event_002_proposal_v2.json": "3079950c376a2085d747e9287badd92b3ef3915f305ddd250cb5325cf9e02ea3",
+    "data/ground_truth/proposals/train_events/event_002_proposal_v1.json": "afc33aae5c74e05a0ba50de460c22da7987461c70603b71cc0e4706462bcc82a",
+    "data/ground_truth/reviews/train_events/event_003_review.json": "308d22669e2bee899c3d621c66388e4753e0c0ba5d656a56d497ddf23944ab5b",
+    "data/ground_truth/reviews/train_events/event_003_review.INVALIDATION_NOTICE.json": "04c1072d214d05d91c12cd39305acb17767a7e002b1d1c0581924128820f5c54",
+    "data/ground_truth/proposals/train_events/event_003_proposal_v2.json": "8042807536dc178e3c672385c5854336e6cf35c6141ebaf55728d7d9468c3674",
+    "data/ground_truth/proposals/train_events/event_003_proposal_v1.json": "6f81141460925e73ee1531fd7cec192d8fbba7924068c9d84368fb5118007748",
+    "data/ground_truth/reviews/train_events/event_004_review.json": "d47aabda3fa81f7c530e1603a89f8c5fb26ffe8103edd33ead00bfe7bd237f4d",
+    "data/ground_truth/reviews/train_events/event_004_review.INVALIDATION_NOTICE.json": "af5c76687c41927312eedecfe92f901184aaf09e5f60b69c6b3a28cbced8a60b",
+    "data/ground_truth/proposals/train_events/event_004_proposal_v2.json": "b5f892f737ceec53bcc5b00966107be03031e44d488d71d5dad06f04131301d3",
+    "data/ground_truth/proposals/train_events/event_004_proposal_v1.json": "194cec501129d0a2f37f7a6651c8d2a97fac05eb4a9a8e4147fa881ee21ce137",
+    "data/ground_truth/reviews/train_events/event_005_review.json": "d79c5a4b4a3d6e0139ce300e6de4a6d34250fdef1495a69c3c60badc3d829af9",
+    "data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json": "9c84dbaa36f567ae4f38cfadc19e4921b4856da904ede1b2a8c72d96e665c279",
+    "data/ground_truth/proposals/train_events/event_005_proposal_v4.json": "020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5",
+    "data/ground_truth/proposals/train_events/event_005_proposal_v1.json": "18767763ea2e0c265196e63faa1c3ac5325d01b0ed70499d521b8097ecb998f2",
+    "data/ground_truth/proposals/train_events/event_005_proposal_v2.json": "5df7d8fea5bc049c179a08bc42f41b74e4f1f9bcc10ceed15ae01a96e4c3f3a5",
+    "data/ground_truth/proposals/train_events/event_005_proposal_v3.json": "e6c8b2b021980772eda36eeb82b4b80702c16823ab9c732ca74d80c1ccfeb99d",
+    "data/ground_truth/reviews/train_events/event_006_review.json": "d7f1d5594d4d1d6d8675e9f97140139d8a400d7081d315832a5b15c6195a6b5e",
+    "data/ground_truth/reviews/train_events/event_006_review.INVALIDATION_NOTICE.json": "74fadd43ef4b6ff417971b7e74b5d1b3c9aae0c11902fce03ca016854c0efb52",
+    "data/ground_truth/proposals/train_events/event_006_proposal_v2.json": "039a65f4fd4dab3b7f52413201969b742dc18e819b92f043c200f24b3a52ac6d",
+    "data/ground_truth/proposals/train_events/event_006_proposal_v1.json": "867cc9cefac2575e0d85fc38b819599dc3382453373a487b34854f98b75035f0",
+    "data/ground_truth/reviews/train_events/event_007_review.json": "ba40869a4abc7d9db8295782a15c5bd2c380f8d9c31afa9bfc3e07dfddb8a536",
+    "data/ground_truth/reviews/train_events/event_007_review.INVALIDATION_NOTICE.json": "2a9c876aa109add8a62e4668a09913de88f7d1df5717f8180203fba5a09a08b1",
+    "data/ground_truth/proposals/train_events/event_007_proposal_v2.json": "88ac5f83e7561fb0f308ef143fee023cb27e98edf6ce67b2c110081c5269f785",
+    "data/ground_truth/proposals/train_events/event_007_proposal_v1.json": "9e85dae1fecae266a6672ea9d8c20852f04b27251d44f66dd53f9f4fc2cd710e",
+    "data/ground_truth/reviews/train_events/event_008_review.json": "d97bcc8d68630d9e886e34577c3622b83f5115c682c0d8dc5edfc5521cbf54cf",
+    "data/ground_truth/reviews/train_events/event_008_review.INVALIDATION_NOTICE.json": "de888d27cc99610fa7d648b9f033d36dd4d2f9bee869d86bfde5206ab27644cd",
+    "data/ground_truth/proposals/train_events/event_008_proposal_v2.json": "bb29b1848bb8685ba3bf91e393556c16edb0816767586866999587f1c9bf7330",
+    "data/ground_truth/proposals/train_events/event_008_proposal_v1.json": "7a1794ad10925832dbc86c2dcc51a1518e04c3a4907b30b71a36d280c23685fb",
+    "data/ground_truth/reviews/train_events/event_009_review.json": "06660001cfa9299eb5d299b64089413c96df99284171648e0d0e0f43b0dd860e",
+    "data/ground_truth/reviews/train_events/event_009_review.INVALIDATION_NOTICE.json": "cb8172d2bd331fd7abe2cf52cb7ce1cbd941d2f21c1973879cbc110a1672de28",
+    "data/ground_truth/proposals/train_events/event_009_proposal_v2.json": "b26fb9f09b8b76ec00d942a55994695494f99d9e1d16df7fc6429e7706bcd115",
+    "data/ground_truth/proposals/train_events/event_009_proposal_v1.json": "50fa3b4d7fb3c3836308792b89622b69865d03cf0d4b9435ea3c82acea8c968d",
+    "data/ground_truth/reviews/train_events/event_010_review.json": "f64bbe72f11b17910f3d3cc98d08a7303b77ef37cdf2a2ca9b97509aae6c85b4",
+    "data/ground_truth/reviews/train_events/event_010_review.INVALIDATION_NOTICE.json": "a23ef564ea73886d778771dbf8f5b12965fa56b6504d14baf130239d0750f237",
+    "data/ground_truth/proposals/train_events/event_010_proposal_v2.json": "315a70fd902de301864c9badf5b70f22f8928a68bb0cab6dfb0c9a1d39528dc7",
+    "data/ground_truth/proposals/train_events/event_010_proposal_v1.json": "c76bcbcba2d6b0029bc5cc28292ec2561d062f2cd5ce80e6ecbe316baead59f8",
+    "data/ground_truth/reviews/train_events/event_011_review.json": "28fcf1f5c8824a42782d964e012552e46e245bce67fb64c72a421276ef6ebb4c",
+    "data/ground_truth/reviews/train_events/event_011_review.INVALIDATION_NOTICE.json": "3e05bf17b3a1573014a60319f2aa5e954f2f38444e21906f75913f8a9e3c25e1",
+    "data/ground_truth/proposals/train_events/event_011_proposal_v2.json": "b93b4743dbec6a618040cdb6285dd17c40ac0736b1969e086e6a71e8b4a611ac",
+    "data/ground_truth/proposals/train_events/event_011_proposal_v1.json": "65dbab48c62ed17e8b32920c30414741ceaca29ee2ee27115aac2d00091bc81d",
+    "data/ground_truth/reviews/train_events/event_012_review.json": "b369f6863f00212cbc9a988c5d42035fe540f150793f60b058731abeaf69eeba",
+    "data/ground_truth/reviews/train_events/event_012_review.INVALIDATION_NOTICE.json": "a1b7ad2ca4ad6b23d117fa9f698e72b553a44dd2851f60d2d0e37b3d972f5eb3",
+    "data/ground_truth/proposals/train_events/event_012_proposal_v2.json": "a45da6b905de79b36db6382c5dc80bacf6646cfe3b3529c619479c3b2e6b8227",
+    "data/ground_truth/proposals/train_events/event_012_proposal_v1.json": "6e86617b863993292a990f6b01422b84ee5f32544e3ef84fbe89d12ce2600ca7",
+    "data/ground_truth/reviews/train_events/event_013_review.json": "8d5dfc1f03b7bc2dd9bbc42199fda6c2935e60c9c1292de19d5df31bab7cce76",
+    "data/ground_truth/reviews/train_events/event_013_review.INVALIDATION_NOTICE.json": "01ef5ef43ee6b0caa1cb22f507f4bbc78cc51c99278a1b2569ced24b7ef7f69e",
+    "data/ground_truth/proposals/train_events/event_013_proposal_v2.json": "cdb691cbfa415a05ce3dd390a71f6903964a865ee459cdc6d31c6c9edbc679fe",
+    "data/ground_truth/proposals/train_events/event_013_proposal_v1.json": "7c81e2ea16237763e97f13d0f6499e6d949af068b4028c4e60c0cd9354cdf0a0",
+    "data/ground_truth/reviews/train_events/event_014_review.json": "2717a61b0a6d328ab6977aa9320a2c78990d76f4b6887203e675445844ab7d5a",
+    "data/ground_truth/reviews/train_events/event_014_review.INVALIDATION_NOTICE.json": "758ee83762ae4fa5a8efdeda28e1530466a47037ef1f4a3f1620f7871fb36ddb",
+    "data/ground_truth/proposals/train_events/event_014_proposal_v2.json": "e6fe8f81e6b59154675b455cb6d20cd1698345d5321c0bb30db9c3f94efd112f",
+    "data/ground_truth/proposals/train_events/event_014_proposal_v1.json": "cb0da818f88ceebd1f0ad1163cadc6ff6602cce2a7e25165ceda531759d97805",
+    "data/ground_truth/reviews/train_events/event_015_review.json": "9a90a1a6ed1eb77801b1250d2368ee6916508c38c08fb86f951682cf55bd9c8a",
+    "data/ground_truth/reviews/train_events/event_015_review.INVALIDATION_NOTICE.json": "f8af8db91ee5cdb0aae124b7dd73d165c5507ed278e855c093a24b154c42e338",
+    "data/ground_truth/proposals/train_events/event_015_proposal_v2.json": "e698947778110ac5a44102ccc7a6cc81a2a41f423e48a9e9810328043131c86f",
+    "data/ground_truth/proposals/train_events/event_015_proposal_v1.json": "4b06cdcc1f988ad88a5ff67f27eefa99bdf449cf588a6c7e5b476157de8e47ff",
+    "data/ground_truth/reviews/train_events/event_016_review.json": "c25a8e4bb4f9667927a2c2e88d76aa40e09612baffd75a8bb8171ff4381db1af",
+    "data/ground_truth/reviews/train_events/event_016_review.INVALIDATION_NOTICE.json": "a40b98f1227cc0f0c6c82ae01842f21d56c525c534ab170937ff25eddf2f1b93",
+    "data/ground_truth/proposals/train_events/event_016_proposal_v2.json": "f404feeb5d43513aeeb76804454efd1d2e98f5bc4b264337ab77258d0d5d22ea",
+    "data/ground_truth/proposals/train_events/event_016_proposal_v1.json": "31638c2b72cbf6488c7bf07e1f89b3cb9a7008b8e0fde1fa17431d0e5f4c4aed",
+    "data/ground_truth/reviews/train_events/event_017_review.json": "f2ee23c67348984283e30f18735d57feb1cedbd822056bfec12a5466eee8d859",
+    "data/ground_truth/reviews/train_events/event_017_review.INVALIDATION_NOTICE.json": "8542c9d35d07fa3555e86415632bc89b2ad91eb4e715753aef3a54cea4d7f4d9",
+    "data/ground_truth/proposals/train_events/event_017_proposal_v2.json": "1a40c8bfc2a289db4a0cfe18edb5563f1ceddc0d24fde8a982420b888ee2ea02",
+    "data/ground_truth/proposals/train_events/event_017_proposal_v1.json": "61af15db5229f9e92e5f68435ff87b17666cc66e3f292255ba55e0f422114feb",
+    "data/ground_truth/reviews/train_events/event_018_review.json": "a954c637fc7430ba5fcaf1de98c3407f6f8a9f2cd984f7cb5fadaeef3e60efaf",
+    "data/ground_truth/reviews/train_events/event_018_review.INVALIDATION_NOTICE.json": "6422229fe02797ce6c08d28d48fc1772c1dc6036103c84898806b721b320bf25",
+    "data/ground_truth/proposals/train_events/event_018_proposal_v2.json": "3ee97a958b356c40a266223dbe78a2018586c9f0d099bc5ca5df0fe0ee23edd1",
+    "data/ground_truth/proposals/train_events/event_018_proposal_v1.json": "a86de72b6e2a8f989c7d5768a9a3d5939da84457441f49f48d35c4bc50ea37e5",
+    "data/ground_truth/reviews/train_events/event_019_review.json": "278b49f9c241b10189274c19a9634e58a5c8dfc4e45530239d2778f662fe29f2",
+    "data/ground_truth/reviews/train_events/event_019_review.INVALIDATION_NOTICE.json": "ac86eb5cb36617c1a1c1e58ec46ac0150923a3a0e53835d3e7610d86ec0df357",
+    "data/ground_truth/proposals/train_events/event_019_proposal_v2.json": "0deff3cad109ffd0199577f57a223affa3738d7d2974268e2ea7f7ebb4460908",
+    "data/ground_truth/proposals/train_events/event_019_proposal_v1.json": "11212faa5d43441593c669b4d3acd08927d015b31de883dd173ac7d414138547",
+    "data/ground_truth/reviews/train_events/event_020_review.json": "b98c257804fd2ba0acb21a10de90c9dc4595fc3a898ce1c41a86beedc3ccf9e9",
+    "data/ground_truth/reviews/train_events/event_020_review.INVALIDATION_NOTICE.json": "5d433d1d06ed79c44eca62532cc5c6cbff256e953b5edccdeb92f3b0564a8332",
+    "data/ground_truth/proposals/train_events/event_020_proposal_v2.json": "3b2537abc0bcd5c0c3554bb44e71b9f4b53fc5ab7744a9d64c55bd5f3345cb3c",
+    "data/ground_truth/proposals/train_events/event_020_proposal_v1.json": "f8c5240576ab3d6a6a5d29894df44b8d4329ca07f90757ef7e3c50dc3b421fa0",
+    "data/ground_truth/reviews/train_events/event_021_review.json": "c6e689b00b5001191660b4b71c8df43d205b84f1b7d23af066298152d85b563f",
+    "data/ground_truth/reviews/train_events/event_021_review.INVALIDATION_NOTICE.json": "bc998b38cd8b8c581aba1766628a5111502913c1885563ea02502213a5727119",
+    "data/ground_truth/proposals/train_events/event_021_proposal_v2.json": "65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395",
+    "data/ground_truth/proposals/train_events/event_021_proposal_v1.json": "db1af9e7fd7bd199f0fbe8be4e69fc5e85657599846528ef3505b7d4c19cece4",
+    "data/ground_truth/reviews/train_events/event_022_review.json": "30f0ec6c8f2825a6644bebe3ce8ab97a9352cfeabb8a721da30a235403f134c4",
+    "data/ground_truth/reviews/train_events/event_022_review.INVALIDATION_NOTICE.json": "6403347e97094f820258dbfed3f4d428af4dd2a6b65692b58bf1a8a11a3b034d",
+    "data/ground_truth/proposals/train_events/event_022_proposal_v2.json": "29e01ea7bbc866dd4165fd33443ddd3841178d72a4b11773f9d7c53f65a6e857",
+    "data/ground_truth/proposals/train_events/event_022_proposal_v1.json": "1eda8a5c3170c7462ffb7493b4663048e9f00c4a80331ced29d45084c9295a91",
+    "data/ground_truth/reviews/train_events/event_023_review.json": "e19f917c28920161535e9322a984fa35fecd8fba552557a017062b727b3854d6",
+    "data/ground_truth/reviews/train_events/event_023_review.INVALIDATION_NOTICE.json": "dd4fc1f7e424465e1cc3c69fd12c9dd515a708bcf83ede237ee9bb92a44a1f1e",
+    "data/ground_truth/proposals/train_events/event_023_proposal_v2.json": "cacdace3383b6829060cc4f9c5d3e9c12a76787312e6b5c7c2d1964bfd0b7a38",
+    "data/ground_truth/proposals/train_events/event_023_proposal_v1.json": "394a9240644d552d86322d1117cffb126f51390e3c9683e64097df67774d6528",
+    "data/ground_truth/reviews/no_train_events/event_001_review.json": "7387acbf17e6ca2eda6b814e3d9f30683aecffe863b14637cc4ff4bf51015243",
+    "data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json": "a93765bd21297ac189cc3598463bfc0c65418f7d9ccf149f1b01b3fd24eb3404",
+    "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json": "6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2",
+    "data/ground_truth/proposals/no_train_events/event_001_proposal_v1.json": "b57f62b60a382dca5a92ab5d2b228dbccc7227ee5451bc69cf509883dcd878e8",
+    "data/ground_truth/reviews/no_train_events/event_002_review.json": "619efd3ec467f0f23f0b70ef885fd7771fb84dcd052b1175c4c9fca4745ace95",
+    "data/ground_truth/reviews/no_train_events/event_002_review.INVALIDATION_NOTICE.json": "e49f953087049c60b05be12336ddb30f1a1e29bda09c3aae8dad87dff63fb132",
+    "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json": "0fd3a48a0c30675e46635795c6aacdbaed294a0d21ad510462fd4848db1de956",
+    "data/ground_truth/proposals/no_train_events/event_002_proposal_v1.json": "d550396dee73d49a05a2e6bcecf076ffd3724ba24240e0d62273d01fbea50e09",
+    "data/ground_truth/reviews/no_train_events/event_003_review.json": "8f163c525e32ddf4623718093b2909bcaf1b20b320d8a75985fd7310ee19ce2b",
+    "data/ground_truth/reviews/no_train_events/event_003_review.INVALIDATION_NOTICE.json": "8cdaf133d6bc296996bb459ac71e3d06ba076428b69f0a7f3f5d13096b1fee49",
+    "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json": "e7619841db2308290bde1cb3267e485a2edcf07bae389a1798c50a5aaabd670f",
+    "data/ground_truth/proposals/no_train_events/event_003_proposal_v1.json": "b458f190b177ece3b16d158a3e7e41180a123fe53930433e2055e83783a34ebf",
+    "data/ground_truth/reviews/engine_events/event_001_review.json": "3493e125e86c7642d47dca13ddfe3a91fad926b6e6d0fd9e9662968d1bca3edd",
+    "data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json": "a36abc84f6e870516ac7028084b9401af11bcf2edb5bd15077499d2e767f63a0",
+    "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json": "aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a",
+    "data/ground_truth/proposals/engine_events/event_001_proposal_v1.json": "303a86d1d76e3b438e7ceaae0b1771eee657e7c994b33065928ca7118e935851",
+    "data/ground_truth/proposals/engine_events/event_001_proposal_v2.json": "c72f555b8a12ece3110d94dfc64eea50e234cf084bdfcd8cea22f156e02ff54d"
+  },
+  "active_accepted_records": 0,
+  "legacy_invalidated": 27,
+  "stored_human_paired_observations_not_reconstructed": true,
+  "AI_annotations_not_GT": true,
+  "scope": "Actual active candidate content now adopted by researcher, with no separate notes; technical/canonical eligibility assessed independently. Legacy records remain invalidated; no new timestamps, values or fake human files.",
+  "new_researcher_adoption_record": "RESEARCHER_ANNOTATION_ADOPTION.json"
+}

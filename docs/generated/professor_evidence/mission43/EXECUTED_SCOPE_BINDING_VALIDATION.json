@@ -1,0 +1,10 @@
+{
+  "schema": "mission43-executed-scope-binding-validation/1",
+  "valid": true,
+  "media_scope_sha256": "df646b57532d5727a9317699764670a11e873384f6a0f294090d53bf096c8414",
+  "evaluation_scope_sha256": "99fce7e07a0c2a96a0b2b731b15e5c029cbd4a1d4931f33d8dd6237bd94beccd",
+  "three_actual_invocation_hashes_match": true,
+  "six_issued_closed_record_seals_match": true,
+  "canonical_media_slot_absent": true,
+  "formatting_correction": "A final formatting pass temporarily touched the two new hash-bound scope Markdown files. Their exact executed bytes were restored and verified against original recorded SHA256; no authorization, original prediction, metric input or prior evidence was changed. Frozen scopes are excluded from further polishing."
+}

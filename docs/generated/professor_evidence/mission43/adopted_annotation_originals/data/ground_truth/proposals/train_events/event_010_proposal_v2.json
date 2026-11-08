@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "proposal_id": "proposal_event_010_v2",
+  "event_id": "event_010",
+  "event_type": "REAL_WORLD_TRAIN_EVENT",
+  "proposal_timestamp_utc": "2026-10-12T17:10:00Z",
+  "schema_version": "7.0.0",
+  "ai_assistant_metadata": {
+    "model_name": "antigravity-multimodal-agent",
+    "prompt_template_version": "v1.0.0",
+    "prompt_template_sha256": "8ea581b1453f72b4673642d510acc4a4e0a9aeb9727ae63ff0c0546b65741a5e",
+    "input_media_files": [
+      {
+        "file_name": "camera_front.mov",
+        "duration_s": 24.017,
+        "sha256": "9967e3666086e1f0f14f20d22bbf36e7eec5a5491622edbfb2f465f247ce1b46"
+      },
+      {
+        "file_name": "camera_back.mov",
+        "duration_s": 23.517,
+        "sha256": "566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a"
+      }
+    ]
+  },
+  "proposed_site_metadata": {
+    "crossing_id": "crossing_A",
+    "recording_session_id": "session_20260914_morning"
+  },
+  "proposed_environmental_conditions": {
+    "lighting": "day",
+    "weather": "overcast"
+  },
+  "proposed_train_metadata": {
+    "train_present": true,
+    "train_direction": "left_to_right",
+    "train_type": "passenger",
+    "trailing_cars_count": 4,
+    "horn_status": "absent_observed",
+    "horn_onset_s": null,
+    "horn_uncertainty_s": null,
+    "horn_reason": null,
+    "confidence_note": "Candidate horn absent_observed. FFT analysis of 16kHz audio from both streams shows low-frequency engine dominance (50-250 Hz) and lack of sustained pneumatic horn spectral peaks in 300-800 Hz (max SNR 7.0). Verified trailing car count: 4 coaches."
+  },
+  "proposed_timestamps": {
+    "T0_first_visible": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 0.0,
+      "frame_index": 0,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Candidate first observed train frame in available recording (Frame 0). Left-censored: locomotive is already visible approaching under corridor at recording start (t=0.00s); true physical visual arrival occurred at t <= 0.00s. Excluded from physical detection-latency denominator.",
+      "ambiguity_flag": true
+    },
+    "T1_danger_zone_entry": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 2.7,
+      "frame_index": 81,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4, retiring R03): locomotive cowcatcher reaches turnout switch frog / pedestrian approach line on camera_front.mov.",
+      "ambiguity_flag": false
+    },
+    "T2_crossing_occupancy_start": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 3.5,
+      "frame_index": 105,
+      "reference_camera": "front",
+      "native_fps": 29.97002997002997,
+      "rationale": "Operational Danger-Zone Annotation Convention (Protocol v7.0.0 \u00a72.4): locomotive pilot crosses front camera transverse lens plane / roadway occupancy line on camera_front.mov.",
+      "ambiguity_flag": false
+    },
+    "T3_locomotive_unit_clearance": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 3.1,
+      "frame_index": 93,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Operational Danger-Zone Annotation Convention: trailing edge / rear coupler of lead locomotive clears vegetable vendor stall clearance line on camera_back.mov.",
+      "ambiguity_flag": false
+    },
+    "T4_tail_clearance": {
+      "applicable": true,
+      "candidate_observable": true,
+      "value_s": 22.4,
+      "frame_index": 672,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Operational Danger-Zone Annotation Convention: rear buffer of final rail vehicle (#4) clears departure roadway boundary on camera_back.mov, permitting road and pedestrian crossing resumption.",
+      "ambiguity_flag": false
+    },
+    "T_scene_clear": {
+      "applicable": true,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": "back",
+      "native_fps": 30.0,
+      "rationale": "Recording terminates while train is still visible receding along departure tracks.",
+      "ambiguity_flag": true
+    }
+  },
+  "proposed_camera_alignment_markers": {
+    "candidate_front_marker": "turnout_frog_boundary",
+    "candidate_back_marker": "vendor_stall_clearance_line",
+    "candidate_offset_s": null,
+    "requires_human_empirical_verification": true,
+    "audited_front_stream_exposure_s": 24.017,
+    "audited_back_stream_exposure_s": 23.517,
+    "audited_combined_camera_stream_exposure_s": 47.534,
+    "stream_exposure_note": "Combined camera-stream exposure (120.788s) represents summed stream-seconds and must NOT be treated as concurrent wall-clock exposure."
+  },
+  "raw_proposal_immutable": true,
+  "prior_proposal_ref": "data/ground_truth/proposals/train_events/event_010_proposal_v1.json"
+}

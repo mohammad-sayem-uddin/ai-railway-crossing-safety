@@ -1,0 +1,131 @@
+{
+  "schema_version": "phase5-media-access-authorization/2",
+  "authorization_id": "AUTH-MEDIA-ACCESS-M43-AUDIO-20261108T134223Z",
+  "authorization_class": "AUTH-MEDIA-ACCESS",
+  "status": "APPROVED",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "authorized_at_utc": "2026-11-08T13:42:23.515605+00:00",
+  "expires_at_utc": "2026-11-08T21:42:23.515605+00:00",
+  "revoked": false,
+  "authorization_statement": "Mission43 researcher explicitly directs full27-event source verification and existing frozen image/audio experiments, reusing completed five-event work. Authority attribution was previously explicitly confirmed; this is transcription of the current expanded direction, not a new signature.",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "agent_transcription",
+    "identity": "Codex local technical operator",
+    "transcription_source": "Mission43 user attachment SHA256 a973d7afdbae3803813730a3f6212bcef9341e076583f3c0a9841a46236b0ab6 and existing authority/scope attribution in prior actual replies; EXECUTION_SCOPE.md records exact operative boundaries."
+  },
+  "scope": {
+    "operations": [
+      "READ_RAW_MEDIA",
+      "HASH_RAW_MEDIA",
+      "MEDIA_PROBE",
+      "INFERENCE",
+      "AUDIO_EXTRACTION",
+      "FEATURE_EXTRACTION"
+    ],
+    "datasets": [
+      "layer_b"
+    ],
+    "events": [
+      "train_events/event_001",
+      "train_events/event_002",
+      "train_events/event_003",
+      "train_events/event_004",
+      "train_events/event_005",
+      "train_events/event_006",
+      "train_events/event_007",
+      "train_events/event_008",
+      "train_events/event_009",
+      "train_events/event_010",
+      "train_events/event_011",
+      "train_events/event_012",
+      "train_events/event_013",
+      "train_events/event_014",
+      "train_events/event_015",
+      "train_events/event_016",
+      "train_events/event_017",
+      "train_events/event_018",
+      "train_events/event_019",
+      "train_events/event_020",
+      "train_events/event_021",
+      "train_events/event_022",
+      "train_events/event_023",
+      "no_train_events/event_001",
+      "no_train_events/event_002",
+      "no_train_events/event_003",
+      "engine_events/event_001"
+    ],
+    "media_types": [
+      "video"
+    ],
+    "purpose": "Mission43 exact54-member read-only verification; remaining22 front/back frozen inference and22 front embedded-audio inference/input assembly; no GT promotion, decision replay, training, raw-media output or public release"
+  },
+  "restrictions": {
+    "path_prefixes": [
+      "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_001/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_002/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_002/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_003/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_003/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_004/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_004/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_005/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_005/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_006/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_006/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_007/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_007/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_008/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_008/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_009/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_009/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_010/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_010/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_011/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_011/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_012/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_012/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_013/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_013/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_014/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_014/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_015/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_015/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_016/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_016/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_017/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_017/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_018/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_018/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_019/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_019/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_020/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_020/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_021/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_021/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_022/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_022/camera_back.mov",
+      "data/raw/layer_b/v2/train_events/event_023/camera_front.mov",
+      "data/raw/layer_b/v2/train_events/event_023/camera_back.mov",
+      "data/raw/layer_b/v2/no_train_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/no_train_events/event_001/camera_back.mov",
+      "data/raw/layer_b/v2/no_train_events/event_002/camera_front.mov",
+      "data/raw/layer_b/v2/no_train_events/event_002/camera_back.mov",
+      "data/raw/layer_b/v2/no_train_events/event_003/camera_front.mov",
+      "data/raw/layer_b/v2/no_train_events/event_003/camera_back.mov",
+      "data/raw/layer_b/v2/engine_events/event_001/camera_front.mov",
+      "data/raw/layer_b/v2/engine_events/event_001/camera_back.mov"
+    ]
+  },
+  "bindings": {
+    "protocol_document": {
+      "path": "docs/generated/professor_evidence/mission43/EXECUTION_SCOPE.md",
+      "sha256": "df646b57532d5727a9317699764670a11e873384f6a0f294090d53bf096c8414"
+    }
+  },
+  "record_sha256": "eb7f95425e1f8faae23e97e15d999473e9d6aca4f20c72c463d6513c6c77c96d"
+}

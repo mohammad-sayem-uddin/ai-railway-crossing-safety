@@ -1,0 +1,15 @@
+# Full27-event executive research summary
+
+The project examined the existing image and supporting horn models on23 train events, 3 no-train controls and1 engine-only case, front/back each, at the existing site. All 54 current source hashes match the established inventory. The earlier five-event model outputs are reused once; the remaining22 events were genuinely processed with the frozen models/configuration.
+
+Front vision produced 6613 sampled records and 329 objects; back vision6479 records and 1020 objects. Corrected natural-log V3 inference produced 2600 acoustic windows and 445 model-positive windows at 0.37 across 27 front tracks. Those repeated outputs are not independent physical events or accuracy estimates.
+
+The researcher explicitly approved the existing AI-assisted annotations as final after reporting manual verification, without separate manual notes. That genuine approval is bound to27 active versions/hashes. An explicitly scoped exploratory event-label comparison uses the existing max-window acoustic recording rule: among 23 train events with explicit horn labels (13 present, 10 absent_observed), TP12/FP10/FN1/TN0; precision=54.55%, recall=92.31%, F1=0.6857, specificity=0%, ROC-AUC=0.6846, AP=0.7739. All10 adopted horn-absent train cases trigger, revealing poor specificity relative to these labels. The engine is separate and controls' null horn labels are excluded.
+
+The comparison is limited by AI-assisted reference provenance, absent separate observations and horn fields that identify the paired event rather than an independently verified front acoustic member. It is not window/timing accuracy or independent-human-GT validation. Missing frame boxes prevent image AP/mAP and matched detection correctness. No labels, windows or human records were invented.
+
+All27 B2 input assemblies are complete:6614 query frames, 3897 with both stream records, 2717 without audio in the input window. Actual B2 decisions remain unexecuted: the existing guard refuses admission because genuine canonical promotion/protocol bindings are absent. Researcher content approval does not fabricate those records or canonical Stage2.1 acceptance.
+
+Fresh full guarded software testing executed3815 cases:3700 passed, 84 failed, 31 errors, 0 skipped, with the same115 nonpassing cases as Mission40. Separately, 15 existing actual-metadata integration cases pass with unchanged tests and production guards; overlapping contexts are not added together. No new core defect, training, threshold change, model replacement or split was introduced.
+
+The evidence supports these bounded full-cohort output/error and adopted-label findings. It does not establish generalization, safety benefit, deployment readiness, full B2 completion or a fully passing repository. The professor should review [the findings](MISSION_43_FINAL_REPORT.md), [reference scope](ANNOTATION_AND_REFERENCE_VERIFICATION.md), [metrics](QUANTITATIVE_METRICS_AND_SCOPE.md) and [remaining exact dependencies](LIMITATIONS_AND_NEXT_RESEARCH.md) before deciding stronger claims or further research.

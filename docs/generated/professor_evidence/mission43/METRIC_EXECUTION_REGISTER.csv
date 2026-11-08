@@ -1,0 +1,11 @@
+metric_family,status,value,numerator,denominator,reason
+AUDIO_EVENT_LABEL_TP_FP_FN_TN_PRECISION_RECALL_F1_SPECIFICITY_ROC_AP,EXECUTED_EXPLORATORY_ADOPTED_REFERENCE_AGREEMENT,AUDIO_ADOPTED_EVENT_LABEL_METRICS.json,See exact confusion counts,23 physical train events; engine/control separate,Existing fixed recording max-pool/.37 method; camera-label scope and AI-assisted reference limitations disclosed
+VISION_TP_FP_FN_PRECISION_RECALL_F1,UNAVAILABLE,null,null,null,No frame/instance bbox reference labels or adopted vision event-matching endpoint
+VISION_AP_MAP50_MAP50_95_PER_CLASS,UNAVAILABLE,null,null,null,"No source-frame class/bounding-box GT, so existing IoU matching cannot run"
+AUDIO_WINDOW_TP_FP_FN_CONFUSION_ROC_PR,UNAVAILABLE,null,null,null,No actual window labels or horn offsets; do not spread event horn_status over windows
+AUDIO_CONTROL_EVENT_METRICS,UNAVAILABLE,null,null,null,"Three no-train events have null horn_status, not negative acoustic labels"
+HUMAN_INTER_RATER_AGREEMENT,UNAVAILABLE,null,null,null,Original separate pre-comparison observations were not stored
+M4_M5_MTR_T1_WARNING,UNAVAILABLE,null,null,null,No accepted Stage2.1 clock/boundary/reference promotion and no decision replay
+B2_DECISION_METRICS,UNAVAILABLE,null,null,null,Actual descriptive replay not admitted; promotion/protocol bindings absent
+PHYSICAL_T2_OCCUPANCY_RD046,UNAVAILABLE,null,null,null,Explicitly deferred; candidate content approval does not validate physical landmark
+ROC_PR_FOR_ENGINE_ALONE,UNAVAILABLE,null,null,null,Single separate engine case cannot define two-class ROC/PR

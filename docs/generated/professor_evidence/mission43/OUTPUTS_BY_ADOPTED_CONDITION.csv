@@ -1,0 +1,5 @@
+camera,adopted_lighting,adopted_weather,physical_events,sampled_records,predicted_objects,interpretation
+back,day,overcast,23,6127,966,Output descriptors by researcher-adopted AI condition metadata; no condition accuracy or fresh weather/lighting verification
+back,night,clear,4,352,54,Output descriptors by researcher-adopted AI condition metadata; no condition accuracy or fresh weather/lighting verification
+front,day,overcast,23,6270,327,Output descriptors by researcher-adopted AI condition metadata; no condition accuracy or fresh weather/lighting verification
+front,night,clear,4,343,2,Output descriptors by researcher-adopted AI condition metadata; no condition accuracy or fresh weather/lighting verification

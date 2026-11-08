@@ -1,0 +1,29 @@
+{
+  "schema": "mission43-input-grid-vs-sampled-records/1",
+  "front_sampled_records": 6613,
+  "input_query_frames": 6614,
+  "difference_event": "train_events/event_010",
+  "difference_event_visual_samples": 120,
+  "difference_event_input_frames": 121,
+  "last_visual_source_pts_s": 23.816666666666666,
+  "last_causal_audio_end_s": 24.0,
+  "last_existing_collector_query": {
+    "master_timestamp_s": 23.999999999999947,
+    "front_prediction_timestamps": [
+      23.816666666666666
+    ],
+    "causal_audio_window_end_timestamps": [
+      24.0
+    ],
+    "front_predicted_objects": 0,
+    "audio_probabilities": [
+      0.07421528548002243
+    ],
+    "audio_predicted_train": [
+      false
+    ],
+    "stage": "B2_INPUT_ASSEMBLY_ONLY_NO_DECISION_REPLAY"
+  },
+  "explanation": "Existing input collector runs to max(last actual visual PTS,last actual causal audio end). Its24.0s query reuses in-window actual preceding visual evidence; no extra decoded/model frame, synthetic padding or invented observation.",
+  "new_interpolation_or_padding": false
+}

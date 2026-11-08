@@ -1,0 +1,94 @@
+{
+  "schema": "mission43-final-acceptance/1",
+  "overall": "ALL_GENUINELY_EXECUTABLE_WORK_COMPLETE; SCIENTIFIC_PROGRAMME_PARTIAL",
+  "criteria": [
+    {
+      "item": "All27 events reconciled",
+      "status": "COMPLETE",
+      "evidence": "54 exact current hashes/streams;27-event matrix"
+    },
+    {
+      "item": "Annotation coverage and verification documented",
+      "status": "COMPLETE_WITH_LIMITATIONS",
+      "evidence": "27 active AI-assisted contents genuinely researcher-adopted; no frame boxes/window labels/canonical promotion"
+    },
+    {
+      "item": "Image inference on all eligible sources",
+      "status": "COMPLETE",
+      "evidence": "54 camera members:44 new+10 reused, no failures"
+    },
+    {
+      "item": "Audio inference on all eligible existing B1 sources",
+      "status": "COMPLETE",
+      "evidence": "27 front tracks:22 new+5 reused; back-audio condition not adopted"
+    },
+    {
+      "item": "Multimodal experiments where actually admitted",
+      "status": "INPUT_ASSEMBLY_COMPLETE; DECISION_REPLAY_BLOCKED",
+      "evidence": "27 actual assemblies; no genuine promotion/protocol binding for guarded B2"
+    },
+    {
+      "item": "Scientifically valid supported metrics",
+      "status": "PARTIAL",
+      "evidence": "23-event adopted-label horn agreement complete; image/window/canonical timing endpoints unavailable"
+    },
+    {
+      "item": "Per-event findings",
+      "status": "COMPLETE",
+      "evidence": "Visual/audio/input tables preserve27 event identities"
+    },
+    {
+      "item": "Failure investigation",
+      "status": "COMPLETE_AT_AVAILABLE_REFERENCE_SCOPE",
+      "evidence": "11 acoustic event-label mismatches and28 total review-candidate rows; no fake matched-box errors"
+    },
+    {
+      "item": "Full relevant software programme",
+      "status": "EXECUTED_NONPASSING",
+      "evidence": "3815/3700pass/84fail/31error/0skip plus separate15/15 normal metadata integration"
+    },
+    {
+      "item": "Genuine defects fixed where possible",
+      "status": "NO_NEW_CORE_DEFECT_DEMONSTRATED",
+      "evidence": "No production/test/config changes; no test weakened"
+    },
+    {
+      "item": "Final test results documented",
+      "status": "COMPLETE",
+      "evidence": "All3815 IDs preserved;115 audited nonpasses classified with15 follow-up passes"
+    },
+    {
+      "item": "Reproducibility",
+      "status": "COMPLETE_AT_AVAILABLE_ASSET_SCOPE",
+      "evidence": "Actual commands/run manifests/hashes/versions/logs; raw/model/private assets deliberately excluded"
+    },
+    {
+      "item": "Figures and data",
+      "status": "COMPLETE",
+      "evidence": "Nine actual-output figures plus underlying tables/plot script"
+    },
+    {
+      "item": "Final evidence package",
+      "status": "COMPLETE_AVAILABLE_EVIDENCE_SCOPE",
+      "evidence": "This package; Mission42 untouched; no claim entire science complete"
+    },
+    {
+      "item": "Integrity",
+      "status": "CHECKED_BEFORE_COMMIT",
+      "evidence": "Package verifier and actual-data/metric/source preservation checks"
+    },
+    {
+      "item": "Git safety",
+      "status": "LOCAL_EXACT_PATH_ONLY",
+      "evidence": "Original seven researcher changes/caches preserved; no push/history rewrite"
+    }
+  ],
+  "not_falsely_marked_complete": [
+    "Actual B2 decision replay",
+    "Canonical Stage2.1 promotion",
+    "Image bbox/AP/mAP performance",
+    "Acoustic window correctness",
+    "Independent human inter-rater agreement",
+    "Fully passing whole-repository tests"
+  ]
+}

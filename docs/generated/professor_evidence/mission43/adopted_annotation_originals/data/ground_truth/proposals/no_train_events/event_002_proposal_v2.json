@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "proposal_id": "proposal_event_002_v2",
+  "event_id": "event_002",
+  "event_type": "REAL_WORLD_NO_TRAIN",
+  "proposal_timestamp_utc": "2026-10-12T17:10:00Z",
+  "schema_version": "7.0.0",
+  "ai_assistant_metadata": {
+    "model_name": "antigravity-multimodal-agent",
+    "prompt_template_version": "v1.0.0",
+    "prompt_template_sha256": "8ea581b1453f72b4673642d510acc4a4e0a9aeb9727ae63ff0c0546b65741a5e",
+    "input_media_files": [
+      {
+        "file_name": "camera_front.mov",
+        "duration_s": 11.877,
+        "sha256": "9196bd13700d26bb8b0b03ac8034150e0537b202b2690c21bef4943cceab0b97"
+      },
+      {
+        "file_name": "camera_back.mov",
+        "duration_s": 13.333,
+        "sha256": "7b578008c037648c37dfb7f2b029c3c192dd4680198d655b6d6ac11734426126"
+      }
+    ]
+  },
+  "proposed_site_metadata": {
+    "crossing_id": "crossing_A",
+    "recording_session_id": "session_20260914_morning"
+  },
+  "proposed_environmental_conditions": {
+    "lighting": "night",
+    "weather": "clear"
+  },
+  "proposed_train_metadata": {
+    "train_present": false,
+    "train_direction": null,
+    "train_type": null,
+    "trailing_cars_count": null,
+    "horn_status": null,
+    "horn_onset_s": null,
+    "horn_uncertainty_s": null,
+    "horn_reason": "No train present in recording. Ambient road traffic horns (CNG/rickshaw) present in audio.",
+    "confidence_note": "Full 11.9s front and 13.3s back recordings inspected. Zero rail vehicles observable on tracks. Continuous road traffic and pedestrian activity."
+  },
+  "proposed_timestamps": {
+    "T0_first_visible": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T1_danger_zone_entry": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T2_crossing_occupancy_start": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T3_locomotive_unit_clearance": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T4_tail_clearance": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    },
+    "T_scene_clear": {
+      "applicable": false,
+      "candidate_observable": false,
+      "value_s": null,
+      "frame_index": null,
+      "reference_camera": null,
+      "native_fps": null,
+      "rationale": "Not applicable: no train present.",
+      "ambiguity_flag": false
+    }
+  },
+  "proposed_camera_alignment_markers": {
+    "candidate_front_marker": null,
+    "candidate_back_marker": null,
+    "candidate_offset_s": null,
+    "requires_human_empirical_verification": true,
+    "audited_front_stream_exposure_s": 11.877,
+    "audited_back_stream_exposure_s": 13.333,
+    "audited_combined_camera_stream_exposure_s": 25.21,
+    "stream_exposure_note": "Combined camera-stream exposure (120.788s) represents summed stream-seconds and must NOT be treated as concurrent wall-clock exposure."
+  },
+  "raw_proposal_immutable": true,
+  "prior_proposal_ref": "data/ground_truth/proposals/no_train_events/event_002_proposal_v1.json"
+}

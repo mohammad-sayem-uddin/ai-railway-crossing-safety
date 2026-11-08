@@ -1,0 +1,81 @@
+{
+  "schema": "mission43-actual-result-figure-provenance/1",
+  "plotting_script_sha256": "14048914a7853da3fd8e6e60b53aa53c55efc0afe363d6614220d735ed5881c0",
+  "figures": [
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/DATASET_DISTRIBUTION.png",
+      "sha256": "49386baf20714f73ba91e112b54f2c99d0b38c42975b2c7dd45b2cd995037418",
+      "input_tables": {
+        "FULL_27_EVENT_COVERAGE_MATRIX.csv": "aa08394fd3a32d4dc04e35c954039244157e83f5256d246073509d9d63adc9e5"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    },
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/VISUAL_OBJECTS_PER_EVENT.png",
+      "sha256": "06e6e145cd705d7a92d0c713560016c1e120a926ca0a75bb13dd65a3afb1bd4f",
+      "input_tables": {
+        "VISUAL_PER_EVENT_RESULTS.csv": "1eed0e7311e5ff72e6fd871f52c7594584100cdaffade30aab92893a3ed9b540"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    },
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/AUDIO_MAX_SCORES_BY_EVENT.png",
+      "sha256": "426a8624b0fe0a967c18d30dc56b0e9608029ccb5c63c2af3a58df635a741fd1",
+      "input_tables": {
+        "AUDIO_PER_EVENT_RESULTS.csv": "53a518275245474abaf2e64b5b94f96a73c4085cca26d925dcd449be18ba1118"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    },
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/B2_INPUT_RECORD_COVERAGE.png",
+      "sha256": "704d02a3864e4bc998fc990269a5418b09c6530d70e195299ef7331bedcec447",
+      "input_tables": {
+        "B2_INPUT_COVERAGE.csv": "1ea0c396afa1c3baa881a5be501b83364b4a337130d089272b415ce350e16e59"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    },
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/AUDIO_ADOPTED_EVENT_CONFUSION.png",
+      "sha256": "94d2e29de2dccc45497a9358c9cdd939080f6ff2ddaeb71873d132d0e879e069",
+      "input_tables": {
+        "AUDIO_ADOPTED_EVENT_COMPARISONS.csv": "80e88d9c405162c75012ad9c67b256215a0c40a27dfed52776260a91f523864e"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    },
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/AUDIO_ADOPTED_EVENT_ROC.png",
+      "sha256": "05b05307610659ae0f7e8f7b6e815405c20e55bfd26c8fe5254522ec74cda0f1",
+      "input_tables": {
+        "AUDIO_ADOPTED_EVENT_COMPARISONS.csv": "80e88d9c405162c75012ad9c67b256215a0c40a27dfed52776260a91f523864e"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    },
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/AUDIO_ADOPTED_EVENT_PR.png",
+      "sha256": "9a20c50260b56048bb1a66f24153b658dd68fdf4236ce6b1fb1899f8320eecc8",
+      "input_tables": {
+        "AUDIO_ADOPTED_EVENT_COMPARISONS.csv": "80e88d9c405162c75012ad9c67b256215a0c40a27dfed52776260a91f523864e"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    },
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/VISUAL_CONFIDENCE_DISTRIBUTION.png",
+      "sha256": "12d7c0a4be0bf3931f0d35ae2181756cd43b5ff773d030e16bdded3571500640",
+      "input_tables": {
+        "VISUAL_CONFIDENCE_VALUES.csv": "6f481187ea59f0665ffe77534adbb74881100dc64e7c5b6aaecc8855a9e1350e"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    },
+    {
+      "figure": "docs/generated/professor_evidence/mission43/figures/ORIGINAL_PROCESSING_TIME.png",
+      "sha256": "acf96f9a60bbf24cec04c642ecf0b625e2ad3f6ecf9acbd971b11ded7df139b0",
+      "input_tables": {
+        "VISUAL_PER_EVENT_RESULTS.csv": "1eed0e7311e5ff72e6fd871f52c7594584100cdaffade30aab92893a3ed9b540",
+        "AUDIO_PER_EVENT_RESULTS.csv": "53a518275245474abaf2e64b5b94f96a73c4085cca26d925dcd449be18ba1118"
+      },
+      "scope": "Actual model outputs or explicitly scoped adopted-label comparison; not safety/independent human GT"
+    }
+  ],
+  "raw_media_or_images_opened": false,
+  "significance_or_CI_invented": false
+}

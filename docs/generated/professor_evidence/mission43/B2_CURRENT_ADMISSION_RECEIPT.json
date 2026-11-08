@@ -1,0 +1,18 @@
+{
+  "schema": "mission43-full-cohort-B2-admission/1",
+  "condition": "B2",
+  "operation": "descriptive_cache_only_replay",
+  "actual_refusal": {
+    "code": "AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED",
+    "detail": "no recorded AUTH-DESCRIPTIVE-EVAL-EXEC at data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json; descriptive execution on real-data caches is blocked until a researcher records one."
+  },
+  "manifest_sha256": "2fb08c92e6d389e55e3963c0f47f0d7fa7959922f39b9b4b600f244a57a46b72",
+  "manifest_events": 27,
+  "decision_events": 0,
+  "decision_frames": 0,
+  "promotion_receipt_exists": false,
+  "protocol_choice_exists": false,
+  "canonical_authorization_created": false,
+  "output_created": false,
+  "annotation_approval_not_fake_promotion": true
+}

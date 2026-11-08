@@ -1,0 +1,8 @@
+{
+  "issued_record_sha256": "7909b113b61c89f08e08bbe4cee4b418977f56f9a18aa1a350cd0dccfdcef6ff",
+  "closed_record_sha256": "78aefe795dfdfafcc19c5ca594f0eff94560b0265780f27a350c68719e1e8f89",
+  "closed_at_utc": "2026-11-08T13:41:59.135824+00:00",
+  "canonical_slot_absent": true,
+  "statement_origin": "Actual current Mission43 expanded execution direction; persistent confirmed authority attribution",
+  "no_GT_promotion_or_descriptive_replay_grant": true
+}

@@ -1,0 +1,208 @@
+{
+  "schema": "mission43-researcher-annotation-adoption/1",
+  "statement": "I have verifed all ai annotation all are approved same it is thats why I did not store my manual ones you can take the Ai annotation as the final",
+  "origin": "Actual researcher reply in current Mission43 conversation to exact existing annotation path/version question",
+  "recorded_at_utc": "2026-11-08T13:19:43.560616+00:00",
+  "recorded_by": "Codex agent transcription; unsigned researcher statement",
+  "authority_attribution": "Existing researcher authority binding preserved; no identity or signature invented",
+  "decision": "RESEARCHER_APPROVES_AI_ASSISTED_ANNOTATIONS_AS_FINAL_REFERENCE_CONTENT",
+  "separate_manual_observations_stored": false,
+  "identity_selection": "Existing active proposal per docs/PHASE11_3_REVIEW_INVENTORY.json, all27; historical superseded versions preserved separately, never merged",
+  "limitations": [
+    "Researcher adoption is genuine evidence and not dismissed as no approval",
+    "Not independent newly stored human observations or inter-rater evidence",
+    "Does not itself create missing frame boxes, acoustic window labels, boundary states/clock proofs or canonical promotion",
+    "Legacy review invalidations remain intact; active AI-assisted references and formal canonical GT remain separate"
+  ],
+  "adopted_active_annotations": [
+    {
+      "event": "train_events/event_001",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+      "active_proposal_sha256": "0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_002",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_002_proposal_v2.json",
+      "active_proposal_sha256": "3079950c376a2085d747e9287badd92b3ef3915f305ddd250cb5325cf9e02ea3",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_003",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+      "active_proposal_sha256": "8042807536dc178e3c672385c5854336e6cf35c6141ebaf55728d7d9468c3674",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_004",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_004_proposal_v2.json",
+      "active_proposal_sha256": "b5f892f737ceec53bcc5b00966107be03031e44d488d71d5dad06f04131301d3",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_005",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_005_proposal_v4.json",
+      "active_proposal_sha256": "020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_006",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_006_proposal_v2.json",
+      "active_proposal_sha256": "039a65f4fd4dab3b7f52413201969b742dc18e819b92f043c200f24b3a52ac6d",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_007",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+      "active_proposal_sha256": "88ac5f83e7561fb0f308ef143fee023cb27e98edf6ce67b2c110081c5269f785",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_008",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+      "active_proposal_sha256": "bb29b1848bb8685ba3bf91e393556c16edb0816767586866999587f1c9bf7330",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_009",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+      "active_proposal_sha256": "b26fb9f09b8b76ec00d942a55994695494f99d9e1d16df7fc6429e7706bcd115",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_010",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+      "active_proposal_sha256": "315a70fd902de301864c9badf5b70f22f8928a68bb0cab6dfb0c9a1d39528dc7",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_011",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+      "active_proposal_sha256": "b93b4743dbec6a618040cdb6285dd17c40ac0736b1969e086e6a71e8b4a611ac",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_012",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_012_proposal_v2.json",
+      "active_proposal_sha256": "a45da6b905de79b36db6382c5dc80bacf6646cfe3b3529c619479c3b2e6b8227",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_013",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_013_proposal_v2.json",
+      "active_proposal_sha256": "cdb691cbfa415a05ce3dd390a71f6903964a865ee459cdc6d31c6c9edbc679fe",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_014",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+      "active_proposal_sha256": "e6fe8f81e6b59154675b455cb6d20cd1698345d5321c0bb30db9c3f94efd112f",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_015",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+      "active_proposal_sha256": "e698947778110ac5a44102ccc7a6cc81a2a41f423e48a9e9810328043131c86f",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_016",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+      "active_proposal_sha256": "f404feeb5d43513aeeb76804454efd1d2e98f5bc4b264337ab77258d0d5d22ea",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_017",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_017_proposal_v2.json",
+      "active_proposal_sha256": "1a40c8bfc2a289db4a0cfe18edb5563f1ceddc0d24fde8a982420b888ee2ea02",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_018",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_018_proposal_v2.json",
+      "active_proposal_sha256": "3ee97a958b356c40a266223dbe78a2018586c9f0d099bc5ca5df0fe0ee23edd1",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_019",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+      "active_proposal_sha256": "0deff3cad109ffd0199577f57a223affa3738d7d2974268e2ea7f7ebb4460908",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_020",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_020_proposal_v2.json",
+      "active_proposal_sha256": "3b2537abc0bcd5c0c3554bb44e71b9f4b53fc5ab7744a9d64c55bd5f3345cb3c",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_021",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_021_proposal_v2.json",
+      "active_proposal_sha256": "65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_022",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_022_proposal_v2.json",
+      "active_proposal_sha256": "29e01ea7bbc866dd4165fd33443ddd3841178d72a4b11773f9d7c53f65a6e857",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "train_events/event_023",
+      "active_proposal_path": "data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+      "active_proposal_sha256": "cacdace3383b6829060cc4f9c5d3e9c12a76787312e6b5c7c2d1964bfd0b7a38",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "no_train_events/event_001",
+      "active_proposal_path": "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json",
+      "active_proposal_sha256": "6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "no_train_events/event_002",
+      "active_proposal_path": "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json",
+      "active_proposal_sha256": "0fd3a48a0c30675e46635795c6aacdbaed294a0d21ad510462fd4848db1de956",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "no_train_events/event_003",
+      "active_proposal_path": "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json",
+      "active_proposal_sha256": "e7619841db2308290bde1cb3267e485a2edcf07bae389a1798c50a5aaabd670f",
+      "active_proposal_schema": "7.0.0",
+      "active_proposal_both_source_hashes_match": true
+    },
+    {
+      "event": "engine_events/event_001",
+      "active_proposal_path": "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json",
+      "active_proposal_sha256": "aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a",
+      "active_proposal_schema": "8.0.0",
+      "active_proposal_both_source_hashes_match": true
+    }
+  ]
+}

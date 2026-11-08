@@ -1,0 +1,20 @@
+{
+  "schema": "mission43-current-binding-inspection/1",
+  "canonical_records": {
+    "data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "data/governance/stage21_promotion_receipt.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "data/manifests/phase12_protocol_decision.json": {
+      "exists": false,
+      "sha256": null
+    }
+  },
+  "genuine_GT_promoted": false,
+  "selected_M4": "first_blocked_to_t4_clearance; unchanged",
+  "new_manual_declaration": "Recorded as actual researcher statement; not silently converted into canonical fields, physical T2 or approval of invalidated bytes"
+}

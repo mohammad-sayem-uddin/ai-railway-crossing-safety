@@ -1,0 +1,6 @@
+{
+  "elapsed_wall_s": 473.22653208300017,
+  "clock": "time.perf_counter",
+  "includes_orchestration": true,
+  "reason_for_rerun": "Mission43 explicitly requests current complete relevant software programme; no result claimed from historical receipts"
+}

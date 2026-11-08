@@ -1,0 +1,79 @@
+{
+  "schema": "mission43-delivery-integrity/1",
+  "date": "2026-11-08",
+  "valid": true,
+  "prior_artifacts_preserved": 1914,
+  "original_seven_researcher_paths_preserved": true,
+  "all148_original_annotation_texts_unchanged": true,
+  "all462_maintained_source_bindings_unchanged": true,
+  "focused_original_copies": 89,
+  "copied_source_hashes_match": true,
+  "all_source_member_bytes_verified_before_execution": 54,
+  "source_stats_stable_after_execution": true,
+  "original_new_inferences_completed": {
+    "front": 22,
+    "back": 22,
+    "audio_front": 22
+  },
+  "prior_five_event_outputs_reused_once": true,
+  "actual_source_clock_payloads_validated": true,
+  "new_researcher_approval_retained": true,
+  "formal_canonical_promotion_not_fabricated": true,
+  "actual_23event_metric_independent_crosscheck_passed": true,
+  "B2_decisions": 0,
+  "full_current_test_cases": 3815,
+  "full_current_test_counts": {
+    "passed": 3700,
+    "failed": 84,
+    "errors": 31,
+    "skipped": 0
+  },
+  "normal_actual_metadata_followup_cases_passed": 15,
+  "no_duplicate_test_totals": true,
+  "new_production_test_config_modifications": 0,
+  "raw_media_PCM_models_private_caches_or_credentials_copied": false,
+  "raw_guard_canonical_slot_closed": true,
+  "executed_scope_restoration_verified": "EXECUTED_SCOPE_BINDING_VALIDATION.json",
+  "figure_count": 9,
+  "visual_QA": "Existing generated plots reviewed; confusion title layout corrected; numerical plot inputs unchanged. No raw scene frame used.",
+  "verification_scope": "Saved original-derived output, source metadata, hashes, exact scope seals, numeric crosscheck, format/link integrity; no independent human/physical validation invented",
+  "containing_commit": "Exact hash and final worktree scope checked/reported after normal local commit; no push",
+  "packaged_files": 565,
+  "actual_package_verifier_result": {
+    "valid": true,
+    "files": 565,
+    "manifest_entries": 563,
+    "checksummed_files": 564,
+    "current_report_local_links": 93,
+    "parsed": {
+      "json": 69,
+      "csv": 21,
+      "jsonl": 162,
+      "xml": 54,
+      "other_gzip": 179
+    },
+    "actual_output_totals": {
+      "front_records": 6613,
+      "front_objects": 329,
+      "back_records": 6479,
+      "back_objects": 1020,
+      "audio_windows": 2600,
+      "audio_positive_windows": 445,
+      "B2_input_frames": 6614,
+      "B2_both_record_frames": 3897
+    },
+    "full_guarded_tests": {
+      "tests": 3815,
+      "passed": 3700,
+      "failures": 84,
+      "errors": 31,
+      "skipped": 0
+    },
+    "separate_metadata_integration_passed": 15,
+    "scope_and_invocation_bindings_valid": true,
+    "package_only_no_raw_media_models_repository_or_network": true
+  },
+  "portable_verifier_checked_from_different_working_directory": true,
+  "current_report_table_widths_checked": true,
+  "all_nine_actual_figures_visually_inspected": true
+}

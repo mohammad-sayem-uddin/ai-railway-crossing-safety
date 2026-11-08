@@ -1,0 +1,447 @@
+{
+  "data/ground_truth/proposals/train_events/event_001_proposal_v6.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_001_proposal_v6.json",
+    "sha256": "0d9596a928039387585dfeeeebe1596124c1f6467fee92639b5a9adb12ba0703",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_002_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_002_proposal_v2.json",
+    "sha256": "3079950c376a2085d747e9287badd92b3ef3915f305ddd250cb5325cf9e02ea3",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_003_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_003_proposal_v2.json",
+    "sha256": "8042807536dc178e3c672385c5854336e6cf35c6141ebaf55728d7d9468c3674",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_004_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_004_proposal_v2.json",
+    "sha256": "b5f892f737ceec53bcc5b00966107be03031e44d488d71d5dad06f04131301d3",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_005_proposal_v4.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_005_proposal_v4.json",
+    "sha256": "020bd9c4a721ba8221b18ac3ca296193cd94ad17167cdc35800aa5d494c336e5",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_006_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_006_proposal_v2.json",
+    "sha256": "039a65f4fd4dab3b7f52413201969b742dc18e819b92f043c200f24b3a52ac6d",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_007_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_007_proposal_v2.json",
+    "sha256": "88ac5f83e7561fb0f308ef143fee023cb27e98edf6ce67b2c110081c5269f785",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_008_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_008_proposal_v2.json",
+    "sha256": "bb29b1848bb8685ba3bf91e393556c16edb0816767586866999587f1c9bf7330",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_009_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_009_proposal_v2.json",
+    "sha256": "b26fb9f09b8b76ec00d942a55994695494f99d9e1d16df7fc6429e7706bcd115",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_010_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_010_proposal_v2.json",
+    "sha256": "315a70fd902de301864c9badf5b70f22f8928a68bb0cab6dfb0c9a1d39528dc7",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_011_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_011_proposal_v2.json",
+    "sha256": "b93b4743dbec6a618040cdb6285dd17c40ac0736b1969e086e6a71e8b4a611ac",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_012_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_012_proposal_v2.json",
+    "sha256": "a45da6b905de79b36db6382c5dc80bacf6646cfe3b3529c619479c3b2e6b8227",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_013_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_013_proposal_v2.json",
+    "sha256": "cdb691cbfa415a05ce3dd390a71f6903964a865ee459cdc6d31c6c9edbc679fe",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_014_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_014_proposal_v2.json",
+    "sha256": "e6fe8f81e6b59154675b455cb6d20cd1698345d5321c0bb30db9c3f94efd112f",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_015_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_015_proposal_v2.json",
+    "sha256": "e698947778110ac5a44102ccc7a6cc81a2a41f423e48a9e9810328043131c86f",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_016_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_016_proposal_v2.json",
+    "sha256": "f404feeb5d43513aeeb76804454efd1d2e98f5bc4b264337ab77258d0d5d22ea",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_017_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_017_proposal_v2.json",
+    "sha256": "1a40c8bfc2a289db4a0cfe18edb5563f1ceddc0d24fde8a982420b888ee2ea02",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_018_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_018_proposal_v2.json",
+    "sha256": "3ee97a958b356c40a266223dbe78a2018586c9f0d099bc5ca5df0fe0ee23edd1",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_019_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_019_proposal_v2.json",
+    "sha256": "0deff3cad109ffd0199577f57a223affa3738d7d2974268e2ea7f7ebb4460908",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_020_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_020_proposal_v2.json",
+    "sha256": "3b2537abc0bcd5c0c3554bb44e71b9f4b53fc5ab7744a9d64c55bd5f3345cb3c",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_021_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_021_proposal_v2.json",
+    "sha256": "65f1e27a5326bdb37c0377d8257d06974e658c20854fb1d5403217adcaff4395",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_022_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_022_proposal_v2.json",
+    "sha256": "29e01ea7bbc866dd4165fd33443ddd3841178d72a4b11773f9d7c53f65a6e857",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/train_events/event_023_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/train_events/event_023_proposal_v2.json",
+    "sha256": "cacdace3383b6829060cc4f9c5d3e9c12a76787312e6b5c7c2d1964bfd0b7a38",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/no_train_events/event_001_proposal_v2.json",
+    "sha256": "6b2e4ddc7e43054666115d2f1ca0648ae7a47dce22490de13a29031a191cb6b2",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/no_train_events/event_002_proposal_v2.json",
+    "sha256": "0fd3a48a0c30675e46635795c6aacdbaed294a0d21ad510462fd4848db1de956",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/no_train_events/event_003_proposal_v2.json",
+    "sha256": "e7619841db2308290bde1cb3267e485a2edcf07bae389a1798c50a5aaabd670f",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json": {
+    "package_path": "adopted_annotation_originals/data/ground_truth/proposals/engine_events/event_001_proposal_v3.json",
+    "sha256": "aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/train_events_event_001_front.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/train_events_event_001_front.jsonl",
+    "sha256": "29d7f4d2af6e6f6af065e397e34e17d419a2278b2668fffa36a56e55fa79e56f",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/train_events_event_001_back.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/train_events_event_001_back.jsonl",
+    "sha256": "5af446d81f3638cb1dc2d737cbc1dd2d525ee385ec114dae21f71789925ac317",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/train_events_event_005_front.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/train_events_event_005_front.jsonl",
+    "sha256": "d37937591414b6d88bd0af1ce644d98d9b1a276a038a6ec9ea3fe59012e6d84e",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/train_events_event_005_back.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/train_events_event_005_back.jsonl",
+    "sha256": "d15ab150ae4f7c1a240b1b8ca7cd454dbf74197a536ce3c94043c4984598bd97",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/train_events_event_021_front.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/train_events_event_021_front.jsonl",
+    "sha256": "01241b124c6ca527b45f6679a23131f02121605e06f2d28544d89570122a300d",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/train_events_event_021_back.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/train_events_event_021_back.jsonl",
+    "sha256": "f1dff4399e2e16ab12a808fc01e137c1698f598d7ad777d8659988d7fdc5cc1a",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/no_train_events_event_001_front.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/no_train_events_event_001_front.jsonl",
+    "sha256": "8827a30f84bc6a1090ec858820f9073bf03571b13503ccdfa452b00403e516b2",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/no_train_events_event_001_back.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/no_train_events_event_001_back.jsonl",
+    "sha256": "72c22b5f492f49ceded30519bb8402e8f16741559994802ecedd905cf427c32f",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/engine_events_event_001_front.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/engine_events_event_001_front.jsonl",
+    "sha256": "b0946e375d4d28d5f3422f216879ddf9090a07ad328e03c9fe398dc7922db910",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/predictions/engine_events_event_001_back.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/predictions/engine_events_event_001_back.jsonl",
+    "sha256": "13b4f642e50d456c4a46d63efa1764a7adc30d9e8fe7bc7961f846174c4a883e",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio.jsonl",
+    "sha256": "b907ee84724c1b5f41734af54fe46ed174a8137a9823e8d72d96410857defb82",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl",
+    "sha256": "b363d1b86f5036e4dc64548d1615ced65e5b525c9de0c20a5953f38fe63ce1fa",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_001_front_audio_clock.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_001_front_audio_clock.jsonl",
+    "sha256": "466e5db34402ab6200d50ba0a139cb57343822c4dec02198da60a4d762f99f5d",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_001_B2_front_inputs.jsonl",
+    "sha256": "466187ac47d648888debdf4d9ff1af1990c53c676689ae378f018a82863cd126",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio.jsonl",
+    "sha256": "f8544acff0ef71246e892c0dd4d828ef89acbe7cdeefc31967df93e11ead1527",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl",
+    "sha256": "ec77e5d3c120c0e76866c85586810c0c80fe04276cf40a2cef9f79b86a0dca88",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_005_front_audio_clock.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_005_front_audio_clock.jsonl",
+    "sha256": "94891b217e65e86d9153091caa586df348fc4a907f378f4bc10af15ffa8628f9",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_005_B2_front_inputs.jsonl",
+    "sha256": "418e8dc15cecdbed3ebd4b3c971dbc8edfa7fe4586249fc700452af19c494ef2",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio.jsonl",
+    "sha256": "b5eb0db0e4050ffba471c7be513131f471471a73010277a8763ac3fabd122932",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl",
+    "sha256": "3516c7bb915ec63575f16e6077335eba1db622364b27ef6fdd6419a7ca631029",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_021_front_audio_clock.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/clock_ledgers/train_events_event_021_front_audio_clock.jsonl",
+    "sha256": "b8093481fc604d549c55e50dec210d168fd2d0f702513129a9ac249b560447c9",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/assemblies/train_events_event_021_B2_front_inputs.jsonl",
+    "sha256": "7008fa26af4d194963b2924fa0273b811cbee8f6f34f7f3e676c6781c31fddab",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio.jsonl",
+    "sha256": "7825a461cd83eddfb56d1e3ef7d68ccadc82806c21c80bef133f695aed7c6d37",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl",
+    "sha256": "4a5124774e879354ac3ebcf72d2ed90630954f3f25ac841fbeea4c50a5d2f31c",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/clock_ledgers/no_train_events_event_001_front_audio_clock.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/clock_ledgers/no_train_events_event_001_front_audio_clock.jsonl",
+    "sha256": "fbeb53cf870d59cc0d0724b9fc23178b86fdeede7c2b748bded053d5ac637c6e",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/assemblies/no_train_events_event_001_B2_front_inputs.jsonl",
+    "sha256": "4690168edf2c1c15e94c83b569fb9b8fb63a43e965d748cb7b79a69f781d628f",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio.jsonl",
+    "sha256": "032c870fdf67749ae91a7f67552f4907bd33df3145960841f8e3329242486f13",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl",
+    "sha256": "8f17238c6e8e2d5b1d35f0fc92b0a9833ce2699363ab79239032071cc5ef486f",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/clock_ledgers/engine_events_event_001_front_audio_clock.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/clock_ledgers/engine_events_event_001_front_audio_clock.jsonl",
+    "sha256": "311b77f9ab793ac28c8737c476480e4280a6fa0f7383b8fc9bebab6026594230",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl": {
+    "package_path": "reused_evidence/docs/generated/research_results/mission39/audio_followup/assemblies/engine_events_event_001_B2_front_inputs.jsonl",
+    "sha256": "aaa1d70fee053e82b2c646913e926c300ccf47e523dd92008bac72dea3ba343b",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/PHASE11_3_REVIEW_INVENTORY.json": {
+    "package_path": "historical_inputs/docs/PHASE11_3_REVIEW_INVENTORY.json",
+    "sha256": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/manifests/real_world_v2_video_manifest.json": {
+    "package_path": "historical_inputs/data/manifests/real_world_v2_video_manifest.json",
+    "sha256": "d8ddfdf861f5045d466049c187a8443f0e5b9e7d2fd65f240ac6f6d543a1ad66",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/manifests/layer_b_v2_annotation_inventory.json": {
+    "package_path": "historical_inputs/data/manifests/layer_b_v2_annotation_inventory.json",
+    "sha256": "5585e22ecc7841e2cca4d8e56b9d61999e252e1efaf5dfa6e57d81471b809a56",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "data/ground_truth/reviews/_INTEGRITY_NOTICE.md": {
+    "package_path": "historical_inputs/data/ground_truth/reviews/_INTEGRITY_NOTICE.md",
+    "sha256": "342c56719c141dc15c8509d1088c8a6baf0535a0a56a3202d75135c5d6fa7e99",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/master_reaudit/MISSION_27_GENUINE_REVIEW_PILOT_PROTOCOL.md": {
+    "package_path": "historical_inputs/docs/generated/master_reaudit/MISSION_27_GENUINE_REVIEW_PILOT_PROTOCOL.md",
+    "sha256": "e496d887458e9cb84fff7fd6499073acaa5a2a0f8b872d31422b68f259749aa0",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/master_reaudit/MISSION_27_HUMAN_REVIEWER_HANDBOOK.md": {
+    "package_path": "historical_inputs/docs/generated/master_reaudit/MISSION_27_HUMAN_REVIEWER_HANDBOOK.md",
+    "sha256": "c0fcf3a3419f7cf5d365935f3d3656cababbd655cb8c7fab186d1302c7a7add6",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/master_reaudit/mission38/HUMAN_REFERENCE_SESSION_STATUS.md": {
+    "package_path": "historical_inputs/docs/generated/master_reaudit/mission38/HUMAN_REFERENCE_SESSION_STATUS.md",
+    "sha256": "8b436e036a539b256f874bbed464edc48373a95d734ad5553eff8e77e5ed5872",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/master_reaudit/mission37/CHECKPOINT_VERIFICATION_RECEIPT.json": {
+    "package_path": "historical_inputs/docs/generated/master_reaudit/mission37/CHECKPOINT_VERIFICATION_RECEIPT.json",
+    "sha256": "8dfdda52b9bc79237a7d279fd602df06439006e88b4b9770b838117044fdeed2",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/ACTUAL_RUN_MANIFEST.json": {
+    "package_path": "historical_inputs/docs/generated/research_results/mission39/ACTUAL_RUN_MANIFEST.json",
+    "sha256": "8d0b268c3d61da25603f96ee88af25b9d7c9a58f029a2ff7f32787ef9d33a083",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/ACTUAL_BACK_RUN_MANIFEST.json": {
+    "package_path": "historical_inputs/docs/generated/research_results/mission39/ACTUAL_BACK_RUN_MANIFEST.json",
+    "sha256": "f74b59261d5fa8adf15704ec6ee33d38b41f0ed2088c731b294f73ebf253e2a3",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/CORRECTED_AUDIO_RUN_MANIFEST.json": {
+    "package_path": "historical_inputs/docs/generated/research_results/mission39/audio_followup/CORRECTED_AUDIO_RUN_MANIFEST.json",
+    "sha256": "a5fd32c095a6c93522d072addf0e8a44708c4415ae6173196c93b88dc6f1f04d",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/TRAINING_RUNTIME_FEATURE_CORRECTION.json": {
+    "package_path": "historical_inputs/docs/generated/research_results/mission39/audio_followup/TRAINING_RUNTIME_FEATURE_CORRECTION.json",
+    "sha256": "ebd8eadaf9970480bacdd243518b4a65d8fffff7e3a1fd6b6e82d1bc05b6ad40",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "docs/generated/research_results/mission39/audio_followup/legacy_db_diagnostic/README.md": {
+    "package_path": "historical_inputs/docs/generated/research_results/mission39/audio_followup/legacy_db_diagnostic/README.md",
+    "sha256": "8c73100c8fc902038cb12577aee28ee196019254fae63db0a08c7f6d5ecd328c",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "configs/frozen_experiment_v1.yaml": {
+    "package_path": "source_snapshot/configs/frozen_experiment_v1.yaml",
+    "sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "configs/decision_policy_v1.yaml": {
+    "package_path": "source_snapshot/configs/decision_policy_v1.yaml",
+    "sha256": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "pyproject.toml": {
+    "package_path": "source_snapshot/pyproject.toml",
+    "sha256": "9f0f518e142b944a2402a0843e8e7a7e1bf6fabd99eb1cf46f7f9074c393db0b",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "requirements.lock": {
+    "package_path": "source_snapshot/requirements.lock",
+    "sha256": "1e2152dbd1002ffef175d3fe489317923c93ff2f1644d5c4f1cc7a48bf2e3063",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/experiments/frozen_config.py": {
+    "package_path": "source_snapshot/src/railway_detection/experiments/frozen_config.py",
+    "sha256": "cdd72e81a196fd3f621c75568eee3dd0a5fd54628141741534dc03c47ab983f0",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/experiments/layer_b_processor.py": {
+    "package_path": "source_snapshot/src/railway_detection/experiments/layer_b_processor.py",
+    "sha256": "ccca3ac21f80f7200eda2781b7667e374455880cda0655dbe293ad448a6a1d67",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/experiments/cache_provenance.py": {
+    "package_path": "source_snapshot/src/railway_detection/experiments/cache_provenance.py",
+    "sha256": "bfabfac7872205aa350a09bd896288c40ede8111b838ef2b971d215ab8f6f4bd",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/vision/video.py": {
+    "package_path": "source_snapshot/src/railway_detection/vision/video.py",
+    "sha256": "ff0a96c686cb3fef3762a9b2456d48feff5c9839e6498197164251d293455e33",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/audio/model.py": {
+    "package_path": "source_snapshot/src/railway_detection/audio/model.py",
+    "sha256": "9f81244c25fb0732e6cdb1d840f0f85281f96beb86355e41c8fde9be3e060309",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/audio/features.py": {
+    "package_path": "source_snapshot/src/railway_detection/audio/features.py",
+    "sha256": "d056eed02cba5f5114ba9e8d69dc2a415612e879fa81b5fe60ce11cd1f97d161",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/audio/pipeline.py": {
+    "package_path": "source_snapshot/src/railway_detection/audio/pipeline.py",
+    "sha256": "12ed8c073dae92bc23bb2bbff87756568dde6a3929d20aa426736109e7f12c30",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/audio/evaluation.py": {
+    "package_path": "source_snapshot/src/railway_detection/audio/evaluation.py",
+    "sha256": "e90e5591b7c199d7e423db96d5659f1b1a0db19af26c87d6215d9cdddc7c8138",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/fusion/collector.py": {
+    "package_path": "source_snapshot/src/railway_detection/fusion/collector.py",
+    "sha256": "a0e3e3db9ec20c8114f8ab8e7d5702ae1cd3995be95789d46f14febff39e6846",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/evaluation/cache_only_engine.py": {
+    "package_path": "source_snapshot/src/railway_detection/evaluation/cache_only_engine.py",
+    "sha256": "41eb5123144a38695b7f36360c3a9da803f7e20764bc14c5c270e5e846e47e73",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/evaluation/descriptive_exec_gate.py": {
+    "package_path": "source_snapshot/src/railway_detection/evaluation/descriptive_exec_gate.py",
+    "sha256": "d3543539fd1e993950316d2d303b8e280a3d0a76d4803e20e3a425f26b1a0c3b",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/evaluation/ground_truth_loader.py": {
+    "package_path": "source_snapshot/src/railway_detection/evaluation/ground_truth_loader.py",
+    "sha256": "5e836bd20ff0c284875a946e72bb00e13e5db68f9afe53c7888b4a8193f1ff82",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/safety/media_guard.py": {
+    "package_path": "source_snapshot/src/railway_detection/safety/media_guard.py",
+    "sha256": "65098c8a486bc9814f2a21c3e5f7dc1e1e7e4602ee769bd9534d479a93d55635",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "src/railway_detection/annotation/stage2_1_schema.py": {
+    "package_path": "source_snapshot/src/railway_detection/annotation/stage2_1_schema.py",
+    "sha256": "9ef0dc1d7ba400437d3592820376d08c5ff5d59d8bb471c88864363e0e7ce509",
+    "kind": "COPIED_ORIGINAL"
+  },
+  "scripts/train_audio_model_v3_esc50.py": {
+    "package_path": "source_snapshot/scripts/train_audio_model_v3_esc50.py",
+    "sha256": "1ec25b94c0fe867c5d42b94caec36461d02157ef8cd9331b4993c0e6bb3e106b",
+    "kind": "COPIED_ORIGINAL"
+  }
+}

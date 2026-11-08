@@ -1,0 +1,37 @@
+{
+  "schema": "mission43-actual-cohort-result-summary/1",
+  "physical_events": 27,
+  "source_members_verified": 54,
+  "new_visual_members_executed": 44,
+  "reused_visual_members": 10,
+  "failed_visual_members": 0,
+  "visual": {
+    "front": {
+      "members": 27,
+      "sampled_records": 6613,
+      "predicted_objects": 329
+    },
+    "back": {
+      "members": 27,
+      "sampled_records": 6479,
+      "predicted_objects": 1020
+    }
+  },
+  "new_audio_members_executed": 22,
+  "reused_audio_members": 5,
+  "failed_audio_members": 0,
+  "audio_windows": 2600,
+  "audio_model_positive_windows": 445,
+  "audio_event_reference_denominator": 23,
+  "B2_input_events": 27,
+  "B2_input_frames": 6614,
+  "B2_both_record_frames": 3897,
+  "B2_no_audio_record_frames": 2717,
+  "B2_decision_events": 0,
+  "B2_decision_frames": 0,
+  "failure_review_candidates": 28,
+  "canonical_GT": "NOT_ESTABLISHED",
+  "all27_adopted_annotation_contents_preserved": true,
+  "annotation_reference_coverage_status": "27 researcher-adopted event/boundary files; no box/window-level reference rows",
+  "new_original_inference_run_counts_not_added_to_reused": true
+}

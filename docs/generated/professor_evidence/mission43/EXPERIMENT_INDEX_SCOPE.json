@@ -1,0 +1,10 @@
+{
+  "identifier_basis": "Section identifiers derive from actual recorded run IDs plus named existing conditions; assigned for navigation, not extra executions or fabricated start times",
+  "exact_scientific_experiment_run_ids": [
+    "mission43_vision_20261108T132531Z",
+    "mission43_audio_20261108T134223Z"
+  ],
+  "all_genuinely_executable_current_work_done": true,
+  "entire_research_programme_complete": false,
+  "no_extra_physical_events_inferred": true
+}

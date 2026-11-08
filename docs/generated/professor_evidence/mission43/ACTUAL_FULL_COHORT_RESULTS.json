@@ -1,0 +1,120 @@
+{
+  "schema": "mission43-actual-cohort-result-summary/1",
+  "physical_events": 27,
+  "source_members_verified": 54,
+  "new_visual_members_executed": 44,
+  "reused_visual_members": 10,
+  "failed_visual_members": 0,
+  "visual": {
+    "front": {
+      "members": 27,
+      "sampled_records": 6613,
+      "predicted_objects": 329
+    },
+    "back": {
+      "members": 27,
+      "sampled_records": 6479,
+      "predicted_objects": 1020
+    }
+  },
+  "new_audio_members_executed": 22,
+  "reused_audio_members": 5,
+  "failed_audio_members": 0,
+  "audio_windows": 2600,
+  "audio_model_positive_windows": 445,
+  "audio_event_reference_denominator": 23,
+  "audio_event_reference_metrics": {
+    "threshold": 0.37,
+    "total_samples": 23,
+    "positive_samples": 13,
+    "negative_samples": 10,
+    "confusion_matrix": {
+      "tp": 12,
+      "fp": 10,
+      "fn": 1,
+      "tn": 0
+    },
+    "rates": {
+      "accuracy": 0.5217,
+      "precision": 0.5455,
+      "recall": 0.9231,
+      "specificity": 0.0,
+      "f1_score": 0.6857,
+      "balanced_accuracy": 0.4615,
+      "auc_roc": 0.6846,
+      "pr_auc": 0.7739,
+      "brier_score": null,
+      "expected_calibration_error": null,
+      "false_alarms_per_hour": null
+    },
+    "schema": "mission43-exploratory-adopted-event-label-audio-agreement/1",
+    "evaluation_scope": "EVALUATION_SCOPE_FREEZE.md; existing V3 max-window recording rule against adopted event horn_status; not independent/localized human GT",
+    "scope_sha256": "99fce7e07a0c2a96a0b2b731b15e5c029cbd4a1d4931f33d8dd6237bd94beccd",
+    "metric_implementation": "src/railway_detection/audio/evaluation.py",
+    "metric_implementation_sha256": "e90e5591b7c199d7e423db96d5659f1b1a0db19af26c87d6215d9cdddc7c8138",
+    "annotation_adoption_sha256": "4482847884f05650007d97367139f5b6ecd8bd567c113b538264baf97c5d5d15",
+    "actual_event_denominator": 23,
+    "unit": "one physical train event, one front acoustic track",
+    "engine_excluded_from_pool": true,
+    "negative_controls_with_null_horn_label_excluded": true,
+    "excluded": [
+      {
+        "event": "no_train_events/event_001",
+        "reason": "NULL_HORN_STATUS; no-train is not automatically no-horn",
+        "label": null
+      },
+      {
+        "event": "no_train_events/event_002",
+        "reason": "NULL_HORN_STATUS; no-train is not automatically no-horn",
+        "label": null
+      },
+      {
+        "event": "no_train_events/event_003",
+        "reason": "NULL_HORN_STATUS; no-train is not automatically no-horn",
+        "label": null
+      }
+    ],
+    "engine_case": [
+      {
+        "event": "engine_events/event_001",
+        "cohort": "engine_events",
+        "execution": "REUSED_MISSION39_CORRECTED_AUDIO",
+        "windows": 14,
+        "model_positive_windows": 0,
+        "maximum_window_score": 0.14282280206680298,
+        "mean_model_score": 0.06316276786050626,
+        "recording_prediction_at_0_37": 0,
+        "adopted_horn_status": "absent_observed",
+        "adopted_event_horn_label": 0,
+        "comparison_status": "SEPARATE_ENGINE_CASE",
+        "annotation_file": "data/ground_truth/proposals/engine_events/event_001_proposal_v3.json",
+        "annotation_sha256": "aa0d94d83e16975fc6930bbd27cd874c7394959e4343c8c8ce02674d771f648a",
+        "acoustic_member_reference_scope": "Event label names both camera sources; horn field does not independently identify this front member",
+        "original_pipeline_wall_s": 0.09843637500000568,
+        "unwindowed_tail_samples": 6272,
+        "window_accuracy": "UNAVAILABLE_NO_WINDOW_LABELS",
+        "matches_adopted_event_label": true
+      }
+    ],
+    "window_labels_invented": false,
+    "canonical_GT_promotion": false,
+    "limitations": [
+      "AI-assisted labels adopted after reported manual verification; no separate observations stored",
+      "Event-level horn fields reference paired sources rather than verified front-only horn truth",
+      "Original five known results reused; not a newly blind confirmatory experiment",
+      "Max pooling varies with duration/window count; overlapping windows are not independent events",
+      "No horn timing/window accuracy/safety/generalization conclusion"
+    ]
+  },
+  "B2_input_events": 27,
+  "B2_input_frames": 6614,
+  "B2_both_record_frames": 3897,
+  "B2_no_audio_record_frames": 2717,
+  "B2_decision_events": 0,
+  "B2_decision_frames": 0,
+  "failure_review_candidates": 28,
+  "canonical_GT": "NOT_ESTABLISHED",
+  "all27_adopted_annotation_contents_preserved": true,
+  "annotation_reference_coverage_status": "27 researcher-adopted event/boundary files; no box/window-level reference rows",
+  "new_original_inference_run_counts_not_added_to_reused": true
+}
