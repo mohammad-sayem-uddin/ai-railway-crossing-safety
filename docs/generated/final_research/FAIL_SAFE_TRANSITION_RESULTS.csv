@@ -1,0 +1,11 @@
+scenario,engine,transition_sequence,final_gate,result,source
+S3b all vision lost while active,v1_frozen,active states -> FAULT_FAIL_SAFE,CLOSED,PASS,results/m3_synthetic_battery_r2/summary.json
+S3b all vision lost while active,v2_candidate,active states -> FAULT_FAIL_SAFE,CLOSED,PASS,results/m3_synthetic_battery_r2/summary.json
+S4 departure source silent during clearance dwell,v2_candidate,REAR_CONFIRMED -> FAULT_FAIL_SAFE (RULE_5 stale-source abort),CLOSED,PASS,results/m3_synthetic_battery_r2/summary.json
+S4 departure source silent during clearance dwell,v1_frozen,REAR_CONFIRMED unreachable-in-practice (RULE_7 ejects within a tick); evidence stop -> CROSSING_OCCUPIED (trap),CLOSED,PASS (documented behaviour),results/m3_synthetic_battery_r2/summary.json
+S7a fault during active phase then clean recovery,v1_frozen,FAULT_FAIL_SAFE -> TRAIN_PRESENT (never directly to IDLE/OPEN),CLOSED during fault,PASS,results/m3_synthetic_battery_r2/summary.json
+S7a fault during active phase then clean recovery,v2_candidate,FAULT_FAIL_SAFE -> TRAIN_PRESENT (never directly to IDLE/OPEN),CLOSED during fault,PASS,results/m3_synthetic_battery_r2/summary.json
+S7b fault during IDLE then clean recovery,v1_frozen,FAULT_FAIL_SAFE -> IDLE (IDLE-origin faults may recover to IDLE),OPEN after recovery,PASS,results/m3_synthetic_battery_r2/summary.json
+S7b fault during IDLE then clean recovery,v2_candidate,FAULT_FAIL_SAFE -> IDLE,OPEN after recovery,PASS,results/m3_synthetic_battery_r2/summary.json
+S8 new evidence during opening,v2_candidate,TRAIN_DEPARTING -> TRAIN_PRESENT (opening aborted by RULE_7),CLOSED,PASS,results/m3_synthetic_battery_r2/summary.json
+S3a back camera unavailable during departure,v2_candidate,no departure confirmation from a down source; no CROSSING_CLEAR,CLOSED,PASS,results/m3_synthetic_battery_r2/summary.json
