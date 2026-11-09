@@ -1,0 +1,302 @@
+{
+  "battery": "m3_synthetic_battery/1",
+  "checks": [
+    {
+      "check": "reaches REAR_CONFIRMED",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S1"
+    },
+    {
+      "check": "gate never OPEN before clearance",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": false,
+      "scenario": "S1"
+    },
+    {
+      "check": "reaches REAR_CONFIRMED",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S1"
+    },
+    {
+      "check": "gate never OPEN before clearance",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": false,
+      "scenario": "S1"
+    },
+    {
+      "check": "continuing side stream does not reset dwell: reaches CROSSING_CLEAR",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S1"
+    },
+    {
+      "check": "no RULE_7 interrupt from continuing side stream",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S1"
+    },
+    {
+      "check": "completes to IDLE with gate OPEN",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S1"
+    },
+    {
+      "check": "documented defect: continuing side stream blocks clearance (no CROSSING_CLEAR)",
+      "detail": "RULE_7 count=7",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S1"
+    },
+    {
+      "check": "disappearance confirms departure (RULE_3C) and clears",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S2"
+    },
+    {
+      "check": "no departure label => v1 never confirms departure",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": false,
+      "scenario": "S2"
+    },
+    {
+      "check": "gate stays CLOSED while departure camera down",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S3a"
+    },
+    {
+      "check": "never confirms departure from a down camera",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": false,
+      "scenario": "S3a"
+    },
+    {
+      "check": "gate stays CLOSED while departure camera down",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S3a"
+    },
+    {
+      "check": "never confirms departure from a down camera",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S3a"
+    },
+    {
+      "check": "RULE_6 degraded-source hold or fail-safe (no clearance)",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S3a"
+    },
+    {
+      "check": "all-vision loss while active => FAULT_FAIL_SAFE, gate CLOSED",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S3b"
+    },
+    {
+      "check": "all-vision loss while active => FAULT_FAIL_SAFE, gate CLOSED",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S3b"
+    },
+    {
+      "check": "stale departure source aborts clearance => FAULT_FAIL_SAFE",
+      "detail": "rules=['RULE_1_APPROACH_TRIGGER', 'RULE_3_POSITIVE_CLEARANCE', 'RULE_7_NEW_TRAIN_INTERRUPT']",
+      "engine": "v1_frozen",
+      "passed": false,
+      "scenario": "S4"
+    },
+    {
+      "check": "stale departure source aborts clearance => FAULT_FAIL_SAFE",
+      "detail": "rules=['RULE_1_APPROACH_TRIGGER', 'RULE_3B_DEPARTURE_CONFIRMED_UNAMBIGUOUS_REAR', 'RULE_5_STALE_SOURCE_ABORT', 'RULE_9_SENSOR_RECOVERY']",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S4"
+    },
+    {
+      "check": "unambiguous new approach during dwell interrupts (RULE_7)",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S5a"
+    },
+    {
+      "check": "no clearance completes after interrupt",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S5a"
+    },
+    {
+      "check": "unambiguous new approach during dwell interrupts (RULE_7)",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S5a"
+    },
+    {
+      "check": "no clearance completes after interrupt",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S5a"
+    },
+    {
+      "check": "audio alone never actuates: stays IDLE, gate OPEN",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S5b"
+    },
+    {
+      "check": "audio alone never actuates: stays IDLE, gate OPEN",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S5b"
+    },
+    {
+      "check": "absence alone never opens: v1 single-camera never confirms departure",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": false,
+      "scenario": "S6"
+    },
+    {
+      "check": "single-camera disappearance path confirms and clears (documented 3C fallback)",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S6"
+    },
+    {
+      "check": "gate CLOSED throughout occupancy/departure",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S6"
+    },
+    {
+      "check": "gate CLOSED throughout occupancy/departure",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S6"
+    },
+    {
+      "check": "fault entered",
+      "detail": "",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S7a"
+    },
+    {
+      "check": "recovery never goes directly to IDLE/OPEN from active-origin fault",
+      "detail": "post-fault states=['FAULT_FAIL_SAFE', 'TRAIN_PRESENT']",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S7a"
+    },
+    {
+      "check": "fault entered",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S7a"
+    },
+    {
+      "check": "recovery never goes directly to IDLE/OPEN from active-origin fault",
+      "detail": "post-fault states=['FAULT_FAIL_SAFE', 'TRAIN_PRESENT']",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S7a"
+    },
+    {
+      "check": "IDLE-origin fault may recover to IDLE",
+      "detail": "final=IDLE",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S7b"
+    },
+    {
+      "check": "IDLE-origin fault may recover to IDLE",
+      "detail": "final=IDLE",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S7b"
+    },
+    {
+      "check": "reaches GATE_OPENING then aborts to GATE_CLOSING on new train",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S8"
+    },
+    {
+      "check": "recorded behaviour (v1 may never reach opening; see trace)",
+      "detail": "reached_opening=False final=REAR_CONFIRMED",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S8"
+    },
+    {
+      "check": "duplicate rejected (RULE_10) and out-of-order rejected (RULE_8)",
+      "detail": "got=['RULE_10_DUPLICATE_FRAME_REJECTION', 'RULE_8_OUT_OF_ORDER_REJECTION']",
+      "engine": "v1_frozen",
+      "passed": true,
+      "scenario": "S9"
+    },
+    {
+      "check": "duplicate rejected (RULE_10) and out-of-order rejected (RULE_8)",
+      "detail": "got=['RULE_10_DUPLICATE_FRAME_REJECTION', 'RULE_8_OUT_OF_ORDER_REJECTION']",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S9"
+    },
+    {
+      "check": "clearance completes only after audio stops + full dwell",
+      "detail": "",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S10"
+    },
+    {
+      "check": "clearance latency measurable",
+      "detail": "rear_idx=29 clear_idx=-1",
+      "engine": "v1_frozen",
+      "passed": false,
+      "scenario": "S10"
+    },
+    {
+      "check": "clearance latency exceeds horn duration + dwell (>= 7s)",
+      "detail": "latency=7.2s",
+      "engine": "v2_candidate",
+      "passed": true,
+      "scenario": "S10"
+    }
+  ],
+  "checks_passed": 35,
+  "checks_total": 42,
+  "scope": "SYNTHETIC VALIDATION ONLY - no real-data performance claim"
+}
