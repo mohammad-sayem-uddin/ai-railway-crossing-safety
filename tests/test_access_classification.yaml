@@ -30,11 +30,11 @@ limitations:
   test counts; its complete regression command still executes every file under a separate inherited access
   policy.
 summary:
-  total_test_files: 168
+  total_test_files: 170
   raw_media_access: 4
   model_checkpoint_access: 14
   synthetic_only: 76
-  unknown: 55
+  unknown: 57
   processed_data_access: 2
   metadata_only: 17
   safe_for_synthetic_runner: 93
@@ -96,6 +96,24 @@ test_files:
       errors: 0
       skipped: 0
       passed: 1
+  tests/synthetic_mission44/test_display_rotation.py:
+    sha256: f593899a7a299d6d4ba5095846cd336e7281f8815e044e10ea2d738efcce7748
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/synthetic_mission44/test_display_rotation.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/test_annotation_workflow.py:
     access_dirs: []
     access_paths: []
@@ -1333,6 +1351,24 @@ test_files:
       errors: 0
       skipped: 0
       passed: 5
+  tests/unit/test_m3_cache_only_engine_multimodal.py:
+    sha256: 9b58350c2b5c12f63febcbac901f3d6f73b703eec8594e064eced7e9fbb4c25e
+    category: UNKNOWN
+    safe_for_synthetic_runner: false
+    reason: 'tests/unit/test_m3_cache_only_engine_multimodal.py: changed/new source; UNKNOWN pending executed
+      evidence review'
+    access_paths: []
+    blocked_attempts: {}
+    access_dirs: []
+    static_hints: []
+    spawns_child_process: false
+    child_processes_guarded: false
+    tests:
+      passed: 0
+      failed: 0
+      errors: 0
+      skipped: 0
+    evidence: source_inventory_only_no_dynamic_classification_claim
   tests/unit/test_manifest.py:
     access_dirs: []
     access_paths: []
