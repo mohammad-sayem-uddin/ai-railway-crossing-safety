@@ -1,0 +1,15 @@
+{
+  "schema_version": "phase12-protocol-decision/1",
+  "decision_status": "APPROVED",
+  "decision_id": "PHASE12-PROTOCOL-DECISION-2026-11-09",
+  "decided_by": "raihankabirrahu@gmail.com",
+  "decided_at_utc": "2026-11-09T09:40:52.227873+00:00",
+  "researcher_statement": "For the premature-opening metric I choose first_blocked_to_t4_clearance (M4) as the primary definition, with t1_entry_to_t4_clearance (v9) reported as a secondary sensitivity analysis on the events where it is evaluable. The remaining protocol choices stand as documented: event-weighted continuous metrics, censored boundaries excluded from point estimates, false alarms at event level plus stream time and episodes.",
+  "choices": {
+    "premature_opening_window": "first_blocked_to_t4_clearance",
+    "continuous_metric_weighting": "event_weighted",
+    "censoring_treatment": "exclude_censored_from_point_estimates",
+    "false_alarm_measure": "event_level_plus_stream_time_and_episodes"
+  },
+  "notes": "Sensitivity definition t1_entry_to_t4_clearance is reported on the accepted dual-camera scope. Recorded by agent transcription: the statement was adopted verbatim by the researcher in person on 2026-11-09 (LEG-EXEC precedent)."
+}
