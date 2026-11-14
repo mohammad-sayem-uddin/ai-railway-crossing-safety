@@ -1,0 +1,312 @@
+{
+  "experiment": "Exp_B_Side_Detection",
+  "hardware_gap": "No physical dedicated camera_side exists in Layer B v2; real counts reflect YOLO 'side' class outputs emitted on camera_1 and camera_2.",
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "real_per_event": [
+    {
+      "back_cam_side_label_frames": 7,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_001",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 5,
+      "max_consecutive_front_side_streak": 3,
+      "mean_front_side_centroid_step_px": 36.84
+    },
+    {
+      "back_cam_side_label_frames": 42,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_002",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_003",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 52,
+      "max_consecutive_front_side_streak": 8,
+      "mean_front_side_centroid_step_px": 69.67
+    },
+    {
+      "back_cam_side_label_frames": 4,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_004",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_005",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 3,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_006",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 6,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_007",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 4,
+      "max_consecutive_front_side_streak": 2,
+      "mean_front_side_centroid_step_px": 29.24
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_008",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_009",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_010",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_011",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_012",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 3,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_013",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 2,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_014",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 1,
+      "max_consecutive_front_side_streak": 1,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_015",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 8,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_016",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 1,
+      "max_consecutive_front_side_streak": 1,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 4,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_017",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 1,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_018",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_019",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_020",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 225,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_021",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 6,
+      "max_consecutive_front_side_streak": 3,
+      "mean_front_side_centroid_step_px": 144.98
+    },
+    {
+      "back_cam_side_label_frames": 203,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_022",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 14,
+      "max_consecutive_front_side_streak": 4,
+      "mean_front_side_centroid_step_px": 12.09
+    },
+    {
+      "back_cam_side_label_frames": 195,
+      "dedicated_camera_side_present": false,
+      "event_id": "train_events/event_023",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_cam_side_label_frames": 181,
+      "max_consecutive_front_side_streak": 121,
+      "mean_front_side_centroid_step_px": 32.68
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "no_train_events/event_001",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "no_train_events/event_002",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "no_train_events/event_003",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    },
+    {
+      "back_cam_side_label_frames": 0,
+      "dedicated_camera_side_present": false,
+      "event_id": "engine_events/event_001",
+      "event_type": "REAL_WORLD_ENGINE_ONLY",
+      "front_cam_side_label_frames": 0,
+      "max_consecutive_front_side_streak": 0,
+      "mean_front_side_centroid_step_px": null
+    }
+  ],
+  "real_summary": {
+    "no_train_events_with_side_label": 0,
+    "train_events_with_side_label": 14
+  },
+  "synthetic_layer2_cases": [
+    {
+      "case": "moving_train_side",
+      "confirmed_moving": true,
+      "confirmed_stopped": false,
+      "movement_states": [
+        "SINGLE_FRAME",
+        "MOVING",
+        "MOVING",
+        "MOVING",
+        "MOVING",
+        "MOVING"
+      ]
+    },
+    {
+      "case": "stopped_train_in_zone",
+      "confirmed_moving": false,
+      "confirmed_stopped": true,
+      "movement_states": [
+        "STOPPED",
+        "STOPPED",
+        "STOPPED",
+        "STOPPED",
+        "STOPPED",
+        "STOPPED",
+        "STOPPED",
+        "STOPPED"
+      ]
+    },
+    {
+      "case": "single_frame_false_side_glint",
+      "confirmed_moving": false,
+      "confirmed_stopped": false,
+      "movement_states": [
+        "SINGLE_FRAME",
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED"
+      ]
+    },
+    {
+      "case": "negative_control_empty",
+      "confirmed_moving": false,
+      "confirmed_stopped": false,
+      "movement_states": [
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED",
+        "UNOBSERVED"
+      ]
+    }
+  ]
+}

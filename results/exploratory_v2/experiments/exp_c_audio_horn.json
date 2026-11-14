@@ -1,0 +1,313 @@
+{
+  "audio23_metrics": {
+    "FN": 1,
+    "FP": 10,
+    "TN": 0,
+    "TP": 12,
+    "accuracy": 0.5217,
+    "accuracy_wilson_95ci": [
+      0.3296,
+      0.7076
+    ],
+    "event_max_average_precision": 0.7739,
+    "event_max_roc_auc": 0.6846,
+    "f1": 0.6857,
+    "n_events": 23,
+    "n_horn_absent_observed": 10,
+    "n_horn_present": 13,
+    "precision": 0.5455,
+    "precision_wilson_95ci": [
+      0.3466,
+      0.7308
+    ],
+    "recall": 0.9231,
+    "recall_wilson_95ci": [
+      0.6669,
+      0.9863
+    ],
+    "specificity": 0.0,
+    "specificity_wilson_95ci": [
+      0.0,
+      0.2775
+    ]
+  },
+  "audio23_per_event": [
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_001",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.247488,
+      "mean_score": 0.058334,
+      "n_windows": 98,
+      "positive_windows_at_037": 0,
+      "predicted_positive_037": false
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_002",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.983378,
+      "mean_score": 0.077727,
+      "n_windows": 63,
+      "positive_windows_at_037": 3,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_003",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.914493,
+      "mean_score": 0.147942,
+      "n_windows": 65,
+      "positive_windows_at_037": 8,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_004",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.998653,
+      "mean_score": 0.244091,
+      "n_windows": 150,
+      "positive_windows_at_037": 30,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_005",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.971498,
+      "mean_score": 0.506208,
+      "n_windows": 158,
+      "positive_windows_at_037": 105,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_006",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.816347,
+      "mean_score": 0.242902,
+      "n_windows": 251,
+      "positive_windows_at_037": 51,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_007",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.990338,
+      "mean_score": 0.261265,
+      "n_windows": 75,
+      "positive_windows_at_037": 16,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_008",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.810911,
+      "mean_score": 0.183655,
+      "n_windows": 116,
+      "positive_windows_at_037": 13,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_009",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.582042,
+      "mean_score": 0.156279,
+      "n_windows": 84,
+      "positive_windows_at_037": 7,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_010",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.447258,
+      "mean_score": 0.140454,
+      "n_windows": 47,
+      "positive_windows_at_037": 2,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_011",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.450157,
+      "mean_score": 0.088333,
+      "n_windows": 74,
+      "positive_windows_at_037": 3,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_012",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.977944,
+      "mean_score": 0.260631,
+      "n_windows": 149,
+      "positive_windows_at_037": 34,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_013",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.913641,
+      "mean_score": 0.232318,
+      "n_windows": 146,
+      "positive_windows_at_037": 32,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_014",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.516646,
+      "mean_score": 0.108301,
+      "n_windows": 109,
+      "positive_windows_at_037": 5,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_015",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.840192,
+      "mean_score": 0.150353,
+      "n_windows": 61,
+      "positive_windows_at_037": 5,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_016",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.709335,
+      "mean_score": 0.110374,
+      "n_windows": 92,
+      "positive_windows_at_037": 5,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_017",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.985473,
+      "mean_score": 0.180284,
+      "n_windows": 162,
+      "positive_windows_at_037": 21,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_018",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.998026,
+      "mean_score": 0.304975,
+      "n_windows": 116,
+      "positive_windows_at_037": 34,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_019",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.550014,
+      "mean_score": 0.147447,
+      "n_windows": 119,
+      "positive_windows_at_037": 6,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_020",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.377998,
+      "mean_score": 0.080675,
+      "n_windows": 56,
+      "positive_windows_at_037": 1,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_021",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.578024,
+      "mean_score": 0.125046,
+      "n_windows": 105,
+      "positive_windows_at_037": 4,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "present",
+      "event_id": "train_events/event_022",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.602472,
+      "mean_score": 0.104211,
+      "n_windows": 86,
+      "positive_windows_at_037": 3,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "train_events/event_023",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "max_score": 0.786259,
+      "mean_score": 0.200484,
+      "n_windows": 88,
+      "positive_windows_at_037": 18,
+      "predicted_positive_037": true
+    }
+  ],
+  "engine1_and_no_train3_separate": [
+    {
+      "adopted_horn_status": null,
+      "event_id": "no_train_events/event_001",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "max_score": 0.800453,
+      "mean_score": 0.291184,
+      "n_windows": 48,
+      "positive_windows_at_037": 11,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": null,
+      "event_id": "no_train_events/event_002",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "max_score": 0.826141,
+      "mean_score": 0.419677,
+      "n_windows": 22,
+      "positive_windows_at_037": 12,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": null,
+      "event_id": "no_train_events/event_003",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "max_score": 0.800207,
+      "mean_score": 0.309992,
+      "n_windows": 46,
+      "positive_windows_at_037": 16,
+      "predicted_positive_037": true
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "event_id": "engine_events/event_001",
+      "event_type": "REAL_WORLD_ENGINE_ONLY",
+      "max_score": 0.142823,
+      "mean_score": 0.063163,
+      "n_windows": 14,
+      "positive_windows_at_037": 0,
+      "predicted_positive_037": false
+    }
+  ],
+  "experiment": "Exp_C_Audio_Horn_Detection",
+  "frozen_threshold": 0.37,
+  "methodological_note": "Event-level adopted annotations (`horn_status`) do NOT include horn-onset timestamps or window-level labels and therefore CANNOT support window-level acoustic accuracy or FP rate. no_train_events have horn_status=None (road traffic horns present) and are excluded from audio23 metrics.",
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "total_windows_scored": 2600
+}

@@ -1,0 +1,207 @@
+{
+  "all_angles_passed": true,
+  "angles_tested": [
+    0,
+    90,
+    -90,
+    180,
+    -180,
+    270,
+    -270
+  ],
+  "checkpoint": "experiments/vision/39f402dfe460/checkpoints/weights/best.pt",
+  "classification": "SYNTHETIC_PIPELINE_VERIFICATION",
+  "real_raw_media_status": "BLOCKED_BY_DESIGN_MISSING_AUTH_MEDIA_ACCESS_JSON",
+  "results": [
+    {
+      "coded_wh": [
+        48,
+        80
+      ],
+      "cv_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "display_rotation_deg": 0,
+      "mae_pyav_vs_opencv": 0.1928,
+      "mae_pyav_vs_upright_ref": 2.0901,
+      "orientation_matches_upright": true,
+      "pyav_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "video_demo_frames": 4,
+      "video_demo_orientation_ok": true,
+      "video_demo_wh": [
+        48,
+        80
+      ],
+      "yolo_inference_ok": true
+    },
+    {
+      "coded_wh": [
+        80,
+        48
+      ],
+      "cv_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "display_rotation_deg": 90,
+      "mae_pyav_vs_opencv": 0.1806,
+      "mae_pyav_vs_upright_ref": 1.9626,
+      "orientation_matches_upright": true,
+      "pyav_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "video_demo_frames": 4,
+      "video_demo_orientation_ok": true,
+      "video_demo_wh": [
+        48,
+        80
+      ],
+      "yolo_inference_ok": true
+    },
+    {
+      "coded_wh": [
+        80,
+        48
+      ],
+      "cv_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "display_rotation_deg": -90,
+      "mae_pyav_vs_opencv": 0.1806,
+      "mae_pyav_vs_upright_ref": 1.9626,
+      "orientation_matches_upright": true,
+      "pyav_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "video_demo_frames": 4,
+      "video_demo_orientation_ok": true,
+      "video_demo_wh": [
+        48,
+        80
+      ],
+      "yolo_inference_ok": true
+    },
+    {
+      "coded_wh": [
+        48,
+        80
+      ],
+      "cv_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "display_rotation_deg": 180,
+      "mae_pyav_vs_opencv": 0.1928,
+      "mae_pyav_vs_upright_ref": 2.0901,
+      "orientation_matches_upright": true,
+      "pyav_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "video_demo_frames": 4,
+      "video_demo_orientation_ok": true,
+      "video_demo_wh": [
+        48,
+        80
+      ],
+      "yolo_inference_ok": true
+    },
+    {
+      "coded_wh": [
+        48,
+        80
+      ],
+      "cv_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "display_rotation_deg": -180,
+      "mae_pyav_vs_opencv": 0.1928,
+      "mae_pyav_vs_upright_ref": 2.0901,
+      "orientation_matches_upright": true,
+      "pyav_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "video_demo_frames": 4,
+      "video_demo_orientation_ok": true,
+      "video_demo_wh": [
+        48,
+        80
+      ],
+      "yolo_inference_ok": true
+    },
+    {
+      "coded_wh": [
+        80,
+        48
+      ],
+      "cv_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "display_rotation_deg": 270,
+      "mae_pyav_vs_opencv": 0.1806,
+      "mae_pyav_vs_upright_ref": 1.9626,
+      "orientation_matches_upright": true,
+      "pyav_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "video_demo_frames": 4,
+      "video_demo_orientation_ok": true,
+      "video_demo_wh": [
+        48,
+        80
+      ],
+      "yolo_inference_ok": true
+    },
+    {
+      "coded_wh": [
+        80,
+        48
+      ],
+      "cv_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "display_rotation_deg": -270,
+      "mae_pyav_vs_opencv": 0.1806,
+      "mae_pyav_vs_upright_ref": 1.9626,
+      "orientation_matches_upright": true,
+      "pyav_shape_hwc": [
+        80,
+        48,
+        3
+      ],
+      "video_demo_frames": 4,
+      "video_demo_orientation_ok": true,
+      "video_demo_wh": [
+        48,
+        80
+      ],
+      "yolo_inference_ok": true
+    }
+  ],
+  "rotation_policy": "orthogonal_display_matrix_rotation_v1"
+}

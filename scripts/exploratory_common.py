@@ -526,7 +526,9 @@ def assemble_frames(
     if not records:
         return []
     collector = MultimodalEvidenceCollector(
-        sync_aligner=aligner, window_tolerance_s=float(window_tolerance_s)
+        sync_aligner=aligner,
+        window_tolerance_s=float(window_tolerance_s),
+        allow_stale_detection_backfill=True,
     )
     for rec in records:
         collector.add_evidence(rec)

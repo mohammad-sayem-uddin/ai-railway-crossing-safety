@@ -1,0 +1,153 @@
+{
+  "experiment": "Exp_K_Modality_Ablation",
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "real_sync11_ablation": {
+    "audio_only_no_vision_sync11": {
+      "closures": 0,
+      "premature_openings": 0,
+      "reopenings": 0
+    },
+    "full_sync11_front_audio_back": {
+      "closures": 9,
+      "premature_openings": 0,
+      "reopenings": 0
+    },
+    "no_audio_front_back_sync11": {
+      "closures": 9,
+      "premature_openings": 0,
+      "reopenings": 0
+    },
+    "no_back_front_audio_sync11": {
+      "closures": 4,
+      "premature_openings": 0,
+      "reopenings": 0
+    },
+    "no_front_back_only_sync11": {
+      "closures": 0,
+      "premature_openings": 0,
+      "reopenings": 0
+    }
+  },
+  "synthetic_4layer_ablation": {
+    "full_4layer_nominal": {
+      "closed_before_arrival": true,
+      "closed_duration_s": 11.4,
+      "closure_triggered": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_opening_s": 14.6,
+      "margin_full_vs_T2_s": 0.5,
+      "margin_half_vs_T2_s": 1.9,
+      "premature_opening_vs_T4": false,
+      "t_close_cmd_s": 3.2,
+      "t_confirm_s": 1.2,
+      "t_engine_trigger_s": 1.2,
+      "t_first_front_det_s": 1.0,
+      "t_fully_closed_s": 6.0,
+      "t_half_closed_s": 4.6,
+      "t_warning_s": 1.2,
+      "total_duration_s": 24.0,
+      "transition_legal": true
+    },
+    "no_audio": {
+      "closed_before_arrival": true,
+      "closed_duration_s": 11.4,
+      "closure_triggered": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_opening_s": 14.6,
+      "margin_full_vs_T2_s": 0.5,
+      "margin_half_vs_T2_s": 1.9,
+      "premature_opening_vs_T4": false,
+      "t_close_cmd_s": 3.2,
+      "t_confirm_s": 1.2,
+      "t_engine_trigger_s": 1.2,
+      "t_first_front_det_s": 1.0,
+      "t_fully_closed_s": 6.0,
+      "t_half_closed_s": 4.6,
+      "t_warning_s": 1.2,
+      "total_duration_s": 24.0,
+      "transition_legal": true
+    },
+    "no_back_camera": {
+      "closed_before_arrival": true,
+      "closed_duration_s": 19.6,
+      "closure_triggered": true,
+      "final_crossing_state": "CROSSING_OCCUPIED",
+      "final_gate_state": "CLOSED",
+      "first_opening_s": null,
+      "margin_full_vs_T2_s": 0.5,
+      "margin_half_vs_T2_s": 1.9,
+      "premature_opening_vs_T4": false,
+      "t_close_cmd_s": 3.2,
+      "t_confirm_s": 1.2,
+      "t_engine_trigger_s": 1.2,
+      "t_first_front_det_s": 1.0,
+      "t_fully_closed_s": 6.0,
+      "t_half_closed_s": 4.6,
+      "t_warning_s": 1.2,
+      "total_duration_s": 24.0,
+      "transition_legal": true
+    },
+    "no_front_camera": {
+      "closed_before_arrival": false,
+      "closed_duration_s": 0.0,
+      "closure_triggered": false,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_opening_s": null,
+      "margin_full_vs_T2_s": null,
+      "margin_half_vs_T2_s": null,
+      "premature_opening_vs_T4": false,
+      "t_close_cmd_s": null,
+      "t_confirm_s": null,
+      "t_engine_trigger_s": null,
+      "t_first_front_det_s": null,
+      "t_fully_closed_s": null,
+      "t_half_closed_s": null,
+      "t_warning_s": null,
+      "total_duration_s": 24.0,
+      "transition_legal": true
+    },
+    "no_occupancy_sensor": {
+      "closed_before_arrival": true,
+      "closed_duration_s": 19.6,
+      "closure_triggered": true,
+      "final_crossing_state": "REAR_CONFIRMED",
+      "final_gate_state": "CLOSED",
+      "first_opening_s": null,
+      "margin_full_vs_T2_s": 0.5,
+      "margin_half_vs_T2_s": 1.9,
+      "premature_opening_vs_T4": false,
+      "t_close_cmd_s": 3.2,
+      "t_confirm_s": 1.2,
+      "t_engine_trigger_s": 1.2,
+      "t_first_front_det_s": 1.0,
+      "t_fully_closed_s": 6.0,
+      "t_half_closed_s": 4.6,
+      "t_warning_s": 1.2,
+      "total_duration_s": 24.0,
+      "transition_legal": true
+    },
+    "no_side_camera": {
+      "closed_before_arrival": true,
+      "closed_duration_s": 11.4,
+      "closure_triggered": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_opening_s": 14.6,
+      "margin_full_vs_T2_s": 0.5,
+      "margin_half_vs_T2_s": 1.9,
+      "premature_opening_vs_T4": false,
+      "t_close_cmd_s": 3.2,
+      "t_confirm_s": 1.2,
+      "t_engine_trigger_s": 1.2,
+      "t_first_front_det_s": 1.0,
+      "t_fully_closed_s": 6.0,
+      "t_half_closed_s": 4.6,
+      "t_warning_s": 1.2,
+      "total_duration_s": 24.0,
+      "transition_legal": true
+    }
+  }
+}

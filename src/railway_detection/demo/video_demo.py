@@ -433,6 +433,10 @@ def process_video(
     if not cap.isOpened():
         raise ConfigError(f"Failed to open video file with OpenCV: {input_path}")
 
+    orient_prop = getattr(cv2, "CAP_PROP_ORIENTATION_AUTO", None)
+    if orient_prop is not None:
+        cap.set(orient_prop, 1.0)
+
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = float(cap.get(cv2.CAP_PROP_FPS))
@@ -448,16 +452,7 @@ def process_video(
         fps = 30.0
 
     output_video_path = output_dir / "processed_video.mp4"
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")  # type: ignore[attr-defined]
-    writer = cv2.VideoWriter(str(output_video_path.resolve()), fourcc, fps, (width, height))
-    if not writer.isOpened():
-        fourcc_fallback = cv2.VideoWriter_fourcc(*"avc1")  # type: ignore[attr-defined]
-        writer = cv2.VideoWriter(
-            str(output_video_path.resolve()), fourcc_fallback, fps, (width, height)
-        )
-        if not writer.isOpened():
-            cap.release()
-            raise ConfigError(f"Failed to initialize video writer at: {output_video_path}")
+    writer: cv2.VideoWriter | None = None
 
     temporal_buffer = TemporalEvidenceBuffer(TemporalConfig()) if temporal_smoothing else None
 
@@ -474,6 +469,26 @@ def process_video(
             ok, frame = cap.read()
             if not ok or frame is None:
                 break
+
+            if writer is None:
+                height, width = int(frame.shape[0]), int(frame.shape[1])
+                if width <= 0 or height <= 0:
+                    raise ConfigError(
+                        f"Decoded frame has invalid dimensions ({width}x{height})"
+                    )
+                fourcc = cv2.VideoWriter_fourcc(*"mp4v")  # type: ignore[attr-defined]
+                writer = cv2.VideoWriter(
+                    str(output_video_path.resolve()), fourcc, fps, (width, height)
+                )
+                if not writer.isOpened():
+                    fourcc_fallback = cv2.VideoWriter_fourcc(*"avc1")  # type: ignore[attr-defined]
+                    writer = cv2.VideoWriter(
+                        str(output_video_path.resolve()), fourcc_fallback, fps, (width, height)
+                    )
+                    if not writer.isOpened():
+                        raise ConfigError(
+                            f"Failed to initialize video writer at: {output_video_path}"
+                        )
 
             timestamp_s = float(processed_frames) / fps
             raw_results: Any = model.predict(
@@ -585,9 +600,13 @@ def process_video(
 
     finally:
         cap.release()
-        writer.release()
+        if writer is not None:
+            writer.release()
         if live_preview:
             cv2.destroyAllWindows()
+
+    if processed_frames <= 0:
+        raise ConfigError(f"Failed to decode any frames from video: {input_path}")
 
     duration = max(0.001, time.time() - start_time)
     avg_fps = float(processed_frames / duration)

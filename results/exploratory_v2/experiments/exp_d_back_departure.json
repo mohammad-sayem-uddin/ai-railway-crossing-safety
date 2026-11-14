@@ -1,0 +1,807 @@
+{
+  "back27_local_clock_summary": [
+    {
+      "T3_back_s": 3.6,
+      "T4_back_s": 45.0,
+      "back_dur_s": 46.065,
+      "event_id": "train_events/event_001",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 7
+    },
+    {
+      "T3_back_s": 3.4,
+      "T4_back_s": 28.8,
+      "back_dur_s": 30.202,
+      "event_id": "train_events/event_002",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 43
+    },
+    {
+      "T3_back_s": 3.2,
+      "T4_back_s": 30.5,
+      "back_dur_s": 32.535,
+      "event_id": "train_events/event_003",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 1,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.1,
+      "T4_back_s": 76.8,
+      "back_dur_s": 78.073,
+      "event_id": "train_events/event_004",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 4,
+      "side_dets": 4
+    },
+    {
+      "T3_back_s": 6.0,
+      "T4_back_s": null,
+      "back_dur_s": 78.107,
+      "event_id": "train_events/event_005",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.8,
+      "T4_back_s": 125.8,
+      "back_dur_s": 126.978,
+      "event_id": "train_events/event_006",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 3
+    },
+    {
+      "T3_back_s": 3.3,
+      "T4_back_s": 33.5,
+      "back_dur_s": 34.542,
+      "event_id": "train_events/event_007",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 1,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 6
+    },
+    {
+      "T3_back_s": 3.2,
+      "T4_back_s": 61.2,
+      "back_dur_s": 62.717,
+      "event_id": "train_events/event_008",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 2,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.6,
+      "T4_back_s": 36.4,
+      "back_dur_s": 37.602,
+      "event_id": "train_events/event_009",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.1,
+      "T4_back_s": 22.4,
+      "back_dur_s": 23.517,
+      "event_id": "train_events/event_010",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.3,
+      "T4_back_s": 29.4,
+      "back_dur_s": 37.37,
+      "event_id": "train_events/event_011",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.7,
+      "T4_back_s": 69.2,
+      "back_dur_s": 70.738,
+      "event_id": "train_events/event_012",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 2,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.9,
+      "T4_back_s": 70.8,
+      "back_dur_s": 73.237,
+      "event_id": "train_events/event_013",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 3
+    },
+    {
+      "T3_back_s": 3.6,
+      "T4_back_s": 51.2,
+      "back_dur_s": 53.503,
+      "event_id": "train_events/event_014",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 2
+    },
+    {
+      "T3_back_s": 3.8,
+      "T4_back_s": 19.5,
+      "back_dur_s": 22.233,
+      "event_id": "train_events/event_015",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.4,
+      "T4_back_s": 44.1,
+      "back_dur_s": 45.27,
+      "event_id": "train_events/event_016",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 8
+    },
+    {
+      "T3_back_s": 4.2,
+      "T4_back_s": 82.5,
+      "back_dur_s": 83.773,
+      "event_id": "train_events/event_017",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": true,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 4
+    },
+    {
+      "T3_back_s": 3.8,
+      "T4_back_s": 50.8,
+      "back_dur_s": 52.637,
+      "event_id": "train_events/event_018",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 1
+    },
+    {
+      "T3_back_s": 3.3,
+      "T4_back_s": 47.2,
+      "back_dur_s": 51.13,
+      "event_id": "train_events/event_019",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.2,
+      "T4_back_s": 28.7,
+      "back_dur_s": 29.87,
+      "event_id": "train_events/event_020",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 3,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": 3.6,
+      "T4_back_s": 60.1,
+      "back_dur_s": 61.37,
+      "event_id": "train_events/event_021",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 1,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 4,
+      "side_dets": 225
+    },
+    {
+      "T3_back_s": 3.4,
+      "T4_back_s": 45.1,
+      "back_dur_s": 46.335,
+      "event_id": "train_events/event_022",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 222,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 5,
+      "side_dets": 205
+    },
+    {
+      "T3_back_s": 3.3,
+      "T4_back_s": 43.4,
+      "back_dur_s": 45.768,
+      "event_id": "train_events/event_023",
+      "event_type": "REAL_WORLD_TRAIN_EVENT",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 14,
+      "side_dets": 196
+    },
+    {
+      "T3_back_s": null,
+      "T4_back_s": null,
+      "back_dur_s": 24.422,
+      "event_id": "no_train_events/event_001",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "front_dets": 25,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": null,
+      "T4_back_s": null,
+      "back_dur_s": 13.333,
+      "event_id": "no_train_events/event_002",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "front_dets": 0,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": null,
+      "T4_back_s": null,
+      "back_dur_s": 22.733,
+      "event_id": "no_train_events/event_003",
+      "event_type": "REAL_WORLD_NO_TRAIN",
+      "front_dets": 15,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    },
+    {
+      "T3_back_s": null,
+      "T4_back_s": null,
+      "back_dur_s": 9.8,
+      "event_id": "engine_events/event_001",
+      "event_type": "REAL_WORLD_ENGINE_ONLY",
+      "front_dets": 14,
+      "is_sync11": false,
+      "last_carriage_labels": 0,
+      "rear_dets": 0,
+      "side_dets": 0
+    }
+  ],
+  "experiment": "Exp_D_Back_Departure",
+  "mcnemar_v2_vs_v3_conservative_premature": {
+    "b01_a_wrong_b_right": 4,
+    "b10_a_right_b_wrong": 0,
+    "discordant_pairs": 4,
+    "exact_p_value": 0.125
+  },
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "sync11_comparison": [
+    {
+      "T1_master_s": 5.8,
+      "T4_master_s": 52.406,
+      "back_offset_s": 7.406,
+      "event_id": "train_events/event_001",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "CROSSING_OCCUPIED",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": 42.6
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "TRAIN_PRESENT",
+          "first_opening_s": 46.8,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 43.4
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "GATE_CLOSING",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "GATE_CLOSING",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 7
+    },
+    {
+      "T1_master_s": 2.9,
+      "T4_master_s": 32.9867,
+      "back_offset_s": 4.1867,
+      "event_id": "train_events/event_002",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "CROSSING_OCCUPIED",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": 14.2
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "TRAIN_PRESENT",
+          "first_opening_s": 18.8,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 15.2
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 43
+    },
+    {
+      "T1_master_s": null,
+      "T4_master_s": null,
+      "back_offset_s": 6.038,
+      "event_id": "train_events/event_005",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 0
+    },
+    {
+      "T1_master_s": 2.5,
+      "T4_master_s": 130.3124,
+      "back_offset_s": 4.5124,
+      "event_id": "train_events/event_006",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": true,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": 107.6,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 104.2
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": true,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": 107.6,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 104.2
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "TRAIN_DEPARTING",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "TRAIN_PRESENT",
+          "first_opening_s": 114.4,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 112.6
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 3
+    },
+    {
+      "T1_master_s": 2.6,
+      "T4_master_s": 42.3801,
+      "back_offset_s": 8.8801,
+      "event_id": "train_events/event_007",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "TRAIN_PRESENT",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": 29.8
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "CROSSING_OCCUPIED",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": 29.0
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "CROSSING_OCCUPIED",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": 38.2,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 36.4
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 6
+    },
+    {
+      "T1_master_s": 4.2,
+      "T4_master_s": 45.8043,
+      "back_offset_s": 9.4043,
+      "event_id": "train_events/event_009",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 0
+    },
+    {
+      "T1_master_s": 2.8,
+      "T4_master_s": 34.6713,
+      "back_offset_s": 5.2713,
+      "event_id": "train_events/event_011",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 0
+    },
+    {
+      "T1_master_s": 3.1,
+      "T4_master_s": 74.7679,
+      "back_offset_s": 5.5679,
+      "event_id": "train_events/event_012",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 0
+    },
+    {
+      "T1_master_s": 3.2,
+      "T4_master_s": 74.078,
+      "back_offset_s": 3.278,
+      "event_id": "train_events/event_013",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": true,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": 61.4,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 58.0
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": true,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": 49.2,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 45.8
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "TRAIN_DEPARTING",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": 48.2,
+          "premature_opening_vs_T4": true,
+          "rear_confirmed_s": 46.4
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 3
+    },
+    {
+      "T1_master_s": 2.6,
+      "T4_master_s": 55.2806,
+      "back_offset_s": 4.0806,
+      "event_id": "train_events/event_014",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSING",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 2
+    },
+    {
+      "T1_master_s": 2.8,
+      "T4_master_s": 87.0654,
+      "back_offset_s": 4.5654,
+      "event_id": "train_events/event_017",
+      "policies": {
+        "V1_RULE_3": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V2_RULE_3B_3C": {
+          "closure_triggered": false,
+          "final_gate_state": "OPEN",
+          "final_state": "IDLE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_CONSERVATIVE_POSITIVE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        },
+        "V3_GUARDED_DISAPPEARANCE": {
+          "closure_triggered": true,
+          "final_gate_state": "CLOSED",
+          "final_state": "FAULT_FAIL_SAFE",
+          "first_opening_s": null,
+          "premature_opening_vs_T4": false,
+          "rear_confirmed_s": null
+        }
+      },
+      "raw_back_rear_dets": 0,
+      "raw_back_side_dets": 4
+    }
+  ],
+  "sync11_premature_opening_counts": {
+    "V1_RULE_3": 2,
+    "V2_RULE_3B_3C": 4,
+    "V3_CONSERVATIVE_POSITIVE": 0,
+    "V3_GUARDED_DISAPPEARANCE": 3
+  },
+  "tail_detection_caveat": "Layer B v2 YOLO model has 0 'last_carriage' class predictions and only 30 'rear' detections across all 27 back streams; true last-carriage recognition remains unverified in real data."
+}

@@ -1,0 +1,2827 @@
+{
+  "condition": "DUAL_VISION_AUDIO",
+  "event_count": 11,
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "traces": {
+    "train_events/event_001": {
+      "V1_RULE_3": {
+        "final_crossing_state": "CROSSING_OCCUPIED",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 258,
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 6,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 2
+        },
+        "step_count": 268,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 14.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 14.2,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 16.4,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 19.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 27.0,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 42.4,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 42.6,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 42.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 47.6,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 48.6,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 49.6,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 49.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 50.0,
+            "to": "CROSSING_OCCUPIED"
+          }
+        ]
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "TRAIN_PRESENT",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 263,
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 1,
+          "RULE_3_POSITIVE_CLEARANCE": 1,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 1
+        },
+        "step_count": 268,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 14.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 14.2,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 16.4,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 19.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 27.0,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 42.4,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 43.4,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 46.6,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": null,
+            "t": 46.8,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 47.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 50.6,
+            "to": "TRAIN_PRESENT"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "GATE_CLOSING",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_APPROACH_UNCONFIRMED_RESET": 3,
+          "L1_FRONT_APPROACH_TRIGGER": 6,
+          "NONE": 259
+        },
+        "step_count": 268,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 27.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 27.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 47.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 47.8,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 48.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 48.8,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 49.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 49.8,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 51.8,
+            "to": "GATE_CLOSING"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "GATE_CLOSING",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_APPROACH_UNCONFIRMED_RESET": 3,
+          "L1_FRONT_APPROACH_TRIGGER": 6,
+          "NONE": 259
+        },
+        "step_count": 268,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 27.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 27.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 47.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 47.8,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 48.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 48.8,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 49.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 49.8,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 51.8,
+            "to": "GATE_CLOSING"
+          }
+        ]
+      }
+    },
+    "train_events/event_002": {
+      "V1_RULE_3": {
+        "final_crossing_state": "CROSSING_OCCUPIED",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 148,
+          "RULE_1_APPROACH_TRIGGER": 3,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 12,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 6
+        },
+        "step_count": 171,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 3.8,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 4.0,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 6.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 6.8,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 9.0,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 12.2,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 13.6,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 13.8,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 14.2,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 14.4,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 14.6,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 20.4,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 20.6,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 20.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 21.8,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 22.2,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 22.6,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 23.0,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 24.0,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 24.2,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 24.4,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 24.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 24.8,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 25.0,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 26.0,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 26.2,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 28.0,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 29.6,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 29.8,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 30.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 32.0,
+            "to": "CROSSING_OCCUPIED"
+          }
+        ]
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "TRAIN_PRESENT",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 157,
+          "RULE_1_APPROACH_TRIGGER": 3,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 2,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 4,
+          "RULE_3_POSITIVE_CLEARANCE": 1,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 4
+        },
+        "step_count": 171,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 3.8,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 4.0,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 6.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 6.8,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 9.0,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 12.2,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 13.6,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 13.8,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 15.2,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 18.6,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": null,
+            "t": 18.8,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 20.4,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 23.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 24.0,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 24.2,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 25.6,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 26.0,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 26.2,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 28.0,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 28.6,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 29.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 29.8,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 30.8,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 31.4,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 32.0,
+            "to": "TRAIN_PRESENT"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_APPROACH_UNCONFIRMED_RESET": 1,
+          "L1_FRONT_APPROACH_TRIGGER": 1,
+          "L3_AUDIO_SUPPORT_ONLY": 2,
+          "NONE": 167
+        },
+        "step_count": 171,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 3.8,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 4.0,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_APPROACH_UNCONFIRMED_RESET": 1,
+          "L1_FRONT_APPROACH_TRIGGER": 1,
+          "L3_AUDIO_SUPPORT_ONLY": 2,
+          "NONE": 167
+        },
+        "step_count": 171,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 3.8,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 4.0,
+            "to": "IDLE"
+          }
+        ]
+      }
+    },
+    "train_events/event_005": {
+      "V1_RULE_3": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": false,
+        "rule_counts": {
+          "NONE": 316,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 105
+        },
+        "step_count": 421,
+        "transitions": []
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": false,
+        "rule_counts": {
+          "NONE": 316,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 105
+        },
+        "step_count": 421,
+        "transitions": []
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": false,
+        "rule_counts": {
+          "L3_AUDIO_SUPPORT_ONLY": 105,
+          "NONE": 304,
+          "RULE_4_FAIL_SAFE_CLAMP": 12
+        },
+        "step_count": 421,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 81.8,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": false,
+        "rule_counts": {
+          "L3_AUDIO_SUPPORT_ONLY": 105,
+          "NONE": 304,
+          "RULE_4_FAIL_SAFE_CLAMP": 12
+        },
+        "step_count": 421,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 81.8,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      }
+    },
+    "train_events/event_006": {
+      "V1_RULE_3": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 602,
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 51,
+          "RULE_3_POSITIVE_CLEARANCE": 2
+        },
+        "step_count": 657,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 94.8,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 95.0,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 97.0,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 100.0,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 103.8,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 104.0,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 104.2,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 107.4,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": null,
+            "t": 107.6,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 110.6,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 599,
+          "RULE_1_APPROACH_TRIGGER": 4,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 50,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 2,
+          "RULE_3_POSITIVE_CLEARANCE": 2
+        },
+        "step_count": 657,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 94.8,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 95.0,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 97.0,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 100.0,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 103.8,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 104.0,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 104.2,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 107.4,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": null,
+            "t": 107.6,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 110.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 111.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 111.4,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 113.4,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 116.4,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 118.2,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 118.4,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 118.6,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 121.8,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": null,
+            "t": 122.0,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 125.0,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "TRAIN_DEPARTING",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_FRONT_APPROACH_TRIGGER": 4,
+          "L2_SIDE_MOVEMENT_CONFIRMED": 3,
+          "L3_AUDIO_SUPPORT_ONLY": 50,
+          "L4_BACK_POSITIVE_DEPARTURE": 1,
+          "L4_BACK_SPARSE_DROPOUT_HOLD": 96,
+          "NONE": 503
+        },
+        "step_count": 657,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 103.8,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 104.0,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 106.0,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 109.0,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 111.2,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": "L4_BACK_POSITIVE_DEPARTURE",
+            "t": 111.4,
+            "to": "TRAIN_DEPARTING"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "TRAIN_PRESENT",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_FRONT_APPROACH_TRIGGER": 6,
+          "L3_AUDIO_SUPPORT_ONLY": 51,
+          "L4_BACK_GUARDED_DISAPPEARANCE": 1,
+          "L4_BACK_POSITIVE_DEPARTURE": 1,
+          "L4_BACK_SPARSE_DROPOUT_HOLD": 5,
+          "L5_OCCUPANCY_CLEAR_VERIFIED": 1,
+          "L5_REOPEN_AUTHORIZED": 2,
+          "NONE": 590
+        },
+        "step_count": 657,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 103.8,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 104.0,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 106.0,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 109.0,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 111.2,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": "L4_BACK_POSITIVE_DEPARTURE",
+            "t": 111.4,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "L4_BACK_GUARDED_DISAPPEARANCE",
+            "t": 112.6,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "L5_OCCUPANCY_CLEAR_VERIFIED",
+            "t": 112.8,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": "L5_REOPEN_AUTHORIZED",
+            "t": 114.4,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "OPENING",
+            "rule_id": "L5_REOPEN_AUTHORIZED",
+            "t": 116.4,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 118.2,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 120.2,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 123.2,
+            "to": "TRAIN_PRESENT"
+          }
+        ]
+      }
+    },
+    "train_events/event_007": {
+      "V1_RULE_3": {
+        "final_crossing_state": "TRAIN_PRESENT",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 199,
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 8,
+          "RULE_3_POSITIVE_CLEARANCE": 7,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 1
+        },
+        "step_count": 217,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 16.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 16.4,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 18.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 21.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 22.0,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 28.4,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 29.8,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 31.4,
+            "to": "TRAIN_PRESENT"
+          }
+        ]
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "CROSSING_OCCUPIED",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 207,
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 6,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 1,
+          "RULE_7_NEW_TRAIN_INTERRUPT": 1
+        },
+        "step_count": 217,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 16.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 16.4,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 18.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 21.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 22.0,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 28.0,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 29.0,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_7_NEW_TRAIN_INTERRUPT",
+            "t": 29.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 31.4,
+            "to": "CROSSING_OCCUPIED"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "CROSSING_OCCUPIED",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_FRONT_APPROACH_TRIGGER": 3,
+          "L2_SIDE_MOVEMENT_CONFIRMED": 1,
+          "L3_AUDIO_SUPPORT_ONLY": 5,
+          "NONE": 208
+        },
+        "step_count": 217,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 16.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 16.4,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 18.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 21.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": "L2_SIDE_MOVEMENT_CONFIRMED",
+            "t": 22.0,
+            "to": "CROSSING_OCCUPIED"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_FRONT_APPROACH_TRIGGER": 3,
+          "L2_SIDE_MOVEMENT_CONFIRMED": 1,
+          "L3_AUDIO_SUPPORT_ONLY": 5,
+          "L4_BACK_GUARDED_DISAPPEARANCE": 2,
+          "L5_OCCUPANCY_CLEAR_VERIFIED": 1,
+          "L5_REOPEN_AUTHORIZED": 2,
+          "NONE": 189,
+          "RULE_4_FAIL_SAFE_CLAMP": 14
+        },
+        "step_count": 217,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 16.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 16.4,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 18.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 21.8,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": "L2_SIDE_MOVEMENT_CONFIRMED",
+            "t": 22.0,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": "L4_BACK_GUARDED_DISAPPEARANCE",
+            "t": 36.2,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "L4_BACK_GUARDED_DISAPPEARANCE",
+            "t": 36.4,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "L5_OCCUPANCY_CLEAR_VERIFIED",
+            "t": 36.6,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": "L5_REOPEN_AUTHORIZED",
+            "t": 38.2,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "OPENING",
+            "rule_id": "L5_REOPEN_AUTHORIZED",
+            "t": 40.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 40.6,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      }
+    },
+    "train_events/event_009": {
+      "V1_RULE_3": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 228,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 7
+        },
+        "step_count": 235,
+        "transitions": []
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 228,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 7
+        },
+        "step_count": 235,
+        "transitions": []
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L3_AUDIO_SUPPORT_ONLY": 7,
+          "NONE": 219,
+          "RULE_4_FAIL_SAFE_CLAMP": 9
+        },
+        "step_count": 235,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 45.2,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L3_AUDIO_SUPPORT_ONLY": 7,
+          "NONE": 219,
+          "RULE_4_FAIL_SAFE_CLAMP": 9
+        },
+        "step_count": 235,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 45.2,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      }
+    },
+    "train_events/event_011": {
+      "V1_RULE_3": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 210,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 3
+        },
+        "step_count": 213,
+        "transitions": []
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 208,
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 3
+        },
+        "step_count": 213,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 28.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 28.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 35.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 35.4,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_APPROACH_UNCONFIRMED_RESET": 2,
+          "L1_FRONT_APPROACH_TRIGGER": 2,
+          "L3_AUDIO_SUPPORT_ONLY": 3,
+          "NONE": 193,
+          "RULE_4_FAIL_SAFE_CLAMP": 13
+        },
+        "step_count": 213,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 28.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 28.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 35.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 35.4,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 40.0,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_APPROACH_UNCONFIRMED_RESET": 2,
+          "L1_FRONT_APPROACH_TRIGGER": 2,
+          "L3_AUDIO_SUPPORT_ONLY": 3,
+          "NONE": 193,
+          "RULE_4_FAIL_SAFE_CLAMP": 13
+        },
+        "step_count": 213,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 28.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 28.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 35.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 35.4,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 40.0,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      }
+    },
+    "train_events/event_012": {
+      "V1_RULE_3": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 345,
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 34
+        },
+        "step_count": 381,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 34.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 34.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 37.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 37.4,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 345,
+          "RULE_1_APPROACH_TRIGGER": 2,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 34
+        },
+        "step_count": 381,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 34.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 34.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 37.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 37.4,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L3_AUDIO_SUPPORT_ONLY": 34,
+          "NONE": 347
+        },
+        "step_count": 381,
+        "transitions": []
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L3_AUDIO_SUPPORT_ONLY": 34,
+          "NONE": 347
+        },
+        "step_count": 381,
+        "transitions": []
+      }
+    },
+    "train_events/event_013": {
+      "V1_RULE_3": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 315,
+          "RULE_1_APPROACH_TRIGGER": 3,
+          "RULE_3_POSITIVE_CLEARANCE": 65
+        },
+        "step_count": 383,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 0.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 0.6,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 2.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 5.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 24.4,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 45.2,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 58.0,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 61.2,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": null,
+            "t": 61.4,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 64.4,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 74.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 74.2,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 377,
+          "RULE_1_APPROACH_TRIGGER": 4,
+          "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE": 1,
+          "RULE_3_POSITIVE_CLEARANCE": 1
+        },
+        "step_count": 383,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 0.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 0.6,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": null,
+            "t": 2.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 5.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 24.4,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 45.2,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE",
+            "t": 45.8,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "RULE_3_POSITIVE_CLEARANCE",
+            "t": 49.0,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": null,
+            "t": 49.2,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 52.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 58.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 58.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 74.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 74.2,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "TRAIN_DEPARTING",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": false,
+        "rule_counts": {
+          "L1_FRONT_APPROACH_TRIGGER": 4,
+          "L2_SIDE_MOVEMENT_CONFIRMED": 3,
+          "L4_BACK_POSITIVE_DEPARTURE": 1,
+          "L4_BACK_SPARSE_DROPOUT_HOLD": 257,
+          "NONE": 118
+        },
+        "step_count": 383,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 0.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 0.6,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 2.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 5.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 8.6,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": "L4_BACK_POSITIVE_DEPARTURE",
+            "t": 24.4,
+            "to": "TRAIN_DEPARTING"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_FRONT_APPROACH_TRIGGER": 4,
+          "L2_SIDE_MOVEMENT_CONFIRMED": 1,
+          "L3_AUDIO_SUPPORT_ONLY": 1,
+          "L4_BACK_GUARDED_DISAPPEARANCE": 1,
+          "L4_BACK_POSITIVE_DEPARTURE": 1,
+          "L4_BACK_SPARSE_DROPOUT_HOLD": 108,
+          "L5_OCCUPANCY_CLEAR_VERIFIED": 1,
+          "L5_REOPEN_AUTHORIZED": 2,
+          "NONE": 261,
+          "RULE_4_FAIL_SAFE_CLAMP": 3
+        },
+        "step_count": 383,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 0.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 0.6,
+            "to": "WARNING"
+          },
+          {
+            "from": "WARNING",
+            "gate_state": "CLOSING",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 2.6,
+            "to": "GATE_CLOSING"
+          },
+          {
+            "from": "GATE_CLOSING",
+            "gate_state": "CLOSED",
+            "rule_id": null,
+            "t": 5.6,
+            "to": "TRAIN_PRESENT"
+          },
+          {
+            "from": "TRAIN_PRESENT",
+            "gate_state": "CLOSED",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 8.6,
+            "to": "CROSSING_OCCUPIED"
+          },
+          {
+            "from": "CROSSING_OCCUPIED",
+            "gate_state": "CLOSED",
+            "rule_id": "L4_BACK_POSITIVE_DEPARTURE",
+            "t": 24.4,
+            "to": "TRAIN_DEPARTING"
+          },
+          {
+            "from": "TRAIN_DEPARTING",
+            "gate_state": "CLOSED",
+            "rule_id": "L4_BACK_GUARDED_DISAPPEARANCE",
+            "t": 46.4,
+            "to": "REAR_CONFIRMED"
+          },
+          {
+            "from": "REAR_CONFIRMED",
+            "gate_state": "CLOSED",
+            "rule_id": "L5_OCCUPANCY_CLEAR_VERIFIED",
+            "t": 46.6,
+            "to": "CROSSING_CLEAR"
+          },
+          {
+            "from": "CROSSING_CLEAR",
+            "gate_state": "OPENING",
+            "rule_id": "L5_REOPEN_AUTHORIZED",
+            "t": 48.2,
+            "to": "GATE_OPENING"
+          },
+          {
+            "from": "GATE_OPENING",
+            "gate_state": "OPENING",
+            "rule_id": "L5_REOPEN_AUTHORIZED",
+            "t": 50.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 76.0,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      }
+    },
+    "train_events/event_014": {
+      "V1_RULE_3": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 277,
+          "RULE_1_APPROACH_TRIGGER": 6,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 5
+        },
+        "step_count": 288,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 2.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 2.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 2.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 2.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 3.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 3.8,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 12.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 12.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 23.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 23.4,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 23.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 23.8,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 277,
+          "RULE_1_APPROACH_TRIGGER": 6,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 5
+        },
+        "step_count": 288,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 2.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 2.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 2.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 2.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 3.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 3.8,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 12.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 12.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 23.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 23.4,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 23.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 23.8,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_APPROACH_UNCONFIRMED_RESET": 4,
+          "L1_FRONT_APPROACH_TRIGGER": 4,
+          "L3_AUDIO_SUPPORT_ONLY": 5,
+          "NONE": 274,
+          "RULE_4_FAIL_SAFE_CLAMP": 1
+        },
+        "step_count": 288,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 2.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 2.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 2.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 2.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 3.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 3.8,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 12.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 12.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 57.4,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSING",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L1_APPROACH_UNCONFIRMED_RESET": 4,
+          "L1_FRONT_APPROACH_TRIGGER": 4,
+          "L3_AUDIO_SUPPORT_ONLY": 5,
+          "NONE": 274,
+          "RULE_4_FAIL_SAFE_CLAMP": 1
+        },
+        "step_count": 288,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 2.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 2.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 2.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 2.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 3.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 3.8,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "L1_FRONT_APPROACH_TRIGGER",
+            "t": 12.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": "L1_APPROACH_UNCONFIRMED_RESET",
+            "t": 12.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 57.4,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      }
+    },
+    "train_events/event_017": {
+      "V1_RULE_3": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 416,
+          "RULE_1_APPROACH_TRIGGER": 4,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 21
+        },
+        "step_count": 441,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 28.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 28.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 41.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 41.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 84.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 84.4,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 85.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 85.8,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V2_RULE_3B_3C": {
+        "final_crossing_state": "IDLE",
+        "final_gate_state": "OPEN",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "NONE": 416,
+          "RULE_1_APPROACH_TRIGGER": 4,
+          "RULE_2_AUDIO_SUPPORT_ONLY": 21
+        },
+        "step_count": 441,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 28.4,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 28.6,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 41.0,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 41.2,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 84.2,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 84.4,
+            "to": "IDLE"
+          },
+          {
+            "from": "IDLE",
+            "gate_state": "OPEN",
+            "rule_id": "RULE_1_APPROACH_TRIGGER",
+            "t": 85.6,
+            "to": "TRAIN_APPROACHING"
+          },
+          {
+            "from": "TRAIN_APPROACHING",
+            "gate_state": "OPEN",
+            "rule_id": null,
+            "t": 85.8,
+            "to": "IDLE"
+          }
+        ]
+      },
+      "V3_CONSERVATIVE_POSITIVE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L3_AUDIO_SUPPORT_ONLY": 21,
+          "NONE": 399,
+          "RULE_4_FAIL_SAFE_CLAMP": 21
+        },
+        "step_count": 441,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 84.0,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      },
+      "V3_GUARDED_DISAPPEARANCE": {
+        "final_crossing_state": "FAULT_FAIL_SAFE",
+        "final_gate_state": "CLOSED",
+        "premature_opening_detected": true,
+        "rule_counts": {
+          "L3_AUDIO_SUPPORT_ONLY": 21,
+          "NONE": 399,
+          "RULE_4_FAIL_SAFE_CLAMP": 21
+        },
+        "step_count": 441,
+        "transitions": [
+          {
+            "from": "IDLE",
+            "gate_state": "CLOSING",
+            "rule_id": "RULE_4_FAIL_SAFE_CLAMP",
+            "t": 84.0,
+            "to": "FAULT_FAIL_SAFE"
+          }
+        ]
+      }
+    }
+  }
+}

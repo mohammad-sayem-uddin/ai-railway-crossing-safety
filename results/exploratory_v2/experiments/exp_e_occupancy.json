@@ -1,0 +1,216 @@
+{
+  "experiment": "Exp_E_Occupancy",
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "real_data_coverage": {
+    "T_scene_clear_values": {
+      "train_events/event_011": 32.5
+    },
+    "conclusion": "Physical crossing occupancy hardware does not exist in Layer B v2; automated V3 occupancy verification cleanly remains UNKNOWN on real events and holds closed rather than fabricating CLEAR.",
+    "dedicated_occupancy_sensors": 0,
+    "events_with_T_scene_clear": 1,
+    "total_events": 27
+  },
+  "synthetic_closed_loop_checks": {
+    "00_nominal_4layer_full_cycle": {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": true
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": null,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN",
+        "OPENING"
+      ],
+      "premature_opening_detected": false,
+      "reopened": true,
+      "returned_idle": true,
+      "runner_rejected_count": 0,
+      "scenario_id": "00_nominal_4layer_full_cycle",
+      "states_visited": [
+        "CROSSING_CLEAR",
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "GATE_OPENING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    "05_occupancy_sensor_failure": {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "REAR_CONFIRMED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 10.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "05_occupancy_sensor_failure",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    "08_contradictory_detections": {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "TRAIN_PRESENT",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 4.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "08_contradictory_detections",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "FAULT_FAIL_SAFE",
+        "GATE_CLOSING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    "17_false_clear_detection": {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "TRAIN_PRESENT",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 8.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "17_false_clear_detection",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "FAULT_FAIL_SAFE",
+        "GATE_CLOSING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    }
+  },
+  "synthetic_occupancy_unit_states": [
+    {
+      "case": "OCCUPIED_explicit",
+      "reason": "Crossing occupancy sensor or zone geometry reports OCCUPIED",
+      "resolved_state": "occupied",
+      "verified_clear": false
+    },
+    {
+      "case": "CLEAR_explicit_healthy",
+      "reason": "Healthy, fresh occupancy verification confirms crossing is CLEAR",
+      "resolved_state": "clear",
+      "verified_clear": true
+    },
+    {
+      "case": "UNKNOWN_no_sensor",
+      "reason": "No fresh crossing-zone occupancy sensor observation available",
+      "resolved_state": "unknown",
+      "verified_clear": false
+    },
+    {
+      "case": "MISSING_unavailable",
+      "reason": "Occupancy sensor records are stale or unavailable",
+      "resolved_state": "missing",
+      "verified_clear": false
+    },
+    {
+      "case": "CONTRADICTORY_clear_vs_vision",
+      "reason": "Occupancy reports CLEAR while active vision/audio train signals exist",
+      "resolved_state": "contradictory",
+      "verified_clear": false
+    }
+  ]
+}

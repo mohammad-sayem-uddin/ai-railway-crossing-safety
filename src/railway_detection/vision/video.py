@@ -24,6 +24,34 @@ VIDEO_EXTENSIONS = {".mp4", ".avi", ".mov", ".mkv"}
 SOURCE_DISPLAY_ROTATION_POLICY = "orthogonal_display_matrix_rotation_v1"
 
 
+def normalize_orthogonal_rotation(rotation: Any) -> int:
+    """Validate and normalize an orthogonal container display rotation in degrees.
+
+    Accepts exact integer multiples of 90 degrees (including negative values such
+    as ``-90`` or ``-180`` and full turns such as ``±270``/``±360``). Rejects booleans,
+    floats, missing non-int types, and non-orthogonal angles fail-closed.
+    """
+    if type(rotation) is not int or rotation % 90:
+        raise ConfigError("unsupported nonorthogonal source display rotation")
+    return int(rotation)
+
+
+def apply_display_rotation(image: Any, rotation: int) -> Any:
+    """Apply container display rotation to a decoded BGR image array.
+
+    Matches PyAV ``frame.rotation`` sign convention and OpenCV's
+    ``CAP_PROP_ORIENTATION_AUTO`` upright display orientation across all
+    orthogonal angles (0, ±90, ±180, ±270, ±360).
+    """
+    normalized = normalize_orthogonal_rotation(rotation)
+    quarter_turns = (normalized // 90) % 4
+    if quarter_turns == 0:
+        return image
+    import numpy as np
+
+    return np.ascontiguousarray(np.rot90(image, k=quarter_turns))
+
+
 @dataclass(frozen=True)
 class VideoFrame:
     frame_index: int
@@ -35,6 +63,8 @@ class VideoFrame:
     stream_index: int | None = None
     stream_start_pts: int | None = None
     display_rotation_deg: int = 0
+    orientation_applied: bool = True
+    raw_coded_size: tuple[int, int] | None = None
 
 
 def timestamps_for_frames(frame_indices: list[int], native_fps: float) -> list[float]:
@@ -113,6 +143,19 @@ def frame_generator(
         raise ConfigError(f"cannot open video: {path}")
 
     try:
+        orient_prop = getattr(cv2, "CAP_PROP_ORIENTATION_AUTO", None)
+        if orient_prop is not None:
+            capture.set(orient_prop, 1.0)
+        auto_orient = bool(orient_prop is not None and capture.get(orient_prop) >= 0.5)
+        raw_w = int(capture.get(cv2.CAP_PROP_FRAME_WIDTH))
+        raw_h = int(capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        raw_coded_size = (raw_w, raw_h) if raw_w > 0 and raw_h > 0 else None
+        orient_meta_prop = getattr(cv2, "CAP_PROP_ORIENTATION_META", None)
+        meta_rot = 0
+        if orient_meta_prop is not None:
+            raw_meta = float(capture.get(orient_meta_prop))
+            if math.isfinite(raw_meta) and int(round(raw_meta)) % 90 == 0:
+                meta_rot = int(round(raw_meta))
         native_fps = float(capture.get(cv2.CAP_PROP_FPS))
         if native_fps <= 0:
             raise ConfigError(f"video reports invalid FPS ({native_fps}); cannot derive timestamps")
@@ -142,6 +185,9 @@ def frame_generator(
                 timestamp_s=timestamp_s,
                 image=image,
                 source_id=source_id,
+                display_rotation_deg=meta_rot,
+                orientation_applied=auto_orient or (meta_rot % 360 == 0),
+                raw_coded_size=raw_coded_size,
             )
     finally:
         capture.release()
@@ -213,14 +259,14 @@ def _source_pts_frames(
                     if stamp < due:
                         continue
                     due = anchor + ((stamp - anchor) * rate // 1 + 1) / rate
-                rotation = getattr(frame, "rotation", 0)
-                if type(rotation) is not int or rotation % 90:
-                    raise ConfigError("unsupported nonorthogonal source display rotation")
-                image = frame.to_ndarray(format="bgr24")
-                if rotation % 360:
-                    import numpy as np
-
-                    image = np.ascontiguousarray(np.rot90(image, k=rotation // 90))
+                rotation = normalize_orthogonal_rotation(getattr(frame, "rotation", 0))
+                raw_image = frame.to_ndarray(format="bgr24")
+                raw_coded_size = (
+                    (int(raw_image.shape[1]), int(raw_image.shape[0]))
+                    if hasattr(raw_image, "shape")
+                    else None
+                )
+                image = apply_display_rotation(raw_image, rotation)
                 yield VideoFrame(
                     frame_index=index,
                     timestamp_s=float(stamp),
@@ -231,6 +277,8 @@ def _source_pts_frames(
                     stream_index=selected.index,
                     stream_start_pts=selected.start_time,
                     display_rotation_deg=rotation,
+                    orientation_applied=True,
+                    raw_coded_size=raw_coded_size,
                 )
             if previous is None:
                 raise ConfigError("video stream contains no decoded presentation frames")

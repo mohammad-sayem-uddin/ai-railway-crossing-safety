@@ -1,0 +1,15 @@
+{
+  "checkpoint_present": true,
+  "classification": "SYNTHETIC_AUDIO_TRANSFORM_VERIFICATION",
+  "db_finite": true,
+  "horn_mean_natural_log_mel": -11.8693,
+  "natural_differs_from_db_by_scale": true,
+  "natural_finite": true,
+  "natural_shape": [
+    64,
+    61
+  ],
+  "noise_mean_natural_log_mel": 0.1541,
+  "sample_rate_hz": 16000,
+  "window_s": 1.0
+}

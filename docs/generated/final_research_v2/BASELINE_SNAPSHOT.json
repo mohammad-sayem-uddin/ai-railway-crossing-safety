@@ -1,0 +1,133 @@
+{
+  "mission_name": "TRAIN GATE AUTOMATION — COMPLETE FOUR-LAYER PROTOTYPE COMPLETION",
+  "snapshot_timestamp_local": "2026-11-14T11:09:47-05:00",
+  "git": {
+    "starting_baseline_commit": "d1032756de80963130e1cbd3d2334cb32139b996",
+    "working_branch": "exp/four-layer-completion",
+    "preserved_preexisting_dirty_entries": [
+      "M results/m3_synthetic_battery/summary.json",
+      "M scripts/run_stage21_review.py",
+      "?? docs/generated/gemini_flash_investigation/",
+      "?? scripts/ta_create_decision_records.py",
+      "?? scripts/ta_prep_bundle.py"
+    ]
+  },
+  "environment": {
+    "python": "3.11.15",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "torch": "2.13.0",
+    "torch_mps_available": true,
+    "torch_cuda_available": false,
+    "ultralytics": "8.4.121",
+    "av": "18.1.0",
+    "opencv": "5.0.0",
+    "numpy": "2.4.6",
+    "matplotlib": "3.11.1",
+    "pytest": "9.1.1",
+    "pyyaml": "6.0.3",
+    "ffmpeg": "ffmpeg version 8.1.1 Copyright (c) 2000-2026 the FFmpeg developers"
+  },
+  "authorization_and_media_boundary": {
+    "data/governance/leg_exec_authorization.json": {
+      "present": true,
+      "size_bytes": 1856,
+      "sha256": "77933986b42b44d340723227c8319a4fb90687a9d6dbe00133de39780bd9cb7e"
+    },
+    "data/governance/AUTH-MEDIA-ACCESS.json": {
+      "present": false,
+      "status": "BLOCKED_BY_DESIGN_NO_BYPASS",
+      "impact": "Direct opening/re-inference of 54 raw .mov videos and 54 .wav files in repo blocked by media_guard.py [AUTH_MEDIA_ACCESS_NOT_GRANTED]; real-data experiments replay frozen Mission 43/39 JSONL vision caches and Mission 44 audio window CSVs/JSONs alongside fully executable synthetic rotated-video YOLO tests."
+    },
+    "kaggle_media_check": {
+      "account_checked": "allfaz",
+      "gpu_quota_available": true,
+      "train_gate_raw_media_datasets_found": 0
+    }
+  },
+  "preserved_baseline_artifacts": {
+    "experiments/vision/e1204e5c9790/checkpoints/weights/best.pt": {
+      "size_bytes": 24480807,
+      "sha256": "b7afbe3724cdace199cdb1cc5b07b869b179182ac411859fdb984ece8943d6f0"
+    },
+    "experiments/vision/39f402dfe460/checkpoints/weights/best.pt": {
+      "size_bytes": 24493159,
+      "sha256": "3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd"
+    },
+    "experiments/vision/d9dfa4e34d02/checkpoints/weights/best.pt": {
+      "size_bytes": 24480807,
+      "sha256": "20956cefe5c9a4b66836f11951da3fb3736ceef699839a5992249bde22d99d1a"
+    },
+    "experiments/audio/RUN_20261008_AUDIO_V2/checkpoints/best.pt": {
+      "size_bytes": 329433,
+      "sha256": "ddab244f1f2e18f7c8c4c2edc0a465215f8bd1f91d044b82b2a4d51553ec3053"
+    },
+    "experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt": {
+      "size_bytes": 329497,
+      "sha256": "ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782"
+    },
+    "configs/frozen_experiment_v1.yaml": {
+      "size_bytes": 1898,
+      "sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a"
+    },
+    "configs/decision_policy_v1.yaml": {
+      "size_bytes": 2944,
+      "sha256": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575"
+    },
+    "configs/decision_policy_v2_candidate.yaml": {
+      "size_bytes": 9862,
+      "sha256": "d90828b2ec37169d663c72ab7de7d86600728c0db170ebef3934b9565abaf07f"
+    },
+    "data/manifests/camera_sync_offsets_candidate.yaml": {
+      "size_bytes": 43211,
+      "sha256": "aaac453b7047ff5302592203114bdc4fc13de1d149669ad4590f074fa4110dcc"
+    },
+    "data/manifests/dataset_inventory_summary.json": {
+      "size_bytes": 1913,
+      "sha256": "d43476d73f6d6fbe3c6c4efbcd25b01defbb22902c6245ccb76dcb59dba160f4"
+    },
+    "data/manifests/phase12_r04_scope_decision.json": {
+      "size_bytes": 2260,
+      "sha256": "f6eabebaab9a925628c119feb9638ba108b7e0c3fbcb942efdf890c2d6e5fc08"
+    },
+    "data/manifests/layer_b_v2_motion_audit.json": {
+      "size_bytes": 6394,
+      "sha256": "4a1f2647f035e978ecb3ae0fc6a4b01c3dd2d870502da5b7012a079dc7633581"
+    },
+    "data/manifests/layer_b_v2_audio_audit.json": {
+      "size_bytes": 33673,
+      "sha256": "2d0473fd80ed296f786cd04951c6ede6fb761e71160b80ffde2379826860155d"
+    },
+    "data/manifests/layer_b_v2_annotation_inventory.json": {
+      "size_bytes": 33854,
+      "sha256": "5585e22ecc7841e2cca4d8e56b9d61999e252e1efaf5dfa6e57d81471b809a56"
+    },
+    "data/manifests/m3_multimodal_replay_manifest.json": {
+      "size_bytes": 22209,
+      "sha256": "3c720167ea06b67141beb7cf33bd02ce325db62a3e100819f8aa4ad213d5bbbb"
+    },
+    "docs/generated/professor_evidence/mission43/RESEARCHER_ANNOTATION_ADOPTION.json": {
+      "size_bytes": 10863,
+      "sha256": "4482847884f05650007d97367139f5b6ecd8bd567c113b538264baf97c5d5d15"
+    },
+    "docs/generated/professor_evidence/mission43/ACTUAL_VISUAL_RUN_MANIFEST.json": {
+      "size_bytes": 127520,
+      "sha256": "4ef6e073ecdcf49173e55597b1d6eeb4a5e167f87dba33b6b245d6fac5e008f1"
+    },
+    "docs/generated/professor_evidence/mission43/SOURCE_VERIFICATION_RECEIPT.json": {
+      "size_bytes": 314840,
+      "sha256": "6db2745bdc05db78ecf935fa4a092eda73463cd4115a271bc76176095c1c2d9f"
+    },
+    "docs/generated/professor_evidence/mission44/AUDIO_THRESHOLD_ANALYSIS.json": {
+      "size_bytes": 7604,
+      "sha256": "c323d29d2c2e860b7a97c334cf9317b69dda84208c07470b403b12e0e612ce05"
+    },
+    "docs/generated/professor_evidence/mission44/DISPLAY_ROTATION_DEFECT_REPRODUCTION.json": {
+      "size_bytes": 1755,
+      "sha256": "f203aa54866ff257fcb317aff6f78191de62883b072a1f58a3d88206725c8ed9"
+    },
+    "docs/generated/final_research/FILE_HASH_MANIFEST.sha256": {
+      "size_bytes": 5820,
+      "sha256": "881cc8de0fdce26440e3089d641ac22fca4e0a1297e2f62cd550103de9e5baa7"
+    }
+  }
+}

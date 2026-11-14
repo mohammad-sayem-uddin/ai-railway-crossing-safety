@@ -189,7 +189,11 @@ def run_with_diagnostics(
             "cross-camera temporal fusion is strictly blocked."
         )
 
-    collector = MultimodalEvidenceCollector(sync_aligner=sync_aligner, window_tolerance_s=window_tolerance_s)
+    collector = MultimodalEvidenceCollector(
+        sync_aligner=sync_aligner,
+        window_tolerance_s=window_tolerance_s,
+        allow_stale_detection_backfill=True,
+    )
     collector.add_evidence_batch(vision_records)
     collector.add_evidence_batch(audio_records)
     frames = collector.generate_frames_from_history(0.0, max(duration_s, 1.0), stride_s=stride_s)

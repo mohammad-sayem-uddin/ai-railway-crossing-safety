@@ -1,0 +1,762 @@
+{
+  "all_transitions_legal": true,
+  "classification": "SYNTHETIC_EXPERIMENT_SUITE",
+  "experiment": "Exp_L_Fault_Injection_17_Scenarios",
+  "false_train_glitch_closed": false,
+  "fault_and_operational_scenarios": [
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": true
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": null,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN",
+        "OPENING"
+      ],
+      "premature_opening_detected": false,
+      "reopened": true,
+      "returned_idle": true,
+      "runner_rejected_count": 0,
+      "scenario_id": "00_nominal_4layer_full_cycle",
+      "states_visited": [
+        "CROSSING_CLEAR",
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "GATE_OPENING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "fault_safe_clamp": true,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "FAULT_FAIL_SAFE",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 0.2,
+      "first_fault_detected_s": 0.0,
+      "first_warning_s": null,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "01_front_camera_failure",
+      "states_visited": [
+        "FAULT_FAIL_SAFE",
+        "IDLE"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "CROSSING_OCCUPIED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 9.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "02_back_camera_failure",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "TRAIN_APPROACHING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 5.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN",
+        "OPENING"
+      ],
+      "premature_opening_detected": false,
+      "reopened": true,
+      "returned_idle": true,
+      "runner_rejected_count": 0,
+      "scenario_id": "03_side_camera_failure",
+      "states_visited": [
+        "CROSSING_CLEAR",
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "GATE_OPENING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 0.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN",
+        "OPENING"
+      ],
+      "premature_opening_detected": false,
+      "reopened": true,
+      "returned_idle": true,
+      "runner_rejected_count": 0,
+      "scenario_id": "04_audio_failure",
+      "states_visited": [
+        "CROSSING_CLEAR",
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "GATE_OPENING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "REAR_CONFIRMED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 10.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "05_occupancy_sensor_failure",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "CROSSING_OCCUPIED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 13.2,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "06_stale_observations",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "TRAIN_APPROACHING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "runner_rejected": 2
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": null,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN",
+        "OPENING"
+      ],
+      "premature_opening_detected": false,
+      "reopened": true,
+      "returned_idle": true,
+      "runner_rejected_count": 2,
+      "scenario_id": "07_out_of_order_and_duplicate_timestamps",
+      "states_visited": [
+        "CROSSING_CLEAR",
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "GATE_OPENING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "TRAIN_PRESENT",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 4.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "08_contradictory_detections",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "FAULT_FAIL_SAFE",
+        "GATE_CLOSING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "CROSSING_OCCUPIED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 11.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "09_model_inference_timeout",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "TRAIN_APPROACHING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "TRAIN_DEPARTING",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 10.2,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "10_missing_frames_sparse_dropout",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "CROSSING_OCCUPIED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 10.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "11_video_stream_termination",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "TRAIN_APPROACHING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "CROSSING_OCCUPIED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": null,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "12_multiple_trains",
+      "states_visited": [
+        "CROSSING_CLEAR",
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "CROSSING_OCCUPIED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 11.8,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "13_train_reversal",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "TRAIN_APPROACHING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "CROSSING_OCCUPIED",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 6.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "14_train_stopped_in_zone",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "IDLE",
+        "TRAIN_APPROACHING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": true
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": null,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN",
+        "OPENING"
+      ],
+      "premature_opening_detected": false,
+      "reopened": true,
+      "returned_idle": true,
+      "runner_rejected_count": 0,
+      "scenario_id": "15_partial_visibility_occlusion",
+      "states_visited": [
+        "CROSSING_CLEAR",
+        "CROSSING_OCCUPIED",
+        "GATE_CLOSING",
+        "GATE_OPENING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": false,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "IDLE",
+      "final_gate_state": "OPEN",
+      "first_close_cmd_s": null,
+      "first_fault_detected_s": null,
+      "first_warning_s": null,
+      "gate_states_visited": [
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "16_false_train_detection_glitch",
+      "states_visited": [
+        "IDLE",
+        "TRAIN_APPROACHING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 60
+      }
+    },
+    {
+      "classification": "SYNTHETIC_CONTROLLED_SCENARIO",
+      "closure_triggered": true,
+      "collector_rejected_count": 0,
+      "expected": {
+        "closure": true,
+        "premature": false,
+        "reopened": false
+      },
+      "fault_held_closed_invariant": true,
+      "final_crossing_state": "TRAIN_PRESENT",
+      "final_gate_state": "CLOSED",
+      "first_close_cmd_s": 3.2,
+      "first_fault_detected_s": 8.0,
+      "first_warning_s": 1.2,
+      "gate_states_visited": [
+        "CLOSED",
+        "CLOSING",
+        "OPEN"
+      ],
+      "premature_opening_detected": false,
+      "reopened": false,
+      "returned_idle": false,
+      "runner_rejected_count": 0,
+      "scenario_id": "17_false_clear_detection",
+      "states_visited": [
+        "CROSSING_OCCUPIED",
+        "FAULT_FAIL_SAFE",
+        "GATE_CLOSING",
+        "IDLE",
+        "REAR_CONFIRMED",
+        "TRAIN_APPROACHING",
+        "TRAIN_DEPARTING",
+        "TRAIN_PRESENT",
+        "WARNING"
+      ],
+      "transition_legality": {
+        "illegal_transitions": [],
+        "legal": true,
+        "step_count": 121
+      }
+    }
+  ],
+  "sparse_dropout_departure_comparison": {
+    "V1_RULE_3": {
+      "closure_triggered": true,
+      "final_state": "TRAIN_DEPARTING",
+      "first_opening_s": null,
+      "premature_opening_detected": false,
+      "reopened_at_all": false
+    },
+    "V2_RULE_3C_DISAPPEARANCE": {
+      "closure_triggered": true,
+      "final_state": "IDLE",
+      "first_opening_s": 12.4,
+      "premature_opening_detected": true,
+      "reopened_at_all": true
+    },
+    "V3_CONSERVATIVE_POSITIVE": {
+      "closure_triggered": true,
+      "final_state": "CROSSING_OCCUPIED",
+      "first_opening_s": null,
+      "premature_opening_detected": false,
+      "reopened_at_all": false
+    },
+    "V3_GUARDED_DISAPPEARANCE": {
+      "closure_triggered": true,
+      "final_state": "CROSSING_OCCUPIED",
+      "first_opening_s": null,
+      "premature_opening_detected": false,
+      "reopened_at_all": false
+    }
+  },
+  "unsafe_opening_count": 0
+}
