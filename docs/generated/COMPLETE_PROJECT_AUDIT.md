@@ -1,0 +1,49 @@
+# Complete Project Audit — Train Gate Automation (`exp/four-layer-completion`)
+
+**Repository:** `/Users/sayemuddin/Desktop/Train_automation`  
+**Audit Baseline:** `62191ef6d8047e204f439c5cd3cc24f526fd04f8` (`exp/four-layer-completion`) -> hardened & expanded on current HEAD  
+**Scope:** End-to-end forensic engineering, architecture, software quality, data integrity, safety governance, and readiness audit across all layers, scripts, checkpoints, manifests, and tests.
+
+---
+
+## 1. Executive Audit Scorecard
+
+| Audit Dimension | Status | Concrete Evidence Summary |
+|---|---|---|
+| **Multimodal V3 Fusion & Safety FSM** | **STRONG / VERIFIED** | 11-state causal `CrossingStateMachine`, [`MultimodalDecisionEngineV3FourLayer`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/decision_engine_v3_four_layer.py), [`MultimodalEvidenceCollector`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/collector.py) (`allow_stale_detection_backfill=False`), and [`OccupancyVerifier`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/occupancy.py) pass all `18` `Exp L` fault scenarios (`0` unsafe openings) and `100` `Exp Q` synthetic stress runs (`0` unsafe openings). |
+| **Media & Rotation Hardening** | **IMPLEMENTED / BLOCKED ON RAW RE-EXTRACTION** | [`vision/video.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/vision/video.py) + [`demo/video_demo.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/demo/video_demo.py) pass 7-angle CPU `YOLOv8n` checks, but [`media_guard.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/safety/media_guard.py) blocks `data/raw/` (`AUTH-MEDIA-ACCESS.json` absent), forcing real-data replay onto frozen `pre-db40305` caches. |
+| **Dataset Split & Generalization Integrity** | **DEFECT IDENTIFIED & CANDIDATE SPLITS BUILT** | Active Vision split [`705d388743ea`](file:///Users/sayemuddin/Desktop/Train_automation/data/splits/705d388743ea/split_summary.json) leaks `87.1%` (`411/472`) `rf_train` into `test` and `27/29` (`93.1%`) 10-min sessions (`447/447` timestamped test imgs); [`audio/v3/dataset_split.json`](file:///Users/sayemuddin/Desktop/Train_automation/data/splits/audio/v3/dataset_split.json) leaks `5/57` YouTube horn stems (`28/86 = 32.56%`). Leakage-free candidate splits generated non-destructively via [`leakage_audit.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/data/leakage_audit.py). |
+| **Acoustic Horn Discrimination** | **LIMITED GENERALIZATION (NON-GATING ONLY)** | On `audio23` (`2,600` windows), frozen `T*=0.37` yields `0.9231` recall but `0.0000` specificity (`10/10` FP); road horns in `no_train_events` reach `0.800–0.826`. `Exp O` shows `(tau=0.75, k=2)` suppresses `3/3` `no_train` FPs (`0.90` specificity) by trading recall (`0.6154`), proving supervised road-horn negatives are required. |
+| **Governance & Reproducibility** | **FAIL-CLOSED (`ready: false`) / CLI SYNC FIXED** | [`evaluation status`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/cli/main.py) reports `ready: false`, `7` blockers (`0` Stage-2.1 reviews). Fixed [`reproducibility/audit.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/reproducibility/audit.py) so `protocol_version` matches `phase12_protocol_decision.json` (`PASS: 7, UNRESOLVED: 3, FAIL: 1, NOT_AVAILABLE: 2`). |
+| **Edge Deployment Readiness (ARM CPU)** | **ARCHITECTURALLY FEASIBLE ONLY VIA EVENT GATING** | Apple M1 `YOLOv8n` E2E runs at `54.66 ms` (`640px`) -> `23.61 ms` (`416px`); stripping removes `74.91%` checkpoint bloat (`24.49 -> 6.15 MB`); V3 FSM costs `0.0391 ms/tick`; event gating cuts daily vision frames by `96.56%–98.64%`. Physical Raspberry Pi hardware remains `NOT TESTED`. |
+
+---
+
+## 2. Subsystem-by-Subsystem Forensic Audit
+
+### 2.1 Source Code & Architecture (`src/railway_detection/`)
+1. **Clean Separation of Concerns:**
+   - **Vision & Video (`vision/`, `demo/`):** Orthogonal display-matrix rotation normalization (`0°, ±90°, ±180°, ±270°, ±360°`), PyAV/OpenCV fallback, YOLO adapter ([`yolo_adapter.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/vision/yolo_adapter.py)), evaluator, trainer.
+   - **Audio (`audio/`):** `CompactTrainHornCNN` (`25,989` checkpoint state params / `25,697` module params; `329,497` B checkpoint) operating on `[64, 61]` natural `log(mel + eps)` features (`16 kHz`, `n_fft=512`, `hop=256`).
+   - **Four-Layer Safety Fusion (`fusion/`):** Clean contracts ([`evidence.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/evidence.py)), causal collector ([`collector.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/collector.py)), per-source heartbeat monitor ([`source_tracker.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/source_tracker.py)), 5-state [`OccupancyVerifier`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/occupancy.py), rule extractors & `SideMovementTracker` ([`rules_v3_four_layer.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/rules_v3_four_layer.py)), and [`MultimodalDecisionEngineV3FourLayer`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/decision_engine_v3_four_layer.py).
+   - **Simulation (`simulation/`):** Enforced `ALLOWED_TRANSITIONS` (`state_machine.py`), 90°↔0° gate actuator (`gate_model.py`), and `EventSimulationRunner` (`runner.py`). Note: `EventSimulationRunner.run_frames()` advances `PhysicalGateModel.step(dt, commanded_state)` immediately at tick `t` (**Convention A**, `-0.20 s` offset relative to strict forward-causal **Convention B** documented in Mission 16G/16H).
+2. **Legacy Preservation Boundary:**
+   - Frozen `configs/frozen_experiment_v1.yaml` (`sha256: b8ef5da0...`), `configs/decision_policy_v1.yaml` (`c87c1432...`), `configs/decision_policy_v2_candidate.yaml` (`d90828b2...`), V1/V2 decision engines, and Vision/Audio checkpoints remain byte-identical.
+   - Historical `src/railway_detection/application/preflight/catalog.py` (`MISSION_26_CATALOG_BINDING.json` hashes) was intentionally left untouched; mission26/27/28 tests flag stale `README.md` hash because `README.md` evolved after Mission 26.
+
+### 2.2 Critical Code & Tooling Findings Fixed in This Mission
+1. **CLI Reproducibility Desynchronization (Fixed):** [`audit.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/reproducibility/audit.py#L393-L435) previously ignored verified `data/manifests/phase12_protocol_decision.json` and hardcoded `UNRESOLVED` for `premature_opening_window` and `protocol_version`. Fixed using `governance.verify_protocol_override()`, resolving the contradiction against `evaluation status` while preserving fail-closed behavior (`UNRESOLVED` if absent, `FAIL` if tampered).
+2. **Test Collection Collision (Verified Mitigation):** Four duplicate test basenames (`test_cli.py`, `test_contracts.py`, `test_isolation.py`, `test_manifest.py`) cause vanilla `pytest tests/` to fail import collection unless `--import-mode=importlib` is supplied (as configured in test commands).
+3. **Environment Lock & Package Split:** `.venv` (`Python 3.11.15`, `torch 2.13.0`, `ultralytics 8.4.121`, `av 18.1.0`, `cv2 5.0.0`, `matplotlib 3.11.1`) has `11` minor package version drifts vs `requirements.lock` (`audit reproducibility` `FAIL: 1`). `onnx`, `onnxruntime`, `scipy`, `librosa`, `sklearn` are absent from `.venv`.
+
+### 2.3 Governance & Official Promotion Gate Audit
+- `data/governance/AUTH-MEDIA-ACCESS.json`: **ABSENT** -> hard fail-closed firewall in [`media_guard.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/safety/media_guard.py).
+- `Stage 2.1` human-reviewed ground-truth records: **`0`** accepted files; official evaluation relies solely on retired schema-`6.0.0` fallback refusal and `27` schema-`7.0.0` AI-assisted researcher-adopted reference proposals ([`RESEARCHER_ANNOTATION_ADOPTION.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/professor_evidence/mission43/RESEARCHER_ANNOTATION_ADOPTION.json)).
+- `PHASE12` official gate (`evaluation status`): `ready: false`, `blocker_count: 7`, `blocker_codes: ["COHORT_APPROVAL_MISSING", "EVAL_AUTH_NOT_GRANTED", "EVENT_SPLIT_DECISION_MISSING", "MANIFEST_MISSING", "STAGE21_RECORDS_MISSING"]`.
+
+---
+
+## 3. Summary of Verified Artifacts Audited
+- Exploratory Experimental Programme (`Exp A–N`, `23` SHA-256 bit-identical JSON/CSV files): [`results/exploratory_v2/`](file:///Users/sayemuddin/Desktop/Train_automation/results/exploratory_v2/MASTER_V2_SUMMARY.json) & [`docs/generated/final_research_v2/`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/final_research_v2/FINAL_RESEARCH_COMPLETION_REPORT.md).
+- Forensic Dataset Leakage Audit & Candidate Splits: [`results/dataset_audit/vision_audio_leakage_audit.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/dataset_audit/vision_audio_leakage_audit.json), [`data/splits/vision_v1_session_grouped/`](file:///Users/sayemuddin/Desktop/Train_automation/data/splits/vision_v1_session_grouped/split_summary.json), [`data/splits/audio_v3_stem_grouped/`](file:///Users/sayemuddin/Desktop/Train_automation/data/splits/audio_v3_stem_grouped/split_summary.json).
+- New Optimization & Stress Suite (`Exp O–Q`): [`results/exploratory_v2/optimization_and_stress/`](file:///Users/sayemuddin/Desktop/Train_automation/results/exploratory_v2/optimization_and_stress/exp_p_cpu_edge_benchmark.json) & [`results/publication_tables/PUBLICATION_TABLES.md`](file:///Users/sayemuddin/Desktop/Train_automation/results/publication_tables/PUBLICATION_TABLES.md).

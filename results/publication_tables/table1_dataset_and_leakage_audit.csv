@@ -1,0 +1,6 @@
+dataset,split_variant,train_n,val_n,test_n,cross_session_or_stem_leak,test_overlap_with_train,aug_or_fold_artifact
+Vision V1 (baler.v1i),Original Roboflow folders,2763,263,131,27/29 sessions (gap<=600s),127/127 timestamped test imgs,0 rf_train in test; ungrouped bursts
+Vision V1 (baler.v1i),Active split 705d388743ea (leaked),2218,467,472,27/29 sessions (gap<=600s),447/447 timestamped test imgs,411/472 test from rf_train (87.1%)
+Vision V1 (baler.v1i),Candidate vision_v1_session_grouped,1776,336,241,0/29 sessions (gap<=600s),0/241 timestamped test imgs,804 eval aug duplicates excluded
+Audio V3 (TrainHorn + ESC-50),Original audio/v3/dataset_split.json,120,26,26,5/57 pos stems cross splits,28/86 pos clips (32.56%),0 cross-split ESC-50 folds
+Audio V3 (TrainHorn + ESC-50),Candidate audio_v3_stem_grouped,120,26,26,0/57 pos stems cross splits,0/86 pos clips (0.00%),0 cross-split ESC-50 folds; 60/13/13 balanced

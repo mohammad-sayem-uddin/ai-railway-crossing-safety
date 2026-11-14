@@ -1,0 +1,6 @@
+alpha_conf,effective_front_conf,burst_drop_prob_range,runs_count,closure_rate,reopen_rate,failsafe_rate,miss_open_rate,unsafe_opening_count,all_transitions_legal
+1.0,0.88,0.00 to 0.50 (4 levels x 5 seeds),20,1.0,1.0,0.0,0.0,0,True
+0.8,0.704,0.00 to 0.50 (4 levels x 5 seeds),20,1.0,1.0,0.0,0.0,0,True
+0.6,0.528,0.00 to 0.50 (4 levels x 5 seeds),20,1.0,0.95,0.0,0.0,0,True
+0.45,0.396,0.00 to 0.50 (4 levels x 5 seeds),20,1.0,1.0,0.0,0.0,0,True
+0.35,0.308,0.00 to 0.50 (4 levels x 5 seeds),20,0.0,0.0,0.0,1.0,0,True

@@ -142,14 +142,14 @@ def test_real_audit_reports_the_actual_state_without_inventing_results():
     assert report["read_only"] is True
     assert _item(report, "dataset_manifests")["status"] == "PASS"
     assert _item(report, "approved_ground_truth")["status"] == "UNRESOLVED"
-    assert _item(report, "protocol_version")["status"] == "UNRESOLVED"
+    assert _item(report, "protocol_version")["status"] == "PASS"
     assert _item(report, "event_split_decision")["status"] == "UNRESOLVED"
-    assert _item(report, "r04_scope_decision")["status"] == "UNRESOLVED"
+    assert _item(report, "r04_scope_decision")["status"] == "PASS"
     assert _item(report, "model_checkpoint_fingerprints")["status"] == "PASS"
     assert _item(report, "evaluation_result_provenance")["status"] == "NOT_AVAILABLE"
     assert _item(report, "experiment_manifest_completeness")["status"] == "NOT_AVAILABLE"
     register = _item(report, "unresolved_decisions")["evidence"]["register"]
-    assert register["premature_opening_window"].startswith("UNRESOLVED")
+    assert register["premature_opening_window"].startswith("recorded (")
     assert register["leg_exec"].startswith("AUTHORIZED")
     classes = report["evidence_classes"]
     assert classes["real_data_evaluation"] == "NOT OBTAINED"
@@ -307,6 +307,19 @@ def test_missing_provenance_everywhere_is_reported_not_papered_over(tmp_path):
     report = run_reproducibility_audit(tmp_path, manuscripts=(), now=NOW)
     assert _item(report, "dataset_manifests")["status"] == "FAIL"
     assert _item(report, "dependency_lock")["status"] == "FAIL"
+    assert _item(report, "protocol_version")["status"] == "UNRESOLVED"
+
+
+def test_protocol_version_fails_closed_when_override_tampered(tmp_path, monkeypatch):
+    ws = build_workspace(tmp_path, monkeypatch)
+    proto_path = ws.root / "data/manifests/phase12_protocol_decision.json"
+    assert _item(run_reproducibility_audit(ws.root, manuscripts=(), now=NOW), "protocol_version")["status"] == "PASS"
+    payload = json.loads(proto_path.read_text(encoding="utf-8"))
+    payload["decided_by"] = "unauthorized@example.com"
+    proto_path.write_text(json.dumps(payload), encoding="utf-8")
+    assert _item(run_reproducibility_audit(ws.root, manuscripts=(), now=NOW), "protocol_version")["status"] == "FAIL"
+    proto_path.unlink()
+    assert _item(run_reproducibility_audit(ws.root, manuscripts=(), now=NOW), "protocol_version")["status"] == "UNRESOLVED"
 
 
 # ------------------------------------------------------------------------------- CLI

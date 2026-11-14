@@ -1,0 +1,12 @@
+experiment,policy_or_ablation,b4_train23_triggers,no_train3_fp,sync11_closures,sync11_premature_openings,all_transitions_legal,synthetic_4layer_outcome
+Exp J,stateless_union,23/23,3/3,11/11,0/11,False,N/A (no FSM statefulness)
+Exp J,stateless_vision_rule2,16/23,2/3,9/11,0/11,False,N/A (no FSM statefulness)
+Exp D / J,V1 (RULE_3),9/23 (8 phys),0/3,5/11,2/11,True,Legacy baseline
+Exp D / J,V2 (RULE_3B_3C),10/23 (9 phys),0/3,5/11,4/11,True,Reopens prematurely under sparse dropout (12.4s)
+Exp D,V3_GUARDED_DISAPPEARANCE,10/23 (9 phys),0/3,9/11,3/11,True,Aborts under sparse dropout
+Exp D / J / K,V3_CONSERVATIVE_POSITIVE (Full 4-Layer),10/23 (9 phys),0/3,9/11,0/11,True,IDLE/OPEN (open@14.6s)
+Exp K,Ablation: No Audio,10/23,0/3,9/11,0/11,True,IDLE/OPEN (open@14.6s)
+Exp K,Ablation: No Back Camera,N/A,0/3,4/11,0/11,True,CROSSING_OCCUPIED/CLOSED (fails closed)
+Exp K,Ablation: No Side Camera,10/23,0/3,N/A (no side cam),0/11,True,IDLE/OPEN (open@14.6s)
+Exp K,Ablation: No Occupancy Sensor,N/A,N/A,N/A,0/11,True,REAR_CONFIRMED/CLOSED (blocks reopen)
+Exp K,Ablation: No Front / Audio Only,0/23,0/3,0/11,0/11,True,IDLE/OPEN (0 triggers)

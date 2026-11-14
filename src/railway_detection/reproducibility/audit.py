@@ -396,15 +396,37 @@ def run_reproducibility_audit(
         "design": "docs/EXPERIMENT_DESIGN_FINAL.md",
     }
     present = {k: _sha256(base / v) for k, v in protocol_docs.items() if (base / v).is_file()}
-    unresolved_defs = protocol_choices.unresolved_decisions(None)
+    protocol_override = None
+    protocol_error: str | None = None
+    protocol_path = base / governance.PROTOCOL_DECISION_RELATIVE
+    try:
+        allowlist = governance.load_allowlist(base)
+        protocol_override = governance.verify_protocol_override(
+            base, allowlist=allowlist, now=now
+        )
+    except governance.GovernanceError as exc:
+        if protocol_path.is_file():
+            protocol_error = f"{exc.code}: {exc.detail}"
+    override_choices = (
+        protocol_override.payload.get("choices") if protocol_override is not None else None
+    )
+    unresolved_defs = protocol_choices.unresolved_decisions(override_choices)
+    if protocol_error is not None:
+        proto_status = FAIL
+        proto_detail = f"invalid protocol decision override: {protocol_error}"
+    elif unresolved_defs:
+        proto_status = UNRESOLVED
+        proto_detail = f"unresolved protocol definitions: {unresolved_defs}"
+    else:
+        proto_status = PASS
+        proto_detail = "all protocol definitions decided"
     items.append(
         _item(
             "protocol_version",
-            UNRESOLVED if unresolved_defs else PASS,
-            f"unresolved protocol definitions: {unresolved_defs}"
-            if unresolved_defs
-            else "all protocol definitions decided",
+            proto_status,
+            proto_detail,
             documents=present,
+            decision_sha256=protocol_override.sha256 if protocol_override is not None else None,
             unresolved_definitions=unresolved_defs,
         )
     )
@@ -506,8 +528,14 @@ def run_reproducibility_audit(
         leg_exec_status = "AUTHORIZED (verified operation-specific recorded statement)"
     else:
         leg_exec_status = "NOT AUTHORIZED (inputs verified by preflight; no valid authorization)"
+    if protocol_error is not None:
+        premature_status = f"INVALID ({protocol_error})"
+    elif protocol_override is not None and not unresolved_defs:
+        premature_status = f"recorded ({override_choices.get('premature_opening_window')})"
+    else:
+        premature_status = "UNRESOLVED (v9 vs M4; no researcher-attributed acceptance)"
     unresolved_register = {
-        "premature_opening_window": "UNRESOLVED (v9 vs M4; no researcher-attributed acceptance)",
+        "premature_opening_window": premature_status,
         "event_level_split": "recorded" if split_path.is_file() else "UNRESOLVED",
         "r04_camera_scope": "recorded" if r04.is_file() else "UNRESOLVED",
         "stage21_ground_truth": "present" if eligible else "NOT OBTAINED (0 valid records)",

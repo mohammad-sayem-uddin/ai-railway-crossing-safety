@@ -1,0 +1,80 @@
+{
+  "audit_original_v3": {
+    "counts_by_split": {
+      "test": {
+        "negative": 13,
+        "positive": 13,
+        "total": 26
+      },
+      "train": {
+        "negative": 60,
+        "positive": 60,
+        "total": 120
+      },
+      "val": {
+        "negative": 13,
+        "positive": 13,
+        "total": 26
+      }
+    },
+    "cross_split_negative_fold_count": 0,
+    "cross_split_negative_folds": {},
+    "cross_split_positive_stem_count": 5,
+    "cross_split_positive_stems": {
+      "19": {
+        "test": 1,
+        "train": 1
+      },
+      "Horn of Bangladesh Train": {
+        "train": 1,
+        "val": 1
+      },
+      "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels": {
+        "test": 1,
+        "train": 2,
+        "val": 1
+      },
+      "Train whistle of Bangladesh Railway Broad Gauge locomotives sound 60 61 63 64 & 65": {
+        "train": 4,
+        "val": 1
+      },
+      "Whistle of New EMD Locomotive Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30": {
+        "test": 3,
+        "train": 8,
+        "val": 4
+      }
+    },
+    "positive_recording_stem_leakage_fraction": 0.3256,
+    "positive_recordings_in_cross_split_stems": 28,
+    "unique_negative_folds": 5,
+    "unique_positive_stems": 57
+  },
+  "audit_stem_grouped": {
+    "counts_by_split": {
+      "test": {
+        "negative": 13,
+        "positive": 13,
+        "total": 26
+      },
+      "train": {
+        "negative": 60,
+        "positive": 60,
+        "total": 120
+      },
+      "val": {
+        "negative": 13,
+        "positive": 13,
+        "total": 26
+      }
+    },
+    "cross_split_negative_fold_count": 0,
+    "cross_split_negative_folds": {},
+    "cross_split_positive_stem_count": 0,
+    "cross_split_positive_stems": {},
+    "positive_recording_stem_leakage_fraction": 0.0,
+    "positive_recordings_in_cross_split_stems": 0,
+    "unique_negative_folds": 5,
+    "unique_positive_stems": 57
+  },
+  "schema_version": "audio-stem-grouped-split/1.0"
+}

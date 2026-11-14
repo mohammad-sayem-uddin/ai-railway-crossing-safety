@@ -1,0 +1,41 @@
+# Consolidated Experimental Results (`Exp A` – `Exp Q`)
+
+**Detailed Reference Artifacts:**
+- Historical Exploratory Suite (`Exp A–N`, `23` bit-identical SHA-256 artifacts): [`MASTER_V2_SUMMARY.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/exploratory_v2/MASTER_V2_SUMMARY.json), [`EXPERIMENTAL_RESULTS.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/final_research_v2/EXPERIMENTAL_RESULTS.md), [`STATISTICAL_ANALYSIS.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/final_research_v2/STATISTICAL_ANALYSIS.md), [`exp_n_event_matrix.csv`](file:///Users/sayemuddin/Desktop/Train_automation/results/exploratory_v2/experiments/exp_n_event_matrix.csv).
+- New Deepening Experiments (`Exp O–Q`) & Master CSV/Markdown Tables: [`results/exploratory_v2/optimization_and_stress/`](file:///Users/sayemuddin/Desktop/Train_automation/results/exploratory_v2/optimization_and_stress/exp_p_cpu_edge_benchmark.json) & [`PUBLICATION_TABLES.md`](file:///Users/sayemuddin/Desktop/Train_automation/results/publication_tables/PUBLICATION_TABLES.md).
+- Visual Suite: [`fig01`–`fig10`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/final_research_v2/figures/fig06_closure_performance.png) + [`fig11`–`fig14`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig12_audio_hysteresis_and_calibration.png).
+
+*(Governance Qualification: All real-data evaluations remain exploratory against adopted AI-assisted schema-`7.0.0` reference annotations; `pre-db40305` vision caches reflect unrotated container decoding prior to `AUTH-MEDIA-ACCESS` gating.)*
+
+---
+
+## 1. Executive Synthesis of Existing V3 Multimodal Programme (`Exp A–N`)
+
+1. **Synthetic 7-Angle Rotation & Audio Parity:** `7/7` rotation angles (`0°, ±90°, ±180°, ±270°`) passed upright CPU `YOLOv8n` checks (`all_angles_passed = true`); natural log-Mel output (`[64, 61]`) verified finite & scale-distinct (`-11.8693` vs `0.1541` noise baseline).
+2. **Approach Closure (`Exp A, F–J`):** Under `pre-db40305` unrotated caches, causal V3 confirms approach on **`10 / 23` (`43.48%`, 95% CI `[0.2563, 0.6319]`)** B4 `train_events` (`9` issuing physical `close`, `1` ending in `WARNING` at EOF) with **`0 / 3`** `no_train` false closures and `engine_only_triggered = false` (vs `stateless_union` triggering `3 / 3` false closures and illegal FSM jumps; McNemar `p = 0.25`). Causal non-backfill eliminates `6` sparse-gap phantom triggers (`16 -> 10`) on B4 `train23`. Because prototype close-range cameras sit near the crossing (`T2` median `~3.6 s`), `0 / 11` `sync11` events closed before `T2`.
+3. **Departure Safety (`Exp D, K`):** Across `sync11` (where `0` `last_carriage` boxes exist), `V1` prematurely reopened on `2/11`, `V2` on **`4/11`** (`event_001, 002, 006, 013`), `V3_GUARDED_DISAPPEARANCE` on `3/11`, whereas **`V3_CONSERVATIVE_POSITIVE` achieved `0 / 11` premature openings** (McNemar vs `V2`: `b01=4, b10=0, p = 0.125`), closing `9 / 11` (`4` L1 + `5` L4 EOF fail-safe) without unsafe reopening.
+4. **Closed-Loop Faults & Parameter Cliffs (`Exp L, M`):** Across all `18` fault scenarios, **`0` unsafe openings** and **`100%` legal FSM transitions** occurred. Sensitivity (`Exp M`) proves **`temporal_tolerance_s = 0.15 s < 0.20 s` cadence** triggers immediate stale fail-safe closure on `26 / 26` B4 clips, whereas `0.25–1.00 s` holds baseline `9/23 + 0 FP`; **`confirm_frames = 1`** leaks `2/3` `no_train` FPs (`confirm_frames = 2` restores `0/3`).
+
+---
+
+## 2. New Exploratory Deepening Experiments (`Exp O, P, Q`)
+
+### 2.1 `Exp O`: Field Acoustic Hysteresis & Overconfidence Calibration ([`fig12`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig12_audio_hysteresis_and_calibration.png))
+Across `2,730` cached windows (`23` `audio23` clips + `3` `no_train` + `1` `engine`):
+- **Root Mechanism of Road-Horn Confusion:** While frozen `(tau=0.37, k=1)` yields `Recall = 0.9231` (`12/13`), `Specificity = 0.0000` (`10/10` FP), `Precision = 0.5455`, `F1 = 0.6857`, and `3/3` `no_train` FPs, inspecting run lengths reveals that `no_train_events/001..003` sustain **`3, 5, and 9` consecutive windows `>= 0.37`** (defeating `k=2` hysteresis at `0.37`), **but only `longest_run_ge_0_75 = 1` isolated spike `>= 0.75`** (`max 0.800–0.826`)!
+- **Best Field Pareto Point (`(tau=0.75, k=2)`):** Boosts `audio23` **`Specificity` from `0.0000 -> 0.9000` (`9/10`), `Precision` `0.5455 -> 0.8889`, `Accuracy` `0.5217 -> 0.7391`, `F1` `0.6857 -> 0.7273`**, and drives **`no_train_fp = 0 / 3`** + `engine_fp = 0 / 1`, while trading **`Recall` `0.9231 -> 0.6154` (`8/13`)**.
+- **Exploratory Temperature Calibration:** Temperature scaling at `T = 3.0` reduces 5-bin event-max ECE from **`0.2955` (`T=1.0`) -> `0.0709`** and Brier from `0.2724 -> 0.2246` (ranking `ROC-AUC = 0.6846`, `AP = 0.7739` unchanged).
+- **Conclusion:** Post-processing (`0.75, k=2`) sharply curbs transient spikes but still loses `38.5%` genuine horns—confirming L3 must remain non-gating until Audio V4 is retrained on [`audio_v3_stem_grouped`](file:///Users/sayemuddin/Desktop/Train_automation/data/splits/audio_v3_stem_grouped/split_summary.json) with negative Bangladesh road-horn supervision.
+
+### 2.2 `Exp P`: Measured CPU Optimization & Analytical Edge Duty Cycle ([`fig13`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig13_cpu_edge_benchmark_and_duty_cycle.png))
+Measured on Apple M1 CPU (`arm64`, `torch 2.13.0`, `threads=4`, `SYNTHETIC_ONLY`, peak RSS `491.52 MB`; **`physical_raspberry_pi_tested = false`**):
+- **Checkpoint Stripping:** Removing optimizer & EMA state reduces Vision `best.pt` from **`24,493,159 B` -> `6,145,232 B` FP16 (`-74.91%`)** (`12,188,432 B` FP32). Audio V3 checkpoint is `329,497 B` (`25,697` model / `25,989` state params).
+- **Vision Inference Latency & Speedup:** `YOLOv8n` eager forward drops **`39.938 ms` (`640px`, `25.04 FPS`) -> `19.141 ms` (`416px`, `52.24 FPS`) -> `13.217 ms` (`320px`, `75.66 FPS`)**; TorchScript achieves exact parity (`max_abs_diff = 0.0`) at `38.603 / 18.253 / 13.155 ms`. End-to-end `YOLO.predict` speeds up **`2.32×`** from **`54.658 ms` (`p95=72.785, 18.30 FPS`) at `640px` -> `23.605 ms` (`p95=28.017, 42.36 FPS`) at `416px`**.
+- **Audio & V3 FSM Latency:** `log_mel_1s_numpy` (`0.410 ms`) + `CNN TorchScript` (`0.471 ms`, `diff=0.0`, `134,358 B` serialized) totals **`0.881 ms/window`** (`CNN dynamic INT8 Linear` `0.563 ms`, `109,005 B`, `diff=0.0601`). Complete 121-tick `V3 FSM + Collector + Gate` runs in **`4.737 ms` = `0.0391 ms/tick` (`25,575 Hz`)**.
+- **Event-Triggered Duty Cycle (`416px` / `640px`):** Continuous `24/7` dual-camera `5-FPS` consumes **`864,000 frames/day`** (`3.0159` projected Pi 4B cores at `640px`; `1.308` at `416px` — *`5.5x` analytical projection*). Event-triggered activation (`60 s` active dual-stream per train + `30 s` watchdog + `2 Hz` continuous audio) cuts vision load to **`11,760 / 17,760 / 29,760` frames/day (`-98.64%` to `-96.56%`)**, yielding **`0.0274–0.0544` projected Pi 4B cores (`416px`)**.
+
+### 2.3 `Exp Q`: Synthetic Optical Attenuation × Dropout & Interlocking Stress ([`fig14`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig14_weather_attenuation_stress_heatmap.png))
+Across all `100` stress runs (`alpha in {1.0, 0.8, 0.6, 0.45, 0.35}` × `p_drop in {0.0, 0.15, 0.30, 0.50}` × `5` seeds):
+- **`0` illegal transitions** and **`0` unsafe gate openings** across all `100` runs.
+- **Monsoon Confidence-Cliff Discovery:** For `alpha >= 0.45` (`eff_conf >= 0.396 >= 0.35`), closure succeeds **`100%` (`80/80` runs)** regardless of `<= 50%` burst drops (`reopen = 1.0` except `0.8` at `alpha=0.6, p=0.5` where clearance stalls safely closed). At `alpha = 0.35` (`eff_conf = 0.308 < 0.35`), **`closure_rate` drops sharply to `0.0%` (`miss_open_rate = 1.0`, `failsafe = 0.0`)** because healthy `camera_1` empty frames never trip heartbeat staleness!
+- **Complex Interlocking Scenarios:** `stalled_obstacle_during_departure` safely holds gate `CLOSED` past `20.8 s` until clear (`t_reopen = 22.6 s`); `multi_train_reopen_interrupt` safely reverses `GATE_OPENING -> GATE_CLOSING -> CLOSED` on second train arrival at `14.8 s`.

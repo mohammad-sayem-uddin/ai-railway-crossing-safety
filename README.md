@@ -2,7 +2,8 @@
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Status: Research Prototype](https://img.shields.io/badge/status-research--prototype-orange.svg)]()
-[![Decision Replay: Not Yet Executed](https://img.shields.io/badge/decision%20replay-not%20yet%20executed-red.svg)]()
+[![Official Gate: Blocked (7 Blockers)](https://img.shields.io/badge/official%20eval%20gate-blocked%20(ready%3A%20false)-red.svg)]()
+[![Exploratory Suite: Exp A-Q Verified](https://img.shields.io/badge/exploratory%20suite-Exp%20A--Q%20verified-blue.svg)]()
 
 > [!CAUTION]
 > **Academic research prototype — not a safety system.**
@@ -151,20 +152,20 @@ FAULT_FAIL_SAFE`. Gate state is tracked separately: `OPEN, CLOSING, CLOSED, OPEN
   confirmation frames and never recovers directly to open if a train was present or
   approaching before the fault (RULE_9).
 
-**Frozen v1 vs v2 candidate — read this before citing the policy:**
+**Decision policy evolution (`V1` -> `V2 Candidate` -> `V3 Four-Layer Causal FSM`):**
 
-- `configs/decision_policy_v1.yaml` + `configs/frozen_experiment_v1.yaml` are the
-  **frozen, executed** policy and configuration (thresholds: vision 0.35, audio 0.37;
-  confirm 2 frames; clearance dwell 3.0 s; staleness 2.0 s).
-- `configs/decision_policy_v2_candidate.yaml` (+ `fusion/rules_v2_candidate.py`,
-  `fusion/decision_engine_v2_candidate.py`) is a **research candidate only**:
-  `CANDIDATE_UNDER_RESEARCH_REVIEW_NOT_AUTHORIZED_FOR_DEPLOYMENT`. It is not the default
-  execution path and has **not** been adopted as canonical.
-- **Known v1 defect:** in frozen v1, the approach and departure label sets overlap
-  (`side` and `train` appear in both), so departure confirmation can in principle be
-  satisfied without a genuine `rear` detection. This was documented in the project's own
-  Phase 9 clearance-divergence analysis; the v2 candidate fixes it with unambiguous-label
-  logic. Which policy is canonical is an open researcher decision (see §7).
+- `configs/decision_policy_v1.yaml` + `configs/frozen_experiment_v1.yaml` remain the
+  byte-identical **frozen baseline** policy (`vision 0.35`, `audio 0.37`, `confirm 2 frames`,
+  `clearance dwell 3.0 s`, `staleness 2.0 s`), preserved alongside `V1` (`fusion/rules.py`).
+- `configs/decision_policy_v2_candidate.yaml` (`fusion/rules_v2_candidate.py`) resolved V1's
+  `side`/`train` departure label overlap but still allowed disappearance-based reopening.
+- **`V3 Four-Layer Causal Multimodal FSM` ([`decision_engine_v3_four_layer.py`](src/railway_detection/fusion/decision_engine_v3_four_layer.py), [`rules_v3_four_layer.py`](src/railway_detection/fusion/rules_v3_four_layer.py), [`occupancy.py`](src/railway_detection/fusion/occupancy.py)):**
+  Active exploratory research architecture adding causal snapshot alignment without stale
+  backfill (`allow_stale_detection_backfill=False`), orthogonal container display-rotation
+  normalization (`vision/video.py`), Layer 2 lateral `SideMovementTracker`, strictly
+  non-gating Layer 3 acoustic reinforcement, and `V3_CONSERVATIVE_POSITIVE` departure +
+  `OccupancyState.CLEAR` AND-gate reopening. Official promotion remains fail-closed
+  (`ready: false`) pending human Stage-2.1 ground-truth records.
 
 **Model weights register** (frozen checkpoints live under `experiments/`; `*.pt` files are
 not tracked in Git — see §8):
@@ -177,82 +178,46 @@ not tracked in Git — see §8):
 
 ## 5. Dataset
 
-- **27 physical events** from a **single site** (`crossing_A`, rural Bangladesh):
-  **23 train, 3 no-train, 1 engine-only**.
-- **54 camera source references** (27 front + 27 back); all digests verified against the
-  event inventory. **Two historical duplicate camera references are excluded.**
-- Recordings are **daytime-only**. There is one site, so **no cross-site generalisation**
-  claim is supported, and later protocols prohibit describing these recordings as
-  "held-out crossings."
-- Original recordings are **not published in this repository** (kept local; see §8) —
-  manifests, hashes, and derived evidence are versioned instead.
-- **Annotations are researcher-adopted AI-assisted references.** The researcher confirmed
-  manual verification and adopted the AI-assisted annotations as the working reference
-  (Mission 43 adoption record). They are **not** independently stored human observations,
-  and **canonical ground-truth promotion (Stage 2.1) has not occurred**. The adopted
-  content contains event-level labels and horn status, but **no frame-level bounding
-  boxes, no audio window labels, and no horn offsets** — so detection-level metrics
-  (image AP/mAP, window accuracy) are not computable from it.
-- Historical caution: the legacy Phase-11 event inventory is flagged
-  `INVALID_FABRICATED_APPROVAL` and must never be cited as ground truth.
+- **27 active physical events** (`23 train`, `3 no_train`, `1 engine`) from a **single site**
+  (`crossing_A`, Bangladesh) + `1` excluded duplicate; `54` active `.mov` camera references.
+- **Environmental-class confounding (`100%` coupled in adopted references):** All `23/23`
+  `train_events` are tagged `{lighting: "day", weather: "overcast"}` (`session_20260914_morning`),
+  whereas all `3/3` `no_train_events` and `1/1` `engine_events` are `{lighting: "night", weather: "clear"}`.
+  Cross-site and cross-weather generalization is **not** supported (`"104 rainy images"` is `NOT FOUND`).
+- **Vision V1 (`baler.v1i.yolov8`) & Audio V3 Leakage Remediation ([`vision_audio_leakage_audit.json`](results/dataset_audit/vision_audio_leakage_audit.json)):**
+  - Verified corpus: `3,157` vision manifests (`1,315` unique source images, `3,267` boxes, `0` negative background images);
+    `172` audio split clips (`86` horn segments from `57` stems + `86` ESC-50 negatives).
+  - Active split [`705d388743ea`](data/splits/705d388743ea/split_summary.json) leaked `87.1%` (`411/472`) of `test`
+    from Roboflow `train/` augmentations and split `27/29` (`93.1%`) 10-min timestamp sessions (`447/447` test imgs overlapping `train`);
+    original [`audio/v3/dataset_split.json`](data/splits/audio/v3/dataset_split.json) leaked `5/57` positive YouTube stems (`28/86 = 32.56%`).
+  - Non-destructive clean candidate splits under [`data/splits/vision_v1_session_grouped/`](data/splits/vision_v1_session_grouped/split_summary.json)
+    (`0/29` crossing sessions `<=600 s`, `804` eval aug duplicates excluded) and [`data/splits/audio_v3_stem_grouped/`](data/splits/audio_v3_stem_grouped/split_summary.json)
+    (`0/57` cross-split stems, `60/13/13` balanced) are ready for post-authorization retraining.
+- **Annotations are researcher-adopted AI-assisted references (`7.0.0`) — `0` Stage-2.1 human records exist.**
+  No frame-level bounding boxes or audio window onset timestamps exist in the field video corpus.
+- Historical caution: the legacy Phase-11 event inventory is flagged `INVALID_FABRICATED_APPROVAL`.
 
-## 6. Experimental Status (Mission 43, 2026-11-08)
+## 6. Exploratory Experimental Status (`Exp A` – `Exp Q`, `2026-11-14`)
 
-Mission 43 executed **perception inference and input assembly** over the full cohort.
-It did **not** execute decision replay.
+*(All real-video metrics remain **exploratory** on frozen `pre-db40305` caches evaluated against adopted references; official Phase 12 replay remains fail-closed pending `AUTH-MEDIA-ACCESS.json` and Stage-2.1 reviews.)*
 
-| Experiment | Result |
+| Suite / Experiment | Key Verified Finding & Location |
 |---|---|
-| B0_front (vision, front sources) | 27 sources · 6,613 records · 329 predicted objects |
-| B0_back (vision, back sources) | 27 sources · 6,479 records · 1,020 predicted objects |
-| B1_audio (front embedded audio) | 27 sources · 2,600 windows · 445 positive (frozen threshold 0.37) |
-| B2 input assembly | 27 events · 6,614 frames · 3,897 with paired audio evidence |
-| **B2 decision replay** | **Not executed — 0 decision events, 0 decision frames** |
+| **Perception Cache Extraction (Mission 43)** | `B0_front` (`6,613` records), `B0_back` (`6,479`), `B1_audio` (`2,600` windows), `audio23` max-window `@0.37`: Recall `92.31%`, Precision `54.55%`, Specificity `0.00%`, F1 `0.6857`, ROC-AUC `0.6846`, AP `0.7739`. |
+| **`Exp A–N` V3 Four-Layer Suite** ([`final_research_v2/`](docs/generated/final_research_v2/EXPERIMENTAL_RESULTS.md)) | `23` SHA-256 bit-identical artifacts under [`results/exploratory_v2/`](results/exploratory_v2/MASTER_V2_SUMMARY.json). V3 eliminates `no_train` false closures (`0/3` vs `3/3` stateless union, McNemar `p=0.25`) and `sync11` premature openings (`0/11` vs `4/11` V2, McNemar `p=0.125`); `18/18` fault scenarios pass with `0` unsafe openings and `100%` legal transitions. `pre-db40305` approach trigger rate is `10/23` (`43.48%`, 95% CI `[0.2563, 0.6319]`) due to `-90°` `.mov` rotation and causal filtering. |
+| **`Exp O` Audio Hysteresis & Calibration** ([`exp_o`](results/exploratory_v2/optimization_and_stress/exp_o_audio_calibration_hysteresis.json)) | `no_train` road horns persist `3–9` windows `>=0.37` (`max 0.826`) but `1` window `>=0.75`. `(tau=0.75, k=2)` suppresses `3/3` `no_train` FPs and lifts specificity `0.00 -> 0.90`, `Prec 0.8889`, `F1 0.7273` (`Rec 0.6154`); `T=3.0` temperature scaling lowers ECE `0.2955 -> 0.0709`. |
+| **`Exp P` CPU Edge & Duty Cycle** ([`exp_p`](results/exploratory_v2/optimization_and_stress/exp_p_cpu_edge_benchmark.json)) | Apple M1 CPU (`SYNTHETIC_ONLY`; physical RPi **not tested**): optimizer stripping shrinks Vision `best.pt` `-74.91%` (`24.49 -> 6.15 MB` FP16); `416px` E2E `YOLO.predict` speeds up `2.32×` (`54.66 -> 23.61 ms`, `42.36 FPS`); Audio `log_mel + CNN TS` takes `0.881 ms`; `V3 FSM` takes `0.0391 ms/tick`; event-triggered wakeup reduces daily vision frames `-96.56% to -98.64%`. |
+| **`Exp Q` Weather × Dropout Stress** ([`exp_q`](results/exploratory_v2/optimization_and_stress/exp_q_weather_and_interlocking_stress.json)) | Across `100` synthetic attenuation × burst-drop runs: `0` unsafe openings, `100%` legal transitions, safe obstacle hold (`reopen @ 22.6 s`), and multi-train reopen interrupt (`14.8 s`). Identifies a healthy-empty-frame optical cliff at `alpha=0.35` (`conf=0.308 < 0.35` -> `0%` closure without staleness). |
 
-**Exploratory audio event-label comparison** (Mission 43; frozen max-window rule at 0.37
-against the researcher-adopted horn labels, 23 train events: 13 horn-present,
-10 horn-absent): TP 12, FP 10, FN 1, TN 0 — **precision 54.55%, recall 92.31%,
-F1 0.6857, specificity 0%, accuracy 52.17%, ROC-AUC 0.6846, average precision 0.7739**.
-This is exploratory agreement with adopted event labels — **not** independent-human-GT
-performance and **not** window-level accuracy. Its plain reading is that the frozen audio
-operating point fires on every horn-absent train event in this cohort.
+See [`results/publication_tables/PUBLICATION_TABLES.md`](results/publication_tables/PUBLICATION_TABLES.md), [`docs/generated/EXPERIMENT_RESULTS.md`](docs/generated/EXPERIMENT_RESULTS.md), and [`docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md`](docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md).
 
-**What Mission 43 does not establish:** any vision accuracy (no box reference exists),
-any fusion or state-policy behaviour, premature-opening or missed-train decision
-outcomes, fail-safe behaviour on real data, safety improvement, or generalisation.
+## 7. Governance Status, Limitations and Blockers
 
-Earlier development metrics exist for the perception models on a still-image (Layer A)
-split (e.g., YOLO mAP@0.5 = 0.9946 on 487 test objects). Project audits have confirmed
-that split carried frame-level leakage (`leakage_risk: true`), so those figures are
-**development diagnostics only** and must not be cited as event-level performance.
-
-## 7. Current Limitations and Blockers
-
-- **Decision replay has never executed on original data.** The descriptive replay gate
-  (`src/railway_detection/evaluation/descriptive_exec_gate.py`) refuses execution
-  (`AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED`) because three governance records do not
-  exist: `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json`, a genuine Stage 2.1 promotion
-  receipt (`data/governance/stage21_promotion_receipt.json`), and the canonical
-  protocol-choice record (`data/manifests/phase12_protocol_decision.json`). Three of the
-  five required hash bindings are already computed and verified; the remaining records
-  must be genuine researcher decisions — they cannot be manufactured by tooling.
-- **`premature_opening_window` is undecided**, so the headline premature-opening metric
-  (M4) currently has no operative definition for replay scoring. Historical M4/M5 values
-  were **non-computable** (rear-camera clearance landmark unavailable), **not zero**.
-- **Back/departure camera evidence is absent from the current B2 assembly** (front +
-  audio only), so the rear-confirmation path cannot yet be exercised end-to-end.
-- **Full-cohort dual-camera synchronisation is unresolved** (frozen config:
-  `independent_or_unverified / R04_UNRESOLVED`). Dual-camera exploratory work is
-  authorised only for an 11-event `CALIBRATION_SUPPORTED` subset.
-- **v1 label-overlap defect** (see §4); the v2 fix is an unauthorised candidate.
-- **Left-censoring:** 20 of 23 train recordings began after the train was already
-  approaching, so physical warning lead time / minimum time reserve cannot be estimated
-  from recording starts. The historical 3.6 s figure is an implementation-derived
-  engineering parameter, not a railway standard.
-- **Single site, daytime only** — no cross-site, night, or weather generalisation.
-- **Physical gate actuation and deployment are outside the established research scope.**
-  This is offline, simulation-based research software (package `__init__`: "research
-  software only… must not be connected to live railway infrastructure").
+- **Official Phase 12 Gate (`evaluation status` -> `ready: false`, `7` blockers):** Protocol decision [`phase12_protocol_decision.json`](data/manifests/phase12_protocol_decision.json) (`M4` primary + `v9` sensitivity, `sha256: 6b5edb48...`), [`phase12_r04_scope_decision.json`](data/manifests/phase12_r04_scope_decision.json) (`11` dual / `16` independent, `sha256: f6eabeba...`), and dual authorized reviewers (`authorized_reviewers.json`) are recorded. Remaining blockers (`COHORT_APPROVAL_MISSING`, `EVAL_AUTH_NOT_GRANTED`, `EVENT_SPLIT_DECISION_MISSING`, `MANIFEST_MISSING`, `STAGE21_RECORDS_MISSING`) + absent `data/governance/AUTH-MEDIA-ACCESS.json` keep official Phase 12 execution and raw-media access fail-closed.
+- **Reproducibility CLI (`audit reproducibility`):** Fixed desynchronization in [`audit.py`](src/railway_detection/reproducibility/audit.py) (`protocol_version = PASS`, reducing `UNRESOLVED` `4 -> 3`; `PASS: 7, UNRESOLVED: 3, FAIL: 1 [dependency_lock], NOT_AVAILABLE: 2`).
+- **Prototype Hardware & Timing Gaps:** `0/27` physical side cameras, `0/27` physical occupancy sensors, `0/27` `last_carriage` boxes, `pre-db40305` unrotated caches on `-90°` `.mov` streams, close-range camera placement (`T2` median `~3.6 s` vs `7.6 s` baseline closure budget needing `84–211 m` upstream siting), and unmeasured physical Raspberry Pi hardware (`physical_raspberry_pi_tested = false`).
+- **Discrete Simulation Stepping Note:** `EventSimulationRunner` steps `PhysicalGateModel` at the issuing tick `t` (Convention A, `-0.20 s` vs strict post-tick Convention B).
+- **Simulated Hardware Boundary:** Research simulation software only — never connect to live railway signaling or physical relays.
 
 ## 8. Repository Structure
 
@@ -280,9 +245,9 @@ Train_automation/
 ├── schemas/                   # Data schemas
 ├── docs/                      # Protocols, hazard model, decisions, audits
 │   ├── archive/               # Founding documents (concept, Protocol V2, plans)
-│   └── generated/             # Mission evidence: master_reaudit/, research_results/,
-│                              #   professor_evidence/ (Missions 42-44),
-│                              #   research_recovery/, repository_maintenance/
+│   └── generated/             # Complete audits, V3 reports (`final_research_v2/`),
+│                              #   IEEE manuscript, 13 governance/safety reports,
+│                              #   figures (`fig11`–`fig14`), `master_reaudit/`
 ├── outputs/                   # Local runtime outputs (git-ignored)
 └── scratch/                   # Researcher local workspace (git-ignored, not published)
 ```
@@ -296,7 +261,7 @@ versioned.
 ## 9. Installation and Environment
 
 Verified from `pyproject.toml`: **Python ≥ 3.11** (local validation environment:
-Python 3.11/3.12, macOS/Linux), setuptools src-layout package `railway-detection`.
+Python 3.11.15 on macOS `arm64`), setuptools src-layout package `railway-detection`.
 
 ```bash
 git clone https://github.com/mohammad-sayem-uddin/ai-railway-crossing-safety.git
@@ -322,21 +287,17 @@ Local configuration: copy `.env.example` to `.env` (never commit `.env`). Variab
 
 - **Frozen configuration:** `configs/frozen_experiment_v1.yaml` pins checkpoint paths and
   SHA-256 digests, thresholds, and timing parameters; `configs/decision_policy_v1.yaml`
-  is the frozen policy. The package version is 0.1.0.
-- **Evidence integrity:** mission evidence packages carry manifests and SHA-256 file
-  lists (e.g. `docs/generated/professor_evidence/mission42/PACKAGE_FILES.sha256`) that can
-  be re-verified against the files on disk.
-- **Experiment outputs:** Mission 39–43 manifests, prediction caches (`data/cache/`,
-  `results/experiments/cache/`), and per-mission reports under `docs/generated/` record
-  exactly what was executed, on which inputs, with which frozen configuration.
-- **Tests:** the guarded test programme validates software contracts on synthetic
-  fixtures. Latest full run (Mission 43): **3,815 cases — 3,700 passed, 84 failed,
-  31 errors**. All 115 non-passing cases are triaged as protected-dependency policy
-  exceptions (110 explicit, 5 indirect); the suite must not be described as passing.
-  Run locally with `PYTHONPATH=src pytest` (see `pyproject.toml` for test config).
+  is the frozen V1 policy. The package version is `0.1.0`.
+- **Reproducible Experiment Runners (`exp/four-layer-completion`):**
+  - Exploratory V3 suite (`Exp A–N`, `23` SHA-256 bit-identical artifacts): `PYTHONPATH=src:scripts .venv/bin/python scripts/run_v2_experiments.py`
+  - Leakage audit & session/stem-grouped candidate splits: `PYTHONPATH=src .venv/bin/python scripts/run_leakage_and_split_audit.py`
+  - Acoustic hysteresis, CPU edge profiling & stress (`Exp O–Q`): `PYTHONPATH=src .venv/bin/python scripts/run_optimization_and_robustness_suite.py`
+  - Master CSV/Markdown tables (`results/publication_tables/`): `PYTHONPATH=src .venv/bin/python scripts/generate_master_publication_tables.py`
+  - Governance & audit CLIs: `.venv/bin/python -m railway_detection.cli.main evaluation status` and `audit reproducibility`
+- **Tests:** The guarded test programme (`174` test files; `142` classified `safe_for_synthetic_runner` via `scripts/classify_test_access.py`) validates software contracts, leak-free split invariants, reproducibility fail-closed governance, and V3 FSM invariants. Full suite discovery requires `--import-mode=importlib` (`PYTHONPATH=src:. .venv/bin/python -m pytest tests/ --import-mode=importlib`) due to 4 duplicate test basenames across historical mission directories; pre-existing failures are documented transparently in [`docs/generated/FINAL_INDEPENDENT_REVIEW.md`](docs/generated/FINAL_INDEPENDENT_REVIEW.md).
   **Tests are not experiments:** synthetic-fixture results carry no weight about
   real-data performance.
-- **Permitted experiments:** only executions authorised by a recorded researcher
+- **Permitted experiments:** Only executions authorised by a recorded researcher
   decision and admitted by the repository's governance gates. Do not bypass the gates;
   a refused execution is a research record, not an obstacle to route around.
 
@@ -376,7 +337,6 @@ Local configuration: copy `.env.example` to `.env` (never commit `.env`). Variab
 
 ---
 
-*README rebuilt 2026-11-08 during repository maintenance to describe the project as it
-actually is: architecture and numbers verified against the frozen configurations, the
-source code, and Mission 42/43 evidence. Historical detail removed from this README
-remains available in `docs/` and in git history.*
+*README updated 2026-11-14 (`exp/four-layer-completion`) to reflect verified V3 Four-Layer
+experimental completion (`Exp A–Q`), dataset leakage forensics (`705d388743ea` & Audio V3),
+reproducibility CLI synchronization (`audit.py`), and current fail-closed governance status (`ready: false`, `7` blockers).*

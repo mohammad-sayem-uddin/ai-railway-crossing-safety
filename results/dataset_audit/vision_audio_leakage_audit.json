@@ -1,0 +1,433 @@
+{
+  "audio_v3_original": {
+    "counts_by_split": {
+      "test": {
+        "negative": 13,
+        "positive": 13,
+        "total": 26
+      },
+      "train": {
+        "negative": 60,
+        "positive": 60,
+        "total": 120
+      },
+      "val": {
+        "negative": 13,
+        "positive": 13,
+        "total": 26
+      }
+    },
+    "cross_split_negative_fold_count": 0,
+    "cross_split_negative_folds": {},
+    "cross_split_positive_stem_count": 5,
+    "cross_split_positive_stems": {
+      "19": {
+        "test": 1,
+        "train": 1
+      },
+      "Horn of Bangladesh Train": {
+        "train": 1,
+        "val": 1
+      },
+      "Train horn sound effect \ud83d\ude89\ud83d\ude89\ud83d\ude2d\ud83d\udc94#short #viralvideo#shortsvideo #bangladesh#railway #loco #pilot#reels": {
+        "test": 1,
+        "train": 2,
+        "val": 1
+      },
+      "Train whistle of Bangladesh Railway Broad Gauge locomotives sound 60 61 63 64 & 65": {
+        "train": 4,
+        "val": 1
+      },
+      "Whistle of New EMD Locomotive Broad Gauge & Mitre Gauge Train Engine of Bangladesh Rail 66 30": {
+        "test": 3,
+        "train": 8,
+        "val": 4
+      }
+    },
+    "positive_recording_stem_leakage_fraction": 0.3256,
+    "positive_recordings_in_cross_split_stems": 28,
+    "unique_negative_folds": 5,
+    "unique_positive_stems": 57
+  },
+  "audio_v3_stem_grouped_candidate": {
+    "counts_by_split": {
+      "test": {
+        "negative": 13,
+        "positive": 13,
+        "total": 26
+      },
+      "train": {
+        "negative": 60,
+        "positive": 60,
+        "total": 120
+      },
+      "val": {
+        "negative": 13,
+        "positive": 13,
+        "total": 26
+      }
+    },
+    "cross_split_negative_fold_count": 0,
+    "cross_split_negative_folds": {},
+    "cross_split_positive_stem_count": 0,
+    "cross_split_positive_stems": {},
+    "positive_recording_stem_leakage_fraction": 0.0,
+    "positive_recordings_in_cross_split_stems": 0,
+    "unique_negative_folds": 5,
+    "unique_positive_stems": 57
+  },
+  "raw_media_accessed": false,
+  "schema_version": "dataset-leakage-audit/1.0",
+  "vision_705d388743ea": {
+    "class_boxes_by_split": {
+      "test": {
+        "front": 265,
+        "rear": 88,
+        "side": 134
+      },
+      "train": {
+        "front": 1230,
+        "rear": 512,
+        "side": 555
+      },
+      "val": {
+        "front": 266,
+        "rear": 101,
+        "side": 116
+      }
+    },
+    "multi_split_source_group_count": 0,
+    "rf_origin_by_split": {
+      "test": {
+        "test": 22,
+        "train": 411,
+        "valid": 39
+      },
+      "train": {
+        "test": 86,
+        "train": 1947,
+        "valid": 185
+      },
+      "val": {
+        "test": 23,
+        "train": 405,
+        "valid": 39
+      }
+    },
+    "split_image_counts": {
+      "test": 472,
+      "train": 2218,
+      "val": 467
+    },
+    "temporal_session_sweeps": [
+      {
+        "crossing_timestamped_sessions": 67,
+        "gap_s": 120.0,
+        "test_timestamped_imgs_sharing_session_with_train": 438,
+        "test_timestamped_imgs_total": 447,
+        "timestamped_session_count": 77,
+        "val_timestamped_imgs_sharing_session_with_train": 454,
+        "val_timestamped_imgs_total": 458
+      },
+      {
+        "crossing_timestamped_sessions": 40,
+        "gap_s": 300.0,
+        "test_timestamped_imgs_sharing_session_with_train": 444,
+        "test_timestamped_imgs_total": 447,
+        "timestamped_session_count": 43,
+        "val_timestamped_imgs_sharing_session_with_train": 455,
+        "val_timestamped_imgs_total": 458
+      },
+      {
+        "crossing_timestamped_sessions": 27,
+        "gap_s": 600.0,
+        "test_timestamped_imgs_sharing_session_with_train": 447,
+        "test_timestamped_imgs_total": 447,
+        "timestamped_session_count": 29,
+        "val_timestamped_imgs_sharing_session_with_train": 458,
+        "val_timestamped_imgs_total": 458
+      },
+      {
+        "crossing_timestamped_sessions": 18,
+        "gap_s": 1800.0,
+        "test_timestamped_imgs_sharing_session_with_train": 447,
+        "test_timestamped_imgs_total": 447,
+        "timestamped_session_count": 19,
+        "val_timestamped_imgs_sharing_session_with_train": 458,
+        "val_timestamped_imgs_total": 458
+      },
+      {
+        "crossing_timestamped_sessions": 15,
+        "gap_s": 3600.0,
+        "test_timestamped_imgs_sharing_session_with_train": 447,
+        "test_timestamped_imgs_total": 447,
+        "timestamped_session_count": 16,
+        "val_timestamped_imgs_sharing_session_with_train": 458,
+        "val_timestamped_imgs_total": 458
+      }
+    ],
+    "unique_source_counts": {
+      "test": 198,
+      "train": 920,
+      "val": 197
+    }
+  },
+  "vision_original_roboflow": {
+    "class_boxes_by_split": {
+      "test": {
+        "front": 76,
+        "rear": 30,
+        "side": 30
+      },
+      "train": {
+        "front": 1533,
+        "rear": 624,
+        "side": 705
+      },
+      "val": {
+        "front": 152,
+        "rear": 47,
+        "side": 70
+      }
+    },
+    "multi_split_source_group_count": 0,
+    "rf_origin_by_split": {
+      "test": {
+        "test": 131
+      },
+      "train": {
+        "train": 2763
+      },
+      "val": {
+        "valid": 263
+      }
+    },
+    "split_image_counts": {
+      "test": 131,
+      "train": 2763,
+      "val": 263
+    },
+    "temporal_session_sweeps": [
+      {
+        "crossing_timestamped_sessions": 65,
+        "gap_s": 120.0,
+        "test_timestamped_imgs_sharing_session_with_train": 126,
+        "test_timestamped_imgs_total": 127,
+        "timestamped_session_count": 77,
+        "val_timestamped_imgs_sharing_session_with_train": 256,
+        "val_timestamped_imgs_total": 259
+      },
+      {
+        "crossing_timestamped_sessions": 37,
+        "gap_s": 300.0,
+        "test_timestamped_imgs_sharing_session_with_train": 127,
+        "test_timestamped_imgs_total": 127,
+        "timestamped_session_count": 43,
+        "val_timestamped_imgs_sharing_session_with_train": 257,
+        "val_timestamped_imgs_total": 259
+      },
+      {
+        "crossing_timestamped_sessions": 27,
+        "gap_s": 600.0,
+        "test_timestamped_imgs_sharing_session_with_train": 127,
+        "test_timestamped_imgs_total": 127,
+        "timestamped_session_count": 29,
+        "val_timestamped_imgs_sharing_session_with_train": 257,
+        "val_timestamped_imgs_total": 259
+      },
+      {
+        "crossing_timestamped_sessions": 18,
+        "gap_s": 1800.0,
+        "test_timestamped_imgs_sharing_session_with_train": 127,
+        "test_timestamped_imgs_total": 127,
+        "timestamped_session_count": 19,
+        "val_timestamped_imgs_sharing_session_with_train": 258,
+        "val_timestamped_imgs_total": 259
+      },
+      {
+        "crossing_timestamped_sessions": 15,
+        "gap_s": 3600.0,
+        "test_timestamped_imgs_sharing_session_with_train": 127,
+        "test_timestamped_imgs_total": 127,
+        "timestamped_session_count": 16,
+        "val_timestamped_imgs_sharing_session_with_train": 258,
+        "val_timestamped_imgs_total": 259
+      }
+    ],
+    "unique_source_counts": {
+      "test": 131,
+      "train": 921,
+      "val": 263
+    }
+  },
+  "vision_session_grouped_candidate": {
+    "audit": {
+      "class_boxes_by_split": {
+        "test": {
+          "front": 117,
+          "rear": 82,
+          "side": 51
+        },
+        "train": {
+          "front": 1016,
+          "rear": 388,
+          "side": 445
+        },
+        "val": {
+          "front": 196,
+          "rear": 49,
+          "side": 97
+        }
+      },
+      "multi_split_source_group_count": 0,
+      "rf_origin_by_split": {
+        "test": {
+          "test": 31,
+          "train": 162,
+          "valid": 48
+        },
+        "train": {
+          "test": 68,
+          "train": 1557,
+          "valid": 151
+        },
+        "val": {
+          "test": 32,
+          "train": 240,
+          "valid": 64
+        }
+      },
+      "split_image_counts": {
+        "test": 241,
+        "train": 1776,
+        "val": 336
+      },
+      "temporal_session_sweeps": [
+        {
+          "crossing_timestamped_sessions": 0,
+          "gap_s": 120.0,
+          "test_timestamped_imgs_sharing_session_with_train": 0,
+          "test_timestamped_imgs_total": 241,
+          "timestamped_session_count": 77,
+          "val_timestamped_imgs_sharing_session_with_train": 0,
+          "val_timestamped_imgs_total": 336
+        },
+        {
+          "crossing_timestamped_sessions": 0,
+          "gap_s": 300.0,
+          "test_timestamped_imgs_sharing_session_with_train": 0,
+          "test_timestamped_imgs_total": 241,
+          "timestamped_session_count": 43,
+          "val_timestamped_imgs_sharing_session_with_train": 0,
+          "val_timestamped_imgs_total": 336
+        },
+        {
+          "crossing_timestamped_sessions": 0,
+          "gap_s": 600.0,
+          "test_timestamped_imgs_sharing_session_with_train": 0,
+          "test_timestamped_imgs_total": 241,
+          "timestamped_session_count": 29,
+          "val_timestamped_imgs_sharing_session_with_train": 0,
+          "val_timestamped_imgs_total": 336
+        },
+        {
+          "crossing_timestamped_sessions": 2,
+          "gap_s": 1800.0,
+          "test_timestamped_imgs_sharing_session_with_train": 156,
+          "test_timestamped_imgs_total": 241,
+          "timestamped_session_count": 19,
+          "val_timestamped_imgs_sharing_session_with_train": 81,
+          "val_timestamped_imgs_total": 336
+        },
+        {
+          "crossing_timestamped_sessions": 3,
+          "gap_s": 3600.0,
+          "test_timestamped_imgs_sharing_session_with_train": 156,
+          "test_timestamped_imgs_total": 241,
+          "timestamped_session_count": 16,
+          "val_timestamped_imgs_sharing_session_with_train": 81,
+          "val_timestamped_imgs_total": 336
+        }
+      ],
+      "unique_source_counts": {
+        "test": 241,
+        "train": 738,
+        "val": 336
+      }
+    },
+    "eval_canonical_only": true,
+    "excluded_eval_augmentation_duplicates": 804,
+    "gap_s": 600.0,
+    "schema_version": "vision-session-grouped-split/1.0",
+    "session_assignments": {
+      "session_000": "train",
+      "session_001": "train",
+      "session_002": "train",
+      "session_003": "train",
+      "session_004": "train",
+      "session_005": "val",
+      "session_006": "train",
+      "session_007": "train",
+      "session_008": "train",
+      "session_009": "val",
+      "session_010": "train",
+      "session_011": "test",
+      "session_012": "val",
+      "session_013": "train",
+      "session_014": "train",
+      "session_015": "train",
+      "session_016": "train",
+      "session_017": "train",
+      "session_018": "train",
+      "session_019": "test",
+      "session_020": "train",
+      "session_021": "train",
+      "session_022": "train",
+      "session_023": "train",
+      "session_024": "train",
+      "session_025": "train",
+      "session_026": "train",
+      "session_027": "train",
+      "session_028": "train",
+      "unparsed::source:0f5b46ea-62c5-42a4-9aa8-0d437cda5334-Copy_jpeg": "train",
+      "unparsed::source:10a3c1f8-1b75-4182-8c34-5bb160537f92_jpeg": "train",
+      "unparsed::source:22dee5b2-8fc2-4417-852d-cf2898d3bcba_jpeg": "train",
+      "unparsed::source:4a8dbcfd-e384-4027-b543-91efbea8e991_jpeg": "train",
+      "unparsed::source:532d53a8-38e8-4884-b228-36ef6a818fdd_jpeg": "train",
+      "unparsed::source:6a739632-0ca5-4960-9b45-efe15367ef76_jpeg": "train",
+      "unparsed::source:6da58f7e-b8cf-4441-a255-a5699e3ae1e9_jpeg": "train",
+      "unparsed::source:6e1c390b-0c13-4b8d-bc4b-ddc046715908_jpeg": "train",
+      "unparsed::source:7ab21ff0-0c13-4d3f-8d06-9ec9f5894782_jpeg": "train",
+      "unparsed::source:840815e4-b4e6-4674-9f8c-7e2cabb46c08_jpeg": "train",
+      "unparsed::source:96b49441-9695-4325-be1b-bfc25f30cf17_jpeg": "train",
+      "unparsed::source:cde6b98e-1982-49b5-ad21-10ba8a2460e1_jpeg": "train",
+      "unparsed::source:ed8b10b8-41e0-45fd-960e-9acc93c4b36e_jpeg": "train",
+      "unparsed::source:fad3f995-b1ca-4b07-9dbd-ce2a1dfc4726_jpeg": "train",
+      "unparsed::source:faf5a134-ee31-46d1-a306-aaa104e9092d-1-_jpeg": "train",
+      "unparsed::source:image-10-_png": "train",
+      "unparsed::source:image-24-_png": "train",
+      "unparsed::source:image-31-_png": "train",
+      "unparsed::source:image-31a-_png": "train",
+      "unparsed::source:image-31w-_png": "train",
+      "unparsed::source:image-48-_png": "train",
+      "unparsed::source:image-51-_png": "train",
+      "unparsed::source:image-5111-_png": "train",
+      "unparsed::source:image-59-_png": "train",
+      "unparsed::source:image-61-_png": "train",
+      "unparsed::source:image-77-_png": "train",
+      "unparsed::source:image-78-_png": "train",
+      "unparsed::source:image-8-_png": "train",
+      "unparsed::source:image-81-_png": "train",
+      "unparsed::source:image-9-_png": "train",
+      "unparsed::source:image-90-_png": "train",
+      "unparsed::source:image-90q-_png": "train"
+    },
+    "target_ratios": {
+      "test": 0.15,
+      "train": 0.7,
+      "val": 0.15
+    },
+    "total_manifest_images": 3157,
+    "total_unique_sources": 1315
+  }
+}

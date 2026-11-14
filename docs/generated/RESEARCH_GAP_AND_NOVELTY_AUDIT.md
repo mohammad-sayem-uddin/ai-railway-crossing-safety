@@ -1,0 +1,42 @@
+# Research Gap & Novelty Audit — Multimodal Railway Crossing Protection
+
+**Date:** 2026-11-14  
+**Scope:** Peer-reviewed literature positioning, verified novelty boundaries, and defensible scientific framing for `/Users/sayemuddin/Desktop/Train_automation`.
+
+---
+
+## 1. Peer-Reviewed Literature Survey (Verified Sources)
+
+| Pillar | Reference (Verified Author / Venue / Year) | Identifier / DOI | Core Method & Contribution | Verified Limitations Relative to Uncontrolled Crossings |
+|---|---|---|---|---|
+| **Acoustic Train Horn Detection** | Tran, V.-T., Tsai, W.-H., Furletov, Y., & Gorodnichev, M. (*Sensors*, 2022) | [`10.3390/s22124453`](https://doi.org/10.3390/s22124453) | End-to-end CNN + log-Mel spectrogram audio detection of approaching train horns for rail safety | Evaluates isolated horn audio in controlled benchmark splits; does not address dense mixed road-traffic horns causing false activations if used as an independent gate trigger |
+| **Level-Crossing Deep Vision** | Fayyaz, M. A. B., & Johnson, C. (*Micromachines*, 2020) | [`10.3390/mi11121055`](https://doi.org/10.3390/mi11121055) | CNN/YOLO visual object detection directly at railway level crossings | Focuses on single-view per-frame appearance metrics; omits causal multi-camera closure/departure interlocking and cross-session split leakage checks |
+| **Track Foreign Object Intrusion + Risk** | Ning, S., Guo, R., Guo, P., Xiong, L., & Chen, B. (*IEEE Access*, 2024) | [`10.1109/ACCESS.2024.3504010`](https://doi.org/10.1109/ACCESS.2024.3504010) | Combines track semantic segmentation and YOLO intrusion detection with risk assessment | Targets track intrusion from camera feeds; lacks physical gate kinematics (`OPEN -> CLOSING -> CLOSED -> OPENING`), fail-safe sensor-timeout clamping, and multi-layer audio-visual clearance gating |
+| **Adverse-Weather YOLO** | Liu, W., Ren, G., Yu, R., Guo, S., Zhu, J., & Zhang, L. (*AAAI-22*, 2022) | [`10.1609/aaai.v36i2.20072`](https://doi.org/10.1609/aaai.v36i2.20072) | Image-Adaptive YOLO (IA-YOLO) dynamically tuning enhancement filters for fog/low-light detection | Optimizes per-frame perceptual bounding-box mAP under weather degradation; does not specify system-level fail-safe state retention when confidence decays across consecutive frames |
+| **Synthetic Railway Obstacle Benchmarks** | Guo, Q., & Rambach, J. (*arXiv*, 2025) | [`arXiv:2505.10784`](https://arxiv.org/abs/2505.10784) | SynRailObs synthetic railway obstacle benchmark addressing rare hazard scarcity | Synthetic visual obstacle detection benchmark; does not integrate physical barrier actuation or multimodal acoustic-visual temporal state machines |
+| **Fail-Safe Signalization Modeling** | Durmuş, M. S., Yıldırım, U., Kurşun, A., & Söylemez, M. T. (*IFAC WODES*, 2010) | [`10.3182/20100830-3-CZ-2001.00059`](https://doi.org/10.3182/20100830-3-CZ-2001.00059) | Formal fail-safe level-crossing interlocking modeled via Petri nets aligned with safety engineering | Assumes deterministic discrete track-circuit inputs rather than noisy, dropped, un-genlocked camera/audio AI streams |
+| **Bangladesh Level-Crossing Risk Context** | Ibtihal, S. A. (*Transportation Research Interdisciplinary Perspectives*, 2026); plus Bangladesh Railway safety overview (*J. Eng. Sci.*, 2021) | [`10.1016/j.trip.2026.101840`](https://doi.org/10.1016/j.trip.2026.101840); [`10.3329/jes.v12i1.53102`](https://doi.org/10.3329/jes.v12i1.53102) | Empirical crash occurrence/severity analysis and safety strategy taxonomy for Bangladesh railway level crossings | Establishes high human/unmanned crossing vulnerability in Bangladesh mixed road traffic; highlights need for low-cost retrofittable protection beyond uncoordinated sensors |
+
+---
+
+## 2. Specific Technical & Methodological Gaps Identified in Both Literature and This Repository
+
+1. **Frame-Accuracy vs Safety-FSM Gap:** Existing vision (`Fayyaz & Johnson 2020`, `Ning et al. 2024`) and audio (`Tran et al. 2022`) studies stop at frame/window classification (`mAP`, `F1`), ignoring the **asymmetric safety cost** between closing delays, road-horn nuisance closures, and catastrophic **premature barrier reopening** during sparse camera dropout (`V1/V2` disappearance rules caused `2/11` and `4/11` premature openings on real unsynchronized clips).
+2. **Dataset & Validation Leakage Blindness:** High benchmark YOLO metrics (e.g., `99.46% mAP@50` on Vision V1 `705d388743ea`) frequently stem from ungrouped burst screenshots (`93.1%` 10-minute session crossing and `87.1%` Roboflow train-augmented overlap in test) and segment-level positive audio splitting (`5/57` unique YouTube horn stems [`28/86 = 32.56%` of positive clips] crossing splits), masking severe domain shift in deployed roadside conditions.
+3. **Asymmetric Role of Acoustics in Mixed Developing-Corridor Traffic:** In South Asian crossings (buses, trucks, auto-rickshaws using loud air horns), high acoustic recall (`92.31%`) coincides with `0%` field specificity (`10/10` FP on absent-horn train clips and `0.800–0.826` max score on train-free traffic clips). Literature lacks formalized **non-closure / non-clearance acoustic invariants** (audio can reinforce dwell/hold, never open or solely trigger barrier closure).
+4. **Un-Genlocked Multi-View Geometry & Missing Physical Modalities:** Real low-cost installations suffer container display-matrix rotation mismatches (`90°/-90°`), asynchronous drift between front and back cameras, zero dedicated occupancy hardware in early video trials, and zero `last_carriage` annotations—requiring explicit `UNKNOWN/MISSING/CONTRADICTORY` fail-closed semantics rather than silent optimistic fallback.
+5. **Edge Compute Feasibility (`24/7` vs Event-Triggered):** Continuous dual-stream CPU inference on embedded ARM SBCs (Raspberry Pi class) is thermally and compute-constrained; published rail-crossing YOLO proposals rarely measure stripped weights, TorchScript/INT8 speedups, RSS budgets, and audio/vibration-gated vision duty cycling side by side.
+
+---
+
+## 3. Defensible Novelty Claims vs Non-Overclaimed Scope
+
+### Defensible Contributions Supported by Repository Evidence
+1. **Four-Layer Asymmetric Multimodal Safety State Machine (`V3`, 11 states):** Strict architectural separation between Layer 1 independent front approach confirmation, Layer 2 side temporal persistence (`SideMovementTracker`: `MOVING/STOPPED/SINGLE_FRAME/UNOBSERVED`), Layer 3 **support-only** acoustic horn reinforcement, Layer 4 conservative positive rear/tail departure (`CONSERVATIVE_POSITIVE` vs `GUARDED_DISAPPEARANCE`), and dedicated `OccupancyVerifier` (`OCCUPIED/CLEAR/UNKNOWN/MISSING/CONTRADICTORY`) gating physical [`PhysicalGateModel`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/simulation/gate_model.py) kinematics.
+2. **Causal Evidence Collection Without Stale Backfill + Display-Rotation Hardening:** Single-consumption snapshot alignment (`allow_stale_detection_backfill=False`) preventing phantom confirmations across camera stalls, coupled with fail-closed orthogonal display-rotation normalization across PyAV/OpenCV and real CPU `YOLOv8n`.
+3. **Forensic Data-Integrity & Leakage-Free Split Methodology:** Systematic quantification of timestamped burst-session leakage (`93.1%` session crossing, `87.1%` augmentation leakage in Vision V1) and multi-segment YouTube stem leakage in Audio V3, paired with constructive non-overlapping split generators.
+4. **Reproducible Adversarial Fault-Injection, Acoustic Hysteresis, & Edge Profiling Framework:** Paired causal ablation across `18` fault scenarios (`0` unsafe openings, `100%` legal transitions), acoustic hysteresis analysis proving structural road-horn separation limits, and empirical CPU stage-latency/RSS/quantization & duty-cycle modeling.
+
+### Explicitly Disclaimed (Do NOT Overclaim)
+- **No claim of SOTA detection accuracy or live crossing certification:** Stage-2.1 human ground truth has `0` records (`blocker_count: 7`), `AUTH-MEDIA-ACCESS.json` is absent (real-data caches reflect pre-rotation-fix extraction), `0/27` real events possess physical occupancy or side-camera hardware, and `0` experiments ran on physical Raspberry Pi hardware.
+- **No claim that acoustic thresholding/hysteresis solves road-horn confusion:** As measured in `audio23` + `no_train` controls, road horns sustain `11–16` windows above `0.37` (up to `0.826`), proving supervised road-vs-train horn separation—not mere heuristic smoothing—is required for positive specificity.
