@@ -1,11 +1,22 @@
-scenario,fault_injected,engine,expected_behaviour,observed_behaviour,result,evidence
-S3a,back camera unavailable during TRAIN_DEPARTING,v1_frozen,gate stays CLOSED; no clearance completes,gate CLOSED throughout; no CROSSING_CLEAR (REAR_CONFIRMED had been reached from ambiguous labels before the failure at tick 29),PASS,m3_synthetic_battery/2 summary + trace_S3a_v1_frozen.jsonl
-S3a,back camera unavailable during TRAIN_DEPARTING,v2_candidate,gate stays CLOSED; no clearance; no departure confirmation from a down camera,gate CLOSED throughout; no CROSSING_CLEAR; no REAR_CONFIRMED from the down source,PASS,m3_synthetic_battery/2 summary + trace_S3a_v2_candidate.jsonl
-S3b,all vision lost while active,v1_frozen,FAULT_FAIL_SAFE with gate CLOSED,FAULT_FAIL_SAFE reached; final gate CLOSED,PASS,m3_synthetic_battery/2 summary
-S3b,all vision lost while active,v2_candidate,FAULT_FAIL_SAFE with gate CLOSED,FAULT_FAIL_SAFE reached; final gate CLOSED,PASS,m3_synthetic_battery/2 summary
-S4,back source goes silent (absent) during clearance dwell,v2_candidate,stale departure source aborts clearance (RULE_5) to FAULT_FAIL_SAFE,RULE_5_STALE_SOURCE_ABORT fired; FAULT_FAIL_SAFE reached; no CROSSING_CLEAR,PASS,m3_synthetic_battery/2 summary + trace_S4_v2_candidate.jsonl
-S4,back source goes silent (absent) during clearance dwell,v1_frozen,stale-abort documented as unreachable in practice: RULE_7 ejects v1 from REAR_CONFIRMED within a tick whenever approach labels persist; when evidence stops v1 traps in CROSSING_OCCUPIED,no FAULT_FAIL_SAFE; no CROSSING_CLEAR; final state CROSSING_OCCUPIED with gate CLOSED (fail-safe but non-completing),PASS (documented behaviour),m3_synthetic_battery/2 summary + trace_S4_v1_frozen.jsonl
-S7a,vision fault during active phase then clean recovery,v1_frozen,recovery never goes directly to IDLE/OPEN,post-fault states FAULT_FAIL_SAFE then TRAIN_PRESENT; gate never OPEN,PASS,m3_synthetic_battery/2 summary
-S7a,vision fault during active phase then clean recovery,v2_candidate,recovery never goes directly to IDLE/OPEN,post-fault states FAULT_FAIL_SAFE then TRAIN_PRESENT; gate never OPEN,PASS,m3_synthetic_battery/2 summary
-S7b,vision fault during IDLE then clean recovery,v1_frozen,IDLE-origin fault may recover to IDLE,final state IDLE,PASS,m3_synthetic_battery/2 summary
-S7b,vision fault during IDLE then clean recovery,v2_candidate,IDLE-origin fault may recover to IDLE,final state IDLE,PASS,m3_synthetic_battery/2 summary
+group,scenario,runs_n,is_constructed_perturbation,fault_occurred_n,direct_open_from_fault_n,rejected_step_total,zero_protection_n,m4_premature_n,m4_evaluable_n,false_alarm_n,rule4_clamp_total,rule7_interrupts_total,rule9_recovery_total,mean_closed_duration_s,mean_blocked_fraction,evaluation_basis
+EXP-G,G1_front_absent_all,11,False,0,0,0,3,4,8,0,0,6,0,19.0,0.3159,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-G,G2_back_absent_all,11,False,0,0,0,4,4,5,0,0,1,0,11.8364,0.2366,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-G,G3_audio_absent_all,11,False,0,0,0,2,7,9,0,0,7,0,20.9091,0.3519,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-G,G4_dual_vision_dropout_mid,11,True,11,0,0,0,9,10,0,10,7,22,23.1091,0.3805,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-G,G5_idle_vision_dropout_confirm2,3,True,3,0,0,0,0,0,3,3,0,6,9.7333,0.4709,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-H,H1_conflicting_front_and_rear,11,True,0,0,0,0,9,10,0,0,21,0,44.6364,0.645,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-H,H2_subthreshold_vision_cap_034,11,True,0,0,0,11,0,0,0,0,0,0,0.0,0.0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-H,H3_audio_fp_burst_in_idle,6,True,0,0,0,1,0,0,5,0,0,0,5.4,0.2754,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I1_CAMERA_1_DROPOUT,11,True,0,0,0,2,7,9,0,0,6,0,21.9636,0.3639,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I2_CAMERA_2_DROPOUT,11,True,0,0,0,2,7,9,0,0,6,0,22.2909,0.3729,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I3_DUAL_CAMERA_DROPOUT,11,True,11,0,0,0,9,10,0,10,7,22,23.1091,0.3805,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I4_AUDIO_DROPOUT,11,True,0,0,0,2,7,9,0,0,7,0,20.9091,0.3519,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I5_STALE_TIMESTAMPS_CAM1,11,True,0,0,0,2,7,9,0,0,7,0,22.2364,0.3719,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I6_STALE_TIMESTAMPS_CAM2,11,True,0,0,0,2,7,9,0,0,7,0,22.2364,0.3719,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I7_OUT_OF_ORDER_FRAMES,11,True,11,0,11,2,7,9,0,0,7,0,22.2364,0.372,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I8_DROPPED_FRAMES_WINDOW,11,True,0,0,0,2,6,9,0,0,7,0,19.7091,0.3255,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I9_DROPPED_FRAMES_30PCT_SEED42,11,True,0,0,0,3,5,8,0,0,4,0,23.7636,0.3733,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-I,I10_FALSE_DETECTION_1TICK,6,True,0,0,0,4,0,0,2,0,0,0,2.3667,0.0974,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-K,K1_idle_fault_and_recovery,3,True,3,0,0,0,0,0,3,3,0,6,7.3333,0.3384,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-K,K2_active_fault_and_recovery,11,True,11,0,0,0,10,10,0,11,7,21,25.6,0.423,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+EXP-K,K3_constructed_multi_train_interrupt,8,True,0,0,0,0,0,0,0,0,9,0,16.475,0.4734,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.

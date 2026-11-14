@@ -1,0 +1,1110 @@
+{
+  "ablation_rows": [
+    {
+      "ablation_factor": "Front vision only (V2)",
+      "m4_evaluable_n": 5,
+      "m4_never_protected_n": 1,
+      "m4_premature_ci95": "[0.3755, 0.9638]",
+      "m4_premature_n": 4,
+      "m4_premature_rate": 0.8,
+      "mean_blocked_fraction": 0.2179,
+      "mean_closed_conv_a_s": 10.7091,
+      "mean_closed_conv_b_s": 10.6364,
+      "mean_transitions": 5.8182,
+      "mean_warning_lead_s": 0.4286,
+      "missed_train_ci95": "[0.7225, 1.0000]",
+      "missed_train_evaluable_n": 10,
+      "missed_train_n": 10,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": null,
+      "no_train_false_alarm_episodes": null,
+      "no_train_false_alarm_n": null,
+      "reached_clear_n": 4,
+      "run_label": "B0__v2",
+      "scope": "11_sync_train",
+      "train_n": 11,
+      "zero_protection_ci95": "[0.1517, 0.6462]",
+      "zero_protection_n": 4,
+      "zero_protection_rate": 0.3636
+    },
+    {
+      "ablation_factor": "B2: Front + Back calibrated vision (V2)",
+      "m4_evaluable_n": 9,
+      "m4_never_protected_n": 1,
+      "m4_premature_ci95": "[0.4526, 0.9368]",
+      "m4_premature_n": 7,
+      "m4_premature_rate": 0.7778,
+      "mean_blocked_fraction": 0.3519,
+      "mean_closed_conv_a_s": 20.9091,
+      "mean_closed_conv_b_s": 20.8182,
+      "mean_transitions": 13.8182,
+      "mean_warning_lead_s": 0.3333,
+      "missed_train_ci95": "[0.7225, 1.0000]",
+      "missed_train_evaluable_n": 10,
+      "missed_train_n": 10,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": null,
+      "no_train_false_alarm_episodes": null,
+      "no_train_false_alarm_n": null,
+      "reached_clear_n": 8,
+      "run_label": "DUAL_VISION__v2",
+      "scope": "11_sync_train",
+      "train_n": 11,
+      "zero_protection_ci95": "[0.0514, 0.4770]",
+      "zero_protection_n": 2,
+      "zero_protection_rate": 0.1818
+    },
+    {
+      "ablation_factor": "B4: Front vision + front audio (V2)",
+      "m4_evaluable_n": 5,
+      "m4_never_protected_n": 1,
+      "m4_premature_ci95": "[0.3755, 0.9638]",
+      "m4_premature_n": 4,
+      "m4_premature_rate": 0.8,
+      "mean_blocked_fraction": 0.2366,
+      "mean_closed_conv_a_s": 11.8364,
+      "mean_closed_conv_b_s": 11.7455,
+      "mean_transitions": 5.7273,
+      "mean_warning_lead_s": 0.4286,
+      "missed_train_ci95": "[0.7225, 1.0000]",
+      "missed_train_evaluable_n": 10,
+      "missed_train_n": 10,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": null,
+      "no_train_false_alarm_episodes": null,
+      "no_train_false_alarm_n": null,
+      "reached_clear_n": 4,
+      "run_label": "FRONT_AUDIO__v2",
+      "scope": "11_sync_train",
+      "train_n": 11,
+      "zero_protection_ci95": "[0.1517, 0.6462]",
+      "zero_protection_n": 4,
+      "zero_protection_rate": 0.3636
+    },
+    {
+      "ablation_factor": "B7: Full dual vision + audio (V2 Primary)",
+      "m4_evaluable_n": 9,
+      "m4_never_protected_n": 1,
+      "m4_premature_ci95": "[0.4526, 0.9368]",
+      "m4_premature_n": 7,
+      "m4_premature_rate": 0.7778,
+      "mean_blocked_fraction": 0.3719,
+      "mean_closed_conv_a_s": 22.2364,
+      "mean_closed_conv_b_s": 22.1455,
+      "mean_transitions": 13.7273,
+      "mean_warning_lead_s": 0.3333,
+      "missed_train_ci95": "[0.7225, 1.0000]",
+      "missed_train_evaluable_n": 10,
+      "missed_train_n": 10,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": null,
+      "no_train_false_alarm_episodes": null,
+      "no_train_false_alarm_n": null,
+      "reached_clear_n": 8,
+      "run_label": "DUAL_VISION_AUDIO__v2",
+      "scope": "11_sync_train",
+      "train_n": 11,
+      "zero_protection_ci95": "[0.0514, 0.4770]",
+      "zero_protection_n": 2,
+      "zero_protection_rate": 0.1818
+    },
+    {
+      "ablation_factor": "B7 baseline: Full dual vision + audio (Frozen V1)",
+      "m4_evaluable_n": 8,
+      "m4_never_protected_n": 2,
+      "m4_premature_ci95": "[0.2152, 0.7848]",
+      "m4_premature_n": 4,
+      "m4_premature_rate": 0.5,
+      "mean_blocked_fraction": 0.4017,
+      "mean_closed_conv_a_s": 23.8182,
+      "mean_closed_conv_b_s": 23.7091,
+      "mean_transitions": 12.6364,
+      "mean_warning_lead_s": 0.375,
+      "missed_train_ci95": "[0.7225, 1.0000]",
+      "missed_train_evaluable_n": 10,
+      "missed_train_n": 10,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": null,
+      "no_train_false_alarm_episodes": null,
+      "no_train_false_alarm_n": null,
+      "reached_clear_n": 4,
+      "run_label": "DUAL_VISION_AUDIO__v1",
+      "scope": "11_sync_train",
+      "train_n": 11,
+      "zero_protection_ci95": "[0.0975, 0.5656]",
+      "zero_protection_n": 3,
+      "zero_protection_rate": 0.2727
+    },
+    {
+      "ablation_factor": "EXP-E: Stateless vision-trigger threshold (RULE_2)",
+      "m4_evaluable_n": 1,
+      "m4_never_protected_n": 9,
+      "m4_premature_ci95": "[0.2065, 1.0000]",
+      "m4_premature_n": 1,
+      "m4_premature_rate": 1.0,
+      "mean_blocked_fraction": 0.05,
+      "mean_closed_conv_a_s": 1.7091,
+      "mean_closed_conv_b_s": 1.7091,
+      "mean_transitions": 8.5455,
+      "mean_warning_lead_s": null,
+      "missed_train_ci95": "[0.7225, 1.0000]",
+      "missed_train_evaluable_n": 10,
+      "missed_train_n": 10,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": null,
+      "no_train_false_alarm_episodes": null,
+      "no_train_false_alarm_n": null,
+      "reached_clear_n": 0,
+      "run_label": "DUAL_VISION_AUDIO__stateless_rule2",
+      "scope": "11_sync_train",
+      "train_n": 11,
+      "zero_protection_ci95": "[0.6226, 0.9838]",
+      "zero_protection_n": 10,
+      "zero_protection_rate": 0.9091
+    },
+    {
+      "ablation_factor": "EXP-E: Stateless audio-or-vision union threshold",
+      "m4_evaluable_n": 7,
+      "m4_never_protected_n": 3,
+      "m4_premature_ci95": "[0.6457, 1.0000]",
+      "m4_premature_n": 7,
+      "m4_premature_rate": 1.0,
+      "mean_blocked_fraction": 0.1848,
+      "mean_closed_conv_a_s": 12.9818,
+      "mean_closed_conv_b_s": 12.9818,
+      "mean_transitions": 26.1818,
+      "mean_warning_lead_s": null,
+      "missed_train_ci95": "[0.5958, 0.9821]",
+      "missed_train_evaluable_n": 10,
+      "missed_train_n": 9,
+      "missed_train_rate": 0.9,
+      "no_train_blocked_s": null,
+      "no_train_false_alarm_episodes": null,
+      "no_train_false_alarm_n": null,
+      "reached_clear_n": 0,
+      "run_label": "DUAL_VISION_AUDIO__stateless_union",
+      "scope": "11_sync_train",
+      "train_n": 11,
+      "zero_protection_ci95": "[0.0975, 0.5656]",
+      "zero_protection_n": 3,
+      "zero_protection_rate": 0.2727
+    },
+    {
+      "ablation_factor": "Front vision only (V2)",
+      "m4_evaluable_n": 5,
+      "m4_never_protected_n": 1,
+      "m4_premature_ci95": "[0.3755, 0.9638]",
+      "m4_premature_n": 4,
+      "m4_premature_rate": 0.8,
+      "mean_blocked_fraction": 0.391,
+      "mean_closed_conv_a_s": 18.9043,
+      "mean_closed_conv_b_s": 18.8174,
+      "mean_transitions": 7.087,
+      "mean_warning_lead_s": 0.725,
+      "missed_train_ci95": "[0.8513, 1.0000]",
+      "missed_train_evaluable_n": 22,
+      "missed_train_n": 22,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": 14.2,
+      "no_train_false_alarm_episodes": 2,
+      "no_train_false_alarm_n": 2,
+      "reached_clear_n": 10,
+      "run_label": "B0__v2",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.1560, 0.5087]",
+      "zero_protection_n": 7,
+      "zero_protection_rate": 0.3043
+    },
+    {
+      "ablation_factor": "Front vision only (Frozen V1)",
+      "m4_evaluable_n": 0,
+      "m4_never_protected_n": 2,
+      "m4_premature_ci95": "N/A",
+      "m4_premature_n": 0,
+      "m4_premature_rate": null,
+      "mean_blocked_fraction": 0.4141,
+      "mean_closed_conv_a_s": 20.1217,
+      "mean_closed_conv_b_s": 20.0261,
+      "mean_transitions": 14.3913,
+      "mean_warning_lead_s": 0.8923,
+      "missed_train_ci95": "[0.8513, 1.0000]",
+      "missed_train_evaluable_n": 22,
+      "missed_train_n": 22,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": 14.2,
+      "no_train_false_alarm_episodes": 2,
+      "no_train_false_alarm_n": 2,
+      "reached_clear_n": 2,
+      "run_label": "B0__v1",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.2563, 0.6319]",
+      "zero_protection_n": 10,
+      "zero_protection_rate": 0.4348
+    },
+    {
+      "ablation_factor": "Front vision only (Stateless)",
+      "m4_evaluable_n": 0,
+      "m4_never_protected_n": 2,
+      "m4_premature_ci95": "N/A",
+      "m4_premature_n": 0,
+      "m4_premature_rate": null,
+      "mean_blocked_fraction": 0.0585,
+      "mean_closed_conv_a_s": 2.4174,
+      "mean_closed_conv_b_s": 2.4174,
+      "mean_transitions": 4.913,
+      "mean_warning_lead_s": null,
+      "missed_train_ci95": "[0.7820, 0.9919]",
+      "missed_train_evaluable_n": 22,
+      "missed_train_n": 21,
+      "missed_train_rate": 0.9545,
+      "no_train_blocked_s": 0.0,
+      "no_train_false_alarm_episodes": 2,
+      "no_train_false_alarm_n": 0,
+      "reached_clear_n": 0,
+      "run_label": "B0__stateless_rule2",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.6787, 0.9546]",
+      "zero_protection_n": 20,
+      "zero_protection_rate": 0.8696
+    },
+    {
+      "ablation_factor": "Back vision only on local back clock (V2)",
+      "m4_evaluable_n": 16,
+      "m4_never_protected_n": 6,
+      "m4_premature_ci95": "[0.1848, 0.6136]",
+      "m4_premature_n": 6,
+      "m4_premature_rate": 0.375,
+      "mean_blocked_fraction": 0.3866,
+      "mean_closed_conv_a_s": 20.2087,
+      "mean_closed_conv_b_s": 20.087,
+      "mean_transitions": 7.2609,
+      "mean_warning_lead_s": null,
+      "missed_train_ci95": "N/A",
+      "missed_train_evaluable_n": 0,
+      "missed_train_n": null,
+      "missed_train_rate": null,
+      "no_train_blocked_s": 36.0,
+      "no_train_false_alarm_episodes": 2,
+      "no_train_false_alarm_n": 2,
+      "reached_clear_n": 6,
+      "run_label": "BACK_VISION__v2",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.1560, 0.5087]",
+      "zero_protection_n": 7,
+      "zero_protection_rate": 0.3043
+    },
+    {
+      "ablation_factor": "Back vision only on local back clock (Frozen V1)",
+      "m4_evaluable_n": 15,
+      "m4_never_protected_n": 7,
+      "m4_premature_ci95": "[0.0119, 0.2982]",
+      "m4_premature_n": 1,
+      "m4_premature_rate": 0.0667,
+      "mean_blocked_fraction": 0.4061,
+      "mean_closed_conv_a_s": 22.1478,
+      "mean_closed_conv_b_s": 22.0174,
+      "mean_transitions": 31.1304,
+      "mean_warning_lead_s": null,
+      "missed_train_ci95": "N/A",
+      "missed_train_evaluable_n": 0,
+      "missed_train_n": null,
+      "missed_train_rate": null,
+      "no_train_blocked_s": 36.0,
+      "no_train_false_alarm_episodes": 2,
+      "no_train_false_alarm_n": 2,
+      "reached_clear_n": 1,
+      "run_label": "BACK_VISION__v1",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.1881, 0.5511]",
+      "zero_protection_n": 8,
+      "zero_protection_rate": 0.3478
+    },
+    {
+      "ablation_factor": "Audio only (V2, RULE_2 non-actuation check)",
+      "m4_evaluable_n": 0,
+      "m4_never_protected_n": 0,
+      "m4_premature_ci95": "N/A",
+      "m4_premature_n": 0,
+      "m4_premature_rate": null,
+      "mean_blocked_fraction": 0.0,
+      "mean_closed_conv_a_s": 0.0,
+      "mean_closed_conv_b_s": 0.0,
+      "mean_transitions": 0.0,
+      "mean_warning_lead_s": null,
+      "missed_train_ci95": "[0.8513, 1.0000]",
+      "missed_train_evaluable_n": 22,
+      "missed_train_n": 22,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": 0.0,
+      "no_train_false_alarm_episodes": 0,
+      "no_train_false_alarm_n": 0,
+      "reached_clear_n": 0,
+      "run_label": "AUDIO_ONLY__v2",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.8569, 1.0000]",
+      "zero_protection_n": 23,
+      "zero_protection_rate": 1.0
+    },
+    {
+      "ablation_factor": "Front vision + front audio (V2)",
+      "m4_evaluable_n": 5,
+      "m4_never_protected_n": 1,
+      "m4_premature_ci95": "[0.3755, 0.9638]",
+      "m4_premature_n": 4,
+      "m4_premature_rate": 0.8,
+      "mean_blocked_fraction": 0.4048,
+      "mean_closed_conv_a_s": 19.687,
+      "mean_closed_conv_b_s": 19.5913,
+      "mean_transitions": 7.0,
+      "mean_warning_lead_s": 0.725,
+      "missed_train_ci95": "[0.8513, 1.0000]",
+      "missed_train_evaluable_n": 22,
+      "missed_train_n": 22,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": 14.2,
+      "no_train_false_alarm_episodes": 2,
+      "no_train_false_alarm_n": 2,
+      "reached_clear_n": 10,
+      "run_label": "FRONT_AUDIO__v2",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.1560, 0.5087]",
+      "zero_protection_n": 7,
+      "zero_protection_rate": 0.3043
+    },
+    {
+      "ablation_factor": "Front vision + front audio (Frozen V1)",
+      "m4_evaluable_n": 0,
+      "m4_never_protected_n": 2,
+      "m4_premature_ci95": "N/A",
+      "m4_premature_n": 0,
+      "m4_premature_rate": null,
+      "mean_blocked_fraction": 0.4149,
+      "mean_closed_conv_a_s": 20.1652,
+      "mean_closed_conv_b_s": 20.0696,
+      "mean_transitions": 14.3913,
+      "mean_warning_lead_s": 0.8923,
+      "missed_train_ci95": "[0.8513, 1.0000]",
+      "missed_train_evaluable_n": 22,
+      "missed_train_n": 22,
+      "missed_train_rate": 1.0,
+      "no_train_blocked_s": 14.2,
+      "no_train_false_alarm_episodes": 2,
+      "no_train_false_alarm_n": 2,
+      "reached_clear_n": 2,
+      "run_label": "FRONT_AUDIO__v1",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.2563, 0.6319]",
+      "zero_protection_n": 10,
+      "zero_protection_rate": 0.4348
+    },
+    {
+      "ablation_factor": "Front + audio (Stateless RULE_2)",
+      "m4_evaluable_n": 0,
+      "m4_never_protected_n": 2,
+      "m4_premature_ci95": "N/A",
+      "m4_premature_n": 0,
+      "m4_premature_rate": null,
+      "mean_blocked_fraction": 0.0585,
+      "mean_closed_conv_a_s": 2.4174,
+      "mean_closed_conv_b_s": 2.4174,
+      "mean_transitions": 4.913,
+      "mean_warning_lead_s": null,
+      "missed_train_ci95": "[0.7820, 0.9919]",
+      "missed_train_evaluable_n": 22,
+      "missed_train_n": 21,
+      "missed_train_rate": 0.9545,
+      "no_train_blocked_s": 0.0,
+      "no_train_false_alarm_episodes": 2,
+      "no_train_false_alarm_n": 0,
+      "reached_clear_n": 0,
+      "run_label": "FRONT_AUDIO__stateless_rule2",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.6787, 0.9546]",
+      "zero_protection_n": 20,
+      "zero_protection_rate": 0.8696
+    },
+    {
+      "ablation_factor": "Front + audio (Stateless OR-union)",
+      "m4_evaluable_n": 6,
+      "m4_never_protected_n": 1,
+      "m4_premature_ci95": "[0.6097, 1.0000]",
+      "m4_premature_n": 6,
+      "m4_premature_rate": 1.0,
+      "mean_blocked_fraction": 0.1505,
+      "mean_closed_conv_a_s": 9.1652,
+      "mean_closed_conv_b_s": 9.1565,
+      "mean_transitions": 17.6522,
+      "mean_warning_lead_s": null,
+      "missed_train_ci95": "[0.6667, 0.9525]",
+      "missed_train_evaluable_n": 22,
+      "missed_train_n": 19,
+      "missed_train_rate": 0.8636,
+      "no_train_blocked_s": 13.8,
+      "no_train_false_alarm_episodes": 16,
+      "no_train_false_alarm_n": 3,
+      "reached_clear_n": 0,
+      "run_label": "FRONT_AUDIO__stateless_union",
+      "scope": "23_independent_train_+_3_no_train",
+      "train_n": 23,
+      "zero_protection_ci95": "[0.2216, 0.5921]",
+      "zero_protection_n": 9,
+      "zero_protection_rate": 0.3913
+    }
+  ],
+  "exploratory_label": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "paired_contrasts": [
+    {
+      "arm_a": "B0__v2",
+      "arm_b": "DUAL_VISION_AUDIO__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 10,
+          "evaluable_n": 10,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 1,
+          "both_true": 4,
+          "evaluable_n": 5,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_005",
+            "train_events/event_009",
+            "train_events/event_012",
+            "train_events/event_017"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 4,
+          "b_clear_a_not_ids": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_011",
+            "train_events/event_017"
+          ],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.125
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 2,
+          "a_zero_b_prot_ids": [
+            "train_events/event_012",
+            "train_events/event_017"
+          ],
+          "b_zero_a_prot": 0,
+          "b_zero_a_prot_ids": [],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.5
+        }
+      },
+      "contrast_name": "Primary_Q1_B0_vs_B7_sync11",
+      "mean_closed_duration_delta_b_minus_a_s": 11.5273,
+      "mean_transition_delta_b_minus_a": 7.9091,
+      "paired_events_n": 11,
+      "research_question": "Does synchronized two-camera + audio + V2 policy change outcomes vs front-only B0?"
+    },
+    {
+      "arm_a": "B0__v2",
+      "arm_b": "DUAL_VISION__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 10,
+          "evaluable_n": 10,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 1,
+          "both_true": 4,
+          "evaluable_n": 5,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_005",
+            "train_events/event_009",
+            "train_events/event_012",
+            "train_events/event_017"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 4,
+          "b_clear_a_not_ids": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_011",
+            "train_events/event_017"
+          ],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.125
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 2,
+          "a_zero_b_prot_ids": [
+            "train_events/event_012",
+            "train_events/event_017"
+          ],
+          "b_zero_a_prot": 0,
+          "b_zero_a_prot_ids": [],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.5
+        }
+      },
+      "contrast_name": "Vision_only_B0_vs_B2_DualVision_sync11",
+      "mean_closed_duration_delta_b_minus_a_s": 10.2,
+      "mean_transition_delta_b_minus_a": 8.0,
+      "paired_events_n": 11,
+      "research_question": "Isolated contribution of calibrated back camera (vision-only) on 11 sync events."
+    },
+    {
+      "arm_a": "DUAL_VISION__v2",
+      "arm_b": "DUAL_VISION_AUDIO__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 10,
+          "evaluable_n": 10,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 2,
+          "both_true": 7,
+          "evaluable_n": 9,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005",
+            "train_events/event_009"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 0,
+          "b_clear_a_not_ids": [],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 1.0
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 0,
+          "a_zero_b_prot_ids": [],
+          "b_zero_a_prot": 0,
+          "b_zero_a_prot_ids": [],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 1.0
+        }
+      },
+      "contrast_name": "Audio_contribution_DualVision_vs_DualVisionAudio_sync11",
+      "mean_closed_duration_delta_b_minus_a_s": 1.3273,
+      "mean_transition_delta_b_minus_a": -0.0909,
+      "paired_events_n": 11,
+      "research_question": "Isolated contribution of front audio on calibrated dual-camera system (11 sync events)."
+    },
+    {
+      "arm_a": "FRONT_AUDIO__v2",
+      "arm_b": "DUAL_VISION_AUDIO__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 10,
+          "evaluable_n": 10,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 1,
+          "both_true": 4,
+          "evaluable_n": 5,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_005",
+            "train_events/event_009",
+            "train_events/event_012",
+            "train_events/event_017"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 4,
+          "b_clear_a_not_ids": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_011",
+            "train_events/event_017"
+          ],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.125
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 2,
+          "a_zero_b_prot_ids": [
+            "train_events/event_012",
+            "train_events/event_017"
+          ],
+          "b_zero_a_prot": 0,
+          "b_zero_a_prot_ids": [],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.5
+        }
+      },
+      "contrast_name": "BackCamera_on_Audio_B4_vs_B7_sync11",
+      "mean_closed_duration_delta_b_minus_a_s": 10.4,
+      "mean_transition_delta_b_minus_a": 8.0,
+      "paired_events_n": 11,
+      "research_question": "Isolated contribution of calibrated back camera when audio is already present."
+    },
+    {
+      "arm_a": "B0__v2",
+      "arm_b": "FRONT_AUDIO__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 22,
+          "evaluable_n": 22,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 1,
+          "both_true": 4,
+          "evaluable_n": 5,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_003",
+            "train_events/event_004",
+            "train_events/event_005",
+            "train_events/event_008",
+            "train_events/event_009",
+            "train_events/event_010",
+            "train_events/event_012",
+            "train_events/event_015",
+            "train_events/event_016",
+            "train_events/event_017",
+            "train_events/event_018",
+            "train_events/event_019",
+            "train_events/event_020",
+            "train_events/event_021",
+            "train_events/event_022",
+            "train_events/event_023"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 0,
+          "b_clear_a_not_ids": [],
+          "evaluable_n": 23,
+          "exact_mcnemar_p": 1.0
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 0,
+          "a_zero_b_prot_ids": [],
+          "b_zero_a_prot": 0,
+          "b_zero_a_prot_ids": [],
+          "evaluable_n": 23,
+          "exact_mcnemar_p": 1.0
+        }
+      },
+      "contrast_name": "Audio_contribution_Front_B0_vs_B4_all23",
+      "mean_closed_duration_delta_b_minus_a_s": 0.7826,
+      "mean_transition_delta_b_minus_a": -0.087,
+      "paired_events_n": 23,
+      "research_question": "Isolated contribution of audio on front-camera baseline (23 independent train events)."
+    },
+    {
+      "arm_a": "DUAL_VISION_AUDIO__v1",
+      "arm_b": "DUAL_VISION_AUDIO__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 10,
+          "evaluable_n": 10,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 3,
+          "a_false_b_true_ids": [
+            "train_events/event_001",
+            "train_events/event_007",
+            "train_events/event_014"
+          ],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 1,
+          "both_true": 4,
+          "evaluable_n": 8,
+          "exact_mcnemar_p": 0.25,
+          "excluded": [
+            "train_events/event_005",
+            "train_events/event_009",
+            "train_events/event_011"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 4,
+          "b_clear_a_not_ids": [
+            "train_events/event_001",
+            "train_events/event_007",
+            "train_events/event_011",
+            "train_events/event_014"
+          ],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.125
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 1,
+          "a_zero_b_prot_ids": [
+            "train_events/event_011"
+          ],
+          "b_zero_a_prot": 0,
+          "b_zero_a_prot_ids": [],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 1.0
+        }
+      },
+      "contrast_name": "Policy_V1_vs_V2_on_B7_sync11",
+      "mean_closed_duration_delta_b_minus_a_s": -1.5818,
+      "mean_transition_delta_b_minus_a": 1.0909,
+      "paired_events_n": 11,
+      "research_question": "EXP-J: Frozen V1 vs Adopted V2 policy on identical DUAL_VISION_AUDIO inputs (11 sync events)."
+    },
+    {
+      "arm_a": "DUAL_VISION_AUDIO__stateless_rule2",
+      "arm_b": "DUAL_VISION_AUDIO__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 10,
+          "evaluable_n": 10,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 1,
+          "evaluable_n": 1,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_001",
+            "train_events/event_005",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_009",
+            "train_events/event_011",
+            "train_events/event_012",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_017"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 8,
+          "b_clear_a_not_ids": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_011",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_017"
+          ],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.007812
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 8,
+          "a_zero_b_prot_ids": [
+            "train_events/event_001",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_011",
+            "train_events/event_012",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_017"
+          ],
+          "b_zero_a_prot": 0,
+          "b_zero_a_prot_ids": [],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.007812
+        }
+      },
+      "contrast_name": "Temporal_V2_vs_Stateless_RULE2_on_B7_sync11",
+      "mean_closed_duration_delta_b_minus_a_s": 20.5273,
+      "mean_transition_delta_b_minus_a": 5.1818,
+      "paired_events_n": 11,
+      "research_question": "EXP-E: Temporal state machine (V2) vs Stateless threshold (RULE_2) on identical B7 inputs."
+    },
+    {
+      "arm_a": "DUAL_VISION_AUDIO__stateless_union",
+      "arm_b": "DUAL_VISION_AUDIO__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 1,
+          "a_false_b_true_ids": [
+            "train_events/event_013"
+          ],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 9,
+          "evaluable_n": 10,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 1,
+          "a_true_b_false_ids": [
+            "train_events/event_012"
+          ],
+          "both_false": 0,
+          "both_true": 6,
+          "evaluable_n": 7,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_001",
+            "train_events/event_005",
+            "train_events/event_009",
+            "train_events/event_011"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 8,
+          "b_clear_a_not_ids": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_011",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_017"
+          ],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 0.007812
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 2,
+          "a_zero_b_prot_ids": [
+            "train_events/event_001",
+            "train_events/event_011"
+          ],
+          "b_zero_a_prot": 1,
+          "b_zero_a_prot_ids": [
+            "train_events/event_005"
+          ],
+          "evaluable_n": 11,
+          "exact_mcnemar_p": 1.0
+        }
+      },
+      "contrast_name": "Temporal_V2_vs_Stateless_Union_on_B7_sync11",
+      "mean_closed_duration_delta_b_minus_a_s": 9.2545,
+      "mean_transition_delta_b_minus_a": -12.4545,
+      "paired_events_n": 11,
+      "research_question": "EXP-E: Temporal state machine (V2) vs Stateless OR-union on identical B7 inputs."
+    },
+    {
+      "arm_a": "B0__stateless_rule2",
+      "arm_b": "B0__v2",
+      "binary_discordance": {
+        "missed_train": {
+          "a_false_b_true": 1,
+          "a_false_b_true_ids": [
+            "train_events/event_023"
+          ],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 21,
+          "evaluable_n": 22,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_005"
+          ]
+        },
+        "premature_opening_m4": {
+          "a_false_b_true": 0,
+          "a_false_b_true_ids": [],
+          "a_true_b_false": 0,
+          "a_true_b_false_ids": [],
+          "both_false": 0,
+          "both_true": 0,
+          "evaluable_n": 0,
+          "exact_mcnemar_p": 1.0,
+          "excluded": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_003",
+            "train_events/event_004",
+            "train_events/event_005",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_008",
+            "train_events/event_009",
+            "train_events/event_010",
+            "train_events/event_011",
+            "train_events/event_012",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_015",
+            "train_events/event_016",
+            "train_events/event_017",
+            "train_events/event_018",
+            "train_events/event_019",
+            "train_events/event_020",
+            "train_events/event_021",
+            "train_events/event_022",
+            "train_events/event_023"
+          ]
+        },
+        "reached_crossing_clear": {
+          "a_clear_b_not": 0,
+          "a_clear_b_not_ids": [],
+          "b_clear_a_not": 10,
+          "b_clear_a_not_ids": [
+            "train_events/event_003",
+            "train_events/event_004",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_016",
+            "train_events/event_018",
+            "train_events/event_022",
+            "train_events/event_023"
+          ],
+          "evaluable_n": 23,
+          "exact_mcnemar_p": 0.001953
+        },
+        "zero_protection": {
+          "a_zero_b_prot": 13,
+          "a_zero_b_prot_ids": [
+            "train_events/event_001",
+            "train_events/event_002",
+            "train_events/event_004",
+            "train_events/event_006",
+            "train_events/event_007",
+            "train_events/event_010",
+            "train_events/event_011",
+            "train_events/event_013",
+            "train_events/event_014",
+            "train_events/event_016",
+            "train_events/event_018",
+            "train_events/event_019",
+            "train_events/event_021"
+          ],
+          "b_zero_a_prot": 0,
+          "b_zero_a_prot_ids": [],
+          "evaluable_n": 23,
+          "exact_mcnemar_p": 0.000244
+        }
+      },
+      "contrast_name": "Temporal_V2_vs_Stateless_RULE2_on_Front_all23",
+      "mean_closed_duration_delta_b_minus_a_s": 16.487,
+      "mean_transition_delta_b_minus_a": 2.1739,
+      "paired_events_n": 23,
+      "research_question": "EXP-E: Temporal V2 vs Stateless on 23 independent front-camera train events."
+    }
+  ]
+}

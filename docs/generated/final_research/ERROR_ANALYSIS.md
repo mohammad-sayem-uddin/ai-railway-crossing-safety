@@ -1,76 +1,44 @@
-# Error Analysis
+# Error Analysis — Failure Mechanisms, Premature Reopening & Backfill False Alarms
 
-Errors are grouped by layer. Every item names its evidence source; no error
-is attributed to a cause the evidence does not support.
+**Evaluation Basis:** *Exploratory evaluation against researcher-adopted AI-assisted reference annotations.*  
+This report decomposes every operational failure observed across the `336 + 22` unperturbed runs and explains their exact mechanical causes.
 
-## 1. Audio perception errors (Mission 43, adopted-reference comparison)
+---
 
-Frozen rule: event = horn-present iff any 0.5 s-hop window scores ≥ 0.37
-(threshold never retuned). Over the 23 train events with adopted horn status:
-TP 12, FP 10, FN 1, TN 0.
+## 1. Why `missed_train` Is `10/10` (`sync11`) and `22/22` (`all23`)
 
-- **All 10 horn-absent train events false-alarmed.** The max-window
-  aggregation is brittle by construction: one spurious window anywhere in an
-  event flips the event label. Specificity on this subset is 0%. This is an
-  *aggregation-rule* finding as much as a model finding — the window-level
-  scores may be mostly correct while the event rule still fails — but
-  window-level ground truth does not exist (0 window labels), so the split
-  between model error and aggregation error cannot be quantified. The
-  per-window review candidates are preserved in the Mission 43 package
-  (`AUDIO_ERROR_REVIEW_WINDOWS.csv`, `FAILURE_REVIEW_CANDIDATES.csv`).
-- **Sole false negative: event_001** (max window probability 0.2475, below
-  the 0.37 operating point). No threshold adjustment is permitted on the
-  evaluation data; the miss is reported, not tuned away.
-- Descriptive ranking quality is modest (ROC-AUC 0.6846, AP 0.7739 over the
-  same 23 events): the audio model is weak event-level evidence, consistent
-  with its architectural role — supporting evidence only (RULE_2), never an
-  actuation source.
+Across all `22` evaluable train events (`train_events/event_005` excluded with `T1 = null`), every Temporal V2 and V1 arm has `missed_train = True`:
+1. **Structural Left-Censoring + Physical Actuation Bound (Primary Barrier):**
+   - Sorted reference $T_1$ across the `22` evaluable train events spans **`2.1 s` to `5.8 s`** (`[2.1, 2.1, 2.3, ..., 4.2, 4.2, 4.2, 5.8]`, median `2.8 s`).
+   - Observed warning-to-blocked actuation latency in V2 & V1 traces is **`3.4 s–3.6 s`** (`first_blocked_s - first_warning_s`: e.g. `event_013` warns at `0.6 s`, blocks at `4.0 s > T1 = 3.2 s`). Even instantaneous `t = 0.2 s` warning takes `3.6 s–3.8 s` to reach `CLOSED`, making $t_{\text{blocked}} \le T_1$ physically impossible on `18/22` events with $T_1 \le 3.2\text{ s}$.
+   - Only `4` events (`T1 in {4.2, 5.8}`) could theoretically close before `T1` if warning fired by `0.4 s–2.2 s`; under current unrotated caches (`first_warning_s >= 27.2 s` on `event_001`), all closed late.
+   - Clamped warning lead time ($\text{WLT} = \max(0, T_1 - t_{\text{warn}})$) was **`> 0` on only `6/16` protecting events in `B0__v2`** (`[0.4, 1.8, 1.9, 2.3, 2.6, 2.6] s`; median `0.0 s`) and **`2/9` in `B7__v2`** (`[0.4, 2.6] s`; median `0.0 s`).
+2. **Complete Zero-Protection (`closed_duration == 0.0 s`):**
+   - In `B0__v2`, `7/23` (`30.43%`) train events remain completely unprotected (`event_005, 008, 009, 012, 015, 017, 020`) due to near-zero YOLO detections on unrotated Mission 39/43 front frames.
+   - Adding calibrated back camera in `B7__v2` rescues **`event_012` (`38.2 s`)** and **`event_017` (`16.6 s`)**, cutting zero-protection among sync11 events from `4/11` to `2/11` (`event_005, 009` stay unprotected).
 
-## 2. Decision-policy errors (Phase 10.1, identical cached inputs, 11 events)
+---
 
-- **v1 systematic self-interruption (design defect).** The departing train's
-  own `side` detections satisfy v1's approach predicate, firing
-  RULE_7_NEW_TRAIN_INTERRUPT repeatedly during the clearance dwell.
-  Result: 0/11 events ever reach CROSSING_CLEAR. This is a specification
-  error in the frozen label sets (overlap + no role scoping), reproduced
-  from source in Mission 3 (Blocker A) and targeted by synthetic scenario S1.
-- **v2 residual non-clearances are data/geometry interactions, not logic
-  errors:** events 002/006 — recordings end before the dwell can complete
-  (0.8 s / 2.8 s margins); events 005/007/017 — back-camera detection density
-  (89–95% of ticks) never leaves the ≥2-tick silence RULE_3C requires.
-  Isolated in controlled fixtures by Phase 10.1; mirrored in battery
-  scenarios S1/S2 design assumptions.
+## 2. Premature Reopening Root Cause (`M4 = 7/9` in `B7__v2` vs `4/8` in `V1`)
 
-## 3. Instrumentation and assembly errors
+![Departure Margins and Sparse Back Caches](figures/fig3_departure_premature_opening_margins.png)
 
-- **Naive duration truncation (Phase 8–10 scripts).** Replay duration was
-  computed as max over raw, unaligned per-camera timestamps, silently
-  truncating 1.1–5.1 s of back-camera tail evidence per event. Found and
-  corrected inside Phase 10.1's own script only; historical outputs were
-  preserved uncorrected (and Phase 10.1 verified the correction changes no
-  clearance outcome on the 11 events).
-- **Same defect family in the governed replay engine (Mission 3).**
-  `CacheOnlyReplayEngine.execute_replay` bounds frame generation by raw
-  record timestamps while the collector aligns to master time — with a sync
-  aligner attached, aligned tail evidence can fall outside the generated
-  window. **Fixed in the Mission 3 subclass**
-  (`cache_only_engine_multimodal.py`, master-time bounds) with regression
-  tests (8/8 pass, including a frame-generation probe beyond the raw
-  bound); the frozen engine module is untouched.
-- **Collector backfill shortens effective silence.** The 0.25 s window
-  tolerance backfills a literal 2-tick gap with the neighbouring detection,
-  so RULE_3C's effective silence requirement is ~0.7–1.0 s rather than the
-  nominal 0.4 s (Phase 10.1 §4.2). Reported so the number is not misread.
-- **Event_010 frame-count discrepancy (+1)** in the Mission 43 assembly was
-  reconciled to an extra query frame; recorded in the Mission 43 report.
+Examining `DEPARTURE_REOPENING_ANALYSIS.csv` alongside trace transitions yields an airtight three-factor causal chain:
 
-## 4. What is NOT an error
+1. **V2's `RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE` (`v2_rule_3c_count >= 1` on `8/8` clearing events):**  
+   Whenever `TRAIN_PRESENT -> CROSSING_OCCUPIED -> TRAIN_DEPARTING` lacks `2.0 s` of continuous detections, V2 fires `RULE_3C` (`-> REAR_CONFIRMED`), followed `3.0 s` later by `RULE_3_POSITIVE_CLEARANCE -> CROSSING_CLEAR -> GATE_OPENING`. Across all `11` sync events, **`RULE_3B` (`TRAIN_END`) fired `0` times**, whereas **`RULE_3C` caused `100%` (`8/8`) of V2 clearances** (`event_001: x3`, `event_002: x6`, `006: x2`, `007: x2`, `011: x1`, `013: x2`, `014: x1`, `017: x1`).
+2. **Sparse Unrotated Back-Camera Caches:**  
+   Because Mission 39/43 ran YOLO on sideways frames before Mission 44's `DISPLAYMATRIX` repair, `cam2_qualifying_density` (`conf >= 0.35`) is just `0.76%` (`event_006`) to `5.07%` (`event_007`) on `9/10` sync events with $T_4$ (`event_002`: `43.86%`, still fragmented into `11` $\ge 2$-tick gaps). Consequently, the gate opens **`14.58 s` (`event_007`) to `38.67 s` (`event_017`) BEFORE real train exit $T_4$** (`event_002` clears at `19.0 s` vs `T4 = 32.99 s`, interrupted by `RULE_7` before finishing unblocking).
+3. **Why V1 Performed Better on M4 (`4/8` vs `7/9`) & Why `event_011` Alone Succeeded:**  
+   - In `V1`, `event_001` (`35.8 s`), `event_007` (`23.4 s`), and `event_014` (`52.0 s`) held closed to EOF without `RULE_3C`, preventing premature opening.
+   - `event_011` (`T4 = 34.6713 s`, `master_end = 42.4 s`, **`7.7287 s` post-$T_4$ margin**) only protected between `t` backfilled frames near $T_4$, clearing safely at `39.4 s` and unblocking at `41.0 s` (**`+6.3287 s` safe margin**); conversely `9/10` other `T4` events end `0.82 s–2.32 s` after $T_4$ (`< 4.6 s`), creating systematic tail censoring.
 
-- The gates refusing execution (Missions 40–43, and the present programme)
-  is governance working as designed, not a malfunction; no refusal was
-  circumvented.
-- v1 never opening the gate in single-camera disappearance scenarios (S6)
-  is the frozen policy's stated semantics (positive evidence only) — safe
-  but non-functional for departure. The researchers decided the policy
-  question on 2026-11-09: v2 adopted as canonical experimental policy with
-  the RULE_3C deviation recorded; v1 retained as the frozen baseline.
+![Sync11 Event Timelines](figures/fig2_sync11_event_timeline_outcomes.png)
+
+---
+
+## 3. Why `B0__v2`, `B0__v1`, and `BACK_VISION__v2` False-Alarm on `2/3` No-Train Controls
+
+Under unperturbed `no_train_events` (`60.0 s` total front exposure), `B0__v2` and `B0__v1` false-closed on `event_001` (`7.2 s`) and `event_003` (`7.0 s`; `total = 14.2 s`), while `BACK_VISION__v2` closed on `event_001` (`20.6 s`) and `event_003` (`15.4 s`; `total = 36.0 s`):
+- **Mechanical Trigger:** A single false-positive YOLO detection on `event_001` and `event_003` was **re-emitted across `3` consecutive `0.2 s` replay ticks** by `MultimodalEvidenceCollector`'s `window_tolerance_s = 0.50 s > stride_s = 0.20 s` setting, bypassing `confirm_frames = 2` (`0.40 s`)! Meanwhile, under `Stateless RULE_2` (which requires `>= 0.35` live frame presence on `>= 2` distinct ticks or single-tick blip without hysteresis closure), `total_blocked_s = 0.0 s` (`0/3` events sustained >0s blocked duration)!
+- **AUDIO_ONLY & Stateless Union Contrast:** `AUDIO_ONLY__v2` triggered `0/3` (`0.0 s`) false alarms, whereas `FRONT_AUDIO__stateless_union` triggered **`3/3` (`16` episodes, `13.8 s`)** due to audio false positives when unconstrained by `RULE_2`.

@@ -165,3 +165,6 @@ logs/
 *.pfx
 id_rsa
 id_ed25519
+
+# --- Large regenerated exploratory tick traces (49 MB; bit-identical hashes in replay_summary.json) ---
+results/exploratory_execution/replays/traces/

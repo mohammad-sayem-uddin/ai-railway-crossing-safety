@@ -1,75 +1,52 @@
-# Experimental Methodology
+# Experimental Methodology — Cache-Only Exploratory Replay & Stress Programme
 
-## Research question (authoritative, Protocol V2, 2026-08-13)
+**Evaluation Basis:** *Exploratory evaluation against researcher-adopted AI-assisted reference annotations.*  
+All runs execute strictly from JSONL perception caches (`m3_multimodal_replay_manifest.json`) without calling `torch`, `cv2`, `av`, `ultralytics`, `load_validated_sync_aligner`, or bypassing repository governance gates.
 
-On synchronized, event-labeled recordings from held-out crossings, does a
-predefined two-camera, audio-assisted, temporal state policy **change**
-event-level missed-train and premature-opening outcomes relative to fair
-single-camera and vision-only baselines?
+---
 
-Execution reality, disclosed rather than smoothed over: the available data
-is one crossing, so "held-out crossings" is unattainable; the programme
-executes the within-dataset paired comparisons the data supports and says
-so (see LIMITATIONS).
+## 1. Discrete-Tick Simulation & Policy Comparison
 
-## Evidence layers and their rules
+Replay executes at `stride_s = 0.2 s` (`5 Hz`), default `window_tolerance_s = 0.50 s`, sequentially ingesting cached observations per step so `SourceTracker` availability state never leaks backward across future timestamps:
 
-1. **Perception layer (executed, Mission 43).** Frozen vision checkpoint
-   and frozen Audio V3 (threshold 0.37, loader-enforced) run over all 54
-   camera sources and 27 event audio extractions. Outputs are hash-bound
-   caches; agreement is measured against the adopted references at event
-   level only (the only level the references support).
-2. **Decision layer — synthetic (ungated, EXECUTED 2026-11-08/09).** Both
-   engines were driven through identical constructed MultimodalFrame
-   streams (`scripts/run_m3_synthetic_battery.py`, 13 scenarios) covering
-   nominal departure, disappearance, failure injection, staleness,
-   contradictory evidence, single-camera topology, fault recovery,
-   reopening interruption, duplicate/out-of-order rejection, and
-   audio-delayed clearance. Final run: **46/46 checks passed**
-   (`results/m3_synthetic_battery_r2/`). Synthetic results validate
-   behaviour only.
-3. **Decision layer — real caches (gated).** Replay goes exclusively
-   through `CacheOnlyReplayEngine` (SHA-256 hash gate, media blacklist,
-   deterministic run ids) under the descriptive-execution gate; the full
-   multimodal conditions additionally require the back-stream extension and
-   a validated SyncAligner (fail-closed for dual-vision conditions;
-   dual-camera claims restricted to the 11 CALIBRATION_SUPPORTED events,
-   other events evaluated in independent-camera mode with shared-timeline
-   metrics marked not_evaluable).
+| Component / Parameter | Policy V1 (Frozen `v1`) | Policy V2 Candidate (`v2`) | Stateless Baselines (`EXP-E`) |
+|---|---|---|---|
+| **Config Source** | `configs/frozen_experiment_v1.yaml` | `configs/decision_policy_v2_candidate.yaml` | Same thresholds (`0.35` vis, `0.37` aud), zero temporal state |
+| **Approach Confirm** | `2` ticks (`0.4 s`) | `2` ticks (`0.4 s`) | Immediate `1`-tick reaction (`0` hysteresis) |
+| **Warning -> Gate Closing** | `T_warn = 2.0 s`, `T_travel_down = 3.0 s` | Same actuation timing (`3.4–3.6 s` warn->blocked on trace) | Immediate `CLOSED` when active |
+| **Hold Persistence** | `miss_tolerance` ticks | `miss_tolerance` + `RULE_2` audio delay extension | Zero hold memory (`stateless_vision_rule2` / `stateless_union`) |
+| **Clearance Trigger** | Sustains absence (`T_clear = 3.0 s`) without `RULE_3C` departure shortcut | Adds `RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE` (`2.0 s` absent vision) + `RULE_3_POSITIVE_CLEARANCE` | Immediate `OPEN` on inactive tick |
+| **Fail-Safe Clamp** | `RULE_4_FAIL_SAFE_CLAMP` & `RULE_9_SENSOR_RECOVERY` | `RULE_4_FAIL_SAFE_CLAMP` & `RULE_9_SENSOR_RECOVERY` + `RULE_7_NEW_TRAIN_INTERRUPT` | None (`0` state protection) |
 
-## Fairness rules for every comparison
+---
 
-- Identical inputs: same caches, same manifest, same frozen config
-  (`999a7970…a42e`), same thresholds (0.35 / 0.35 / 0.37), same stride
-  (0.2 s), same frame windows. Only the named factor varies (policy version,
-  stream set, or temporal ablation).
-- Thresholds are frozen before execution and never tuned on evaluation
-  data; the audio operating point 0.37 in particular is never adjusted to
-  improve metrics.
-- Durations and windows are computed on the sync-corrected master timeline
-  (the naive raw-timestamp computation used by Phase 8–10 scripts is a
-  known defect; Phase 10.1's correction is the reference behaviour).
-- Missing evidence stays missing: unaligned/unpaired frames (2,717 of
-  6,614 in the Mission 43 assembly lack paired audio) are absent inputs,
-  not zeros; censored boundaries make dependent metrics not_evaluable.
+## 2. Unperturbed Ablation Matrix (`336` Primary + `22` Sensitivity Runs)
 
-## Metrics
+1. **Single-Camera / Single-Modality Conditions (`27` events each):**  
+   - `B0` (`camera_front` vision only) under `v2`, `v1`, `stateless_vision_rule2` (`81` runs)
+   - `FRONT_AUDIO` / `B4` (front vision + audio) under `v2`, `v1`, `stateless_vision_rule2`, `stateless_union` (`108` runs)
+   - `BACK_VISION` (`camera_back` on local clock) under `v2`, `v1` (`54` runs)
+   - `AUDIO_ONLY` (audio only, `RULE_2` non-actuation test) under `v2` (`27` runs)
+2. **Calibrated Dual-Camera Conditions (`11` `CALIBRATION_SUPPORTED` sync events ONLY):**  
+   - `DUAL_VISION` / `B2` (calibrated front+back vision, audio off) under `v2`, `v1` (`22` runs)
+   - `DUAL_VISION_AUDIO` / `B7` (full dual vision + audio) under `v2`, `v1`, `stateless_vision_rule2`, `stateless_union` (`44` runs)
+   - **Scope Guard Verification:** Any attempt to run `DUAL_*` on `train_events/event_010` or the `16` independent-camera events raises `DualScopeAuthorizationError` (tested in `tests/unit/test_exploratory_pipeline.py`).
+3. **`window_tolerance_s` Backfill Sensitivity (`22` runs):** Re-ran `DUAL_VISION_AUDIO` (`v2` & `v1`) across the `11` sync events with `window_tolerance_s = 0.25 s` vs default `0.50 s`.
 
-The frozen descriptive scope (9 metrics: blocked_seconds,
-clearance_latency_s, closure_episodes, excess_closed_duration_s,
-exposure_s, missed_train, premature_opening, total_closed_s,
-warning_lead_time_s) with per-metric evaluable denominators;
-premature_opening computed under the researcher's recorded definition
-(**decided 2026-11-09: M4 primary, v9 as sensitivity on the 11
-sync-supported events**). Analysis and reporting conventions are in
-STATISTICAL_ANALYSIS.md.
+---
 
-## Governance
+## 3. Endpoint Definitions & Timing Conventions
 
-Every real-data decision execution requires the AUTH-DESCRIPTIVE-EVAL-EXEC
-record bound to live promotion-receipt, manifest, protocol, metric-scope
-and model-config hashes; official evaluation additionally requires the
-Stage-2.1 promotion chain and EVAL-AUTH. The chain, its current state, and
-the exact researcher acts that complete it are documented in the completion
-report and the professor handoff. No gate was bypassed, patched, or routed
-around at any point in this programme.
+- **Convention A vs Convention B Gate Duration:** Convention A sums blocked ticks $\times \Delta t$ (`[0, N-1]`); Convention B measures continuous physical interval $[t_{\text{block}}, t_{\text{open}})$ terminating at $(N-1)\Delta t$, yielding exact theorem $T_{\text{ConvB}} - T_{\text{ConvA}} = -\Delta t \cdot b_N \in \{-0.2\text{ s}, 0.0\text{ s}\}$.
+- **Missed Train:** Evaluable when `t1_s != null` (`22/23` train, `10/11` sync). Marked `True` if `first_blocked_s is None` or `first_blocked_s > t1_s`. **`zero_protection`** (`closed_duration_s == 0.0`) isolates complete non-activation from late-closing left-censoring misses.
+- **M4 Premature Opening (`m4_premature_opening`):** Evaluable when protected (`!never_protected`) and master-aligned `T4` exists (`m4_evaluable`); marked `True` if gate unblocks or commands opening inside $(t_{\text{blocked}}, T_4)$ (computed on `B7`/`B2`/`B0`/`B4` sync11 & `BACK_VISION` local `T4`). Legacy **V9 `[T1, T4)`** is reported alongside M4 for methodological contrast (penalizing pre-closure approach window as premature even when never closed).
+
+---
+
+## 4. Failure-Injection & Recovery Stress Programme (`202` Perturbation Runs + `11` Natural Audits)
+
+Implemented in `scripts/run_failure_injection_replays.py` and strictly separated from unperturbed headline tables:
+- **`EXP-G` (`47` runs):** Whole-modality ablation (`G1` front absent, `G2` back absent, `G3` audio absent — natural cache subsets), mid-passage dual vision dropout (`G4`, `n=11`), idle dual vision dropout (`G5`, `n=3`).
+- **`EXP-H` (`11` natural audits + `28` perturbations):** Conflicting front vs rear (`H1`, `n=11`), subthreshold vision capped at `0.34 < 0.35` with active audio (`H2`, `n=11`), idle audio FP burst (`H3`, `3` no-train $\times$ `{v2, stateless_union}`).
+- **`EXP-I` (`105` runs):** Single/dual dropouts (`I1–I4`), `2.5 s` stale timestamp injection (`I5–I6`), out-of-order frame reversal (`I7`), burst window drops (`I8`), seeded 30% random frame drops (`I9`, `seed=42`), idle 1-tick false injection (`I10`, `n=6` on `no_train` with `B0__v2` vs `Stateless_RULE2` delta).
+- **`EXP-K` (`22` runs):** Fault+recovery cycles in idle (`K1`, `n=3`) and active crossing (`K2`, `n=11`), plus constructed second-train arrival during `REAR_CONFIRMED`/`GATE_OPENING` on clearing events (`K3`, `n=8`).

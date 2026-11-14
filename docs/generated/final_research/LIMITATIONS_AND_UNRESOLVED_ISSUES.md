@@ -1,90 +1,34 @@
-# Limitations and Unresolved Issues
+# Limitations, Defects, and Unresolved Governance Issues
 
-Every limitation below is stated with its consequence for interpretation.
-Nothing here is remediable by re-analysis; items marked HUMAN require
-researcher work, items marked DECISION require a recorded researcher choice,
-items marked DATA cannot be fixed with the existing recordings.
+**Governance Disclosure:** *Exploratory evaluation against researcher-adopted AI-assisted reference annotations.* This document catalogs every scientific, architectural, and administrative limitation that prevents claiming canonical Stage-2.1 validation or deployment readiness.
 
-## Dataset limitations
+---
 
-1. **Single site, daytime only (DATA).** All 27 events come from one crossing
-   (`crossing_A`) in daytime. Protocol V2's cross-site variation objective
-   (OBJ-07) is unattainable; no generalization claim to other crossings,
-   lighting, weather, or train types is supported.
-2. **Small, imbalanced cohort (DATA).** 23 train / 3 no-train / 1 engine-only
-   events. The engine-only event is always reported separately; the two
-   cameras of one event are never counted as two samples. Event-level
-   denominators are small; the programme reports counts and paired outcomes,
-   not population estimates.
-3. **Short recordings truncate the departure phase (DATA).** Events 002 and
-   006 end 0.8 s and 2.8 s after the last possible departure confirmation —
-   less than the ~3.2–3.6 s a clearance dwell needs. Their non-clearance is a
-   recording-length artifact, not policy behaviour.
-4. **Camera geometry (DATA).** Both cameras are lateral trackside units; no
-   site survey exists. `rear` viewpoints are rare and late by geometry, which
-   is the root cause of the v1/v2 policy dilemma (Blocker A).
-5. **Synchronization scope (DATA).** Cross-camera offsets are validated
-   (CALIBRATION_SUPPORTED) for only 11 of 27 events. All dual-camera,
-   shared-timeline claims are restricted to those 11; elsewhere only
-   independent-camera statements are legitimate.
-6. **Audio pairing gaps (DATA).** In the Mission 43 assembly, 2,717 of 6,614
-   frames have no paired audio window. Missingness is preserved, never
-   backfilled; multimodal denominators differ per event and are reported.
+## 1. Governance & Administrative Blockers (Canonical Stage-2.1 Not Executed)
 
-## Ground-truth limitations
+1. **Zero Stage-2.1 Human Ground-Truth Adjudications:** All 27 legacy human reviews were invalidated on Oct 14, 2026 (`LEGACY_REVIEW_INVALIDATION_NOTICE`). Although exploratory runs used `RESEARCHER_ANNOTATION_ADOPTION.json`, official human Stage-2.1 review (`scripts/run_stage21_review.py`), digital signatures, and promotion receipts have **not** been executed.
+2. **Media Access Hold Remains Active (`AUTH_MEDIA_ACCESS_NOT_GRANTED`):** Canonical `ExecutionGate` and `load_validated_sync_aligner` remain locked by design. Raw `.mov` and `.wav` files remain inaccessible to automated agents without formal approval.
 
-7. **No canonical ground truth exists (HUMAN).** Zero Stage-2.1 records;
-   the promotion chain (records → second reviews → readiness receipt) has
-   never been completed. All Mission 43+ results are relative to
-   **researcher-adopted AI-assisted references**, and are labelled as such.
-8. **Adoption is not independent observation (HUMAN).** The researcher's
-   statement that manual annotations matched the AI ones was never stored as
-   separate observations: no inter-rater agreement, no human-vs-AI error
-   rate, and no independent verification rate can be computed.
-9. **Missing annotation products (HUMAN/DATA).** Zero bounding boxes, zero
-   audio window labels, zero horn offsets, horn status null for 3 events.
-   Detection-level and window-level metrics are structurally uncomputable;
-   nulls remain null in every table.
-10. **Legacy Phase 11 inventory is fabricated-approval material (—).**
-    `docs/PHASE11_EVENT_INVENTORY.csv` is marked INVALID_FABRICATED_APPROVAL
-    and is never cited as evidence anywhere in this package.
+---
 
-## Method and governance limitations
+## 2. Perception & Preprocessing Defects (`m3_multimodal_replay_manifest.json`)
 
-11. **Decision-level experiments on original data remain gated (HUMAN).**
-    The policy and premature-opening decisions were taken on 2026-11-09
-    (v2 adopted; M4 primary) and the decision records are drafted for the
-    allowlisted researcher's statements. Until the Stage-2.1 human review
-    exists and the AUTH records are issued, the governed replay cannot
-    run. This package therefore reports the programme as **partially
-    completed** (see the completion report) rather than dressing
-    perception results as decision results.
-12. **Signing authority rests with one allowlisted identity (DECISION —
-    route agreed).** `raihankabirrahu@gmail.com` is the sole entry in
-    `authorized_reviewers.json`; the repository owner is not on it.
-    Statements come through the project owner and are transcribed verbatim
-    (LEG-EXEC precedent); the drafted package is
-    DECISION_PACKAGE_FOR_RAIHAN (staging, Mission 3 working records).
-13. **v2's RULE_3C deviates from founding D-004 (DECISION — taken).**
-    Disappearance confirmation is the only workable departure pathway on
-    this rig's geometry. The deviation was **explicitly recorded in the
-    2026-11-09 adoption** of v2 as canonical experimental policy, with
-    this limitation attached; v1 remains the frozen baseline. The formal
-    decision record follows the researcher's transcribed statement.
-14. **Frozen descriptive scope is narrower than Protocol V2 (—).** The
-    9-metric descriptive scope cannot express every Protocol V2 endpoint;
-    supplementary analyses are labelled supplementary and never folded into
-    the frozen scope or its hash bindings.
-15. **Historical test-suite state (—).** The guarded suite historically
-    reports 3,700 passed / 84 failed / 31 errors, where the 115 non-passing
-    cases are classified as protected-dependency policy exceptions
-    (Mission 43). The Mission 3 re-run and triage are reported in
-    SOFTWARE_TESTING_REPORT.md; no assertion was weakened to change a count.
+3. **Unrotated Decode in Nov 7–8 YOLOv8n Caches (`44/54` Sources):** Mission 37/38 migrated video ingestion to PyAV `source_pts=True`, dropping `DISPLAYMATRIX` rotation on `24 front + 20 back` portrait/rotated sources before Mission 39/43 inference. Although Mission 44 (`db40305`) repaired `video.py`, inference was never re-run, leaving `m3_multimodal_replay_manifest.json` artificially sparse (`329` front + `1,020` back detections across `13,092` records; `0.76%–5.07%` qualifying `cam2` density on `9/10` sync events with $T_4$).
+4. **Confounding Across Legacy Baseline Comparisons:** Direct numerical comparisons against Oct 13 Phase 10.1 (`0/11`–`6/11`) mix (a) corrected natural-log acoustic preprocessing (`ln(E + 1e-10)`) with (b) unrotated vision decode degradation, preventing attribution of legacy vs Nov 7–8 deltas to policy alone.
 
-## Unresolved issues carried to the professor handoff
+---
 
-- Formal decision/authorization records — statements drafted (D2–D7);
-  transcription awaits the allowlisted researcher's confirmations.
-- Stage-2.1 human review commissioning — HUMAN work package prepared (Blocker B §8).
-- Novelty positioning — no systematic literature review exists in the repo (OBJ-09, OPEN); the paper stage must do this work rather than inherit the retracted docx claims.
-- B5 (back+audio) identification assumption — the single per-event audio stream is front-extracted; treating it as the back condition's audio requires an explicit decision, default NOT assembled.
+## 3. Decision-Engine & Collector Defects (`collector.py`, Policy V2)
+
+5. **Collector `window_tolerance_s = 0.50 > stride_s = 0.20` Backfill Bug:** Single isolated detections persist across `3` consecutive `0.20 s` ticks, defeating `confirm_frames = 2` (`2/3` `14.2 s` false alarms on `no_train_events` under `B0`; inflated sync clearances `8/11` vs `5/11` at `tol=0.25 s`).
+6. **`MultimodalEvidenceCollector.generate_frames_from_history` Availability Leak:** Reading terminal `tracker.get_availability_map(t)` at end-of-history leaks terminal `MISSING` status backward across earlier timestamps unless steps are assembled sequentially.
+7. **Policy V2 `RULE_3C` Premature Opening Under Sparse Detections:** `RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE` triggered `8/8` sync clearances and drove `7/9` (`77.78%`) M4 premature openings (`14.58 s–38.67 s` early) over sparse unrotated back-camera caches (`vs 4/8 = 50.0%` under V1).
+
+---
+
+## 4. Dataset & Statistical Generalization Limits
+
+8. **Left-Censored Approach Recordings (`23/23` Train Events):** $T_1 \in [2.1, 5.8]\text{ s}$ (median `2.8 s`; `event_005` has $T_1 = \text{null}$), shorter than physical warning-to-blocked actuation (`3.4–3.6 s`) on most events (`missed_train = 10/10` and `22/22`).
+9. **Post-$T_4$ Right-Censoring (`9/10` Sync Events):** Recordings terminate `0.82 s–2.32 s` after $T_4$ (`< T_clear + open = 4.6 s`) on `9/10` sync events (`event_011` alone has `+7.73 s`), masking legitimate post-departure unblocking.
+10. **Single-Crossing Small Sample & Minimal Negative Controls:** `N = 27` events from one daylight-trained passive site (`crossing_A`; night/weather diversity limited; only `3` negative controls totaling `60.0 s` replay exposure; only `1` light engine event; `16/27` events lacking supported R04 sync calibration). Wide 95% Wilson CIs (`30%–50%` width) preclude safety certification (`EN 50126 / EN 50128 / SIL` = ZERO).
+11. **Preexisting Suite Test Drift (`33/3,840`):** `23` Mission 26–28 tests assert an older `README.md` hash, `4` tests assert outdated Nov-9 governance/allowlist states, `4` `sys.modules` tests fail under repository `conftest.py`, and `2` preexisting policy/script checks remain open.

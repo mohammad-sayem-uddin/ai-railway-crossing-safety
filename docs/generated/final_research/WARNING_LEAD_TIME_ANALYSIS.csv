@@ -1,5 +1,24 @@
-item,status,detail,source
-warning_lead_time_on_original_data,UNAVAILABLE - not computable from existing evidence,"warning_lead_time_s is in the frozen 9-metric scope, but its computation needs (a) governed decision replay (gated: Stage-2.1 chain + AUTH records missing) and (b) per-event approach boundary references; the adopted references contain horn onsets for 13 events but no approach-phase T0 boundaries. No value is estimated or imputed",Mission 3 completion report S4; DATASET_AND_GROUND_TRUTH_REPORT.md
-what_would_unblock_it,"Stage-2.1 human review (creates canonical references) + AUTH-DESCRIPTIVE-EVAL-EXEC issuance, then governed replay of EXP1-EXP5","Work package and decision package are prepared (Blocker B S8; DECISION_PACKAGE_FOR_RAIHAN D6/D7)",Mission 3 staging analyses
-synthetic_timing_measurement,"S10 (v2, audio-delayed clearance): CROSSING_CLEAR reached at trace second 7.2","The only lead/latency timing actually measured in this programme, on constructed streams: horn evidence arriving 1.0 s after the final rear detection delays but does not prevent clearance. Behavioural evidence only - not a warning lead time",results/m3_synthetic_battery_r2/summary.json
-fixed_timing_parameters,"warning dwell 2 s; closing dwell 3 s; opening dwell 3 s; clearance dwell 3 s; collector window 0.5 s; replay stride 0.2 s","Frozen policy parameters (decision_policy_v1.yaml / v2 candidate); identical across compared policies, so paired comparisons are not confounded by timing parameters",configs/decision_policy_v1.yaml; configs/decision_policy_v2_candidate.yaml
+event_id,is_dual_sync_accepted,t0_censored,t1_s,b0_v2_first_warning_s,b0_v2_signed_lead_s,b0_v2_clamped_wlt_s,b0_v1_first_warning_s,b0_v1_signed_lead_s,b0_v1_clamped_wlt_s,b7_v2_first_warning_s,b7_v2_signed_lead_s,b7_v2_clamped_wlt_s,evaluation_basis
+train_events/event_001,True,True,5.8,27.2,-21.4,0.0,27.2,-21.4,0.0,14.2,-8.4,0.0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_002,True,True,2.9,4.0,-1.1,0.0,4.0,-1.1,0.0,4.0,-1.1,0.0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_003,False,True,2.1,0.2,1.9,1.9,0.2,1.9,1.9,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_004,False,True,2.1,2.8,-0.7,0.0,2.8,-0.7,0.0,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_005,True,True,,,,,,,,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_006,True,True,2.5,104.0,-101.5,0.0,,,,95.0,-92.5,0.0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_007,True,True,2.6,16.4,-13.8,0.0,16.4,-13.8,0.0,16.4,-13.8,0.0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_008,False,True,2.4,,,,,,,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_009,True,False,4.2,,,,,,,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_010,False,True,2.7,0.4,2.3,2.3,0.4,2.3,2.3,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_011,True,True,2.8,28.6,-25.8,0.0,,,,28.6,-25.8,0.0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_012,True,True,3.1,,,,,,,34.6,-31.5,0.0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_013,True,True,3.2,0.6,2.6,2.6,0.6,2.6,2.6,0.6,2.6,2.6,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_014,True,True,2.6,2.2,0.4,0.4,2.2,0.4,0.4,2.2,0.4,0.4,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_015,False,False,4.2,,,,,,,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_016,False,False,4.2,2.4,1.8,1.8,2.4,1.8,1.8,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_017,True,True,2.8,,,,,,,28.6,-25.8,0.0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_018,False,True,2.7,4.6,-1.9,0.0,4.6,-1.9,0.0,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_019,False,True,3.0,10.0,-7.0,0.0,,,,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_020,False,True,2.3,,,,,,,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_021,False,True,3.2,7.2,-4.0,0.0,7.2,-4.0,0.0,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_022,False,True,2.5,2.8,-0.3,0.0,2.8,-0.3,0.0,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+train_events/event_023,False,True,2.8,0.2,2.6,2.6,0.2,2.6,2.6,,,,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.

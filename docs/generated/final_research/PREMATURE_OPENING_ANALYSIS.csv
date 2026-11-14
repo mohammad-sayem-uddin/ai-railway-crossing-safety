@@ -1,7 +1,19 @@
-item,value_or_status,detail,source
-primary_definition,first_blocked_to_t4_clearance (M4),"Researcher decision taken 2026-11-09 (project owner direction; formal phase12 protocol decision record to be created from the allowlisted researcher's transcribed statement - decision package D3)",Mission 3 decision package
-sensitivity_definition,t1_entry_to_t4_clearance (v9),"Reported as secondary sensitivity analysis on the 11 CALIBRATION_SUPPORTED events - the only events where the offset-anchored T1 is defined",Mission 3 decision package
-both_definitions_implemented,yes,"M4 and v9 windows are both implemented and selectable in the current code (supersedes the 2026-10-16 evidence note that suggested otherwise)",Mission 3 Blocker C analysis (source-verified)
-metric_values_on_original_data,NOT_COMPUTED,"Premature-opening values require governed decision replay, which remains gated on the Stage-2.1 promotion chain + AUTH records. No values are invented for unexecuted runs",Mission 3 completion report S4
-related_evidence_phase10_1,"v1 clears 0/11; v2 clears 6/11 (identical inputs)","Clearance completion is a precondition for a meaningful premature-opening measurement; under frozen v1 the departure phase never completes on this cohort, so a v1 premature-opening rate would be structurally vacuous - one reason the policy decision preceded this metric",PHASE10_1_POLICY_COMPARISON_REPORT.md
-related_evidence_synthetic,"Battery S8 (both engines): an opening in progress is aborted back to TRAIN_PRESENT on any new train evidence; S2/S6: v2 opens only after the fenced disappearance pathway completes its dwell","Synthetic behaviour only; not a premature-opening rate",results/m3_synthetic_battery_r2/summary.json
+run_label,condition,policy,window_tolerance_s,sync11_n,m4_premature_n,m4_evaluable_n,m4_never_protected_n,m4_premature_rate,m4_premature_ci95,legacy_v9_premature_n,legacy_v9_evaluable_n,reached_crossing_clear_n,evaluation_basis
+B0__v2,B0,v2,0.5,11,4,5,1,0.8,"[0.3755, 0.9638]",10,10,4,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+B0__v1,B0,v1,0.5,11,0,0,2,,,9,10,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+B0__stateless_rule2,B0,stateless_vision_rule2,0.5,11,0,0,2,,,10,10,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+BACK_VISION__v2,BACK_VISION,v2,0.5,11,4,8,2,0.5,"[0.2152, 0.7848]",0,0,4,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+BACK_VISION__v1,BACK_VISION,v1,0.5,11,0,8,2,0.0,"[0.0, 0.3244]",0,0,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+AUDIO_ONLY__v2,AUDIO_ONLY,v2,0.5,11,0,0,0,,,10,10,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+FRONT_AUDIO__v2,B4,v2,0.5,11,4,5,1,0.8,"[0.3755, 0.9638]",10,10,4,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+FRONT_AUDIO__v1,B4,v1,0.5,11,0,0,2,,,9,10,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+FRONT_AUDIO__stateless_rule2,B4,stateless_vision_rule2,0.5,11,0,0,2,,,10,10,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+FRONT_AUDIO__stateless_union,B4,stateless_union,0.5,11,6,6,1,1.0,"[0.6097, 1.0]",10,10,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+DUAL_VISION__v2,DUAL_VISION,v2,0.5,11,7,9,1,0.777778,"[0.4526, 0.9368]",10,10,8,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+DUAL_VISION__v1,DUAL_VISION,v1,0.5,11,4,8,2,0.5,"[0.2152, 0.7848]",10,10,4,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+DUAL_VISION_AUDIO__v2,DUAL_VISION_AUDIO,v2,0.5,11,7,9,1,0.777778,"[0.4526, 0.9368]",10,10,8,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+DUAL_VISION_AUDIO__v1,DUAL_VISION_AUDIO,v1,0.5,11,4,8,2,0.5,"[0.2152, 0.7848]",10,10,4,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+DUAL_VISION_AUDIO__stateless_rule2,DUAL_VISION_AUDIO,stateless_vision_rule2,0.5,11,1,1,9,1.0,"[0.2065, 1.0]",10,10,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+DUAL_VISION_AUDIO__stateless_union,DUAL_VISION_AUDIO,stateless_union,0.5,11,7,7,3,1.0,"[0.6457, 1.0]",10,10,0,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+DUAL_VISION_AUDIO__v2_wt025,B7,v2,0.25,11,5,7,4,0.714286,,,,5,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.
+DUAL_VISION_AUDIO__v1_wt025,B7,v1,0.25,11,3,7,4,0.428571,,,,3,Exploratory evaluation against researcher-adopted AI-assisted reference annotations.

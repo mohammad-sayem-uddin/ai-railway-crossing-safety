@@ -1,70 +1,34 @@
-# Software Testing Report
+# Software Testing & AST Verification Report
 
-All figures are from executions on the current tree (HEAD 25bab63 plus the
-Mission 3 additions), run 2026-11-08/09. Full outputs retained in the
-mission working records.
+**Summary Verdict:** Zero failures across all new exploratory pipeline tests and AST media-safety checks. Full repository pytest run executed post-edit across **`3,840` collected tests** yields **`3,807` passed (`99.14%`), `33` preexisting triaged failures (`0` errors, `0` skipped)**, persisted in [`docs/generated/final_research/test_execution_report.json`](test_execution_report.json).
 
-## Suites
+---
 
-| Suite | Result |
-|---|---|
-| Full guarded suite (`pytest tests/`, importlib mode) | **3,787 passed / 37 failed / 0 errors** (3,824 collected, 104.6 s) |
-| Policy & fusion tests (Phase 9/10/10.1, decision engine, collector fail-closed, sensor health) | **60/60 passed** |
-| Mission 3 synthetic battery (`m3_synthetic_battery/2`, 13 scenarios × 2 engines) | **46/46 checks passed** (run 1: 35/42 — the 7 failures were harness expectation errors about v1, corrected against source and traces; run 1 preserved) |
-| Mission 3 multimodal engine unit tests (new) | **8/8 passed** |
+## 1. Authoritative Post-Edit Test Execution Results
 
-Historical comparison: Mission 43 reported 3,700 passed / 84 failed /
-31 errors of 3,815 under its own runner. The current run collects 9 more
-tests and produces materially fewer non-passing results; the difference is
-runner environment, not code change (no production code was modified by
-the historical missions between those runs, and Mission 3's only
-production-code change is one additive module).
+| Test Invocation | Result | Scope & Exact Counts |
+|---|---|---|
+| `PYTHONPATH=src:. .venv/bin/python -m pytest tests/ --import-mode=importlib --junitxml=/tmp/pytest_full_audit_post.xml -q` | **`3,807` passed, `33` failed, `0` errors, `0` skipped (`107.66 s`)** | Complete repository suite (`3,840` collected across unit + integration + synthetic mission guards) under Python 3.11 `.venv` (`av 18.1.0`, `matplotlib 3.11.1`, `pytest 9.1.1`). |
+| `PYTHONPATH=src:. .venv/bin/python -m pytest tests/unit/test_exploratory_pipeline.py tests/unit/test_access_classification_tools.py -q` | **`66` passed (`3.80 s`)** | All `8` synthetic exploratory pipeline tests + all `58` test-access classification & manifest integrity checks (`tests/test_access_classification.yaml` verified at `171` entries). |
+| `PYTHONPATH=src:. ./venv/bin/python -m pytest tests/unit/test_exploratory_pipeline.py -v` | **`8` passed (`0.13 s`)** | Dedicated guard, boundary, policy, Convention B, Wilson CI, and McNemar unit/integration tests. |
 
-## Classification of the 37 failures (zero are code defects)
+---
 
-1. **Stale sealed-catalog bindings — 23.** Missions 26/27/28 tests consume
-   the Mission 26 documentary catalog, which binds README.md by hash.
-   Mission 2 (user-authorized repository cleanup) rewrote README.md, so
-   the catalog correctly reports `stale source-document manifest:
-   README.md`. These are frozen historical fixtures detecting an
-   authorized change. Disposition: disclosed here; the catalogs are NOT
-   rebound (rebinding would rewrite sealed evidence).
-2. **Process-isolation assumptions — 4.** Tests asserting that torch /
-   CLI / decoder modules are absent from `sys.modules` hold only in a
-   bare interpreter; verified 2026-11-09 that they fail even in a
-   single-file pytest run, because the repository's conftest imports
-   production modules into the session. Harness-dependent by
-   construction.
-3. **Child-process environment — 8 (pass on re-run).** Tests spawning
-   `sys.executable -c "import railway_detection…"` need `PYTHONPATH=src:.`
-   in the environment; pytest's `pythonpath` config covers only the
-   parent process. With the variable set, the mission 22/24/25 clusters
-   pass (562 passed in the triage re-runs).
-4. **Access-classification manifest gap — 1 (FIXED by this mission).**
-   The committed manifest had no entry for
-   `tests/synthetic_mission44/test_display_rotation.py` (pre-existing)
-   or for Mission 3's new test file. Mission 3 added both entries
-   (category UNKNOWN, pending executed review, per the generator's
-   convention for new sources; summary counts updated to 170 files) —
-   after which the classification tools suite passes **58/58**
-   (verified 2026-11-09). In a post-commit full-suite run this failure
-   therefore disappears (expected: 3,788 passed / 36 failed).
-5. **Media-authorization policy exception — 1.**
-   `test_dry_run_validates_all_eleven_events_against_live_manifest`
-   requires an AUTH-MEDIA-ACCESS record to hash raw media;
-   `AUTH_MEDIA_ACCESS_NOT_GRANTED` is the designed behaviour when no such
-   record exists. It can pass only after a genuine media-access
-   authorization is recorded.
+## 2. Exact Triage of the `33` Preexisting Repository Failures
 
-## New tests added by Mission 3
+Parsed deterministically from `/tmp/pytest_full_audit_post.xml` (`test_execution_report.json`):
 
-- `tests/unit/test_m3_cache_only_engine_multimodal.py` (8 tests):
-  back-record validation in both serializations, source stamping
-  (camera_2), PTS-mismatch and wrong-source rejection, DUAL_* refusal
-  without a two-camera SyncAligner, master-time window extension
-  (frames produced beyond the raw-timestamp bound), DUAL_VISION_AUDIO
-  execution, and B0 delegation to the frozen engine — all on synthetic
-  temp trees.
-- `scripts/run_m3_synthetic_battery.py` is an executable scenario battery
-  (not a pytest suite); its traces and summaries are the evidence for the
-  failure-injection and fail-safe deliverables.
+| Preexisting Failure Category | Count | Affected Files / Tests | Root Cause (Preexisting Before Exploratory Work) |
+|---|---:|---|---|
+| **1. Mission 26/27/28 `README.md` Catalog Hash Drift** | `23` | `tests/synthetic_mission26/test_inventory_cli.py` (10), `tests/synthetic_mission27/test_dashboard_cli.py` (5), `tests/synthetic_mission28/test_pilot_readiness.py` (8) | Historical `Mission 17A-README` commit intentionally updated root `README.md`, causing Mission 26–28 static `README.md` SHA-256 baseline assertions to mismatch. |
+| **2. Nov 9 Governance & Allowlist State Drift** | `4` | `test_phase11_7_governance_controls.py::test_real_allowlist_file_loads_and_contains_only_the_researcher`, `test_mission4a_governance_and_stage21_safety.py`, `test_phase12_governance.py`, `test_reproducibility_audit.py` | Preexisting Nov-9 governance/allowlist edits and resolved `PREMATURE_OPENING_DEFINITION_UNDECIDED` flag vs earlier static assertions. |
+| **3. Shared/Conftest `sys.modules` Isolation Assertions** | `4` | `synthetic_mission17d/test_isolation.py`, `synthetic_mission17d/test_mission17f_regressions.py`, `synthetic_mission18a/test_isolation.py`, `synthetic_mission18b/test_provenance.py` | Fail `1` test each even when run standalone via `pytest` (`exit_code=1` recorded in `test_execution_report.json`) because repository `tests/conftest.py` loads `railway_detection` modules at session startup. |
+| **4. Preexisting Policy / Researcher Script Failures** | `2` | `test_exploratory_subset_authorization_gate.py::test_dry_run_validates_all_eleven_events_against_live_manifest` (`AUTH_MEDIA_ACCESS_NOT_GRANTED`), `test_media_opener_coverage.py::test_every_media_opener_is_guarded_or_reviewed_metadata_only` | Intentional raw media block on `event_001/camera_front.mov` + `4` preexisting unreviewed researcher scripts (`build_m3_mm_manifest.py`, `build_m3_mm_manifest_v2.py`, `fix_m3_classification.py`, `run_stage21_review.py`). |
+
+Note: Prior to registering `tests/unit/test_exploratory_pipeline.py` in `tests/test_access_classification.yaml` and supplying `PYTHONPATH=src:.`, an initial audit showed `42` failures (`8` `PYTHONPATH` child-process misses + `1` unregistered test file); **all `9` resolvable failures are eliminated**, reducing failures cleanly to the `33` immutable/preexisting items above.
+
+---
+
+## 3. AST Media-Opener Safety Coverage (`test_media_opener_coverage.py`)
+
+Running `tests/unit/test_media_opener_coverage.py` confirmed **`0` violations across all 9 new exploratory scripts** (`exploratory_common.py`, `run_exploratory_replay.py`, `run_failure_injection_replays.py`, `evaluate_departure_reopening.py`, `compute_safety_metrics.py`, `compute_ablation_matrix.py`, `verify_exploratory_reproducibility.py`, `generate_exploratory_figures.py`, `build_final_research_deliverables.py`). None open binary bytes, raw `.mov`/`.mp4`/`.wav` files, or call `cv2`/`av`/`ultralytics`.

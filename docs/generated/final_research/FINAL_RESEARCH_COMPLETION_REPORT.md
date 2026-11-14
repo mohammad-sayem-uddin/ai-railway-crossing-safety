@@ -1,145 +1,64 @@
-# Final Research Completion Report — Train Gate Automation
+# Final Research Completion Report — Train Gate Automation (Exploratory Programme)
 
-Mission 3 (Master Research Completion), executed 2026-11-08/09.
-Repository state at start: local == remote == `25bab63` (Mission 2 release).
+**Mandatory Evaluation Disclaimer:**  
+> **Exploratory evaluation against researcher-adopted AI-assisted reference annotations.**  
+> All quantitative findings below come strictly from deterministic cache-only replays over frozen perceptual predictions (`data/manifests/m3_multimodal_replay_manifest.json`, SHA-256 `3c720167ea06b67141beb7cf33bd02ce325db62a3e100819f8aa4ad213d5bbbb`) and the researcher's adopted reference timestamps (`RESEARCHER_ANNOTATION_ADOPTION.json`). Official Stage-2.1 human review, raw media unlock (`AUTH_MEDIA_ACCESS_GRANTED`), and canonical `ExecutionGate` promotion have **NOT** been executed.
 
-## 1. Mandate and overall status
+---
 
-The mandate was to complete the original Protocol V2 research programme —
-finish the decision-level experiments on the existing 27-event dataset and
-produce a defensible evidence package for the professor — under hard
-guardrails: no fabricated approvals, ground truth, timestamps, or
-signatures; no bypassing or patching the execution gate; no threshold
-changes; no invented statistics; historical evidence preserved.
+## 1. Answer to Protocol V2 Primary Research Question
 
-**Status: PARTIALLY COMPLETE — and the boundary is exact.** Everything
-that can legitimately be executed without human governance records is
-done and verified (§3). The governed decision-level replays (EXP1–EXP5,
-EXP10) remain **not executed**, because the repository's own gate requires
-a Stage-2.1 human review chain that does not exist and cannot be created
-by an agent without fabrication (§4). This report labels that state
-plainly rather than presenting perception results as decision results.
+**Research Question (Protocol V2):**  
+*"On synchronized, event-labeled recordings from held-out crossings, does a predefined two-camera, audio-assisted, temporal state policy change event-level missed-train and premature-opening outcomes relative to fair single-camera and vision-only baselines?"*
 
-## 2. Guardrail compliance
+*(Scope note: All 27 recordings derive from a single passive rural crossing, `crossing_A`; cross-crossing held-out generalization cannot be claimed.)*
 
-- No approval, ground-truth record, review timestamp, or signature was
-  created, inferred, or simulated. The three governance records the gate
-  requires are still absent, and are reported absent.
-- The execution gate, readiness CLI, and frozen engine were read and
-  tested but never patched; Mission 3's only production-code change is
-  one additive subclass module.
-- The audio threshold (0.37) and all frozen thresholds/dwells are
-  untouched. Nulls stayed null. The engine-only event is reported
-  separately throughout.
-- The Mission 2 README rewrite causes 23 historical tests to fail against
-  Mission 26's sealed catalog; the catalog was NOT rebound (rebinding
-  would rewrite sealed evidence). All 37 full-suite failures are
-  classified in SOFTWARE_TESTING_REPORT.md; zero are code defects.
+### 1.1 Calibrated Dual-Camera Cohort (`N = 11` `CALIBRATION_SUPPORTED` Sync Events)
 
-## 3. What Mission 3 executed and verified
+| Condition & Policy | Missed Train (`T_block <= T_1`) | Zero Protection (`closed = 0.0s`) | M4 Premature Opening | Reached Clear (`n/11`) | Mean Conv-A Closed (s) | Mean Conv-B Closed (s) | Mean Blocked Frac. |
+|---|---|---|---|---|---|---|---|
+| `B0__v2` (Front Vision V2) | `10/10` `[0.7225, 1.0000]` | `4/11` (`36.36%`) `[0.1517, 0.6462]` | `4/5` (`80.00%`) `[0.3755, 0.9638]` | `4/11` | `10.7091` | `10.6364` | `0.2179` |
+| `FRONT_AUDIO__v2` (`B4`, V2) | `10/10` `[0.7225, 1.0000]` | `4/11` (`36.36%`) `[0.1517, 0.6462]` | `4/5` (`80.00%`) `[0.3755, 0.9638]` | `4/11` | `11.8364` | `11.7455` | `0.2366` |
+| `DUAL_VISION__v2` (`B2`, V2) | `10/10` `[0.7225, 1.0000]` | `2/11` (`18.18%`) `[0.0514, 0.4770]` | `7/9` (`77.78%`) `[0.4526, 0.9368]` | `8/11` | `20.9091` | `20.8182` | `0.3519` |
+| `DUAL_VISION_AUDIO__v2` (`B7`, V2) | `10/10` `[0.7225, 1.0000]` | `2/11` (`18.18%`) `[0.0514, 0.4770]` | `7/9` (`77.78%`) `[0.4526, 0.9368]` | `8/11` | `22.2364` | `22.1455` | `0.3719` |
+| `DUAL_VISION_AUDIO__v1` (`B7`, V1) | `10/10` `[0.7225, 1.0000]` | `3/11` (`27.27%`) `[0.0975, 0.5656]` | `4/8` (`50.00%`) `[0.2152, 0.7848]` | `4/11` | `23.8182` | `23.7091` | `0.4017` |
+| `B7__stateless_rule2` (`EXP-E`) | `10/10` `[0.7225, 1.0000]` | `10/11` (`90.91%`) `[0.6226, 0.9838]` | `1/1` (`100.0%`) `[0.2065, 1.0000]` | `0/11` | `1.7091` | `1.7091` | `0.0500` |
+| `B7__stateless_union` (`EXP-E`) | `9/10` `[0.5958, 0.9821]` | `3/11` (`27.27%`) `[0.0975, 0.5656]` | `7/7` (`100.0%`) `[0.6457, 1.0000]` | `0/11` | `12.9818` | `12.9818` | `0.1848` |
 
-1. **Phase 0 verification** — HEAD == remote `25bab63`; governance records
-   confirmed absent; frozen checkpoint hashes match; 253 cache JSONLs;
-   56 raw media files.
-2. **Blocker analyses A–D** (staging, Mission 3 working records) — policy
-   comparison, annotation status, protocol reconciliation, authorization
-   chain, all from direct source reading.
-3. **Adoption integrity** — all 27 adopted proposal files re-hashed:
-   27/27 SHA-256 match the Mission 43 adoption record.
-4. **Policy/fusion tests** — 60/60 pass (Phase 9/10/10.1, engine,
-   collector fail-closed, sensor health).
-5. **Synthetic decision battery** — 13 scenarios × both engines;
-   run 2: **46/46 checks pass** (`results/m3_synthetic_battery_r2/`).
-   v1's defects are trace-verified (departure "confirmation" from
-   ambiguous labels while the train is still present; RULE_7
-   self-interruption ×7 in S1; CROSSING_OCCUPIED trap). v2 passes every
-   behavioural check, including the fail-safe and recovery semantics.
-6. **Full guarded suite** — 3,787 passed / 37 failed / 0 errors; every
-   failure classified (SOFTWARE_TESTING_REPORT.md).
-7. **Back-stream replay extension** — `cache_only_engine_multimodal.py`
-   (frozen engine untouched): BACK_VISION / DUAL_VISION /
-   DUAL_VISION_AUDIO conditions, dual-serialization back validation,
-   fail-closed SyncAligner requirement for dual conditions, master-time
-   window fix. **8/8 unit tests pass.**
-8. **Full multimodal assembly** — anchored on the Mission 43 B2 manifest
-   (SHA-256 `2fb08c92…46b72`): **27/27 events with front + audio + back**,
-   every front/audio cache hash re-verified (0 mismatches); manifest
-   `data/manifests/m3_multimodal_replay_manifest.json` (SHA-256
-   `3c720167…bbbb`); coverage in `results/m3_mm_assembly/`.
-9. **Label corpus census** — 821 cache files: back-camera detections are
-   92.5% `side`, 1.4% `rear` (corpus-scale confirmation that both cameras
-   are lateral and positive rear confirmation is geometrically starved).
-10. **Access-classification manifest repaired** — the two unclassified
-    test files (one pre-existing Mission 44 file, one Mission 3 file)
-    received UNKNOWN/pending-review entries per the generator's own
-    convention; tools suite passes **58/58**; manifest now covers 170
-    test files.
+### 1.2 Independent Train Events (`N = 23`) + Negative Controls (`N = 3`)
 
-## 4. What remains gated, and the exact unlock path
+- **`B0__v2` vs `B0__v1` (Front-Only, `N = 23`):** Zero-protection drops from `10/23` (`43.48%`) in `V1` to `7/23` (`30.43%`) in `V2`, while `reached_clear` rises from `2/23` (`V1`) to `10/23` (`V2`). On `no_train` controls (`3` events, `60.0 s` total exposure), both trigger false closures on `2/3` (`event_001`: `7.2 s`, `event_003`: `7.0 s`; total `14.2 s`).
+- **`BACK_VISION__v2` vs `BACK_VISION__v1` (Back Clock):** Zero-protection `7/23` (`V2`) vs `8/23` (`V1`); M4 premature opening `6/16` (`37.5%`) in `V2` vs `1/15` (`6.67%`) in `V1`; `2/3` (`36.0 s`) false closures on `no_train` controls (`event_001`: `20.6 s`, `event_003`: `15.4 s`).
+- **`AUDIO_ONLY__v2` (`RULE_2` Non-Actuation Check):** `23/23` (`100%`) zero protection on train events and `0/3` (`0.0 s`) on `no_train` controls, confirming `RULE_2_AUDIO_SUPPORT_ONLY` strictly prevents acoustic-only gate closure.
+- **`Temporal V2` vs `Stateless RULE_2` (`EXP-E`, Front `N = 23`):** Temporal hysteresis rescues `13` unprotected train events (`20/23` zero-protection in stateless vs `7/23` in `V2`; exact two-sided McNemar $p = 0.000244$; `reached_clear`: `0` vs `10`, $p = 0.001953$), adding `+16.49 s` mean closed duration.
+- **Engine-Only Descriptive Case (`engine_events/event_001`):** `0.0 s` closed (`IDLE`) across `B0`, `FRONT_AUDIO`, and `AUDIO_ONLY`; `BACK_VISION` blocks for `2.4 s` (Conv-A) / `2.2 s` (Conv-B).
 
-Governed replay of EXP1–EXP5 and EXP10 requires, in order:
+![Ablation Rates and Wilson CIs](figures/fig1_ablation_rates_wilson_ci.png)
 
-1. **Stage-2.1 human review (HUMAN — the researchers only).** Per-event
-   review records created through `annotation.review_session` from the
-   adopted proposals, an independent second review, adjudication, a
-   media-access authorization, and a READY verdict from
-   `annotation.readiness_cli`, which alone issues
-   `data/governance/stage21_promotion_receipt.json`. The step-by-step
-   work package is in the Blocker B analysis (§8). No statement,
-   adoption, or agent action substitutes for this.
-2. **Decision records (DECISION — drafted).** v2 adoption (D2) and the
-   M4 premature-opening definition (D3) were decided on 2026-11-09; the
-   R04 scope (D4) and split (D5) recommendations are staged. Formal
-   records are created from the allowlisted researcher's own statements,
-   transcribed verbatim through the project owner (LEG-EXEC precedent),
-   with all hash bindings computed by repository code.
-3. **Execution authorizations (D7 — last).** AUTH-DESCRIPTIVE-EVAL-EXEC
-   (and EVAL-AUTH for official evaluation), issued once the above exist.
+---
 
-Until step 1 happens, the descriptive gate's five live bindings cannot
-all verify, and any decision-level number produced anyway would be
-fabrication. The programme therefore stops here, deliberately.
+## 2. Three Root-Cause Technical Discoveries
 
-## 5. Decision register (Mission 3)
+1. **Perception Cache Sparsity Root Cause (`DISPLAYMATRIX` Drop in Mission 39/43):**  
+   Oct 13 legacy Phase 10.1 caches (`12,047` vision detections across `13,086` frames; `9` positive audio windows) and Nov 7–8 `m3_multimodal_replay_manifest.json` (`329` front + `1,020` back vision detections across `13,092` records; `445/2,600` positive audio windows) ran identical frozen YOLOv8n (`3f5bb5b2...`) and CompactTrainHornCNN V3 (`ea1bb81d...`) weights. Mission 39/43 fixed the natural-log `ln(E + 1e-10)` audio transform, but Mission 37/38 switched video decode to PyAV `source_pts=True`, dropping `DISPLAYMATRIX` orthogonal rotation on `44/54` video sources (`24 front, 20 back`) prior to Mission 39/43 YOLO inference. Mission 44 (`db40305`) repaired `video.py` without re-running raw YOLO inference.
+2. **Premature Opening Root Cause (`RULE_3C` over Sparse Caches + Post-$T_4$ Tail Censoring):**  
+   Under `DUAL_VISION_AUDIO__v2`, `M4` reaches `7/9` (`77.78%`, vs `4/8 = 50.0%` in `V1`). Every `V2` clearance across all 8 clearing sync events fired via `RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE` (`0` via `RULE_3B`). Because `9/10` sync events with $T_4$ have only `0.76%–5.07%` qualifying back-camera frame density (unrotated decode) and `0.82 s–2.32 s` post-$T_4$ recording tails (shorter than $T_{\text{clear}} = 3.0\text{ s}$), continuous passage looks like train disappearance `14.58 s–38.67 s` before $T_4$ (plus `event_002` clearing at `19.0 s < 32.99 s`). Only `event_011` (`post_T4 = 7.73 s`) opens safely after $T_4$ (`+6.33 s`).
+3. **Collector `window_tolerance_s = 0.50` Backfill & Availability Leak (`collector.py`):**  
+   With `window_tolerance_s = 0.50 s > stride_s = 0.20 s`, a single isolated YOLO detection is re-matched across `3` consecutive `0.2 s` ticks, defeating `confirm_frames = 2` (`0.4 s`), generating spurious closures on `no_train_events/event_001` & `event_003` (`14.2 s` under `B0`), and triggering `SourceTracker` out-of-order warnings. Tightening to `0.25 s` stops 1-frame backfill (`event_011, 014` drop to `0.0 s`) and cuts `B7__v2` clearances (`8/11 -> 5/11`, `zero_prot` `2/11 -> 4/11`). Separately, `MultimodalEvidenceCollector.generate_frames_from_history` reads terminal `tracker.get_availability_map(t)`, propagating end-of-stream `MISSING` backward unless steps are assembled sequentially.
 
-| ID | Decision | Status |
-|---|---|---|
-| D1 | Signing route: researcher statements via the project owner, agent transcription (LEG-EXEC precedent) | AGREED 2026-11-09 |
-| D2 | Canonical policy: **v2 adopted** (v1 frozen baseline; RULE_3C deviation from D-004 explicitly recorded) | DECIDED 2026-11-09; formal record pending statement |
-| D3 | Premature opening: **M4 primary**, v9 sensitivity on the 11 sync events; other three protocol choices as documented | DECIDED 2026-11-09; formal record pending statement |
-| D4 | R04 scope: accept the 11 CALIBRATION_SUPPORTED events | RECOMMENDED; pending statement |
-| D5 | Split: descriptive evaluation over the full 27-event cohort; no generalization claim | RECOMMENDED; pending statement |
-| D6 | Stage-2.1 human review work package | PREPARED; researcher work |
-| D7 | AUTH + EVAL-AUTH records | DRAFTED; issued last, after D2–D6 |
+---
 
-## 6. Experiment status (detail: EXPERIMENT_REGISTRY.csv)
+## 3. Fail-Safe Stress Testing (`EXP-G/H/I/K`), Convention B & Verification
 
-- COMPLETE (synthetic): EXP6 failure injection, EXP7 contradictory
-  inputs, EXP9 fault recovery; EXP8 synthetic arm.
-- HISTORICAL (authorized, Phase 10.1): the v1-vs-v2 paired comparison on
-  the 11 sync events — v1 clears 0/11, v2 clears 6/11.
-- NOT EXECUTED (gated): EXP1, EXP2, EXP3, EXP5, EXP10 on original data.
-- NOT EXECUTED (engineering not built): EXP4's stateless comparator.
+- **Convention B vs A Theorem:** Across all `336` unperturbed runs, `Conv_B - Conv_A in {-0.2, 0.0} s` with `-0.2 s` exclusively on terminal blocked runs (100% verified).
+- **Failure & Recovery Perturbations (`202` runs across `21` scenarios):** Zero direct fault-to-open transitions (`0/202`), `11/11` dual-camera dropouts (`G4`, `I3`) and `3/3` idle dropouts (`G5`) clamped fail-safe via `RULE_4_FAIL_SAFE_CLAMP`, `11/11` out-of-order streams (`I7`) rejected monotonically, `14/14` idle/active fault injections (`K1`, `K2`) recovered deterministically (`RULE_9_SENSOR_RECOVERY`), `8/8` multi-train interrupts (`K3`) re-closed via `RULE_7_NEW_TRAIN_INTERRUPT`, and `11/11` subthreshold vision injections (`H2`) remained safely `IDLE`.
+- **Reproducibility & Software Testing:** Bit-for-bit reproduction verified across `344/344` exploratory files (`verify_exploratory_reproducibility.py`, `15.34 s`). Full pytest suite (`task-2114`): `3,807` passed, `33` preexisting triaged failures (`0` errors, `0` skipped; `0` exploratory failures); targeted pipeline + access-manifest suite passed `66/66`.
 
-## 7. Deliverables
+---
 
-This package (`docs/generated/final_research/`, 21 items incl.
-FILE_HASH_MANIFEST.sha256) plus the committed Mission 3 code and results:
-the multimodal engine subclass + its tests, the synthetic battery script
-+ both runs' outputs, the two manifest builders + classification fix
-scripts, the 27-event multimodal manifest + assembly coverage, and the
-classification-manifest update. Exact paths are listed in the mission
-commit(s) following `25bab63`.
+## 4. Recommended Path to Canonical Stage-2.1 Completion
 
-## 8. The one-paragraph summary for the professor
-
-The architecture is implemented and its perception layer is fully
-evaluated (audio event agreement: precision 54.6%, recall 92.3%,
-specificity 0% at the frozen threshold — a real, reportable weakness).
-The frozen v1 policy provably cannot complete departures on this rig
-(0/11); the adopted v2 policy fixes the mechanism (6/11) and passes all
-46 synthetic behaviour checks, with its one deviation from the founding
-decisions explicitly recorded. The remaining step to a complete
-decision-level evaluation is not engineering: it is the Stage-2.1 human
-review chain, specified as a work package, after which the assembled,
-hash-verified 27-event inputs and the gated replay can run unchanged.
+1. Fix [`collector.py`](../../../../src/railway_detection/fusion/collector.py) (`window_tolerance_s` single-use frame matching; sequential availability snapshots).
+2. Gate or harden `RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE` against sparse-detector dropouts in V2 policy design.
+3. Unlock raw `.mov` access (`AUTH_MEDIA_ACCESS_GRANTED`) to re-run frozen YOLOv8n using Mission 44's rotation-corrected `video.py`.
+4. Complete human Stage-2.1 adjudication (`scripts/run_stage21_review.py`) and record R04 calibration hardware fixes for the 16 non-supported events (`1` excluded + `15` uncalibrated).

@@ -1,32 +1,41 @@
-# Architecture — Final Status
+# Architecture Final Status — Exploratory Verification & Defect Registry
 
-Scope: the system as it stands at the end of the completion programme
-(2026-11-09, Mission 3 execution phase). "Executed" means run on original
-data under a recorded scope; "synthetic" means exercised only on
-constructed streams/fixtures.
+**Status Banner:** Canonical production modules (`decision_engine.py`, `decision_engine_v2_candidate.py`, `execution_gate.py`, `descriptive_exec_gate.py`, `media_guard.py`, `sync_calibration.py`) and frozen configs/checkpoints remain completely unmodified and intact. All exploratory runs executed via isolated scripts importing canonical engines in cache-only mode.
 
-## Component status
+---
 
-| Component | Status | Notes |
+## 1. Frozen Pipeline & Component Inventory
+
+| Layer | Canonical Implementation | Status / Hash (HEAD `c35d133f...`) |
 |---|---|---|
-| Vision detector (YOLOv8n adapter, classes front/rear/side, frozen checkpoint `39f402dfe460`, SHA-pinned) | IMPLEMENTED, EXECUTED | Perception runs complete for all 27 events, both cameras (Mission 43: front 6,613 records/329 objects; back 6,479 records/1,020 objects) |
-| Vision temporal filter (TemporalEvidenceBuffer) | IMPLEMENTED | Evidence-only; never decides |
-| Audio classifier (CompactTrainHornCNN, Audio V3, threshold 0.3700 enforced by loader) | IMPLEMENTED, EXECUTED | 27 events, 2,600 windows, 445 positive (Mission 43). The legacy `models/audio/best_checkpoint.pt` (Audio V2) is prohibited and was never used |
-| Evidence contracts (Detection / EvidenceRecord / DecisionRecord) | IMPLEMENTED | Unavailable sources cannot carry detections (enforced in `__post_init__`) |
-| Collector / synchronization (MultimodalEvidenceCollector, R04 fail-closed) | IMPLEMENTED, EXECUTED (assembly) | Unregistered vision source with an aligner attached raises; duplicate/out-of-order ingestion rejected and audit-logged |
-| Source tracker / sensor health | IMPLEMENTED, synthetic-tested | Staleness >2.0 s; recovery requires confirmation frames |
-| Fusion rules + decision engine v1 (frozen) | IMPLEMENTED, FROZEN, **defective for departure** | Label sets overlap (`side`,`train` in both approach and departure) with no camera-role scoping; empirically cannot complete departure on real evidence (0/11, Phase 10.1). Never run on original data through the governed replay path |
-| Fusion rules + decision engine v2 (candidate) | IMPLEMENTED, **ADOPTED as canonical experimental policy 2026-11-09** | Fixes the label/role defect; adds RULE_3C disappearance confirmation (documented deviation from founding D-004, explicitly recorded in the adoption); clears 6/11 on identical evidence; passes all 46 Mission 3 synthetic checks. Formal decision record is created when the allowlisted researcher's statement is transcribed (decision package D2); v1 remains the frozen comparison baseline. Not a deployment authorization |
-| Simulation mirror (state machine + gate physics + EventSimulationRunner) | IMPLEMENTED | Used by replay and diagnostics |
-| FailureInjector (8 modes) | IMPLEMENTED | Never run on original data; the Mission 3 synthetic battery (46/46 checks, both engines) covers the equivalent behaviours at engine level |
-| Cache-only replay engine | IMPLEMENTED, execution gated | Front streams only (B0/B1/B2 = front_vision / front_audio / both). **Mission 3 extension IMPLEMENTED + TESTED**: `cache_only_engine_multimodal.py` subclasses the frozen engine (frozen module untouched), adds the back stream (BACK_VISION / DUAL_VISION / DUAL_VISION_AUDIO), fail-closed SyncAligner requirement for dual conditions, and fixes the master-time window defect in the subclass; 8/8 unit tests pass |
-| Layer-B processor (offline assembly) | IMPLEMENTED, EXECUTED | Built the Mission 39/43 assemblies (front+audio). **Mission 3 full multimodal assembly built 2026-11-09**: `data/manifests/m3_multimodal_replay_manifest.json` (SHA-256 `3c720167…bbbb`) — 27/27 events with front + audio + back, every front/audio file hash-verified against the Mission 43 B2 manifest; coverage in `results/m3_mm_assembly/` |
-| Descriptive execution gate + official readiness gate | IMPLEMENTED, EFFECTIVE | Both verified by direct source audit in Mission 3; neither bypassed nor patched |
-| `safety/` package | Governance/access control only | Naming trap: the gate fail-safe logic lives in `fusion/`, not here |
-| `configs/fusion.yaml` | Placeholder, superseded | Marked SUPERSEDED in Mission 2; executed config is `frozen_experiment_v1.yaml` + `decision_policy_v1.yaml` (hash `999a7970…a42e`) |
+| **Visual Detector** | YOLOv8n (`experiments/vision/39f402dfe460/checkpoints/weights/best.pt`, `conf=0.35`) | Frozen (`3f5bb5b23f82f5d963d23dc8f3f1896a83532424d8e4ef70a406b6abfba18ebd`) |
+| **Acoustic Classifier** | CompactTrainHornCNN V3 (`experiments/audio/RUN_20261008_AUDIO_V3_ESC50/checkpoints/best.pt`, `16kHz`, `n_fft=1024`, `hop=512`, `n_mels=64`, `ln(E+1e-10)`, `conf=0.37`) | Frozen (`ea1bb81d74230af71ba22b6d534a2ac550bca05833d1532e223376926c512782`) |
+| **Legacy Policy V1** | [`decision_engine.py`](../../../../src/railway_detection/fusion/decision_engine.py) (`configs/frozen_experiment_v1.yaml`) | Intact (`3f5e3521...` / `b8ef5da0...`) |
+| **Candidate Policy V2** | [`decision_engine_v2_candidate.py`](../../../../src/railway_detection/fusion/decision_engine_v2_candidate.py) (`configs/decision_policy_v2_candidate.yaml`) | Intact (`41063a75...` / `d90828b2...`) |
+| **Safety & Execution Gates** | [`media_guard.py`](../../../../src/railway_detection/safety/media_guard.py), `execution_gate.py`, `descriptive_exec_gate.py` | Intact & fail-closed (never bypassed) |
+| **Exploratory Harness** | `scripts/exploratory_common.py`, `run_exploratory_replay.py`, `run_failure_injection_replays.py`, `evaluate_departure_reopening.py`, `compute_safety_metrics.py`, `compute_ablation_matrix.py`, `verify_exploratory_reproducibility.py`, `generate_exploratory_figures.py`, `build_final_research_deliverables.py` | Complete, AST-compliant, deterministic |
 
-## What the architecture has never done
+---
 
-- Run its decision engine on the full original cohort through the governed path (0 decision events/frames in Missions 39–43).
-- Been deployed, connected to any physical gate, or validated in the field. It is a **simulated decision architecture** evaluated on recorded data — exactly as the founding concept specified.
-- Used a cascade (none exists anywhere in the repository — verified three independent ways in Mission 1) or the weighted-fusion formula from the 2026-08-31 progress report (documented there only; never implemented; its overclaims were retracted by the 2026-11-02 novelty audit).
+## 2. Proven Divergence Root Cause: Oct 13 Legacy Caches vs Nov 7–8 `m3_multimodal_replay_manifest.json`
+
+Earlier Phase 10.1 docs showed different baseline detection volume (`0/11`–`6/11`) than Mission 39/43 (`329` front + `1,020` back vision detections across `13,092` records; `445/2,600` positive audio windows). Cross-verifying [`CORRECTIVE_EXPERIMENT_AUDIT.md`](../../../CORRECTIVE_EXPERIMENT_AUDIT.md), [`AUDIO_MODEL_EXPERIMENT_REPORT.md`](../professor_evidence/mission43/AUDIO_MODEL_EXPERIMENT_REPORT.md), and Mission 44 diagnostics proved **both cache sets used identical frozen YOLOv8n and Audio V3 checkpoints**, differing in two upstream preprocessing changes:
+
+1. **Acoustic Feature Align Fix (`ln(E + 1e-10)`):** Mission 39/43 corrected the log-mel feature representation from legacy dB mismatch, raising positive acoustic windows (`>= 0.37`) from `9` (legacy active cache) to `445/2,600`.
+2. **PyAV `DISPLAYMATRIX` Rotation Drop (`44/54` Sources Unrotated):** Oct 13 caches (`results/experiments/cache/train_events_event_001_camera_front_camera_1_vision.jsonl`: `194/249` nonempty frames, portrait bbox `[402.5, 925.8, ...]`) used OpenCV auto-rotation (`CAP_PROP_ORIENTATION_AUTO`). Mission 37/38 (`5067d76`, `70e6c1e`) migrated video decode to PyAV (`source_pts=True`), inadvertently dropping `DISPLAYMATRIX` orthogonal rotation on **`44/54` video sources (`24 front, 20 back`)** (`DISPLAY_ROTATION_DEFECT_REPRODUCTION.json`). Mission 39/43 ran YOLOv8n over those sideways landscape frames (`train_events_event_001_front.jsonl`: `6/250` nonempty frames, landscape bbox `[1121.6, 749.6, ...]`). Mission 44 (`db40305`) repaired `video.py` but did not re-run raw video inference (`no_model_forward_or_raw_source_access: True`), so `m3_multimodal_replay_manifest.json` permanently reflects pre-fix unrotated decode.
+
+---
+
+## 3. Architectural Defects Discovered in Replay Fusion & State Machine
+
+### 3.1 `MultimodalEvidenceCollector.generate_frames_from_history` Availability Leak
+In `src/railway_detection/fusion/collector.py:243`, calling `generate_frames_from_history` queries `self.tracker.get_availability_map(t)` **after** the full history buffer has been ingested. Consequently, if a stream ends in `available=False`, `MISSING` status leaks backward onto earlier timestamps (`t = 0.0 s`) unless frames are assembled sequentially one tick at a time (verified by `test_clock_aware_boundary_and_availability_isolation` in `tests/unit/test_exploratory_pipeline.py`).
+
+### 3.2 `window_tolerance_s = 0.50 > stride_s = 0.20` Single-Frame Backfill Bug
+Under default `window_tolerance_s = 0.50 s` and `stride_s = 0.20 s`, a single isolated YOLO frame detection (`t = k`) falls within `|t - t_det| <= 0.50` across **three consecutive `0.20 s` ticks** (`t = k, k+0.2, k+0.4`). This satisfies `confirm_frames = 2` (`0.40 s`) from a single frame, generating false closures on `no_train_events/event_001` & `event_003` (`14.2 s` in `B0`) and triggering `SourceTracker` out-of-order warnings. Tightening `window_tolerance_s` to `0.25 s` prevents 1-frame backfill (`test_window_tolerance_backfill_stops_at_025`), eliminating false approaches from isolated ticks while dropping `B7__v2` sync clearances (`8/11 -> 5/11`) and doubling zero-protection (`2/11 -> 4/11`).
+
+### 3.3 `RULE_3C_DEPARTURE_CONFIRMED_BY_DISAPPEARANCE` Premature Clearance Hazard
+Policy V2 permits transition `TRAIN_DEPARTING -> REAR_CONFIRMED` after `2.0 s` absence of vision detections (`RULE_3C`), even when front/back detectors are merely sparse (`0.76%–5.07%` `cam2` qualifying density on `9/10` `T4` sync events). In `B7__v2`, **`8/8` clearances fired via `RULE_3C`** (`0` via `RULE_3B`), causing `7/9` (`77.78%`) M4 premature openings.
+
+### 3.4 Fail-Safe & Monotonicity Controls Verified Clean
+Despite perceptual sparsity, fail-closed engine guards operated without fault-to-open violations (`0/202` runs), `11/11` out-of-order timestamp streams rejected, `14/14` idle/active dual-dropout injections cleanly clamped (`RULE_4_FAIL_SAFE_CLAMP`) and recovered (`RULE_9_SENSOR_RECOVERY`), `DUAL_*` refused non-`CALIBRATION_SUPPORTED` events (`event_010` + `16` independent events), and `AUDIO_ONLY__v2` obeyed `RULE_2_AUDIO_SUPPORT_ONLY` (`0` closures across `23` train + `3` no-train events).

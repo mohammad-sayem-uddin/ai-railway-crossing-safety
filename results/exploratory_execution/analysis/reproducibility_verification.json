@@ -1,0 +1,43 @@
+{
+  "exploratory_label": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "extra_in_repro": [],
+  "key_output_sha256": {
+    "analysis/ablation_matrix.csv": "9b130ffdbedeb87e03449af2eddc522aac320511c514776305b46c00bda43d47",
+    "analysis/ablation_matrix.json": "9c3005686716259444663c750dffe879c59ff0c8d25205016134ec404d3e95df",
+    "analysis/departure_reopening_analysis.csv": "1f8313f349c3aea91974bd97b40ec07c945a4f786a529fe3cdc871f1d304f487",
+    "analysis/departure_reopening_analysis.json": "8ba45d0ae828a09962344b745fc351e56a0979b2e7caf1c51da841189d1b1b62",
+    "analysis/event_level_safety_metrics.csv": "83de851ae1d215dc720cc22a8ea2fff214e8cc8b848076ac97e7c48a7c722f2d",
+    "analysis/safety_metrics_summary.json": "0763572cae37a811d2ca6a59a51746a0e7a3e7d2f00794a4834cc79e4f1fec7c",
+    "failure_injection/stress_and_recovery_results.json": "865725f549dfa67694ed67efa9d1687643acc1657881b13579e655a09283841b",
+    "replays/replay_summary.json": "ce90cc13d91cefe1d1cef527b4a5311bbb16e4dfb4b81a371ce6aadada6c3be5"
+  },
+  "mismatches": [],
+  "missing_in_repro": [],
+  "schema": "exploratory-reproducibility-verification/1",
+  "stage_exit_codes": [
+    {
+      "exit_code": 0,
+      "stage": "run_exploratory_replay"
+    },
+    {
+      "exit_code": 0,
+      "stage": "run_failure_injection_replays"
+    },
+    {
+      "exit_code": 0,
+      "stage": "evaluate_departure_reopening"
+    },
+    {
+      "exit_code": 0,
+      "stage": "compute_safety_metrics"
+    },
+    {
+      "exit_code": 0,
+      "stage": "compute_ablation_matrix"
+    }
+  ],
+  "summary_and_analysis_files_compared": 8,
+  "total_files_compared": 344,
+  "trace_files_compared": 336,
+  "verified_bit_identical": true
+}

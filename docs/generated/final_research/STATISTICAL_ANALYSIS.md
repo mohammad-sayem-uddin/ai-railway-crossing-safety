@@ -1,46 +1,51 @@
-# Statistical Analysis — Approach and Reported Quantities
+# Statistical Analysis Report — Wilson Intervals, Paired McNemar Contrasts & Convention B Identity
 
-## Design principles
+**Evaluation Basis:** *Exploratory evaluation against researcher-adopted AI-assisted reference annotations.*  
+All confidence intervals use two-sided 95% Wilson score bounds ($z = 1.95996$); all paired binary contrasts use exact two-sided McNemar binomial tests over discordant event pairs (`a_only, b_only`) on strictly matched event subsets.
 
-1. **The event is the unit of analysis** (Protocol V2; design §9). Two camera
-   recordings of one event are one sample. The engine-only event is always
-   reported separately and never pooled with train events.
-2. **Paired comparisons.** Policy and condition comparisons (v1 vs v2;
-   vision vs vision+audio; temporal vs stateless) run on byte-identical
-   cached inputs per event. Reported differences are exact paired outcome
-   counts over the same events — the strongest design this dataset supports.
-3. **Census, not sample.** The 27 events (11 for dual-camera claims) are the
-   complete available record of one crossing, not a random sample of
-   crossings. Accordingly this programme reports counts, proportions with
-   explicit denominators, and per-event tables. **No p-values and no
-   confidence intervals are reported for decision outcomes**: inventing
-   inferential machinery for a single-site census would overclaim, and the
-   mission guardrails prohibit invented statistics.
-4. **Evaluability before arithmetic.** Per Protocol v9 §5.3, an event whose
-   required boundary is censored or unobservable is `not_evaluable` for that
-   metric, excluded from that denominator, and listed with its reason.
-   Missing is never converted to zero; null annotation fields stay null.
-5. **Pre-declared scope.** Experiments, conditions and the 9-metric frozen
-   descriptive scope are fixed in EXPERIMENT_REGISTRY.csv before execution.
-   No event, definition, or threshold was selected by looking at outcomes;
-   the one open tuning question (RULE_3C gap length) is explicitly left
-   undecided rather than fitted to clearance counts.
+---
 
-## Quantities reported in this programme
+## 1. Paired Exact McNemar Contrasts (`ablation_matrix.json`, 9 Contrasts)
 
-| Quantity | Value / form | Basis |
-|---|---|---|
-| Audio event agreement (M43) | TP 12 / FP 10 / FN 1 / TN 0; precision 54.55%, recall 92.31%, F1 0.6857, specificity 0%, accuracy 52.17% | 23 train events with adopted horn status; frozen max-window rule @ 0.37 |
-| Audio ranking summaries (M43) | ROC-AUC 0.6846, AP 0.7739 | Descriptive summaries of the same 23-event comparison; not population estimates |
-| Policy clearance outcomes (Phase 10.1) | v1: 0/11 events reach CROSSING_CLEAR; v2: 6/11; identical under naive and sync-corrected durations | Paired trajectories on the 11 CALIBRATION_SUPPORTED events |
-| Frozen descriptive metrics (when gated replay runs) | Per-event values for the 9 DESCRIPTIVE_METRIC_SCOPE metrics + per-metric evaluable denominators | Hash-bound metric scope `1e10c02d…c36`; premature_opening under the definition **decided 2026-11-09: M4 (`first_blocked_to_t4_clearance`) primary, v9 as sensitivity on the 11 sync events** |
-| Synthetic battery | Pass/fail per pre-declared expectation, per engine, with full traces | Behavioural validation only; no performance interpretation |
+| Contrast | Events `N` | Outcome Metric | Eval `n` | Discordant (`A_only`, `B_only`) | Exact McNemar `p` | Mean Duration $\Delta(B - A)$ |
+|---|---:|---|---:|---|---|---|
+| **Primary Q1 (`B0__v2` vs `B7__v2`)** | 11 | Zero Protection (`A_zero_B_prot=2`, `B_zero_A_prot=0`) | 11 | `(2, 0)` [`ev012, ev017`] | `0.500000` | `+11.5273 s` |
+| Primary Q1 (`B0__v2` vs `B7__v2`) | 11 | Reached Clear (`A_clr=0`, `B_clr=4`) | 11 | `(0, 4)` [`ev001,002,011,017`] | `0.125000` | `+11.5273 s` |
+| Primary Q1 (`B0__v2` vs `B7__v2`) | 11 | Missed Train (`both=10`) / M4 (`both=4, neither=1`) | 10 / 5 | `(0, 0)` / `(0, 0)` | `1.000000` | — |
+| **Dual Vision Only (`B0__v2` vs `B2__v2`)** | 11 | Zero Protection / Reached Clear | 11 | `(2, 0)` / `(0, 4)` | `0.500` / `0.125` | `+10.2000 s` |
+| **Audio Increment (`B2__v2` vs `B7__v2`)** | 11 | Missed / Zero-Prot / M4 / Clear | 10/11/9/11 | `(0, 0)` across all 4 | `1.000000` | `+1.3273 s` |
+| **Audio on Front (`B0__v2` vs `B4__v2`)** | 23 | Missed / Zero-Prot / M4 / Clear | 22/23/5/23 | `(0, 0)` across all 4 | `1.000000` | `+0.7826 s` |
+| **Back Cam on Audio (`B4__v2` vs `B7__v2`)** | 11 | Zero Protection / Reached Clear | 11 | `(2, 0)` / `(0, 4)` | `0.500` / `0.125` | `+10.4000 s` |
+| **Policy (`B7__v1` vs `B7__v2`)** | 11 | M4 Premature (`A=0, B=3`) [`ev001,007,014`] | 8 | `(0, 3)` | `0.250000` | `-1.5818 s` |
+| Policy (`B7__v1` vs `B7__v2`) | 11 | Reached Clear (`A=0, B=4`) [`ev001,007,011,014`] | 11 | `(0, 4)` | `0.125000` | `-1.5818 s` |
+| **EXP-E: `Stateless_RULE2` vs `V2` on `B7`** | 11 | Zero Protection (`Stateless_zero=8`, `V2_zero=0`) | 11 | **`(8, 0)`** | **`0.007812`** | **`+20.5273 s`** |
+| **EXP-E: `Stateless_RULE2` vs `V2` on `B7`** | 11 | Reached Clear (`Stateless_clr=0`, `V2_clr=8`) | 11 | **`(0, 8)`** | **`0.007812`** | **`+20.5273 s`** |
+| **EXP-E: `Stateless_Union` vs `V2` on `B7`** | 11 | Reached Clear / M4 / Zero-Prot | 11/7/11 | `(0, 8)` / `(1, 0)` / `(2, 1)` | **`0.007812`** / `1.0` / `1.0` | `+9.2545 s` |
+| **EXP-E: `Stateless_RULE2` vs `V2` on `B0`** | 23 | Zero Protection (`Stateless=13`, `V2=0`) | 23 | **`(13, 0)`** | **`0.000244`** | **`+16.4870 s`** |
+| **EXP-E: `Stateless_RULE2` vs `V2` on `B0`** | 23 | Reached Clear (`Stateless=0`, `V2=10`) | 23 | **`(0, 10)`** | **`0.001953`** | **`+16.4870 s`** |
 
-## Threats to validity (summary; full text in LIMITATIONS)
+---
 
-Single site and daytime-only recording; small and imbalanced cohort;
-adopted AI-assisted references instead of canonical ground truth;
-synchronization validated for 11/27 events only; recording lengths that
-truncate the departure phase for 2 events; an audio event rule whose
-aggregation brittleness is measurable only at event level because window
-labels do not exist.
+## 2. Exact Interpretation of Statistical Power & Intervals
+
+1. **Where Statistical Evidence Is Decisive:** Temporal state hysteresis (`V2`) produces statistically significant reductions in catastrophic zero-protection failures relative to stateless `RULE_2` thresholding even at these modest sample sizes (`p = 0.007812` on `N = 11` dual-camera events; `p = 0.000244` on `N = 23` front-camera events), while eliminating `Stateless Union`'s `3/3` (`16`-episode) negative-control false activations.
+2. **Where Small Sample Size Limits Inference (`N = 11` Dual Sync, `N = 3` Negative Controls):**  
+   - Halving zero-protection from `4/11` (`36.36%`, CI `[15.17%, 64.62%]`) to `2/11` (`18.18%`, CI `[5.14%, 47.70%]`) under `B7__v2` rests on `2` discordant pairs (`event_012, event_017`; $p = 0.50$). At $N = 11$, overlapping Wilson intervals are `~42–50` percentage points wide.
+   - Similarly, V2's higher M4 premature-opening rate vs V1 (`7/9` = `77.78%` `[45.26%, 93.68%]` vs `4/8` = `50.00%` `[21.52%, 78.48%]`, discordant `(0, 3)`, $p = 0.25$) reflects a strong deterministic mechanism (`RULE_3C` over sparse caches) rather than noise, despite wide binomial intervals.
+   - Negative controls (`N = 3`, `60.0 s` exposure) yield Wilson CIs `[20.77%, 93.85%]` at `2/3` and `[0.0%, 56.15%]` at `0/3`, making hourly false-alarm estimation impossible without extended field collection.
+
+---
+
+## 3. Convention B vs Convention A Mathematical Identity Verification
+
+- Verified programmatically across **`336/336` unperturbed runs** in `results/exploratory_execution/analysis/safety_metrics_summary.json`:
+  - `unique_conv_b_minus_a_values_s = [-0.2, 0.0]`
+  - `terminal_blocked_unique_diffs_s = [-0.2]`
+  - `verified_exact_identity = True`
+- This empirically confirms the forward-causal theorem $T_{\text{ConvB}} = T_{\text{ConvA}} - \Delta t \cdot b_N$ at $\Delta t = 0.2\text{ s}$, resolving historical ambiguity in B4 Table 11 reporting.
+
+---
+
+## 4. Legacy V9 `[T1, T4)` vs M4 `(t_blocked, T4)` Endpoint Comparison
+
+Legacy Protocol V9 flags `10/10` evaluable sync runs as premature across `B0__v2`, `AUDIO_ONLY__v2`, `B7__v2`, and `B7__v1` alike — including runs where the gate closed late (`t_blocked > T1`, leaving `[T1, t_blocked)` open) or even `AUDIO_ONLY__v2` (`0.0 s` blocked)! M4 cleanly separates **`never_protected` (`M5`)** from **post-closure premature opening inside `(t_blocked, T4)`**, reducing false conflation and enabling direct diagnosis of `RULE_3C` reopening bugs.

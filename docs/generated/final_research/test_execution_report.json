@@ -1,0 +1,243 @@
+{
+  "command": "PYTHONPATH=src:. .venv/bin/python -m pytest tests/ --import-mode=importlib --junitxml=/tmp/pytest_full_audit_post.xml -q",
+  "exploratory_and_manifest_targeted_run": {
+    "command": "PYTHONPATH=src:. .venv/bin/python -m pytest tests/unit/test_exploratory_pipeline.py tests/unit/test_access_classification_tools.py -q",
+    "exit_code": 0,
+    "summary_line": "66 passed in 3.80s"
+  },
+  "exploratory_suite_failures": 0,
+  "failed_cases": [
+    {
+      "category": "preexisting_shared_interpreter_sys_modules_isolation",
+      "classname": "tests.synthetic_mission17d.test_isolation",
+      "name": "test_production_modules_and_model_decoders_not_imported",
+      "summary": "AssertionError: assert 'railway_detection.cli.main' not in {'sys': <module 'sys' (built-in)>, 'builtins': <module 'builtins' (built-in)>, '_frozen_importlib': <module '_frozen_importlib' (frozen)>, '_imp': <module '_imp' (built-in)>, ...}"
+    },
+    {
+      "category": "preexisting_shared_interpreter_sys_modules_isolation",
+      "classname": "tests.synthetic_mission17d.test_mission17f_regressions",
+      "name": "test_no_production_or_model_modules_loaded",
+      "summary": "assert not True"
+    },
+    {
+      "category": "preexisting_shared_interpreter_sys_modules_isolation",
+      "classname": "tests.synthetic_mission18a.test_isolation",
+      "name": "test_no_model_decoder_cli_or_split_imports",
+      "summary": "AssertionError: assert 'torch' not in {'sys': <module 'sys' (built-in)>, 'builtins': <module 'builtins' (built-in)>, '_frozen_importlib': <module '_frozen_importlib' (frozen)>, '_imp': <module '_imp' (built-in)>, ...}"
+    },
+    {
+      "category": "preexisting_shared_interpreter_sys_modules_isolation",
+      "classname": "tests.synthetic_mission18b.test_provenance",
+      "name": "test_pure_verifier_has_no_loader_or_fit_api",
+      "summary": "AssertionError: assert 'torch' not in {'sys': <module 'sys' (built-in)>, 'builtins': <module 'builtins' (built-in)>, '_frozen_importlib': <module '_frozen_importlib' (frozen)>, '_imp': <module '_imp' (built-in)>, ...}"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_actual_documentary_inventory_preserves_sources_roles_scopes_and_rights",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_incomplete_or_substituted_inventory_never_becomes_signed_off[event_count]",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_incomplete_or_substituted_inventory_never_becomes_signed_off[r04_expansion]",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_incomplete_or_substituted_inventory_never_becomes_signed_off[source_missing]",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_incomplete_or_substituted_inventory_never_becomes_signed_off[source_duplicate]",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_incomplete_or_substituted_inventory_never_becomes_signed_off[false_signoff]",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_incomplete_or_substituted_inventory_never_becomes_signed_off[false_live_hash]",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_incomplete_or_substituted_inventory_never_becomes_signed_off[missing_provenance]",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_dashboard_is_deterministic_and_separates_unknown_denied_selected_and_executed",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission26.test_inventory_cli",
+      "name": "test_actual_cli_reports_and_checks_never_execute_or_accept_a_resource_path",
+      "summary": "assert (2 == 0)"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission27.test_dashboard_cli",
+      "name": "test_dashboard_preserves_all_operation_selections_and_separates_evidence_stages",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission27.test_dashboard_cli",
+      "name": "test_new_readiness_option_and_evidence_report_produce_identical_json",
+      "summary": "AssertionError: assert 2 == 0"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission27.test_dashboard_cli",
+      "name": "test_altered_documentary_binding_refuses_before_dashboard_composition",
+      "summary": "AssertionError: Regex pattern did not match."
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission27.test_dashboard_cli",
+      "name": "test_unreviewed_submission_is_never_assumed_accepted_by_dashboard",
+      "summary": "AssertionError: Regex pattern did not match."
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission27.test_dashboard_cli",
+      "name": "test_preflight_receives_no_fabricated_claims_from_documentary_intake",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission28.test_pilot_readiness",
+      "name": "test_exact_existing_pilot_is_not_ready_and_all_diagnostic_sources_remain_blocked",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission28.test_pilot_readiness",
+      "name": "test_pilot_diagnosis_is_deterministic_and_canonical_authorization_is_execution_only",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission28.test_pilot_readiness",
+      "name": "test_substituted_documentary_pilot_source_is_not_silently_accepted[missing_source]",
+      "summary": "AssertionError: Regex pattern did not match."
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission28.test_pilot_readiness",
+      "name": "test_substituted_documentary_pilot_source_is_not_silently_accepted[wrong_event]",
+      "summary": "AssertionError: Regex pattern did not match."
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission28.test_pilot_readiness",
+      "name": "test_substituted_documentary_pilot_source_is_not_silently_accepted[wrong_camera]",
+      "summary": "AssertionError: Regex pattern did not match."
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission28.test_pilot_readiness",
+      "name": "test_substituted_documentary_pilot_source_is_not_silently_accepted[missing_rights]",
+      "summary": "AssertionError: Regex pattern did not match."
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission28.test_pilot_readiness",
+      "name": "test_rehashed_global_approval_flag_never_changes_pilot_readiness",
+      "summary": "ValueError: stale source-document manifest: README.md"
+    },
+    {
+      "category": "preexisting_mission26_28_stale_readme_catalog_hash",
+      "classname": "tests.synthetic_mission28.test_pilot_readiness",
+      "name": "test_readiness_cli_exposes_diagnosis_without_executing_pilot",
+      "summary": "AssertionError: assert 2 == 0"
+    },
+    {
+      "category": "preexisting_nov9_governance_allowlist_state_drift",
+      "classname": "tests.test_phase11_7_governance_controls",
+      "name": "test_real_allowlist_file_loads_and_contains_only_the_researcher",
+      "summary": "AssertionError: assert frozenset({'e...u@gmail.com'}) == frozenset({'r...u@gmail.com'})"
+    },
+    {
+      "category": "preexisting_policy_or_researcher_script_failure",
+      "classname": "tests.unit.test_exploratory_subset_authorization_gate",
+      "name": "test_dry_run_validates_all_eleven_events_against_live_manifest",
+      "summary": "railway_detection.safety.media_guard.MediaAccessAuthorizationError: [AUTH_MEDIA_ACCESS_NOT_GRANTED] no recorded AUTH-MEDIA-ACCESS at /Users/sayemuddin/Desktop/Train_automation/data/governance/AUTH-MEDIA-ACCESS.json. Opening, hashing, probin"
+    },
+    {
+      "category": "preexisting_policy_or_researcher_script_failure",
+      "classname": "tests.unit.test_media_opener_coverage",
+      "name": "test_every_media_opener_is_guarded_or_reviewed_metadata_only",
+      "summary": "AssertionError: unguarded raw-media openers (add require_media_authorization at the opener, or review and allowlist with a reason): {'scripts/build_m3_mm_manifest.py::cache_info': 'raw-byte hash', 'scripts/build_m3_mm_manifest.py::find_anch"
+    },
+    {
+      "category": "preexisting_nov9_governance_allowlist_state_drift",
+      "classname": "tests.unit.test_mission4a_governance_and_stage21_safety",
+      "name": "test_official_phase12_readiness_and_execution_gate_fail_closed_on_repo",
+      "summary": "AssertionError: assert 'PREMATURE_OPENING_DEFINITION_UNDECIDED' in {'COHORT_APPROVAL_MISSING', 'EVAL_AUTH_NOT_GRANTED', 'EVENT_SPLIT_DECISION_MISSING', 'MANIFEST_MISSING', 'STAGE21_RECORDS_MISSING'}"
+    },
+    {
+      "category": "preexisting_nov9_governance_allowlist_state_drift",
+      "classname": "tests.unit.test_phase12_governance",
+      "name": "test_real_repository_blockers_distinguish_missing_from_invalid",
+      "summary": "KeyError: 'PREMATURE_OPENING_DEFINITION_UNDECIDED'"
+    },
+    {
+      "category": "preexisting_nov9_governance_allowlist_state_drift",
+      "classname": "tests.unit.test_reproducibility_audit",
+      "name": "test_real_audit_reports_the_actual_state_without_inventing_results",
+      "summary": "AssertionError: assert 'PASS' == 'UNRESOLVED'"
+    }
+  ],
+  "failure_category_counts": {
+    "preexisting_mission26_28_stale_readme_catalog_hash": 23,
+    "preexisting_nov9_governance_allowlist_state_drift": 4,
+    "preexisting_policy_or_researcher_script_failure": 2,
+    "preexisting_shared_interpreter_sys_modules_isolation": 4
+  },
+  "full_suite_summary": {
+    "collected": 3840,
+    "errors": 0,
+    "failed": 33,
+    "passed": 3807,
+    "skipped": 0,
+    "wall_time_s": 107.662
+  },
+  "generated_at_utc": "2026-11-14T15:23:10.530143+00:00",
+  "isolation_standalone_verification": {
+    "tests/synthetic_mission17d/test_isolation.py": {
+      "exit_code": 1,
+      "summary_line": "1 failed, 5 passed in 0.03s"
+    },
+    "tests/synthetic_mission17d/test_mission17f_regressions.py": {
+      "exit_code": 1,
+      "summary_line": "1 failed, 21 passed in 5.12s"
+    },
+    "tests/synthetic_mission18a/test_isolation.py": {
+      "exit_code": 1,
+      "summary_line": "1 failed, 5 passed in 0.04s"
+    },
+    "tests/synthetic_mission18b/test_provenance.py": {
+      "exit_code": 1,
+      "summary_line": "1 failed, 25 passed in 0.14s"
+    }
+  },
+  "python_executable": "/Users/sayemuddin/Desktop/Train_automation/.venv/bin/python"
+}
