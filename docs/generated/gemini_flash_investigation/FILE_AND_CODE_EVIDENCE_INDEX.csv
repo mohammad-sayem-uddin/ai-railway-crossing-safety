@@ -1,0 +1,33 @@
+file_path,category,primary_responsibility,key_classes_or_exports,sha256_or_status,last_governing_mission
+docs/archive/RESEARCH_PROTOCOL_V2.md,Protocol,"Authoritative research question and experimental protocol","ResearchProtocolV2",61cda29734cad7f5...,Founding / Phase 1-12
+docs/archive/RESEARCH_CONCEPT.md,Protocol,"Founding concept document and research objectives","ResearchConcept",864924b35662d088...,Founding / Phase 1-12
+docs/HAZARD_MODEL.md,Protocol,"Safety invariants and hazard model definition","HazardModel",9c0e564763b89c75...,Founding / Phase 1-12
+configs/frozen_experiment_v1.yaml,Configuration,"Immutable frozen configuration pinning model hashes and thresholds","FrozenConfig",b8ef5da052f002e7...,Founding / Phase 1-12
+configs/decision_policy_v1.yaml,Configuration,"Baseline frozen decision policy (Rule 1-9)","DecisionPolicyV1",c87c1432f473f84d...,Phase 9 / Frozen
+configs/decision_policy_v2_candidate.yaml,Configuration,"Canonical adopted decision policy (Rule 1-10 with Rule 3B/3C)","DecisionPolicyV2Candidate",d90828b2ec37169d...,Mission 3 / Phase 10
+data/manifests/phase12_protocol_decision.json,Governance,"Researcher decision: M4 premature opening primary definition","Phase12ProtocolDecision",163cab437e8070eb...,Founding / Phase 1-12
+data/manifests/phase12_r04_scope_decision.json,Governance,"Researcher decision: 11 accepted sync events for dual-camera","Phase12R04ScopeDecision",f6eabebaab9a9256...,Founding / Phase 1-12
+data/manifests/m3_multimodal_replay_manifest.json,Manifest,"Assembled 27-event multimodal cache manifest (front, back, audio)","MultimodalReplayManifest",3c720167ea06b671...,Mission 3
+data/manifests/camera_sync_offsets_candidate.yaml,Manifest,"Empirical cross-camera synchronization offsets and verdicts","CameraSyncOffsets",aaac453b7047ff53...,Founding / Phase 1-12
+docs/generated/research_decisions/POLICY_ADOPTION_V2_20261109.md,Governance,"Researcher statement adopting Policy V2 candidate","PolicyAdoptionV2",d7907aa8fbbed113...,Mission 3
+docs/generated/research_decisions/SPLIT_DECISION_OPTION_A_20261109.md,Governance,"Researcher statement adopting Option A (descriptive cohort, no split)","SplitDecisionOptionA",e26474112473ea64...,Mission 3
+docs/generated/professor_evidence/mission43/RESEARCHER_ANNOTATION_ADOPTION.json,Governance,"Recorded adoption of 27 active AI proposals as working reference","ResearcherAnnotationAdoption",4482847884f05650...,Mission 43
+src/railway_detection/vision/yolo_adapter.py,Perception,"YOLOv8n viewpoint detection adapter","UltralyticsYOLOAdapter",d5f1092ed0b8db37...,Founding / Phase 1-12
+src/railway_detection/audio/model.py,Perception,"CompactTrainHornCNN acoustic horn classifier","CompactTrainHornCNN",9f81244c25fb0732...,Founding / Phase 1-12
+src/railway_detection/audio/pipeline.py,Perception,"Audio evidence extraction and log-mel feature pipeline","AudioEvidencePipeline",12ed8c073dae92bc...,Founding / Phase 1-12
+src/railway_detection/fusion/evidence.py,Fusion,"Normalized evidence dataclasses (EvidenceRecord, Detection)","EvidenceRecord; Detection",1ae5f87627a8a368...,Founding / Phase 1-12
+src/railway_detection/fusion/collector.py,Fusion,"Time-aligned multimodal frame collector with fail-closed sync","MultimodalEvidenceCollector",a0e3e3db9ec20c81...,Founding / Phase 1-12
+src/railway_detection/fusion/rules.py,Fusion,"Frozen V1 boolean evidence qualification rules","CrossingState; RuleId",3e11bdb9644c1d0e...,Phase 9 / Frozen
+src/railway_detection/fusion/rules_v2_candidate.py,Fusion,"Adopted V2 candidate rules with Rule 3B/3C","has_qualified_departure_v2",84209cc04724c204...,Mission 3 / Phase 10
+src/railway_detection/fusion/source_tracker.py,Fusion,"Sensor health and staleness tracking","SourceTracker; SensorHealth",628880cfe56ce781...,Founding / Phase 1-12
+src/railway_detection/fusion/decision_engine.py,Fusion,"Frozen V1 11-state decision engine","MultimodalDecisionEngine",3f5e3521e5b0b78e...,Founding / Phase 1-12
+src/railway_detection/fusion/decision_engine_v2_candidate.py,Fusion,"Canonical V2 11-state decision engine","MultimodalDecisionEngineV2Candidate",41063a75a001df29...,Mission 3 / Phase 10
+src/railway_detection/simulation/gate_model.py,Simulation,"Physical gate arm kinematic model","PhysicalGateModel",b712d1c07030a43f...,Founding / Phase 1-12
+src/railway_detection/simulation/runner.py,Simulation,"In-memory event simulation runner loop","EventSimulationRunner",b3ddc5c71f42ef87...,Founding / Phase 1-12
+src/railway_detection/simulation/failure_injector.py,Simulation,"Perturbation and fault injector for robustness testing","FailureInjector",17c9ede7fe276e7b...,Founding / Phase 1-12
+src/railway_detection/evaluation/cache_only_engine.py,Evaluation,"Fail-closed cache-only replay engine (front streams)","CacheOnlyReplayEngine",41eb5123144a3869...,Founding / Phase 1-12
+src/railway_detection/evaluation/cache_only_engine_multimodal.py,Evaluation,"Extended cache-only engine with back camera and dual conditions","MultimodalCacheOnlyReplayEngine",b9817dd5332e99e0...,Founding / Phase 1-12
+src/railway_detection/evaluation/descriptive_exec_gate.py,Governance,"Operation-boundary gate for real-data cache replay","verify_descriptive_authorization",d3543539fd1e9939...,Founding / Phase 1-12
+src/railway_detection/evaluation/execution_gate.py,Governance,"Official Phase 12 execution readiness assessment","assess_official_phase12_readiness",e01116c8c95c6479...,Founding / Phase 1-12
+src/railway_detection/evaluation/metrics.py,Evaluation,"Event-level safety and timing metric calculator","SingleEventEvaluation",0c1cad5ccfd42888...,Founding / Phase 1-12
+scripts/run_m3_synthetic_battery.py,Testing,"13-scenario synthetic decision engine test harness","main; CHECKS",02be8345496a57db...,Mission 3

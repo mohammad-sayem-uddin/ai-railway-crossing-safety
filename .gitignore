@@ -168,3 +168,54 @@ id_ed25519
 
 # --- Large regenerated exploratory tick traces (49 MB; bit-identical hashes in replay_summary.json) ---
 results/exploratory_execution/replays/traces/
+
+# ==============================================================================
+# Repository maintenance additions (2026-11-14)
+# Narrow hygiene patterns only; evidence-bearing trees remain tracked.
+# ==============================================================================
+
+# --- Additional Python, build, lint, typing & benchmark caches ---
+.cache/
+.benchmarks/
+.pyre/
+.pytype/
+.dmypy.json
+dmypy.json
+cython_debug/
+pip-wheel-metadata/
+pip-log.txt
+test-results/
+coverage.json
+*.prof
+*.lprof
+
+# --- Additional editor, IDE & local agent workspaces ---
+.claude/
+.cursor/
+.windsurf/
+.antigravity/
+.gemini/
+.aider*
+
+# --- Additional backup & conflict files ---
+*.bak
+*.orig
+*.rej
+*.old
+
+# --- Additional environment & credential files (defense in depth) ---
+.envrc
+.netrc
+secrets/
+kaggle.json
+*credentials*.json
+*service-account*.json
+*service_account*.json
+
+# --- Large ML weights & training run dumps ---
+*.safetensors
+*.ckpt
+*.bin
+/runs/
+/wandb/
+/mlruns/

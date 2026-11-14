@@ -21,7 +21,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
+import time
 from datetime import datetime, UTC
 from pathlib import Path
 
@@ -103,6 +105,10 @@ def main() -> int:
     print(f"  FRONT: {front}")
     print(f"  BACK:  {back}")
     print("\nDo not consult model outputs or the AI proposal values.")
+    if sys.platform == "darwin":
+        print("Opening both videos for you now (QuickTime)...")
+        subprocess.run(["open", str(front), str(back)], check=False)
+        time.sleep(3)
     ask("Press Enter when you START watching (the review clock starts now)...")
     start = now_iso()
 
@@ -130,16 +136,18 @@ def main() -> int:
                 cam = ask("Reference camera [front/back]: ").lower()
             entry = {"state": "OBSERVABLE", "value_s": value,
                      "reference_camera": cam}
-            why = ask("Rationale (optional, Enter to skip): ")
-            if why:
-                entry["rationale"] = why
+            why = ""
+            while not why:
+                why = ask("Rationale (required, your own words): ")
+            entry["rationale"] = why
         else:
             full = {"N": "UNOBSERVABLE_NOT_APPLICABLE",
                     "C": "CENSORED", "U": "UNCERTAIN"}[state]
             why = ""
             while not why:
                 why = ask(f"Rationale for {full} (required): ")
-            entry = {"state": full, "rationale": why}
+            entry = {"state": full, "rationale": why,
+                     "value_s": None, "reference_camera": None}
         boundaries[b] = entry
 
     print("\nModel-independence attestation. Stock text:")
