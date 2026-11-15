@@ -1,0 +1,365 @@
+{
+  "loeo_acoustic_crossval": {
+    "baseline_frozen_tau037_k1": {
+      "accuracy": 0.5217,
+      "f1": 0.6857,
+      "fn": 1,
+      "fp": 10,
+      "precision": 0.5455,
+      "recall": 0.9231,
+      "specificity": 0.0,
+      "tn": 0,
+      "tp": 12
+    },
+    "bootstrap_95_ci": {
+      "cal_minus_raw_brier": {
+        "ci95_high": 0.0104,
+        "ci95_low": -0.0839,
+        "mean": -0.0351
+      },
+      "f1": {
+        "ci95_high": 0.8148,
+        "ci95_low": 0.4167,
+        "mean": 0.6358
+      },
+      "n_bootstrap": 2000,
+      "recall": {
+        "ci95_high": 0.8462,
+        "ci95_low": 0.3846,
+        "mean": 0.614
+      },
+      "specificity": {
+        "ci95_high": 0.9,
+        "ci95_low": 0.3,
+        "mean": 0.6033
+      }
+    },
+    "fold_selection_frequency": {
+      "tau=0.65,k=2": 2,
+      "tau=0.75,k=2": 20,
+      "tau=0.80,k=1": 1
+    },
+    "folds": [
+      {
+        "fold_event": "train_events/event_001",
+        "oof_cal_prob": 0.419,
+        "oof_pred": false,
+        "oof_raw_prob": 0.2475,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.4,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_002",
+        "oof_cal_prob": 0.735,
+        "oof_pred": true,
+        "oof_raw_prob": 0.9834,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_003",
+        "oof_cal_prob": 0.6878,
+        "oof_pred": true,
+        "oof_raw_prob": 0.9145,
+        "selected_k": 2,
+        "selected_tau": 0.65,
+        "selected_temp": 3.0,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_004",
+        "oof_cal_prob": 0.8392,
+        "oof_pred": true,
+        "oof_raw_prob": 0.9987,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_005",
+        "oof_cal_prob": 0.7073,
+        "oof_pred": true,
+        "oof_raw_prob": 0.9715,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_006",
+        "oof_cal_prob": 0.5922,
+        "oof_pred": true,
+        "oof_raw_prob": 0.8163,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_007",
+        "oof_cal_prob": 0.8822,
+        "oof_pred": true,
+        "oof_raw_prob": 0.9903,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 2.3,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_008",
+        "oof_cal_prob": 0.6085,
+        "oof_pred": true,
+        "oof_raw_prob": 0.8109,
+        "selected_k": 1,
+        "selected_tau": 0.8,
+        "selected_temp": 3.3,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_009",
+        "oof_cal_prob": 0.523,
+        "oof_pred": false,
+        "oof_raw_prob": 0.582,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.6,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_010",
+        "oof_cal_prob": 0.4857,
+        "oof_pred": false,
+        "oof_raw_prob": 0.4473,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.7,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_011",
+        "oof_cal_prob": 0.4865,
+        "oof_pred": false,
+        "oof_raw_prob": 0.4502,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.7,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_012",
+        "oof_cal_prob": 0.7207,
+        "oof_pred": true,
+        "oof_raw_prob": 0.9779,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_013",
+        "oof_cal_prob": 0.6433,
+        "oof_pred": true,
+        "oof_raw_prob": 0.9136,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_014",
+        "oof_cal_prob": 0.5045,
+        "oof_pred": false,
+        "oof_raw_prob": 0.5166,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.7,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_015",
+        "oof_cal_prob": 0.6023,
+        "oof_pred": false,
+        "oof_raw_prob": 0.8402,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_016",
+        "oof_cal_prob": 0.5634,
+        "oof_pred": false,
+        "oof_raw_prob": 0.7093,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.5,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_017",
+        "oof_cal_prob": 0.7416,
+        "oof_pred": true,
+        "oof_raw_prob": 0.9855,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_018",
+        "oof_cal_prob": 0.8258,
+        "oof_pred": true,
+        "oof_raw_prob": 0.998,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 4.0,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_019",
+        "oof_cal_prob": 0.5139,
+        "oof_pred": false,
+        "oof_raw_prob": 0.55,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.6,
+        "true_label": 0
+      },
+      {
+        "fold_event": "train_events/event_020",
+        "oof_cal_prob": 0.4655,
+        "oof_pred": false,
+        "oof_raw_prob": 0.378,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.6,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_021",
+        "oof_cal_prob": 0.5212,
+        "oof_pred": false,
+        "oof_raw_prob": 0.578,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.7,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_022",
+        "oof_cal_prob": 0.5273,
+        "oof_pred": false,
+        "oof_raw_prob": 0.6025,
+        "selected_k": 2,
+        "selected_tau": 0.75,
+        "selected_temp": 3.8,
+        "true_label": 1
+      },
+      {
+        "fold_event": "train_events/event_023",
+        "oof_cal_prob": 0.5946,
+        "oof_pred": true,
+        "oof_raw_prob": 0.7863,
+        "selected_k": 2,
+        "selected_tau": 0.65,
+        "selected_temp": 3.4,
+        "true_label": 0
+      }
+    ],
+    "loeo_oof_hysteresis_metrics": {
+      "accuracy": 0.6087,
+      "f1": 0.64,
+      "fn": 5,
+      "fp": 4,
+      "precision": 0.6667,
+      "recall": 0.6154,
+      "specificity": 0.6,
+      "tn": 6,
+      "tp": 8
+    },
+    "n_engine_controls": 1,
+    "n_labeled_train": 23,
+    "n_no_train_controls": 3,
+    "oof_calibration": {
+      "oof_temp_scaled_brier": 0.2366,
+      "oof_temp_scaled_ece_5bin": 0.0999,
+      "selected_temperature_max": 4.0,
+      "selected_temperature_mean": 3.665,
+      "selected_temperature_min": 2.3,
+      "uncalibrated_brier": 0.2724,
+      "uncalibrated_ece_5bin": 0.2955
+    },
+    "schema_version": "loeo-acoustic-crossval/1.0"
+  },
+  "optical_degradation_wakeup_ablation": {
+    "attenuation_sweep": [
+      {
+        "alpha_conf": 1.0,
+        "baseline_v3_closed": true,
+        "baseline_v3_unsafe_open": false,
+        "effective_front_conf": 0.88,
+        "optical_degraded_telemetry": false,
+        "wakeup_v3_all_legal": true,
+        "wakeup_v3_closed": true,
+        "wakeup_v3_trigger_s": 1.2,
+        "wakeup_v3_unsafe_open": false
+      },
+      {
+        "alpha_conf": 0.8,
+        "baseline_v3_closed": true,
+        "baseline_v3_unsafe_open": false,
+        "effective_front_conf": 0.704,
+        "optical_degraded_telemetry": false,
+        "wakeup_v3_all_legal": true,
+        "wakeup_v3_closed": true,
+        "wakeup_v3_trigger_s": 1.2,
+        "wakeup_v3_unsafe_open": false
+      },
+      {
+        "alpha_conf": 0.6,
+        "baseline_v3_closed": true,
+        "baseline_v3_unsafe_open": false,
+        "effective_front_conf": 0.528,
+        "optical_degraded_telemetry": false,
+        "wakeup_v3_all_legal": true,
+        "wakeup_v3_closed": true,
+        "wakeup_v3_trigger_s": 1.2,
+        "wakeup_v3_unsafe_open": false
+      },
+      {
+        "alpha_conf": 0.45,
+        "baseline_v3_closed": true,
+        "baseline_v3_unsafe_open": false,
+        "effective_front_conf": 0.396,
+        "optical_degraded_telemetry": false,
+        "wakeup_v3_all_legal": true,
+        "wakeup_v3_closed": true,
+        "wakeup_v3_trigger_s": 1.2,
+        "wakeup_v3_unsafe_open": false
+      },
+      {
+        "alpha_conf": 0.35,
+        "baseline_v3_closed": false,
+        "baseline_v3_unsafe_open": false,
+        "effective_front_conf": 0.308,
+        "optical_degraded_telemetry": true,
+        "wakeup_v3_all_legal": true,
+        "wakeup_v3_closed": true,
+        "wakeup_v3_trigger_s": 4.000000000000001,
+        "wakeup_v3_unsafe_open": false
+      }
+    ],
+    "controls": {
+      "clear_optics_sustained_ambient_horn_closed": false,
+      "degraded_optics_single_impulse_horn_closed": false
+    },
+    "input_classification": "SYNTHETIC_ONLY",
+    "schema_version": "optical-degradation-wakeup-ablation/1.0"
+  },
+  "schema_version": "exp-r-crossval-and-failsafe/1.0"
+}

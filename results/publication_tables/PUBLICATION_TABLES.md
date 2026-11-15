@@ -1,4 +1,4 @@
-# Publication-Ready Summary Tables (`Exp A` – `Exp Q` & Dataset Leakage Audit)
+# Publication-Ready Summary Tables (`Exp A` – `Exp R` & Dataset Leakage Audit)
 
 Generated deterministically by `scripts/generate_master_publication_tables.py` from verified repository artifacts.
 
@@ -48,13 +48,13 @@ Generated deterministically by `scripts/generate_master_publication_tables.py` f
 | stage_or_artifact | input_or_mode | measured_mean_ms_or_size | p95_ms_or_diff | fps_or_reduction | evidence_status |
 | --- | --- | --- | --- | --- | --- |
 | YOLOv8n checkpoint file | Raw unstripped vs stripped FP16 | 24,493,159 B -> 6,145,232 B | FP32: 12,188,432 B | -74.91% disk | Measured on repo artifact |
-| YOLOv8n PyTorch eager | 1x3x640x640 / 416x416 / 320x320 | 39.938 / 19.141 / 13.217 ms | p95: 42.78 / 20.243 / 13.625 ms | 25.04 / 52.24 / 75.66 FPS | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
-| YOLOv8n TorchScript | 640x640 / 416x416 / 320x320 | 38.603 / 18.253 / 13.155 ms | max_abs_diff=0.0 | 25.9 / 54.79 / 76.02 FPS | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
-| Ultralytics YOLO.predict E2E | 640px vs 416px numpy RGB | 54.658 vs 23.605 ms | p95: 72.785 vs 28.017 ms | 18.3 vs 42.36 FPS (2.32x speedup) | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
-| Audio log-Mel + CNN (TorchScript) | 1s 16kHz window [64x61] | 0.41 + 0.471 ms (0.881 ms total) | diff=0.0; INT8 Linear=0.563 ms (diff=0.0601) | CNN TS=2123.33 win/s | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
-| V3 FSM + Collector + Gate | 121-tick full cycle | 4.737 ms total (0.0391 ms/tick) | p95=4.919 ms | 25,575 Hz tick rate | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
-| Raspberry Pi 4B Duty Cycle (416px) | 24/7 5-FPS vs Event-Triggered (10/20/40 trains/d) | 864,000 vs 11,760 / 17,760 / 29,760 frames/d | Continuous: 1.308 cores -> Gated: 0.0274 / 0.0364 / 0.0544 cores | -96.56% to -98.64% frames (-95.84% to -97.91% compute) | ANALYTICAL_PROJECTION_UNMEASURED_HARDWARE (5.5x M1) |
-| Raspberry Pi 4B Duty Cycle (640px) | 24/7 5-FPS vs Event-Triggered (10/20/40 trains/d) | 864,000 vs 11,760 / 17,760 / 29,760 frames/d | Continuous: 3.0159 cores -> Gated: 0.0506 / 0.0715 / 0.1132 cores | -96.25% to -98.32% compute | ANALYTICAL_PROJECTION_UNMEASURED_HARDWARE (5.5x M1) |
+| YOLOv8n PyTorch eager | 1x3x640x640 / 416x416 / 320x320 | 42.42 / 19.321 / 12.941 ms | p95: 54.849 / 21.574 / 13.312 ms | 23.57 / 51.76 / 77.27 FPS | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
+| YOLOv8n TorchScript | 640x640 / 416x416 / 320x320 | 36.92 / 16.908 / 11.487 ms | max_abs_diff=0.0 | 27.09 / 59.15 / 87.06 FPS | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
+| Ultralytics YOLO.predict E2E | 640px vs 416px numpy RGB | 44.557 vs 21.597 ms | p95: 47.255 vs 22.843 ms | 22.44 vs 46.3 FPS (2.06x speedup) | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
+| Audio log-Mel + CNN (TorchScript) | 1s 16kHz window [64x61] | 0.41 + 0.468 ms (0.878 ms total) | diff=0.0; INT8 Linear=0.573 ms (diff=0.0923) | CNN TS=2134.87 win/s | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
+| V3 FSM + Collector + Gate | 121-tick full cycle | 4.613 ms total (0.0381 ms/tick) | p95=4.736 ms | 26,247 Hz tick rate | Measured Apple M1 CPU (SYNTHETIC_ONLY) |
+| Raspberry Pi 4B Duty Cycle (416px) | 24/7 5-FPS vs Event-Triggered (10/20/40 trains/d) | 864,000 vs 11,760 / 17,760 / 29,760 frames/d | Continuous: 1.1975 cores -> Gated: 0.0258 / 0.0341 / 0.0506 cores | -96.56% to -98.64% frames (-95.78% to -97.84% compute) | ANALYTICAL_PROJECTION_UNMEASURED_HARDWARE (5.5x M1) |
+| Raspberry Pi 4B Duty Cycle (640px) | 24/7 5-FPS vs Event-Triggered (10/20/40 trains/d) | 864,000 vs 11,760 / 17,760 / 29,760 frames/d | Continuous: 2.4603 cores -> Gated: 0.043 / 0.06 / 0.0941 cores | -96.18% to -98.25% compute | ANALYTICAL_PROJECTION_UNMEASURED_HARDWARE (5.5x M1) |
 
 
 ## Table 5 — `Exp Q`: Synthetic Optical Attenuation x Burst-Dropout Stress Grid (`100` runs)
@@ -66,4 +66,14 @@ Generated deterministically by `scripts/generate_master_publication_tables.py` f
 | 0.6 | 0.528 | 0.00 to 0.50 (4 levels x 5 seeds) | 20 | 1.0 | 0.95 | 0.0 | 0.0 | 0 | True |
 | 0.45 | 0.396 | 0.00 to 0.50 (4 levels x 5 seeds) | 20 | 1.0 | 1.0 | 0.0 | 0.0 | 0 | True |
 | 0.35 | 0.308 | 0.00 to 0.50 (4 levels x 5 seeds) | 20 | 0.0 | 0.0 | 0.0 | 1.0 | 0 | True |
+
+
+## Table 6 — `Exp R` & Host Edge Scaling (`LOEO CV`, `Optical-Degraded Wakeup`, `TorchScript Thread Scaling`)
+
+| component | configuration | primary_metric | secondary_metric | evidence_status |
+| --- | --- | --- | --- | --- |
+| Exp R: Audio LOEO Baseline | Frozen tau=0.37, k=1 (n=23 labeled train) | F1=0.6857 Acc=0.5217 Spec=0.0 | Uncal Brier=0.2724 ECE=0.2955 | REAL_LOCAL_BATCH4_AUDIO (unbiased baseline) |
+| Exp R: Nested LOEO OOF | 23-fold OOF T-scale + hysteresis (tau=0.75,k=2 in 20/23) | F1=0.64 [CI95 0.4167..0.8148], Acc=0.6087, Spec=0.6 | OOF Brier=0.2366 ECE=0.0999 (dBrier CI [-0.0839..0.0104]) | REAL_LOCAL_BATCH4_AUDIO (out-of-fold + 2000x bootstrap) |
+| Exp R: Optical-Degraded Wakeup | Opt-in L3 failsafe at alpha=0.35 (conf=0.308) + sustained horn | Baseline closed=False -> Wakeup closed=True (@4.0s) | 0 unsafe opens; clear_ambient=False, impulse=False | SYNTHETIC_ONLY (default V3 flag=False) |
+| Host Edge Thread Scaling | TorchScript 416px & 320px + Audio TS (arm64, Pi_tested=False) | 1/2/4T 416px=28.79/20.729/17.361 ms; 320px=17.86/13.402/11.787 ms | 4T Audio TS=0.388 ms, logMel=0.422 ms, RSS=364.67 MB | Measured Apple M1 CPU (physical Pi unmeasured) |
 

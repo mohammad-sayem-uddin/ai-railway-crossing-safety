@@ -994,5 +994,6 @@ def test_real_repository_blockers_distinguish_missing_from_invalid(tmp_path):
     assert "LEGACY_OR_UNKNOWN_GROUND_TRUTH_SCHEMA" not in classes
     assert classes["COHORT_APPROVAL_MISSING"] == "derived"
     assert classes["EVENT_SPLIT_DECISION_MISSING"] == "undecided_decision"
-    assert classes["PREMATURE_OPENING_DEFINITION_UNDECIDED"] == "undecided_decision"
+    assert "PREMATURE_OPENING_DEFINITION_UNDECIDED" not in classes
+    assert "R04_SCOPE_DECISION_MISSING" not in classes
     assert classes["EVAL_AUTH_NOT_GRANTED"] == "authorization_gap"

@@ -1,0 +1,117 @@
+{
+  "exported_bundles": {
+    "audio_torchscript_bytes": 131596,
+    "audio_torchscript_max_abs_diff": 0.0,
+    "vision_320_torchscript_bytes": 12578214,
+    "vision_320_torchscript_max_abs_diff": 0.0,
+    "vision_416_torchscript_bytes": 12602738,
+    "vision_416_torchscript_max_abs_diff": 0.0,
+    "vision_stripped_fp16_bytes": 6154766
+  },
+  "hardware": {
+    "cpu_count": 8,
+    "device_tree_model": null,
+    "is_physical_raspberry_pi": false,
+    "machine": "arm64",
+    "os": "Darwin",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python_version": "3.11.15",
+    "torch_version": "2.13.0"
+  },
+  "input_classification": "SYNTHETIC_ONLY",
+  "peak_process_rss_mb": 364.67,
+  "physical_raspberry_pi_tested": false,
+  "schema_version": "rpi-edge-benchmark/1.0",
+  "thread_scaling_ms": {
+    "threads_1": {
+      "audio_ts_ms": {
+        "fps_equivalent": 2193.51,
+        "mean_ms": 0.456,
+        "n_iters": 20,
+        "p50_ms": 0.432,
+        "p95_ms": 0.554
+      },
+      "log_mel_ms": {
+        "fps_equivalent": 2327.07,
+        "mean_ms": 0.43,
+        "n_iters": 20,
+        "p50_ms": 0.428,
+        "p95_ms": 0.44
+      },
+      "vision_320_ts_ms": {
+        "fps_equivalent": 55.99,
+        "mean_ms": 17.86,
+        "n_iters": 15,
+        "p50_ms": 17.601,
+        "p95_ms": 19.321
+      },
+      "vision_416_ts_ms": {
+        "fps_equivalent": 34.73,
+        "mean_ms": 28.79,
+        "n_iters": 15,
+        "p50_ms": 28.183,
+        "p95_ms": 31.953
+      }
+    },
+    "threads_2": {
+      "audio_ts_ms": {
+        "fps_equivalent": 2414.26,
+        "mean_ms": 0.414,
+        "n_iters": 20,
+        "p50_ms": 0.414,
+        "p95_ms": 0.443
+      },
+      "log_mel_ms": {
+        "fps_equivalent": 2413.49,
+        "mean_ms": 0.414,
+        "n_iters": 20,
+        "p50_ms": 0.414,
+        "p95_ms": 0.423
+      },
+      "vision_320_ts_ms": {
+        "fps_equivalent": 74.62,
+        "mean_ms": 13.402,
+        "n_iters": 15,
+        "p50_ms": 13.38,
+        "p95_ms": 13.608
+      },
+      "vision_416_ts_ms": {
+        "fps_equivalent": 48.24,
+        "mean_ms": 20.729,
+        "n_iters": 15,
+        "p50_ms": 20.609,
+        "p95_ms": 21.335
+      }
+    },
+    "threads_4": {
+      "audio_ts_ms": {
+        "fps_equivalent": 2578.95,
+        "mean_ms": 0.388,
+        "n_iters": 20,
+        "p50_ms": 0.392,
+        "p95_ms": 0.419
+      },
+      "log_mel_ms": {
+        "fps_equivalent": 2368.87,
+        "mean_ms": 0.422,
+        "n_iters": 20,
+        "p50_ms": 0.415,
+        "p95_ms": 0.48
+      },
+      "vision_320_ts_ms": {
+        "fps_equivalent": 84.84,
+        "mean_ms": 11.787,
+        "n_iters": 15,
+        "p50_ms": 11.532,
+        "p95_ms": 12.987
+      },
+      "vision_416_ts_ms": {
+        "fps_equivalent": 57.6,
+        "mean_ms": 17.361,
+        "n_iters": 15,
+        "p50_ms": 17.191,
+        "p95_ms": 18.532
+      }
+    }
+  }
+}

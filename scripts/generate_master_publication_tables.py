@@ -55,6 +55,12 @@ def main() -> None:
     exp_q = _load_json(
         "results/exploratory_v2/optimization_and_stress/exp_q_weather_and_interlocking_stress.json"
     )
+    exp_r = _load_json(
+        "results/exploratory_v2/optimization_and_stress/exp_r_crossval_and_failsafe.json"
+    )
+    edge_scale = _load_json(
+        "results/exploratory_v2/optimization_and_stress/host_edge_scaling_benchmark.json"
+    )
 
     # ------------------------------------------------------------------
     # Table 1: Dataset & Leakage Remediation Summary
@@ -330,6 +336,11 @@ def main() -> None:
         "fps_or_reduction",
         "evidence_status",
     ]
+    d416 = exp_p["event_triggered_duty_cycle_416"]["duty_cycle_scenarios"]
+    d640 = exp_p["event_triggered_duty_cycle_640"]["duty_cycle_scenarios"]
+    e2e_speedup = round(v_bench["yolo_predict_e2e_640"]["mean_ms"] / v_bench["yolo_predict_e2e_416"]["mean_ms"], 2)
+    aud_total_ms = round(a_bench["log_mel_1s_numpy"]["mean_ms"] + a_bench["cnn_torchscript_fp32"]["mean_ms"], 3)
+    fsm_hz = round(1000.0 / fsm_bench["per_tick_mean_ms"])
     t4_rows = [
         {
             "stage_or_artifact": "YOLOv8n checkpoint file",
@@ -360,13 +371,13 @@ def main() -> None:
             "input_or_mode": "640px vs 416px numpy RGB",
             "measured_mean_ms_or_size": f"{v_bench['yolo_predict_e2e_640']['mean_ms']} vs {v_bench['yolo_predict_e2e_416']['mean_ms']} ms",
             "p95_ms_or_diff": f"p95: {v_bench['yolo_predict_e2e_640']['p95_ms']} vs {v_bench['yolo_predict_e2e_416']['p95_ms']} ms",
-            "fps_or_reduction": f"{v_bench['yolo_predict_e2e_640']['fps_equivalent']} vs {v_bench['yolo_predict_e2e_416']['fps_equivalent']} FPS (2.32x speedup)",
+            "fps_or_reduction": f"{v_bench['yolo_predict_e2e_640']['fps_equivalent']} vs {v_bench['yolo_predict_e2e_416']['fps_equivalent']} FPS ({e2e_speedup}x speedup)",
             "evidence_status": "Measured Apple M1 CPU (SYNTHETIC_ONLY)",
         },
         {
             "stage_or_artifact": "Audio log-Mel + CNN (TorchScript)",
             "input_or_mode": "1s 16kHz window [64x61]",
-            "measured_mean_ms_or_size": f"{a_bench['log_mel_1s_numpy']['mean_ms']} + {a_bench['cnn_torchscript_fp32']['mean_ms']} ms (0.881 ms total)",
+            "measured_mean_ms_or_size": f"{a_bench['log_mel_1s_numpy']['mean_ms']} + {a_bench['cnn_torchscript_fp32']['mean_ms']} ms ({aud_total_ms} ms total)",
             "p95_ms_or_diff": f"diff=0.0; INT8 Linear={a_bench['cnn_dynamic_int8_linear']['mean_ms']} ms (diff={a_bench['cnn_dynamic_int8_linear']['max_abs_diff_vs_eager']:.4f})",
             "fps_or_reduction": f"CNN TS={a_bench['cnn_torchscript_fp32']['fps_equivalent']} win/s",
             "evidence_status": "Measured Apple M1 CPU (SYNTHETIC_ONLY)",
@@ -376,23 +387,23 @@ def main() -> None:
             "input_or_mode": "121-tick full cycle",
             "measured_mean_ms_or_size": f"{fsm_bench['mean_ms']} ms total ({fsm_bench['per_tick_mean_ms']} ms/tick)",
             "p95_ms_or_diff": f"p95={fsm_bench['p95_ms']} ms",
-            "fps_or_reduction": "25,575 Hz tick rate",
+            "fps_or_reduction": f"{fsm_hz:,} Hz tick rate",
             "evidence_status": "Measured Apple M1 CPU (SYNTHETIC_ONLY)",
         },
         {
             "stage_or_artifact": "Raspberry Pi 4B Duty Cycle (416px)",
             "input_or_mode": "24/7 5-FPS vs Event-Triggered (10/20/40 trains/d)",
-            "measured_mean_ms_or_size": "864,000 vs 11,760 / 17,760 / 29,760 frames/d",
-            "p95_ms_or_diff": "Continuous: 1.308 cores -> Gated: 0.0274 / 0.0364 / 0.0544 cores",
-            "fps_or_reduction": "-96.56% to -98.64% frames (-95.84% to -97.91% compute)",
+            "measured_mean_ms_or_size": f"864,000 vs {d416[0]['total_gated_vision_frames_day']:,} / {d416[1]['total_gated_vision_frames_day']:,} / {d416[2]['total_gated_vision_frames_day']:,} frames/d",
+            "p95_ms_or_diff": f"Continuous: {d416[0]['sbc_analytical_projections']['rpi4b_4gb_cortex_a72']['projected_continuous_core_fraction']} cores -> Gated: {d416[0]['sbc_analytical_projections']['rpi4b_4gb_cortex_a72']['projected_event_triggered_core_fraction']} / {d416[1]['sbc_analytical_projections']['rpi4b_4gb_cortex_a72']['projected_event_triggered_core_fraction']} / {d416[2]['sbc_analytical_projections']['rpi4b_4gb_cortex_a72']['projected_event_triggered_core_fraction']} cores",
+            "fps_or_reduction": f"-{d416[2]['vision_frame_reduction_pct']}% to -{d416[0]['vision_frame_reduction_pct']}% frames (-{d416[2]['total_compute_time_reduction_pct']}% to -{d416[0]['total_compute_time_reduction_pct']}% compute)",
             "evidence_status": "ANALYTICAL_PROJECTION_UNMEASURED_HARDWARE (5.5x M1)",
         },
         {
             "stage_or_artifact": "Raspberry Pi 4B Duty Cycle (640px)",
             "input_or_mode": "24/7 5-FPS vs Event-Triggered (10/20/40 trains/d)",
-            "measured_mean_ms_or_size": "864,000 vs 11,760 / 17,760 / 29,760 frames/d",
-            "p95_ms_or_diff": "Continuous: 3.0159 cores -> Gated: 0.0506 / 0.0715 / 0.1132 cores",
-            "fps_or_reduction": "-96.25% to -98.32% compute",
+            "measured_mean_ms_or_size": f"864,000 vs {d640[0]['total_gated_vision_frames_day']:,} / {d640[1]['total_gated_vision_frames_day']:,} / {d640[2]['total_gated_vision_frames_day']:,} frames/d",
+            "p95_ms_or_diff": f"Continuous: {d640[0]['sbc_analytical_projections']['rpi4b_4gb_cortex_a72']['projected_continuous_core_fraction']} cores -> Gated: {d640[0]['sbc_analytical_projections']['rpi4b_4gb_cortex_a72']['projected_event_triggered_core_fraction']} / {d640[1]['sbc_analytical_projections']['rpi4b_4gb_cortex_a72']['projected_event_triggered_core_fraction']} / {d640[2]['sbc_analytical_projections']['rpi4b_4gb_cortex_a72']['projected_event_triggered_core_fraction']} cores",
+            "fps_or_reduction": f"-{d640[2]['total_compute_time_reduction_pct']}% to -{d640[0]['total_compute_time_reduction_pct']}% compute",
             "evidence_status": "ANALYTICAL_PROJECTION_UNMEASURED_HARDWARE (5.5x M1)",
         },
     ]
@@ -434,10 +445,61 @@ def main() -> None:
     _write_csv(OUT_DIR / "table5_exp_q_weather_and_interlocking_stress.csv", t5_fields, t5_rows)
 
     # ------------------------------------------------------------------
+    # Table 6: Exp R LOEO Cross-Validation, Optical-Degradation Wakeup & Host Edge Scaling
+    # ------------------------------------------------------------------
+    loeo = exp_r["loeo_acoustic_crossval"]
+    loeo_base = loeo["baseline_frozen_tau037_k1"]
+    loeo_oof = loeo["loeo_oof_hysteresis_metrics"]
+    loeo_cal = loeo["oof_calibration"]
+    loeo_ci = loeo["bootstrap_95_ci"]
+    wake = exp_r["optical_degradation_wakeup_ablation"]
+    w35 = next(r for r in wake["attenuation_sweep"] if abs(float(r["alpha_conf"]) - 0.35) < 1e-6)
+    ts = edge_scale["thread_scaling_ms"]
+
+    t6_fields = [
+        "component",
+        "configuration",
+        "primary_metric",
+        "secondary_metric",
+        "evidence_status",
+    ]
+    t6_rows = [
+        {
+            "component": "Exp R: Audio LOEO Baseline",
+            "configuration": "Frozen tau=0.37, k=1 (n=23 labeled train)",
+            "primary_metric": f"F1={loeo_base['f1']} Acc={loeo_base['accuracy']} Spec={loeo_base['specificity']}",
+            "secondary_metric": f"Uncal Brier={loeo_cal['uncalibrated_brier']} ECE={loeo_cal['uncalibrated_ece_5bin']}",
+            "evidence_status": "REAL_LOCAL_BATCH4_AUDIO (unbiased baseline)",
+        },
+        {
+            "component": "Exp R: Nested LOEO OOF",
+            "configuration": "23-fold OOF T-scale + hysteresis (tau=0.75,k=2 in 20/23)",
+            "primary_metric": f"F1={loeo_oof['f1']} [CI95 {loeo_ci['f1']['ci95_low']}..{loeo_ci['f1']['ci95_high']}], Acc={loeo_oof['accuracy']}, Spec={loeo_oof['specificity']}",
+            "secondary_metric": f"OOF Brier={loeo_cal['oof_temp_scaled_brier']} ECE={loeo_cal['oof_temp_scaled_ece_5bin']} (dBrier CI [{loeo_ci['cal_minus_raw_brier']['ci95_low']}..{loeo_ci['cal_minus_raw_brier']['ci95_high']}])",
+            "evidence_status": "REAL_LOCAL_BATCH4_AUDIO (out-of-fold + 2000x bootstrap)",
+        },
+        {
+            "component": "Exp R: Optical-Degraded Wakeup",
+            "configuration": "Opt-in L3 failsafe at alpha=0.35 (conf=0.308) + sustained horn",
+            "primary_metric": f"Baseline closed={w35['baseline_v3_closed']} -> Wakeup closed={w35['wakeup_v3_closed']} (@{w35['wakeup_v3_trigger_s']:.1f}s)",
+            "secondary_metric": f"0 unsafe opens; clear_ambient={wake['controls']['clear_optics_sustained_ambient_horn_closed']}, impulse={wake['controls']['degraded_optics_single_impulse_horn_closed']}",
+            "evidence_status": "SYNTHETIC_ONLY (default V3 flag=False)",
+        },
+        {
+            "component": "Host Edge Thread Scaling",
+            "configuration": f"TorchScript 416px & 320px + Audio TS ({edge_scale['hardware']['machine']}, Pi_tested={edge_scale['physical_raspberry_pi_tested']})",
+            "primary_metric": f"1/2/4T 416px={ts['threads_1']['vision_416_ts_ms']['mean_ms']}/{ts['threads_2']['vision_416_ts_ms']['mean_ms']}/{ts['threads_4']['vision_416_ts_ms']['mean_ms']} ms; 320px={ts['threads_1']['vision_320_ts_ms']['mean_ms']}/{ts['threads_2']['vision_320_ts_ms']['mean_ms']}/{ts['threads_4']['vision_320_ts_ms']['mean_ms']} ms",
+            "secondary_metric": f"4T Audio TS={ts['threads_4']['audio_ts_ms']['mean_ms']} ms, logMel={ts['threads_4']['log_mel_ms']['mean_ms']} ms, RSS={edge_scale['peak_process_rss_mb']} MB",
+            "evidence_status": "Measured Apple M1 CPU (physical Pi unmeasured)",
+        },
+    ]
+    _write_csv(OUT_DIR / "table6_exp_r_loeo_wakeup_and_edge_scaling.csv", t6_fields, t6_rows)
+
+    # ------------------------------------------------------------------
     # Unified Markdown Summary
     # ------------------------------------------------------------------
     md_sections = [
-        "# Publication-Ready Summary Tables (`Exp A` – `Exp Q` & Dataset Leakage Audit)\n",
+        "# Publication-Ready Summary Tables (`Exp A` – `Exp R` & Dataset Leakage Audit)\n",
         "Generated deterministically by `scripts/generate_master_publication_tables.py` from verified repository artifacts.\n",
         "## Table 1 — Vision V1 & Audio V3 Dataset Split Leakage Audit vs Clean Candidates\n",
         _md_table(t1_fields, [[r[k] for k in t1_fields] for r in t1_rows]),
@@ -449,6 +511,8 @@ def main() -> None:
         _md_table(t4_fields, [[r[k] for k in t4_fields] for r in t4_rows]),
         "\n\n## Table 5 — `Exp Q`: Synthetic Optical Attenuation x Burst-Dropout Stress Grid (`100` runs)\n",
         _md_table(t5_fields, [[r[k] for k in t5_fields] for r in t5_rows]),
+        "\n\n## Table 6 — `Exp R` & Host Edge Scaling (`LOEO CV`, `Optical-Degraded Wakeup`, `TorchScript Thread Scaling`)\n",
+        _md_table(t6_fields, [[r[k] for k in t6_fields] for r in t6_rows]),
         "\n",
     ]
     (OUT_DIR / "PUBLICATION_TABLES.md").write_text("\n".join(md_sections), encoding="utf-8")

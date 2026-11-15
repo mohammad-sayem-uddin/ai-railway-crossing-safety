@@ -36,8 +36,11 @@ OUT_DIR = "results/m3_mm_assembly"
 
 
 def sha256_of(path):
+    resolved = os.path.abspath(path)
+    if os.path.splitext(resolved)[1] not in {".json", ".jsonl"} or f"{os.sep}raw{os.sep}" in resolved:
+        raise ValueError(f"Refusing non-manifest/cache read in build_m3_mm_manifest_v2: {path}")
     h = hashlib.sha256()
-    with open(path, "rb") as fh:
+    with open(resolved, "rb") as fh:
         for chunk in iter(lambda: fh.read(1 << 20), b""):
             h.update(chunk)
     return h.hexdigest()

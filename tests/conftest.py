@@ -14,7 +14,7 @@ from pathlib import Path
 
 import pytest
 
-from railway_detection.cli.main import EXPERIMENT_REGISTRY_ENV
+from railway_detection.config.constants import EXPERIMENT_REGISTRY_ENV
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 TRACKED_REGISTRY = REPO_ROOT / "results" / "experiment_registry.jsonl"

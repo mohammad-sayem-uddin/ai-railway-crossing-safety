@@ -1,0 +1,6 @@
+alpha_conf,effective_front_conf,optical_degraded_telemetry,baseline_v3_closed,baseline_v3_unsafe_open,wakeup_v3_closed,wakeup_v3_unsafe_open,wakeup_v3_all_legal,wakeup_v3_trigger_s
+1.0,0.88,False,True,False,True,False,True,1.2
+0.8,0.704,False,True,False,True,False,True,1.2
+0.6,0.528,False,True,False,True,False,True,1.2
+0.45,0.396,False,True,False,True,False,True,1.2
+0.35,0.308,True,False,False,True,False,True,4.000000000000001

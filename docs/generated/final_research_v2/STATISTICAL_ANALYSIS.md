@@ -68,3 +68,17 @@ Two-sided exact binomial McNemar tests evaluate paired binary outcomes on identi
 
 1. Real-data metrics are **exploratory** (cached `pre-db40305` vision + adopted AI-assisted reference annotations).
 2. No subgroup hypothesis test (`p = 0.125`, `p = 0.25`) is overstated as `p < 0.05` statistical significance; instead, exact discordant counts, Wilson CIs, and deterministic failure mechanisms are reported transparently.
+
+---
+
+## 6. `Exp R` — 23-Fold Nested LOEO Acoustic Cross-Validation & Stratified Bootstrap CIs
+
+Added in [`exp_r_crossval_and_failsafe.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/exploratory_v2/optimization_and_stress/exp_r_crossval_and_failsafe.json) and Table 6 (`results/publication_tables/`): to eliminate in-sample parameter-selection optimism from `Exp O`, leave-one-event-out (`n = 23` folds on Batch-4 `audio23`) fits temperature scaling `T in [0.5..4.0]` (cross-entropy) and hysteresis `(tau, k)` strictly on the `22` training folds before scoring the held-out event (`2,000`-resample stratified event bootstrap for 95% CIs):
+
+| Evaluation Mode | Accuracy | Specificity | Precision | Recall | F1 Score (95% Bootstrap CI) | Event-Max Brier | 5-Bin ECE |
+|---|---|---|---|---|---|---|---|
+| **Frozen Baseline (`tau=0.37, k=1`)** | `0.5217` | `0.0000` (`0/10`) | `0.5455` | `0.9231` (`12/13`) | `0.6857` | `0.2724` (raw) | `0.2955` |
+| **23-Fold Nested LOEO OOF (Calibrated + Hysteresis)** | `0.6087` | `0.6000` (`6/10`) `[0.3000, 0.9000]` | `0.6667` | `0.6154` (`8/13`) `[0.3846, 0.8462]` | `0.6400` `[0.4167, 0.8148]` | `0.2366` (Δ CI `[-0.0839, +0.0104]`) | `0.0999` |
+
+- **Inner-fold selection stability:** `(tau=0.75, k=2)` was chosen in `20 / 23` (`87.0%`) independent training folds (`(0.65, 2)` twice, `(0.80, 1)` once; mean selected temperature `3.665`, range `2.3–4.0`).
+- **Statistical humility:** Under `n = 23`, the stratified bootstrap `95% CI` for `cal_minus_raw_brier` (`[-0.0839, +0.0104]`, mean `-0.0351`) still crosses zero (`p > 0.05`), so calibrated OOF gains are reported strictly as out-of-fold trends rather than statistically significant hypothesis rejections.

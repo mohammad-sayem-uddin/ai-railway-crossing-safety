@@ -47,7 +47,14 @@ Records only **directly executed** commands, inputs, parameters, and verified ou
   - `alpha >= 0.45` (`eff_conf >= 0.396`): `100%` closure; `alpha = 0.35` (`eff_conf = 0.308 < 0.35`): sharp cliff to `0%` closure (`1.0` `miss_open_rate`, `0.0` `failsafe_rate` via healthy empty frames).
   - Stalled obstacle (`[4.0..20.8 s]`) holds gate safely closed until `t_reopen = 22.6 s`; multi-train interrupt at `14.8 s` safely reverses `GATE_OPENING -> GATE_CLOSING`.
 
-- **Access Manifest & Tables/Figures Verification:**
-  - `scripts/classify_test_access.py --check`: `174` files (`113` `synthetic_only`, `29` `metadata_only`, `14` `model_checkpoint_access`, `4` `processed_data_access`, `4` `raw_media_access`, `10` `unknown`, `142` `safe_for_synthetic_runner`) -> `manifest OK`.
-  - `scripts/generate_master_publication_tables.py` -> `PUBLICATION_TABLES.md` + `5` CSVs.
-  - `scripts/generate_new_audit_and_edge_figures.py` -> `docs/generated/figures/fig11..fig14.png` (`300 DPI`, visually inspected).
+- **`Exp R` (`scripts/run_optimization_and_robustness_suite.py` -> `exp_r_crossval_and_failsafe.json`, `exp_r_loeo_folds.csv`, `exp_r_optical_wakeup_ablation.csv`):**
+  - 23-fold Nested LOEO CV on Batch-4 `audio23` + `2,000`-resample stratified bootstrap: baseline frozen `(tau=0.37, k=1)` `F1=0.6857, Acc=0.5217, Spec=0.0000, Rec=0.9231, Brier=0.2724, ECE=0.2955` -> **OOF calibrated+hysteresis `(tau=0.75, k=2 in 20/23 folds)`**: `F1=0.6400 [CI95 0.4167..0.8148]`, `Acc=0.6087`, `Spec=0.6000 [0.3000..0.9000]`, `Prec=0.6667`, `Rec=0.6154 [0.3846..0.8462]`, `OOF Brier=0.2366` (Δ CI `[-0.0839..+0.0104]`), `ECE=0.0999`.
+  - Opt-in `RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP` (`enable_optical_degradation_audio_wakeup=False` by default, active `visibility<0.45`, `score>=0.75` x `3` frames, occupancy != `CLEAR`): closes `alpha=0.35` (`eff_conf=0.308`) fog cliff (`0% -> 100%` at `4.0 s`, `0` unsafe opens), with `0/2` false closures on clear-sky ambient horn & degraded-optics single-impulse controls.
+- **`EXP-EDGE-SCALE-01` (`scripts/rpi_edge_benchmark.py` -> `host_edge_scaling_benchmark.json`, `Apple M1 arm64`, `torch 2.13.0`, `physical_raspberry_pi_tested=false`):**
+  - Exported bundles: `vision_416_torchscript=12,602,738 B` (`diff=0.0`), `vision_320_torchscript=12,578,214 B` (`diff=0.0`), `vision_stripped_fp16=6,154,766 B`, `audio_torchscript=131,596 B` (`diff=0.0`), `RSS=364.67 MB`.
+  - Thread scaling (`1 / 2 / 4` threads): `416px` `28.790 / 20.729 / 17.361 ms` (`57.60 FPS` @ 4T); `320px` `17.860 / 13.402 / 11.787 ms` (`84.84 FPS` @ 4T); `Audio TS` `0.456 / 0.414 / 0.388 ms` (`2,579 win/s` @ 4T).
+- **Access Manifest, Zero-Blocker Check & Tables/Figures Verification:**
+  - `scripts/classify_test_access.py --check`: `175` files (`114` `synthetic_only`, `29` `metadata_only`, `14` `model_checkpoint_access`, `4` `processed_data_access`, `5` `raw_media_access`, `9` subprocess-spawning `unknown`, `143` `safe_for_synthetic_runner`) -> `manifest OK`.
+  - `scripts/check_zero_blocker_readiness.py`: `all_technical_checks_passed = true` (`11/11`); `audit reproducibility`: `PASS: 8, FAIL: 0, UNRESOLVED: 3, NOT_AVAILABLE: 2`.
+  - `scripts/run_synthetic_tests.py`: **`3,279 passed, 0 failed, 0 skipped, 0 violations` (`status: PASSED`)**.
+  - `scripts/generate_master_publication_tables.py` -> `PUBLICATION_TABLES.md` + `table1..table6.csv`; `scripts/generate_new_audit_and_edge_figures.py` -> `fig11..fig15.png`.

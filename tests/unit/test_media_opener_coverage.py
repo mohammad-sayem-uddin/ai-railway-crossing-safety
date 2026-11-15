@@ -55,6 +55,12 @@ REVIEWED_METADATA_ONLY: dict[str, str] = {
     "scratch/run_phase2_verification.py::compute_sha256": "hashes proposal JSON files (the media step is guarded separately)",
     "src/railway_detection/safety/access_manifest.py::sha256_of": "hashes test source files for the classification manifest",
     "src/railway_detection/simulation/runner.py::_profile_metadata": "hashes this package's own source files",
+    "scripts/build_m3_mm_manifest.py::cache_info": "hashes JSONL inference cache files only after refusing non-cache/raw paths",
+    "scripts/build_m3_mm_manifest.py::find_anchor": "hashes JSON manifest candidates under docs/generated, data/manifests, and results only",
+    "scripts/build_m3_mm_manifest.py::main": "hashes newly written m3_multimodal_replay_manifest.json only",
+    "scripts/build_m3_mm_manifest_v2.py::sha256_of": "hashes JSON/JSONL manifests and cached predictions only after refusing raw paths",
+    "scripts/fix_m3_classification.py::sha256_of": "hashes .py test source files only for access classification updates",
+    "scripts/run_stage21_review.py::resolve_active_proposal": "hashes proposal JSON files under data/ground_truth/proposals only (media is guarded separately in review_session)",
 }
 
 

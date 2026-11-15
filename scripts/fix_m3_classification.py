@@ -24,8 +24,11 @@ TEMPLATE_KEY = "tests/unit/test_access_classification_tools.py"
 
 
 def sha256_of(path):
+    resolved = os.path.abspath(path)
+    if os.path.splitext(resolved)[1] != ".py" or f"{os.sep}raw{os.sep}" in resolved:
+        raise ValueError(f"Refusing non-test-source file read in fix_m3_classification: {path}")
     h = hashlib.sha256()
-    with open(path, "rb") as fh:
+    with open(resolved, "rb") as fh:
         for chunk in iter(lambda: fh.read(1 << 20), b""):
             h.update(chunk)
     return h.hexdigest()

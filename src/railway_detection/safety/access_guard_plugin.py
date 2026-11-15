@@ -184,6 +184,32 @@ class _Guard:
         real_open, real_io_open, real_os_open = builtins.open, io.open, os.open
         real_scandir, real_listdir = os.scandir, os.listdir
         real_popen_init = subprocess.Popen.__init__
+        real_import = builtins.__import__
+
+        def _wrap_cv2(cv2_mod: Any) -> None:
+            if "cv2.VideoCapture" in guard._originals or not hasattr(cv2_mod, "VideoCapture"):
+                return
+            real_capture = cv2_mod.VideoCapture
+
+            def guarded_capture(source: Any = None, *a: Any, **k: Any) -> Any:
+                if isinstance(source, (str, os.PathLike)):
+                    guard.check_read(source, "cv2.VideoCapture")
+                return real_capture(source, *a, **k) if source is not None else real_capture()
+
+            guard._originals["cv2.VideoCapture"] = real_capture
+            cv2_mod.VideoCapture = guarded_capture
+
+        def guarded_import(
+            name: str,
+            globals: Any = None,
+            locals: Any = None,
+            fromlist: Any = (),
+            level: int = 0,
+        ) -> Any:
+            mod = real_import(name, globals, locals, fromlist, level)
+            if "cv2" in sys.modules:
+                _wrap_cv2(sys.modules["cv2"])
+            return mod
 
         def is_write(mode: Any) -> bool:
             return any(c in str(mode) for c in "wax+")
@@ -243,24 +269,14 @@ class _Guard:
             "scandir": real_scandir,
             "listdir": real_listdir,
             "popen": real_popen_init,
+            "import": real_import,
         }
         builtins.open, io.open, os.open = guarded_open, guarded_io_open, guarded_os_open
         os.scandir, os.listdir = guarded_scandir, guarded_listdir
         subprocess.Popen.__init__ = guarded_popen_init  # type: ignore[method-assign]
-        try:  # cv2 reads files natively; guard its constructor when OpenCV is present
-            import cv2  # type: ignore[import-not-found]
-
-            real_capture = cv2.VideoCapture
-
-            def guarded_capture(source: Any = None, *a: Any, **k: Any) -> Any:
-                if isinstance(source, (str, os.PathLike)):
-                    guard.check_read(source, "cv2.VideoCapture")
-                return real_capture(source, *a, **k) if source is not None else real_capture()
-
-            self._originals["cv2.VideoCapture"] = real_capture
-            cv2.VideoCapture = guarded_capture
-        except Exception:  # noqa: BLE001 - OpenCV absent or unusable: nothing to wrap
-            pass
+        builtins.__import__ = guarded_import
+        if "cv2" in sys.modules:
+            _wrap_cv2(sys.modules["cv2"])
 
     def uninstall(self) -> None:
         o = self._originals
@@ -269,13 +285,12 @@ class _Guard:
         from railway_detection.safety import media_guard
 
         media_guard.unregister_observer(self._media_observer)
+        builtins.__import__ = o["import"]
         builtins.open, io.open, os.open = o["open"], o["io.open"], o["os.open"]
         os.scandir, os.listdir = o["scandir"], o["listdir"]
         subprocess.Popen.__init__ = o["popen"]  # type: ignore[method-assign]
-        if "cv2.VideoCapture" in o:
-            import cv2  # type: ignore[import-not-found]
-
-            cv2.VideoCapture = o["cv2.VideoCapture"]
+        if "cv2.VideoCapture" in o and "cv2" in sys.modules:
+            sys.modules["cv2"].VideoCapture = o["cv2.VideoCapture"]
         self._originals = {}
         self._log.close()
 

@@ -2,8 +2,8 @@
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Status: Research Prototype](https://img.shields.io/badge/status-research--prototype-orange.svg)]()
-[![Official Gate: Blocked (7 Blockers)](https://img.shields.io/badge/official%20eval%20gate-blocked%20(ready%3A%20false)-red.svg)]()
-[![Exploratory Suite: Exp A-Q Verified](https://img.shields.io/badge/exploratory%20suite-Exp%20A--Q%20verified-blue.svg)]()
+[![Official Gate: 5 Human Gates Pending](https://img.shields.io/badge/official%20eval%20gate-5%20human%20gates%20pending-orange.svg)]()
+[![Exploratory Suite: Exp A-R Verified](https://img.shields.io/badge/exploratory%20suite-Exp%20A--R%20verified-blue.svg)]()
 
 > [!CAUTION]
 > **Academic research prototype — not a safety system.**
@@ -197,24 +197,27 @@ not tracked in Git — see §8):
   No frame-level bounding boxes or audio window onset timestamps exist in the field video corpus.
 - Historical caution: the legacy Phase-11 event inventory is flagged `INVALID_FABRICATED_APPROVAL`.
 
-## 6. Exploratory Experimental Status (`Exp A` – `Exp Q`, `2026-11-14`)
+## 6. Exploratory Experimental Status (`Exp A` – `Exp R`, `2026-11-14`)
 
-*(All real-video metrics remain **exploratory** on frozen `pre-db40305` caches evaluated against adopted references; official Phase 12 replay remains fail-closed pending `AUTH-MEDIA-ACCESS.json` and Stage-2.1 reviews.)*
+*(All real-video metrics remain **exploratory** on frozen `pre-db40305` caches evaluated against adopted references; official Phase 12 replay remains fail-closed pending human governance gates in [`PI_HUMAN_APPROVAL_PACKAGE.md`](docs/generated/PI_HUMAN_APPROVAL_PACKAGE.md).)*
 
 | Suite / Experiment | Key Verified Finding & Location |
 |---|---|
 | **Perception Cache Extraction (Mission 43)** | `B0_front` (`6,613` records), `B0_back` (`6,479`), `B1_audio` (`2,600` windows), `audio23` max-window `@0.37`: Recall `92.31%`, Precision `54.55%`, Specificity `0.00%`, F1 `0.6857`, ROC-AUC `0.6846`, AP `0.7739`. |
 | **`Exp A–N` V3 Four-Layer Suite** ([`final_research_v2/`](docs/generated/final_research_v2/EXPERIMENTAL_RESULTS.md)) | `23` SHA-256 bit-identical artifacts under [`results/exploratory_v2/`](results/exploratory_v2/MASTER_V2_SUMMARY.json). V3 eliminates `no_train` false closures (`0/3` vs `3/3` stateless union, McNemar `p=0.25`) and `sync11` premature openings (`0/11` vs `4/11` V2, McNemar `p=0.125`); `18/18` fault scenarios pass with `0` unsafe openings and `100%` legal transitions. `pre-db40305` approach trigger rate is `10/23` (`43.48%`, 95% CI `[0.2563, 0.6319]`) due to `-90°` `.mov` rotation and causal filtering. |
 | **`Exp O` Audio Hysteresis & Calibration** ([`exp_o`](results/exploratory_v2/optimization_and_stress/exp_o_audio_calibration_hysteresis.json)) | `no_train` road horns persist `3–9` windows `>=0.37` (`max 0.826`) but `1` window `>=0.75`. `(tau=0.75, k=2)` suppresses `3/3` `no_train` FPs and lifts specificity `0.00 -> 0.90`, `Prec 0.8889`, `F1 0.7273` (`Rec 0.6154`); `T=3.0` temperature scaling lowers ECE `0.2955 -> 0.0709`. |
-| **`Exp P` CPU Edge & Duty Cycle** ([`exp_p`](results/exploratory_v2/optimization_and_stress/exp_p_cpu_edge_benchmark.json)) | Apple M1 CPU (`SYNTHETIC_ONLY`; physical RPi **not tested**): optimizer stripping shrinks Vision `best.pt` `-74.91%` (`24.49 -> 6.15 MB` FP16); `416px` E2E `YOLO.predict` speeds up `2.32×` (`54.66 -> 23.61 ms`, `42.36 FPS`); Audio `log_mel + CNN TS` takes `0.881 ms`; `V3 FSM` takes `0.0391 ms/tick`; event-triggered wakeup reduces daily vision frames `-96.56% to -98.64%`. |
+| **`Exp P` CPU Edge & Duty Cycle** ([`exp_p`](results/exploratory_v2/optimization_and_stress/exp_p_cpu_edge_benchmark.json)) | Apple M1 CPU (`SYNTHETIC_ONLY`; `physical_raspberry_pi_tested = false`): optimizer stripping shrinks Vision `best.pt` `-74.91%` (`24.49 -> 6.15 MB` FP16); `416px` E2E `YOLO.predict` speeds up `2.06×` (`44.56 -> 21.60 ms`, `46.30 FPS`); Audio `log_mel + CNN TS` takes `0.878 ms`; `V3 FSM` takes `0.0381 ms/tick`; event-triggered wakeup reduces daily vision frames `-96.56% to -98.64%`. |
 | **`Exp Q` Weather × Dropout Stress** ([`exp_q`](results/exploratory_v2/optimization_and_stress/exp_q_weather_and_interlocking_stress.json)) | Across `100` synthetic attenuation × burst-drop runs: `0` unsafe openings, `100%` legal transitions, safe obstacle hold (`reopen @ 22.6 s`), and multi-train reopen interrupt (`14.8 s`). Identifies a healthy-empty-frame optical cliff at `alpha=0.35` (`conf=0.308 < 0.35` -> `0%` closure without staleness). |
+| **`Exp R` LOEO CV & Optical Wakeup** ([`exp_r`](results/exploratory_v2/optimization_and_stress/exp_r_crossval_and_failsafe.json), [`fig15`](docs/generated/figures/fig15_exp_r_loeo_and_optical_wakeup.png)) | 23-fold nested LOEO CV on Batch-4 audio reaches OOF `F1 = 0.6400` (`[0.4167, 0.8148]`), `Spec = 0.6000` (`[0.3000, 0.9000]` vs `0.0000` baseline), `Brier 0.2724 -> 0.2366`, `ECE 0.2955 -> 0.0999` (`tau=0.75, k=2` in `20/23` folds). Opt-in `RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP` (`enable_optical_degradation_audio_wakeup=False` default) closes the `alpha=0.35` cliff (`0% -> 100%` @ `4.0 s`) with `0` unsafe opens and `0/2` false-alarm controls. |
+| **Standalone Edge Scaling Benchmark** ([`host_edge_scaling_benchmark.json`](results/exploratory_v2/optimization_and_stress/host_edge_scaling_benchmark.json)) | `scripts/rpi_edge_benchmark.py`: TorchScript (`max_abs_diff=0.0`) + FP16 stripped bundle (`6.15 MB`) across `1/2/4` CPU threads (`416px: 28.79/20.73/17.36 ms`; `320px: 17.86/13.40/11.79 ms`; `4T Audio TS: 0.388 ms`; `RSS: 364.67 MB`; `physical_raspberry_pi_tested = false`). |
 
 See [`results/publication_tables/PUBLICATION_TABLES.md`](results/publication_tables/PUBLICATION_TABLES.md), [`docs/generated/EXPERIMENT_RESULTS.md`](docs/generated/EXPERIMENT_RESULTS.md), and [`docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md`](docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md).
 
 ## 7. Governance Status, Limitations and Blockers
 
-- **Official Phase 12 Gate (`evaluation status` -> `ready: false`, `7` blockers):** Protocol decision [`phase12_protocol_decision.json`](data/manifests/phase12_protocol_decision.json) (`M4` primary + `v9` sensitivity, `sha256: 6b5edb48...`), [`phase12_r04_scope_decision.json`](data/manifests/phase12_r04_scope_decision.json) (`11` dual / `16` independent, `sha256: f6eabeba...`), and dual authorized reviewers (`authorized_reviewers.json`) are recorded. Remaining blockers (`COHORT_APPROVAL_MISSING`, `EVAL_AUTH_NOT_GRANTED`, `EVENT_SPLIT_DECISION_MISSING`, `MANIFEST_MISSING`, `STAGE21_RECORDS_MISSING`) + absent `data/governance/AUTH-MEDIA-ACCESS.json` keep official Phase 12 execution and raw-media access fail-closed.
-- **Reproducibility CLI (`audit reproducibility`):** Fixed desynchronization in [`audit.py`](src/railway_detection/reproducibility/audit.py) (`protocol_version = PASS`, reducing `UNRESOLVED` `4 -> 3`; `PASS: 7, UNRESOLVED: 3, FAIL: 1 [dependency_lock], NOT_AVAILABLE: 2`).
+- **Technical Blockers Eliminated (`dependency_lock: PASS`, `FAIL: 0`):** Synchronized `requirements.lock` (all `50` pinned packages match), synchronized `MISSION_26_CATALOG_BINDING.json`, isolated `config/constants.py` & `scripts/run_synthetic_tests.py` `--confcutdir` batching (`0` synthetic failures), and guarded non-media metadata utilities ([`check_zero_blocker_readiness.py`](scripts/check_zero_blocker_readiness.py)).
+- **Remaining Human Governance Gates ([`PI_HUMAN_APPROVAL_PACKAGE.md`](docs/generated/PI_HUMAN_APPROVAL_PACKAGE.md), `evaluation status` -> `ready: false`, `5` logical blockers):** Protocol decision [`phase12_protocol_decision.json`](data/manifests/phase12_protocol_decision.json) (`sha256: 6b5edb48...`), [`phase12_r04_scope_decision.json`](data/manifests/phase12_r04_scope_decision.json) (`sha256: f6eabeba...`), and dual authorized reviewers (`authorized_reviewers.json`) are recorded. Remaining human gates: `STAGE21_RECORDS_MISSING` (and derived `COHORT_APPROVAL_MISSING`), `EVENT_SPLIT_DECISION_MISSING`, `MANIFEST_MISSING`, `EVAL_AUTH_NOT_GRANTED`, plus absent `data/governance/AUTH-MEDIA-ACCESS.json`.
+- **Reproducibility CLI (`audit reproducibility`):** `PASS: 8, FAIL: 0, UNRESOLVED: 3 [human ground-truth/split/decisions], NOT_AVAILABLE: 2 [official Phase 12]`.
 - **Prototype Hardware & Timing Gaps:** `0/27` physical side cameras, `0/27` physical occupancy sensors, `0/27` `last_carriage` boxes, `pre-db40305` unrotated caches on `-90°` `.mov` streams, close-range camera placement (`T2` median `~3.6 s` vs `7.6 s` baseline closure budget needing `84–211 m` upstream siting), and unmeasured physical Raspberry Pi hardware (`physical_raspberry_pi_tested = false`).
 - **Discrete Simulation Stepping Note:** `EventSimulationRunner` steps `PhysicalGateModel` at the issuing tick `t` (Convention A, `-0.20 s` vs strict post-tick Convention B).
 - **Simulated Hardware Boundary:** Research simulation software only — never connect to live railway signaling or physical relays.
@@ -246,8 +249,8 @@ Train_automation/
 ├── docs/                      # Protocols, hazard model, decisions, audits
 │   ├── archive/               # Founding documents (concept, Protocol V2, plans)
 │   └── generated/             # Complete audits, V3 reports (`final_research_v2/`),
-│                              #   IEEE manuscript, 13 governance/safety reports,
-│                              #   figures (`fig11`–`fig14`), `master_reaudit/`
+│                              #   IEEE manuscript, PI approval package, safety reports,
+│                              #   figures (`fig11`–`fig15`), `master_reaudit/`
 ├── outputs/                   # Local runtime outputs (git-ignored)
 └── scratch/                   # Researcher local workspace (git-ignored, not published)
 ```
@@ -291,10 +294,12 @@ Local configuration: copy `.env.example` to `.env` (never commit `.env`). Variab
 - **Reproducible Experiment Runners (`exp/four-layer-completion`):**
   - Exploratory V3 suite (`Exp A–N`, `23` SHA-256 bit-identical artifacts): `PYTHONPATH=src:scripts .venv/bin/python scripts/run_v2_experiments.py`
   - Leakage audit & session/stem-grouped candidate splits: `PYTHONPATH=src .venv/bin/python scripts/run_leakage_and_split_audit.py`
-  - Acoustic hysteresis, CPU edge profiling & stress (`Exp O–Q`): `PYTHONPATH=src .venv/bin/python scripts/run_optimization_and_robustness_suite.py`
-  - Master CSV/Markdown tables (`results/publication_tables/`): `PYTHONPATH=src .venv/bin/python scripts/generate_master_publication_tables.py`
+  - Acoustic hysteresis, cross-validation, CPU edge profiling & stress (`Exp O–R`): `PYTHONPATH=src:. .venv/bin/python scripts/run_optimization_and_robustness_suite.py`
+  - Standalone TorchScript/FP16 & CPU thread-scaling benchmark (`host_edge_scaling_benchmark.json`): `PYTHONPATH=src:. .venv/bin/python scripts/rpi_edge_benchmark.py`
+  - Zero-blocker technical vs human-gate check: `PYTHONPATH=src:. .venv/bin/python scripts/check_zero_blocker_readiness.py`
+  - Master CSV/Markdown tables (`results/publication_tables/`): `PYTHONPATH=src:. .venv/bin/python scripts/generate_master_publication_tables.py`
   - Governance & audit CLIs: `.venv/bin/python -m railway_detection.cli.main evaluation status` and `audit reproducibility`
-- **Tests:** The guarded test programme (`174` test files; `142` classified `safe_for_synthetic_runner` via `scripts/classify_test_access.py`) validates software contracts, leak-free split invariants, reproducibility fail-closed governance, and V3 FSM invariants. Full suite discovery requires `--import-mode=importlib` (`PYTHONPATH=src:. .venv/bin/python -m pytest tests/ --import-mode=importlib`) due to 4 duplicate test basenames across historical mission directories; pre-existing failures are documented transparently in [`docs/generated/FINAL_INDEPENDENT_REVIEW.md`](docs/generated/FINAL_INDEPENDENT_REVIEW.md).
+- **Tests:** The guarded test programme (classified via `scripts/classify_test_access.py`) validates software contracts, leak-free split invariants, reproducibility fail-closed governance, and V3/Exp R invariants (`scripts/run_synthetic_tests.py` with isolated `--confcutdir` batching). Full suite discovery uses `--import-mode=importlib` (`PYTHONPATH=src:. .venv/bin/python -m pytest tests/ --import-mode=importlib`), where the sole non-isolated live failure is the intentional human raw-media gate ([`test_exploratory_subset_authorization_gate.py`](tests/unit/test_exploratory_subset_authorization_gate.py#L73)); full details appear in [`docs/generated/FINAL_INDEPENDENT_REVIEW.md`](docs/generated/FINAL_INDEPENDENT_REVIEW.md).
   **Tests are not experiments:** synthetic-fixture results carry no weight about
   real-data performance.
 - **Permitted experiments:** Only executions authorised by a recorded researcher
@@ -338,5 +343,6 @@ Local configuration: copy `.env.example` to `.env` (never commit `.env`). Variab
 ---
 
 *README updated 2026-11-14 (`exp/four-layer-completion`) to reflect verified V3 Four-Layer
-experimental completion (`Exp A–Q`), dataset leakage forensics (`705d388743ea` & Audio V3),
-reproducibility CLI synchronization (`audit.py`), and current fail-closed governance status (`ready: false`, `7` blockers).*
+experimental completion (`Exp A–R`), dataset leakage forensics (`705d388743ea` & Audio V3),
+resolved technical blockers (`dependency_lock: PASS`, isolated synthetic runner, Mission 26–28
+catalog binding), and remaining human-only Phase-12/media gates (`PI_HUMAN_APPROVAL_PACKAGE.md`).*

@@ -110,9 +110,9 @@ def _write_allowlist(tmp_path: Path, reviewers: list, filename: str = "allowlist
 # Task 1 sanity: real repository state (read-only)
 # =============================================================================
 
-def test_real_allowlist_file_loads_and_contains_only_the_researcher() -> None:
+def test_real_allowlist_file_loads_and_contains_only_authorized_reviewers() -> None:
     allowlist = load_authorized_reviewers(Path("data/ground_truth/authorized_reviewers.json"))
-    assert allowlist == frozenset({"raihankabirrahu@gmail.com"})
+    assert allowlist == frozenset({"raihankabirrahu@gmail.com", "elaf85777@gmail.com"})
 
 
 def test_real_stage2_1_schema_requires_reviewer_observed_media_hashes() -> None:

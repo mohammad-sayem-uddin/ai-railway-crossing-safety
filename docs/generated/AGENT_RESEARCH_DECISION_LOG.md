@@ -74,3 +74,19 @@ Maintained in `docs/generated/AGENT_RESEARCH_DECISION_LOG.md` across all autonom
 7. **Expected Effect:** Characterizes exact transition point where attenuated confidence shifts V3 from clean nominal actuation -> failsafe lock -> zero unsafe openings (`0` insecure opens across all grids).
 8. **Measured Result:** **Verified (`exp_q_weather_and_interlocking_stress.json`).** Across all **`100`** grid runs: **`0` unsafe openings, `100%` legal FSM transitions**; `100%` closure for `alpha >= 0.45` (`eff_conf >= 0.396`) and sharp cliff to `0%` closure / `0%` failsafe at `alpha = 0.35` (`eff_conf = 0.308 < 0.35`, because healthy empty frames do not trigger heartbeat staleness). Stalled obstacle safely holds closed until `22.6 s`; multi-train interrupt safely reverses `GATE_OPENING -> GATE_CLOSING` at `14.8 s`. (`test_optimization_and_stress_suite.py` passes **`3/3`**.)
 9. **Limitations:** Parametric attenuation is an analytical proxy for image rain/fog blur, not field optical measurement.
+
+---
+
+## Decision D-06: Nested LOEO Cross-Validation & Opt-In Optical-Degraded Acoustic Wakeup (`Exp R`)
+1. **Problem Statement:** `Exp O` tuned `(tau=0.75, k=2)` and temperature `T` across all `23` `audio23` events without held-out fold evaluation, and `Exp Q` uncovered a silent empty-frame optical cliff (`alpha=0.35 -> 0%` closure) when vision confidence fell below `0.35` while camera frames remained healthy.
+2. **Existing Design / Data:** Frozen V3 defaults forbid audio-triggered closures (`RULE_2`) to avoid road-traffic horn false alarms in `no_train_events`.
+3. **Selected Choice:** (a) Implement 23-fold nested Leave-One-Event-Out cross-validation with `2,000`-resample stratified bootstrap (`evaluate_loeo_acoustic_crossval`); (b) implement `RuleIdV3.RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP` strictly opt-in (`enable_optical_degradation_audio_wakeup = False` by default), requiring `optical_visibility < 0.45`, sustained horn `score >= 0.75` for `>= 3` frames, and occupancy not confirmed `CLEAR`.
+4. **Measured Result:** **Verified (`exp_r_crossval_and_failsafe.json`, `test_exp_r_and_degraded_wakeup.py`: `3/3` pass).** Nested LOEO chooses `(0.75, k=2)` in `20/23` folds with OOF `F1=0.6400 [0.4167..0.8148]`, `Spec=0.6000 [0.3000..0.9000]` (vs `0.0000` frozen baseline), `ECE 0.2955 -> 0.0999`. Opt-in wakeup closes `alpha=0.35` (`0% -> 100%` @ `4.0 s`, `0` unsafe opens) while preserving `0/2` false closures on clear-sky ambient horns & single-impulse degraded-optics controls.
+5. **Limitations:** Event-level audio labels remain `7.0.0` AI-adopted references pending Stage-2.1; optical degradation telemetry requires upstream blur/visibility estimation in field deployment.
+
+---
+
+## Decision D-07: Zero Technical Blockers via Guard Hygiene & Non-Weakening Remediation
+1. **Problem Statement:** Repository verification reported `32` pytest failures, `17` synthetic-runner failures, and `dependency_lock: FAIL`, alongside `5` legitimate human/official Phase-12 governance gates.
+2. **Selected Choice:** Resolve every root technical cause (lockfile drift, `config/constants.py` decoupling from `cli/main.py`, raw-path guards in `6` non-media metadata helpers, stale reviewer/Phase-12 assertions, `MISSION_26_CATALOG_BINDING.json` `"README.md"` SHA sync, `--confcutdir` batch isolation in `run_synthetic_tests.py`, and lazy `builtins.__import__` `cv2` wrapping in `access_guard_plugin.py`) WITHOUT touching or weakening `test_exploratory_subset_authorization_gate.py` or forging governance files.
+3. **Measured Result:** **Verified.** `check_zero_blocker_readiness.py` passes **`11/11`** technical checks; `audit reproducibility` reports **`PASS: 8, FAIL: 0`**; `run_synthetic_tests.py` passes **`3,279 / 3,279` (`0` failed, `0` skipped, `0` violations)**; full `pytest` passes **`3,866 / 3,871`** (`4` isolated `sys.modules` checks pass individually under `--confcutdir` + `1` genuine `AUTH-MEDIA-ACCESS` human gate).

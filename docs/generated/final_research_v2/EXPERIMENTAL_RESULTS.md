@@ -133,3 +133,15 @@ Sourced directly from [`exp_n_event_matrix.csv`](file:///Users/sayemuddin/Deskto
 | `no_train_events/002` | NO_TRAIN | No | False | 0 | `None` / `0.826` | 0 / 0 | **False** | `—` | `—` | `—` |
 | `no_train_events/003` | NO_TRAIN | No | True | 0 | `None` / `0.800` | 0 / 0 | **False** | `—` | `—` | `—` |
 | `engine_events/001` | ENGINE | No | False | 0 | `absent_obs` / `0.143` | 0 / 0 | **False** | `—` | `—` | 0.0 / `—` |
+
+---
+
+## 5. Deepening Studies (`Exp O` – `Exp R`) & Host Edge Scaling ([`PUBLICATION_TABLES.md`](file:///Users/sayemuddin/Desktop/Train_automation/results/publication_tables/PUBLICATION_TABLES.md))
+
+- **`Exp O` (`exp_o_audio_calibration_hysteresis.json`, `fig12`):** Across `2,730` cached windows, `no_train` road-vehicle horns sustain `3–9` consecutive windows `>= 0.37` (defeating simple hysteresis at `0.37`) but collapse to `1` window at `>= 0.75`. `(tau=0.75, k=2)` suppresses `3/3` `no_train` FPs (`0/1` `engine` FP) with `Spec=0.9000`, `Prec=0.8889`, `F1=0.7273`, `Rec=0.6154`.
+- **`Exp P` (`exp_p_cpu_edge_benchmark.json`, `fig13`):** Apple M1 CPU (`SYNTHETIC_ONLY`, `physical_raspberry_pi_tested = false`): weight stripping shrinks `best.pt` `-74.91%` (`24,493,159 -> 6,145,232 B` FP16); `416px` E2E `YOLO.predict` reaches `21.597 ms` (`46.30 FPS`, `2.06×` vs `44.557 ms` @ `640px`), Audio `log_mel + TorchScript CNN` takes `0.878 ms/window`, `V3 FSM` takes `0.0381 ms/tick` (`26,247 Hz`), and event-triggered wakeup cuts daily frames `-96.56% to -98.64%` (`864,000 -> 11,760–29,760/d`).
+- **`Exp Q` (`exp_q_weather_and_interlocking_stress.json`, `fig14`):** Across `100` synthetic attenuation × burst-drop runs: `0` unsafe openings, `100%` legal transitions, `100%` closure at `alpha >= 0.45`, and a cliff to `0%` closure at `alpha = 0.35` (`eff_conf = 0.308 < 0.35`).
+- **`Exp R` (`exp_r_crossval_and_failsafe.json`, `fig15`):**
+  - **23-Fold Nested LOEO Acoustic CV:** Out-of-fold `F1 = 0.6400` (`[0.4167, 0.8148]`), `Acc = 0.6087`, `Spec = 0.6000` (`[0.3000, 0.9000]` vs `0.0000` frozen baseline), `OOF Brier = 0.2366`, `ECE = 0.0999`; `(tau=0.75, k=2)` selected in `20/23` folds.
+  - **Opt-In Optical-Degradation Audio Wakeup (`RuleIdV3.RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP`, `enable_optical_degradation_audio_wakeup=False` by default):** Closes the `alpha = 0.35` fog cliff (`0% -> 100%` closure at `t = 4.0 s`, `0` unsafe opens) while preserving `0/2` false closures on clear-sky sustained ambient horns and single-impulse degraded-optics controls.
+- **Standalone Multi-Thread Edge Benchmark ([`host_edge_scaling_benchmark.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/exploratory_v2/optimization_and_stress/host_edge_scaling_benchmark.json)):** `1/2/4`-thread TorchScript `416px` (`28.79 -> 20.729 -> 17.361 ms`, `57.6 FPS` @ 4T) and `320px` (`17.86 -> 13.402 -> 11.787 ms`, `84.84 FPS` @ 4T), `4T Audio TS = 0.388 ms`, `RSS = 364.67 MB`, explicitly marked `physical_raspberry_pi_tested = false`.

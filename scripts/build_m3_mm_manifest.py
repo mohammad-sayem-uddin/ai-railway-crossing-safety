@@ -48,7 +48,10 @@ def sha256_bytes(data: bytes) -> str:
 
 
 def cache_info(rel_path: Path) -> dict:
-    data = (ROOT / rel_path).read_bytes()
+    resolved = (ROOT / rel_path).resolve()
+    if resolved.suffix not in {".json", ".jsonl"} or "raw" in resolved.parts:
+        raise ValueError(f"Refusing non-cache/metadata read in cache_info: {rel_path}")
+    data = resolved.read_bytes()
     lines = [ln for ln in data.decode("utf-8").splitlines() if ln.strip()]
     return {
         "path": rel_path.as_posix(),

@@ -1016,8 +1016,8 @@ def test_official_phase12_readiness_and_execution_gate_fail_closed_on_repo() -> 
     codes = set(report.blocker_codes)
     assert "STAGE21_RECORDS_MISSING" in codes
     assert "COHORT_APPROVAL_MISSING" in codes
-    assert "PREMATURE_OPENING_DEFINITION_UNDECIDED" in codes
-    assert "R04_SCOPE_DECISION_MISSING" in codes
+    assert "PREMATURE_OPENING_DEFINITION_UNDECIDED" not in codes
+    assert "R04_SCOPE_DECISION_MISSING" not in codes
     assert "EVENT_SPLIT_DECISION_MISSING" in codes
     assert "MANIFEST_MISSING" in codes
     assert "EVAL_AUTH_NOT_GRANTED" in codes

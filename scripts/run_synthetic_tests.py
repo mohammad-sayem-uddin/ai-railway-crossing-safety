@@ -139,23 +139,6 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if selected or args.dry_run else 2
 
     work = Path(tempfile.mkdtemp(prefix="synthetic_run_"))
-    log, junit = work / "guard.jsonl", work / "junit.xml"
-    cmd = [
-        sys.executable,
-        "-m",
-        "pytest",
-        "-p",
-        "railway_detection.safety.access_guard_plugin",
-        "--access-guard-log",
-        str(log),
-        "-p",
-        "no:cacheprovider",
-        "-q",
-        "--no-header",
-        f"--junitxml={junit}",
-        *args.extra,
-        *selected,
-    ]
     env = os.environ | {
         "PYTHONDONTWRITEBYTECODE": "1",
         "PYTHONPATH": os.pathsep.join(
@@ -163,27 +146,82 @@ def main(argv: list[str] | None = None) -> int:
         ),
         "PATH": "/usr/bin:/bin:/usr/local/bin:/opt/homebrew/bin",
     }
-    proc = subprocess.run(cmd, cwd=REPO_ROOT, env=env, capture_output=True, text=True)
-    events = (
-        [json.loads(line) for line in log.read_text(encoding="utf-8").splitlines() if line]
-        if log.is_file()
-        else []
-    )
-    violations = verify_log(events, manifest, selected)
+
+    def _batch_key(rel: str) -> str | None:
+        parts = Path(rel).parts
+        if len(parts) >= 3 and parts[0] == "tests":
+            sub_dir = REPO_ROOT / "tests" / parts[1]
+            sub_conf = sub_dir / "conftest.py"
+            if sub_conf.is_file() and "--confcutdir=" in sub_conf.read_text(encoding="utf-8"):
+                return str(sub_dir)
+        return None
+
+    batches: dict[str | None, list[str]] = {}
+    for rel in selected:
+        batches.setdefault(_batch_key(rel), []).append(rel)
+
+    events: list[dict[str, Any]] = []
     counts = {"passed": 0, "failed": 0, "skipped": 0, "errors": 0}
-    if junit.is_file():
-        root = ET.parse(junit).getroot()
-        suite = root if root.tag == "testsuite" else root.find("testsuite")
-        if suite is not None:
-            total = int(suite.get("tests", 0))
-            counts = {
-                "failed": int(suite.get("failures", 0)),
-                "errors": int(suite.get("errors", 0)),
-                "skipped": int(suite.get("skipped", 0)),
-            }
-            counts["passed"] = total - counts["failed"] - counts["errors"] - counts["skipped"]
+    violations: list[dict[str, Any]] = []
+    worst_returncode = 0
+    stdout_chunks: list[str] = []
+
+    for idx, (confcut, batch_files) in enumerate(batches.items()):
+        log, junit = work / f"guard_{idx}.jsonl", work / f"junit_{idx}.xml"
+        cmd = [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-p",
+            "railway_detection.safety.access_guard_plugin",
+            "--access-guard-log",
+            str(log),
+            "-p",
+            "no:cacheprovider",
+            *(["--confcutdir", confcut] if confcut is not None else []),
+            "-q",
+            "--no-header",
+            f"--junitxml={junit}",
+            *args.extra,
+            *batch_files,
+        ]
+        proc = subprocess.run(cmd, cwd=REPO_ROOT, env=env, capture_output=True, text=True)
+        if proc.returncode != 0 and worst_returncode == 0:
+            worst_returncode = proc.returncode
+        stdout_chunks.append(proc.stdout)
+        batch_events = (
+            [json.loads(line) for line in log.read_text(encoding="utf-8").splitlines() if line]
+            if log.is_file()
+            else []
+        )
+        events.extend(batch_events)
+        if junit.is_file():
+            root_xml = ET.parse(junit).getroot()
+            suite = root_xml if root_xml.tag == "testsuite" else root_xml.find("testsuite")
+            if suite is not None:
+                total = int(suite.get("tests", 0))
+                b_failed = int(suite.get("failures", 0))
+                b_errors = int(suite.get("errors", 0))
+                b_skipped = int(suite.get("skipped", 0))
+                counts["failed"] += b_failed
+                counts["errors"] += b_errors
+                counts["skipped"] += b_skipped
+                counts["passed"] += total - b_failed - b_errors - b_skipped
+        if not any(e["how"] == "armed" for e in batch_events):
+            violations.append({"kind": "GUARD_NOT_ARMED", "batch": confcut or "default"})
+        if not any(e["how"] == "disarmed" for e in batch_events):
+            violations.append({"kind": "GUARD_NOT_DISARMED", "batch": confcut or "default"})
+
+    violations.extend(verify_log(events, manifest, selected))
+    # Deduplicate identical GUARD_NOT_* entries if already detected
+    seen_viol: list[dict[str, Any]] = []
+    for v in violations:
+        if v not in seen_viol:
+            seen_viol.append(v)
+    violations = seen_viol
+    combined_stdout = "\n".join(stdout_chunks)
     report.update(
-        pytest_exit_code=proc.returncode,
+        pytest_exit_code=worst_returncode,
         tests=counts,
         guard={
             "events": len(events),
@@ -193,14 +231,14 @@ def main(argv: list[str] | None = None) -> int:
         violations=violations,
         status="CLASSIFICATION_VIOLATION"
         if violations
-        else ("PASSED" if proc.returncode == 0 else "TESTS_FAILED"),
+        else ("PASSED" if worst_returncode == 0 else "TESTS_FAILED"),
     )
     _write(args.report_path, report)
-    print(proc.stdout[-2000:])
+    print(combined_stdout[-2000:])
     if violations:
         print(f"{len(violations)} guard violation(s); see {args.report_path}", file=sys.stderr)
         return 4
-    return 0 if proc.returncode == 0 else 1
+    return 0 if worst_returncode == 0 else 1
 
 
 def _write(path: Path, report: dict[str, Any]) -> None:

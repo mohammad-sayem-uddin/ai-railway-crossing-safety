@@ -10,6 +10,10 @@ from pathlib import Path
 from typing import Any
 
 from railway_detection import __version__
+from railway_detection.config.constants import (
+    DEFAULT_EXPERIMENT_REGISTRY,
+    EXPERIMENT_REGISTRY_ENV,
+)
 from railway_detection.config.exceptions import ConfigError
 from railway_detection.config.loader import ConfigLoader
 from railway_detection.data.manifest import (
@@ -26,9 +30,6 @@ from railway_detection.utils.reproducibility import (
 )
 
 logger = get_logger("cli")
-
-DEFAULT_EXPERIMENT_REGISTRY = Path("results/experiment_registry.jsonl")
-EXPERIMENT_REGISTRY_ENV = "RAILWAY_EXPERIMENT_REGISTRY"
 
 
 def resolve_registry_path(override: str | Path | None = None) -> Path:

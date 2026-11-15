@@ -66,6 +66,10 @@ class MultimodalDecisionEngineV3FourLayer:
         guarded_min_back_frames: int = 2,
         guarded_min_passage_s: float = 1.0,
         guarded_negative_hold_s: float = 1.0,
+        enable_optical_degradation_audio_wakeup: bool = False,
+        optical_visibility_floor: float = 0.45,
+        degraded_audio_wakeup_threshold: float = 0.75,
+        degraded_audio_wakeup_frames: int = 3,
         occupancy_verifier: OccupancyVerifier | None = None,
         source_tracker: SourceTracker | None = None,
     ) -> None:
@@ -91,6 +95,10 @@ class MultimodalDecisionEngineV3FourLayer:
         self.guarded_min_back_frames = max(1, int(guarded_min_back_frames))
         self.guarded_min_passage_s = float(guarded_min_passage_s)
         self.guarded_negative_hold_s = float(guarded_negative_hold_s)
+        self.enable_optical_degradation_audio_wakeup = bool(enable_optical_degradation_audio_wakeup)
+        self.optical_visibility_floor = float(optical_visibility_floor)
+        self.degraded_audio_wakeup_threshold = float(degraded_audio_wakeup_threshold)
+        self.degraded_audio_wakeup_frames = max(1, int(degraded_audio_wakeup_frames))
 
         self.occupancy_verifier = (
             occupancy_verifier
@@ -131,6 +139,7 @@ class MultimodalDecisionEngineV3FourLayer:
         self.back_positive_frames = 0
         self.back_first_seen_time_s: float | None = None
         self.back_negative_since_s: float | None = None
+        self.consecutive_degraded_audio_count = 0
         self.stream_terminated_sources: set[str] = set()
         self.side_tracker.reset()
         self.occupancy_verifier.reset()
@@ -439,6 +448,33 @@ class MultimodalDecisionEngineV3FourLayer:
             or (self.last_audio_horn_time_s is not None and (t - self.last_audio_horn_time_s) <= self.audio_hold_s)
         )
 
+        # Opt-in optical-degradation awareness: track consecutive high-confidence audio horns
+        # strictly while front optical telemetry explicitly indicates visibility degradation.
+        front_optically_degraded = False
+        if self.enable_optical_degradation_audio_wakeup:
+            front_degraded_flags: list[bool] = []
+            for rec in effective_vision:
+                if rec.available and rec.source_id in roles["front"]:
+                    explicit_deg = bool(rec.metadata.get("optical_degraded", False))
+                    vis_score = rec.metadata.get("optical_visibility_score")
+                    score_deg = (
+                        isinstance(vis_score, int | float)
+                        and not isinstance(vis_score, bool)
+                        and float(vis_score) < self.optical_visibility_floor
+                    )
+                    front_degraded_flags.append(explicit_deg or score_deg)
+            front_optically_degraded = bool(front_degraded_flags) and any(front_degraded_flags)
+            if not front_optically_degraded:
+                self.consecutive_degraded_audio_count = 0
+            elif any(r.available for r in effective_audio):
+                l3_wakeup = extract_layer3_audio_evidence(
+                    safe_frame, threshold=self.degraded_audio_wakeup_threshold
+                )
+                if l3_wakeup.horn_detected:
+                    self.consecutive_degraded_audio_count += 1
+                else:
+                    self.consecutive_degraded_audio_count = 0
+
         # Back presence accounting (used by conservative verification and guarded disappearance comparison)
         if l4.back_present:
             self.back_positive_frames += 1
@@ -605,6 +641,20 @@ class MultimodalDecisionEngineV3FourLayer:
                     next_state = CrossingState.TRAIN_APPROACHING
                     rule_id = RuleIdV3.RULE_L1_FRONT_APPROACH_TRIGGER.value
                     explanation = "Layer 1 front approach detected; awaiting confirmation"
+            elif (
+                self.enable_optical_degradation_audio_wakeup
+                and front_optically_degraded
+                and self.consecutive_degraded_audio_count >= self.degraded_audio_wakeup_frames
+            ):
+                self.train_present_or_approaching = True
+                next_state = CrossingState.WARNING
+                next_gate = GateState.OPEN if self.warning_dwell_s > 0.0 else GateState.CLOSING
+                rule_id = RuleIdV3.RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP.value
+                self.timing_trace["engine_trigger_s"] = t
+                explanation = (
+                    f"Opt-in degraded-optics audio wakeup ({self.consecutive_degraded_audio_count} "
+                    f"consecutive horn windows >= {self.degraded_audio_wakeup_threshold:.2f}); triggering warning"
+                )
             elif l3.horn_detected:
                 rule_id = RuleIdV3.RULE_L3_AUDIO_SUPPORT_ONLY.value
                 explanation = "Layer 3 audio horn in IDLE held as supporting evidence only (no gate closure)"

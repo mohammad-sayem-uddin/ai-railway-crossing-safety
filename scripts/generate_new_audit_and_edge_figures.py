@@ -257,6 +257,88 @@ def make_fig14_weather_stress(root: Path, out_dir: Path) -> Path:
     return out_path
 
 
+def make_fig15_exp_r_loeo_and_optical_wakeup(root: Path, out_dir: Path) -> Path:
+    er = json.loads((root / "results/exploratory_v2/optimization_and_stress/exp_r_crossval_and_failsafe.json").read_text())
+    loeo = er["loeo_acoustic_crossval"]
+    base = loeo["baseline_frozen_tau037_k1"]
+    oof = loeo["loeo_oof_hysteresis_metrics"]
+    cal = loeo["oof_calibration"]
+    ci = loeo["bootstrap_95_ci"]
+    wake = er["optical_degradation_wakeup_ablation"]
+    sweep = wake["attenuation_sweep"]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10.6, 4.3))
+
+    # Panel A: 23-fold LOEO Acoustic Cross-Validation
+    metrics = ["Accuracy", "Specificity", "Precision", "F1 Score", "Brier Score\n(↓ Better)", "ECE (5-bin)\n(↓ Better)"]
+    base_vals = [base["accuracy"], base["specificity"], base["precision"], base["f1"], cal["uncalibrated_brier"], cal["uncalibrated_ece_5bin"]]
+    oof_vals = [oof["accuracy"], oof["specificity"], oof["precision"], oof["f1"], cal["oof_temp_scaled_brier"], cal["oof_temp_scaled_ece_5bin"]]
+    x = np.arange(len(metrics))
+    w = 0.36
+    b1 = ax1.bar(x - w / 2, base_vals, w, label="Frozen Baseline (tau=0.37, k=1)", color="#7F8C8D")
+    b2 = ax1.bar(x + w / 2, oof_vals, w, label="23-Fold Nested LOEO OOF (Calibrated)", color="#1E8449")
+    for bars in (b1, b2):
+        for bar in bars:
+            v = bar.get_height()
+            ax1.text(bar.get_x() + bar.get_width() / 2, v + 0.018, f"{v:.3f}", ha="center", va="bottom", fontsize=7.1)
+    ax1.set_xticks(x, metrics, fontsize=7.5)
+    ax1.set_ylim(0.0, 0.98)
+    ax1.set_ylabel("Metric Value")
+    ax1.set_title("(a) Exp R: 23-Fold LOEO Audio CV & OOF Calibration")
+    ax1.legend(loc="upper right", frameon=True, fontsize=7.3)
+    ax1.text(
+        0.02,
+        0.97,
+        f"2,000-resample Bootstrap 95% CI:\n"
+        f"F1 = {oof['f1']:.3f} [{ci['f1']['ci95_low']:.3f}, {ci['f1']['ci95_high']:.3f}]\n"
+        f"Spec = {oof['specificity']:.3f} [{ci['specificity']['ci95_low']:.3f}, {ci['specificity']['ci95_high']:.3f}]\n"
+        f"Selected: tau=0.75, k=2 (20/23 folds)",
+        transform=ax1.transAxes,
+        va="top",
+        fontsize=7.2,
+        bbox={"boxstyle": "round", "fc": "#F8F9F9", "ec": "#D5DBDB"},
+    )
+    ax1.grid(axis="y", alpha=0.25, linestyle="--")
+
+    # Panel B: Optical Attenuation Sweep (Baseline V3 vs Opt-In Degraded Audio Wakeup)
+    alphas = [float(r["alpha_conf"]) for r in sweep]
+    base_cls = [100.0 if r["baseline_v3_closed"] else 0.0 for r in sweep]
+    wake_cls = [100.0 if r["wakeup_v3_closed"] else 0.0 for r in sweep]
+    xp = np.arange(len(alphas))
+    w2 = 0.36
+    ax2.bar(xp - w2 / 2, base_cls, w2, label="Baseline V3 (wakeup disabled)", color="#2874A6")
+    ax2.bar(xp + w2 / 2, wake_cls, w2, label="Opt-In Optical-Degraded Audio Wakeup", color="#D35400")
+    for idx, row in enumerate(sweep):
+        bval = base_cls[idx]
+        wval = wake_cls[idx]
+        ax2.text(xp[idx] - w2 / 2, bval + 2.0, f"{int(bval)}%", ha="center", va="bottom", fontsize=7.3)
+        ax2.text(xp[idx] + w2 / 2, wval + 2.0, f"{int(wval)}%\n@{row['wakeup_v3_trigger_s']:.1f}s", ha="center", va="bottom", fontsize=6.9)
+    ax2.set_xticks(xp, [f"alpha={r['alpha_conf']:.2f}\n(conf={r['effective_front_conf']:.2f})" for r in sweep], fontsize=7.6)
+    ax2.set_ylim(0, 146)
+    ax2.set_yticks([0, 20, 40, 60, 80, 100])
+    ax2.set_ylabel("Synthetic Approach Closure Rate (%)")
+    ax2.set_title("(b) Exp R: Optical Cliff Recovery (0 Unsafe Opens)")
+    ax2.legend(loc="lower left", frameon=True, fontsize=7.4)
+    ax2.text(
+        0.02,
+        0.97,
+        f"Negative controls (0/2 closed):\n"
+        f"Clear sky + ambient horn: closed={wake['controls']['clear_optics_sustained_ambient_horn_closed']}\n"
+        f"Degraded optics + 1 impulse: closed={wake['controls']['degraded_optics_single_impulse_horn_closed']}",
+        transform=ax2.transAxes,
+        va="top",
+        fontsize=7.2,
+        bbox={"boxstyle": "round", "fc": "#FEF9E7", "ec": "#F9E79F"},
+    )
+    ax2.grid(axis="y", alpha=0.25, linestyle="--")
+
+    fig.tight_layout()
+    out_path = out_dir / "fig15_exp_r_loeo_and_optical_wakeup.png"
+    fig.savefig(out_path, bbox_inches="tight")
+    plt.close(fig)
+    return out_path
+
+
 def main() -> int:
     _setup_style()
     out_dir = ROOT / "docs/generated/figures"
@@ -266,6 +348,7 @@ def main() -> int:
         make_fig12_audio_hysteresis(ROOT, out_dir),
         make_fig13_cpu_edge(ROOT, out_dir),
         make_fig14_weather_stress(ROOT, out_dir),
+        make_fig15_exp_r_loeo_and_optical_wakeup(ROOT, out_dir),
     ]
     print(json.dumps({"status": "OK", "figures": [str(p.relative_to(ROOT)) for p in paths]}, indent=2))
     return 0

@@ -68,6 +68,9 @@ def resolve_active_proposal(cohort: str, event: str) -> tuple[str, str]:
         return int(p.stem.rsplit("_v", 1)[1])
 
     active = max(files, key=ver)
+    proposals_root = (ROOT / "data/ground_truth/proposals").resolve()
+    if proposals_root not in active.resolve().parents or active.suffix != ".json":
+        raise ValueError(f"Refusing non-proposal path in resolve_active_proposal: {active}")
     sha = hashlib.sha256(active.read_bytes()).hexdigest()
     return f"data/ground_truth/proposals/{cohort}/{active.name}", sha
 

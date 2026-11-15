@@ -24,14 +24,14 @@ limitations:
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
 summary:
-  total_test_files: 174
-  synthetic_only: 113
+  total_test_files: 175
+  synthetic_only: 114
   metadata_only: 29
   model_checkpoint_access: 14
   processed_data_access: 4
-  raw_media_access: 4
-  unknown: 10
-  safe_for_synthetic_runner: 142
+  raw_media_access: 5
+  unknown: 9
+  safe_for_synthetic_runner: 143
 test_files:
   tests/integration/test_phase0_smoke.py:
     access_dirs: []
@@ -681,6 +681,50 @@ test_files:
     access_dirs:
     - .
     - configs
+    - data/raw
+    - doc:v2:train_events
+    - docs
+    - docs/archive
+    - docs/generated/master_reaudit
+    - docs/generated/phase2
+    access_paths:
+    - data/raw/NEVER_OPEN
+    - README.md
+    - configs/vision.yaml
+    - doc:v2:train_events/event_001:front:video
+    - docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md
+    - docs/PHASE11_3_REVIEW_INVENTORY.json
+    - docs/archive/REAL_DATASET_INVENTORY.md
+    - docs/archive/REAL_DATASET_V2_INVENTORY.md
+    - docs/generated/master_reaudit/MISSION_26_CATALOG_BINDING.json
+    - docs/generated/master_reaudit/MISSION_26_DATA_RIGHTS_AND_PROVENANCE_REGISTER.json
+    - docs/generated/master_reaudit/MISSION_26_EXPERIMENT_READINESS_MATRIX.json
+    - docs/generated/master_reaudit/MISSION_26_READINESS_CATALOG.json
+    - docs/generated/master_reaudit/MISSION_26_RESOURCE_OPERATION_PREFLIGHT.json
+    - docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md
+    blocked_attempts:
+      RAW_MEDIA: 1
+    category: RAW_MEDIA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 1 blocked read(s) of RAW_MEDIA locations; e.g. data/raw/NEVER_OPEN via subprocess-arg
+      in test_actual_cli_reports_and_checks_never_execute_or_accept_a_resource_path (call).
+    safe_for_synthetic_runner: false
+    sha256: 1a18e2396abd4536bc284bdf0fceb8c3f1739fbf50cd633ed9ff97f99f1e30f7
+    spawns_child_process: true
+    static_hints:
+    - data/raw
+    - data/raw/NEVER_OPEN
+    - data/raw/source.mov
+    tests:
+      failed: 1
+      errors: 0
+      skipped: 0
+      passed: 27
+  tests/synthetic_mission27/test_dashboard_cli.py:
+    access_dirs:
+    - .
+    - configs
     - docs
     - docs/archive
     - docs/generated/master_reaudit
@@ -697,34 +741,6 @@ test_files:
     - docs/generated/master_reaudit/MISSION_26_EXPERIMENT_READINESS_MATRIX.json
     - docs/generated/master_reaudit/MISSION_26_READINESS_CATALOG.json
     - docs/generated/master_reaudit/MISSION_26_RESOURCE_OPERATION_PREFLIGHT.json
-    - docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md
-    blocked_attempts: {}
-    category: UNKNOWN
-    child_processes_guarded: false
-    evidence: dynamic_run_under_read_blocking_guard
-    reason: 'Reads 12 repository metadata file(s) (e.g. README.md, configs/vision.yaml, docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md);
-      no media, weights, processed data or results were requested. NOTE: the file spawns a child process
-      the guard cannot observe.'
-    safe_for_synthetic_runner: false
-    sha256: 1a18e2396abd4536bc284bdf0fceb8c3f1739fbf50cd633ed9ff97f99f1e30f7
-    spawns_child_process: true
-    static_hints:
-    - data/raw
-    - data/raw/NEVER_OPEN
-    - data/raw/source.mov
-    tests:
-      failed: 10
-      errors: 0
-      skipped: 0
-      passed: 18
-  tests/synthetic_mission27/test_dashboard_cli.py:
-    access_dirs:
-    - .
-    - docs/generated/master_reaudit
-    access_paths:
-    - README.md
-    - docs/generated/master_reaudit/MISSION_26_CATALOG_BINDING.json
-    - docs/generated/master_reaudit/MISSION_26_READINESS_CATALOG.json
     - docs/generated/master_reaudit/MISSION_27_DOCUMENT_BINDING.json
     - docs/generated/master_reaudit/MISSION_27_EVIDENCE_REGISTER.json
     - docs/generated/master_reaudit/MISSION_27_EXTERNAL_REQUIREMENTS_RESOLUTION.json
@@ -732,13 +748,13 @@ test_files:
     - docs/generated/master_reaudit/MISSION_27_REVIEWER_APPOINTMENT_AND_QUALIFICATION_REGISTER.json
     - docs/generated/master_reaudit/MISSION_27_SOURCE_IDENTITY_AND_PROVENANCE_REGISTER.json
     - docs/generated/master_reaudit/MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json
+    - docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md
     blocked_attempts: {}
     category: METADATA_ONLY
     child_processes_guarded: false
     evidence: dynamic_run_under_read_blocking_guard
-    reason: Reads 10 repository metadata file(s) (e.g. README.md, docs/generated/master_reaudit/MISSION_26_CATALOG_BINDING.json,
-      docs/generated/master_reaudit/MISSION_26_READINESS_CATALOG.json); no media, weights, processed data
-      or results were requested.
+    reason: Reads 19 repository metadata file(s) (e.g. README.md, configs/vision.yaml, docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md);
+      no media, weights, processed data or results were requested.
     safe_for_synthetic_runner: true
     sha256: 7a147ac1602f91e84300751890cb8cee47c41c4d00eea87313936f6783921acb
     spawns_child_process: false
@@ -748,10 +764,10 @@ test_files:
     - experiments/cache_documentary.sqlite
     - results/reviews_documentary.sqlite
     tests:
-      failed: 5
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 13
+      passed: 18
   tests/synthetic_mission27/test_documentary_intake.py:
     access_dirs: []
     access_paths: []
@@ -791,11 +807,23 @@ test_files:
   tests/synthetic_mission28/test_pilot_readiness.py:
     access_dirs:
     - .
+    - configs
+    - docs
+    - docs/archive
     - docs/generated/master_reaudit
+    - docs/generated/phase2
     access_paths:
     - README.md
+    - configs/vision.yaml
+    - docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md
+    - docs/PHASE11_3_REVIEW_INVENTORY.json
+    - docs/archive/REAL_DATASET_INVENTORY.md
+    - docs/archive/REAL_DATASET_V2_INVENTORY.md
     - docs/generated/master_reaudit/MISSION_26_CATALOG_BINDING.json
+    - docs/generated/master_reaudit/MISSION_26_DATA_RIGHTS_AND_PROVENANCE_REGISTER.json
+    - docs/generated/master_reaudit/MISSION_26_EXPERIMENT_READINESS_MATRIX.json
     - docs/generated/master_reaudit/MISSION_26_READINESS_CATALOG.json
+    - docs/generated/master_reaudit/MISSION_26_RESOURCE_OPERATION_PREFLIGHT.json
     - docs/generated/master_reaudit/MISSION_27_DOCUMENT_BINDING.json
     - docs/generated/master_reaudit/MISSION_27_EVIDENCE_REGISTER.json
     - docs/generated/master_reaudit/MISSION_27_EXTERNAL_REQUIREMENTS_RESOLUTION.json
@@ -805,22 +833,22 @@ test_files:
     - docs/generated/master_reaudit/MISSION_27_SOURCE_RIGHTS_VERIFICATION_REGISTER.json
     - docs/generated/master_reaudit/MISSION_28_DOCUMENT_BINDING.json
     - docs/generated/master_reaudit/MISSION_28_GENUINE_EVIDENCE_DISCOVERY_RECEIPT.json
+    - docs/generated/phase2/FINAL_REAL_WORLD_EXPERIMENT_PROTOCOL_v9.1.1_PROPOSED.md
     blocked_attempts: {}
     category: METADATA_ONLY
     child_processes_guarded: false
     evidence: dynamic_run_under_read_blocking_guard
-    reason: Reads 12 repository metadata file(s) (e.g. README.md, docs/generated/master_reaudit/MISSION_26_CATALOG_BINDING.json,
-      docs/generated/master_reaudit/MISSION_26_READINESS_CATALOG.json); no media, weights, processed data
-      or results were requested.
+    reason: Reads 21 repository metadata file(s) (e.g. README.md, configs/vision.yaml, docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md);
+      no media, weights, processed data or results were requested.
     safe_for_synthetic_runner: true
     sha256: 4c653b5c7d3b445d02e7ff274359ed20ce04f1d0e09254d80f2cdc64aa3fc5a3
     spawns_child_process: false
     static_hints: []
     tests:
-      failed: 8
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 3
+      passed: 11
   tests/synthetic_mission29/test_claims_pathway.py:
     access_dirs:
     - .
@@ -1454,7 +1482,7 @@ test_files:
     reason: Reads 1 repository metadata file(s) (e.g. data/ground_truth/authorized_reviewers.json); no
       media, weights, processed data or results were requested.
     safe_for_synthetic_runner: true
-    sha256: 87f00bae6ea6bafc7ef7e9d989f49638eb7ed25e0c5f478e1bd7edf7d521bd4e
+    sha256: 5d22737e24a6c18782ed2e50032f4dac77018b3c348534ee578d1f92b0090526
     spawns_child_process: false
     static_hints:
     - _back.mov
@@ -1462,10 +1490,10 @@ test_files:
     - nope_back.mov
     - nope_front.mov
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 26
+      passed: 27
   tests/test_phase11_8_review_workflow_integration.py:
     access_dirs:
     - docs
@@ -1650,7 +1678,7 @@ test_files:
     - data/processed/audio/train_horn/features/positive
     - data/raw/audio/train_horn/positive
     access_paths:
-    - data/processed/audio/train_horn/features/negative/neg_091_w008.npy
+    - data/processed/audio/train_horn/features/negative/neg_096_w001.npy
     - data/processed/audio/train_horn/features/positive/pos_001_w000.npy
     - data/raw/audio/train_horn/positive/1.mp3
     - data/manifests/audio_training_dataset.json
@@ -2029,6 +2057,24 @@ test_files:
       errors: 0
       skipped: 0
       passed: 8
+  tests/unit/test_exp_r_and_degraded_wakeup.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 3 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: a3c6031a83522e2c7db3809b1bd374414e65e461f0481afbe8c53932726dfdb3
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 3
   tests/unit/test_experiment_registry_isolation.py:
     access_dirs: []
     access_paths: []
@@ -2489,7 +2535,7 @@ test_files:
       research/scripts/generate_ablation_figures.py); no media, weights, processed data or results were
       requested.
     safe_for_synthetic_runner: true
-    sha256: 6d44921cd6ed43d5bbffad50d372cc8fc17839381e1ab740cf8dcbd086fd3d59
+    sha256: 6148234822a5b5c4dfe549a554e683be5a5e39c5c139d1a506b6f1a0779a59f0
     spawns_child_process: false
     static_hints:
     - 'import subprocess
@@ -2499,10 +2545,10 @@ test_files:
       '
     - src/railway_detection/experiments/frozen_config.py::compute_file_sha256
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 7
+      passed: 8
   tests/unit/test_metadata_only_audit.py:
     access_dirs: []
     access_paths: []
@@ -2671,7 +2717,7 @@ test_files:
     reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
       via open in test_controlled_cache_integration_across_processor_and_preflight (call).
     safe_for_synthetic_runner: false
-    sha256: 50af9ae67ed07f0e82ec743093824e7491df8fe86f50145f7a773273462d74c9
+    sha256: 7a2da5e1670d1e8dd31ae49c88a661fabed0459d70d606cd443ca886594c1a6c
     spawns_child_process: false
     static_hints: []
     tests:
@@ -2943,7 +2989,7 @@ test_files:
     reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT/PROCESSED_DATA locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
       via open in test_real_repository_blockers_distinguish_missing_from_invalid (call).
     safe_for_synthetic_runner: false
-    sha256: 9489001c714b6f35e986d8cd36e60e1bb36697d9005534023d92a4f22e2dd64d
+    sha256: e8f0cafef334dc7ab9ad4daeddc3660ab75cc2ea1a4b82bd15781ae4954943df
     spawns_child_process: false
     static_hints:
     - results/experiment_registry.jsonl

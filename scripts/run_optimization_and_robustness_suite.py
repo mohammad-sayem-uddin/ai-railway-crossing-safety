@@ -29,6 +29,8 @@ from railway_detection.audio.model import CompactTrainHornCNN
 from railway_detection.experiments.optimization_and_stress import (
     compute_event_triggered_duty_cycle,
     evaluate_acoustic_hysteresis_and_calibration,
+    evaluate_loeo_acoustic_crossval,
+    evaluate_optical_degradation_wakeup_ablation,
     evaluate_weather_and_interlocking_stress,
 )
 from railway_detection.fusion.collector import MultimodalEvidenceCollector
@@ -354,6 +356,19 @@ def main() -> int:
     _write_json(out_dir / "exp_q_weather_and_interlocking_stress.json", exp_q)
     _write_csv(out_dir / "exp_q_weather_dropout_grid.csv", exp_q["weather_dropout_grid"])
 
+    # Exp R
+    exp_r = {
+        "schema_version": "exp-r-crossval-and-failsafe/1.0",
+        "loeo_acoustic_crossval": evaluate_loeo_acoustic_crossval(exp_o_records),
+        "optical_degradation_wakeup_ablation": evaluate_optical_degradation_wakeup_ablation(),
+    }
+    _write_json(out_dir / "exp_r_crossval_and_failsafe.json", exp_r)
+    _write_csv(out_dir / "exp_r_loeo_folds.csv", exp_r["loeo_acoustic_crossval"]["folds"])
+    _write_csv(
+        out_dir / "exp_r_optical_wakeup_ablation.csv",
+        exp_r["optical_degradation_wakeup_ablation"]["attenuation_sweep"],
+    )
+
     print(
         json.dumps(
             {
@@ -368,6 +383,12 @@ def main() -> int:
                 "exp_q_runs": exp_q["total_grid_runs"],
                 "exp_q_unsafe_openings": exp_q["total_unsafe_openings"],
                 "exp_q_illegal_transitions": exp_q["total_illegal_transitions"],
+                "exp_r_loeo_oof_f1": exp_r["loeo_acoustic_crossval"]["loeo_oof_hysteresis_metrics"]["f1"],
+                "exp_r_alpha035_wakeup_closed": next(
+                    r["wakeup_v3_closed"]
+                    for r in exp_r["optical_degradation_wakeup_ablation"]["attenuation_sweep"]
+                    if r["alpha_conf"] == 0.35
+                ),
             },
             indent=2,
         )
