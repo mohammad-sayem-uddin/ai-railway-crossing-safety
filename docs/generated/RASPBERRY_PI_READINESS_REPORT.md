@@ -11,8 +11,8 @@
 
 ### 1.1 Model Size & Standalone Edge Bundle Export
 - **Vision Checkpoint Stripping (`exp_p`):** Raw training checkpoint is **`24,493,159 B` (`24.49 MB`)**. Stripping optimizer/EMA reduces disk size to **`6,145,232 B` (`6.15 MB`) in FP16 (`-74.91%`)** or **`12,188,432 B` (`12.19 MB`) in FP32**.
-- **Standalone TorchScript & Stripped Bundle Sizes (`rpi_edge_benchmark.py`):** `vision_416_torchscript = 12,602,738 B` (`max_abs_diff = 0.0`), `vision_320_torchscript = 12,578,214 B` (`max_abs_diff = 0.0`), `vision_stripped_fp16 = 6,154,766 B`, `audio_torchscript = 131,596 B` (`max_abs_diff = 0.0`).
-- **Peak Process Memory:** `364.67 MB` (standalone TorchScript benchmark) to `504.30 MB` (full ultralytics + quantization suite).
+- **Standalone TorchScript & Stripped Bundle Sizes (`rpi_edge_benchmark.py`, `rpi-edge-benchmark/1.1`):** `vision_416_torchscript = 12,603,058 B` (`max_abs_diff = 0.0`), `vision_320_torchscript = 12,578,470 B` (`max_abs_diff = 0.0`), `vision_stripped_fp16 = 6,154,766 B`, `audio_torchscript = 131,596 B` (`max_abs_diff = 0.0`); synthetic OpenCV `1080p -> 90° rotate -> 416px` preprocess = `16.980 ms` (`p95 17.029 ms`).
+- **Peak Process Memory:** `452.45 MB` (standalone TorchScript + OpenCV preprocess benchmark; `VmHWM` fallback active on Linux) to `504.30 MB` (full ultralytics + quantization suite).
 
 ### 1.2 Measured Per-Stage Latency & Thread Scaling (`1 / 2 / 4` Threads)
 
@@ -22,9 +22,9 @@ Latest `Exp P` (`4` threads, `exp_p_cpu_edge_benchmark.json`) + standalone `rpi_
 
 | Threads | Vision `416px` TS (`mean_ms` / `FPS`) | Vision `320px` TS (`mean_ms` / `FPS`) | Audio `TS` (`mean_ms` / `win/s`) | `log_mel` (`mean_ms`) |
 |---|---|---|---|---|
-| `1` thread | `28.790 ms` (`34.73 FPS`) | `17.860 ms` (`55.99 FPS`) | `0.456 ms` (`2,193.5/s`) | `0.430 ms` |
-| `2` threads | `20.729 ms` (`48.24 FPS`) | `13.402 ms` (`74.62 FPS`) | `0.414 ms` (`2,414.3/s`) | `0.414 ms` |
-| **`4` threads** | **`17.361 ms` (`57.60 FPS`)** | **`11.787 ms` (`84.84 FPS`)** | **`0.388 ms` (`2,579.0/s`)** | `0.422 ms` |
+| `1` thread | `28.025 ms` (`35.68 FPS`) | `17.150 ms` (`58.31 FPS`) | `0.399 ms` (`2,503.5/s`) | `0.414 ms` |
+| `2` threads | `20.921 ms` (`47.80 FPS`) | `13.537 ms` (`73.87 FPS`) | `0.367 ms` (`2,726.4/s`) | `0.406 ms` |
+| **`4` threads** | **`16.839 ms` (`59.39 FPS`)** | **`11.523 ms` (`86.78 FPS`)** | **`0.384 ms` (`2,602.3/s`)** | `0.405 ms` |
 
 *(Note: Dynamic INT8 Linear on the tiny 25.7k-param Audio CNN adds quantization overhead without speeding up over TorchScript `0.471 ms` while introducing `0.0601` probability shift; TorchScript FP32 is strictly preferred for Audio. `onnx` / `onnxruntime` are not installed in `.venv`.)*
 

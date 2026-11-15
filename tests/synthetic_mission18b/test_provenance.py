@@ -3,6 +3,33 @@ from fractions import Fraction
 
 import pytest
 
+from railway_detection.synthetic._isolation_audit import (
+    REPO_ROOT,
+    assert_snapshot_isolated,
+    capture_loaded_forbidden,
+    check_pure_verifier_ast,
+    collect_transitive_imports,
+)
+
+_FORBIDDEN_IMPORTS = (
+    "railway_detection.cli",
+    "railway_detection.simulation",
+    "railway_detection.data",
+    "railway_detection.vision",
+    "railway_detection.audio",
+    "railway_detection.fusion",
+    "railway_detection.evaluation",
+    "railway_detection.safety",
+    "torch",
+    "cv2",
+    "ultralytics",
+    "numpy",
+    "scipy",
+    "pandas",
+)
+_PRELOADED_FORBIDDEN = capture_loaded_forbidden(_FORBIDDEN_IMPORTS)
+
+from railway_detection.experiments import provenance_registry
 from railway_detection.experiments.provenance_registry import (
     Artifact,
     ExpectedRegistry,
@@ -19,6 +46,20 @@ from railway_detection.synthetic.grouped_cv import (
     allocation_policy,
     role_plan,
     validate_dataset,
+)
+
+_RUNTIME_IMPORT_LEAKS = capture_loaded_forbidden(_FORBIDDEN_IMPORTS) - _PRELOADED_FORBIDDEN
+_ENTRY_MODULES = (
+    "railway_detection.experiments.provenance_registry",
+    "railway_detection.synthetic.grouped_cv",
+    "tests.synthetic_mission18b.conftest",
+    "tests.synthetic_mission18b.test_provenance",
+)
+_VISITED_AST_MODULES, _ALL_AST_IMPORTS = collect_transitive_imports(_ENTRY_MODULES)
+_VERIFIER_DEFS = check_pure_verifier_ast(
+    REPO_ROOT / "src" / "railway_detection" / "experiments" / "provenance_registry.py",
+    forbidden_def_prefixes=("fit", "load", "read", "write", "save", "train", "predict", "run", "open"),
+    forbidden_call_names=("open", "read_text", "read_bytes", "write_text", "write_bytes", "Popen", "system", "fit", "load"),
 )
 
 
@@ -181,16 +222,15 @@ def test_registry_source_transform_and_duplicate_binding(dataset_factory, change
 
 
 def test_pure_verifier_has_no_loader_or_fit_api():
-    import sys
-
-    for module in (
-        "torch",
-        "cv2",
-        "ultralytics",
-        "railway_detection.data.split",
-        "railway_detection.simulation.runner",
-    ):
-        assert module not in sys.modules
+    assert_snapshot_isolated(
+        visited_modules=_VISITED_AST_MODULES,
+        all_imports=_ALL_AST_IMPORTS,
+        forbidden=_FORBIDDEN_IMPORTS,
+        runtime_leaks=_RUNTIME_IMPORT_LEAKS,
+    )
+    assert set(_VERIFIER_DEFS) >= {"canonical", "digest", "ids", "validate_registry", "verify_receipt"}
+    forbidden_attrs = ("fit", "load", "load_dataset", "open", "read", "write", "save", "train", "predict")
+    assert all(not hasattr(provenance_registry, attr) for attr in forbidden_attrs)
 
 
 def test_reserved_calibration_composition(dataset_factory):

@@ -24,14 +24,14 @@ limitations:
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
 summary:
-  total_test_files: 175
-  synthetic_only: 114
+  total_test_files: 179
+  synthetic_only: 116
   metadata_only: 29
-  model_checkpoint_access: 14
-  processed_data_access: 4
+  model_checkpoint_access: 15
+  processed_data_access: 5
   raw_media_access: 5
   unknown: 9
-  safe_for_synthetic_runner: 143
+  safe_for_synthetic_runner: 145
 test_files:
   tests/integration/test_phase0_smoke.py:
     access_dirs: []
@@ -245,14 +245,14 @@ test_files:
     reason: '6 test(s) executed; no repository file outside source/test code was read; all data is created
       in temporary directories. NOTE: the file spawns a child process the guard cannot observe.'
     safe_for_synthetic_runner: false
-    sha256: 5d9424894bb70979695114bb72b9955885b6448874f6c8eddbfddf8622c52986
+    sha256: 408a783bb9fe8277433d51950af792ccf622d8d1915e14edcfd9e4922ade43c0
     spawns_child_process: true
     static_hints: []
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 5
+      passed: 6
   tests/synthetic_mission17d/test_mission17f_regressions.py:
     access_dirs: []
     access_paths: []
@@ -263,14 +263,14 @@ test_files:
     reason: 22 test(s) executed; no repository file outside source/test code was read; all data is created
       in temporary directories.
     safe_for_synthetic_runner: true
-    sha256: 9b5cb17c176079275d8261cd6f33906268524f009b37c2a28a116d22590f5ff4
+    sha256: 0b3a8bfe0cb2f9ce746a9ac4029661191138d064f6ba5abe0ae72b85d8da73a8
     spawns_child_process: false
     static_hints: []
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 21
+      passed: 22
   tests/synthetic_mission17d/test_mission17g_hardening.py:
     access_dirs: []
     access_paths: []
@@ -317,14 +317,14 @@ test_files:
     reason: '6 test(s) executed; no repository file outside source/test code was read; all data is created
       in temporary directories. NOTE: the file spawns a child process the guard cannot observe.'
     safe_for_synthetic_runner: false
-    sha256: bc8ef206b442012f6b5655403326a9ce1c542f48d932ed37b39f6d23016d163f
+    sha256: e5f77e52c3d65d5cfd60361599cc3011cda3ae669ff3dd4fc2678b43f00455c2
     spawns_child_process: true
     static_hints: []
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 5
+      passed: 6
   tests/synthetic_mission18b/test_provenance.py:
     access_dirs: []
     access_paths: []
@@ -335,14 +335,14 @@ test_files:
     reason: 26 test(s) executed; no repository file outside source/test code was read; all data is created
       in temporary directories.
     safe_for_synthetic_runner: true
-    sha256: 8010ba783b4a351c1888b08905f8b0031d090cea0724c47245b01cfafdb59044
+    sha256: 3d70291fbcedb238d9a8ab8068777badd435db8dc7a2009782be863b664aef42
     spawns_child_process: false
     static_hints: []
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 25
+      passed: 26
   tests/synthetic_mission22/test_crash_and_adversarial.py:
     access_dirs: []
     access_paths: []
@@ -1678,7 +1678,7 @@ test_files:
     - data/processed/audio/train_horn/features/positive
     - data/raw/audio/train_horn/positive
     access_paths:
-    - data/processed/audio/train_horn/features/negative/neg_096_w001.npy
+    - data/processed/audio/train_horn/features/negative/neg_156_w005.npy
     - data/processed/audio/train_horn/features/positive/pos_001_w000.npy
     - data/raw/audio/train_horn/positive/1.mp3
     - data/manifests/audio_training_dataset.json
@@ -2075,6 +2075,78 @@ test_files:
       errors: 0
       skipped: 0
       passed: 3
+  tests/unit/test_exp_r_independent_validation.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 3 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: a45357e98187e7b8f0f023380f73e4c56d1d313e138fba32cd3009e87bbadf70
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 3
+  tests/unit/test_exp_r_live_corpus_parity.py:
+    access_dirs:
+    - data/manifests
+    - docs/generated/professor_evidence/mission43/audio_predictions
+    - docs/generated/professor_evidence/mission44
+    - docs/generated/research_results/mission39/audio_followup/predictions
+    - results/exploratory_v2/optimization_and_stress
+    access_paths:
+    - results/exploratory_v2/optimization_and_stress/exp_r_crossval_and_failsafe.json
+    - data/manifests/m3_multimodal_replay_manifest.json
+    - docs/generated/professor_evidence/mission43/audio_predictions/no_train_events_event_002_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/no_train_events_event_003_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_002_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_003_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_004_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_006_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_007_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_008_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_009_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_010_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_011_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_012_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_013_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_014_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_015_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_016_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_017_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_018_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_019_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_020_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_022_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission43/audio_predictions/train_events_event_023_front_audio_descriptive_rows.jsonl
+    - docs/generated/professor_evidence/mission44/ALL_AUDIO_WINDOW_SCORES.csv
+    - docs/generated/research_results/mission39/audio_followup/predictions/engine_events_event_001_front_audio_descriptive_rows.jsonl
+    - docs/generated/research_results/mission39/audio_followup/predictions/no_train_events_event_001_front_audio_descriptive_rows.jsonl
+    - docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_001_front_audio_descriptive_rows.jsonl
+    - docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_005_front_audio_descriptive_rows.jsonl
+    - docs/generated/research_results/mission39/audio_followup/predictions/train_events_event_021_front_audio_descriptive_rows.jsonl
+    blocked_attempts:
+      PROCESSED_DATA: 1
+    category: PROCESSED_DATA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 1 blocked read(s) of PROCESSED_DATA locations; e.g. results/exploratory_v2/optimization_and_stress/exp_r_crossval_and_failsafe.json
+      via io.open in test_validate_exp_r_independently_matches_published_loeo_and_manifests (call).
+    safe_for_synthetic_runner: false
+    sha256: ab3a02847ee01fe1240ae1fd83308874749b36b05a4d67ae6c71b29095d5f2fb
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 1
+      errors: 0
+      skipped: 0
+      passed: 0
   tests/unit/test_experiment_registry_isolation.py:
     access_dirs: []
     access_paths: []
@@ -2164,7 +2236,7 @@ test_files:
       via media-guard:HASH_RAW_MEDIA in test_dry_run_validates_all_eleven_events_against_live_manifest
       (call).
     safe_for_synthetic_runner: false
-    sha256: 9375bab3442e56f861a4c7627ff41772680caeb76ec9b419fcc35f2479f6bc45
+    sha256: b18a59e325dbb4f784f5bef3f0a596abe653a69a64fa28d8d8f306944e3de934
     spawns_child_process: false
     static_hints: []
     tests:
@@ -2545,10 +2617,10 @@ test_files:
       '
     - src/railway_detection/experiments/frozen_config.py::compute_file_sha256
     tests:
-      failed: 0
+      failed: 1
       errors: 0
       skipped: 0
-      passed: 8
+      passed: 7
   tests/unit/test_metadata_only_audit.py:
     access_dirs: []
     access_paths: []
@@ -3455,6 +3527,93 @@ test_files:
       errors: 0
       skipped: 0
       passed: 5
+  tests/unit/test_pi_approval_package.py:
+    access_dirs:
+    - configs
+    - data/ground_truth
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    - data/manifests
+    - docs/generated
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/frozen_experiment_v1.yaml
+    - data/ground_truth/authorized_reviewers.json
+    - data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/engine_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_001_review.json
+    - data/ground_truth/reviews/train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_002_review.json
+    - data/ground_truth/reviews/train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_004_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_004_review.json
+    - data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_005_review.json
+    - data/ground_truth/reviews/train_events/event_006_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_006_review.json
+    - data/ground_truth/reviews/train_events/event_007_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_007_review.json
+    - data/ground_truth/reviews/train_events/event_008_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_008_review.json
+    - data/ground_truth/reviews/train_events/event_009_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_009_review.json
+    - data/ground_truth/reviews/train_events/event_010_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_010_review.json
+    - data/ground_truth/reviews/train_events/event_011_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_011_review.json
+    - data/ground_truth/reviews/train_events/event_012_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_012_review.json
+    - data/ground_truth/reviews/train_events/event_013_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_013_review.json
+    - data/ground_truth/reviews/train_events/event_014_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_014_review.json
+    - data/ground_truth/reviews/train_events/event_015_review.INVALIDATION_NOTICE.json
+    blocked_attempts:
+      MODEL_CHECKPOINT: 2
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in test_prepare_pi_approval_packages_matches_checked_in_artifacts_and_schemas (call).
+    safe_for_synthetic_runner: false
+    sha256: 9f1066728bf5f1b8d93d3ca6021b1cfa094cf894d384129a30fa7a917c64671f
+    spawns_child_process: false
+    static_hints:
+    - data/raw/layer_b/v2/train_events/event_001
+    - data/raw/layer_b/v2/train_events/event_001/camera_front.mov
+    tests:
+      failed: 2
+      errors: 0
+      skipped: 0
+      passed: 1
+  tests/unit/test_pi_telemetry.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 3 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: f01c72500193851ba2dc718bc4194cb3385a7d3f3f243151514759158136ecc2
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 3
   tests/unit/test_production_dual_camera_integration.py:
     access_dirs:
     - configs

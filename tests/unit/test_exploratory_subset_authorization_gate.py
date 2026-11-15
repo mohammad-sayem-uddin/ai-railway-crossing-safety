@@ -69,8 +69,20 @@ def test_shipped_config_is_not_authorized_by_default(script_module) -> None:
 def test_dry_run_validates_all_eleven_events_against_live_manifest(script_module) -> None:
     """End-to-end dry-run against the REAL, committed candidate manifest and
     REAL source media hashes -- no inference, no model, no video decode."""
-    cfg = script_module.yaml.safe_load(script_module.EXPLORATORY_CONFIG_PATH.read_text(encoding="utf-8"))
+    cfg = script_module.yaml.safe_load(
+        script_module.EXPLORATORY_CONFIG_PATH.read_text(encoding="utf-8")
+    )
+    auth_path = REPO_ROOT / "data" / "governance" / "AUTH-MEDIA-ACCESS.json"
+    if not auth_path.is_file():
+        # The live validator hashes raw media.  Without the PI's recorded
+        # authorization it must fail closed; accepting a metadata-only dry run
+        # here would silently weaken the raw-media boundary.
+        from railway_detection.safety.media_guard import MediaAccessAuthorizationError
+
+        with pytest.raises(MediaAccessAuthorizationError, match="AUTH_MEDIA_ACCESS_NOT_GRANTED"):
+            script_module.validate_all_included_events(cfg)
+        return
     validated = script_module.validate_all_included_events(cfg)
     assert len(validated) == 11
-    for event_key, v in validated.items():
+    for _event_key, v in validated.items():
         assert v.verdict == "CALIBRATION_SUPPORTED"

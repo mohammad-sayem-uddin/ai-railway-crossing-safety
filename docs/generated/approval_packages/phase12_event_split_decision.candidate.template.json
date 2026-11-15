@@ -1,0 +1,58 @@
+{
+  "schema_version": "phase12-event-split-decision/1",
+  "decision_status": "__HUMAN_APPROVAL_REQUIRED___SET_APPROVED_ONLY_IF_ELECTING_HELD_OUT_EVALUATION",
+  "decision_id": "__HUMAN_APPROVAL_REQUIRED___e.g._PHASE12-EVENT-SPLIT-2026-11-XX",
+  "decided_by": "__HUMAN_APPROVAL_REQUIRED___CHOOSE_FROM_elaf85777@gmail.com|raihankabirrahu@gmail.com",
+  "decided_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ",
+  "researcher_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_PI_STATEMENT_SUPERSEDING_SPLIT-DECISION-OPTION-A-2026-11-09_IF_ELECTED",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "researcher",
+    "identity": "__HUMAN_APPROVAL_REQUIRED___REVIEWER_EMAIL"
+  },
+  "partitions": {
+    "train": [
+      "engine_events/event_001",
+      "no_train_events/event_002",
+      "no_train_events/event_003",
+      "train_events/event_001",
+      "train_events/event_002",
+      "train_events/event_004",
+      "train_events/event_006",
+      "train_events/event_007",
+      "train_events/event_009",
+      "train_events/event_010",
+      "train_events/event_012",
+      "train_events/event_013",
+      "train_events/event_015",
+      "train_events/event_016",
+      "train_events/event_017",
+      "train_events/event_018"
+    ],
+    "val": [
+      "train_events/event_003",
+      "train_events/event_005",
+      "train_events/event_008",
+      "train_events/event_011",
+      "train_events/event_014",
+      "train_events/event_023"
+    ],
+    "test": [
+      "no_train_events/event_001",
+      "train_events/event_019",
+      "train_events/event_020",
+      "train_events/event_021",
+      "train_events/event_022"
+    ]
+  },
+  "source_proposal": {
+    "path": "docs/generated/CANDIDATE_EVENT_SPLIT_PROPOSAL.json",
+    "proposal_id": "candidate-split-af070c03dcfdfcaf",
+    "proposal_sha256": "eb35208996292debabacf8b6a8188fdf69d12fcd3b37126e4094c3d0f825ab44",
+    "leakage_safe": false,
+    "leakage_warning": "Candidate spans multiple roles for at least one crossing/session; this is not leakage-safe."
+  }
+}

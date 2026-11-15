@@ -2,9 +2,9 @@
   "exported_bundles": {
     "audio_torchscript_bytes": 131596,
     "audio_torchscript_max_abs_diff": 0.0,
-    "vision_320_torchscript_bytes": 12578214,
+    "vision_320_torchscript_bytes": 12578470,
     "vision_320_torchscript_max_abs_diff": 0.0,
-    "vision_416_torchscript_bytes": 12602738,
+    "vision_416_torchscript_bytes": 12603058,
     "vision_416_torchscript_max_abs_diff": 0.0,
     "vision_stripped_fp16_bytes": 6154766
   },
@@ -19,98 +19,122 @@
     "torch_version": "2.13.0"
   },
   "input_classification": "SYNTHETIC_ONLY",
-  "peak_process_rss_mb": 364.67,
+  "peak_process_rss_mb": 452.45,
   "physical_raspberry_pi_tested": false,
-  "schema_version": "rpi-edge-benchmark/1.0",
+  "schema_version": "rpi-edge-benchmark/1.1",
+  "synthetic_opencv_preprocess_416px": {
+    "available": true,
+    "dst_size": 416,
+    "input_classification": "SYNTHETIC_ONLY",
+    "mean_ms": 16.98,
+    "n_iters": 10,
+    "p50_ms": 16.994,
+    "p95_ms": 17.029,
+    "rotation_applied": "ROTATE_90_CLOCKWISE",
+    "src_shape": [
+      1920,
+      1080
+    ]
+  },
+  "telemetry_post": {
+    "cpu_governor": null,
+    "soc_temp_c": null,
+    "vmhwm_mb": null
+  },
+  "telemetry_pre": {
+    "cpu_governor": null,
+    "soc_temp_c": null,
+    "vmhwm_mb": null
+  },
   "thread_scaling_ms": {
     "threads_1": {
       "audio_ts_ms": {
-        "fps_equivalent": 2193.51,
-        "mean_ms": 0.456,
+        "fps_equivalent": 2503.51,
+        "mean_ms": 0.399,
         "n_iters": 20,
-        "p50_ms": 0.432,
-        "p95_ms": 0.554
+        "p50_ms": 0.4,
+        "p95_ms": 0.404
       },
       "log_mel_ms": {
-        "fps_equivalent": 2327.07,
-        "mean_ms": 0.43,
+        "fps_equivalent": 2414.83,
+        "mean_ms": 0.414,
         "n_iters": 20,
-        "p50_ms": 0.428,
-        "p95_ms": 0.44
+        "p50_ms": 0.413,
+        "p95_ms": 0.419
       },
       "vision_320_ts_ms": {
-        "fps_equivalent": 55.99,
-        "mean_ms": 17.86,
+        "fps_equivalent": 58.31,
+        "mean_ms": 17.15,
         "n_iters": 15,
-        "p50_ms": 17.601,
-        "p95_ms": 19.321
+        "p50_ms": 17.037,
+        "p95_ms": 17.544
       },
       "vision_416_ts_ms": {
-        "fps_equivalent": 34.73,
-        "mean_ms": 28.79,
+        "fps_equivalent": 35.68,
+        "mean_ms": 28.025,
         "n_iters": 15,
-        "p50_ms": 28.183,
-        "p95_ms": 31.953
+        "p50_ms": 27.685,
+        "p95_ms": 30.262
       }
     },
     "threads_2": {
       "audio_ts_ms": {
-        "fps_equivalent": 2414.26,
-        "mean_ms": 0.414,
+        "fps_equivalent": 2726.44,
+        "mean_ms": 0.367,
         "n_iters": 20,
-        "p50_ms": 0.414,
-        "p95_ms": 0.443
+        "p50_ms": 0.342,
+        "p95_ms": 0.425
       },
       "log_mel_ms": {
-        "fps_equivalent": 2413.49,
-        "mean_ms": 0.414,
+        "fps_equivalent": 2465.86,
+        "mean_ms": 0.406,
         "n_iters": 20,
-        "p50_ms": 0.414,
-        "p95_ms": 0.423
+        "p50_ms": 0.406,
+        "p95_ms": 0.414
       },
       "vision_320_ts_ms": {
-        "fps_equivalent": 74.62,
-        "mean_ms": 13.402,
+        "fps_equivalent": 73.87,
+        "mean_ms": 13.537,
         "n_iters": 15,
-        "p50_ms": 13.38,
-        "p95_ms": 13.608
+        "p50_ms": 13.297,
+        "p95_ms": 14.581
       },
       "vision_416_ts_ms": {
-        "fps_equivalent": 48.24,
-        "mean_ms": 20.729,
+        "fps_equivalent": 47.8,
+        "mean_ms": 20.921,
         "n_iters": 15,
-        "p50_ms": 20.609,
-        "p95_ms": 21.335
+        "p50_ms": 20.255,
+        "p95_ms": 24.509
       }
     },
     "threads_4": {
       "audio_ts_ms": {
-        "fps_equivalent": 2578.95,
-        "mean_ms": 0.388,
+        "fps_equivalent": 2602.27,
+        "mean_ms": 0.384,
         "n_iters": 20,
-        "p50_ms": 0.392,
-        "p95_ms": 0.419
+        "p50_ms": 0.383,
+        "p95_ms": 0.416
       },
       "log_mel_ms": {
-        "fps_equivalent": 2368.87,
-        "mean_ms": 0.422,
+        "fps_equivalent": 2467.44,
+        "mean_ms": 0.405,
         "n_iters": 20,
-        "p50_ms": 0.415,
-        "p95_ms": 0.48
+        "p50_ms": 0.405,
+        "p95_ms": 0.409
       },
       "vision_320_ts_ms": {
-        "fps_equivalent": 84.84,
-        "mean_ms": 11.787,
+        "fps_equivalent": 86.78,
+        "mean_ms": 11.523,
         "n_iters": 15,
-        "p50_ms": 11.532,
-        "p95_ms": 12.987
+        "p50_ms": 11.351,
+        "p95_ms": 12.268
       },
       "vision_416_ts_ms": {
-        "fps_equivalent": 57.6,
-        "mean_ms": 17.361,
+        "fps_equivalent": 59.39,
+        "mean_ms": 16.839,
         "n_iters": 15,
-        "p50_ms": 17.191,
-        "p95_ms": 18.532
+        "p50_ms": 16.515,
+        "p95_ms": 18.276
       }
     }
   }

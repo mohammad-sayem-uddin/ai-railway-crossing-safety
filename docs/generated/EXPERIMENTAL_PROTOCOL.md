@@ -11,7 +11,7 @@
 
 | Cohort | Size / Composition | Classification | Purpose & Constraints |
 |---|---|---|---|
-| **Layer B `train23`** | `23` train crossing events (`day/overcast`, `crossing_A`) | `CACHE_ONLY_EXPLORATORY` | Approach closure detection (`Exp A, F–J`), `audio23` horn metrics (`13` `present`, `10` `absent_observed`, `2,600` windows in `Exp C, O`). |
+| **Layer B `train23`** | `23` train crossing events (`day/overcast`, `crossing_A`) | `CACHE_ONLY_EXPLORATORY` | Approach closure detection (`Exp A, F–J`), `audio23` horn metrics (`13` `present`, `10` `absent_observed`, `2,470` windows across `audio23` / `2,600` across all `27` events in `Exp C, O`). |
 | **Layer B `sync11`** | `11` dual-camera synced events (`camera_1 + camera_2` offsets) | `CACHE_ONLY_EXPLORATORY` | End-to-end closure margin vs `T2` and premature opening vs `T4_master_s` (`Exp D, I, J, K`). |
 | **Layer B `no_train3` & `engine1`** | `3` train-free + `1` stationary engine event (`night/clear`) | `CACHE_ONLY_EXPLORATORY` | False-closure and road-horn specificity controls (`130` audio windows across `no_train_001..003` + `engine_001`). |
 | **Vision V1 (`baler.v1i`) & Audio V3** | `3,157` image manifests (`1,315` groups); `172` audio split records | `METADATA_ONLY` | Session/stem leakage measurement & non-destructive split construction (`leakage_audit.py`). |
@@ -28,7 +28,7 @@
 
 ### 2.2 New Deepening Studies Added in This Mission (`Exp O, P, Q` — [`optimization_and_stress.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/experiments/optimization_and_stress.py))
 1. **`Exp O` (Field Audio Threshold × Consecutive-Window Hysteresis & Calibration):**
-   - Evaluates exact threshold grid `tau in [0.37, 0.50, 0.65, 0.75, 0.80, 0.85, 0.90, 0.95]` × persistence `k in {1, 2, 3, 4}` over `2,600` `audio23` windows (`13` `present` / `10` `absent_observed`) plus `130` `no_train3`/`engine1` windows without modifying raw media or frozen thresholds.
+   - Evaluates exact threshold grid `tau in [0.37, 0.50, 0.65, 0.75, 0.80, 0.85, 0.90, 0.95]` × persistence `k in {1, 2, 3, 4}` over all `2,600` Layer-B windows (`2,470` in `audio23` `13` `present` / `10` `absent_observed`, plus `116` in `no_train3` and `14` in `engine1`) without modifying raw media or frozen thresholds.
    - Evaluates post-hoc temperature scaling `T in {0.5, 1.0, 1.5, 2.0, 3.0}` via 5-bin ECE and Brier score across event-max probabilities (`strictly labeled exploratory`: real data lacks window-level onset timestamps).
 2. **`Exp P` (CPU Edge Profiling, Weight Stripping, Quantization & Duty Cycle):**
    - Inspects checkpoint byte decomposition (`best.pt` with/without optimizer & EMA); benchmarks synthetic-input `YOLOv8n` FP32 forward & TorchScript at `640`, `416`, `320` (`20` iters after warmup), end-to-end `YOLO.predict` at `640` vs `416` (`15` iters), `log_mel_1s_numpy` (`60` iters), `CompactTrainHornCNN` eager/TorchScript/dynamic INT8 `Linear` (`80` iters, `qnnpack` ARM engine), `V3 FSM` `121`-tick cycle (`30` iters), and peak process RSS.

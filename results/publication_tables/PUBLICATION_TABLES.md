@@ -75,5 +75,5 @@ Generated deterministically by `scripts/generate_master_publication_tables.py` f
 | Exp R: Audio LOEO Baseline | Frozen tau=0.37, k=1 (n=23 labeled train) | F1=0.6857 Acc=0.5217 Spec=0.0 | Uncal Brier=0.2724 ECE=0.2955 | REAL_LOCAL_BATCH4_AUDIO (unbiased baseline) |
 | Exp R: Nested LOEO OOF | 23-fold OOF T-scale + hysteresis (tau=0.75,k=2 in 20/23) | F1=0.64 [CI95 0.4167..0.8148], Acc=0.6087, Spec=0.6 | OOF Brier=0.2366 ECE=0.0999 (dBrier CI [-0.0839..0.0104]) | REAL_LOCAL_BATCH4_AUDIO (out-of-fold + 2000x bootstrap) |
 | Exp R: Optical-Degraded Wakeup | Opt-in L3 failsafe at alpha=0.35 (conf=0.308) + sustained horn | Baseline closed=False -> Wakeup closed=True (@4.0s) | 0 unsafe opens; clear_ambient=False, impulse=False | SYNTHETIC_ONLY (default V3 flag=False) |
-| Host Edge Thread Scaling | TorchScript 416px & 320px + Audio TS (arm64, Pi_tested=False) | 1/2/4T 416px=28.79/20.729/17.361 ms; 320px=17.86/13.402/11.787 ms | 4T Audio TS=0.388 ms, logMel=0.422 ms, RSS=364.67 MB | Measured Apple M1 CPU (physical Pi unmeasured) |
+| Host Edge Thread Scaling | TorchScript 416px & 320px + Audio TS (arm64, Pi_tested=False) | 1/2/4T 416px=28.025/20.921/16.839 ms; 320px=17.15/13.537/11.523 ms | 4T Audio TS=0.384 ms, logMel=0.405 ms, RSS=452.45 MB | Measured Apple M1 CPU (physical Pi unmeasured) |
 

@@ -1,0 +1,83 @@
+{
+  "schema_version": "phase12-cohort-approval-packages/1",
+  "live_cohort_blockers_detected": [
+    {
+      "code": "COHORT_APPROVAL_MISSING",
+      "detail": "no approved engine_events record"
+    },
+    {
+      "code": "COHORT_APPROVAL_MISSING",
+      "detail": "no approved no_train_events record"
+    },
+    {
+      "code": "COHORT_APPROVAL_MISSING",
+      "detail": "no approved train_events record"
+    },
+    {
+      "code": "STAGE21_RECORDS_MISSING",
+      "detail": "no active review records found; 27 legacy record(s) are invalidated by verified notices and are not counted"
+    }
+  ],
+  "cohorts": {
+    "train_events": {
+      "cohort": "train_events",
+      "total_events_in_cohort": 23,
+      "event_keys": [
+        "train_events/event_001",
+        "train_events/event_002",
+        "train_events/event_003",
+        "train_events/event_004",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_008",
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_012",
+        "train_events/event_013",
+        "train_events/event_014",
+        "train_events/event_015",
+        "train_events/event_016",
+        "train_events/event_017",
+        "train_events/event_018",
+        "train_events/event_019",
+        "train_events/event_020",
+        "train_events/event_021",
+        "train_events/event_022",
+        "train_events/event_023"
+      ],
+      "minimum_gate_requirement": ">= 1 APPROVED primary Stage-2.1 (`8.1.0-stage2.1`) record (`execution_gate.py: COHORT_APPROVAL_MISSING`)",
+      "full_programme_target": "23/23 approved + RD-043 second reviews where triggered",
+      "current_approved_stage21_count": 0,
+      "approval_status": "PENDING_HUMAN_STAGE21_REVIEWS"
+    },
+    "no_train_events": {
+      "cohort": "no_train_events",
+      "total_events_in_cohort": 3,
+      "event_keys": [
+        "no_train_events/event_001",
+        "no_train_events/event_002",
+        "no_train_events/event_003"
+      ],
+      "minimum_gate_requirement": ">= 1 APPROVED primary Stage-2.1 (`8.1.0-stage2.1`) record (`execution_gate.py: COHORT_APPROVAL_MISSING`)",
+      "full_programme_target": "3/3 approved (note: verify acoustic road-horn vs locomotive independence cleanly)",
+      "current_approved_stage21_count": 0,
+      "approval_status": "PENDING_HUMAN_STAGE21_REVIEWS"
+    },
+    "engine_events": {
+      "cohort": "engine_events",
+      "total_events_in_cohort": 1,
+      "event_keys": [
+        "engine_events/event_001"
+      ],
+      "minimum_gate_requirement": ">= 1 APPROVED primary Stage-2.1 (`8.1.0-stage2.1`) record (`execution_gate.py: COHORT_APPROVAL_MISSING`)",
+      "full_programme_target": "1/1 approved + RD-043 second review by second allowlisted reviewer if T3/T4 interpreted",
+      "current_approved_stage21_count": 0,
+      "approval_status": "PENDING_HUMAN_STAGE21_REVIEWS"
+    }
+  },
+  "post_review_promotion_receipt_schema": "phase12-stage21-promotion-receipt/2",
+  "post_review_promotion_receipt_path": "data/governance/stage21_promotion_receipt.json",
+  "post_review_promotion_receipt_command": "PYTHONPATH=src .venv/bin/python -m railway_detection.annotation.readiness_cli --reviews-dir data/ground_truth/reviews --allowlist data/ground_truth/authorized_reviewers.json --inventory data/manifests/layer_b_v2_annotation_inventory.json --proposals-dir data/ground_truth/proposals --stage stage3_single_camera_baseline --repository-root . --receipt-path data/governance/stage21_promotion_receipt.json"
+}

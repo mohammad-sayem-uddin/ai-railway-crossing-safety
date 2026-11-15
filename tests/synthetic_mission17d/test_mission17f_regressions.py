@@ -4,12 +4,32 @@ The original source and baseline reproductions remain in the 17F audit report.
 These checks are authored remediation evidence; they are not a 17H review.
 """
 import random
-import sys
 from dataclasses import replace
 from fractions import Fraction as Q
 from itertools import product
 
 import pytest
+
+from railway_detection.synthetic._isolation_audit import (
+    assert_snapshot_isolated,
+    capture_loaded_forbidden,
+    collect_transitive_imports,
+)
+
+_FORBIDDEN_IMPORTS = (
+    "railway_detection.cli",
+    "railway_detection.simulation",
+    "railway_detection.data",
+    "railway_detection.vision",
+    "railway_detection.audio",
+    "railway_detection.fusion",
+    "railway_detection.evaluation",
+    "railway_detection.safety",
+    "torch",
+    "cv2",
+    "ultralytics",
+)
+_PRELOADED_FORBIDDEN = capture_loaded_forbidden(_FORBIDDEN_IMPORTS)
 
 from railway_detection.synthetic.convention_b import (
     CausalRunner,
@@ -34,9 +54,33 @@ from railway_detection.synthetic.grouped_cv import (
     verify_allocation,
 )
 
+_RUNTIME_IMPORT_LEAKS = capture_loaded_forbidden(_FORBIDDEN_IMPORTS) - _PRELOADED_FORBIDDEN
+
 F17_RESULTS = {'actuator_oracles': 0, 'CV_oracles': 0, 'greedy_dense_oracles': 0,
                'quadratic_scans': [], 'known_feasible_undetermined': [],
                'configuration_collisions': [], 'rejection_checks': []}
+
+_ENTRY_MODULES = (
+    "railway_detection.synthetic",
+    "railway_detection.synthetic.convention_b",
+    "railway_detection.synthetic.grouped_cv",
+    "tests.synthetic_mission17d.conftest",
+    "tests.synthetic_mission17d.test_convention_b",
+    "tests.synthetic_mission17d.test_grouped_cv",
+    "tests.synthetic_mission17d.test_mission17f_regressions",
+    "tests.synthetic_mission17d.test_mission17g_hardening",
+)
+_VISITED_AST_MODULES, _ALL_AST_IMPORTS = collect_transitive_imports(_ENTRY_MODULES)
+
+
+def _assert_fresh_interpreter_has_no_production_imports() -> None:
+    """Verify static transitive AST closure and runtime module-load delta have zero forbidden imports."""
+    assert_snapshot_isolated(
+        visited_modules=_VISITED_AST_MODULES,
+        all_imports=_ALL_AST_IMPORTS,
+        forbidden=_FORBIDDEN_IMPORTS,
+        runtime_leaks=_RUNTIME_IMPORT_LEAKS,
+    )
 
 
 def dataset(labels=(('a',),)*6, roles=None, counts=None):
@@ -344,14 +388,4 @@ def test_rejected_older_arrival_cannot_reschedule_watchdog(mode, expected):
 
 
 def test_no_production_or_model_modules_loaded():
-    assert not any(
-        m in sys.modules
-        for m in (
-            "railway_detection.cli.main",
-            "railway_detection.simulation.runner",
-            "railway_detection.data.split",
-            "torch",
-            "cv2",
-            "ultralytics",
-        )
-    )
+    _assert_fresh_interpreter_has_no_production_imports()

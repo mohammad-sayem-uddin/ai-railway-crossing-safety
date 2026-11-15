@@ -1,0 +1,80 @@
+{
+  "schema_version": "phase5-media-access-authorization/2",
+  "authorization_id": "__HUMAN_APPROVAL_REQUIRED___e.g._AUTH-MEDIA-ACCESS-2026-11-XX",
+  "authorization_class": "AUTH-MEDIA-ACCESS",
+  "status": "__HUMAN_APPROVAL_REQUIRED___SET_APPROVED_WHEN_SIGNED",
+  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___CHOOSE_FROM_elaf85777@gmail.com|raihankabirrahu@gmail.com",
+  "authorized_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ",
+  "expires_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ_AFTER_ISSUED",
+  "revoked": false,
+  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_RESEARCHER_STATEMENT_AUTHORIZING_LAYER_B_MEDIA_INSPECTION",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "researcher",
+    "identity": "__HUMAN_APPROVAL_REQUIRED___REVIEWER_EMAIL"
+  },
+  "scope": {
+    "operations": [
+      "AUDIO_EXTRACTION",
+      "FEATURE_EXTRACTION",
+      "FRAME_EXTRACTION",
+      "HASH_RAW_MEDIA",
+      "INFERENCE",
+      "MEDIA_PROBE",
+      "READ_RAW_MEDIA",
+      "REAL_REPLAY"
+    ],
+    "datasets": [
+      "layer_b"
+    ],
+    "events": [
+      "engine_events/event_001",
+      "no_train_events/event_001",
+      "no_train_events/event_002",
+      "no_train_events/event_003",
+      "train_events/event_001",
+      "train_events/event_002",
+      "train_events/event_003",
+      "train_events/event_004",
+      "train_events/event_005",
+      "train_events/event_006",
+      "train_events/event_007",
+      "train_events/event_008",
+      "train_events/event_009",
+      "train_events/event_010",
+      "train_events/event_011",
+      "train_events/event_012",
+      "train_events/event_013",
+      "train_events/event_014",
+      "train_events/event_015",
+      "train_events/event_016",
+      "train_events/event_017",
+      "train_events/event_018",
+      "train_events/event_019",
+      "train_events/event_020",
+      "train_events/event_021",
+      "train_events/event_022",
+      "train_events/event_023"
+    ],
+    "media_types": [
+      "video",
+      "audio"
+    ],
+    "purpose": "Authorized Stage-2.1 human ground-truth inspection across all 27 Layer-B events and subsequent official Phase-12 replay evidence production."
+  },
+  "restrictions": {
+    "path_prefixes": [
+      "data/raw/layer_b/"
+    ]
+  },
+  "bindings": {
+    "protocol_document": {
+      "path": "docs/FINAL_GROUND_TRUTH_PROTOCOL.md",
+      "sha256": "d100c1e6a63280c375f94e297416efb0cf7dd3c15c9aa8df076ede052d49ecf4"
+    }
+  },
+  "record_sha256": "__HUMAN_APPROVAL_REQUIRED___COMPUTE_WITH_media_guard._canonical_sha256"
+}

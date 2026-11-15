@@ -1,0 +1,6 @@
+# Event-Level Split Decision Preparation & Reconciliation with Option A
+
+- **Mechanical Validator Status:** `governance.validate_event_level_split(partitions)` **PASSED** (`train=16`, `val=6`, `test=5`, total=`27` disjoint events).
+- **Active Prior PI Decision (`SPLIT-DECISION-OPTION-A-2026-11-09`, file present=`True`):** Explicitly chose **Option A (Descriptive single-crossing study — NO Phase 12 train/val/test split)**. Therefore `data/splits/phase12_event_split_decision.json` MUST remain absent UNLESS you explicitly elect to supersede Option A for held-out Phase 12 evaluation.
+- **Disclosed Limitation (`CANDIDATE_EVENT_SPLIT_PROPOSAL.json`):** `leakage_safe = False` — all 27 events share `crossing_A` (`Candidate spans multiple roles for at least one crossing/session; this is not leakage-safe.`), and the candidate `val` partition has 0 `no_train` / `engine` events (`no_train_events/002..003` & `engine_events/001` in `train`, `no_train_events/001` in `test`). Any Phase 12 held-out claim remains single-crossing / chronological rather than cross-crossing.
+- **Activation Target (ONLY if Option A is superseded):** Save signed JSON to `data/splits/phase12_event_split_decision.json` (and update/remove extra metadata keys only if desired; `verify_decision_envelope` validates envelope keys cleanly).

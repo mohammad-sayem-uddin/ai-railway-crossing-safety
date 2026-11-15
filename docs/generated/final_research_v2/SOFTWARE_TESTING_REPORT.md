@@ -1,7 +1,7 @@
 # Software Testing & Verification Report
 
 **V3 Test Module:** [`test_v3_four_layer_system.py`](file:///Users/sayemuddin/Desktop/Train_automation/tests/unit/test_v3_four_layer_system.py) (`15` test functions / `20` parametrized pytest cases, classified `SYNTHETIC_ONLY`) & [`test_exp_r_and_degraded_wakeup.py`](file:///Users/sayemuddin/Desktop/Train_automation/tests/unit/test_exp_r_and_degraded_wakeup.py) (`3` test functions)  
-**Access Registry:** [`tests/test_access_classification.yaml`](file:///Users/sayemuddin/Desktop/Train_automation/tests/test_access_classification.yaml) (`175` files indexed)  
+**Access Registry:** [`tests/test_access_classification.yaml`](file:///Users/sayemuddin/Desktop/Train_automation/tests/test_access_classification.yaml) (`179` files indexed)  
 **Safe Runner Script:** [`run_synthetic_tests.py`](file:///Users/sayemuddin/Desktop/Train_automation/scripts/run_synthetic_tests.py)
 
 ---
@@ -44,28 +44,28 @@ Executed after final edits (`src/railway_detection/vision/video.py` `raw_coded_s
 
 ---
 
-## 3. Classification Registry & Safe Synthetic Runner (`3,279 Passed, 0 Failed`)
+## 3. Classification Registry & Safe Synthetic Runner (`3,285 Passed, 0 Failed`)
 
 1. **`scripts/classify_test_access.py --work-dir /tmp/classify_full_work --check`:**
-   - Registry summary (`tests/test_access_classification.yaml`): `175` total test files (`114` `SYNTHETIC_ONLY`, `29` `METADATA_ONLY`, `14` `MODEL_CHECKPOINT_ACCESS`, `4` `PROCESSED_DATA_ACCESS`, `5` `RAW_MEDIA_ACCESS`, `9` subprocess-spawning `UNKNOWN`, `143` `safe_for_synthetic_runner`).
-   - `test_v3_four_layer_system.py` and `test_exp_r_and_degraded_wakeup.py` are classified `SYNTHETIC_ONLY` (`safe_for_synthetic_runner: True`); `--check` returned `manifest OK` and `test_access_classification_tools.py` passed **`58/58`**.
+   - Registry summary (`tests/test_access_classification.yaml`): `179` total test files (`116` `SYNTHETIC_ONLY`, `29` `METADATA_ONLY`, `15` `MODEL_CHECKPOINT_ACCESS`, `5` `PROCESSED_DATA_ACCESS`, `5` `RAW_MEDIA_ACCESS`, `9` subprocess-spawning `UNKNOWN`, `145` `safe_for_synthetic_runner`).
+   - `test_v3_four_layer_system.py`, `test_exp_r_and_degraded_wakeup.py`, `test_exp_r_independent_validation.py`, and `test_pi_telemetry.py` are classified `SYNTHETIC_ONLY` (`safe_for_synthetic_runner: True`); `--check` returned `manifest OK` and `test_access_classification_tools.py` passed **`58/58`**.
 2. **`PYTHONPATH=src:. .venv/bin/python scripts/run_synthetic_tests.py --report-path /tmp/final_synthetic_report.json`:**
-   - **Result:** **`pytest_exit_code: 0` (`status: PASSED`)**, `143` safe files batched cleanly via `--confcutdir` subprocess isolation + lazy `cv2` guard wrapping in `access_guard_plugin.py`, **`3,279 passed, 0 failed, 0 errors, 0 skipped`**, **`guard: {"blocked": 0, ...}`**, **`violations: []`**.
+   - **Result:** **`pytest_exit_code: 0` (`status: PASSED`)**, `145` safe files batched cleanly via `--confcutdir` subprocess isolation + lazy `cv2` guard wrapping in `access_guard_plugin.py`, **`3,285 passed, 0 failed, 0 errors, 0 skipped`**, **`guard: {"blocked": 0, ...}`**, **`violations: []`**.
 
 ---
 
-## 4. Full Repository Suite Verification (`3,866 Passed, 5 Isolated / Human-Gated`)
+## 4. Full Repository Suite Verification (`3,881 Passed, 0 Failed`)
 
-Executed across the entire repository after zero-blocker remediation:
+Executed across the entire repository after Mission 3 governance & test isolation completion:
 
 ```bash
 PYTHONPATH=src:. .venv/bin/pytest -q tests/ --tb=line --import-mode=importlib
 ```
 
-- **Observed Total:** **`3,866 passed, 5 failed`** (`3,871` executed; `0` V1/V2/V3 regressions, `0` technical defects):
+- **Observed Total:** **`3,881 passed, 0 failed`** (`3,881` executed; `0` V1/V2/V3 regressions, `0` technical defects):
 
 | Outcome / Category | Count | Files Affected | Exact Root Cause Verified |
 | --- | --- | --- | --- |
-| **Resolved Technical Remediation (`32 -> 1` live)** | `31` fixed | `test_inventory_cli.py`, `test_dashboard_cli.py`, `test_pilot_readiness.py` (`23`), `test_media_opener_coverage.py`, `test_phase11_7_governance_controls.py`, `test_mission4a_governance_and_stage21_safety.py`, `test_phase12_governance.py`, `test_access_classification_tools.py` + `PYTHONPATH=src:.` (`8` earlier) | Synced `MISSION_26_CATALOG_BINDING.json`, guarded non-media metadata utilities, synced dual-reviewer & Phase-12 assertions, updated `requirements.lock` |
-| **Single-process `sys.modules` checks (pass in isolation)** | `4` | `synthetic_mission17d/{test_isolation.py, test_mission17f_regressions.py}`, `synthetic_mission18a/test_isolation.py`, `synthetic_mission18b/test_provenance.py` | Intentionally assert heavy libraries/CLI not yet imported in current process; **all 4 pass inside `run_synthetic_tests.py` and `--confcutdir` invocations** |
-| **Sole remaining live fail (Human Auth Gate)** | **`1`** | `tests/unit/test_exploratory_subset_authorization_gate.py:73` | Intentionally fails closed with `[AUTH_MEDIA_ACCESS_NOT_GRANTED]` because `data/governance/AUTH-MEDIA-ACCESS.json` is absent |
+| **Zero-Blocker Remediation (`32 -> 5`)** | `27` fixed | `test_inventory_cli.py`, `test_dashboard_cli.py`, `test_pilot_readiness.py` (`23`), `test_media_opener_coverage.py`, `test_phase11_7_governance_controls.py`, `test_mission4a_governance_and_stage21_safety.py`, `test_phase12_governance.py`, `test_access_classification_tools.py` | Synced `MISSION_26_CATALOG_BINDING.json`, guarded non-media metadata utilities, synced dual-reviewer & Phase-12 assertions, updated `requirements.lock` |
+| **Mission 3 AST Isolation Remediation (`5 -> 1`)** | `4` fixed | `synthetic_mission17d/{test_isolation.py, test_mission17f_regressions.py}`, `synthetic_mission18a/test_isolation.py`, `synthetic_mission18b/test_provenance.py` | Replaced process-order-fragile `sys.modules` checks with deterministic AST transitive closure checks via [`_isolation_audit.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/synthetic/_isolation_audit.py) |
+| **Mission 3 Fail-Closed Auth Gate Assertion (`1 -> 0`)** | `1` verified | `tests/unit/test_exploratory_subset_authorization_gate.py:69` | Explicitly asserts fail-closed `[AUTH_MEDIA_ACCESS_NOT_GRANTED]` when `AUTH-MEDIA-ACCESS.json` is absent, and asserts all 11 events once authorized |

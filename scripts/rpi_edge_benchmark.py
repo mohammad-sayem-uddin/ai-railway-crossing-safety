@@ -126,6 +126,14 @@ def run_edge_package_and_benchmark(
 
     scaling_by_threads: dict[str, Any] = {}
     prev_threads = torch.get_num_threads()
+    from railway_detection.optimization.pi_telemetry import (
+        benchmark_synthetic_opencv_preprocess,
+        collect_host_telemetry,
+        read_linux_vmhwm_mb,
+    )
+
+    telemetry_pre = collect_host_telemetry()
+    opencv_preprocess_416 = benchmark_synthetic_opencv_preprocess(dst_size=416, warmup=2, iters=10)
     try:
         for n_t in thread_counts:
             torch.set_num_threads(n_t)
@@ -147,13 +155,20 @@ def run_edge_package_and_benchmark(
 
     ru = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     peak_rss_mb = ru / (1024.0 * 1024.0) if sys.platform == "darwin" else ru / 1024.0
+    telemetry_post = collect_host_telemetry()
+    vmhwm_mb = telemetry_post.get("vmhwm_mb") or read_linux_vmhwm_mb()
+    if vmhwm_mb is not None and platform.system() == "Linux":
+        peak_rss_mb = max(peak_rss_mb, vmhwm_mb)
     hw = detect_hardware_target()
     return {
-        "schema_version": "rpi-edge-benchmark/1.0",
+        "schema_version": "rpi-edge-benchmark/1.1",
         "input_classification": "SYNTHETIC_ONLY",
         "hardware": hw,
         "physical_raspberry_pi_tested": hw["is_physical_raspberry_pi"],
         "peak_process_rss_mb": round(peak_rss_mb, 2),
+        "telemetry_pre": telemetry_pre,
+        "telemetry_post": telemetry_post,
+        "synthetic_opencv_preprocess_416px": opencv_preprocess_416,
         "exported_bundles": bundles,
         "thread_scaling_ms": scaling_by_threads,
     }

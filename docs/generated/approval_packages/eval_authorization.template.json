@@ -1,0 +1,31 @@
+{
+  "schema_version": "phase12-eval-authorization/1",
+  "authorization_id": "__HUMAN_APPROVAL_REQUIRED___e.g._EVAL-AUTH-2026-11-XX",
+  "stage": "stage3_single_camera_baseline",
+  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___CHOOSE_FROM_elaf85777@gmail.com|raihankabirrahu@gmail.com",
+  "authorized_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ",
+  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_PI_STATEMENT_AUTHORIZING_OFFICIAL_PHASE12_EVALUATION",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "researcher",
+    "identity": "__HUMAN_APPROVAL_REQUIRED___REVIEWER_EMAIL"
+  },
+  "scope": {
+    "operation": "phase12_official_evaluation",
+    "stage": "stage3_single_camera_baseline",
+    "field_or_physical_operations_authorized": false
+  },
+  "bindings": {
+    "decision_policy_sha256": "c87c1432f473f84def46d343429c21bcd5329adcbce6cfdf7933de446a0c8575",
+    "frozen_config_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+    "protocol_profile_sha256": "6b5edb4852fc0d16a10ac1975f3f18d6feb28fe91638971da7d3761a7a6d42ca",
+    "r04_scope_decision_sha256": "f6eabebaab9a925628c119feb9638ba108b7e0c3fbcb942efdf890c2d6e5fc08",
+    "stage21_promotion_receipt_sha256": "__HUMAN_APPROVAL_REQUIRED___FROM_assess_official_phase12_readiness().live_bindings",
+    "event_split_decision_sha256": "__HUMAN_APPROVAL_REQUIRED___FROM_assess_official_phase12_readiness().live_bindings",
+    "input_manifest_sha256": "__HUMAN_APPROVAL_REQUIRED___FROM_assess_official_phase12_readiness().live_bindings"
+  },
+  "record_sha256": "__HUMAN_APPROVAL_REQUIRED___COMPUTE_WITH_governance.canonical_record_sha256"
+}
