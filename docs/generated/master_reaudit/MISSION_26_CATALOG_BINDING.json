@@ -2,7 +2,7 @@
   "schema": "MISSION26_CATALOG_BINDING/1",
   "catalog_sha256": "fbf5bc307d6a97b0bdecf1df66648211bad8a0853a22e4aeb9de16dde5fee9e2",
   "document_bindings": {
-    "README.md": "5ab388b2b9f5710f16a96fe8a7da376157cd81ce4d39778fdfd7ed2affc90425",
+    "README.md": "be3f0b38057d52474dc7c4f8e6e328967c10162576bbaf626f22ae64a6e05d79",
     "configs/vision.yaml": "be46784c46a10b879ad9e318c9b13499bac616d1546c0df7c75fde6c55af5e26",
     "docs/PAPER_DRAFT_DESCRIPTIVE_BENCHMARK.md": "03444930ec0d73e9dad16a2b510511c61e9a1302e3e6a25cf83307d81a26ea78",
     "docs/PHASE11_3_REVIEW_INVENTORY.json": "816432e393ec0ea43184d55b96c9dc2ad4d08f31f45c1ceb9635574c89d362c1",

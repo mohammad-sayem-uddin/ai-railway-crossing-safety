@@ -1,5 +1,5 @@
 {
-  "schema_version": "layer-b-event-split-audit/1.1",
+  "schema_version": "layer-b-event-split-audit/1.2",
   "raw_media_accessed": false,
   "corpus_counts": {
     "total_events": 27,
@@ -27,7 +27,7 @@
   "can_27_events_produce_leakage_safe_3way_split": false,
   "strategy_comparison": {
     "recommended_for_existing_27_events": "Option A (Descriptive single-crossing research via Stage-2.1 + AUTH-DESCRIPTIVE-EVAL-EXEC)",
-    "recommended_for_generalization_and_model_retraining": "Option C (Multi-crossing collection >=5 crossings / >=11 sessions / >=43 cluster-adjusted test synced train passages before Phase 12)",
+    "recommended_for_generalization_and_model_retraining": "Option C (235 total events = 98 train + 43 val + 94 test across 5 crossings and 13 sessions)",
     "pi_approval_required_before_scope_change": true
   },
   "root_causes": [
@@ -181,6 +181,470 @@
       ],
       "siting_distance_validation_status": "UNVALIDATED_KINEMATIC_ENGINEERING_ESTIMATE"
     }
+  },
+  "autonomous_reopening_and_clearance_investigation": {
+    "schema_version": "autonomous-reopening-clearance-audit/1.0",
+    "sync11_v3_outcome_breakdown": {
+      "total_sync11": 11,
+      "l1_approach_closures": 4,
+      "l1_closed_event_ids": [
+        "train_events/event_001",
+        "train_events/event_006",
+        "train_events/event_007",
+        "train_events/event_013"
+      ],
+      "eof_stream_mismatch_failsafe_clamps": 5,
+      "eof_failsafe_event_ids": [
+        "train_events/event_005",
+        "train_events/event_009",
+        "train_events/event_011",
+        "train_events/event_014",
+        "train_events/event_017"
+      ],
+      "never_closed_idle": 2,
+      "idle_event_ids": [
+        "train_events/event_002",
+        "train_events/event_012"
+      ],
+      "completed_automatic_reopenings": 0,
+      "state_histogram": {
+        "CROSSING_OCCUPIED": 1,
+        "FAULT_FAIL_SAFE": 5,
+        "GATE_CLOSING": 1,
+        "IDLE": 2,
+        "TRAIN_DEPARTING": 2
+      }
+    },
+    "root_causes_of_zero_real_reopenings": {
+      "1_zero_rear_labels_in_sync11_and_long_dropouts": {
+        "sync11_events_with_rear_dets": 0,
+        "sync11_max_internal_back_dropout_gap_s": 43.203,
+        "reason": "Pre-db40305 unrotated -90 deg camera_2 streams produced 0/11 'rear' boxes and up to 43.2 s internal blind gaps (event_017), triggering RULE_L4_BACK_SPARSE_DROPOUT_HOLD."
+      },
+      "2_mid_passage_false_rear_boxes_on_unsynced_clips": {
+        "m2_naive_rear_pair_premature_events": [
+          "train_events/event_008",
+          "train_events/event_021",
+          "train_events/event_022",
+          "train_events/event_023"
+        ],
+        "example_event_008": "2 consecutive rear dets at 21.6-22.2 s occur 39.0 s before true T4_back=61.2 s; rear alone cannot safely authorize reopening without sustained side/body cessation.",
+        "example_event_004": "Intermittent rear dets at 8.0, 19.0, 44.0 s occur up to 68.8 s before T4_back=76.8 s."
+      },
+      "3_post_t4_clip_truncation_prevents_3_5s_reopen_cycle": {
+        "t4_annotated_events": 22,
+        "post_t4_tail_min_s": 1.042,
+        "post_t4_tail_median_s": 1.402,
+        "post_t4_tail_max_s": 7.97,
+        "clips_shorter_than_3_5s_required_dwell_plus_open": 20,
+        "required_dwell_plus_open_s": 3.5
+      },
+      "4_missing_physical_occupancy_sensor": {
+        "physical_occupancy_sensors_present": 0,
+        "impact": "Even with upright dense Session 2 back detections (events 021-023: 208-230 dets, 4-14 rear boxes near T4), missing physical occupancy sensors force V3 to remain CLOSED in REAR_CONFIRMED/TRAIN_DEPARTING (fail-closed hold != autonomous completion)."
+      }
+    },
+    "method_comparison_m1_to_m5": [
+      {
+        "method_id": "M1_disappearance_timer",
+        "description": "Legacy V2 or V3_GUARDED_DISAPPEARANCE opening after bounded negative back frames without positive tail.",
+        "real_sync11_premature_openings": "V2=4/11, V3_GUARDED=3/11",
+        "real_t4_corpus_premature": 4,
+        "handles_43s_optical_dropout": false,
+        "verdict": "UNSAFE_REJECTED"
+      },
+      {
+        "method_id": "M2_naive_rear_label_only",
+        "description": ">=2 consecutive YOLO rear boxes on camera_2 without side/body cessation or occupancy verification.",
+        "real_sync11_premature_openings": "0/11 (only because rear=0 on sync11)",
+        "real_t4_corpus_premature": 4,
+        "premature_events": [
+          "train_events/event_008",
+          "train_events/event_021",
+          "train_events/event_022",
+          "train_events/event_023"
+        ],
+        "handles_decoupled_dark_obstacle": false,
+        "verdict": "UNSAFE_ALONE_REJECTED"
+      },
+      {
+        "method_id": "M3_monotonic_transit_and_post_rear_silence",
+        "description": "Requires dense transit tracking (>=20 dets, max gap <=3.5 s) + >=2 rear/last_carriage boxes + cessation of side/front detections + >=1.5 s post-last-detection silence.",
+        "real_t4_corpus_premature": 0,
+        "qualified_clean_departure_events": [
+          "train_events/event_021",
+          "train_events/event_022",
+          "train_events/event_023"
+        ],
+        "handles_event_008_false_rear": true,
+        "handles_decoupled_dark_obstacle": false,
+        "verdict": "STRONGEST_VISION_PREREQUISITE_LAYER"
+      },
+      {
+        "method_id": "M4_multicamera_spatiotemporal_conservation",
+        "description": "Requires ordered L1 front -> L2 moving side -> L4 M3 exit -> quiet L3 audio without independent occupancy sensor.",
+        "real_sync11_premature_openings": "0/11",
+        "real_sync11_completed_reopenings": "0/11",
+        "handles_unlit_or_occluded_island_obstacle": false,
+        "verdict": "NECESSARY_FUSION_INSUFFICIENT_FOR_AUTONOMOUS_REOPEN"
+      },
+      {
+        "method_id": "M5_v3_plus_m3_and_independent_occupancy_sensor",
+        "description": "V3_CONSERVATIVE_POSITIVE + M3 monotonic transit/post-rear silence + independent physical island OccupancyState.CLEAR + >=15 s post-T4 recording window.",
+        "real_sync11_premature_openings": "0/11 (holds fail-closed safely)",
+        "synthetic_nominal_with_occ_clear": {
+          "final_state": "IDLE",
+          "final_gate_state": "OPEN",
+          "reopened_cleanly": true,
+          "premature_opening": false
+        },
+        "synthetic_without_occ_sensor": {
+          "final_state": "REAR_CONFIRMED",
+          "final_gate_state": "CLOSED",
+          "reopened_cleanly": false,
+          "premature_opening": false
+        },
+        "synthetic_truncated_1_4s_post_t4": {
+          "final_state": "CROSSING_CLEAR",
+          "final_gate_state": "CLOSED",
+          "reopened_cleanly": false,
+          "premature_opening": false
+        },
+        "verdict": "REQUIRED_TARGET_ARCHITECTURE"
+      }
+    ],
+    "per_event_back_clearance_audit": [
+      {
+        "event_key": "train_events/event_001",
+        "is_sync11": true,
+        "T4_back_s": 45.0,
+        "back_dur_s": 46.065,
+        "post_t4_tail_s": 1.065,
+        "det_count": 7,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 28.002,
+        "last_det_s": 42.0117,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_002",
+        "is_sync11": true,
+        "T4_back_s": 28.8,
+        "back_dur_s": 30.202,
+        "post_t4_tail_s": 1.402,
+        "det_count": 42,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 5.8,
+        "last_det_s": 27.8033,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_003",
+        "is_sync11": false,
+        "T4_back_s": 30.5,
+        "back_dur_s": 32.535,
+        "post_t4_tail_s": 2.035,
+        "det_count": 1,
+        "rear_det_count": 1,
+        "max_internal_gap_s": null,
+        "last_det_s": 31.4033,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_004",
+        "is_sync11": false,
+        "T4_back_s": 76.8,
+        "back_dur_s": 78.073,
+        "post_t4_tail_s": 1.273,
+        "det_count": 8,
+        "rear_det_count": 4,
+        "max_internal_gap_s": 25.002,
+        "last_det_s": 78.0067,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_006",
+        "is_sync11": true,
+        "T4_back_s": 125.8,
+        "back_dur_s": 126.978,
+        "post_t4_tail_s": 1.178,
+        "det_count": 3,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 0.2,
+        "last_det_s": 90.6083,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_007",
+        "is_sync11": true,
+        "T4_back_s": 33.5,
+        "back_dur_s": 34.542,
+        "post_t4_tail_s": 1.042,
+        "det_count": 7,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 6.0,
+        "last_det_s": 22.4017,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_008",
+        "is_sync11": false,
+        "T4_back_s": 61.2,
+        "back_dur_s": 62.717,
+        "post_t4_tail_s": 1.517,
+        "det_count": 2,
+        "rear_det_count": 2,
+        "max_internal_gap_s": 0.6,
+        "last_det_s": 22.2017,
+        "m2_two_rear_pair_t_s": 22.2017,
+        "m2_premature_vs_T4": true,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_009",
+        "is_sync11": true,
+        "T4_back_s": 36.4,
+        "back_dur_s": 37.602,
+        "post_t4_tail_s": 1.202,
+        "det_count": 0,
+        "rear_det_count": 0,
+        "max_internal_gap_s": null,
+        "last_det_s": null,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_010",
+        "is_sync11": false,
+        "T4_back_s": 22.4,
+        "back_dur_s": 23.517,
+        "post_t4_tail_s": 1.117,
+        "det_count": 0,
+        "rear_det_count": 0,
+        "max_internal_gap_s": null,
+        "last_det_s": null,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_011",
+        "is_sync11": true,
+        "T4_back_s": 29.4,
+        "back_dur_s": 37.37,
+        "post_t4_tail_s": 7.97,
+        "det_count": 0,
+        "rear_det_count": 0,
+        "max_internal_gap_s": null,
+        "last_det_s": null,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_012",
+        "is_sync11": true,
+        "T4_back_s": 69.2,
+        "back_dur_s": 70.738,
+        "post_t4_tail_s": 1.538,
+        "det_count": 2,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 2.8,
+        "last_det_s": 31.6033,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_013",
+        "is_sync11": true,
+        "T4_back_s": 70.8,
+        "back_dur_s": 73.237,
+        "post_t4_tail_s": 2.437,
+        "det_count": 3,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 15.975,
+        "last_det_s": 70.6033,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_014",
+        "is_sync11": true,
+        "T4_back_s": 51.2,
+        "back_dur_s": 53.503,
+        "post_t4_tail_s": 2.303,
+        "det_count": 2,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 0.4,
+        "last_det_s": 19.4017,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_015",
+        "is_sync11": false,
+        "T4_back_s": 19.5,
+        "back_dur_s": 22.233,
+        "post_t4_tail_s": 2.733,
+        "det_count": 0,
+        "rear_det_count": 0,
+        "max_internal_gap_s": null,
+        "last_det_s": null,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_016",
+        "is_sync11": false,
+        "T4_back_s": 44.1,
+        "back_dur_s": 45.27,
+        "post_t4_tail_s": 1.17,
+        "det_count": 8,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 26.402,
+        "last_det_s": 41.4033,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_017",
+        "is_sync11": true,
+        "T4_back_s": 82.5,
+        "back_dur_s": 83.773,
+        "post_t4_tail_s": 1.273,
+        "det_count": 4,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 43.203,
+        "last_det_s": 81.0067,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_018",
+        "is_sync11": false,
+        "T4_back_s": 50.8,
+        "back_dur_s": 52.637,
+        "post_t4_tail_s": 1.837,
+        "det_count": 1,
+        "rear_det_count": 0,
+        "max_internal_gap_s": null,
+        "last_det_s": 44.0033,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_019",
+        "is_sync11": false,
+        "T4_back_s": 47.2,
+        "back_dur_s": 51.13,
+        "post_t4_tail_s": 3.93,
+        "det_count": 0,
+        "rear_det_count": 0,
+        "max_internal_gap_s": null,
+        "last_det_s": null,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_020",
+        "is_sync11": false,
+        "T4_back_s": 28.7,
+        "back_dur_s": 29.87,
+        "post_t4_tail_s": 1.17,
+        "det_count": 3,
+        "rear_det_count": 0,
+        "max_internal_gap_s": 2.4,
+        "last_det_s": 7.6,
+        "m2_two_rear_pair_t_s": null,
+        "m2_premature_vs_T4": false,
+        "m3_monotonic_post_rear_clear_t_s": null,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_021",
+        "is_sync11": false,
+        "T4_back_s": 60.1,
+        "back_dur_s": 61.37,
+        "post_t4_tail_s": 1.27,
+        "det_count": 230,
+        "rear_det_count": 4,
+        "max_internal_gap_s": 3.4,
+        "last_det_s": 59.8033,
+        "m2_two_rear_pair_t_s": 56.0033,
+        "m2_premature_vs_T4": true,
+        "m3_monotonic_post_rear_clear_t_s": 61.3033,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_022",
+        "is_sync11": false,
+        "T4_back_s": 45.1,
+        "back_dur_s": 46.335,
+        "post_t4_tail_s": 1.235,
+        "det_count": 228,
+        "rear_det_count": 5,
+        "max_internal_gap_s": 0.4,
+        "last_det_s": 45.6017,
+        "m2_two_rear_pair_t_s": 45.0017,
+        "m2_premature_vs_T4": true,
+        "m3_monotonic_post_rear_clear_t_s": 47.1017,
+        "m3_premature_vs_T4": false
+      },
+      {
+        "event_key": "train_events/event_023",
+        "is_sync11": false,
+        "T4_back_s": 43.4,
+        "back_dur_s": 45.768,
+        "post_t4_tail_s": 2.368,
+        "det_count": 208,
+        "rear_det_count": 14,
+        "max_internal_gap_s": 0.4,
+        "last_det_s": 45.6017,
+        "m2_two_rear_pair_t_s": 43.0017,
+        "m2_premature_vs_T4": true,
+        "m3_monotonic_post_rear_clear_t_s": 47.1017,
+        "m3_premature_vs_T4": false
+      }
+    ]
   },
   "candidate_splits_evaluated": {
     "prior_hash_candidate_16_6_5": {
@@ -537,27 +1001,28 @@
       "crossing_id: all 27/27 events share crossing_A (pigeonhole minimum = 3 disjoint crossings for train/val/test).",
       "true_capture_session: only 2 distinct physical capture dates exist (2026-09-14: 20 train events; 2026-10-04: 3 night train + 3 no_train + 1 engine).",
       "hardware_and_class_confound: 100% of negative (no_train) and engine controls come exclusively from Session 2 (night/dusk with iPad 10th-gen back camera), whereas 20/23 train events come from daytime Session 1 (iPhone 15 Pro Max back camera).",
-      "left_and_right_censoring: retrospective approach recordings begin with train already visible (0/23 un-censored distant T0/T1), engine_events/event_001 is right-censored at t=9.80s, and no physical crossing occupancy sensors exist (0/27)."
+      "left_and_right_censoring: retrospective approach recordings begin with train already visible (0/23 un-censored distant T0/T1), engine_events/event_001 is right-censored at t=9.80s, 21/22 T4-annotated clips truncate <3.5s after passage/last-det, and 0/27 have physical occupancy sensors."
     ],
     "minimum_new_collection_requirements": {
       "independent_crossings": {
-        "minimum_new_crossings": 2,
-        "target_total_crossings": ">= 3 disjoint crossings minimum structural floor; >= 5 crossings recommended for outlier resilience and statistical power",
-        "rationale": "Eliminates background geometry, barrier appearance, acoustic reverberation, and crossing-specific false-alarm leakage."
+        "minimum_new_crossings": 4,
+        "target_total_crossings": ">= 5 disjoint crossings (2 train, 1 val, 2 test; vs invalid 3-crossing floor)",
+        "rationale": "Eliminates background geometry, barrier appearance, acoustic reverberation, and crossing-specific false-alarm leakage while preventing single-crossing test fragility."
       },
       "minimum_balanced_sessions": {
-        "minimum_sessions_per_crossing": 2,
-        "target_total_sessions": ">= 6 capture sessions structural floor; >= 11 balanced sessions across train/val/test recommended to reach >= 42 test trains",
-        "within_each_session": {
-          "full_train_passages": ">= 6 passages (passenger + freight where available)",
-          "no_train_traffic_controls": ">= 3 daytime + >= 3 nighttime road-traffic horn clips per crossing (>= 60 s each)",
-          "engine_only_passages": ">= 1 full entry-to-exit passage covering complete rear clearance T4"
+        "minimum_sessions_per_crossing": "2-3 balanced sessions per crossing spanning 2x2 Day/Night x Clear/Adverse-Weather strata",
+        "target_total_sessions": 13,
+        "target_grand_total_events_primary": 235,
+        "cohort_event_counts": {
+          "train": 98,
+          "val": 43,
+          "test": 94
         }
       },
       "hardware_and_synchronization_protocol": [
         "Use identical camera hardware across train/no_train/engine cohorts within each session (no mid-cohort iPhone-to-iPad swap).",
         "Lock orientation metadata upright or maintain strict orthogonal rotation tags; verify NTP/GPS clock sync plus an audible/visual slate clapper at session start & end to establish sub-100ms front-back sync across ALL events (eliminating the 15 non-CALIBRATION_SUPPORTED events).",
-        "Treat 84\u2013211 m upstream distance (7.6 s closure budget at 40\u2013100 km/h) as an unvalidated kinematic engineering estimate until verified via site-specific lens focal length, small-object pixel height (>= 24\u201332 px at 416 px), curvature, and >= 10 s pre-entry buffer.",
+        "Treat 84\u2013211 m upstream distance (7.6 s closure budget at 40\u2013100 km/h) as an unvalidated kinematic engineering estimate until verified via site-specific lens focal length, small-object pixel height (>= 24\u201332 px at 416 px), curvature, >= 10 s pre-T0 buffer, AND >= 15 s post-T4 tail buffer.",
         "Record independent occupancy ground truth (calibrated overhead crossing camera or inductive/radar occupancy logger) plus dedicated lateral crossing-box FOV."
       ]
     },
@@ -569,9 +1034,11 @@
           "assumed_test_train_passages": 12,
           "assumed_test_no_train_controls": 6,
           "zero_premature_opening_95_upper_bound": 0.2209,
-          "zero_false_closure_95_upper_bound": 0.393
+          "zero_false_closure_95_upper_bound": 0.393,
+          "mcnemar_power_p20_p005": 0.0187,
+          "mcnemar_power_observed_sync11_rate": 0.2437
         },
-        "why_insufficient": "A structural minimum of 3 crossings x 2 sessions (yielding ~12 held-out test trains and ~6 test no_train clips) leaves 0/12 premature openings with a 22.09% one-sided 95% upper risk bound and 0/6 false closures with a 39.30% upper bound, and puts only 1 crossing in val/test (crossing-specific outlier vulnerability)."
+        "why_insufficient": "A structural minimum of 3 crossings x 2 sessions (~12 test trains, ~6 test no_train clips) leaves 0/12 premature openings with a 22.09% one-sided 95% upper bound (39.30% on 0/6 false closures), gives only 1.87% two-sided McNemar power at p10=0.20 (24.37% at p10=4/11), and leaves only 1 crossing in val and test."
       },
       "exact_binomial_and_cluster_targets": {
         "intra_session_icc_assumed": 0.05,
@@ -579,39 +1046,265 @@
         "cluster_design_effect": 1.45,
         "zero_failure_95_upper_bound_10pct_unclustered_n": 29,
         "zero_failure_95_upper_bound_5pct_unclustered_n": 59,
+        "unclustered_n_for_80pct_mcnemar_power_p20": 42,
         "cluster_adjusted_test_trains_for_10pct_bound": 43,
         "cluster_adjusted_test_trains_for_5pct_bound": 86,
+        "cluster_adjusted_test_trains_for_80pct_mcnemar_p20": 61,
         "unclustered_test_no_train_for_10pct_bound": 29,
         "cluster_adjusted_test_no_train_for_10pct_bound": 43,
-        "mcnemar_80pct_power_note": "Detecting a paired premature-opening reduction from >=20% (V2) to <=1% (V3) at alpha=0.05 requires >=8 discordant passages (>=43 cluster-adjusted synced test train passages at DEFF=1.45)."
+        "unclustered_29_mcnemar_power_p20_p005": 0.4923,
+        "unclustered_29_mcnemar_power_p25_p005": 0.7206,
+        "unclustered_29_mcnemar_power_observed_sync11_rate": 0.9785,
+        "icc_sensitivity_table": [
+          {
+            "intra_session_icc_rho": 0.0,
+            "reference_max_passages_per_session_m": 10,
+            "design_effect_deff": 1.0,
+            "test_trains_for_10pct_cp_bound": 29,
+            "test_trains_for_80pct_mcnemar_p20": 42,
+            "test_trains_for_5pct_cp_bound": 59
+          },
+          {
+            "intra_session_icc_rho": 0.02,
+            "reference_max_passages_per_session_m": 10,
+            "design_effect_deff": 1.18,
+            "test_trains_for_10pct_cp_bound": 35,
+            "test_trains_for_80pct_mcnemar_p20": 50,
+            "test_trains_for_5pct_cp_bound": 70
+          },
+          {
+            "intra_session_icc_rho": 0.05,
+            "reference_max_passages_per_session_m": 10,
+            "design_effect_deff": 1.45,
+            "test_trains_for_10pct_cp_bound": 43,
+            "test_trains_for_80pct_mcnemar_p20": 61,
+            "test_trains_for_5pct_cp_bound": 86
+          },
+          {
+            "intra_session_icc_rho": 0.1,
+            "reference_max_passages_per_session_m": 10,
+            "design_effect_deff": 1.9,
+            "test_trains_for_10pct_cp_bound": 56,
+            "test_trains_for_80pct_mcnemar_p20": 80,
+            "test_trains_for_5pct_cp_bound": 113
+          },
+          {
+            "intra_session_icc_rho": 0.15,
+            "reference_max_passages_per_session_m": 10,
+            "design_effect_deff": 2.35,
+            "test_trains_for_10pct_cp_bound": 69,
+            "test_trains_for_80pct_mcnemar_p20": 99,
+            "test_trains_for_5pct_cp_bound": 139
+          }
+        ]
+      },
+      "reconciled_cohort_tiers": {
+        "tier_c1_unclustered_10pct_bound": {
+          "name": "tier_c1_unclustered_10pct_bound",
+          "description": "Unclustered (rho=0.0) minimum reaching <=10% one-sided 95% risk bound on test trains & controls.",
+          "assumed_icc_rho": 0.0,
+          "total_crossings": 5,
+          "total_sessions": 13,
+          "grand_total_events": 207,
+          "totals_by_class": {
+            "train_events": 113,
+            "no_train_events": 74,
+            "engine_events": 20
+          },
+          "cohorts": {
+            "train": {
+              "crossings": 2,
+              "sessions": 5,
+              "train_events": 60,
+              "no_train_events": 30,
+              "engine_events": 8,
+              "cohort_total_events": 98,
+              "avg_train_per_session": 12.0,
+              "avg_no_train_per_session": 6.0,
+              "role": "Perception retraining and policy development"
+            },
+            "val": {
+              "crossings": 1,
+              "sessions": 3,
+              "train_events": 24,
+              "no_train_events": 15,
+              "engine_events": 4,
+              "cohort_total_events": 43,
+              "avg_train_per_session": 8.0,
+              "avg_no_train_per_session": 5.0,
+              "role": "Threshold/calibration freeze only (never reused in test)"
+            },
+            "test": {
+              "crossings": 2,
+              "sessions": 5,
+              "train_events": 29,
+              "no_train_events": 29,
+              "engine_events": 8,
+              "cohort_total_events": 66,
+              "avg_train_per_session": 5.8,
+              "avg_no_train_per_session": 5.8,
+              "role": "Locked single-shot evaluation after val freeze"
+            }
+          },
+          "effective_test_power_metrics": {
+            "actual_deff": 1.0,
+            "effective_test_trains_n_eff": 29.0,
+            "effective_zero_failure_95_upper_bound": 0.0981,
+            "unconditional_mcnemar_power_p20_p005": 0.4923,
+            "unconditional_mcnemar_power_p25_p005": 0.7206,
+            "unconditional_mcnemar_power_observed_sync11_rate": 0.9785
+          }
+        },
+        "tier_c2_cluster_adjusted_10pct_bound_primary": {
+          "name": "tier_c2_cluster_adjusted_10pct_bound_primary",
+          "description": "Recommended primary target (rho=0.05, ref DEFF=1.45): exact 98 + 43 + 94 = 235 total events.",
+          "assumed_icc_rho": 0.05,
+          "total_crossings": 5,
+          "total_sessions": 13,
+          "grand_total_events": 235,
+          "totals_by_class": {
+            "train_events": 127,
+            "no_train_events": 88,
+            "engine_events": 20
+          },
+          "cohorts": {
+            "train": {
+              "crossings": 2,
+              "sessions": 5,
+              "train_events": 60,
+              "no_train_events": 30,
+              "engine_events": 8,
+              "cohort_total_events": 98,
+              "avg_train_per_session": 12.0,
+              "avg_no_train_per_session": 6.0,
+              "role": "Perception retraining and policy development"
+            },
+            "val": {
+              "crossings": 1,
+              "sessions": 3,
+              "train_events": 24,
+              "no_train_events": 15,
+              "engine_events": 4,
+              "cohort_total_events": 43,
+              "avg_train_per_session": 8.0,
+              "avg_no_train_per_session": 5.0,
+              "role": "Threshold/calibration freeze only (never reused in test)"
+            },
+            "test": {
+              "crossings": 2,
+              "sessions": 5,
+              "train_events": 43,
+              "no_train_events": 43,
+              "engine_events": 8,
+              "cohort_total_events": 94,
+              "avg_train_per_session": 8.6,
+              "avg_no_train_per_session": 8.6,
+              "role": "Locked single-shot evaluation after val freeze"
+            }
+          },
+          "effective_test_power_metrics": {
+            "actual_deff": 1.38,
+            "effective_test_trains_n_eff": 31.16,
+            "effective_zero_failure_95_upper_bound": 0.0917,
+            "unconditional_mcnemar_power_p20_p005": 0.5572,
+            "unconditional_mcnemar_power_p25_p005": 0.7759,
+            "unconditional_mcnemar_power_observed_sync11_rate": 0.9879
+          }
+        },
+        "tier_c3_cluster_adjusted_80pct_mcnemar_p20": {
+          "name": "tier_c3_cluster_adjusted_80pct_mcnemar_p20",
+          "description": "High-power paired McNemar target (rho=0.05, >=80% effective power for 20%->0.5% premature opening reduction): 98 + 43 + 130 = 271 events.",
+          "assumed_icc_rho": 0.05,
+          "total_crossings": 5,
+          "total_sessions": 14,
+          "grand_total_events": 271,
+          "totals_by_class": {
+            "train_events": 146,
+            "no_train_events": 105,
+            "engine_events": 20
+          },
+          "cohorts": {
+            "train": {
+              "crossings": 2,
+              "sessions": 5,
+              "train_events": 60,
+              "no_train_events": 30,
+              "engine_events": 8,
+              "cohort_total_events": 98,
+              "avg_train_per_session": 12.0,
+              "avg_no_train_per_session": 6.0,
+              "role": "Perception retraining and policy development"
+            },
+            "val": {
+              "crossings": 1,
+              "sessions": 3,
+              "train_events": 24,
+              "no_train_events": 15,
+              "engine_events": 4,
+              "cohort_total_events": 43,
+              "avg_train_per_session": 8.0,
+              "avg_no_train_per_session": 5.0,
+              "role": "Threshold/calibration freeze only (never reused in test)"
+            },
+            "test": {
+              "crossings": 2,
+              "sessions": 6,
+              "train_events": 62,
+              "no_train_events": 60,
+              "engine_events": 8,
+              "cohort_total_events": 130,
+              "avg_train_per_session": 10.33,
+              "avg_no_train_per_session": 10.0,
+              "role": "Locked single-shot evaluation after val freeze"
+            }
+          },
+          "effective_test_power_metrics": {
+            "actual_deff": 1.4667,
+            "effective_test_trains_n_eff": 42.27,
+            "effective_zero_failure_95_upper_bound": 0.0684,
+            "unconditional_mcnemar_power_p20_p005": 0.8159,
+            "unconditional_mcnemar_power_p25_p005": 0.9409,
+            "unconditional_mcnemar_power_observed_sync11_rate": 0.9996
+          }
+        }
       },
       "recommended_three_cohort_design": {
-        "total_crossings_target": ">= 5 disjoint rural/semi-urban level crossings (eliminating single-site val/test fragility)",
-        "total_sessions_target": ">= 11 sessions spanning Day-Clear, Day-Rain/Fog, Night-Clear, Night-Rain/Fog",
-        "total_events_target": ">= 220 balanced events across train, val, and test cohorts",
+        "total_crossings_target": 5,
+        "total_sessions_target": 13,
+        "total_events_target": 235,
         "cohorts": {
           "train": {
-            "crossings": ">= 2 crossings (e.g., crossing_A + crossing_E)",
-            "sessions": ">= 4 sessions across day/night/rain",
-            "train_passages": ">= 60",
-            "no_train_controls": ">= 30 (>= 60 s road-horn/traffic clips)",
-            "engine_passages": ">= 8"
+            "crossings": 2,
+            "sessions": 5,
+            "train_events": 60,
+            "no_train_events": 30,
+            "engine_events": 8,
+            "cohort_total_events": 98,
+            "avg_train_per_session": 12.0,
+            "avg_no_train_per_session": 6.0,
+            "role": "Perception retraining and policy development"
           },
           "val": {
-            "crossings": ">= 1-2 disjoint crossings (e.g., crossing_B; zero overlap with train/test)",
-            "sessions": ">= 3 sessions across day/night/rain",
-            "train_passages": ">= 24",
-            "no_train_controls": ">= 15 (>= 60 s road-horn/traffic clips)",
-            "engine_passages": ">= 4",
-            "role": "Strictly for model selection, acoustic hysteresis (tau, k), and temperature calibration only."
+            "crossings": 1,
+            "sessions": 3,
+            "train_events": 24,
+            "no_train_events": 15,
+            "engine_events": 4,
+            "cohort_total_events": 43,
+            "avg_train_per_session": 8.0,
+            "avg_no_train_per_session": 5.0,
+            "role": "Threshold/calibration freeze only (never reused in test)"
           },
           "test": {
-            "crossings": ">= 2 unseen crossings (e.g., crossing_C + crossing_D; zero overlap with train/val)",
-            "sessions": ">= 4 sessions balanced across 2x2 Day/Night x Clear/Monsoon strata",
-            "train_passages": ">= 43 synced full-train passages (for <=10% cluster-adjusted 95% upper bound; >= 86 for <=5% bound)",
-            "no_train_controls": ">= 29 road-horn/traffic clips >=60 s each (>= 43 cluster-adjusted)",
-            "engine_passages": ">= 8 uncensored entry-to-T4 clearance passages",
-            "role": "Locked single-shot evaluation only after model/threshold freeze on val."
+            "crossings": 2,
+            "sessions": 5,
+            "train_events": 43,
+            "no_train_events": 43,
+            "engine_events": 8,
+            "cohort_total_events": 94,
+            "avg_train_per_session": 8.6,
+            "avg_no_train_per_session": 8.6,
+            "role": "Locked single-shot evaluation after val freeze"
           }
         },
         "confounding_controls": [
@@ -619,6 +1312,7 @@
           "2x2 lighting x weather factorial balance with matched no_train controls inside every capture session.",
           "NTP/GPS sync + audible/visual slate clapper establishing sub-100 ms sync on 100% of dual-camera clips.",
           "Physical crossing-box occupancy ground truth (calibrated overhead camera or inductive/radar logger).",
+          "Minimum >=10 s pre-T0 approach buffer AND >=15 s post-T4 empty-track tail buffer per recording so 1.5 s dwell + 2.0 s reopening stroke can be verified on real footage.",
           "Pre-collection distance/resolution calibration pilot (40-210 m) checking >=24-32 px train bbox height at 416 px."
         ]
       }

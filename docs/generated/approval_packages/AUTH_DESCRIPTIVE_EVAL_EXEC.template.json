@@ -19,8 +19,12 @@
   "scope": {
     "operation": "descriptive_cache_only_replay",
     "conditions": [
-      "baseline",
-      "v3_conservative_positive"
+      "B0",
+      "B1",
+      "B2",
+      "BACK_VISION",
+      "DUAL_VISION",
+      "DUAL_VISION_AUDIO"
     ],
     "events": [
       "ALL_MANIFEST_EVENTS"
@@ -40,7 +44,7 @@
     "field_or_physical_operations_authorized": false
   },
   "bindings": {
-    "evaluation_manifest_sha256": "__HUMAN_APPROVAL_REQUIRED___SHA256_OF_CACHE_EVALUATION_MANIFEST",
+    "evaluation_manifest_sha256": "2fb08c92e6d389e55e3963c0f47f0d7fa7959922f39b9b4b600f244a57a46b72",
     "metric_scope_sha256": "1e10c02db10336cb8f436f5c791b20b2f58301cfd3d517e1ddf6a2d713562c36",
     "model_config_provenance_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
     "promotion_receipt_sha256": "__HUMAN_APPROVAL_REQUIRED___FROM_assess_official_phase12_readiness().live_bindings",

@@ -8,6 +8,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from railway_detection.evaluation import descriptive_exec_gate, governance
+from railway_detection.evaluation.cache_only_engine_multimodal import MM_SUPPORTED_CONDITIONS
 from railway_detection.evaluation.execution_gate import assess_official_phase12_readiness
 from railway_detection.safety import media_guard
 
@@ -174,7 +175,12 @@ def test_templates_pass_live_validators_when_human_placeholders_filled(tmp_path:
     # 4) AUTH_DESCRIPTIVE_EVAL_EXEC template must pass verify_descriptive_authorization once filled
     desc_tmpl = _load(out / "AUTH_DESCRIPTIVE_EVAL_EXEC.template.json")
     assert set(desc_tmpl) == set(descriptive_exec_gate._KEYS)
+    assert desc_tmpl["scope"]["conditions"] == sorted(MM_SUPPORTED_CONDITIONS)
     assert desc_tmpl["bindings"]["metric_scope_sha256"] == descriptive_exec_gate.metric_scope_sha256()
+    b2_manifest_sha = governance.sha256_small_file(
+        REPO_ROOT / "docs/generated/professor_evidence/mission43/B2_EVALUATION_INPUT_MANIFEST.json"
+    )
+    assert desc_tmpl["bindings"]["evaluation_manifest_sha256"] == b2_manifest_sha
     desc_tmpl["authorization_id"] = "AUTH-DESCRIPTIVE-TEST-01"
     desc_tmpl["status"] = "APPROVED"
     desc_tmpl["authorized_by"] = signer
@@ -182,9 +188,7 @@ def test_templates_pass_live_validators_when_human_placeholders_filled(tmp_path:
     desc_tmpl["expires_at_utc"] = (now + timedelta(days=7)).isoformat()
     desc_tmpl["authorization_statement"] = "Test activation of Option A descriptive execution template."
     desc_tmpl["recorded_by"] = {"kind": "researcher", "identity": signer}
-    manifest_sha = "4" * 64
     promo_sha = "5" * 64
-    desc_tmpl["bindings"]["evaluation_manifest_sha256"] = manifest_sha
     desc_tmpl["bindings"]["promotion_receipt_sha256"] = promo_sha
     desc_tmpl["record_sha256"] = governance.canonical_record_sha256(desc_tmpl)
     (fake_repo / descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE).write_text(
@@ -192,12 +196,12 @@ def test_templates_pass_live_validators_when_human_placeholders_filled(tmp_path:
     )
     verified_desc = descriptive_exec_gate.verify_descriptive_authorization(
         fake_repo,
-        condition="v3_conservative_positive",
+        condition="B2",
         event_id="train_events/event_001",
-        manifest_sha256=manifest_sha,
+        manifest_sha256=b2_manifest_sha,
         now=now,
         live={
-            "evaluation_manifest_sha256": manifest_sha,
+            "evaluation_manifest_sha256": b2_manifest_sha,
             "metric_scope_sha256": descriptive_exec_gate.metric_scope_sha256(),
             "model_config_provenance_sha256": live["frozen_config_sha256"],
             "promotion_receipt_sha256": promo_sha,

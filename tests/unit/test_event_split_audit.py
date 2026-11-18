@@ -110,12 +110,37 @@ def test_live_repository_split_audit_matches_checked_in_report():
     assert exit_diag["sync11_reopening_decision_v3_count"] == 0
     assert exit_diag["sync11_zero_premature_opening_95_upper_bound_all11"] == 0.2384
 
-    # Mission 5 Option C statistical power targets
+    # Mission 5/6 Option C statistical power & reconciled cohort sums
     pwr = report["targeted_additional_data_collection_plan"]["statistical_power_and_sample_size_recalculation"]
     exact_t = pwr["exact_binomial_and_cluster_targets"]
     assert exact_t["zero_failure_95_upper_bound_10pct_unclustered_n"] == 29
     assert exact_t["zero_failure_95_upper_bound_5pct_unclustered_n"] == 59
+    assert exact_t["unclustered_n_for_80pct_mcnemar_power_p20"] == 42
     assert exact_t["cluster_adjusted_test_trains_for_10pct_bound"] == 43
     assert exact_t["cluster_adjusted_test_trains_for_5pct_bound"] == 86
     floor = pwr["structural_floor_critique"]["minimal_3crossing_6session_total"]
     assert floor["zero_premature_opening_95_upper_bound"] == 0.2209
+    tiers = pwr["reconciled_cohort_tiers"]
+    assert tiers["tier_c1_unclustered_10pct_bound"]["grand_total_events"] == 207
+    t2 = tiers["tier_c2_cluster_adjusted_10pct_bound_primary"]
+    assert t2["grand_total_events"] == 235
+    assert (
+        t2["cohorts"]["train"]["cohort_total_events"]
+        + t2["cohorts"]["val"]["cohort_total_events"]
+        + t2["cohorts"]["test"]["cohort_total_events"]
+        == 235
+    )
+    t3 = tiers["tier_c3_cluster_adjusted_80pct_mcnemar_p20"]
+    assert t3["grand_total_events"] == 271
+    assert t3["effective_test_power_metrics"]["unconditional_mcnemar_power_p20_p005"] >= 0.80
+
+    # Mission 6 autonomous reopening investigation (M1-M5)
+    reopen = report["autonomous_reopening_and_clearance_investigation"]
+    b = reopen["sync11_v3_outcome_breakdown"]
+    assert b["total_sync11"] == 11
+    assert b["completed_automatic_reopenings"] == 0
+    assert b["l1_approach_closures"] + b["eof_stream_mismatch_failsafe_clamps"] + b["never_closed_idle"] == 11
+    methods = {m["method_id"]: m for m in reopen["method_comparison_m1_to_m5"]}
+    assert methods["M3_monotonic_transit_and_post_rear_silence"]["real_t4_corpus_premature"] == 0
+    assert methods["M5_v3_plus_m3_and_independent_occupancy_sensor"]["synthetic_nominal_with_occ_clear"]["reopened_cleanly"] is True
+    assert methods["M5_v3_plus_m3_and_independent_occupancy_sensor"]["synthetic_without_occ_sensor"]["reopened_cleanly"] is False

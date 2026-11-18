@@ -15,6 +15,11 @@ from typing import Any
 
 from railway_detection.data.split_audit import build_event_provenance_table, evaluate_candidate_split
 from railway_detection.evaluation import descriptive_exec_gate, governance, manifest_builder
+from railway_detection.evaluation.cache_only_engine import CacheOnlyReplayEngine
+from railway_detection.evaluation.cache_only_engine_multimodal import (
+    MM_SUPPORTED_CONDITIONS,
+    MultimodalCacheOnlyReplayEngine,
+)
 from railway_detection.evaluation.execution_gate import (
     OfficialExecutionReadiness,
     assess_official_phase12_readiness,
@@ -196,6 +201,11 @@ def validate_approval_package_bundle(
         raise OfficialHandoffError("DESC_AUTH_CONFIG_SHA", "model_config_provenance_sha256 mismatch")
     if desc_tmpl["bindings"]["protocol_sha256"] != readiness.live_bindings.get("protocol_profile_sha256"):
         raise OfficialHandoffError("DESC_AUTH_PROTO_SHA", "protocol_sha256 mismatch")
+    if desc_tmpl["scope"]["conditions"] != sorted(MM_SUPPORTED_CONDITIONS):
+        raise OfficialHandoffError("DESC_AUTH_CONDITIONS", "descriptive conditions must match MM_SUPPORTED_CONDITIONS")
+    b2_manifest_path = root / "docs/generated/professor_evidence/mission43/B2_EVALUATION_INPUT_MANIFEST.json"
+    if desc_tmpl["bindings"]["evaluation_manifest_sha256"] != governance.sha256_small_file(b2_manifest_path):
+        raise OfficialHandoffError("DESC_AUTH_MANIFEST_SHA", "B2 descriptive manifest SHA-256 mismatch")
 
     option_a_ready = bool(
         (root / governance.PROMOTION_RECEIPT_RELATIVE).is_file()
@@ -319,3 +329,105 @@ def run_post_approval_official_evaluation(
         json.dumps(handoff_receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     return handoff_receipt
+
+
+def run_post_approval_option_a_descriptive_evaluation(
+    repo_root: Path | str,
+    *,
+    output_dir: Path | str,
+    manifest_path: Path | str = "docs/generated/professor_evidence/mission43/B2_EVALUATION_INPUT_MANIFEST.json",
+    condition: str = "B2",
+) -> dict[str, Any]:
+    """Fail-closed post-approval Option A single-crossing descriptive execution helper."""
+    root = Path(repo_root).resolve()
+    promo_path = root / governance.PROMOTION_RECEIPT_RELATIVE
+    if not promo_path.is_file():
+        raise OfficialHandoffError(
+            "STAGE21_PROMOTION_RECEIPT_MISSING",
+            f"missing {governance.PROMOTION_RECEIPT_RELATIVE}; complete human Stage-2.1 review and emit receipt first",
+        )
+    if not (root / descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE).is_file():
+        raise OfficialHandoffError(
+            "AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED",
+            f"missing {descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE}; supervisor descriptive execution approval required",
+        )
+
+    try:
+        allowlist = governance.load_allowlist(root)
+        governance.verify_promotion_receipt(
+            root, allowlist=allowlist, expected_stage="stage3_single_camera_baseline"
+        )
+    except governance.GovernanceError as exc:
+        raise OfficialHandoffError(exc.code, exc.detail) from exc
+
+    mpath = Path(manifest_path)
+    if not mpath.is_absolute():
+        mpath = (root / mpath).resolve()
+    if not mpath.is_file():
+        raise OfficialHandoffError("DESCRIPTIVE_MANIFEST_MISSING", f"missing manifest: {mpath}")
+    manifest_sha = governance.sha256_small_file(mpath)
+
+    try:
+        auth = descriptive_exec_gate.verify_descriptive_authorization(
+            root,
+            condition=condition,
+            event_id=None,
+            manifest_sha256=manifest_sha,
+        )
+    except descriptive_exec_gate.DescriptiveExecutionNotAuthorized as exc:
+        raise OfficialHandoffError(exc.code, exc.detail) from exc
+
+    dest = Path(output_dir)
+    if not dest.is_absolute():
+        dest = (root / dest).resolve()
+    for protected in ("data", "configs", "results", "docs", "models", "experiments", "src", "tests"):
+        guard = (root / protected).resolve()
+        if dest == guard or guard in dest.parents:
+            raise OfficialHandoffError(
+                "PROTECTED_OUTPUT_DIR",
+                f"refusing to write Option A descriptive outputs inside protected tree {protected}/",
+            )
+
+    engine_cls = (
+        MultimodalCacheOnlyReplayEngine
+        if condition in {"BACK_VISION", "DUAL_VISION", "DUAL_VISION_AUDIO"}
+        else CacheOnlyReplayEngine
+    )
+    engine = engine_cls(mpath, repo_root=root)
+    manifest_data = _read_json(mpath)
+    event_ids = sorted((manifest_data.get("events") or {}).keys())
+    per_event: list[dict[str, Any]] = []
+    for eid in event_ids:
+        replay = engine.execute_replay(eid, condition)
+        per_event.append(
+            {
+                "event_id": eid,
+                "condition": condition,
+                "closure_triggered": replay.simulation_result.closure_triggered,
+                "closed_duration_s": round(replay.simulation_result.closed_duration_s, 4),
+                "final_crossing_state": (
+                    replay.simulation_result.steps[-1].crossing_state
+                    if replay.simulation_result.steps
+                    else "NONE"
+                ),
+                "step_count": len(replay.simulation_result.steps),
+            }
+        )
+
+    dest.mkdir(parents=True, exist_ok=True)
+    receipt = {
+        "schema_version": "option-a-descriptive-execution-handoff/1.0",
+        "study_scope": "OPTION_A_SINGLE_CROSSING_DESCRIPTIVE_ONLY",
+        "cross_site_generalization_claimed": False,
+        "authorization_id": auth.authorization_id,
+        "authorization_record_sha256": auth.record_sha256,
+        "condition": condition,
+        "manifest_sha256": manifest_sha,
+        "events_evaluated": len(per_event),
+        "closure_triggered_count": sum(1 for r in per_event if r["closure_triggered"]),
+        "per_event_summary": per_event,
+    }
+    (dest / "option_a_descriptive_execution_receipt.json").write_text(
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    return receipt

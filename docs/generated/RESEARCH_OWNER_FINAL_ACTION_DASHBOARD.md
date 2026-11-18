@@ -1,8 +1,9 @@
 # Research Owner Final Action Dashboard — Train Gate Automation
 
 **Branch:** `exp/four-layer-completion`  
+**Concise PI Decision Brief:** [`PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md)  
 **Owner Handoff Companion:** [`FINAL_PI_ACTION_REQUIRED.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PI_ACTION_REQUIRED.md) (detailed copy-paste guide for supervisor/PI)  
-**Audit & Strategy Engine:** [`layer_b_split_audit_and_collection_plan.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/dataset_audit/layer_b_split_audit_and_collection_plan.json) (`schema: layer-b-event-split-audit/1.1`)
+**Audit & Strategy Engine:** [`layer_b_split_audit_and_collection_plan.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/dataset_audit/layer_b_split_audit_and_collection_plan.json) (`schema: layer-b-event-split-audit/1.2`)
 
 ---
 
@@ -40,12 +41,12 @@
   - `0` new recordings required; human `Stage-2.1` ground-truth review across the `27` existing events (correcting the `7` Session-2 / `night_video_lowlight` AI proposal metadata defects) + upright `.mov` re-extraction post-`AUTH-MEDIA-ACCESS`.
 - **To Achieve Option C (Leakage-Free Cross-Crossing Validation & Retraining):**
   - Why `3` crossings / `6` sessions is **only a structural floor**: yields ~`12` held-out test trains & ~`6` test `no_train` controls, leaving `0/12` premature openings with a **`22.09%`** one-sided 95% upper risk bound (`39.30%` on `0/6` false closures).
-  - **Statistical Power Target (for `<= 10%` upper risk bound at 95% confidence, assuming intra-session `ICC = 0.05`, `m = 10`, `DEFF = 1.45`):**
-    - **`>= 5` disjoint crossings**, **`>= 11` balanced sessions** (`Day-Clear`, `Day-Rain/Fog`, `Night-Clear`, `Night-Rain/Fog`), **`>= 220` total events**:
-      - `train` (`>= 2` crossings): `>= 60` train, `>= 30` `no_train` (`>= 60 s`), `>= 8` `engine`.
-      - `val` (`>= 1–2` disjoint crossings): `>= 24` train, `>= 15` `no_train`, `>= 4` `engine` (locked threshold/calibration tuning only).
-      - `test` (`>= 2` unseen crossings): **`>= 29` unclustered (`>= 43` cluster-adjusted)** synced full-train passages (`>= 59` / `86` for `<= 5%` bound), **`>= 29` (`>= 43` cluster-adjusted)** `no_train` road-horn controls, **`>= 8`** uncensored `engine` passages.
-    - Mandatory controls: locked camera/mic hardware per crossing (no iPhone/iPad cohort swap), `100%` NTP + clapper sync, physical island occupancy ground truth, and pre-collection distance/pixel-height (`>= 24–32 px` @ `416px`) calibration.
+  - **Statistical Power Target (for `<= 10%` upper risk bound at 95% confidence, assuming intra-session `ICC = 0.05`, `m <= 10`, `DEFF = 1 + (m-1)*rho`, Tier `C2` primary recommendation):**
+    - **`>= 5` disjoint crossings**, **`13` balanced sessions** (`Day-Clear`, `Day-Rain/Fog`, `Night-Clear`, `Night-Rain/Fog`), **`235` total events (`98 + 43 + 94`, `207` unclustered tier `C1`, or `271` across `14` sessions tier `C3` for `81.6%` unconditional McNemar power at `p_10=0.20`)**:
+      - `train` (`2` crossings, `5` sessions): `60` train, `30` `no_train` (`>= 60 s`), `8` `engine` = `98`.
+      - `val` (`1` disjoint crossing, `3` sessions): `24` train, `15` `no_train`, `4` `engine` = `43` (locked threshold/calibration tuning only).
+      - `test` (`2` unseen crossings, `5` sessions): **`29` unclustered / `43` cluster-adjusted** (`actual DEFF = 1.38`, `N_eff = 31.16 >= 29`, effective 95% upper bound `9.17% <= 10%`; `62` across `6` test sessions in `C3`) synced full-train passages, **`29` / `43` cluster-adjusted** (`60` in `C3`) `no_train` road-horn controls, **`8`** uncensored `engine` passages = `94` (`130` in `C3`).
+    - Mandatory controls (`>= 10 s` pre-`T0`, **`>= 15 s` post-`T4` tail** to test `3.5 s` `M5` reopening, locked camera/mic hardware per crossing with no iPhone/iPad cohort swap, `100%` NTP + clapper sync `< 100 ms`, physical island occupancy ground truth, and pre-collection distance/pixel-height `>= 24–32 px` @ `416px` calibration).
 
 ---
 
@@ -77,5 +78,5 @@
 **Shortest Legitimate Sequence to Unlock Valid Research Stage (Option A First, Then Hardware / Option C):**
 1. **Today (Supervisor, ~5 min):** Sign [`AUTH_MEDIA_ACCESS.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_MEDIA_ACCESS.template.json) -> `data/governance/AUTH-MEDIA-ACCESS.json` (and copy/confirm Option A framing vs Option C goal).
 2. **Next (Human Reviewers):** Execute `Stage-2.1` human review across all `27` events per [`STAGE21_27_EVENT_REVIEW_CHECKLIST.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/STAGE21_27_EVENT_REVIEW_CHECKLIST.md) (`~30s+` per event + `RD-043` second review where triggered), then emit `data/governance/stage21_promotion_receipt.json` via `readiness_cli`.
-3. **Option A Completion:** PI signs [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_DESCRIPTIVE_EVAL_EXEC.template.json) -> `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json` for authorized upright 27-event descriptive evaluation; publish Option A paper without cross-site claims.
-4. **Hardware & Option C Expansion (Parallel Track):** Run [`scripts/rpi_edge_benchmark.py`](file:///Users/sayemuddin/Desktop/Train_automation/scripts/rpi_edge_benchmark.py) + 30-min soak on physical Raspberry Pi 4B/5, then collect the `>= 5`-crossing / `>= 11`-session balanced dataset with physical occupancy ground truth before unlocking Phase 12 (`eval_authorization.json`).
+3. **Option A Completion:** PI signs [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_DESCRIPTIVE_EVAL_EXEC.template.json) (pre-bound to `MM_SUPPORTED_CONDITIONS` + manifest SHA-256 `2fb08c92...`) -> `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json` for authorized upright 27-event descriptive evaluation via `scripts/prepare_and_execute_official_evaluation.py --mode execute-option-a-descriptive`; publish Option A paper strictly under the 6-tier evidence boundaries without cross-site claims.
+4. **Hardware & Option C Expansion (Parallel Track):** Run [`scripts/rpi_edge_benchmark.py`](file:///Users/sayemuddin/Desktop/Train_automation/scripts/rpi_edge_benchmark.py) + 30-min soak on physical Raspberry Pi 4B/5, then collect the `>= 5`-crossing / `13`-session (`235`-event primary, `271` high-power) balanced dataset with `>= 15 s` post-`T4` tail and physical occupancy ground truth before unlocking Phase 12 (`eval_authorization.json`).

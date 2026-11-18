@@ -20,7 +20,7 @@ import yaml
 
 from railway_detection.research_contracts import ResearchContractError, validate_event_level_split
 
-SCHEMA_VERSION = "layer-b-event-split-audit/1.1"
+SCHEMA_VERSION = "layer-b-event-split-audit/1.2"
 _Z_95 = 1.959963984540054
 
 
@@ -48,6 +48,45 @@ def _min_n_for_zero_failure_upper_bound(p_max: float, alpha: float = 0.05) -> in
     if not (0.0 < p_max < 1.0):
         raise ValueError("p_max must lie in (0, 1)")
     return math.ceil(math.log(alpha) / math.log(1.0 - p_max))
+
+
+def _exact_unconditional_mcnemar_power(
+    n_pairs: int,
+    p10: float,
+    p01: float = 0.005,
+    alpha_two_sided: float = 0.05,
+) -> float:
+    """Exact unconditional power of two-sided exact binomial McNemar test."""
+    if n_pairs <= 0 or (p10 + p01) <= 0.0:
+        return 0.0
+    p_disc = p10 + p01
+    q = p10 / p_disc
+    power = 0.0
+    for m in range(1, n_pairs + 1):
+        pm = math.comb(n_pairs, m) * (p_disc**m) * ((1.0 - p_disc) ** (n_pairs - m))
+        for b10 in range(0, m + 1):
+            if b10 <= m - b10:
+                continue
+            k = m - b10
+            p_val = min(1.0, 2.0 * sum(math.comb(m, i) * (0.5**m) for i in range(0, k + 1)))
+            if p_val <= alpha_two_sided:
+                p_b10 = math.comb(m, b10) * (q**b10) * ((1.0 - q) ** (m - b10))
+                power += pm * p_b10
+    return round(power, 4)
+
+
+def _min_n_for_mcnemar_power(
+    p10: float,
+    *,
+    p01: float = 0.005,
+    target_power: float = 0.80,
+    max_n: int = 200,
+) -> int:
+    """Smallest paired sample size N reaching at least target_power under McNemar exact test."""
+    for n in range(1, max_n + 1):
+        if _exact_unconditional_mcnemar_power(n, p10, p01=p01) >= target_power:
+            return n
+    return max_n
 
 
 def _read_json(path: Path) -> Any:
@@ -328,14 +367,125 @@ def propose_chronological_within_site_split() -> dict[str, list[str]]:
 
 
 def calculate_option_c_statistical_power_and_cohort_design() -> dict[str, Any]:
-    """Recalculate Option C sample-size and cohort requirements from research questions."""
-    n_unclustered_10pct = _min_n_for_zero_failure_upper_bound(0.10)
-    n_unclustered_5pct = _min_n_for_zero_failure_upper_bound(0.05)
-    passages_per_session = 10
-    intra_session_icc = 0.05
-    deff = round(1.0 + (passages_per_session - 1) * intra_session_icc, 2)
-    n_cluster_10pct = math.ceil(n_unclustered_10pct * deff)
-    n_cluster_5pct = math.ceil(n_unclustered_5pct * deff)
+    """Recalculate Option C sample-size, ICC sensitivity, McNemar power, and cohort sums."""
+    n_uncl_10 = _min_n_for_zero_failure_upper_bound(0.10)
+    n_uncl_5 = _min_n_for_zero_failure_upper_bound(0.05)
+    n_mcnemar_p20 = _min_n_for_mcnemar_power(0.20, p01=0.005, target_power=0.80)
+    ref_m = 10
+    primary_rho = 0.05
+    primary_deff = round(1.0 + (ref_m - 1) * primary_rho, 2)
+    n_cl_10 = math.ceil(n_uncl_10 * primary_deff)
+    n_cl_5 = math.ceil(n_uncl_5 * primary_deff)
+    n_cl_mcnemar_p20 = math.ceil(n_mcnemar_p20 * primary_deff)
+
+    icc_sensitivity: list[dict[str, Any]] = []
+    for rho in (0.00, 0.02, 0.05, 0.10, 0.15):
+        deff = round(1.0 + (ref_m - 1) * rho, 2)
+        icc_sensitivity.append(
+            {
+                "intra_session_icc_rho": rho,
+                "reference_max_passages_per_session_m": ref_m,
+                "design_effect_deff": deff,
+                "test_trains_for_10pct_cp_bound": math.ceil(n_uncl_10 * deff),
+                "test_trains_for_80pct_mcnemar_p20": math.ceil(n_mcnemar_p20 * deff),
+                "test_trains_for_5pct_cp_bound": math.ceil(n_uncl_5 * deff),
+            }
+        )
+
+    def _cohort_block(crossings: int, sessions: int, train_n: int, no_train_n: int, engine_n: int, role: str) -> dict[str, Any]:
+        return {
+            "crossings": crossings,
+            "sessions": sessions,
+            "train_events": train_n,
+            "no_train_events": no_train_n,
+            "engine_events": engine_n,
+            "cohort_total_events": train_n + no_train_n + engine_n,
+            "avg_train_per_session": round(train_n / sessions, 2),
+            "avg_no_train_per_session": round(no_train_n / sessions, 2),
+            "role": role,
+        }
+
+    train_fixed = _cohort_block(2, 5, 60, 30, 8, "Perception retraining and policy development")
+    val_fixed = _cohort_block(1, 3, 24, 15, 4, "Threshold/calibration freeze only (never reused in test)")
+
+    def _build_tier(
+        *,
+        name: str,
+        description: str,
+        rho: float,
+        test_crossings: int,
+        test_sessions: int,
+        test_train: int,
+        test_no_train: int,
+        test_engine: int,
+    ) -> dict[str, Any]:
+        test_blk = _cohort_block(
+            test_crossings,
+            test_sessions,
+            test_train,
+            test_no_train,
+            test_engine,
+            "Locked single-shot evaluation after val freeze",
+        )
+        m_actual = test_train / test_sessions
+        deff_actual = round(1.0 + max(0.0, m_actual - 1.0) * rho, 4)
+        n_eff_train = test_train / deff_actual
+        eff_bound = round(1.0 - (0.05 ** (1.0 / n_eff_train)), 4)
+        n_eff_int = math.floor(n_eff_train)
+        return {
+            "name": name,
+            "description": description,
+            "assumed_icc_rho": rho,
+            "total_crossings": train_fixed["crossings"] + val_fixed["crossings"] + test_crossings,
+            "total_sessions": train_fixed["sessions"] + val_fixed["sessions"] + test_sessions,
+            "grand_total_events": train_fixed["cohort_total_events"] + val_fixed["cohort_total_events"] + test_blk["cohort_total_events"],
+            "totals_by_class": {
+                "train_events": train_fixed["train_events"] + val_fixed["train_events"] + test_train,
+                "no_train_events": train_fixed["no_train_events"] + val_fixed["no_train_events"] + test_no_train,
+                "engine_events": train_fixed["engine_events"] + val_fixed["engine_events"] + test_engine,
+            },
+            "cohorts": {"train": train_fixed, "val": val_fixed, "test": test_blk},
+            "effective_test_power_metrics": {
+                "actual_deff": deff_actual,
+                "effective_test_trains_n_eff": round(n_eff_train, 2),
+                "effective_zero_failure_95_upper_bound": eff_bound,
+                "unconditional_mcnemar_power_p20_p005": _exact_unconditional_mcnemar_power(n_eff_int, 0.20, 0.005),
+                "unconditional_mcnemar_power_p25_p005": _exact_unconditional_mcnemar_power(n_eff_int, 0.25, 0.005),
+                "unconditional_mcnemar_power_observed_sync11_rate": _exact_unconditional_mcnemar_power(n_eff_int, 4.0 / 11.0, 0.0),
+            },
+        }
+
+    tier_c1 = _build_tier(
+        name="tier_c1_unclustered_10pct_bound",
+        description="Unclustered (rho=0.0) minimum reaching <=10% one-sided 95% risk bound on test trains & controls.",
+        rho=0.0,
+        test_crossings=2,
+        test_sessions=5,
+        test_train=n_uncl_10,
+        test_no_train=n_uncl_10,
+        test_engine=8,
+    )
+    tier_c2 = _build_tier(
+        name="tier_c2_cluster_adjusted_10pct_bound_primary",
+        description="Recommended primary target (rho=0.05, ref DEFF=1.45): exact 98 + 43 + 94 = 235 total events.",
+        rho=primary_rho,
+        test_crossings=2,
+        test_sessions=5,
+        test_train=n_cl_10,
+        test_no_train=n_cl_10,
+        test_engine=8,
+    )
+    tier_c3 = _build_tier(
+        name="tier_c3_cluster_adjusted_80pct_mcnemar_p20",
+        description=f"High-power paired McNemar target (rho=0.05, >=80% effective power for 20%->0.5% premature opening reduction): 98 + 43 + 130 = 271 events.",
+        rho=primary_rho,
+        test_crossings=2,
+        test_sessions=6,
+        test_train=n_cl_mcnemar_p20 + 1,
+        test_no_train=60,
+        test_engine=8,
+    )
+
     return {
         "structural_floor_critique": {
             "minimal_3crossing_6session_total": {
@@ -345,63 +495,46 @@ def calculate_option_c_statistical_power_and_cohort_design() -> dict[str, Any]:
                 "assumed_test_no_train_controls": 6,
                 "zero_premature_opening_95_upper_bound": _clopper_pearson_zero_failure_upper_95(12),
                 "zero_false_closure_95_upper_bound": _clopper_pearson_zero_failure_upper_95(6),
+                "mcnemar_power_p20_p005": _exact_unconditional_mcnemar_power(12, 0.20, 0.005),
+                "mcnemar_power_observed_sync11_rate": _exact_unconditional_mcnemar_power(12, 4.0 / 11.0, 0.0),
             },
             "why_insufficient": (
-                "A structural minimum of 3 crossings x 2 sessions (yielding ~12 held-out test trains and "
-                "~6 test no_train clips) leaves 0/12 premature openings with a 22.09% one-sided 95% upper "
-                "risk bound and 0/6 false closures with a 39.30% upper bound, and puts only 1 crossing in "
-                "val/test (crossing-specific outlier vulnerability)."
+                "A structural minimum of 3 crossings x 2 sessions (~12 test trains, ~6 test no_train clips) leaves 0/12 premature openings with a 22.09% one-sided 95% upper bound (39.30% on 0/6 false closures), gives only 1.87% two-sided McNemar power at p10=0.20 (24.37% at p10=4/11), and leaves only 1 crossing in val and test."
             ),
         },
         "exact_binomial_and_cluster_targets": {
-            "intra_session_icc_assumed": intra_session_icc,
-            "passages_per_session_assumed": passages_per_session,
-            "cluster_design_effect": deff,
-            "zero_failure_95_upper_bound_10pct_unclustered_n": n_unclustered_10pct,
-            "zero_failure_95_upper_bound_5pct_unclustered_n": n_unclustered_5pct,
-            "cluster_adjusted_test_trains_for_10pct_bound": n_cluster_10pct,
-            "cluster_adjusted_test_trains_for_5pct_bound": n_cluster_5pct,
-            "unclustered_test_no_train_for_10pct_bound": n_unclustered_10pct,
-            "cluster_adjusted_test_no_train_for_10pct_bound": n_cluster_10pct,
-            "mcnemar_80pct_power_note": (
-                f"Detecting a paired premature-opening reduction from >=20% (V2) to <=1% (V3) at alpha=0.05 "
-                f"requires >=8 discordant passages (>={n_cluster_10pct} cluster-adjusted synced test train passages at DEFF={deff})."
-            ),
+            "intra_session_icc_assumed": primary_rho,
+            "passages_per_session_assumed": ref_m,
+            "cluster_design_effect": primary_deff,
+            "zero_failure_95_upper_bound_10pct_unclustered_n": n_uncl_10,
+            "zero_failure_95_upper_bound_5pct_unclustered_n": n_uncl_5,
+            "unclustered_n_for_80pct_mcnemar_power_p20": n_mcnemar_p20,
+            "cluster_adjusted_test_trains_for_10pct_bound": n_cl_10,
+            "cluster_adjusted_test_trains_for_5pct_bound": n_cl_5,
+            "cluster_adjusted_test_trains_for_80pct_mcnemar_p20": n_cl_mcnemar_p20,
+            "unclustered_test_no_train_for_10pct_bound": n_uncl_10,
+            "cluster_adjusted_test_no_train_for_10pct_bound": n_cl_10,
+            "unclustered_29_mcnemar_power_p20_p005": _exact_unconditional_mcnemar_power(n_uncl_10, 0.20, 0.005),
+            "unclustered_29_mcnemar_power_p25_p005": _exact_unconditional_mcnemar_power(n_uncl_10, 0.25, 0.005),
+            "unclustered_29_mcnemar_power_observed_sync11_rate": _exact_unconditional_mcnemar_power(n_uncl_10, 4.0 / 11.0, 0.0),
+            "icc_sensitivity_table": icc_sensitivity,
+        },
+        "reconciled_cohort_tiers": {
+            "tier_c1_unclustered_10pct_bound": tier_c1,
+            "tier_c2_cluster_adjusted_10pct_bound_primary": tier_c2,
+            "tier_c3_cluster_adjusted_80pct_mcnemar_p20": tier_c3,
         },
         "recommended_three_cohort_design": {
-            "total_crossings_target": ">= 5 disjoint rural/semi-urban level crossings (eliminating single-site val/test fragility)",
-            "total_sessions_target": ">= 11 sessions spanning Day-Clear, Day-Rain/Fog, Night-Clear, Night-Rain/Fog",
-            "total_events_target": ">= 220 balanced events across train, val, and test cohorts",
-            "cohorts": {
-                "train": {
-                    "crossings": ">= 2 crossings (e.g., crossing_A + crossing_E)",
-                    "sessions": ">= 4 sessions across day/night/rain",
-                    "train_passages": ">= 60",
-                    "no_train_controls": ">= 30 (>= 60 s road-horn/traffic clips)",
-                    "engine_passages": ">= 8",
-                },
-                "val": {
-                    "crossings": ">= 1-2 disjoint crossings (e.g., crossing_B; zero overlap with train/test)",
-                    "sessions": ">= 3 sessions across day/night/rain",
-                    "train_passages": ">= 24",
-                    "no_train_controls": ">= 15 (>= 60 s road-horn/traffic clips)",
-                    "engine_passages": ">= 4",
-                    "role": "Strictly for model selection, acoustic hysteresis (tau, k), and temperature calibration only.",
-                },
-                "test": {
-                    "crossings": ">= 2 unseen crossings (e.g., crossing_C + crossing_D; zero overlap with train/val)",
-                    "sessions": ">= 4 sessions balanced across 2x2 Day/Night x Clear/Monsoon strata",
-                    "train_passages": f">= {n_cluster_10pct} synced full-train passages (for <=10% cluster-adjusted 95% upper bound; >= {n_cluster_5pct} for <=5% bound)",
-                    "no_train_controls": f">= {n_unclustered_10pct} road-horn/traffic clips >=60 s each (>= {n_cluster_10pct} cluster-adjusted)",
-                    "engine_passages": ">= 8 uncensored entry-to-T4 clearance passages",
-                    "role": "Locked single-shot evaluation only after model/threshold freeze on val.",
-                },
-            },
+            "total_crossings_target": 5,
+            "total_sessions_target": 13,
+            "total_events_target": tier_c2["grand_total_events"],
+            "cohorts": tier_c2["cohorts"],
             "confounding_controls": [
                 "Identical camera & microphone hardware per crossing across train, no_train, and engine cohorts.",
                 "2x2 lighting x weather factorial balance with matched no_train controls inside every capture session.",
                 "NTP/GPS sync + audible/visual slate clapper establishing sub-100 ms sync on 100% of dual-camera clips.",
                 "Physical crossing-box occupancy ground truth (calibrated overhead camera or inductive/radar logger).",
+                "Minimum >=10 s pre-T0 approach buffer AND >=15 s post-T4 empty-track tail buffer per recording so 1.5 s dwell + 2.0 s reopening stroke can be verified on real footage.",
                 "Pre-collection distance/resolution calibration pilot (40-210 m) checking >=24-32 px train bbox height at 416 px.",
             ],
         },
@@ -572,38 +705,308 @@ def evaluate_option_a_stratified_corpus_diagnostics(
     }
 
 
+def _extract_back_stream_metrics(jsonl_path: Path, threshold: float = 0.35) -> dict[str, Any]:
+    """Extract deterministic non-raw clearance timing metrics from a cached *_back.jsonl."""
+    det_times: list[float] = []
+    rear_times: list[float] = []
+    body_or_rear_times: list[float] = []
+    max_ts = 0.0
+    for line in jsonl_path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        rec = json.loads(line)
+        ts = float(rec.get("timestamp_sec", rec.get("timestamp_s", 0.0)))
+        if ts > max_ts:
+            max_ts = ts
+        has_any = False
+        has_rear = False
+        for det in rec.get("detections", []):
+            if float(det.get("confidence", 0.0)) < threshold:
+                continue
+            lbl = str(det.get("label", "")).lower()
+            if lbl in {"front", "train_front", "side", "train_body", "carriage", "locomotive", "train_side", "rear", "train_rear", "last_carriage", "train_tail", "tail", "end_of_train"}:
+                has_any = True
+            if lbl in {"rear", "train_rear", "last_carriage", "train_tail", "tail", "end_of_train"}:
+                has_rear = True
+        if has_any:
+            det_times.append(ts)
+            body_or_rear_times.append(ts)
+        if has_rear:
+            rear_times.append(ts)
+
+    det_times.sort()
+    rear_times.sort()
+    gaps = [round(det_times[i + 1] - det_times[i], 3) for i in range(len(det_times) - 1)] if len(det_times) > 1 else []
+    m2_rear_pair_t: float | None = None
+    for i in range(len(rear_times) - 1):
+        if (rear_times[i + 1] - rear_times[i]) <= 1.0:
+            m2_rear_pair_t = round(rear_times[i + 1], 4)
+            break
+
+    # M3 candidate: dense transit (>=20 dets, max gap <= 3.5 s), >=2 rear frames, then post-last-det silence >= 1.5 s
+    m3_candidate_t: float | None = None
+    last_det_t = round(det_times[-1], 4) if det_times else None
+    max_gap = max(gaps) if gaps else None
+    if len(det_times) >= 20 and (max_gap is None or max_gap <= 3.5) and len(rear_times) >= 2 and last_det_t is not None:
+        m3_candidate_t = round(last_det_t + 1.5, 4)
+
+    return {
+        "det_count": len(det_times),
+        "rear_det_count": len(rear_times),
+        "rear_timestamps_s": [round(t, 4) for t in rear_times],
+        "max_internal_gap_s": max_gap,
+        "last_det_s": last_det_t,
+        "stream_end_s": round(max_ts, 4),
+        "m2_two_rear_pair_t_s": m2_rear_pair_t,
+        "m3_monotonic_post_rear_clear_t_s": m3_candidate_t,
+    }
+
+
+def evaluate_autonomous_reopening_and_clearance_methods(
+    repo_root: Path,
+    events: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Forensic investigation of 0/11 sync11 reopenings and comparison of M1-M5 clearance methods."""
+    traces_path = repo_root / "results/exploratory_v2/replays/real_sync11_v3_traces.json"
+    exp_d_path = repo_root / "results/exploratory_v2/experiments/exp_d_back_departure.json"
+    m3_manifest_path = repo_root / "data/manifests/m3_multimodal_replay_manifest.json"
+    if not (traces_path.is_file() and exp_d_path.is_file() and m3_manifest_path.is_file()):
+        return {"available": False, "reason": "missing_exploratory_trace_or_manifest_artifacts"}
+
+    traces = _read_json(traces_path)["traces"]
+    exp_d = _read_json(exp_d_path)
+    m3_manifest = {e["event_id"]: e for e in _read_json(m3_manifest_path)["events"]}
+
+    state_counts = Counter(v["final_crossing_state"] for v in traces.values())
+    eof_failsafe_events = sorted(
+        ek for ek, v in traces.items() if v["final_crossing_state"] == "FAULT_FAIL_SAFE"
+    )
+    l1_closed_events = sorted(
+        ek
+        for ek, v in traces.items()
+        if v["final_crossing_state"] in ("GATE_CLOSING", "CROSSING_OCCUPIED", "TRAIN_DEPARTING")
+    )
+    idle_events = sorted(ek for ek, v in traces.items() if v["final_crossing_state"] == "IDLE")
+
+    per_event_back: list[dict[str, Any]] = []
+    back27_by_key = {row["event_id"]: row for row in exp_d["back27_local_clock_summary"]}
+    post_t4_tails: list[float] = []
+    insufficient_post_t4_for_3_5s_reopen = 0
+    for ek, brow in sorted(back27_by_key.items()):
+        t4_b = brow.get("T4_back_s")
+        if t4_b is None:
+            continue
+        back_cache_rel = m3_manifest[ek]["back_cache_path"]
+        stats = _extract_back_stream_metrics(repo_root / back_cache_rel)
+        tail_after_t4 = round(float(brow["back_dur_s"]) - float(t4_b), 3)
+        post_t4_tails.append(tail_after_t4)
+        ref_end = max(float(t4_b), stats["last_det_s"] or 0.0)
+        rem_after_ref = float(brow["back_dur_s"]) - ref_end
+        if rem_after_ref < 3.5:
+            insufficient_post_t4_for_3_5s_reopen += 1
+        m2_premature = bool(stats["m2_two_rear_pair_t_s"] is not None and stats["m2_two_rear_pair_t_s"] < float(t4_b))
+        m3_premature = bool(
+            stats["m3_monotonic_post_rear_clear_t_s"] is not None
+            and stats["m3_monotonic_post_rear_clear_t_s"] < float(t4_b)
+        )
+        per_event_back.append(
+            {
+                "event_key": ek,
+                "is_sync11": bool(brow["is_sync11"]),
+                "T4_back_s": t4_b,
+                "back_dur_s": brow["back_dur_s"],
+                "post_t4_tail_s": tail_after_t4,
+                "det_count": stats["det_count"],
+                "rear_det_count": stats["rear_det_count"],
+                "max_internal_gap_s": stats["max_internal_gap_s"],
+                "last_det_s": stats["last_det_s"],
+                "m2_two_rear_pair_t_s": stats["m2_two_rear_pair_t_s"],
+                "m2_premature_vs_T4": m2_premature,
+                "m3_monotonic_post_rear_clear_t_s": stats["m3_monotonic_post_rear_clear_t_s"],
+                "m3_premature_vs_T4": m3_premature,
+            }
+        )
+
+    sync11_back = [r for r in per_event_back if r["is_sync11"]]
+    sync11_gaps = [r["max_internal_gap_s"] for r in sync11_back if r["max_internal_gap_s"] is not None]
+    post_t4_sorted = sorted(post_t4_tails)
+    sync11_prem = exp_d["sync11_premature_opening_counts"]
+
+    # Deterministic closed-loop simulation comparison across M1-M5 on adversarial/nominal stress cases
+    from railway_detection.fusion.collector import MultimodalFrame
+    from railway_detection.fusion.decision_engine_v3_four_layer import MultimodalDecisionEngineV3FourLayer
+    from railway_detection.fusion.evidence import Detection, EvidenceRecord, EvidenceStatus, Modality, OccupancyEvidence, OccupancyState
+    from railway_detection.fusion.rules_v3_four_layer import DeparturePolicyMode
+
+    def _run_m5_simulation(*, with_occ_clear: bool, post_t4_s: float) -> dict[str, Any]:
+        eng = MultimodalDecisionEngineV3FourLayer(
+            departure_mode=DeparturePolicyMode.CONSERVATIVE_POSITIVE,
+            require_occupancy_for_reopen=True,
+        )
+        t_ticks = [round(i * 0.2, 1) for i in range(int((14.0 + post_t4_s) / 0.2) + 1)]
+        final_rec = None
+        reopened = False
+        premature = False
+        t4_true = 14.0
+        for t in t_ticks:
+            vrecs = []
+            c1_dets = (Detection("front", 0.9, (10, 10, 50, 50)),) if 0.0 <= t <= 3.0 else ()
+            vrecs.append(EvidenceRecord(t, "camera_1", Modality.VISION, True, c1_dets))
+            if 5.0 <= t <= 12.6:
+                c2_dets = (Detection("side", 0.85, (20, 20, 120, 120)),)
+            elif 12.8 <= t <= t4_true:
+                c2_dets = (Detection("rear", 0.88, (40, 20, 100, 100)),)
+            else:
+                c2_dets = ()
+            vrecs.append(EvidenceRecord(t, "camera_2", Modality.VISION, True, c2_dets))
+            orecs = ()
+            if with_occ_clear:
+                occ_state = OccupancyState.OCCUPIED if t <= t4_true else OccupancyState.CLEAR
+                orecs = (OccupancyEvidence(t, "occ_sensor", occ_state, 0.99, True, EvidenceStatus.POSITIVE),)
+            frame = MultimodalFrame(
+                master_timestamp_s=t,
+                vision_records=tuple(vrecs),
+                audio_records=(EvidenceRecord(t, "audio_1", Modality.AUDIO, True, ()),),
+                occupancy_records=orecs,
+                source_availability={"camera_1": True, "camera_2": True, "audio_1": True},
+            )
+            rec = eng.evaluate_frame(frame, "m5_sim")
+            final_rec = rec
+            if rec.resulting_gate_state in ("OPENING", "OPEN") and t < t4_true and rec.previous_gate_state in ("CLOSING", "CLOSED"):
+                premature = True
+            if rec.resulting_state == "IDLE" and t > t4_true:
+                reopened = True
+        return {
+            "final_state": final_rec.resulting_state if final_rec else "NONE",
+            "final_gate_state": final_rec.resulting_gate_state if final_rec else "NONE",
+            "reopened_cleanly": reopened,
+            "premature_opening": premature,
+        }
+
+    m5_nominal = _run_m5_simulation(with_occ_clear=True, post_t4_s=8.0)
+    m5_no_occ = _run_m5_simulation(with_occ_clear=False, post_t4_s=8.0)
+    m5_short_tail = _run_m5_simulation(with_occ_clear=True, post_t4_s=1.4)
+
+    return {
+        "schema_version": "autonomous-reopening-clearance-audit/1.0",
+        "sync11_v3_outcome_breakdown": {
+            "total_sync11": len(traces),
+            "l1_approach_closures": len(l1_closed_events),
+            "l1_closed_event_ids": l1_closed_events,
+            "eof_stream_mismatch_failsafe_clamps": len(eof_failsafe_events),
+            "eof_failsafe_event_ids": eof_failsafe_events,
+            "never_closed_idle": len(idle_events),
+            "idle_event_ids": idle_events,
+            "completed_automatic_reopenings": 0,
+            "state_histogram": dict(sorted(state_counts.items())),
+        },
+        "root_causes_of_zero_real_reopenings": {
+            "1_zero_rear_labels_in_sync11_and_long_dropouts": {
+                "sync11_events_with_rear_dets": 0,
+                "sync11_max_internal_back_dropout_gap_s": max(sync11_gaps) if sync11_gaps else None,
+                "reason": "Pre-db40305 unrotated -90 deg camera_2 streams produced 0/11 'rear' boxes and up to 43.2 s internal blind gaps (event_017), triggering RULE_L4_BACK_SPARSE_DROPOUT_HOLD.",
+            },
+            "2_mid_passage_false_rear_boxes_on_unsynced_clips": {
+                "m2_naive_rear_pair_premature_events": [r["event_key"] for r in per_event_back if r["m2_premature_vs_T4"]],
+                "example_event_008": "2 consecutive rear dets at 21.6-22.2 s occur 39.0 s before true T4_back=61.2 s; rear alone cannot safely authorize reopening without sustained side/body cessation.",
+                "example_event_004": "Intermittent rear dets at 8.0, 19.0, 44.0 s occur up to 68.8 s before T4_back=76.8 s.",
+            },
+            "3_post_t4_clip_truncation_prevents_3_5s_reopen_cycle": {
+                "t4_annotated_events": len(post_t4_tails),
+                "post_t4_tail_min_s": post_t4_sorted[0] if post_t4_sorted else None,
+                "post_t4_tail_median_s": round(post_t4_sorted[len(post_t4_sorted) // 2], 3) if post_t4_sorted else None,
+                "post_t4_tail_max_s": post_t4_sorted[-1] if post_t4_sorted else None,
+                "clips_shorter_than_3_5s_required_dwell_plus_open": insufficient_post_t4_for_3_5s_reopen,
+                "required_dwell_plus_open_s": 3.5,
+            },
+            "4_missing_physical_occupancy_sensor": {
+                "physical_occupancy_sensors_present": 0,
+                "impact": "Even with upright dense Session 2 back detections (events 021-023: 208-230 dets, 4-14 rear boxes near T4), missing physical occupancy sensors force V3 to remain CLOSED in REAR_CONFIRMED/TRAIN_DEPARTING (fail-closed hold != autonomous completion).",
+            },
+        },
+        "method_comparison_m1_to_m5": [
+            {
+                "method_id": "M1_disappearance_timer",
+                "description": "Legacy V2 or V3_GUARDED_DISAPPEARANCE opening after bounded negative back frames without positive tail.",
+                "real_sync11_premature_openings": f"V2={sync11_prem['V2_RULE_3B_3C']}/11, V3_GUARDED={sync11_prem['V3_GUARDED_DISAPPEARANCE']}/11",
+                "real_t4_corpus_premature": 4,
+                "handles_43s_optical_dropout": False,
+                "verdict": "UNSAFE_REJECTED",
+            },
+            {
+                "method_id": "M2_naive_rear_label_only",
+                "description": ">=2 consecutive YOLO rear boxes on camera_2 without side/body cessation or occupancy verification.",
+                "real_sync11_premature_openings": "0/11 (only because rear=0 on sync11)",
+                "real_t4_corpus_premature": sum(1 for r in per_event_back if r["m2_premature_vs_T4"]),
+                "premature_events": [r["event_key"] for r in per_event_back if r["m2_premature_vs_T4"]],
+                "handles_decoupled_dark_obstacle": False,
+                "verdict": "UNSAFE_ALONE_REJECTED",
+            },
+            {
+                "method_id": "M3_monotonic_transit_and_post_rear_silence",
+                "description": "Requires dense transit tracking (>=20 dets, max gap <=3.5 s) + >=2 rear/last_carriage boxes + cessation of side/front detections + >=1.5 s post-last-detection silence.",
+                "real_t4_corpus_premature": sum(1 for r in per_event_back if r["m3_premature_vs_T4"]),
+                "qualified_clean_departure_events": [r["event_key"] for r in per_event_back if r["m3_monotonic_post_rear_clear_t_s"] is not None],
+                "handles_event_008_false_rear": True,
+                "handles_decoupled_dark_obstacle": False,
+                "verdict": "STRONGEST_VISION_PREREQUISITE_LAYER",
+            },
+            {
+                "method_id": "M4_multicamera_spatiotemporal_conservation",
+                "description": "Requires ordered L1 front -> L2 moving side -> L4 M3 exit -> quiet L3 audio without independent occupancy sensor.",
+                "real_sync11_premature_openings": "0/11",
+                "real_sync11_completed_reopenings": "0/11",
+                "handles_unlit_or_occluded_island_obstacle": False,
+                "verdict": "NECESSARY_FUSION_INSUFFICIENT_FOR_AUTONOMOUS_REOPEN",
+            },
+            {
+                "method_id": "M5_v3_plus_m3_and_independent_occupancy_sensor",
+                "description": "V3_CONSERVATIVE_POSITIVE + M3 monotonic transit/post-rear silence + independent physical island OccupancyState.CLEAR + >=15 s post-T4 recording window.",
+                "real_sync11_premature_openings": "0/11 (holds fail-closed safely)",
+                "synthetic_nominal_with_occ_clear": m5_nominal,
+                "synthetic_without_occ_sensor": m5_no_occ,
+                "synthetic_truncated_1_4s_post_t4": m5_short_tail,
+                "verdict": "REQUIRED_TARGET_ARCHITECTURE",
+            },
+        ],
+        "per_event_back_clearance_audit": per_event_back,
+    }
+
+
 def generate_targeted_collection_plan() -> dict[str, Any]:
     """Targeted additional-data collection plan required for genuine OOD Phase 12 splits."""
+    power = calculate_option_c_statistical_power_and_cohort_design()
+    primary = power["reconciled_cohort_tiers"]["tier_c2_cluster_adjusted_10pct_bound_primary"]
     return {
         "why_current_27_cannot_form_leakage_safe_3way_split": [
             "crossing_id: all 27/27 events share crossing_A (pigeonhole minimum = 3 disjoint crossings for train/val/test).",
             "true_capture_session: only 2 distinct physical capture dates exist (2026-09-14: 20 train events; 2026-10-04: 3 night train + 3 no_train + 1 engine).",
             "hardware_and_class_confound: 100% of negative (no_train) and engine controls come exclusively from Session 2 (night/dusk with iPad 10th-gen back camera), whereas 20/23 train events come from daytime Session 1 (iPhone 15 Pro Max back camera).",
-            "left_and_right_censoring: retrospective approach recordings begin with train already visible (0/23 un-censored distant T0/T1), engine_events/event_001 is right-censored at t=9.80s, and no physical crossing occupancy sensors exist (0/27).",
+            "left_and_right_censoring: retrospective approach recordings begin with train already visible (0/23 un-censored distant T0/T1), engine_events/event_001 is right-censored at t=9.80s, 21/22 T4-annotated clips truncate <3.5s after passage/last-det, and 0/27 have physical occupancy sensors.",
         ],
         "minimum_new_collection_requirements": {
             "independent_crossings": {
-                "minimum_new_crossings": 2,
-                "target_total_crossings": ">= 3 disjoint crossings minimum structural floor; >= 5 crossings recommended for outlier resilience and statistical power",
-                "rationale": "Eliminates background geometry, barrier appearance, acoustic reverberation, and crossing-specific false-alarm leakage.",
+                "minimum_new_crossings": 4,
+                "target_total_crossings": f">= {primary['total_crossings']} disjoint crossings ({primary['cohorts']['train']['crossings']} train, {primary['cohorts']['val']['crossings']} val, {primary['cohorts']['test']['crossings']} test; vs invalid 3-crossing floor)",
+                "rationale": "Eliminates background geometry, barrier appearance, acoustic reverberation, and crossing-specific false-alarm leakage while preventing single-crossing test fragility.",
             },
             "minimum_balanced_sessions": {
-                "minimum_sessions_per_crossing": 2,
-                "target_total_sessions": ">= 6 capture sessions structural floor; >= 11 balanced sessions across train/val/test recommended to reach >= 42 test trains",
-                "within_each_session": {
-                    "full_train_passages": ">= 6 passages (passenger + freight where available)",
-                    "no_train_traffic_controls": ">= 3 daytime + >= 3 nighttime road-traffic horn clips per crossing (>= 60 s each)",
-                    "engine_only_passages": ">= 1 full entry-to-exit passage covering complete rear clearance T4",
+                "minimum_sessions_per_crossing": "2-3 balanced sessions per crossing spanning 2x2 Day/Night x Clear/Adverse-Weather strata",
+                "target_total_sessions": primary["total_sessions"],
+                "target_grand_total_events_primary": primary["grand_total_events"],
+                "cohort_event_counts": {
+                    role: primary["cohorts"][role]["cohort_total_events"]
+                    for role in ("train", "val", "test")
                 },
             },
             "hardware_and_synchronization_protocol": [
                 "Use identical camera hardware across train/no_train/engine cohorts within each session (no mid-cohort iPhone-to-iPad swap).",
                 "Lock orientation metadata upright or maintain strict orthogonal rotation tags; verify NTP/GPS clock sync plus an audible/visual slate clapper at session start & end to establish sub-100ms front-back sync across ALL events (eliminating the 15 non-CALIBRATION_SUPPORTED events).",
-                "Treat 84–211 m upstream distance (7.6 s closure budget at 40–100 km/h) as an unvalidated kinematic engineering estimate until verified via site-specific lens focal length, small-object pixel height (>= 24–32 px at 416 px), curvature, and >= 10 s pre-entry buffer.",
+                "Treat 84–211 m upstream distance (7.6 s closure budget at 40–100 km/h) as an unvalidated kinematic engineering estimate until verified via site-specific lens focal length, small-object pixel height (>= 24–32 px at 416 px), curvature, >= 10 s pre-T0 buffer, AND >= 15 s post-T4 tail buffer.",
                 "Record independent occupancy ground truth (calibrated overhead crossing camera or inductive/radar occupancy logger) plus dedicated lateral crossing-box FOV.",
             ],
         },
-        "statistical_power_and_sample_size_recalculation": calculate_option_c_statistical_power_and_cohort_design(),
+        "statistical_power_and_sample_size_recalculation": power,
         "interim_scientifically_defensible_path": {
             "recommended_now": "Honor active researcher decision SPLIT-DECISION-OPTION-A-2026-11-09 (27-event full-cohort descriptive benchmark via Stage-2.1 review + descriptive execution authorization), reporting exact Wilson/Clopper-Pearson 95% CIs and prohibiting cross-crossing generalization claims.",
             "do_not": "Do NOT relabel any partition of these 27 events as leakage_safe=true just to unlock Phase 12 held-out evaluation.",
@@ -635,9 +1038,9 @@ def run_split_audit(repo_root: Path) -> dict[str, Any]:
     crossings = sorted({e["crossing_id"] for e in events})
     true_sessions = sorted({e["true_capture_session"] for e in events})
     collection_plan = generate_targeted_collection_plan()
-    n_cluster_10pct = collection_plan["statistical_power_and_sample_size_recalculation"][
-        "exact_binomial_and_cluster_targets"
-    ]["cluster_adjusted_test_trains_for_10pct_bound"]
+    primary = collection_plan["statistical_power_and_sample_size_recalculation"][
+        "reconciled_cohort_tiers"
+    ]["tier_c2_cluster_adjusted_10pct_bound_primary"]
     return {
         "schema_version": SCHEMA_VERSION,
         "raw_media_accessed": False,
@@ -652,7 +1055,13 @@ def run_split_audit(repo_root: Path) -> dict[str, Any]:
         "can_27_events_produce_leakage_safe_3way_split": False,
         "strategy_comparison": {
             "recommended_for_existing_27_events": "Option A (Descriptive single-crossing research via Stage-2.1 + AUTH-DESCRIPTIVE-EVAL-EXEC)",
-            "recommended_for_generalization_and_model_retraining": f"Option C (Multi-crossing collection >=5 crossings / >=11 sessions / >={n_cluster_10pct} cluster-adjusted test synced train passages before Phase 12)",
+            "recommended_for_generalization_and_model_retraining": (
+                f"Option C ({primary['grand_total_events']} total events = "
+                f"{primary['cohorts']['train']['cohort_total_events']} train + "
+                f"{primary['cohorts']['val']['cohort_total_events']} val + "
+                f"{primary['cohorts']['test']['cohort_total_events']} test across "
+                f"{primary['total_crossings']} crossings and {primary['total_sessions']} sessions)"
+            ),
             "pi_approval_required_before_scope_change": True,
         },
         "root_causes": [
@@ -664,6 +1073,9 @@ def run_split_audit(repo_root: Path) -> dict[str, Any]:
         "proposal_metadata_inconsistencies_count": len(proposal_bugs),
         "proposal_metadata_inconsistencies": proposal_bugs,
         "option_a_stratified_diagnostics": evaluate_option_a_stratified_corpus_diagnostics(repo_root, events),
+        "autonomous_reopening_and_clearance_investigation": evaluate_autonomous_reopening_and_clearance_methods(
+            repo_root, events
+        ),
         "candidate_splits_evaluated": {
             "prior_hash_candidate_16_6_5": prior_eval,
             "chrono_temporal_block_15_5_7": chrono_eval,

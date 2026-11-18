@@ -12,6 +12,7 @@ import pytest
 from railway_detection.evaluation.official_handoff import (
     OfficialHandoffError,
     run_post_approval_official_evaluation,
+    run_post_approval_option_a_descriptive_evaluation,
     validate_approval_package_bundle,
 )
 from railway_detection.safety import media_guard
@@ -43,6 +44,10 @@ def test_validate_approval_package_bundle_succeeds_across_all_12_docs() -> None:
 def test_post_approval_execution_refuses_when_auth_media_missing(tmp_path: Path) -> None:
     with pytest.raises(OfficialHandoffError, match="AUTH_MEDIA_ACCESS_NOT_GRANTED"):
         run_post_approval_official_evaluation(REPO_ROOT, output_dir=tmp_path / "official_out")
+    with pytest.raises(OfficialHandoffError, match="STAGE21_PROMOTION_RECEIPT_MISSING"):
+        run_post_approval_option_a_descriptive_evaluation(
+            REPO_ROOT, output_dir=tmp_path / "option_a_out"
+        )
 
 
 def test_post_approval_execution_refuses_in_temp_repo_without_stage21_and_eval_auth(
@@ -116,3 +121,18 @@ def test_handoff_cli_preflight_passes_and_execute_refuses(tmp_path: Path, capsys
     assert rc_exec == 3
     assert out_exec["status"] == "BLOCKED"
     assert out_exec["code"] == "AUTH_MEDIA_ACCESS_NOT_GRANTED"
+
+    rc_opt_a = handoff_cli_main(
+        [
+            "--mode",
+            "execute-option-a-descriptive",
+            "--root",
+            str(REPO_ROOT),
+            "--output-dir",
+            str(tmp_path / "option_a_out"),
+        ]
+    )
+    out_opt_a = json.loads(capsys.readouterr().out)
+    assert rc_opt_a == 3
+    assert out_opt_a["status"] == "BLOCKED"
+    assert out_opt_a["code"] == "STAGE21_PROMOTION_RECEIPT_MISSING"

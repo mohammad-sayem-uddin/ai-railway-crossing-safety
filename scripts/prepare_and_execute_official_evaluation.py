@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from railway_detection.evaluation.official_handoff import (  # noqa: E402
     OfficialHandoffError,
     run_post_approval_official_evaluation,
+    run_post_approval_option_a_descriptive_evaluation,
     validate_approval_package_bundle,
 )
 
@@ -31,7 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument(
         "--mode",
-        choices=("preflight-check", "execute-after-approval"),
+        choices=("preflight-check", "execute-option-a-descriptive", "execute-after-approval"),
         default="preflight-check",
     )
     parser.add_argument("--root", type=Path, default=ROOT)
@@ -42,6 +43,12 @@ def main(argv: list[str] | None = None) -> int:
         type=Path,
         default=Path("data/manifests/phase12_evaluation_inputs.json"),
     )
+    parser.add_argument(
+        "--descriptive-manifest",
+        type=Path,
+        default=Path("docs/generated/professor_evidence/mission43/B2_EVALUATION_INPUT_MANIFEST.json"),
+    )
+    parser.add_argument("--condition", type=str, default="B2")
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args(argv)
 
@@ -70,12 +77,20 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     try:
-        receipt = run_post_approval_official_evaluation(
-            root,
-            output_dir=args.output_dir,
-            input_manifest_path=args.input_manifest,
-            seed=args.seed,
-        )
+        if args.mode == "execute-option-a-descriptive":
+            receipt = run_post_approval_option_a_descriptive_evaluation(
+                root,
+                output_dir=args.output_dir,
+                manifest_path=args.descriptive_manifest,
+                condition=args.condition,
+            )
+        else:
+            receipt = run_post_approval_official_evaluation(
+                root,
+                output_dir=args.output_dir,
+                input_manifest_path=args.input_manifest,
+                seed=args.seed,
+            )
     except OfficialHandoffError as exc:
         print(
             json.dumps(
