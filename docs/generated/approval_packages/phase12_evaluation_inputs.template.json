@@ -1,9 +1,6 @@
 {
   "schema_version": "phase12-evaluation-inputs/1",
   "evidence_classification": "real",
-  "manifest_id": "__HUMAN_APPROVAL_REQUIRED___GENERATED_BY_manifest_builder.build_evaluation_input_manifest",
-  "generated_at_utc": "__HUMAN_APPROVAL_REQUIRED___UTC_TIMESTAMP",
-  "generated_by": "railway_detection.evaluation.manifest_builder.build_evaluation_input_manifest",
   "partitions": {
     "train": [
       "<approved_train_event_keys>"
@@ -20,14 +17,18 @@
       "event_id": "<cohort/event_id>",
       "cohort": "<train_events|no_train_events|engine_events>",
       "split_role": "<train|val|test>",
-      "source_path": "data/manifests/<post_auth_phase12_replay_evidence_file>.json",
+      "source_path": "<relative_to_data/manifests_e.g._phase12_replay_evidence/train_events_event_001.json>",
       "source_sha256": "<live_sha256_of_phase12-replay-evidence/1_source>"
     }
   ],
   "camera_scope_by_event": {
-    "<cohort/event_id>": "<dual_camera|single_camera|single_camera_independent>"
+    "<cohort/event_id>": "<dual_camera|independent_camera|single_camera>"
   },
   "accepted_sync_events": [
-    "<11 CALIBRATION_SUPPORTED event keys from phase12_r04_scope_decision.json>"
-  ]
+    "<11 accepted events from phase12_r04_scope_decision.json>"
+  ],
+  "derived_from": {
+    "event_split_decision_sha256": "__HUMAN_APPROVAL_REQUIRED___SHA256_OF_data/splits/phase12_event_split_decision.json",
+    "r04_scope_decision_sha256": "__HUMAN_APPROVAL_REQUIRED___SHA256_OF_data/manifests/phase12_r04_scope_decision.json"
+  }
 }

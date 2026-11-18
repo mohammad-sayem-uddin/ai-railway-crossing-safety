@@ -142,21 +142,25 @@ class _Guard:
         )
         self._log.flush()
 
+    @staticmethod
+    def _safe_is_dir(path: Any) -> bool:
+        try:
+            return Path(os.path.realpath(os.fspath(path))).is_dir()
+        except (OSError, ValueError, TypeError):
+            return False
+
     # -- checks ----------------------------------------------------------------------------
     def check_read(self, path: Any, how: str) -> None:
         category, rel = categorize(path)
         if category is None or rel == ".":
             return
         in_test = bool(os.environ.get("PYTEST_CURRENT_TEST"))
+        is_dir = self._safe_is_dir(path)
         if category == CATEGORY_METADATA:
-            if not Path(os.path.realpath(os.fspath(path))).is_dir():
+            if not is_dir:
                 self.record(category, rel, how, blocked=False)
             return
-        if (
-            how == "os.open"
-            and Path(os.path.realpath(os.fspath(path))).is_dir()
-            and category != CATEGORY_RAW
-        ):
+        if how == "os.open" and is_dir and category != CATEGORY_RAW:
             return  # bare directory descriptor (pytest bookkeeping); no listing, no bytes
         if rel in SESSION_ALLOWED_READS and (not in_test or _called_from_conftest()):
             self.record(category, rel, how + ":conftest-registry-guard", blocked=False)

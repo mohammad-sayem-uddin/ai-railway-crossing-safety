@@ -65,7 +65,7 @@ Maintained in `docs/generated/AGENT_RESEARCH_DECISION_LOG.md` across all autonom
 ---
 
 ## Decision D-05: Synthetic Adverse-Weather / Visibility & Crossing-Fault Stress Matrix (`Exp Q`)
-1. **Problem Statement:** All `23` real train proposals come from one single `day/overcast` morning session at `crossing_A`, leaving rain/fog/night confidence attenuation combined with burst dropouts, stalled crossing obstacles, and multi-train interruption untested quantitatively across parameter sweeps.
+1. **Problem Statement:** All `27` real proposals originate from one single site (`crossing_A`) across only `2` recording sessions (`20` daytime Session 1 trains on `2026-09-14` + `3` dusk/night `night_video_lowlight` Session 2 trains on `2026-10-04`, all `23` mis-tagged `session_20260914_morning` / `lighting: "day"` in AI proposals), leaving monsoon rain/fog attenuation combined with burst dropouts, stalled crossing obstacles, and multi-train interruption untested quantitatively across parameter sweeps.
 2. **Existing Design / Data:** `Exp L` (`18` point scenarios) checked binary pass/fail safety invariants under fixed faults, but did not sweep continuous degradation (`alpha_conf` x `p_drop`) or measure closure failure vs fail-safe rate.
 3. **Why Existing Was Insufficient:** Safety vs availability trade-offs under tropical monsoon rain/fog (`Bangladesh` operating target) must be quantified transparently.
 4. **Alternatives Evaluated:** Controlled closed-loop synthetic sweep over attenuation factor `alpha` (representing rain/fog/night confidence decay), burst packet drop probability `p_drop`, stalled crossing obstacle dwell, and multi-train reopening interruption through `MultimodalDecisionEngineV3FourLayer` + `PhysicalGateModel`.

@@ -663,3 +663,18 @@ def test_runner_dry_run_runs_nothing(tmp_path: Path, monkeypatch):
         ]
     )
     assert code == 0 and json.loads(report.read_text())["status"] == "DRY_RUN"
+
+
+def test_guard_handles_long_inline_python_subprocess_args(tmp_path: Path):
+    """Long -c Python scripts mentioning path slashes must not crash check_read with ENAMETOOLONG."""
+    proc, _events = _run_probe(
+        tmp_path,
+        """
+        import sys
+        def test_long_inline_script():
+            program = "x = 'synthetic/path/never_opened'\\n" + ("# padding\\n" * 120)
+            res = subprocess.run([sys.executable, "-c", program], capture_output=True, text=True)
+            assert res.returncode == 0
+        """,
+    )
+    assert proc.returncode == 0, proc.stdout + proc.stderr

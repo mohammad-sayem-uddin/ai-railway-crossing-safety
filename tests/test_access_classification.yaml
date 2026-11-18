@@ -24,11 +24,11 @@ limitations:
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
 summary:
-  total_test_files: 179
+  total_test_files: 181
   synthetic_only: 116
   metadata_only: 29
-  model_checkpoint_access: 15
-  processed_data_access: 5
+  model_checkpoint_access: 16
+  processed_data_access: 6
   raw_media_access: 5
   unknown: 9
   safe_for_synthetic_runner: 145
@@ -380,23 +380,52 @@ test_files:
       skipped: 0
       passed: 9
   tests/synthetic_mission22/test_regression_policy.py:
-    access_dirs: []
-    access_paths: []
+    access_dirs:
+    - "\nimport os, shutil, socket, subprocess, sys\nfrom pathlib import Path\nfrom mission22_policy import\
+      \ PolicyViolation\nroot, work = map(Path, sys.argv[1:])\ndef refused(action):\n    try:\n      \
+      \  action()\n    except PolicyViolation:\n        return\n    raise AssertionError(\"access policy\
+      \ did not refuse action\")\nrefused(lambda: (root/'data/raw/never_opened').read_bytes())\nrefused(lambda:\
+      \ (root/'must_not_be_written.txt').write_text('bad'))\nrefused(lambda: socket.socket().connect(('192.0.2.1',\
+      \ 80)))\nrefused(lambda: subprocess.run([sys.executable, '-c', 'pass'],\n    env=dict(os.environ,\
+      \ PYTHONPATH='')))\nnamespace = {'__name__':'torch.optim.constructed_tripwire'}\nexec('def step():\
+      \ return 1', namespace)\nrefused(namespace['step'])\nlocal = socket.socket(); local.bind(('127.0.0.1',\
+      \ 0)); local.close()\nfolder = work/'nested'; folder.mkdir(); (folder"
+    access_paths:
+    - "\nimport os, shutil, socket, subprocess, sys\nfrom pathlib import Path\nfrom mission22_policy import\
+      \ PolicyViolation\nroot, work = map(Path, sys.argv[1:])\ndef refused(action):\n    try:\n      \
+      \  action()\n    except PolicyViolation:\n        return\n    raise AssertionError(\"access policy\
+      \ did not refuse action\")\nrefused(lambda: (root/'data/raw/never_opened').read_bytes())\nrefused(lambda:\
+      \ (root/'must_not_be_written.txt').write_text('bad'))\nrefused(lambda: socket.socket().connect(('192.0.2.1',\
+      \ 80)))\nrefused(lambda: subprocess.run([sys.executable, '-c', 'pass'],\n    env=dict(os.environ,\
+      \ PYTHONPATH='')))\nnamespace = {'__name__':'torch.optim.constructed_tripwire'}\nexec('def step():\
+      \ return 1', namespace)\nrefused(namespace['step'])\nlocal = socket.socket(); local.bind(('127.0.0.1',\
+      \ 0)); local.close()\nfolder = work/'nested'; folder.mkdir(); (folder/'fixture.txt').write_text('constructed')\n\
+      shutil.rmtree(folder)\nassert not folder.exists()\nprint('POLICY_BOUNDARIES_AND_FD_CLEANUP_VERIFIED')\n"
     blocked_attempts: {}
     category: UNKNOWN
     child_processes_guarded: false
     evidence: dynamic_run_under_read_blocking_guard
-    reason: '1 test(s) executed; no repository file outside source/test code was read; all data is created
-      in temporary directories. NOTE: the file spawns a child process the guard cannot observe.'
+    reason: "Reads 1 repository metadata file(s) (e.g. \nimport os, shutil, socket, subprocess, sys\n\
+      from pathlib import Path\nfrom mission22_policy import PolicyViolation\nroot, work = map(Path, sys.argv[1:])\n\
+      def refused(action):\n    try:\n        action()\n    except PolicyViolation:\n        return\n\
+      \    raise AssertionError(\"access policy did not refuse action\")\nrefused(lambda: (root/'data/raw/never_opened').read_bytes())\n\
+      refused(lambda: (root/'must_not_be_written.txt').write_text('bad'))\nrefused(lambda: socket.socket().connect(('192.0.2.1',\
+      \ 80)))\nrefused(lambda: subprocess.run([sys.executable, '-c', 'pass'],\n    env=dict(os.environ,\
+      \ PYTHONPATH='')))\nnamespace = {'__name__':'torch.optim.constructed_tripwire'}\nexec('def step():\
+      \ return 1', namespace)\nrefused(namespace['step'])\nlocal = socket.socket(); local.bind(('127.0.0.1',\
+      \ 0)); local.close()\nfolder = work/'nested'; folder.mkdir(); (folder/'fixture.txt').write_text('constructed')\n\
+      shutil.rmtree(folder)\nassert not folder.exists()\nprint('POLICY_BOUNDARIES_AND_FD_CLEANUP_VERIFIED')\n\
+      ); no media, weights, processed data or results were requested. NOTE: the file spawns a child process\
+      \ the guard cannot observe."
     safe_for_synthetic_runner: false
     sha256: 7606cfa12aa4d52a8f37a56c7548352d92ea50039ead8e91c29a91e29e393711
     spawns_child_process: true
     static_hints: []
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 0
+      passed: 1
   tests/synthetic_mission22/test_review_service.py:
     access_dirs: []
     access_paths: []
@@ -1614,7 +1643,7 @@ test_files:
       loads railway_detection.safety.access_guard_plugin (_run_probe, the runner tests via run_synthetic_tests.main,
       the log-location test).'
     safe_for_synthetic_runner: true
-    sha256: 43656ed61ca83a981a81b06aacff30c0ac65ecc95e151a6462c19688f551c6e9
+    sha256: cce2729a6998a50fa825d19957ef4f7bee2458422249acecd8733e0cebe18b50
     spawns_child_process: true
     static_hints:
     - "\n        def test_it():\n            open(REPO / \"data/raw/layer_b/v2/train_events/event_001/camera_front.mov\"\
@@ -1647,10 +1676,10 @@ test_files:
     - results/a.json
     - results/experiment_registry.jsonl
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 57
+      passed: 59
   tests/unit/test_audio_entrypoint_gate.py:
     access_dirs: []
     access_paths: []
@@ -1674,12 +1703,11 @@ test_files:
   tests/unit/test_audio_leakage_and_preprocessing.py:
     access_dirs:
     - data/manifests
-    - data/processed/audio/train_horn/features/negative
     - data/processed/audio/train_horn/features/positive
     - data/raw/audio/train_horn/positive
     access_paths:
-    - data/processed/audio/train_horn/features/negative/neg_156_w005.npy
     - data/processed/audio/train_horn/features/positive/pos_001_w000.npy
+    - data/processed/audio/train_horn/features/positive/pos_082_w010.npy
     - data/raw/audio/train_horn/positive/1.mp3
     - data/manifests/audio_training_dataset.json
     - data/manifests/train_horn_audio_manifest.json
@@ -2057,6 +2085,31 @@ test_files:
       errors: 0
       skipped: 0
       passed: 8
+  tests/unit/test_event_split_audit.py:
+    access_dirs:
+    - data/manifests
+    - results/r04_sync_estimation
+    access_paths:
+    - results/r04_sync_estimation/quicktime_creationdate_deltas.json
+    - data/manifests/layer_b_v2_annotation_inventory.json
+    - data/manifests/real_world_v2_video_manifest.json
+    blocked_attempts:
+      PROCESSED_DATA: 1
+    category: PROCESSED_DATA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 1 blocked read(s) of PROCESSED_DATA locations; e.g. results/r04_sync_estimation/quicktime_creationdate_deltas.json
+      via io.open in test_live_repository_split_audit_matches_checked_in_report (call).
+    safe_for_synthetic_runner: false
+    sha256: 41bb40833fd58c40dce4bff4ff7fbacb5ce740a43d0e3603277f0974cafa060d
+    spawns_child_process: false
+    static_hints:
+    - results/dataset_audit/layer_b_split_audit_and_collection_plan.json
+    tests:
+      failed: 1
+      errors: 0
+      skipped: 0
+      passed: 2
   tests/unit/test_exp_r_and_degraded_wakeup.py:
     access_dirs: []
     access_paths: []
@@ -2617,10 +2670,10 @@ test_files:
       '
     - src/railway_detection/experiments/frozen_config.py::compute_file_sha256
     tests:
-      failed: 1
+      failed: 0
       errors: 0
       skipped: 0
-      passed: 7
+      passed: 8
   tests/unit/test_metadata_only_audit.py:
     access_dirs: []
     access_paths: []
@@ -2891,6 +2944,74 @@ test_files:
       errors: 0
       skipped: 0
       passed: 88
+  tests/unit/test_official_evaluation_handoff.py:
+    access_dirs:
+    - configs
+    - data/ground_truth
+    - data/ground_truth/reviews/engine_events
+    - data/ground_truth/reviews/no_train_events
+    - data/ground_truth/reviews/train_events
+    - data/manifests
+    - docs
+    - docs/generated/approval_packages
+    - experiments/vision/39f402dfe460/checkpoints/weights
+    access_paths:
+    - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+    - configs/decision_policy_v1.yaml
+    - configs/frozen_experiment_v1.yaml
+    - data/ground_truth/authorized_reviewers.json
+    - data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/engine_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_001_review.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_002_review.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/no_train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_001_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_001_review.json
+    - data/ground_truth/reviews/train_events/event_002_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_002_review.json
+    - data/ground_truth/reviews/train_events/event_003_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_003_review.json
+    - data/ground_truth/reviews/train_events/event_004_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_004_review.json
+    - data/ground_truth/reviews/train_events/event_005_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_005_review.json
+    - data/ground_truth/reviews/train_events/event_006_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_006_review.json
+    - data/ground_truth/reviews/train_events/event_007_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_007_review.json
+    - data/ground_truth/reviews/train_events/event_008_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_008_review.json
+    - data/ground_truth/reviews/train_events/event_009_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_009_review.json
+    - data/ground_truth/reviews/train_events/event_010_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_010_review.json
+    - data/ground_truth/reviews/train_events/event_011_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_011_review.json
+    - data/ground_truth/reviews/train_events/event_012_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_012_review.json
+    - data/ground_truth/reviews/train_events/event_013_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_013_review.json
+    - data/ground_truth/reviews/train_events/event_014_review.INVALIDATION_NOTICE.json
+    - data/ground_truth/reviews/train_events/event_014_review.json
+    blocked_attempts:
+      MODEL_CHECKPOINT: 2
+    category: MODEL_CHECKPOINT_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
+      via open in test_validate_approval_package_bundle_succeeds_across_all_11_docs (call).
+    safe_for_synthetic_runner: false
+    sha256: 7009fc809cd21073d5ddc4f6a75cd1c164e11434c06b4ba225205d36d782988d
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 2
+      errors: 0
+      skipped: 0
+      passed: 2
   tests/unit/test_optimization_and_stress_suite.py:
     access_dirs: []
     access_paths: []

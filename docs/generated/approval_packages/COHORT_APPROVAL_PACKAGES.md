@@ -10,5 +10,5 @@ In `execution_gate.py`, **COHORT_APPROVAL_MISSING** clears for each of the three
 
 ## Post-Review Promotion Receipt Command (Run Only After Human Stage-2.1 Reviews Complete)
 ```bash
-PYTHONPATH=src .venv/bin/python -m railway_detection.annotation.readiness_cli --reviews-dir data/ground_truth/reviews --allowlist data/ground_truth/authorized_reviewers.json --inventory data/manifests/layer_b_v2_annotation_inventory.json --proposals-dir data/ground_truth/proposals --stage stage3_single_camera_baseline --repository-root . --receipt-path data/governance/stage21_promotion_receipt.json
+PYTHONPATH=src:. .venv/bin/python -m railway_detection.annotation.readiness_cli --reviews-dir data/ground_truth/reviews --allowlist data/ground_truth/authorized_reviewers.json --inventory data/manifests/layer_b_v2_annotation_inventory.json --proposals-dir data/ground_truth/proposals --stage stage3_single_camera_baseline --repository-root . --receipt-path data/governance/stage21_promotion_receipt.json
 ```

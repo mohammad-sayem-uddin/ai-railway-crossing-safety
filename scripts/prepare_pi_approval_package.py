@@ -26,6 +26,11 @@ from railway_detection.annotation.stage2_1_schema import (
     MIN_PLAUSIBLE_REVIEW_DURATION_S,
     STAGE_2_1_SCHEMA_VERSION,
 )
+from railway_detection.data.split_audit import (
+    build_event_provenance_table,
+    evaluate_candidate_split,
+    propose_chronological_within_site_split,
+)
 from railway_detection.evaluation import governance
 from railway_detection.evaluation.execution_gate import assess_official_phase12_readiness
 from railway_detection.safety import media_guard
@@ -103,6 +108,7 @@ def _build_stage21_checklist(
     queue: dict[str, Any],
     inventory: dict[str, Any],
     reviewers: list[str],
+    provenance_by_key: dict[str, dict[str, Any]],
 ) -> tuple[dict[str, Any], str]:
     """Build machine-readable and Markdown Stage-2.1 checklists for all 27 events."""
     primary_reviewer = "raihankabirrahu@gmail.com" if "raihankabirrahu@gmail.com" in reviewers else reviewers[0]
@@ -117,6 +123,7 @@ def _build_stage21_checklist(
         key = item["event_key"]
         cohort = item["cohort"]
         event_id = item["event_id"]
+        prov = provenance_by_key[key]
         prop = item["active_candidate_proposal"]
         prop_path = repo_root / prop["path"]
         prop_sha_live = _sha256_file(prop_path)
@@ -133,11 +140,11 @@ def _build_stage21_checklist(
             raise ValueError(f"Inventory media hash mismatch vs review queue for {key}")
 
         primary_cmd = (
-            f"PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py "
+            f"PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py "
             f"--reviewer {primary_reviewer} --cohort {cohort} --event {event_id}"
         )
         second_review_cmd = (
-            f"PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py "
+            f"PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py "
             f"--reviewer {secondary_reviewer} --cohort {cohort} --event {event_id} "
             f"--second-of <PRIMARY_REVIEW_ID>"
         )
@@ -146,6 +153,16 @@ def _build_stage21_checklist(
                 "event_key": key,
                 "cohort": cohort,
                 "event_id": event_id,
+                "capture_session": prov["true_capture_session"],
+                "creationdate_front": prov["creationdate_front"],
+                "creationdate_back": prov["creationdate_back"],
+                "true_lighting": prov["true_lighting"],
+                "original_files": {
+                    "front": prov["original_front_file"],
+                    "back": prov["original_back_file"],
+                },
+                "r04_scope_mode": prov["r04_scope_mode"],
+                "sync_verdict": prov["sync_verdict"],
                 "queue_category": item["queue_category"],
                 "reason_codes": list(item.get("reason_codes", [])),
                 "stage21_review_status": item.get("stage21_review_status", "NEW_STAGE21_RECORD_REQUIRED"),
@@ -188,15 +205,16 @@ def _build_stage21_checklist(
         "- **Prerequisite:** Genuine `data/governance/AUTH-MEDIA-ACCESS.json` (`phase5-media-access-authorization/2`) MUST exist before running review sessions on raw media.",
         "- **Legacy Status:** All `27/27` existing `6.0.0` reviews are invalidated and quarantined cleanly (`0` valid Stage-2.1 records on disk).",
         "",
-        "| # | Event Key | Active Proposal (SHA-256 prefix) | Expected Front SHA-256 prefix | Expected Back SHA-256 prefix | Review CLI Command |",
+        "| # | Event Key | Session / Lighting / R04 Scope | Active Proposal (SHA-256 prefix) | Expected Front & Back SHA-256 prefixes | Primary Review CLI Command |",
         "|---|---|---|---|---|---|",
     ]
     for idx, ev in enumerate(events_out, start=1):
         p = ev["active_proposal"]
         m = ev["expected_media"]
+        ctx = f"{ev['capture_session']} / {ev['true_lighting']} / `{ev['r04_scope_mode']}`"
         lines.append(
-            f"| {idx} | `{ev['event_key']}` | `{Path(p['path']).name}` (`{p['sha256'][:12]}...`) | "
-            f"`{m['front_sha256'][:12]}...` | `{m['back_sha256'][:12]}...` | `{ev['primary_review_command']}` |"
+            f"| {idx} | `{ev['event_key']}` | {ctx} | `{Path(p['path']).name}` (`{p['sha256'][:12]}...`) | "
+            f"`F:{m['front_sha256'][:10]}` / `B:{m['back_sha256'][:10]}` | `{ev['primary_review_command']}` |"
         )
     lines.extend(
         [
@@ -220,7 +238,7 @@ def _build_cohort_approval_packages(
         by_cohort[item["cohort"]].append(item["event_key"])
 
     receipt_cmd = (
-        "PYTHONPATH=src .venv/bin/python -m railway_detection.annotation.readiness_cli "
+        "PYTHONPATH=src:. .venv/bin/python -m railway_detection.annotation.readiness_cli "
         "--reviews-dir data/ground_truth/reviews "
         "--allowlist data/ground_truth/authorized_reviewers.json "
         "--inventory data/manifests/layer_b_v2_annotation_inventory.json "
@@ -302,23 +320,30 @@ def _build_split_decision_package(
     repo_root: Path,
     split_proposal: dict[str, Any],
     reviewers: list[str],
+    provenance_rows: list[dict[str, Any]],
 ) -> tuple[dict[str, Any], str]:
-    """Build exact-key ``phase12-event-split-decision/1`` candidate template & reconciliation."""
-    partitions = {
-        "train": list(split_proposal["partitions"]["train"]),
-        "val": list(split_proposal["partitions"]["val"]),
-        "test": list(split_proposal["partitions"]["test"]),
-    }
-    governance.validate_event_level_split(partitions)
+    """Build exact-key ``phase12-event-split-decision/1`` candidate template & Option A reconciliation."""
+    chrono_partitions = propose_chronological_within_site_split()
+    governance.validate_event_level_split(chrono_partitions)
+    prior_eval = evaluate_candidate_split(
+        provenance_rows,
+        split_proposal["partitions"],
+        name="prior_hash_candidate_16_6_5",
+    )
+    chrono_eval = evaluate_candidate_split(
+        provenance_rows,
+        chrono_partitions,
+        name="chrono_temporal_block_15_5_7",
+    )
 
     template = {
         "schema_version": governance.SPLIT_DECISION_SCHEMA,
-        "decision_status": f"{HUMAN_PLACEHOLDER}_SET_APPROVED_ONLY_IF_ELECTING_HELD_OUT_EVALUATION",
+        "decision_status": f"{HUMAN_PLACEHOLDER}_SET_APPROVED_ONLY_IF_ELECTING_SINGLE_SITE_HELD_OUT_EVALUATION",
         "decision_id": f"{HUMAN_PLACEHOLDER}_e.g._PHASE12-EVENT-SPLIT-2026-11-XX",
         "decided_by": f"{HUMAN_PLACEHOLDER}_CHOOSE_FROM_{'|'.join(reviewers)}",
         "decided_at_utc": f"{HUMAN_PLACEHOLDER}_ISO8601_UTC_WITH_TZ",
         "researcher_statement": (
-            f"{HUMAN_PLACEHOLDER}_EXPLICIT_PI_STATEMENT_SUPERSEDING_SPLIT-DECISION-OPTION-A-2026-11-09_IF_ELECTED"
+            f"{HUMAN_PLACEHOLDER}_EXPLICIT_PI_STATEMENT_SUPERSEDING_SPLIT-DECISION-OPTION-A-2026-11-09_IF_ELECTED_WITHIN_SITE_ONLY"
         ),
         "attestation": {
             "type": governance.ATTESTATION_RECORDED_STATEMENT,
@@ -328,25 +353,39 @@ def _build_split_decision_package(
             "kind": "researcher",
             "identity": f"{HUMAN_PLACEHOLDER}_REVIEWER_EMAIL",
         },
-        "partitions": partitions,
+        "partitions": chrono_partitions,
         "source_proposal": {
             "path": "docs/generated/CANDIDATE_EVENT_SPLIT_PROPOSAL.json",
             "proposal_id": split_proposal["proposal_id"],
             "proposal_sha256": split_proposal["proposal_sha256"],
-            "leakage_safe": split_proposal["grouping"]["leakage_safe"],
-            "leakage_warning": split_proposal["grouping"]["warning"],
+            "audit_report": "results/dataset_audit/layer_b_split_audit_and_collection_plan.json",
+            "candidate_name": "chrono_temporal_block_15_5_7",
+            "leakage_safe": False,
+            "cross_crossing_leakage_safe": False,
+            "cross_session_leakage_safe": False,
+            "leakage_warning": (
+                "No 3-way split of the 27 events can be leakage-safe: all 27 share crossing_A and only 2 capture "
+                "sessions exist (2026-09-14 vs 2026-10-04). Keep Option A (descriptive) for publication unless new "
+                "multi-crossing data (>=3 crossings) is collected."
+            ),
         },
     }
 
     option_a_exists = (repo_root / "docs/generated/research_decisions/SPLIT_DECISION_OPTION_A_20261109.md").is_file()
     md = "\n".join(
         [
-            "# Event-Level Split Decision Preparation & Reconciliation with Option A",
+            "# Event-Level Split Decision Preparation & Option A Reconciliation",
             "",
-            f"- **Mechanical Validator Status:** `governance.validate_event_level_split(partitions)` **PASSED** (`train={len(partitions['train'])}`, `val={len(partitions['val'])}`, `test={len(partitions['test'])}`, total=`{sum(len(v) for v in partitions.values())}` disjoint events).",
-            f"- **Active Prior PI Decision (`SPLIT-DECISION-OPTION-A-2026-11-09`, file present=`{option_a_exists}`):** Explicitly chose **Option A (Descriptive single-crossing study — NO Phase 12 train/val/test split)**. Therefore `data/splits/phase12_event_split_decision.json` MUST remain absent UNLESS you explicitly elect to supersede Option A for held-out Phase 12 evaluation.",
-            f"- **Disclosed Limitation (`CANDIDATE_EVENT_SPLIT_PROPOSAL.json`):** `leakage_safe = {split_proposal['grouping']['leakage_safe']}` — all 27 events share `crossing_A` (`{split_proposal['grouping']['warning']}`), and the candidate `val` partition has 0 `no_train` / `engine` events (`no_train_events/002..003` & `engine_events/001` in `train`, `no_train_events/001` in `test`). Any Phase 12 held-out claim remains single-crossing / chronological rather than cross-crossing.",
-            "- **Activation Target (ONLY if Option A is superseded):** Save signed JSON to `data/splits/phase12_event_split_decision.json` (and update/remove extra metadata keys only if desired; `verify_decision_envelope` validates envelope keys cleanly).",
+            f"- **Mechanical Validator Status (`chrono_temporal_block_15_5_7`):** `governance.validate_event_level_split(partitions)` **PASSED** (`train={len(chrono_partitions['train'])}`, `val={len(chrono_partitions['val'])}`, `test={len(chrono_partitions['test'])}`, total=`27` disjoint events).",
+            f"- **Active Prior PI Decision (`SPLIT-DECISION-OPTION-A-2026-11-09`, file present=`{option_a_exists}`):** Explicitly chose **Option A (Descriptive single-crossing study — NO Phase 12 train/val/test split)**. Keeping `data/splits/phase12_event_split_decision.json` absent remains scientifically preferred for this 27-event single-crossing corpus.",
+            "- **Why NO Split of These 27 Events Can Be `leakage_safe = true` ([audit JSON](../../results/dataset_audit/layer_b_split_audit_and_collection_plan.json)):**",
+            "  1. All `27/27` events share one physical site (`crossing_id = crossing_A`).",
+            "  2. Only `2` physical capture sessions exist (`session_20260914`: 20 train events; `session_20261004`: 3 night train + 3 no_train + 1 engine) — mathematically fewer than `3` non-empty split roles.",
+            "  3. `100%` of negative (`no_train`) and engine controls occur exclusively in dusk/night `session_20261004` (`iPad` back camera), confounding class with date/illumination/sensor.",
+            f"- **Why Prior `16/6/5` (`CANDIDATE_EVENT_SPLIT_PROPOSAL.json`) Was Rejected (`leakage_safe={prior_eval['leakage_safe']}`):** Hash-shuffling caused `{', '.join(prior_eval['scientific_defects'])}` — specifically `0` `no_train` events in `val` and `0` R04 `dual_camera` events in `test`, plus split adjacent pair `event_007`/`event_008`.",
+            f"- **Improved Within-Site Chronological Candidate (`chrono_temporal_block_15_5_7`, `leakage_safe={chrono_eval['leakage_safe']}`):** Keeps tied `event_007`/`008` together, places `1` `no_train` and `>=1` R04 `dual_camera` event in every role (`9/1/1`), and holds out late chronological clips per session — yet STILL carries `leakage_safe = false` and permits **no cross-crossing OOD claim**.",
+            "- **For True Leakage-Free Held-Out Evaluation (`Option C`):** Execute the targeted collection plan in `results/dataset_audit/layer_b_split_audit_and_collection_plan.json` (`>= 3` independent crossings, `>= 6` day/night/weather sessions with matched controls).",
+            "- **Activation Target (ONLY if PI explicitly elects chronological single-site diagnostic split):** Sign `phase12_event_split_decision.candidate.template.json` to `data/splits/phase12_event_split_decision.json`.",
             "",
         ]
     )
@@ -354,13 +393,10 @@ def _build_split_decision_package(
 
 
 def _build_eval_input_manifest_package(repo_root: Path) -> tuple[dict[str, Any], str]:
-    """Build exact-schema skeleton template and runbook for phase12-evaluation-inputs/1."""
+    """Build exact-schema template and runbook matching ``manifest_builder.build_evaluation_input_manifest``."""
     template = {
         "schema_version": "phase12-evaluation-inputs/1",
         "evidence_classification": "real",
-        "manifest_id": f"{HUMAN_PLACEHOLDER}_GENERATED_BY_manifest_builder.build_evaluation_input_manifest",
-        "generated_at_utc": f"{HUMAN_PLACEHOLDER}_UTC_TIMESTAMP",
-        "generated_by": "railway_detection.evaluation.manifest_builder.build_evaluation_input_manifest",
         "partitions": {
             "train": ["<approved_train_event_keys>"],
             "val": ["<approved_val_event_keys>"],
@@ -371,14 +407,18 @@ def _build_eval_input_manifest_package(repo_root: Path) -> tuple[dict[str, Any],
                 "event_id": "<cohort/event_id>",
                 "cohort": "<train_events|no_train_events|engine_events>",
                 "split_role": "<train|val|test>",
-                "source_path": "data/manifests/<post_auth_phase12_replay_evidence_file>.json",
+                "source_path": "<relative_to_data/manifests_e.g._phase12_replay_evidence/train_events_event_001.json>",
                 "source_sha256": "<live_sha256_of_phase12-replay-evidence/1_source>",
             }
         ],
         "camera_scope_by_event": {
-            "<cohort/event_id>": "<dual_camera|single_camera|single_camera_independent>",
+            "<cohort/event_id>": "<dual_camera|independent_camera|single_camera>",
         },
-        "accepted_sync_events": ["<11 CALIBRATION_SUPPORTED event keys from phase12_r04_scope_decision.json>"],
+        "accepted_sync_events": ["<11 accepted events from phase12_r04_scope_decision.json>"],
+        "derived_from": {
+            "event_split_decision_sha256": f"{HUMAN_PLACEHOLDER}_SHA256_OF_data/splits/phase12_event_split_decision.json",
+            "r04_scope_decision_sha256": f"{HUMAN_PLACEHOLDER}_SHA256_OF_data/manifests/phase12_r04_scope_decision.json",
+        },
     }
 
     md = "\n".join(
@@ -386,17 +426,20 @@ def _build_eval_input_manifest_package(repo_root: Path) -> tuple[dict[str, Any],
             "# Evaluation Input Manifest Preparation Runbook (`phase12-evaluation-inputs/1`)",
             "",
             "- **Output Destination (Post-Approval Only):** `data/manifests/phase12_evaluation_inputs.json`",
-            "- **Why Not Built Pre-Approval:** `manifest_builder.build_evaluation_input_manifest(repository_root, event_sources, output_path)` requires one verified `phase12-replay-evidence/1` source JSON (under `data/manifests/` with `evidence_classification = 'real'`) per split event. No synthetic fixtures, Mission 39 exploratory caches, or pre-`AUTH-MEDIA-ACCESS` caches under `data/cache/` may be substituted (`input_contracts.py` rejects non-real/unverified sources).",
+            "- **Why Not Built Pre-Approval:** `manifest_builder.build_evaluation_input_manifest(repository_root, event_sources, output_path)` requires one verified `phase12-replay-evidence/1` source JSON (inside `data/manifests/`, non-symlink, `annotation_labels_used: false`) per split event. No synthetic fixtures, Mission 39 exploratory caches, or pre-`AUTH-MEDIA-ACCESS` caches under `data/cache/` may be substituted (`cache_phase12_adapter.to_official_evidence_payload` refuses by design).",
+            "",
+            "## Required `phase12-replay-evidence/1` Source Payload Contract",
+            "- Exact top-level keys (`replay_evidence.py`): `schema_version`, `event_id`, `cohort`, `camera_mode` (`dual_camera` | `independent_camera` | `single_camera`), `streams` (`front_vision`, `back_vision`, optional `front_audio`), `provenance` (`frozen_config_canonical_sha256`, `checkpoint_sha256` `{vision, audio_v3}`, `vision_confidence_threshold`, `audio_operating_threshold`, `media_sha256`, `inference_run_id`, `annotation_labels_used: false`, `generated_by`).",
             "",
             "## Exact Post-Stage-2.1 Execution Workflow",
-            "1. Complete Stage-2.1 ground-truth reviews (valid `AUTH-MEDIA-ACCESS.json` active) and generate `data/governance/stage21_promotion_receipt.json`.",
-            "2. Produce real per-event `phase12-replay-evidence/1` evidence files under `data/manifests/` using `RealEventReplayProducer` / authorized raw-media feature extraction against the Stage-2.1 ground truth and validated camera calibration.",
+            "1. Ensure `data/governance/AUTH-MEDIA-ACCESS.json`, all Stage-2.1 reviews, `data/governance/stage21_promotion_receipt.json`, and an explicit `data/splits/phase12_event_split_decision.json` exist.",
+            "2. After `AUTH-MEDIA-ACCESS` approval, extract upright `LayerBEventProcessor` `EvidenceRecord` streams (`camera_1`, `camera_2`, `audio_1`) into per-event `phase12-replay-evidence/1` JSON files under `data/manifests/phase12_replay_evidence/`.",
             "3. Invoke `railway_detection.evaluation.manifest_builder.build_evaluation_input_manifest(repository_root=Path('.'), event_sources=..., output_path=Path('data/manifests/phase12_evaluation_inputs.json'))`.",
-            "4. Verify live readiness status with:",
+            "4. Check readiness (`EVAL_AUTH_NOT_GRANTED` should remain alone), bind `live_bindings` into `data/governance/eval_authorization.json`, then run:",
             "```bash",
-            "PYTHONPATH=src .venv/bin/python -m railway_detection evaluation status",
+            "PYTHONPATH=src:. .venv/bin/python -m railway_detection evaluation status",
+            "PYTHONPATH=src:. .venv/bin/python scripts/prepare_and_execute_official_evaluation.py --mode execute-after-approval --output-dir <OUT_DIR_OUTSIDE_REPO_TREES>",
             "```",
-            "Wait until ONLY `EVAL_AUTH_NOT_GRANTED` remains before computing the final `eval_authorization.json`.",
             "",
         ]
     )
@@ -452,14 +495,21 @@ def build_pi_approval_packages(repo_root: Path, output_dir: Path) -> dict[str, A
     split_proposal = _load_json(repo_root / "docs/generated/CANDIDATE_EVENT_SPLIT_PROPOSAL.json")
     readiness = assess_official_phase12_readiness(repo_root)
 
+    provenance_rows = build_event_provenance_table(repo_root)
+    provenance_by_key = {row["event_key"]: row for row in provenance_rows}
+
     event_keys = [item["event_key"] for item in queue["items"]]
     auth_media_tmpl = _build_auth_media_access_template(repo_root, event_keys, reviewers)
-    checklist_json, checklist_md = _build_stage21_checklist(repo_root, queue, inventory, reviewers)
+    checklist_json, checklist_md = _build_stage21_checklist(
+        repo_root, queue, inventory, reviewers, provenance_by_key
+    )
     cohort_json, cohort_md = _build_cohort_approval_packages(
         queue,
         [{"code": b.code, "detail": b.detail} for b in readiness.blockers],
     )
-    split_tmpl, split_md = _build_split_decision_package(repo_root, split_proposal, reviewers)
+    split_tmpl, split_md = _build_split_decision_package(
+        repo_root, split_proposal, reviewers, provenance_rows
+    )
     manifest_tmpl, manifest_md = _build_eval_input_manifest_package(repo_root)
     eval_auth_tmpl = _build_eval_authorization_template(readiness.live_bindings, reviewers)
 
@@ -479,15 +529,15 @@ def build_pi_approval_packages(repo_root: Path, output_dir: Path) -> dict[str, A
         [
             "# PI Human-Approval Preparation Package Index",
             "",
-            "All templates in this directory are **unsigned technical preparation artifacts** (`__HUMAN_APPROVAL_REQUIRED__` markers preserved). No active governance files under `data/governance/`, `data/splits/`, `data/manifests/`, or `data/ground_truth/reviews/` were created or modified.",
+            "All templates in this directory are **unsigned technical preparation artifacts** (`__HUMAN_APPROVAL_REQUIRED__` markers preserved). No active governance files under `data/governance/`, `data/splits/`, `data/manifests/`, or `data/ground_truth/reviews/` were created or modified. For a single plain-English supervisor summary, read [`FINAL_PI_ACTION_REQUIRED.md`](../FINAL_PI_ACTION_REQUIRED.md).",
             "",
             "## Ordered PI Approval Sequence",
             "1. **Raw Media Access (`AUTH-MEDIA-ACCESS`):** Review & sign [`AUTH_MEDIA_ACCESS.template.json`](AUTH_MEDIA_ACCESS.template.json), compute `record_sha256 = media_guard._canonical_sha256(record)`, and write to `data/governance/AUTH-MEDIA-ACCESS.json`.",
             "2. **Stage-2.1 27-Event Ground-Truth Reviews:** Execute human frame-by-frame review across all 27 events per [`STAGE21_27_EVENT_REVIEW_CHECKLIST.md`](STAGE21_27_EVENT_REVIEW_CHECKLIST.md) ([JSON](STAGE21_27_EVENT_REVIEW_CHECKLIST.json)).",
-            "3. **Three Cohort Packages & Promotion Receipt:** Confirm coverage across `train_events`, `no_train_events`, and `engine_events` via [`COHORT_APPROVAL_PACKAGES.md`](COHORT_APPROVAL_PACKAGES.md) ([JSON](COHORT_APPROVAL_PACKAGES.json)) and emit `data/governance/stage21_promotion_receipt.json` via `readiness_cli`.",
-            "4. **Event-Level Split Decision (`Option A` Reconciliation):** Read [`SPLIT_OPTION_A_RECONCILIATION.md`](SPLIT_OPTION_A_RECONCILIATION.md); only if superseding `SPLIT-DECISION-OPTION-A-2026-11-09`, sign [`phase12_event_split_decision.candidate.template.json`](phase12_event_split_decision.candidate.template.json) to `data/splits/phase12_event_split_decision.json`.",
-            "5. **Evaluation Input Manifest:** Follow [`EVALUATION_INPUT_MANIFEST_RUNBOOK.md`](EVALUATION_INPUT_MANIFEST_RUNBOOK.md) (schema: [`phase12_evaluation_inputs.template.json`](phase12_evaluation_inputs.template.json)) to produce `data/manifests/phase12_evaluation_inputs.json` from real post-Stage-2.1 `phase12-replay-evidence/1` sources.",
-            "6. **Evaluation Authorization & Execution:** Populate dynamic hashes in [`eval_authorization.template.json`](eval_authorization.template.json) from `assess_official_phase12_readiness(Path('.')).live_bindings`, compute `record_sha256 = governance.canonical_record_sha256(record)`, save as `data/governance/eval_authorization.json`, verify `railway_detection evaluation status` (`ready: true`), then execute `railway_detection evaluation run`.",
+            "3. **Three Cohort Packages & Promotion Receipt:** Confirm coverage across `train_events`, `no_train_events`, and `engine_events` via [`COHORT_APPROVAL_PACKAGES.md`](COHORT_APPROVAL_PACKAGES.md) ([JSON](COHORT_APPROVAL_PACKAGES.json)) and emit `data/governance/stage21_promotion_receipt.json` via `PYTHONPATH=src:. .venv/bin/python -m railway_detection.annotation.readiness_cli ...`.",
+            "4. **Event-Level Split Decision (`Option A` Reconciliation):** Read [`SPLIT_OPTION_A_RECONCILIATION.md`](SPLIT_OPTION_A_RECONCILIATION.md) & `results/dataset_audit/layer_b_split_audit_and_collection_plan.json`. **Keep `Option A` (`SPLIT-DECISION-OPTION-A-2026-11-09` descriptive 27-event evaluation -> `AUTH-DESCRIPTIVE-EVAL-EXEC`)**, OR collect `>= 3` independent crossings (`Option C`) before held-out evaluation; only sign [`phase12_event_split_decision.candidate.template.json`](phase12_event_split_decision.candidate.template.json) to `data/splits/phase12_event_split_decision.json` if explicitly electing single-site chronological diagnostics (`leakage_safe = false`).",
+            "5. **Evaluation Input Manifest:** Follow [`EVALUATION_INPUT_MANIFEST_RUNBOOK.md`](EVALUATION_INPUT_MANIFEST_RUNBOOK.md) (exact schema: [`phase12_evaluation_inputs.template.json`](phase12_evaluation_inputs.template.json)) to produce `data/manifests/phase12_evaluation_inputs.json` from real post-Stage-2.1 `phase12-replay-evidence/1` sources.",
+            "6. **Evaluation Authorization & Execution:** Populate dynamic hashes in [`eval_authorization.template.json`](eval_authorization.template.json) from `assess_official_phase12_readiness(Path('.')).live_bindings`, compute `record_sha256 = governance.canonical_record_sha256(record)`, save as `data/governance/eval_authorization.json`, verify `PYTHONPATH=src:. .venv/bin/python -m railway_detection evaluation status` (`ready: true`), then execute `PYTHONPATH=src:. .venv/bin/python -m railway_detection evaluation run --output-dir <OUT_DIR_OUTSIDE_REPO_TREES>` (or `scripts/prepare_and_execute_official_evaluation.py --mode execute-after-approval --output-dir <OUT_DIR>`).",
             "",
             "## Pre-Verified Static Live Bindings (Current Repository)",
             f"- `decision_policy_sha256`: `{readiness.live_bindings['decision_policy_sha256']}`",

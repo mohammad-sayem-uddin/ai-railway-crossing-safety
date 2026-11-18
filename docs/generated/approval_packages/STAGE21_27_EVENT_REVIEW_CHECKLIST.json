@@ -14,6 +14,16 @@
       "event_key": "engine_events/event_001",
       "cohort": "engine_events",
       "event_id": "event_001",
+      "capture_session": "session_20261004",
+      "creationdate_front": "2026-10-04T19:26:25+06:00",
+      "creationdate_back": "2026-10-04T19:26:28+06:00",
+      "true_lighting": "night_lowlight",
+      "original_files": {
+        "front": "1.MOV",
+        "back": "1.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "PROVISIONAL",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -35,13 +45,23 @@
         "back_sha256": "80668547f4f5240779a4ab49c28c321e7c3eb2722876e30a2182121294836a72"
       },
       "rd043_second_review_note": "MANDATORY if T3 or T4 marked non-UNOBSERVABLE on engine_events; also triggers on any UNCERTAIN boundary, explicit NEEDS_SECOND_REVIEW flag, or hash/proposal trigger.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort engine_events --event event_001",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort engine_events --event event_001 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort engine_events --event event_001",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort engine_events --event event_001 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "no_train_events/event_001",
       "cohort": "no_train_events",
       "event_id": "event_001",
+      "capture_session": "session_20261004",
+      "creationdate_front": "2026-10-04T19:49:13+06:00",
+      "creationdate_back": "2026-10-04T19:49:14+06:00",
+      "true_lighting": "night_lowlight",
+      "original_files": {
+        "front": "1.mov",
+        "back": "1.MOV"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "AMBIGUOUS",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -63,13 +83,23 @@
         "back_sha256": "5f631ed5cc0fc5f4268c8c714e990356e12a38f35b27fe7625b9d33be37432b9"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort no_train_events --event event_001",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort no_train_events --event event_001 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort no_train_events --event event_001",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort no_train_events --event event_001 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "no_train_events/event_002",
       "cohort": "no_train_events",
       "event_id": "event_002",
+      "capture_session": "session_20261004",
+      "creationdate_front": "2026-10-04T19:37:13+06:00",
+      "creationdate_back": "2026-10-04T19:37:09+06:00",
+      "true_lighting": "night_lowlight",
+      "original_files": {
+        "front": "2.MOV",
+        "back": "2.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "AMBIGUOUS",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -91,13 +121,23 @@
         "back_sha256": "7b578008c037648c37dfb7f2b029c3c192dd4680198d655b6d6ac11734426126"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort no_train_events --event event_002",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort no_train_events --event event_002 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort no_train_events --event event_002",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort no_train_events --event event_002 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "no_train_events/event_003",
       "cohort": "no_train_events",
       "event_id": "event_003",
+      "capture_session": "session_20261004",
+      "creationdate_front": "2026-10-04T19:52:09+06:00",
+      "creationdate_back": "2026-10-04T19:52:09+06:00",
+      "true_lighting": "night_lowlight",
+      "original_files": {
+        "front": "3.MOV",
+        "back": "3.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "PROVISIONAL",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -119,13 +159,23 @@
         "back_sha256": "4914515714eb1ca8a282f61112afcfb11391dd2ec08543796611e22b884b4d9c"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort no_train_events --event event_003",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort no_train_events --event event_003 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort no_train_events --event event_003",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort no_train_events --event event_003 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_001",
       "cohort": "train_events",
       "event_id": "event_001",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T14:13:33+06:00",
+      "creationdate_back": "2026-09-14T14:13:41+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "1.mov",
+        "back": "1.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -147,13 +197,23 @@
         "back_sha256": "8cf3b1160817788f8aaf2f6f01099c34a75dda1aed4a75e8374c2952ccfd0ba1"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_001",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_001 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_001",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_001 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_002",
       "cohort": "train_events",
       "event_id": "event_002",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T14:40:54+06:00",
+      "creationdate_back": "2026-09-14T14:40:58+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "2.mov",
+        "back": "2.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -175,13 +235,23 @@
         "back_sha256": "964e66874e56127af17b1f7168c2d492ea8231e6ac6850d4420aa3d42e48232b"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_002",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_002 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_002",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_002 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_003",
       "cohort": "train_events",
       "event_id": "event_003",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T14:43:40+06:00",
+      "creationdate_back": "2026-09-14T14:43:44+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "3.mov",
+        "back": "3.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "PROVISIONAL",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -203,13 +273,23 @@
         "back_sha256": "172d99ef4a2488abcac7715bd4098c28b2cc1388b6aa286df19246d0e297a395"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_003",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_003 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_003",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_003 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_004",
       "cohort": "train_events",
       "event_id": "event_004",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:00:44+06:00",
+      "creationdate_back": "2026-09-14T16:00:49+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "4.mov",
+        "back": "4.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "AMBIGUOUS",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -231,13 +311,23 @@
         "back_sha256": "6ccfa9b6fe74adf01cf9aeac3faba73194446398e3c7c74b057d778eddb1ed60"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_004",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_004 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_004",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_004 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_005",
       "cohort": "train_events",
       "event_id": "event_005",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:03:37+06:00",
+      "creationdate_back": "2026-09-14T16:03:43+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "5.mov",
+        "back": "5.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -259,13 +349,23 @@
         "back_sha256": "55d7498db1449507b9262d9302315606dc1a40e3f99f715150ff90a37f18933e"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_005",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_005 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_005",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_005 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_006",
       "cohort": "train_events",
       "event_id": "event_006",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:08:25+06:00",
+      "creationdate_back": "2026-09-14T16:08:30+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "6.mov",
+        "back": "6.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -287,13 +387,23 @@
         "back_sha256": "c69a3a221020378b89e6188bb0e9c8566716a625158825d52b7a17ec0a5f22fe"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_006",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_006 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_006",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_006 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_007",
       "cohort": "train_events",
       "event_id": "event_007",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:12:25+06:00",
+      "creationdate_back": "2026-09-14T16:12:34+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "7.mov",
+        "back": "7.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -315,13 +425,23 @@
         "back_sha256": "24065e2a271391c637be656056e51292efd7502ac47a7c64703ce4064cc3eadf"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_007",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_007 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_007",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_007 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_008",
       "cohort": "train_events",
       "event_id": "event_008",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:13:07+06:00",
+      "creationdate_back": "2026-09-14T16:12:34+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "8.mov",
+        "back": "8.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "AMBIGUOUS",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -343,13 +463,23 @@
         "back_sha256": "0ab126213b94d53fc1733658eefdaaf5a5cfe8dd9492d6234a50a19d5e642de2"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_008",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_008 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_008",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_008 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_009",
       "cohort": "train_events",
       "event_id": "event_009",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:16:15+06:00",
+      "creationdate_back": "2026-09-14T16:16:24+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "9.mov",
+        "back": "9.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -371,13 +501,23 @@
         "back_sha256": "4a0280c5421aad5e45fa6a37aa12ed664765f5a972a2d7e4e797215f5669a3e8"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_009",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_009 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_009",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_009 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_010",
       "cohort": "train_events",
       "event_id": "event_010",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:22:05+06:00",
+      "creationdate_back": "2026-09-14T16:21:48+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "11.mov",
+        "back": "11.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -399,13 +539,23 @@
         "back_sha256": "566368738c357c2ff3623e0ccb8b1fb832e7fb8bc6e9985abd0b58a029349f2a"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_010",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_010 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_010",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_010 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_011",
       "cohort": "train_events",
       "event_id": "event_011",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:25:42+06:00",
+      "creationdate_back": "2026-09-14T16:25:47+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "12.mov",
+        "back": "12.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -427,13 +577,23 @@
         "back_sha256": "3579c9139f8a6239934c3bde22777df9ab13d6c94e1b5ca839d5ab9e61d12b46"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_011",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_011 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_011",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_011 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_012",
       "cohort": "train_events",
       "event_id": "event_012",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:31:25+06:00",
+      "creationdate_back": "2026-09-14T16:31:31+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "13.mov",
+        "back": "13.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -455,13 +615,23 @@
         "back_sha256": "d7cdfa047b88864dab478ecc180073f93f68e15745f289fc4e580d71866c148c"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_012",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_012 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_012",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_012 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_013",
       "cohort": "train_events",
       "event_id": "event_013",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:34:30+06:00",
+      "creationdate_back": "2026-09-14T16:34:33+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "14.mov",
+        "back": "14.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -483,13 +653,23 @@
         "back_sha256": "e15fe819ea26440e81dd6ace5356987bf2ceaf3e34fe2871ef3884dd4025a387"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_013",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_013 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_013",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_013 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_014",
       "cohort": "train_events",
       "event_id": "event_014",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:40:18+06:00",
+      "creationdate_back": "2026-09-14T16:40:22+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "15.mov",
+        "back": "15.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -511,13 +691,23 @@
         "back_sha256": "46235f16dfef70de09582b68db956b7c9ecfefcfc5c326ed0dc74a0529919ecd"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_014",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_014 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_014",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_014 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_015",
       "cohort": "train_events",
       "event_id": "event_015",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T16:56:54+06:00",
+      "creationdate_back": "2026-09-14T16:57:06+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "16.mov",
+        "back": "16.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "AMBIGUOUS",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -539,13 +729,23 @@
         "back_sha256": "57e827d111540c3c7f9463efaee3461ee6cba6818ab33231745ea9b22024b03a"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_015",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_015 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_015",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_015 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_016",
       "cohort": "train_events",
       "event_id": "event_016",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T17:00:49+06:00",
+      "creationdate_back": "2026-09-14T17:00:53+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "17.mov",
+        "back": "17.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "PROVISIONAL",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -567,13 +767,23 @@
         "back_sha256": "08a9f8695dfe0fd1a1f4c380366ba9e83d11714c1c4ba2da2be4713d580dafff"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_016",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_016 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_016",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_016 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_017",
       "cohort": "train_events",
       "event_id": "event_017",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T17:09:31+06:00",
+      "creationdate_back": "2026-09-14T17:09:36+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "18.mov",
+        "back": "18.mov"
+      },
+      "r04_scope_mode": "dual_camera",
+      "sync_verdict": "CALIBRATION_SUPPORTED",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -595,13 +805,23 @@
         "back_sha256": "7b0d48f364c2f0a842c3cdca4793d634ee9743ce7c947b3b356c646865854d95"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_017",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_017 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_017",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_017 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_018",
       "cohort": "train_events",
       "event_id": "event_018",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T17:15:04+06:00",
+      "creationdate_back": "2026-09-14T17:15:12+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "19.mov",
+        "back": "19.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "PROVISIONAL",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -623,13 +843,23 @@
         "back_sha256": "a7040a317018132f209b460ffa43d794e1e423cda5b5ce48a789043fe7dc4d27"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_018",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_018 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_018",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_018 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_019",
       "cohort": "train_events",
       "event_id": "event_019",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T17:21:09+06:00",
+      "creationdate_back": "2026-09-14T17:21:16+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "20.mov",
+        "back": "20.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "PROVISIONAL",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -651,13 +881,23 @@
         "back_sha256": "f906e43305fcd183ff9e0638a246cc4df84192d7691befd96d35b17d630b9aef"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_019",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_019 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_019",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_019 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_020",
       "cohort": "train_events",
       "event_id": "event_020",
+      "capture_session": "session_20260914",
+      "creationdate_front": "2026-09-14T17:25:46+06:00",
+      "creationdate_back": "2026-09-14T17:25:50+06:00",
+      "true_lighting": "day",
+      "original_files": {
+        "front": "21.mov",
+        "back": "21.mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "AMBIGUOUS",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -679,13 +919,23 @@
         "back_sha256": "ea0f90528bced198f23b24e6006f32aebbb19f8173f7fc78721f8b96286ad2c2"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_020",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_020 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_020",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_020 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_021",
       "cohort": "train_events",
       "event_id": "event_021",
+      "capture_session": "session_20261004",
+      "creationdate_front": "2026-10-04T19:23:00+06:00",
+      "creationdate_back": "2026-10-04T19:22:57+06:00",
+      "true_lighting": "night_lowlight",
+      "original_files": {
+        "front": "22(night_video_lowlight).MOV",
+        "back": "22(night_video_lowlight).mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "PROVISIONAL",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -707,13 +957,23 @@
         "back_sha256": "4899d9982b8aa7905fc39701f02c4bcd4f52cc3cd4d7884e704c932145b0c94f"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_021",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_021 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_021",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_021 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_022",
       "cohort": "train_events",
       "event_id": "event_022",
+      "capture_session": "session_20261004",
+      "creationdate_front": "2026-10-04T19:30:25+06:00",
+      "creationdate_back": "2026-10-04T19:30:27+06:00",
+      "true_lighting": "night_lowlight",
+      "original_files": {
+        "front": "23(night_video_lowlight).MOV",
+        "back": "23(night_video_lowlight).mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "AMBIGUOUS",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -735,13 +995,23 @@
         "back_sha256": "1e008a154ecfb4c1c96d03414d4c29042c0a4adaf1ac5cb94d00b7783b58567d"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_022",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_022 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_022",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_022 --second-of <PRIMARY_REVIEW_ID>"
     },
     {
       "event_key": "train_events/event_023",
       "cohort": "train_events",
       "event_id": "event_023",
+      "capture_session": "session_20261004",
+      "creationdate_front": "2026-10-04T19:59:28+06:00",
+      "creationdate_back": "2026-10-04T19:59:29+06:00",
+      "true_lighting": "night_lowlight",
+      "original_files": {
+        "front": "24(night_video_lowlight).MOV",
+        "back": "24(night_video_lowlight).mov"
+      },
+      "r04_scope_mode": "independent_camera",
+      "sync_verdict": "AMBIGUOUS",
       "queue_category": "INVALID",
       "reason_codes": [
         "LEGACY_SCHEMA",
@@ -763,8 +1033,8 @@
         "back_sha256": "a36d099f479e81bef2cfa31ac4492bf0cd01c97eac5378d85c96a89f58e49766"
       },
       "rd043_second_review_note": "Triggered if any boundary UNCERTAIN, explicit review flag, or hash/proposal trigger fires.",
-      "primary_review_command": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_023",
-      "second_review_command_template": "PYTHONPATH=src .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_023 --second-of <PRIMARY_REVIEW_ID>"
+      "primary_review_command": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer raihankabirrahu@gmail.com --cohort train_events --event event_023",
+      "second_review_command_template": "PYTHONPATH=src:. .venv/bin/python scripts/run_stage21_review.py --reviewer elaf85777@gmail.com --cohort train_events --event event_023 --second-of <PRIMARY_REVIEW_ID>"
     }
   ]
 }
