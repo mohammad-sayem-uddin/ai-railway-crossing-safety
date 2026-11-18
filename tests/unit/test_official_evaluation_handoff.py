@@ -24,12 +24,13 @@ if str(SCRIPTS_DIR) not in sys.path:
 from prepare_and_execute_official_evaluation import main as handoff_cli_main  # noqa: E402
 
 
-def test_validate_approval_package_bundle_succeeds_across_all_11_docs() -> None:
+def test_validate_approval_package_bundle_succeeds_across_all_12_docs() -> None:
     report = validate_approval_package_bundle(REPO_ROOT)
-    assert report["validated_file_count"] == 11
+    assert report["validated_file_count"] == 12
     assert report["events_verified"] == 27
     assert report["zero_fabricated_approvals"] is True
     assert report["official_phase12_ready"] is False
+    assert report["option_a_descriptive_ready"] is False
     assert set(report["official_blocker_codes"]) == {
         "COHORT_APPROVAL_MISSING",
         "EVAL_AUTH_NOT_GRANTED",
@@ -97,8 +98,9 @@ def test_handoff_cli_preflight_passes_and_execute_refuses(tmp_path: Path, capsys
     rc_pre = handoff_cli_main(["--mode", "preflight-check", "--root", str(REPO_ROOT)])
     out_pre = json.loads(capsys.readouterr().out)
     assert rc_pre == 0
-    assert out_pre["validated_file_count"] == 11
+    assert out_pre["validated_file_count"] == 12
     assert out_pre["official_phase12_ready"] is False
+    assert out_pre["option_a_descriptive_ready"] is False
 
     rc_exec = handoff_cli_main(
         [

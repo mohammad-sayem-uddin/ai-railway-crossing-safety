@@ -92,3 +92,30 @@ def test_live_repository_split_audit_matches_checked_in_report():
     assert len(chrono["overlaps"]["split_adjacent_pairs"]) == 1
     assert chrono["role_summary"]["val"]["cohorts"].get("no_train_events", 0) == 1
     assert report["proposal_metadata_inconsistencies_count"] == 7
+
+    # Mission 5 Option A stratified diagnostics (Exp S)
+    opt_a = report["option_a_stratified_diagnostics"]
+    app = opt_a["approach_detection_by_session"]
+    assert app["session_20260914_daytime"]["closure_decision_count"] == 7
+    assert app["session_20260914_daytime"]["n_events"] == 20
+    assert app["session_20261004_night_lowlight"]["closure_decision_count"] == 3
+    assert app["session_20261004_night_lowlight"]["n_events"] == 3
+    assert app["session_20261004_night_lowlight"]["side_proxy_frames_total"] == 824
+    assert app["all_train_events"]["side_proxy_frames_total"] == 967
+
+    exit_diag = opt_a["exit_confirmation_and_sync11_fail_closed_finding"]
+    assert exit_diag["sync11_event_count"] == 11
+    assert exit_diag["sync11_back_rear_dets_positive_count"] == 0
+    assert exit_diag["sync11_v3_premature_opening_count"] == 0
+    assert exit_diag["sync11_reopening_decision_v3_count"] == 0
+    assert exit_diag["sync11_zero_premature_opening_95_upper_bound_all11"] == 0.2384
+
+    # Mission 5 Option C statistical power targets
+    pwr = report["targeted_additional_data_collection_plan"]["statistical_power_and_sample_size_recalculation"]
+    exact_t = pwr["exact_binomial_and_cluster_targets"]
+    assert exact_t["zero_failure_95_upper_bound_10pct_unclustered_n"] == 29
+    assert exact_t["zero_failure_95_upper_bound_5pct_unclustered_n"] == 59
+    assert exact_t["cluster_adjusted_test_trains_for_10pct_bound"] == 43
+    assert exact_t["cluster_adjusted_test_trains_for_5pct_bound"] == 86
+    floor = pwr["structural_floor_critique"]["minimal_3crossing_6session_total"]
+    assert floor["zero_premature_opening_95_upper_bound"] == 0.2209

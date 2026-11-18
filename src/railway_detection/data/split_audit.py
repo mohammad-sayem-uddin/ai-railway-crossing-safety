@@ -8,7 +8,9 @@ two-session split ``leakage_safe=True``.
 
 from __future__ import annotations
 
+import csv
 import json
+import math
 from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -18,7 +20,34 @@ import yaml
 
 from railway_detection.research_contracts import ResearchContractError, validate_event_level_split
 
-SCHEMA_VERSION = "layer-b-event-split-audit/1.0"
+SCHEMA_VERSION = "layer-b-event-split-audit/1.1"
+_Z_95 = 1.959963984540054
+
+
+def _wilson_ci_95(k: int, n: int) -> tuple[float, float]:
+    """Two-sided 95% Wilson score interval for k successes in n trials."""
+    if n <= 0:
+        return (0.0, 0.0)
+    p = k / n
+    z2 = _Z_95 * _Z_95
+    denom = 1.0 + z2 / n
+    center = (p + z2 / (2.0 * n)) / denom
+    half = (_Z_95 * math.sqrt((p * (1.0 - p) + z2 / (4.0 * n)) / n)) / denom
+    return (round(max(0.0, center - half), 4), round(min(1.0, center + half), 4))
+
+
+def _clopper_pearson_zero_failure_upper_95(n: int, alpha: float = 0.05) -> float:
+    """Exact one-sided (1-alpha) Clopper-Pearson upper risk bound given 0/n failures."""
+    if n <= 0:
+        return 1.0
+    return round(1.0 - (alpha ** (1.0 / n)), 4)
+
+
+def _min_n_for_zero_failure_upper_bound(p_max: float, alpha: float = 0.05) -> int:
+    """Smallest n such that 0/n failures yields one-sided upper bound <= p_max."""
+    if not (0.0 < p_max < 1.0):
+        raise ValueError("p_max must lie in (0, 1)")
+    return math.ceil(math.log(alpha) / math.log(1.0 - p_max))
 
 
 def _read_json(path: Path) -> Any:
@@ -298,6 +327,251 @@ def propose_chronological_within_site_split() -> dict[str, list[str]]:
     }
 
 
+def calculate_option_c_statistical_power_and_cohort_design() -> dict[str, Any]:
+    """Recalculate Option C sample-size and cohort requirements from research questions."""
+    n_unclustered_10pct = _min_n_for_zero_failure_upper_bound(0.10)
+    n_unclustered_5pct = _min_n_for_zero_failure_upper_bound(0.05)
+    passages_per_session = 10
+    intra_session_icc = 0.05
+    deff = round(1.0 + (passages_per_session - 1) * intra_session_icc, 2)
+    n_cluster_10pct = math.ceil(n_unclustered_10pct * deff)
+    n_cluster_5pct = math.ceil(n_unclustered_5pct * deff)
+    return {
+        "structural_floor_critique": {
+            "minimal_3crossing_6session_total": {
+                "crossings": 3,
+                "sessions": 6,
+                "assumed_test_train_passages": 12,
+                "assumed_test_no_train_controls": 6,
+                "zero_premature_opening_95_upper_bound": _clopper_pearson_zero_failure_upper_95(12),
+                "zero_false_closure_95_upper_bound": _clopper_pearson_zero_failure_upper_95(6),
+            },
+            "why_insufficient": (
+                "A structural minimum of 3 crossings x 2 sessions (yielding ~12 held-out test trains and "
+                "~6 test no_train clips) leaves 0/12 premature openings with a 22.09% one-sided 95% upper "
+                "risk bound and 0/6 false closures with a 39.30% upper bound, and puts only 1 crossing in "
+                "val/test (crossing-specific outlier vulnerability)."
+            ),
+        },
+        "exact_binomial_and_cluster_targets": {
+            "intra_session_icc_assumed": intra_session_icc,
+            "passages_per_session_assumed": passages_per_session,
+            "cluster_design_effect": deff,
+            "zero_failure_95_upper_bound_10pct_unclustered_n": n_unclustered_10pct,
+            "zero_failure_95_upper_bound_5pct_unclustered_n": n_unclustered_5pct,
+            "cluster_adjusted_test_trains_for_10pct_bound": n_cluster_10pct,
+            "cluster_adjusted_test_trains_for_5pct_bound": n_cluster_5pct,
+            "unclustered_test_no_train_for_10pct_bound": n_unclustered_10pct,
+            "cluster_adjusted_test_no_train_for_10pct_bound": n_cluster_10pct,
+            "mcnemar_80pct_power_note": (
+                f"Detecting a paired premature-opening reduction from >=20% (V2) to <=1% (V3) at alpha=0.05 "
+                f"requires >=8 discordant passages (>={n_cluster_10pct} cluster-adjusted synced test train passages at DEFF={deff})."
+            ),
+        },
+        "recommended_three_cohort_design": {
+            "total_crossings_target": ">= 5 disjoint rural/semi-urban level crossings (eliminating single-site val/test fragility)",
+            "total_sessions_target": ">= 11 sessions spanning Day-Clear, Day-Rain/Fog, Night-Clear, Night-Rain/Fog",
+            "total_events_target": ">= 220 balanced events across train, val, and test cohorts",
+            "cohorts": {
+                "train": {
+                    "crossings": ">= 2 crossings (e.g., crossing_A + crossing_E)",
+                    "sessions": ">= 4 sessions across day/night/rain",
+                    "train_passages": ">= 60",
+                    "no_train_controls": ">= 30 (>= 60 s road-horn/traffic clips)",
+                    "engine_passages": ">= 8",
+                },
+                "val": {
+                    "crossings": ">= 1-2 disjoint crossings (e.g., crossing_B; zero overlap with train/test)",
+                    "sessions": ">= 3 sessions across day/night/rain",
+                    "train_passages": ">= 24",
+                    "no_train_controls": ">= 15 (>= 60 s road-horn/traffic clips)",
+                    "engine_passages": ">= 4",
+                    "role": "Strictly for model selection, acoustic hysteresis (tau, k), and temperature calibration only.",
+                },
+                "test": {
+                    "crossings": ">= 2 unseen crossings (e.g., crossing_C + crossing_D; zero overlap with train/val)",
+                    "sessions": ">= 4 sessions balanced across 2x2 Day/Night x Clear/Monsoon strata",
+                    "train_passages": f">= {n_cluster_10pct} synced full-train passages (for <=10% cluster-adjusted 95% upper bound; >= {n_cluster_5pct} for <=5% bound)",
+                    "no_train_controls": f">= {n_unclustered_10pct} road-horn/traffic clips >=60 s each (>= {n_cluster_10pct} cluster-adjusted)",
+                    "engine_passages": ">= 8 uncensored entry-to-T4 clearance passages",
+                    "role": "Locked single-shot evaluation only after model/threshold freeze on val.",
+                },
+            },
+            "confounding_controls": [
+                "Identical camera & microphone hardware per crossing across train, no_train, and engine cohorts.",
+                "2x2 lighting x weather factorial balance with matched no_train controls inside every capture session.",
+                "NTP/GPS sync + audible/visual slate clapper establishing sub-100 ms sync on 100% of dual-camera clips.",
+                "Physical crossing-box occupancy ground truth (calibrated overhead camera or inductive/radar logger).",
+                "Pre-collection distance/resolution calibration pilot (40-210 m) checking >=24-32 px train bbox height at 416 px.",
+            ],
+        },
+    }
+
+
+def evaluate_option_a_stratified_corpus_diagnostics(
+    repo_root: Path,
+    events: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Stratified non-raw Option A diagnostics joining exp_n_event_matrix.csv with session metadata."""
+    exp_n_path = repo_root / "results/exploratory_v2/experiments/exp_n_event_matrix.csv"
+    if not exp_n_path.is_file():
+        return {"available": False, "reason": "missing_exp_n_event_matrix_csv"}
+
+    by_key = {e["event_key"]: e for e in events}
+    with exp_n_path.open(encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+
+    def _as_bool(v: str | None) -> bool:
+        return str(v or "").strip().lower() == "true"
+
+    def _as_int(v: str | None) -> int:
+        return int(float(v)) if v and str(v).strip() else 0
+
+    def _as_float(v: str | None) -> float | None:
+        return float(v) if v and str(v).strip() else None
+
+    train_rows = [r for r in rows if by_key.get(r["event_id"], {}).get("cohort") == "train_events"]
+    no_train_rows = [r for r in rows if by_key.get(r["event_id"], {}).get("cohort") == "no_train_events"]
+    engine_rows = [r for r in rows if by_key.get(r["event_id"], {}).get("cohort") == "engine_events"]
+
+    def _summarize_train_group(group: list[dict[str, Any]]) -> dict[str, Any]:
+        n = len(group)
+        front_det = sum(1 for r in group if _as_bool(r["front_detected"]))
+        closures = sum(1 for r in group if _as_bool(r["closure_decision"]))
+        side_frames = sum(_as_int(r["side_proxy_detected_frames"]) for r in group)
+        rear_dets = sum(_as_int(r["back_rear_dets"]) for r in group)
+        last_carriage = sum(_as_int(r["back_last_carriage_dets"]) for r in group)
+        sync_n = sum(1 for r in group if _as_bool(r["is_sync11"]))
+        c_rate = round(closures / n, 4) if n else 0.0
+        return {
+            "n_events": n,
+            "sync11_count": sync_n,
+            "front_detected_count": front_det,
+            "closure_decision_count": closures,
+            "closure_rate": c_rate,
+            "closure_rate_wilson_95_ci": list(_wilson_ci_95(closures, n)),
+            "side_proxy_frames_total": side_frames,
+            "back_rear_dets_total": rear_dets,
+            "back_last_carriage_dets_total": last_carriage,
+        }
+
+    s1_train = [
+        r for r in train_rows if by_key[r["event_id"]]["true_capture_session"] == "session_20260914"
+    ]
+    s2_train = [
+        r for r in train_rows if by_key[r["event_id"]]["true_capture_session"] == "session_20261004"
+    ]
+    all_summary = _summarize_train_group(train_rows)
+    s1_summary = _summarize_train_group(s1_train)
+    s2_summary = _summarize_train_group(s2_train)
+    s2_side_pct = (
+        round((s2_summary["side_proxy_frames_total"] / all_summary["side_proxy_frames_total"]) * 100.0, 2)
+        if all_summary["side_proxy_frames_total"]
+        else 0.0
+    )
+    s2_rear_pct = (
+        round((s2_summary["back_rear_dets_total"] / all_summary["back_rear_dets_total"]) * 100.0, 2)
+        if all_summary["back_rear_dets_total"]
+        else 0.0
+    )
+
+    sync11_rows = [r for r in train_rows if _as_bool(r["is_sync11"])]
+    sync11_l1_closed = [r for r in sync11_rows if _as_bool(r["closure_decision"])]
+    rear_positive_events = [r["event_id"] for r in train_rows if _as_int(r["back_rear_dets"]) > 0]
+    rear_pos_sync11 = [r["event_id"] for r in sync11_rows if _as_int(r["back_rear_dets"]) > 0]
+
+    t2_vals = sorted(_as_float(r["T2_s"]) for r in train_rows if _as_float(r["T2_s"]) is not None)
+    margins = [_as_float(r["safety_margin_vs_T2_s"]) for r in train_rows if _as_float(r["safety_margin_vs_T2_s"]) is not None]
+
+    nt_closures = sum(1 for r in no_train_rows if _as_bool(r["closure_decision"]))
+    eng_closures = sum(1 for r in engine_rows if _as_bool(r["closure_decision"]))
+    proposal_occ_note_rows = [
+        r["event_id"]
+        for r in rows
+        if str(r["occupancy_sensor_state"] or "").strip() not in ("", "MISSING_OR_UNKNOWN")
+    ]
+
+    return {
+        "schema_version": "option-a-stratified-diagnostics/1.0",
+        "evidence_classification": "CACHE_ONLY_EXPLORATORY_PRE_DB40305",
+        "source_csv": "results/exploratory_v2/experiments/exp_n_event_matrix.csv",
+        "approach_detection_by_session": {
+            "all_train_events": all_summary,
+            "session_20260914_daytime": s1_summary,
+            "session_20261004_night_lowlight": s2_summary,
+            "interpretation": (
+                f"Pooled {all_summary['closure_decision_count']}/{all_summary['n_events']} "
+                f"({all_summary['closure_rate'] * 100:.2f}%) closure mixes Session 1 daytime "
+                f"({s1_summary['closure_decision_count']}/{s1_summary['n_events']} = "
+                f"{s1_summary['closure_rate'] * 100:.1f}%, pre-db40305 -90 deg .mov rotation losses) "
+                f"and Session 2 night low-light ({s2_summary['closure_decision_count']}/{s2_summary['n_events']} = "
+                f"{s2_summary['closure_rate'] * 100:.1f}%, producing {s2_side_pct:.2f}% of all side_proxy "
+                f"frames and {s2_rear_pct:.2f}% of all back_rear_dets on 0/3 sync11 clips)."
+            ),
+        },
+        "exit_confirmation_and_sync11_fail_closed_finding": {
+            "sync11_event_count": len(sync11_rows),
+            "sync11_session_distribution": dict(
+                sorted(Counter(by_key[r["event_id"]]["true_capture_session"] for r in sync11_rows).items())
+            ),
+            "sync11_l1_closed_count": len(sync11_l1_closed),
+            "sync11_back_rear_dets_positive_count": len(rear_pos_sync11),
+            "sync11_back_last_carriage_dets_positive_count": sum(
+                1 for r in sync11_rows if _as_int(r["back_last_carriage_dets"]) > 0
+            ),
+            "sync11_physical_occupancy_sensor_count": 0,
+            "sync11_clearance_decision_v3_count": sum(
+                1 for r in sync11_rows if _as_bool(r["clearance_decision_v3_sync11"])
+            ),
+            "sync11_reopening_decision_v3_count": sum(
+                1 for r in sync11_rows if _as_bool(r["reopening_decision_v3_sync11"])
+            ),
+            "sync11_v2_premature_opening_count": sum(
+                1 for r in sync11_rows if _as_bool(r["v2_premature_opening_vs_T4"])
+            ),
+            "sync11_v3_premature_opening_count": sum(
+                1 for r in sync11_rows if _as_bool(r["v3_premature_opening_vs_T4"])
+            ),
+            "sync11_zero_premature_opening_95_upper_bound_all11": _clopper_pearson_zero_failure_upper_95(
+                len(sync11_rows)
+            ),
+            "sync11_zero_premature_opening_95_upper_bound_l1_closed": _clopper_pearson_zero_failure_upper_95(
+                len(sync11_l1_closed)
+            ),
+            "events_with_positive_back_rear_dets": rear_positive_events,
+            "events_with_positive_back_rear_dets_in_sync11": rear_pos_sync11,
+            "architectural_implication": (
+                "On pre-db40305 sync11 caches, 0/11 clips contain positive rear detections or physical "
+                "occupancy sensors; V3_CONSERVATIVE_POSITIVE prevents premature openings (0/11 vs 4/11 V2) "
+                "strictly by latching fail-closed until clip EOF (0/11 completed real-cache reopenings). "
+                "Positive rear-exit + occupancy AND-gate reopening is verified in SYNTHETIC_ONLY runs (Exp K, L, Q)."
+            ),
+        },
+        "false_closure_and_control_confounding": {
+            "no_train_count": len(no_train_rows),
+            "no_train_false_closures_v3": nt_closures,
+            "no_train_false_closure_95_upper_bound": _clopper_pearson_zero_failure_upper_95(len(no_train_rows)),
+            "no_train_daytime_count": sum(
+                1 for r in no_train_rows if by_key[r["event_id"]]["true_lighting"] == "day"
+            ),
+            "engine_count": len(engine_rows),
+            "engine_false_closures_v3": eng_closures,
+        },
+        "kinematic_lead_time_and_siting_limitations": {
+            "t2_observed_train_count": len(t2_vals),
+            "t2_min_s": min(t2_vals) if t2_vals else None,
+            "t2_median_s": round(t2_vals[len(t2_vals) // 2], 4) if t2_vals else None,
+            "t2_max_s": max(t2_vals) if t2_vals else None,
+            "positive_margin_count": sum(1 for m in margins if m >= 0.0),
+            "min_margin_vs_t2_s": min(margins) if margins else None,
+            "max_margin_vs_t2_s": max(margins) if margins else None,
+            "physical_occupancy_sensor_count": 0,
+            "proposal_only_scene_clear_note_events": proposal_occ_note_rows,
+            "siting_distance_validation_status": "UNVALIDATED_KINEMATIC_ENGINEERING_ESTIMATE",
+        },
+    }
+
+
 def generate_targeted_collection_plan() -> dict[str, Any]:
     """Targeted additional-data collection plan required for genuine OOD Phase 12 splits."""
     return {
@@ -310,12 +584,12 @@ def generate_targeted_collection_plan() -> dict[str, Any]:
         "minimum_new_collection_requirements": {
             "independent_crossings": {
                 "minimum_new_crossings": 2,
-                "target_total_crossings": ">= 3 disjoint rural/semi-urban level crossings (crossing_A=train, crossing_B=val, crossing_C=test, or K-fold leave-one-crossing-out)",
+                "target_total_crossings": ">= 3 disjoint crossings minimum structural floor; >= 5 crossings recommended for outlier resilience and statistical power",
                 "rationale": "Eliminates background geometry, barrier appearance, acoustic reverberation, and crossing-specific false-alarm leakage.",
             },
             "minimum_balanced_sessions": {
                 "minimum_sessions_per_crossing": 2,
-                "target_total_sessions": ">= 6 capture sessions spanning day, dusk/night, and overcast/monsoon rain across every split role",
+                "target_total_sessions": ">= 6 capture sessions structural floor; >= 11 balanced sessions across train/val/test recommended to reach >= 42 test trains",
                 "within_each_session": {
                     "full_train_passages": ">= 6 passages (passenger + freight where available)",
                     "no_train_traffic_controls": ">= 3 daytime + >= 3 nighttime road-traffic horn clips per crossing (>= 60 s each)",
@@ -325,12 +599,13 @@ def generate_targeted_collection_plan() -> dict[str, Any]:
             "hardware_and_synchronization_protocol": [
                 "Use identical camera hardware across train/no_train/engine cohorts within each session (no mid-cohort iPhone-to-iPad swap).",
                 "Lock orientation metadata upright or maintain strict orthogonal rotation tags; verify NTP/GPS clock sync plus an audible/visual slate clapper at session start & end to establish sub-100ms front-back sync across ALL events (eliminating the 15 non-CALIBRATION_SUPPORTED events).",
-                "Site approach cameras 84–211 m upstream along the rail corridor with >= 10 s pre-entry buffer so T0, T1, and T2 satisfy the 7.6 s V3 closure budget without left-censoring.",
+                "Treat 84–211 m upstream distance (7.6 s closure budget at 40–100 km/h) as an unvalidated kinematic engineering estimate until verified via site-specific lens focal length, small-object pixel height (>= 24–32 px at 416 px), curvature, and >= 10 s pre-entry buffer.",
                 "Record independent occupancy ground truth (calibrated overhead crossing camera or inductive/radar occupancy logger) plus dedicated lateral crossing-box FOV.",
             ],
         },
+        "statistical_power_and_sample_size_recalculation": calculate_option_c_statistical_power_and_cohort_design(),
         "interim_scientifically_defensible_path": {
-            "recommended_now": "Honor active researcher decision SPLIT-DECISION-OPTION-A-2026-11-09 (27-event full-cohort descriptive benchmark via Stage-2.1 review + descriptive execution authorization), reporting exact Wilson 95% CIs and prohibiting cross-crossing generalization claims.",
+            "recommended_now": "Honor active researcher decision SPLIT-DECISION-OPTION-A-2026-11-09 (27-event full-cohort descriptive benchmark via Stage-2.1 review + descriptive execution authorization), reporting exact Wilson/Clopper-Pearson 95% CIs and prohibiting cross-crossing generalization claims.",
             "do_not": "Do NOT relabel any partition of these 27 events as leakage_safe=true just to unlock Phase 12 held-out evaluation.",
         },
     }
@@ -359,6 +634,10 @@ def run_split_audit(repo_root: Path) -> dict[str, Any]:
     ]
     crossings = sorted({e["crossing_id"] for e in events})
     true_sessions = sorted({e["true_capture_session"] for e in events})
+    collection_plan = generate_targeted_collection_plan()
+    n_cluster_10pct = collection_plan["statistical_power_and_sample_size_recalculation"][
+        "exact_binomial_and_cluster_targets"
+    ]["cluster_adjusted_test_trains_for_10pct_bound"]
     return {
         "schema_version": SCHEMA_VERSION,
         "raw_media_accessed": False,
@@ -371,6 +650,11 @@ def run_split_audit(repo_root: Path) -> dict[str, Any]:
             "r04_modes": dict(sorted(Counter(e["r04_scope_mode"] for e in events).items())),
         },
         "can_27_events_produce_leakage_safe_3way_split": False,
+        "strategy_comparison": {
+            "recommended_for_existing_27_events": "Option A (Descriptive single-crossing research via Stage-2.1 + AUTH-DESCRIPTIVE-EVAL-EXEC)",
+            "recommended_for_generalization_and_model_retraining": f"Option C (Multi-crossing collection >=5 crossings / >=11 sessions / >={n_cluster_10pct} cluster-adjusted test synced train passages before Phase 12)",
+            "pi_approval_required_before_scope_change": True,
+        },
         "root_causes": [
             f"Single physical site: all 27 events share crossing_id={crossings!r} (0 held-out crossings).",
             f"Two physical sessions: only {true_sessions} exist (< 3 non-empty split roles required by validate_event_level_split).",
@@ -379,10 +663,11 @@ def run_split_audit(repo_root: Path) -> dict[str, Any]:
         ],
         "proposal_metadata_inconsistencies_count": len(proposal_bugs),
         "proposal_metadata_inconsistencies": proposal_bugs,
+        "option_a_stratified_diagnostics": evaluate_option_a_stratified_corpus_diagnostics(repo_root, events),
         "candidate_splits_evaluated": {
             "prior_hash_candidate_16_6_5": prior_eval,
             "chrono_temporal_block_15_5_7": chrono_eval,
         },
-        "targeted_additional_data_collection_plan": generate_targeted_collection_plan(),
+        "targeted_additional_data_collection_plan": collection_plan,
         "events": events,
     }

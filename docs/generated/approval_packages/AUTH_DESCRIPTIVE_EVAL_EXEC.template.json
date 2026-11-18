@@ -1,0 +1,50 @@
+{
+  "schema_version": "phase5-descriptive-eval-execution-authorization/1",
+  "authorization_id": "__HUMAN_APPROVAL_REQUIRED___e.g._AUTH-DESCRIPTIVE-EVAL-EXEC-2026-11-XX",
+  "authorization_class": "AUTH-DESCRIPTIVE-EVAL-EXEC",
+  "status": "__HUMAN_APPROVAL_REQUIRED___SET_APPROVED_WHEN_SIGNED",
+  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___CHOOSE_FROM_elaf85777@gmail.com|raihankabirrahu@gmail.com",
+  "authorized_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ",
+  "expires_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ_AFTER_ISSUED",
+  "revoked": false,
+  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_PI_STATEMENT_AUTHORIZING_SINGLE_SITE_OPTION_A_DESCRIPTIVE_EVALUATION",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "researcher",
+    "identity": "__HUMAN_APPROVAL_REQUIRED___REVIEWER_EMAIL"
+  },
+  "scope": {
+    "operation": "descriptive_cache_only_replay",
+    "conditions": [
+      "baseline",
+      "v3_conservative_positive"
+    ],
+    "events": [
+      "ALL_MANIFEST_EVENTS"
+    ],
+    "metric_scope": [
+      "blocked_seconds",
+      "clearance_latency_s",
+      "closure_episodes",
+      "excess_closed_duration_s",
+      "exposure_s",
+      "missed_train",
+      "premature_opening",
+      "total_closed_s",
+      "warning_lead_time_s"
+    ],
+    "purpose": "Authorized Option A single-crossing (crossing_A) 27-event descriptive cohort evaluation under SPLIT-DECISION-OPTION-A-2026-11-09 with zero cross-site generalization claims.",
+    "field_or_physical_operations_authorized": false
+  },
+  "bindings": {
+    "evaluation_manifest_sha256": "__HUMAN_APPROVAL_REQUIRED___SHA256_OF_CACHE_EVALUATION_MANIFEST",
+    "metric_scope_sha256": "1e10c02db10336cb8f436f5c791b20b2f58301cfd3d517e1ddf6a2d713562c36",
+    "model_config_provenance_sha256": "999a7970d4c47713a1b128f77939916a54bc99c24becd68e383aad2f1db5a42e",
+    "promotion_receipt_sha256": "__HUMAN_APPROVAL_REQUIRED___FROM_assess_official_phase12_readiness().live_bindings",
+    "protocol_sha256": "6b5edb4852fc0d16a10ac1975f3f18d6feb28fe91638971da7d3761a7a6d42ca"
+  },
+  "record_sha256": "__HUMAN_APPROVAL_REQUIRED___COMPUTE_WITH_governance.canonical_record_sha256"
+}

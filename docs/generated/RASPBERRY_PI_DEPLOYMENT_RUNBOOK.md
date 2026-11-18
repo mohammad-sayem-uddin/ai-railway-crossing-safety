@@ -144,3 +144,27 @@ OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 PYTHONPATH=src:. .venv/bin/python scripts/rp
   }
 }
 ```
+
+---
+
+## 8. Repeatable End-to-End Hardware Validation Protocol (Live Camera + Inference + FSM + Thermal Soak)
+
+`rpi_edge_benchmark.py` isolates TorchScript, OpenCV preprocessing, and `V3 FSM` CPU kernels on synthetic tensors (`SYNTHETIC_ONLY`). Before any field hardware pilot claim, run the full 4-stage physical Raspberry Pi validation protocol on Linux `aarch64` (`physical_raspberry_pi_tested = true`):
+
+1. **Stage H1 — Kernel Baseline (`SYNTHETIC_ONLY`):** Run `scripts/rpi_edge_benchmark.py --iters 20` at `threads = 1, 2, 4` (`performance` governor) to record `vision_416_ts_ms`, `audio_ts_ms`, `synthetic_opencv_preprocess_416px`, and `vmhwm_mb`. Acceptance floor: `416px` E2E (`preprocess + TS forward`) `p95 <= 125 ms` (sustainable `5–8 Hz` dual-camera wakeup budget) and `vmhwm_mb < 512 MB`.
+2. **Stage H2 — Live Capture + Decode + Display-Rotation Pipeline Latency:** Capture live local camera frames (`CSI libcamera` or `USB V4L2 /dev/video0`, plus `I2S/USB` `16 kHz` audio) and timestamp end-to-end wall-clock latency `t_capture -> t_rotate -> t_yolo_ts -> t_v3_fsm -> t_cmd_emit` (`p50, p95, p99` across `>= 1,000` frames). Must remain well below the `0.20 s` (`200 ms`) causal tick period without dropping frames into stale buffer backlogs (`temporal_tolerance_s = 0.50 s`).
+3. **Stage H3 — Sustained `>= 30 min` Tropical Thermal Soak:** Run continuous `5 Hz` `416px` simulated event-active cycles inside a realistic outdoor enclosure (`>= 30 min`) logging `/sys/class/thermal/thermal_zone0/temp` and `/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq` every `10 s`. Verify `soc_temp_c < 80.0 °C` with zero thermal frequency throttling and zero monotonic RSS leak.
+4. **Stage H4 — Non-Live Actuator Latency Timing Bench (Dummy Resistive Load Only):** Measure software-command-to-opto-isolator LED latency on a **disconnected bench test rig** (`0` physical crossing arms/tracks) to quantify actuation slack relative to crossing warning budgets.
+
+---
+
+## 9. Architectural Implications of Absent Occupancy Sensors (`0/27`) & Unvalidated Camera Distances
+
+1. **Why Missing Physical Occupancy Sensors (`0/27`) Latches `V3_CONSERVATIVE_POSITIVE` Closed:**
+   - Under `rules_v3_four_layer.py`, exiting `CROSSING_OCCUPIED` / `TRAIN_DEPARTING` to `GATE_OPENING` requires an **explicit AND-gate**: `(REAR_CONFIRMED or tail departure) AND OccupancyState.CLEAR`.
+   - When real field clips lack an independent physical occupancy sensor (`OccupancyState.UNKNOWN` / `MISSING_OR_UNKNOWN`, as in `27/27` current Layer-B events) OR lack rear detections (`0/11` on `sync11`), V3 **cannot safely verify the crossing box is empty** and deliberately latches **fail-closed** (`CLOSED`) until timeout/`FAULT_FAIL_SAFE`.
+   - **Operational Implication:** Deploying a vision-only edge box without an independent crossing-island occupancy sensor (radar, inductive loop, LiDAR beam, or dedicated overhead crossing camera) guarantees either unsafe disappearance-based guessing (`V2`, `4/11` premature reopenings) or permanent fail-closed lockdown after train passage. An independent physical occupancy channel is mandatory for autonomous reopening.
+2. **Unvalidated Kinematic Camera Siting Estimates (`84–211 m`):**
+   - The `84–211 m` range (`40–100 km/h` multiplied by the `7.6 s` baseline closure budget: `0.4 s` `confirm_frames=2` + `2.0 s` warning + `3.0 s` stroke + `2.2 s` margin) is a **first-order kinematic calculation (`UNVALIDATED_KINEMATIC_ENGINEERING_ESTIMATE`)**, NOT a field-calibrated optical design rule.
+   - At `100–211 m`, a standard wide-angle smartphone or Pi Camera Module lens shrinks approaching locomotives below `YOLOv8n`'s reliable `416px` bounding-box scale (`< 24 px` vertical height), risking missed `T0` approach triggers in haze/night. Before permanent pole mounting, conduct controlled distance/focal-length calibration (`40 m`, `80 m`, `120 m`, `160 m`, `210 m`) verifying pixel height, track curvature sightlines, and monsoon spray immunity.
+3. **Hard Safety Boundary:** Never connect Raspberry Pi GPIO pins, relays, alarms, or prototype scripts to actual railway signaling circuits, track circuits, or physical level-crossing barriers without independent certified railway SIL-4 / interlocking safety review.

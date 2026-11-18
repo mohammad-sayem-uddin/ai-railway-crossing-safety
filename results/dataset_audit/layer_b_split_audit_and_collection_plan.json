@@ -1,5 +1,5 @@
 {
-  "schema_version": "layer-b-event-split-audit/1.0",
+  "schema_version": "layer-b-event-split-audit/1.1",
   "raw_media_accessed": false,
   "corpus_counts": {
     "total_events": 27,
@@ -25,6 +25,11 @@
     }
   },
   "can_27_events_produce_leakage_safe_3way_split": false,
+  "strategy_comparison": {
+    "recommended_for_existing_27_events": "Option A (Descriptive single-crossing research via Stage-2.1 + AUTH-DESCRIPTIVE-EVAL-EXEC)",
+    "recommended_for_generalization_and_model_retraining": "Option C (Multi-crossing collection >=5 crossings / >=11 sessions / >=43 cluster-adjusted test synced train passages before Phase 12)",
+    "pi_approval_required_before_scope_change": true
+  },
   "root_causes": [
     "Single physical site: all 27 events share crossing_id=['crossing_A'] (0 held-out crossings).",
     "Two physical sessions: only ['session_20260914', 'session_20261004'] exist (< 3 non-empty split roles required by validate_event_level_split).",
@@ -79,6 +84,104 @@
       ]
     }
   ],
+  "option_a_stratified_diagnostics": {
+    "schema_version": "option-a-stratified-diagnostics/1.0",
+    "evidence_classification": "CACHE_ONLY_EXPLORATORY_PRE_DB40305",
+    "source_csv": "results/exploratory_v2/experiments/exp_n_event_matrix.csv",
+    "approach_detection_by_session": {
+      "all_train_events": {
+        "n_events": 23,
+        "sync11_count": 11,
+        "front_detected_count": 16,
+        "closure_decision_count": 10,
+        "closure_rate": 0.4348,
+        "closure_rate_wilson_95_ci": [
+          0.2563,
+          0.6319
+        ],
+        "side_proxy_frames_total": 967,
+        "back_rear_dets_total": 30,
+        "back_last_carriage_dets_total": 0
+      },
+      "session_20260914_daytime": {
+        "n_events": 20,
+        "sync11_count": 11,
+        "front_detected_count": 13,
+        "closure_decision_count": 7,
+        "closure_rate": 0.35,
+        "closure_rate_wilson_95_ci": [
+          0.1812,
+          0.5671
+        ],
+        "side_proxy_frames_total": 143,
+        "back_rear_dets_total": 7,
+        "back_last_carriage_dets_total": 0
+      },
+      "session_20261004_night_lowlight": {
+        "n_events": 3,
+        "sync11_count": 0,
+        "front_detected_count": 3,
+        "closure_decision_count": 3,
+        "closure_rate": 1.0,
+        "closure_rate_wilson_95_ci": [
+          0.4385,
+          1.0
+        ],
+        "side_proxy_frames_total": 824,
+        "back_rear_dets_total": 23,
+        "back_last_carriage_dets_total": 0
+      },
+      "interpretation": "Pooled 10/23 (43.48%) closure mixes Session 1 daytime (7/20 = 35.0%, pre-db40305 -90 deg .mov rotation losses) and Session 2 night low-light (3/3 = 100.0%, producing 85.21% of all side_proxy frames and 76.67% of all back_rear_dets on 0/3 sync11 clips)."
+    },
+    "exit_confirmation_and_sync11_fail_closed_finding": {
+      "sync11_event_count": 11,
+      "sync11_session_distribution": {
+        "session_20260914": 11
+      },
+      "sync11_l1_closed_count": 4,
+      "sync11_back_rear_dets_positive_count": 0,
+      "sync11_back_last_carriage_dets_positive_count": 0,
+      "sync11_physical_occupancy_sensor_count": 0,
+      "sync11_clearance_decision_v3_count": 0,
+      "sync11_reopening_decision_v3_count": 0,
+      "sync11_v2_premature_opening_count": 4,
+      "sync11_v3_premature_opening_count": 0,
+      "sync11_zero_premature_opening_95_upper_bound_all11": 0.2384,
+      "sync11_zero_premature_opening_95_upper_bound_l1_closed": 0.5271,
+      "events_with_positive_back_rear_dets": [
+        "train_events/event_003",
+        "train_events/event_004",
+        "train_events/event_008",
+        "train_events/event_021",
+        "train_events/event_022",
+        "train_events/event_023"
+      ],
+      "events_with_positive_back_rear_dets_in_sync11": [],
+      "architectural_implication": "On pre-db40305 sync11 caches, 0/11 clips contain positive rear detections or physical occupancy sensors; V3_CONSERVATIVE_POSITIVE prevents premature openings (0/11 vs 4/11 V2) strictly by latching fail-closed until clip EOF (0/11 completed real-cache reopenings). Positive rear-exit + occupancy AND-gate reopening is verified in SYNTHETIC_ONLY runs (Exp K, L, Q)."
+    },
+    "false_closure_and_control_confounding": {
+      "no_train_count": 3,
+      "no_train_false_closures_v3": 0,
+      "no_train_false_closure_95_upper_bound": 0.6316,
+      "no_train_daytime_count": 0,
+      "engine_count": 1,
+      "engine_false_closures_v3": 0
+    },
+    "kinematic_lead_time_and_siting_limitations": {
+      "t2_observed_train_count": 22,
+      "t2_min_s": 2.8,
+      "t2_median_s": 3.6,
+      "t2_max_s": 6.5,
+      "positive_margin_count": 0,
+      "min_margin_vs_t2_s": -105.5,
+      "max_margin_vs_t2_s": -1.4,
+      "physical_occupancy_sensor_count": 0,
+      "proposal_only_scene_clear_note_events": [
+        "train_events/event_011"
+      ],
+      "siting_distance_validation_status": "UNVALIDATED_KINEMATIC_ENGINEERING_ESTIMATE"
+    }
+  },
   "candidate_splits_evaluated": {
     "prior_hash_candidate_16_6_5": {
       "name": "prior_hash_candidate_16_6_5",
@@ -439,12 +542,12 @@
     "minimum_new_collection_requirements": {
       "independent_crossings": {
         "minimum_new_crossings": 2,
-        "target_total_crossings": ">= 3 disjoint rural/semi-urban level crossings (crossing_A=train, crossing_B=val, crossing_C=test, or K-fold leave-one-crossing-out)",
+        "target_total_crossings": ">= 3 disjoint crossings minimum structural floor; >= 5 crossings recommended for outlier resilience and statistical power",
         "rationale": "Eliminates background geometry, barrier appearance, acoustic reverberation, and crossing-specific false-alarm leakage."
       },
       "minimum_balanced_sessions": {
         "minimum_sessions_per_crossing": 2,
-        "target_total_sessions": ">= 6 capture sessions spanning day, dusk/night, and overcast/monsoon rain across every split role",
+        "target_total_sessions": ">= 6 capture sessions structural floor; >= 11 balanced sessions across train/val/test recommended to reach >= 42 test trains",
         "within_each_session": {
           "full_train_passages": ">= 6 passages (passenger + freight where available)",
           "no_train_traffic_controls": ">= 3 daytime + >= 3 nighttime road-traffic horn clips per crossing (>= 60 s each)",
@@ -454,12 +557,74 @@
       "hardware_and_synchronization_protocol": [
         "Use identical camera hardware across train/no_train/engine cohorts within each session (no mid-cohort iPhone-to-iPad swap).",
         "Lock orientation metadata upright or maintain strict orthogonal rotation tags; verify NTP/GPS clock sync plus an audible/visual slate clapper at session start & end to establish sub-100ms front-back sync across ALL events (eliminating the 15 non-CALIBRATION_SUPPORTED events).",
-        "Site approach cameras 84\u2013211 m upstream along the rail corridor with >= 10 s pre-entry buffer so T0, T1, and T2 satisfy the 7.6 s V3 closure budget without left-censoring.",
+        "Treat 84\u2013211 m upstream distance (7.6 s closure budget at 40\u2013100 km/h) as an unvalidated kinematic engineering estimate until verified via site-specific lens focal length, small-object pixel height (>= 24\u201332 px at 416 px), curvature, and >= 10 s pre-entry buffer.",
         "Record independent occupancy ground truth (calibrated overhead crossing camera or inductive/radar occupancy logger) plus dedicated lateral crossing-box FOV."
       ]
     },
+    "statistical_power_and_sample_size_recalculation": {
+      "structural_floor_critique": {
+        "minimal_3crossing_6session_total": {
+          "crossings": 3,
+          "sessions": 6,
+          "assumed_test_train_passages": 12,
+          "assumed_test_no_train_controls": 6,
+          "zero_premature_opening_95_upper_bound": 0.2209,
+          "zero_false_closure_95_upper_bound": 0.393
+        },
+        "why_insufficient": "A structural minimum of 3 crossings x 2 sessions (yielding ~12 held-out test trains and ~6 test no_train clips) leaves 0/12 premature openings with a 22.09% one-sided 95% upper risk bound and 0/6 false closures with a 39.30% upper bound, and puts only 1 crossing in val/test (crossing-specific outlier vulnerability)."
+      },
+      "exact_binomial_and_cluster_targets": {
+        "intra_session_icc_assumed": 0.05,
+        "passages_per_session_assumed": 10,
+        "cluster_design_effect": 1.45,
+        "zero_failure_95_upper_bound_10pct_unclustered_n": 29,
+        "zero_failure_95_upper_bound_5pct_unclustered_n": 59,
+        "cluster_adjusted_test_trains_for_10pct_bound": 43,
+        "cluster_adjusted_test_trains_for_5pct_bound": 86,
+        "unclustered_test_no_train_for_10pct_bound": 29,
+        "cluster_adjusted_test_no_train_for_10pct_bound": 43,
+        "mcnemar_80pct_power_note": "Detecting a paired premature-opening reduction from >=20% (V2) to <=1% (V3) at alpha=0.05 requires >=8 discordant passages (>=43 cluster-adjusted synced test train passages at DEFF=1.45)."
+      },
+      "recommended_three_cohort_design": {
+        "total_crossings_target": ">= 5 disjoint rural/semi-urban level crossings (eliminating single-site val/test fragility)",
+        "total_sessions_target": ">= 11 sessions spanning Day-Clear, Day-Rain/Fog, Night-Clear, Night-Rain/Fog",
+        "total_events_target": ">= 220 balanced events across train, val, and test cohorts",
+        "cohorts": {
+          "train": {
+            "crossings": ">= 2 crossings (e.g., crossing_A + crossing_E)",
+            "sessions": ">= 4 sessions across day/night/rain",
+            "train_passages": ">= 60",
+            "no_train_controls": ">= 30 (>= 60 s road-horn/traffic clips)",
+            "engine_passages": ">= 8"
+          },
+          "val": {
+            "crossings": ">= 1-2 disjoint crossings (e.g., crossing_B; zero overlap with train/test)",
+            "sessions": ">= 3 sessions across day/night/rain",
+            "train_passages": ">= 24",
+            "no_train_controls": ">= 15 (>= 60 s road-horn/traffic clips)",
+            "engine_passages": ">= 4",
+            "role": "Strictly for model selection, acoustic hysteresis (tau, k), and temperature calibration only."
+          },
+          "test": {
+            "crossings": ">= 2 unseen crossings (e.g., crossing_C + crossing_D; zero overlap with train/val)",
+            "sessions": ">= 4 sessions balanced across 2x2 Day/Night x Clear/Monsoon strata",
+            "train_passages": ">= 43 synced full-train passages (for <=10% cluster-adjusted 95% upper bound; >= 86 for <=5% bound)",
+            "no_train_controls": ">= 29 road-horn/traffic clips >=60 s each (>= 43 cluster-adjusted)",
+            "engine_passages": ">= 8 uncensored entry-to-T4 clearance passages",
+            "role": "Locked single-shot evaluation only after model/threshold freeze on val."
+          }
+        },
+        "confounding_controls": [
+          "Identical camera & microphone hardware per crossing across train, no_train, and engine cohorts.",
+          "2x2 lighting x weather factorial balance with matched no_train controls inside every capture session.",
+          "NTP/GPS sync + audible/visual slate clapper establishing sub-100 ms sync on 100% of dual-camera clips.",
+          "Physical crossing-box occupancy ground truth (calibrated overhead camera or inductive/radar logger).",
+          "Pre-collection distance/resolution calibration pilot (40-210 m) checking >=24-32 px train bbox height at 416 px."
+        ]
+      }
+    },
     "interim_scientifically_defensible_path": {
-      "recommended_now": "Honor active researcher decision SPLIT-DECISION-OPTION-A-2026-11-09 (27-event full-cohort descriptive benchmark via Stage-2.1 review + descriptive execution authorization), reporting exact Wilson 95% CIs and prohibiting cross-crossing generalization claims.",
+      "recommended_now": "Honor active researcher decision SPLIT-DECISION-OPTION-A-2026-11-09 (27-event full-cohort descriptive benchmark via Stage-2.1 review + descriptive execution authorization), reporting exact Wilson/Clopper-Pearson 95% CIs and prohibiting cross-crossing generalization claims.",
       "do_not": "Do NOT relabel any partition of these 27 events as leakage_safe=true just to unlock Phase 12 held-out evaluation."
     }
   },

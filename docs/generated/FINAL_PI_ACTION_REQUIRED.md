@@ -8,7 +8,14 @@
 
 ## Executive Summary (Plain-English Status)
 
-All software engineering, causal discrete-event simulation corrections (`Convention B`), synthetic stress/ablation studies (`Exp K–R`), split-leakage forensic audits, test-suite repairs, and preflight approval templates have been completed and verified without touching raw video/audio under `data/raw/` or inventing human sign-off.
+All software engineering, causal discrete-event simulation corrections (`Convention B`), stratified corpus uncertainty diagnostics (`Exp S`), synthetic stress/ablation studies (`Exp K–R`), statistical sample-size recalculation, split-leakage forensic audits, test-suite repairs, and preflight approval templates (`12` unsigned schema-verified files under [`docs/generated/approval_packages/`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/PI_APPROVAL_EXECUTION_GUIDE.md)) have been completed and verified without touching raw video/audio under `data/raw/` or inventing human sign-off. Also inspect the concise research-owner summary in [`RESEARCH_OWNER_FINAL_ACTION_DASHBOARD.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/RESEARCH_OWNER_FINAL_ACTION_DASHBOARD.md).
+
+### Separation of Responsibilities (Scientific Approval vs Technical Execution)
+
+| Layer | Who Performs It | Examples |
+|---|---|---|
+| **Scientific & Ethical Approval** *(Human Only)* | Research Supervisor / PI (`elaf85777@gmail.com`, `raihankabirrahu@gmail.com`) | Authorizing raw video/audio access (`AUTH-MEDIA-ACCESS`), performing human frame-by-frame `Stage-2.1` video review & dual review, choosing **Option A** (descriptive 27-event study) vs **Option C** (multi-crossing collection), and signing `AUTH-DESCRIPTIVE-EVAL-EXEC` or `eval_authorization.json`. |
+| **Technical Execution** *(Autonomous Software / CLI)* | Pipeline / Agent (after approval exists on disk) | Validating 12 approval templates (`prepare_pi_approval_package.py`), computing statistical power (`audit_event_splits.py`), emitting promotion receipt (`readiness_cli`), compiling clean manifests (`manifest_builder`), running fail-closed replay (`prepare_and_execute_official_evaluation.py`), and running Raspberry Pi edge benchmarks (`rpi_edge_benchmark.py`). |
 
 Three classes of prerequisites **cannot legally or scientifically be performed by an autonomous software agent** and now await human researcher decisions or physical lab hardware:
 
@@ -113,17 +120,32 @@ Three classes of prerequisites **cannot legally or scientifically be performed b
    - [Prior Researcher Decision (`SPLIT_DECISION_OPTION_A_20261109.md`)](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/research_decisions/SPLIT_DECISION_OPTION_A_20261109.md)
    - [Dataset Split Audit & Targeted Collection Plan JSON](file:///Users/sayemuddin/Desktop/Train_automation/results/dataset_audit/layer_b_split_audit_and_collection_plan.json)
    - [Diagnostic Chronological Candidate (`phase12_event_split_decision.candidate.template.json`)](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/phase12_event_split_decision.candidate.template.json)
-4. **Exact file / decision fork (choose ONE of three legitimate scientific paths):**
-   - **Recommended Path A — Keep `Option A` (`SPLIT-DECISION-OPTION-A-2026-11-09`, Descriptive 27-Event Study, NO Train/Val/Test Split):** Treat all `27` events (post Action 1 + Action 2 Stage-2.1 review) as a descriptive safety benchmark on `crossing_A` with exact Wilson 95% CIs and explicit single-site scope disclosure (`AUTH-DESCRIPTIVE-EVAL-EXEC`), rather than forcing a leaky split through Phase 12.
-   - **Recommended Path B (For Journal Validation / `Option C`) — Collect New Multi-Crossing Data Before Official Held-Out Evaluation:** Execute the quantitative collection protocol in [`layer_b_split_audit_and_collection_plan.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/dataset_audit/layer_b_split_audit_and_collection_plan.json): **`>= 3` disjoint level crossings** (`crossing_A` = train, `crossing_B` = val, `crossing_C` = test), **`>= 6` balanced sessions** spanning day, dusk/night, and monsoon/rain (`>= 2` sessions/crossing, matched camera hardware across train/negative clips, `>= 6` full passages + `>= 3` day + `>= 3` night `>= 60 s` road-horn controls + `>= 1` full engine entry-to-`T4` clearance per crossing, `84–211 m` upstream approach with `>= 10 s` pre-entry buffer + slate sync).
-   - **Diagnostic Path C (Only if PI explicitly wants single-site chronological held-out verification):** Sign [`phase12_event_split_decision.candidate.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/phase12_event_split_decision.candidate.template.json) to `data/splits/phase12_event_split_decision.json`, explicitly accepting `leakage_safe = false`, `cross_crossing_leakage_safe = false`, and `cross_session_leakage_safe = false` (prohibiting any generalization claim beyond `crossing_A`).
-5. **Exact missing decision:** Explicit PI confirmation choosing Path A (Descriptive Option A), Path B (Collect `>= 3` crossings before Phase 12), or Path C (Explicit non-leakage-safe chronological split).
+4. **Exact file / decision fork (choose ONE of two primary scientific strategies — or explicit single-site diagnostic split):**
+   - **Recommended Strategy A (For Existing 27 Events) — Keep `Option A` (`SPLIT-DECISION-OPTION-A-2026-11-09`, Descriptive Single-Crossing Study, NO Train/Val/Test Split):** Treat all `27` events (post Action 1 + Action 2 Stage-2.1 review) as a descriptive safety benchmark on `crossing_A` with exact Wilson / Clopper-Pearson 95% confidence intervals and explicit single-site scope disclosure (`AUTH-DESCRIPTIVE-EVAL-EXEC`, unsigned template ready at [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_DESCRIPTIVE_EVAL_EXEC.template.json)), rather than forcing a leaky split through Phase 12.
+   - **Recommended Strategy C (For Generalization & Model Retraining) — Collect New Multi-Crossing Data Before Phase 12:** Wait before running held-out Phase 12 evaluation until new balanced multi-site field capture is complete. **Statistical Power Recalculation (`layer_b_split_audit_and_collection_plan.json`):** A minimal `3`-crossing / `6`-session floor (~`12` held-out test trains, `~6` test `no_train` controls) leaves `0/12` premature openings with a **`22.09%`** one-sided 95% Clopper-Pearson upper risk bound (`39.30%` on `0/6` false closures) and single-crossing test fragility. To bound premature opening and false-closure risk **`<= 10%`** (at 95% confidence, assuming intra-session `ICC = 0.05`, `m = 10` passages/session, `DEFF = 1.45`), collect **`>= 29` unclustered (`>= 43` cluster-adjusted)** synced test full-train passages and **`>= 29` (`>= 43` cluster-adjusted)** `no_train` road-horn controls across **`>= 5` crossings (`>= 11` sessions, `>= 220` total events across `train` / `val` / `test` cohorts, `>= 8` engine passages in `test`)** (`>= 59` unclustered / `>= 86` cluster-adjusted test trains for a `<= 5%` bound), with matched cameras/mics per site, `2×2` Day/Night × Clear/Rain balance, NTP+clapper sync (`100%`), physical island occupancy logger, and pre-calibrated upstream siting (replacing the currently unvalidated `84–211 m` kinematic estimate).
+   - **Diagnostic Option Only (Not Recommended for Publication) — Single-Site Chronological Held-Out Split:** Sign [`phase12_event_split_decision.candidate.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/phase12_event_split_decision.candidate.template.json) to `data/splits/phase12_event_split_decision.json`, explicitly accepting `leakage_safe = false`, `cross_crossing_leakage_safe = false`, and `cross_session_leakage_safe = false`.
+5. **Exact missing decision:** Explicit PI confirmation choosing Option A (Descriptive study via `AUTH-DESCRIPTIVE-EVAL-EXEC.json` on the existing 27 events), Option C (Collect `>= 5`-crossing dataset before held-out Phase 12), or the explicit non-leakage-safe chronological diagnostic split.
 6. **Exact copy-paste commands to run:**
    ```bash
-   # Audit the split math & collection plan at any time (no raw media accessed):
+   # Audit split math, Option A stratified uncertainty & Option C sample-size targets (no raw media accessed):
    PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. .venv/bin/python scripts/audit_event_splits.py
 
-   # ONLY if explicitly electing Path C (diagnostic single-site chronological split):
+   # IF ELECTING OPTION A (Descriptive 27-event cache-only study after Action 1 + Action 2 promotion receipt):
+   cp docs/generated/approval_packages/AUTH_DESCRIPTIVE_EVAL_EXEC.template.json data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json
+   # Fill __HUMAN_APPROVAL_REQUIRED__ fields (status="APPROVED", authorized_by, timestamps, statement,
+   # promotion_receipt_sha256, evaluation_manifest_sha256), then compute record_sha256:
+   PYTHONPATH=src:. .venv/bin/python -c "
+   import json
+   from pathlib import Path
+   from railway_detection.evaluation import governance
+   p = Path('data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json')
+   rec = json.loads(p.read_text(encoding='utf-8'))
+   rec['record_sha256'] = governance.canonical_record_sha256(rec)
+   p.write_text(json.dumps(rec, indent=2) + '\n', encoding='utf-8')
+   print('Wrote AUTH-DESCRIPTIVE-EVAL-EXEC with record_sha256:', rec['record_sha256'])
+   "
+
+   # ONLY IF EXPLICITLY ELECTING DIAGNOSTIC SINGLE-SITE CHRONOLOGICAL SPLIT:
    cp docs/generated/approval_packages/phase12_event_split_decision.candidate.template.json data/splits/phase12_event_split_decision.json
    # Then edit __HUMAN_APPROVAL_REQUIRED__ fields (decision_status="APPROVED", decided_by, decided_at_utc, statement).
    ```

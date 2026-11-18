@@ -7,7 +7,7 @@ import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from railway_detection.evaluation import governance
+from railway_detection.evaluation import descriptive_exec_gate, governance
 from railway_detection.evaluation.execution_gate import assess_official_phase12_readiness
 from railway_detection.safety import media_guard
 
@@ -28,6 +28,7 @@ def test_real_repo_has_zero_fabricated_approvals_or_reviews() -> None:
     assert not (REPO_ROOT / governance.PROMOTION_RECEIPT_RELATIVE).exists()
     assert not (REPO_ROOT / governance.SPLIT_DECISION_RELATIVE).exists()
     assert not (REPO_ROOT / governance.EVAL_AUTH_RELATIVE).exists()
+    assert not (REPO_ROOT / descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE).exists()
     assert not (REPO_ROOT / "data/manifests/phase12_evaluation_inputs.json").exists()
 
 
@@ -169,3 +170,38 @@ def test_templates_pass_live_validators_when_human_placeholders_filled(tmp_path:
         now=now,
     )
     assert verified_eval.artifact.payload["authorization_id"] == "EVAL-AUTH-TEST-01"
+
+    # 4) AUTH_DESCRIPTIVE_EVAL_EXEC template must pass verify_descriptive_authorization once filled
+    desc_tmpl = _load(out / "AUTH_DESCRIPTIVE_EVAL_EXEC.template.json")
+    assert set(desc_tmpl) == set(descriptive_exec_gate._KEYS)
+    assert desc_tmpl["bindings"]["metric_scope_sha256"] == descriptive_exec_gate.metric_scope_sha256()
+    desc_tmpl["authorization_id"] = "AUTH-DESCRIPTIVE-TEST-01"
+    desc_tmpl["status"] = "APPROVED"
+    desc_tmpl["authorized_by"] = signer
+    desc_tmpl["authorized_at_utc"] = (now - timedelta(hours=1)).isoformat()
+    desc_tmpl["expires_at_utc"] = (now + timedelta(days=7)).isoformat()
+    desc_tmpl["authorization_statement"] = "Test activation of Option A descriptive execution template."
+    desc_tmpl["recorded_by"] = {"kind": "researcher", "identity": signer}
+    manifest_sha = "4" * 64
+    promo_sha = "5" * 64
+    desc_tmpl["bindings"]["evaluation_manifest_sha256"] = manifest_sha
+    desc_tmpl["bindings"]["promotion_receipt_sha256"] = promo_sha
+    desc_tmpl["record_sha256"] = governance.canonical_record_sha256(desc_tmpl)
+    (fake_repo / descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE).write_text(
+        json.dumps(desc_tmpl, indent=2), encoding="utf-8"
+    )
+    verified_desc = descriptive_exec_gate.verify_descriptive_authorization(
+        fake_repo,
+        condition="v3_conservative_positive",
+        event_id="train_events/event_001",
+        manifest_sha256=manifest_sha,
+        now=now,
+        live={
+            "evaluation_manifest_sha256": manifest_sha,
+            "metric_scope_sha256": descriptive_exec_gate.metric_scope_sha256(),
+            "model_config_provenance_sha256": live["frozen_config_sha256"],
+            "promotion_receipt_sha256": promo_sha,
+            "protocol_sha256": live["protocol_profile_sha256"],
+        },
+    )
+    assert verified_desc.authorization_id == "AUTH-DESCRIPTIVE-TEST-01"

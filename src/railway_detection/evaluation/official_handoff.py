@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from railway_detection.data.split_audit import build_event_provenance_table, evaluate_candidate_split
-from railway_detection.evaluation import governance, manifest_builder
+from railway_detection.evaluation import descriptive_exec_gate, governance, manifest_builder
 from railway_detection.evaluation.execution_gate import (
     OfficialExecutionReadiness,
     assess_official_phase12_readiness,
@@ -28,6 +28,7 @@ from railway_detection.reproducibility.audit import run_reproducibility_audit
 from railway_detection.safety import media_guard
 
 EXPECTED_APPROVAL_PACKAGE_FILES = (
+    "AUTH_DESCRIPTIVE_EVAL_EXEC.template.json",
     "AUTH_MEDIA_ACCESS.template.json",
     "COHORT_APPROVAL_PACKAGES.json",
     "COHORT_APPROVAL_PACKAGES.md",
@@ -175,12 +176,39 @@ def validate_approval_package_bundle(
     if "--output-dir" not in guide_md:
         raise OfficialHandoffError("GUIDE_MISSING_OUTPUT_DIR", "execution guide must include --output-dir on evaluation run")
 
+    # 7. AUTH_DESCRIPTIVE_EVAL_EXEC.template.json (Option A descriptive execution authorization template)
+    desc_tmpl = _read_json(pkg / "AUTH_DESCRIPTIVE_EVAL_EXEC.template.json")
+    if set(desc_tmpl) != set(descriptive_exec_gate._KEYS):
+        raise OfficialHandoffError("DESC_AUTH_TEMPLATE_KEYS", "AUTH_DESCRIPTIVE_EVAL_EXEC keys mismatch")
+    if set(desc_tmpl["scope"]) != set(descriptive_exec_gate._SCOPE_KEYS):
+        raise OfficialHandoffError("DESC_AUTH_TEMPLATE_SCOPE", "AUTH_DESCRIPTIVE_EVAL_EXEC scope keys mismatch")
+    if desc_tmpl["scope"]["operation"] != descriptive_exec_gate.DESCRIPTIVE_OPERATION:
+        raise OfficialHandoffError("DESC_AUTH_TEMPLATE_OP", "unexpected descriptive operation")
+    if desc_tmpl["scope"]["field_or_physical_operations_authorized"] is not False:
+        raise OfficialHandoffError("DESC_AUTH_PHYSICAL_FLAG", "physical operations must remain False")
+    if sorted(desc_tmpl["scope"]["metric_scope"]) != sorted(descriptive_exec_gate.DESCRIPTIVE_METRIC_SCOPE):
+        raise OfficialHandoffError("DESC_AUTH_METRIC_SCOPE", "metric_scope mismatch")
+    if set(desc_tmpl["bindings"]) != set(descriptive_exec_gate.BINDING_KEYS):
+        raise OfficialHandoffError("DESC_AUTH_BINDING_KEYS", "descriptive binding keyset mismatch")
+    if desc_tmpl["bindings"]["metric_scope_sha256"] != descriptive_exec_gate.metric_scope_sha256():
+        raise OfficialHandoffError("DESC_AUTH_METRIC_SHA", "metric_scope_sha256 mismatch")
+    if desc_tmpl["bindings"]["model_config_provenance_sha256"] != readiness.live_bindings.get("frozen_config_sha256"):
+        raise OfficialHandoffError("DESC_AUTH_CONFIG_SHA", "model_config_provenance_sha256 mismatch")
+    if desc_tmpl["bindings"]["protocol_sha256"] != readiness.live_bindings.get("protocol_profile_sha256"):
+        raise OfficialHandoffError("DESC_AUTH_PROTO_SHA", "protocol_sha256 mismatch")
+
+    option_a_ready = bool(
+        (root / governance.PROMOTION_RECEIPT_RELATIVE).is_file()
+        and (root / descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE).is_file()
+    )
+
     return {
         "schema_version": "approval-package-validation/1.0",
         "validated_file_count": len(EXPECTED_APPROVAL_PACKAGE_FILES),
         "events_verified": len(expected_events),
         "zero_fabricated_approvals": True,
         "official_phase12_ready": readiness.ready,
+        "option_a_descriptive_ready": option_a_ready,
         "official_blocker_codes": list(readiness.blocker_codes),
         "static_live_bindings": {k: v for k, v in readiness.live_bindings.items() if v is not None},
     }
