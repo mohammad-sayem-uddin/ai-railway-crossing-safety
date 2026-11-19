@@ -93,6 +93,28 @@
 
 ---
 
+## Table VIII — Complete 27-Event Modality & Vision+Audio Fusion Comparison
+*(Evidence: [`COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md`](file:///Users/sayemuddin/Desktop/Train_automation/results/multimodal_27_event_evaluation/COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md), [`event_by_event_27_multimodal_evaluation.csv`](file:///Users/sayemuddin/Desktop/Train_automation/results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv), [`modality_and_fusion_ablation_metrics.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/multimodal_27_event_evaluation/modality_and_fusion_ablation_metrics.json); View 1 = `23` trains vs `3` `no_train` with `engine_events/001` separate; View 3 = `24` rail vehicles vs `3` `no_train`)*
+
+| Architecture / Modality | Train `TP/23` | `FN/23` | `no_train` `FP/3` | `engine_001` Det | Prec (`V1`) | Recall (`V1`) | Spec (`V1`) | F1 (`V1`) | Rail24 `Rec/F1` (`V3`) | McNemar `p` vs `V2` |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **Front-Only Stateless (`k>=1`)** (`V1`) | `16` | `7` | `2` | `no` | `88.9%` | `69.6%` | `33.3%` | `78.0%` | `16/24 (76.2%)` | `0.2891` |
+| **Front-Only L1 Causal (`confirm>=2`)** (`V2`/`B0`) | `10` | `13` | `0` | `no` | `100.0%` | `43.5%` | `100.0%` | `60.6%` | `10/24 (58.8%)` | `1.0000` |
+| **Back-Only `confirm>=2` (All Classes)** (`V4`) | `9` | `14` | `2` | `YES` | `81.8%` | `39.1%` | `33.3%` | `52.9%` | `10/24 (55.6%)` | `0.4531` |
+| **Back-Only `confirm>=2` (Side/Rear Filtered)** (`V5`) | `9` | `14` | `0` | `no` | `100.0%` | `39.1%` | `100.0%` | `56.2%` | `9/24 (54.5%)` | `1.0000` |
+| **Side-Class Proxy (`Front+Back side>=1`)** (`V6`) | `14` | `9` | `0` | `no` | `100.0%` | `60.9%` | `100.0%` | `75.7%` | `14/24 (73.7%)` | `0.1250` |
+| **Dual-Vision (`Front L1 OR Back Side/Rear L1`)** (`V8`) | `12` | `11` | `0` | `no` | `100.0%` | `52.2%` | `100.0%` | `68.6%` | `12/24 (66.7%)` | `0.5000` |
+| **Audio-Only (`tau=0.37, k=1`)** (`A1`/`B1`) | `22` | `1` | `3` | `no` | `88.0%` | `95.7%` | `0.0%` | `91.7%` | `22/24 (89.8%)` | `0.0490` |
+| **Audio-Only Hysteresis (`tau=0.75, k=2`)** (`A3`) | `9` | `14` | `0` | `no` | `100.0%` | `39.1%` | `100.0%` | `56.2%` | `9/24 (54.5%)` | `1.0000` |
+| **Fusion `F1`: Stateless Union (`V1 OR A1`)** | `23` | `0` | `3` | `no` | `88.5%` | `100.0%` | `0.0%` | `93.9%` | `23/24 (92.0%)` | `0.0213` |
+| **Fusion `F2`: V3 Default (`B2/B4`, Adv. Audio)** | `10` | `13` | `0` | `no` | `100.0%` | `43.5%` | `100.0%` | `60.6%` | `10/24 (58.8%)` | `1.0000` |
+| **Fusion `F3`: Front L1 OR (`V1 AND A3`)** | `11` | `12` | `0` | `no` | `100.0%` | `47.8%` | `100.0%` | `64.7%` | `11/24 (62.9%)` | `1.0000` |
+| **Fusion `F4`: Front L1 OR Audio `(0.75, k=2)`** | `14` | `9` | `0` | `no` | `100.0%` | `60.9%` | `100.0%` | `75.7%` | `14/24 (73.7%)` | `0.1250` |
+| **Fusion `F5`: Dual-Vision Side/Rear + Adv. Audio (`B7`)** | `12` | `11` | `0` | `no` | `100.0%` | `52.2%` | `100.0%` | `68.6%` | `12/24 (66.7%)` | `0.5000` |
+| **Fusion `F6`: Full Multimodal (`V2 OR V5 OR A3`)** | **`15`** | **`8`** | **`0`** | `no` | **`100.0%`** | **`65.2%`** | **`100.0%`** | **`79.0%`** | `15/24 (76.9%)` | `0.0625` |
+
+---
+
 ## Reproducible Figure Captions (`fig01`–`fig15`)
 
 1. **Fig. 1 (`fig01`):** End-to-end Four-Layer + `OccupancyVerifier` V3 multimodal crossing protection architecture across trackside sensing, causal snapshot alignment, asymmetric decision engine, and fail-closed physical gate boom simulation. ([`fig01_system_architecture.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/final_research_v2/figures/fig01_system_architecture.png))

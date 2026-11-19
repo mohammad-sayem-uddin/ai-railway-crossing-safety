@@ -24,11 +24,11 @@ limitations:
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
 summary:
-  total_test_files: 181
+  total_test_files: 182
   synthetic_only: 116
   metadata_only: 29
   model_checkpoint_access: 16
-  processed_data_access: 6
+  processed_data_access: 7
   raw_media_access: 5
   unknown: 9
   safe_for_synthetic_runner: 145
@@ -1930,6 +1930,29 @@ test_files:
       errors: 0
       skipped: 0
       passed: 8
+  tests/unit/test_complete_27_event_multimodal_evaluation.py:
+    access_dirs:
+    - results/multimodal_27_event_evaluation
+    access_paths:
+    - results/multimodal_27_event_evaluation/COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md
+    - results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv
+    - results/multimodal_27_event_evaluation/modality_and_fusion_ablation_metrics.json
+    blocked_attempts:
+      PROCESSED_DATA: 3
+    category: PROCESSED_DATA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 3 blocked read(s) of PROCESSED_DATA locations; e.g. results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv
+      via open in test_complete_27_event_multimodal_outputs_exist_and_cover_all_cohorts (call).
+    safe_for_synthetic_runner: false
+    sha256: c78d0beb6fa4265f0a5dcd740c242911ecb69eaa4813b057693212d0c9108a13
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 3
+      errors: 0
+      skipped: 0
+      passed: 0
   tests/unit/test_config.py:
     access_dirs: []
     access_paths: []

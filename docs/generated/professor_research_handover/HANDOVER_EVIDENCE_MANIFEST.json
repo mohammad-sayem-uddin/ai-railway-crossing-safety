@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md",
-      "size_bytes": 31993,
-      "sha256": "3b3cb9358b81fdb1363596b791085802fdc0e51a7d065376ff7ef6ada81de488"
+      "size_bytes": 34119,
+      "sha256": "455dc87ca95232cd1fe080bf5ed8805b2c68127a70c4df1cd4430d81207d4401"
     },
     {
       "path": "docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md",
@@ -28,8 +28,8 @@
     },
     {
       "path": "docs/generated/professor_research_handover/PUBLICATION_TABLES_AND_CAPTIONS.md",
-      "size_bytes": 17709,
-      "sha256": "9cbcf2088fb57e5e727e5a31eba412672eb488923fcef2e72ceb1ebffddf4072"
+      "size_bytes": 20873,
+      "sha256": "bc36cd3a30acc39b4552583fa10b68c5b63bb3d3d3b2caafde012708424931e5"
     },
     {
       "path": "docs/generated/professor_research_handover/VERIFIED_REFERENCES.bib",
@@ -260,6 +260,38 @@
       "path": "docs/generated/figures/fig15_exp_r_loeo_and_optical_wakeup.png",
       "size_bytes": 288674,
       "sha256": "13079be3f576b2bff452691ea8f49c6b6ac9fd02bf317e473b00eb5fe6c434f1"
+    }
+  ],
+  "multimodal_27_event_evaluation_artifacts": [
+    {
+      "path": "scripts/run_complete_27_event_multimodal_evaluation.py",
+      "size_bytes": 59029,
+      "sha256": "9b17688a7a1039d302d276ebceffe3af5e1083f77316dd9047995044ad91db2a"
+    },
+    {
+      "path": "results/multimodal_27_event_evaluation/COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md",
+      "size_bytes": 27032,
+      "sha256": "2df37ac320295766cf48c2e588e252f3ae2faaf456fc0b06ab7912a7646f4d89"
+    },
+    {
+      "path": "results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv",
+      "size_bytes": 18342,
+      "sha256": "f202d7d641af92a27bd9ded13e53073c32a1c28d0ac6e71d1d9fb2d0274a311b"
+    },
+    {
+      "path": "results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.json",
+      "size_bytes": 103518,
+      "sha256": "68c5af73e906f73b25a0cec5880e6a1a33881cd23ae26cf1c97dbcfa92fafb8c"
+    },
+    {
+      "path": "results/multimodal_27_event_evaluation/modality_and_fusion_ablation_metrics.csv",
+      "size_bytes": 4206,
+      "sha256": "4c4c32b0a2cbe7375e895d98a971b0a8a9cef1aa9662648d584e0a66b736a1f4"
+    },
+    {
+      "path": "results/multimodal_27_event_evaluation/modality_and_fusion_ablation_metrics.json",
+      "size_bytes": 78341,
+      "sha256": "4f73cc2660f52e61ff20c682b1379ce671b810d8e11983aa58758cd846475b10"
     }
   ]
 }
