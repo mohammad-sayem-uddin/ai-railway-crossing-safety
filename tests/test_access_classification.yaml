@@ -24,14 +24,14 @@ limitations:
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
 summary:
-  total_test_files: 185
-  synthetic_only: 117
+  total_test_files: 187
+  synthetic_only: 118
   metadata_only: 29
   model_checkpoint_access: 16
-  processed_data_access: 8
+  processed_data_access: 9
   raw_media_access: 5
   unknown: 10
-  safe_for_synthetic_runner: 146
+  safe_for_synthetic_runner: 147
 test_files:
   tests/integration/test_phase0_smoke.py:
     access_dirs: []
@@ -2829,6 +2829,50 @@ test_files:
       errors: 0
       skipped: 0
       passed: 4
+  tests/unit/test_mission13_audit_deliverables.py:
+    access_dirs:
+    - docs/generated
+    - docs/generated/professor_research_handover
+    - results/model_generalization_audit
+    access_paths:
+    - results/model_generalization_audit/audio_audit_summary.json
+    - results/model_generalization_audit/vision_baseline_39f402_audit.json
+    - docs/generated/MODEL_GENERALIZATION_AND_OVERFITTING_REPORT.md
+    - docs/generated/professor_research_handover/HANDOVER_EVIDENCE_MANIFEST.json
+    blocked_attempts:
+      PROCESSED_DATA: 2
+    category: PROCESSED_DATA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 2 blocked read(s) of PROCESSED_DATA locations; e.g. results/model_generalization_audit/audio_audit_summary.json
+      via io.open in test_mission13_audio_audit_contracts (call).
+    safe_for_synthetic_runner: false
+    sha256: 6a23b3c100f7e87b041f183a0fe83b527c8a5abb41240808d897b6fd3a6300c3
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 2
+      errors: 0
+      skipped: 0
+      passed: 1
+  tests/unit/test_mission13_synthetic.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 2 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 3bb61f40e0171ae02fda1b12940743adf88c87f25c19c9faebe49edf936a3e2d
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 2
   tests/unit/test_mission2_pipeline_integrity.py:
     access_dirs:
     - configs

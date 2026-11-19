@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md",
-      "size_bytes": 41023,
-      "sha256": "31d0a85e10aeb591f382566ebd57e7e09be04c143eb7f35fe42595c4093fc7c8"
+      "size_bytes": 44938,
+      "sha256": "a5c4d8478eb0d5ce80e3af46af2a3058da29740329cf81317dd37ce59218073f"
     },
     {
       "path": "docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md",
@@ -23,13 +23,13 @@
     },
     {
       "path": "docs/generated/professor_research_handover/README_HANDOVER_INDEX.md",
-      "size_bytes": 8925,
-      "sha256": "cd933a4dd7c92cdbe093f400d9563e32e18080c7cc3a4515a233d417e389a91f"
+      "size_bytes": 9862,
+      "sha256": "1a3a5b337fb1f99318493e619b92512dd6b312f89fe477303e3126ddc3f822c5"
     },
     {
       "path": "docs/generated/professor_research_handover/PUBLICATION_TABLES_AND_CAPTIONS.md",
-      "size_bytes": 31428,
-      "sha256": "44a1f38bea4859fd77118beefcd1ea66b0d4b1589ba540659eba7eea3ab85c1f"
+      "size_bytes": 37630,
+      "sha256": "7760ea8d0d14a7b310ee55a400c6bddd09fb55054bccf656e78ef36bb06d5772"
     },
     {
       "path": "docs/generated/professor_research_handover/VERIFIED_REFERENCES.bib",
@@ -423,5 +423,124 @@
   ],
   "mission11_raw_media_accessed": true,
   "mission11_authorization_id": "AUTH-MEDIA-ACCESS-20261119-MISSION10",
-  "mission12_scientific_handover_completed": true
+  "mission12_scientific_handover_completed": true,
+  "mission13_model_generalization_audit_completed": true,
+  "mission13_artifact_count": 23,
+  "mission13_model_generalization_audit_artifacts": [
+    {
+      "path": "docs/generated/MODEL_GENERALIZATION_AND_OVERFITTING_REPORT.md",
+      "size_bytes": 31868,
+      "sha256": "29975ecd630513af1499ab36d0a72c25e6eefd00c3fdf2a4ea0fbeef045b2845"
+    },
+    {
+      "path": "scripts/run_mission13_audio_audit.py",
+      "size_bytes": 42235,
+      "sha256": "142894710ddbc4ad8403f8219a942691b0db2a6385a3429f9f307077ae67251a"
+    },
+    {
+      "path": "scripts/run_mission13_vision_baseline_audit.py",
+      "size_bytes": 30829,
+      "sha256": "98c641f68360ac638de406d61e591816328aa468f0b709c7bd52d1fcc1efb0eb"
+    },
+    {
+      "path": "scripts/generate_mission13_figures.py",
+      "size_bytes": 40129,
+      "sha256": "268a1df26c3966abfa43f24b870e339ecde70e1385945b0e28ace7401d237ed8"
+    },
+    {
+      "path": "results/model_generalization_audit/audio_audit_summary.json",
+      "size_bytes": 452841,
+      "sha256": "e937abc8fc850964cc2d484a3b83e705ca8c7bc1f85b717de7eaf6088ff88373"
+    },
+    {
+      "path": "results/model_generalization_audit/vision_baseline_39f402_audit.json",
+      "size_bytes": 62886,
+      "sha256": "33277d07f5c9bc83749e1f3b616d691ff1af76df8a18f578547a2a9f9d439cfc"
+    },
+    {
+      "path": "results/model_generalization_audit/vision_split_leakage_comparison.json",
+      "size_bytes": 7770,
+      "sha256": "2056e94fa892267fcb8b68f2d1a2849f1f77aa7b64fff7b2d82d0f237643df47"
+    },
+    {
+      "path": "results/model_generalization_audit/vision_39f402_on_clean_splits.json",
+      "size_bytes": 5459,
+      "sha256": "ec63b85caceb09bb5e7518c20899d574f86b66583f3e29adfa308ed95af6c993"
+    },
+    {
+      "path": "results/model_generalization_audit/vision_kaggle_clean_retrain_audit.json",
+      "size_bytes": 185394,
+      "sha256": "def72608fc0f03f707bf2869d10e134c16b7cf7981f5ea8a5a20ebd74f9989a7"
+    },
+    {
+      "path": "results/model_generalization_audit/vision_clean_vs_frozen_field_diagnostics.json",
+      "size_bytes": 12624,
+      "sha256": "1d8256a875ac5812c9abfa11be1d8493612e28bc8519147c1091b6705f6fb3dc"
+    },
+    {
+      "path": "results/model_generalization_audit/clean_splits/day_grouped_train.txt",
+      "size_bytes": 189405,
+      "sha256": "e12c0ada7c17e2a32d214755583f9071a6740511b03a42a9a13f7f2289bf99af"
+    },
+    {
+      "path": "results/model_generalization_audit/clean_splits/day_grouped_val.txt",
+      "size_bytes": 14585,
+      "sha256": "a3ea7b584902dca3bc59a9be6a9128d6d935943f44405a5e87ca3f2d08585b6c"
+    },
+    {
+      "path": "results/model_generalization_audit/clean_splits/day_grouped_test.txt",
+      "size_bytes": 24524,
+      "sha256": "084451f2f2d91ebf0eb44368e89172772ab55bcd7f40a7153794848d58a34804"
+    },
+    {
+      "path": "results/model_generalization_audit/clean_splits/session_grouped_train.txt",
+      "size_bytes": 160202,
+      "sha256": "2bdc41af0b2822e40598acb4dab787954c6631980428d6bf2522500d53d844de"
+    },
+    {
+      "path": "results/model_generalization_audit/clean_splits/session_grouped_val.txt",
+      "size_bytes": 28908,
+      "sha256": "156fe7f1e20cfef0f9503608421977fe67b0489a04b1ea25decaaac655f5963f"
+    },
+    {
+      "path": "results/model_generalization_audit/clean_splits/session_grouped_test.txt",
+      "size_bytes": 22382,
+      "sha256": "52d8270439e7cd966361ffb78a49a78200cbd00d16e2f676560a9bf35cbdf582"
+    },
+    {
+      "path": "docs/generated/model_generalization_audit/figures/fig_m13_v1_39f402_training_curves.png",
+      "size_bytes": 903334,
+      "sha256": "b25aee3ae249d74daff3a2e35c5f2c680c3c67010f1b0be119e0b37917004cbf"
+    },
+    {
+      "path": "docs/generated/model_generalization_audit/figures/fig_m13_v2_leakage_and_clean_retrain.png",
+      "size_bytes": 846222,
+      "sha256": "31f279ae59723ae440873f277e4298bec3c568b4af0d48270843c095303a3122"
+    },
+    {
+      "path": "docs/generated/model_generalization_audit/figures/fig_m13_v3_confusion_and_pr_comparison.png",
+      "size_bytes": 427178,
+      "sha256": "72e39bcfa8a32b28972a646193560e47909c393b0cc6cff3e0290b38dce27ce5"
+    },
+    {
+      "path": "docs/generated/model_generalization_audit/figures/fig_m13_vision_examples.png",
+      "size_bytes": 5099679,
+      "sha256": "48a8806d636077da392b452c02fe84c2368980a43d27e7e1d5c4dfa8f167d591"
+    },
+    {
+      "path": "docs/generated/model_generalization_audit/figures/fig_m13_a1_training_and_instability.png",
+      "size_bytes": 792670,
+      "sha256": "b9c36a6495580999594f447aaaaa233b281a1da6f3cf3c0cdba68ac374a802e0"
+    },
+    {
+      "path": "docs/generated/model_generalization_audit/figures/fig_m13_a2_roc_pr_confusion_calibration.png",
+      "size_bytes": 581935,
+      "sha256": "1ec2bd824cb29926403d17600783066a46dd95672f9c6729367d5925a3fdcbcd"
+    },
+    {
+      "path": "docs/generated/model_generalization_audit/figures/fig_m13_a3_errors_cv_and_learning_curve.png",
+      "size_bytes": 550256,
+      "sha256": "8665e243d08babd16204b5ff0a06e70e5c8bccff122af01eea3f3f2460b11cce"
+    }
+  ]
 }
