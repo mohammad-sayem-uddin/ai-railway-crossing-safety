@@ -25,7 +25,12 @@ def _load(path: Path) -> dict:
 
 
 def test_real_repo_has_zero_fabricated_approvals_or_reviews() -> None:
-    assert not (REPO_ROOT / media_guard.CANONICAL_MEDIA_AUTH_RELATIVE).exists()
+    auth_path = REPO_ROOT / media_guard.CANONICAL_MEDIA_AUTH_RELATIVE
+    if auth_path.is_file():
+        auth_payload = _load(auth_path)
+        assert auth_payload.get("status") == "APPROVED"
+        assert HUMAN_PLACEHOLDER not in json.dumps(auth_payload)
+        assert auth_payload.get("authorized_by") == "raihankabirrahu@gmail.com"
     assert not (REPO_ROOT / governance.PROMOTION_RECEIPT_RELATIVE).exists()
     assert not (REPO_ROOT / governance.SPLIT_DECISION_RELATIVE).exists()
     assert not (REPO_ROOT / governance.EVAL_AUTH_RELATIVE).exists()

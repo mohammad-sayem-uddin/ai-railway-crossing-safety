@@ -24,14 +24,14 @@ limitations:
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
 summary:
-  total_test_files: 184
-  synthetic_only: 116
+  total_test_files: 185
+  synthetic_only: 117
   metadata_only: 29
   model_checkpoint_access: 16
   processed_data_access: 8
   raw_media_access: 5
   unknown: 10
-  safe_for_synthetic_runner: 145
+  safe_for_synthetic_runner: 146
 test_files:
   tests/integration/test_phase0_smoke.py:
     access_dirs: []
@@ -1958,29 +1958,34 @@ test_files:
     access_dirs:
     - configs
     - data/ground_truth
+    - docs
     - docs/generated/human_approval_templates
     - results/multimodal_27_event_evaluation
+    - results/upright_27_event_evaluation
     access_paths:
     - results/multimodal_27_event_evaluation/causal_fsm_gate_timing_summary.json
     - results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv
     - results/multimodal_27_event_evaluation/modality_and_fusion_ablation_metrics.json
+    - results/upright_27_event_evaluation/mission12_scientific_analysis.json
     - configs/frozen_experiment_v1.yaml
     - data/ground_truth/authorized_reviewers.json
+    - docs/FINAL_GROUND_TRUTH_PROTOCOL.md
     - docs/generated/human_approval_templates/AUTH_MEDIA_ACCESS_MISSION9_READY.json
     blocked_attempts:
-      PROCESSED_DATA: 3
+      PROCESSED_DATA: 4
     category: PROCESSED_DATA_ACCESS
     child_processes_guarded: false
     evidence: dynamic_run_under_read_blocking_guard
-    reason: Attempted 3 blocked read(s) of PROCESSED_DATA locations; e.g. results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv
+    reason: Attempted 4 blocked read(s) of PROCESSED_DATA locations; e.g. results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv
       via open in test_complete_27_event_multimodal_outputs_exist_and_cover_all_cohorts (call).
     safe_for_synthetic_runner: false
-    sha256: 0734291a1a966497f5b5142fe785eb248ee13d04df6ef913c0a8b374ba61ad04
+    sha256: fffcff3829e2c2a527aa519a95e96f0d041faa54aee3251ced607ace039826a9
     spawns_child_process: false
     static_hints:
+    - data/raw/layer_b/v2/train_events/event_001
     - data/raw/layer_b/v2/train_events/event_001/camera_front.mov
     tests:
-      failed: 3
+      failed: 4
       errors: 0
       skipped: 0
       passed: 2
@@ -2155,7 +2160,7 @@ test_files:
     reason: Attempted 1 blocked read(s) of PROCESSED_DATA locations; e.g. results/r04_sync_estimation/quicktime_creationdate_deltas.json
       via io.open in test_live_repository_split_audit_matches_checked_in_report (call).
     safe_for_synthetic_runner: false
-    sha256: 4d4a4f405a689158206666ae5245dfc8f26c9bef58b3ad97e72857cbd53bad74
+    sha256: eaae21667417d589302d80254076d7ca98578594ffbc481761b50faad3bf17cc
     spawns_child_process: false
     static_hints:
     - results/dataset_audit/layer_b_split_audit_and_collection_plan.json
@@ -2657,7 +2662,7 @@ test_files:
     reason: 72 test(s) executed; no repository file outside source/test code was read; all data is created
       in temporary directories.
     safe_for_synthetic_runner: true
-    sha256: 24ac758b866012cdadbb42e59db155d10d716d21dce356698e9df2c96d59c0d7
+    sha256: b0eb7683e89b73e807d40bfc8f56f4d6c96d53b3b00c70319db8dec336013295
     spawns_child_process: false
     static_hints:
     - camera_front.mov
@@ -2806,6 +2811,24 @@ test_files:
       errors: 0
       skipped: 0
       passed: 0
+  tests/unit/test_mission12_mitigations_and_auth.py:
+    access_dirs: []
+    access_paths: []
+    blocked_attempts: {}
+    category: SYNTHETIC_ONLY
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 4 test(s) executed; no repository file outside source/test code was read; all data is created
+      in temporary directories.
+    safe_for_synthetic_runner: true
+    sha256: 9cc7dde18b60cb46fc624e5618e5fcccef23b5868afde20e1553b0cfef9bb280
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 4
   tests/unit/test_mission2_pipeline_integrity.py:
     access_dirs:
     - configs
@@ -3082,7 +3105,7 @@ test_files:
     reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
       via open in test_validate_approval_package_bundle_succeeds_across_all_12_docs (call).
     safe_for_synthetic_runner: false
-    sha256: bc0a57304621f9e59c473874e853e7c1e55c1e9996502093bda84e031f8b6099
+    sha256: 14b270854429aad44d0004b8a00af8a55eb6d580ab77f3e4339210608fcc18ec
     spawns_child_process: false
     static_hints: []
     tests:
@@ -3729,6 +3752,7 @@ test_files:
   tests/unit/test_pi_approval_package.py:
     access_dirs:
     - configs
+    - data/governance
     - data/ground_truth
     - data/ground_truth/reviews/engine_events
     - data/ground_truth/reviews/no_train_events
@@ -3739,6 +3763,7 @@ test_files:
     access_paths:
     - experiments/vision/39f402dfe460/checkpoints/weights/best.pt
     - configs/frozen_experiment_v1.yaml
+    - data/governance/AUTH-MEDIA-ACCESS.json
     - data/ground_truth/authorized_reviewers.json
     - data/ground_truth/reviews/engine_events/event_001_review.INVALIDATION_NOTICE.json
     - data/ground_truth/reviews/engine_events/event_001_review.json
@@ -3776,7 +3801,6 @@ test_files:
     - data/ground_truth/reviews/train_events/event_013_review.json
     - data/ground_truth/reviews/train_events/event_014_review.INVALIDATION_NOTICE.json
     - data/ground_truth/reviews/train_events/event_014_review.json
-    - data/ground_truth/reviews/train_events/event_015_review.INVALIDATION_NOTICE.json
     blocked_attempts:
       MODEL_CHECKPOINT: 2
     category: MODEL_CHECKPOINT_ACCESS
@@ -3785,7 +3809,7 @@ test_files:
     reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
       via open in test_prepare_pi_approval_packages_matches_checked_in_artifacts_and_schemas (call).
     safe_for_synthetic_runner: false
-    sha256: 4ad22b6f69c099130e298fa752f4da3b88bff4eaf5401c6ea2828631d7e0d623
+    sha256: 592587d69b519b3ac08289d4b7fd4a8757cffca0145f455b4ee96d0c8e49e72b
     spawns_child_process: false
     static_hints:
     - data/raw/layer_b/v2/train_events/event_001

@@ -44,12 +44,29 @@ def test_validate_approval_package_bundle_succeeds_across_all_12_docs() -> None:
     }
 
 
+def _copy_isolated_metadata_repo(base_dir: Path) -> Path:
+    fake_repo = base_dir / "fake_repo"
+    (fake_repo / "data/ground_truth").mkdir(parents=True)
+    (fake_repo / "data/governance").mkdir(parents=True)
+    (fake_repo / "docs").mkdir(parents=True)
+    (fake_repo / "configs").mkdir(parents=True)
+    for rel in (
+        "data/ground_truth/authorized_reviewers.json",
+        "docs/FINAL_GROUND_TRUTH_PROTOCOL.md",
+        "configs/frozen_experiment_v1.yaml",
+        "configs/decision_policy_v1.yaml",
+    ):
+        (fake_repo / rel).write_text((REPO_ROOT / rel).read_text(encoding="utf-8"), encoding="utf-8")
+    return fake_repo
+
+
 def test_post_approval_execution_refuses_when_auth_media_missing(tmp_path: Path) -> None:
+    fake_no_auth = _copy_isolated_metadata_repo(tmp_path)
     with pytest.raises(OfficialHandoffError, match="AUTH_MEDIA_ACCESS_NOT_GRANTED"):
-        run_post_approval_official_evaluation(REPO_ROOT, output_dir=tmp_path / "official_out")
+        run_post_approval_official_evaluation(fake_no_auth, output_dir=tmp_path / "official_out")
     with pytest.raises(OfficialHandoffError, match="STAGE21_PROMOTION_RECEIPT_MISSING"):
         run_post_approval_option_a_descriptive_evaluation(
-            REPO_ROOT, output_dir=tmp_path / "option_a_out"
+            fake_no_auth, output_dir=tmp_path / "option_a_out"
         )
 
 
@@ -102,13 +119,35 @@ def test_post_approval_execution_refuses_in_temp_repo_without_stage21_and_eval_a
         run_post_approval_official_evaluation(fake_repo, output_dir=tmp_path / "official_out")
 
 
-def test_handoff_cli_preflight_passes_and_execute_refuses(tmp_path: Path, capsys) -> None:
+def test_handoff_cli_preflight_passes_and_execute_refuses(
+    tmp_path: Path, capsys, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import prepare_and_execute_official_evaluation as cli_mod
+
     rc_pre = handoff_cli_main(["--mode", "preflight-check", "--root", str(REPO_ROOT)])
     out_pre = json.loads(capsys.readouterr().out)
     assert rc_pre == 0
     assert out_pre["validated_file_count"] == 12
     assert out_pre["official_phase12_ready"] is False
     assert out_pre["option_a_descriptive_ready"] is False
+
+    fake_no_auth = _copy_isolated_metadata_repo(tmp_path / "cli_no_auth")
+    with monkeypatch.context() as mp:
+        mp.setattr(cli_mod, "validate_approval_package_bundle", lambda *a, **kw: {"status": "OK"})
+        rc_exec_iso = handoff_cli_main(
+            [
+                "--mode",
+                "execute-after-approval",
+                "--root",
+                str(fake_no_auth),
+                "--output-dir",
+                str(tmp_path / "iso_official_out"),
+            ]
+        )
+    out_exec_iso = json.loads(capsys.readouterr().out)
+    assert rc_exec_iso == 3
+    assert out_exec_iso["status"] == "BLOCKED"
+    assert out_exec_iso["code"] == "AUTH_MEDIA_ACCESS_NOT_GRANTED"
 
     rc_exec = handoff_cli_main(
         [
@@ -123,7 +162,12 @@ def test_handoff_cli_preflight_passes_and_execute_refuses(tmp_path: Path, capsys
     out_exec = json.loads(capsys.readouterr().out)
     assert rc_exec == 3
     assert out_exec["status"] == "BLOCKED"
-    assert out_exec["code"] == "AUTH_MEDIA_ACCESS_NOT_GRANTED"
+    expected_code = (
+        "OFFICIAL_PHASE12_BLOCKED"
+        if (REPO_ROOT / media_guard.CANONICAL_MEDIA_AUTH_RELATIVE).is_file()
+        else "AUTH_MEDIA_ACCESS_NOT_GRANTED"
+    )
+    assert out_exec["code"] == expected_code
 
     rc_opt_a = handoff_cli_main(
         [

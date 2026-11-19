@@ -205,6 +205,91 @@ def make_fig17_upright_recovery_and_fsm_timing(
     return out
 
 
+def _build_fig18(
+    eval_dir: Path = DEFAULT_UPRIGHT_EVAL,
+    fig_dir: Path = DEFAULT_FIG_DIR,
+) -> tuple[Path, tuple[int, str]]:
+    """Plot [T0..T4] dual-camera coverage gain, mitigation trade-offs, and dropout resilience."""
+    m12 = json.loads((eval_dir / "mission12_scientific_analysis.json").read_text(encoding="utf-8"))
+    cov = m12["priority4_recorded_data_evidence"]["continuous_passage_coverage_T0_to_T4"]
+    per_ev = cov["per_event"]
+    abl = m12["priority3_and_4_rule_comparison"]["ablation_matrix"]
+    stress = m12["priority4_synthetic_perturbation_stress"]["scenarios"]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.6, 4.7))
+
+    # Panel (a): Real [T0..T4] Front vs Dual (Front|Back) continuous coverage across all 23 trains
+    e_lbls = [
+        f"{p['event_id'].replace('train_events/event_', 'T')}{'*' if p['recording_session'] == 'Session 2' else ''}"
+        for p in per_ev
+    ]
+    front_c = [float(p["front_cov_pct"]) for p in per_ev]
+    dual_c = [float(p["dual_fb_cov_pct"]) for p in per_ev]
+    x = np.arange(len(e_lbls))
+    w = 0.39
+    ax1.bar(x - w / 2, front_c, w, label=f"Front Only (mean {cov['mean_front_cov_pct']:.1f}%)", color="#94A3B8")
+    ax1.bar(x + w / 2, dual_c, w, label=f"Dual Front|Back (mean {cov['mean_dual_fb_cov_pct']:.1f}%)", color="#009E73")
+    ax1.axhline(70.0, color="#D55E00", linestyle="--", linewidth=0.9, label="70% Cov Threshold (8 low-Front trains)")
+    ax1.set_xticks(x, e_lbls, rotation=55, ha="right", fontsize=7.0)
+    ax1.set_ylim(0, 118)
+    ax1.set_ylabel("[T0..T4] Track Coverage (%)")
+    ax1.set_title("(a) Recorded [T0..T4] Passage Coverage (* = Night Session 2)")
+    ax1.legend(loc="upper center", ncol=2, frameon=True, fontsize=6.9)
+    ax1.grid(axis="y", alpha=0.25, linestyle="--")
+
+    # Panel (b): Recorded Ablation & Synthetic Blackout Pre-T2 / Rail24-F1 Trade-off
+    rows = [
+        ("V2 Raw", 100.0 * abl["pred_V2_Raw"]["view3_rail24_vs_nt3"]["f1"], 100.0 * 22 / 22.0, abl["pred_V2_Raw"]["view1_train23_vs_nt3"]["fp"]),
+        ("V2 ROI*", 100.0 * abl["pred_V2_TrackROI"]["view3_rail24_vs_nt3"]["f1"], 100.0 * abl["pred_V2_TrackROI"]["causal_confirm_pre_T2_of_22"] / 22.0, abl["pred_V2_TrackROI"]["view1_train23_vs_nt3"]["fp"]),
+        ("V5 SR", 100.0 * abl["pred_V5_SideRear"]["view3_rail24_vs_nt3"]["f1"], 100.0 * 11 / 22.0, abl["pred_V5_SideRear"]["view1_train23_vs_nt3"]["fp"]),
+        ("V5 Rail*", 100.0 * abl["pred_V5_RailVehicle"]["view3_rail24_vs_nt3"]["f1"], 100.0 * 11 / 22.0, abl["pred_V5_RailVehicle"]["view1_train23_vs_nt3"]["fp"]),
+        ("F10 Union*", 100.0 * abl["pred_F10_TrackROI_Or_RailBack_Or_Audio"]["view3_rail24_vs_nt3"]["f1"], 100.0 * abl["pred_F10_TrackROI_Or_RailBack_Or_Audio"]["causal_confirm_pre_T2_of_22"] / 22.0, abl["pred_F10_TrackROI_Or_RailBack_Or_Audio"]["view1_train23_vs_nt3"]["fp"]),
+        ("F11 2of3*", 100.0 * abl["pred_F11_RailVehicle_2of3_RawFront"]["view3_rail24_vs_nt3"]["f1"], 100.0 * abl["pred_F11_RailVehicle_2of3_RawFront"]["causal_confirm_pre_T2_of_22"] / 22.0, abl["pred_F11_RailVehicle_2of3_RawFront"]["view1_train23_vs_nt3"]["fp"]),
+        ("Glare4s F10^", 100.0 * (2 * 24 / (2 * 24 + 0 + 0)), 100.0 * stress["front_early_4s_glare_occlusion"]["F10_Multimodal_pre_T2_confirm_of_22"] / 22.0, stress["front_early_4s_glare_occlusion"]["F10_no_train_fp"]),
+        ("FrBlk F10^", 100.0 * (2 * 24 / (2 * 24 + 0 + 0)), 100.0 * stress["front_total_blackout"]["F10_Multimodal_pre_T2_confirm_of_22"] / 22.0, stress["front_total_blackout"]["F10_no_train_fp"]),
+    ]
+    xr = np.arange(len(rows))
+    wr = 0.36
+    f1s = [r[1] for r in rows]
+    pre_t2s = [r[2] for r in rows]
+    fps = [r[3] for r in rows]
+    ax2.bar(xr - wr / 2, f1s, wr, label="Rail-24 F1 (%)", color="#0072B2")
+    ax2.bar(xr + wr / 2, pre_t2s, wr, label="Pre-T2 Confirm (%/22)", color="#E69F00")
+    for idx in range(len(rows)):
+        ax2.text(xr[idx] - wr / 2, f1s[idx] + 1.5, f"{f1s[idx]:.0f}%", ha="center", va="bottom", fontsize=6.4, fontweight="bold")
+        ax2.text(
+            xr[idx] - wr / 2,
+            f1s[idx] - 5.5,
+            f"FP={fps[idx]}",
+            ha="center",
+            va="top",
+            fontsize=6.0,
+            fontweight="bold",
+            color="white",
+        )
+        ax2.text(xr[idx] + wr / 2, pre_t2s[idx] + 1.5, f"{pre_t2s[idx]:.0f}%", ha="center", va="bottom", fontsize=6.4)
+    ax2.set_xticks(xr, [r[0] for r in rows], rotation=24, ha="right", fontsize=7.5)
+    ax2.set_ylim(0, 126)
+    ax2.set_ylabel("Score / Pre-T2 Rate (%)")
+    ax2.set_title("(b) Exploratory Mitigation (*) & Synthetic Dropout Stress (^)")
+    ax2.legend(loc="upper center", ncol=2, frameon=True, fontsize=7.0)
+    ax2.grid(axis="y", alpha=0.25, linestyle="--")
+
+    fig.tight_layout()
+    out = fig_dir / "fig18_mission12_roi_dropout_and_fusion_value.png"
+    meta = _save_png_and_digest(fig, out)
+    return out, meta
+
+
+def make_fig18_mission12_roi_dropout_and_fusion_value(
+    eval_dir: Path = DEFAULT_UPRIGHT_EVAL,
+    fig_dir: Path = DEFAULT_FIG_DIR,
+) -> Path:
+    """Plot [T0..T4] dual-camera coverage gain, mitigation trade-offs, and dropout resilience."""
+    out, _ = _build_fig18(eval_dir=eval_dir, fig_dir=fig_dir)
+    return out
+
+
 def _save_png_and_digest(fig: plt.Figure, out_path: Path) -> tuple[int, str]:
     buf = io.BytesIO()
     fig.savefig(buf, format="png", bbox_inches="tight", facecolor="white")
@@ -226,11 +311,12 @@ def generate_all_with_hashes(
     eval_dir: Path = DEFAULT_UPRIGHT_EVAL,
     fig_dir: Path = DEFAULT_FIG_DIR,
 ) -> dict[Path, tuple[int, str]]:
-    """Generate fig16 and fig17 and return {path: (size_bytes, sha256)} without re-reading PNGs."""
+    """Generate fig16, fig17, and fig18 returning {path: (size_bytes, sha256)} without re-reading PNGs."""
     _setup_style()
     p16, m16 = _build_fig16(eval_dir=eval_dir, fig_dir=fig_dir)
     p17, m17 = _build_fig17(eval_dir=eval_dir, fig_dir=fig_dir)
-    return {p16: m16, p17: m17}
+    p18, m18 = _build_fig18(eval_dir=eval_dir, fig_dir=fig_dir)
+    return {p16: m16, p17: m17, p18: m18}
 
 
 def main() -> int:

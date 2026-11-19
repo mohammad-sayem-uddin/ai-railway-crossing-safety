@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md",
-      "size_bytes": 37737,
-      "sha256": "1748d9ce6f21c217f8df80a62a1353ea48202d2258c3e86f138dbf0573d6f313"
+      "size_bytes": 41023,
+      "sha256": "31d0a85e10aeb591f382566ebd57e7e09be04c143eb7f35fe42595c4093fc7c8"
     },
     {
       "path": "docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md",
@@ -23,13 +23,13 @@
     },
     {
       "path": "docs/generated/professor_research_handover/README_HANDOVER_INDEX.md",
-      "size_bytes": 8038,
-      "sha256": "bbfcf2f640b394ef32b56397a52eab52a9f27916b39312ed2795734913de8e43"
+      "size_bytes": 8925,
+      "sha256": "cd933a4dd7c92cdbe093f400d9563e32e18080c7cc3a4515a233d417e389a91f"
     },
     {
       "path": "docs/generated/professor_research_handover/PUBLICATION_TABLES_AND_CAPTIONS.md",
-      "size_bytes": 28529,
-      "sha256": "b325b76974d7d5c7a8fc94c589bd11b8d37d2a80e7253f10359d2b411f35223b"
+      "size_bytes": 31428,
+      "sha256": "44a1f38bea4859fd77118beefcd1ea66b0d4b1589ba540659eba7eea3ab85c1f"
     },
     {
       "path": "docs/generated/professor_research_handover/VERIFIED_REFERENCES.bib",
@@ -317,13 +317,23 @@
   "upright_27_event_experiment_artifacts": [
     {
       "path": "scripts/generate_mission11_upright_figures.py",
-      "size_bytes": 10879,
-      "sha256": "7cc4505811aa28d40237c9bf5c9632fd7d03cf21c09d3b76d8d2c6df99cae9b0"
+      "size_bytes": 16150,
+      "sha256": "18307e991907cd15c951b989a0658d91b75245d1783d1aa66119a1f46aa4092e"
     },
     {
       "path": "scripts/build_mission11_handover_updates.py",
-      "size_bytes": 27326,
-      "sha256": "fa8082313789cf5680e6e38550560c1b116ade86e276e45d1fcb3d93747e40f0"
+      "size_bytes": 38355,
+      "sha256": "accb26cbe0e2076e1d168430f0840f4f59b1716607d50ecaa1279c1eee923302"
+    },
+    {
+      "path": "scripts/run_mission12_scientific_analysis.py",
+      "size_bytes": 42783,
+      "sha256": "f19a2227ad76f817a70a87c80db6487b4374d6144f8ee196455bf935374ae858"
+    },
+    {
+      "path": "src/railway_detection/fusion/spatial_filters.py",
+      "size_bytes": 3917,
+      "sha256": "2611550ab84600def4d6b1d083320a4f0d35a1f2c087ea71ebe718cf8d628f67"
     },
     {
       "path": "results/upright_inference_v2/UPRIGHT_INFERENCE_MANIFEST.json",
@@ -381,6 +391,11 @@
       "sha256": "91a8204b6b8f1e77ef4c78c3aeb39911ccb2b5382dc928944f5267d5559c3af6"
     },
     {
+      "path": "results/upright_27_event_evaluation/mission12_scientific_analysis.json",
+      "size_bytes": 40242,
+      "sha256": "1928d35044c4484b52d879de7c520024bd5bfccaffb356f02933544c1a21f43c"
+    },
+    {
       "path": "results/upright_27_event_evaluation/authoritative_27_event_results_table.csv",
       "size_bytes": 15966,
       "sha256": "0d47f1bf88e07ec8bcd150b3160f825906a41b2afda76904c689fdd3c893cc3e"
@@ -388,7 +403,7 @@
     {
       "path": "results/upright_27_event_evaluation/authoritative_27_event_results_table.json",
       "size_bytes": 65829,
-      "sha256": "7f8e073563b36fbaf4dd7110a58819f83beab0b698e7683aadaca4b179a4434a"
+      "sha256": "1cfae161ead4595fbab04989661385654c0f27b399cdee005b19a63c8c4afc76"
     },
     {
       "path": "docs/generated/figures/fig16_upright_vs_baseline_ablation.png",
@@ -399,8 +414,14 @@
       "path": "docs/generated/figures/fig17_upright_event_recovery_and_fsm_timing.png",
       "size_bytes": 198327,
       "sha256": "b832c6cded5bf402ad6ca3bf0080b27fae635adb41e4c219c22f7f8893bd6a10"
+    },
+    {
+      "path": "docs/generated/figures/fig18_mission12_roi_dropout_and_fusion_value.png",
+      "size_bytes": 233886,
+      "sha256": "742468e0f323996786942a275b1697d12ea4c1a8f5f259894757df5a4416859b"
     }
   ],
   "mission11_raw_media_accessed": true,
-  "mission11_authorization_id": "AUTH-MEDIA-ACCESS-20261119-MISSION10"
+  "mission11_authorization_id": "AUTH-MEDIA-ACCESS-20261119-MISSION10",
+  "mission12_scientific_handover_completed": true
 }

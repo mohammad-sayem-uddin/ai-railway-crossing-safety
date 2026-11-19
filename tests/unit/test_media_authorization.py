@@ -115,10 +115,46 @@ def test_no_record_denies_real_repository_media(repo: FakeRepo):
     assert _denied(repo.video).code == "AUTH_MEDIA_ACCESS_NOT_GRANTED"
 
 
-def test_the_actual_repository_has_no_media_authorization():
-    """A fact about the real tree, established without opening any media."""
+def test_the_actual_repository_preserves_owner_auth_and_isolated_gates_fail_closed(repo: FakeRepo):
+    """Test both unauthorized fail-closed and authorized pass in isolated trees, never mutating live owner auth."""
     real = Path(guard.REAL_REPO_ROOT)
-    assert not (real / guard.CANONICAL_MEDIA_AUTH_RELATIVE).exists()
+    live_auth = real / guard.CANONICAL_MEDIA_AUTH_RELATIVE
+    live_bytes_before = live_auth.read_bytes() if live_auth.is_file() else None
+
+    # 1) Unauthorized isolated repo fails closed even if media exists.
+    assert _denied(repo.video).code == "AUTH_MEDIA_ACCESS_NOT_GRANTED"
+
+    # 2) Valid owner authorization in isolated repo passes; expired / revoked / out-of-scope fail closed.
+    valid_rec = repo.write()
+    verified = guard.verify_authorization_record(
+        repo.root,
+        operation="READ_RAW_MEDIA",
+        media_path=repo.video,
+        event_id=EVENT,
+    )
+    assert verified["authorization_id"] == valid_rec["authorization_id"]
+
+    expired = copy.deepcopy(valid_rec)
+    expired["expires_at_utc"] = (datetime.now(UTC) - timedelta(minutes=5)).isoformat()
+    repo.write_raw(expired, reseal=True)
+    assert _denied(repo.video).code in {"AUTH_MEDIA_ACCESS_EXPIRED", "AUTH_MEDIA_ACCESS_INVALID"}
+
+    revoked = copy.deepcopy(valid_rec)
+    revoked["revoked"] = True
+    repo.write_raw(revoked, reseal=True)
+    assert _denied(repo.video).code in {"AUTH_MEDIA_ACCESS_REVOKED", "AUTH_MEDIA_ACCESS_INVALID"}
+
+    out_of_scope = copy.deepcopy(valid_rec)
+    out_of_scope["scope"]["events"] = ["no_train_events/event_001"]
+    repo.write_raw(out_of_scope, reseal=True)
+    assert _denied(repo.video).code == "AUTH_MEDIA_ACCESS_INVALID"
+
+    # 3) If the research owner registered canonical AUTH-MEDIA-ACCESS.json on disk, verify it is intact & unmutated.
+    if live_bytes_before is not None:
+        live_payload = json.loads(live_bytes_before.decode("utf-8"))
+        assert live_payload["status"] == "APPROVED"
+        assert live_payload["revoked"] is False
+        assert live_auth.read_bytes() == live_bytes_before
 
 
 def test_synthetic_temp_media_needs_no_authorization(tmp_path: Path):

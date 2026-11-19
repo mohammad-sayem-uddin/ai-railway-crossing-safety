@@ -37,7 +37,7 @@ def test_complete_27_event_multimodal_outputs_exist_and_cover_all_cohorts() -> N
         assert path.exists(), f"Missing artifact: {path}"
         assert path.stat().st_size > 0, f"Empty artifact: {path}"
 
-    with open(EVAL_DIR / "event_by_event_27_multimodal_evaluation.csv", "r", encoding="utf-8", newline="") as handle:
+    with open(EVAL_DIR / "event_by_event_27_multimodal_evaluation.csv", encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
     assert len(rows) == 27
     cohorts = [r["cohort"] for r in rows]
@@ -143,17 +143,43 @@ def test_causal_fsm_gate_timing_and_forensic_diagnosis() -> None:
     assert forensics["orientation_finding"]["all_8_missed_back_minus90_deg"] is True
 
 
-def test_ready_auth_template_validates_without_granting_canonical_access() -> None:
-    assert not (REPO_ROOT / media_guard.CANONICAL_MEDIA_AUTH_RELATIVE).exists()
+def test_ready_auth_template_validates_without_granting_canonical_access(tmp_path: Path) -> None:
+    # Clone non-raw governance metadata into an isolated temporary repository without canonical AUTH-MEDIA-ACCESS.json
+    (tmp_path / "configs").mkdir(parents=True)
+    (tmp_path / "docs").mkdir(parents=True)
+    (tmp_path / "data/ground_truth").mkdir(parents=True)
+    (tmp_path / "data/governance").mkdir(parents=True)
+    (tmp_path / "data/raw/layer_b/v2/train_events/event_001").mkdir(parents=True)
+    for rel in (
+        "configs/frozen_experiment_v1.yaml",
+        "docs/FINAL_GROUND_TRUTH_PROTOCOL.md",
+        "data/ground_truth/authorized_reviewers.json",
+    ):
+        (tmp_path / rel).write_text((REPO_ROOT / rel).read_text(encoding="utf-8"), encoding="utf-8")
+
     payload = json.loads(READY_TEMPLATE.read_text(encoding="utf-8"))
     media_guard._validate_payload(
-        REPO_ROOT,
+        tmp_path,
         payload,
         operation="INFERENCE",
-        media_path=REPO_ROOT / "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+        media_path=tmp_path / "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
         event_id="train_events/event_001",
         now=datetime.now(UTC),
     )
+
+    # Presence of the template alone must STILL fail closed when canonical AUTH-MEDIA-ACCESS.json is absent.
+    try:
+        media_guard.verify_authorization_record(
+            tmp_path,
+            operation="INFERENCE",
+            media_path=tmp_path / "data/raw/layer_b/v2/train_events/event_001/camera_front.mov",
+            event_id="train_events/event_001",
+            now=datetime.now(UTC),
+        )
+    except media_guard.MediaAccessAuthorizationError as exc:
+        assert exc.code == "AUTH_MEDIA_ACCESS_NOT_GRANTED"
+    else:
+        raise AssertionError("Expected isolated repo without AUTH-MEDIA-ACCESS.json to fail closed")
 
 
 def test_v3_engine_opt_in_causal_fusion_triggers_deduplicate_audio_and_bridge_gaps() -> None:
@@ -191,3 +217,33 @@ def test_v3_engine_opt_in_causal_fusion_triggers_deduplicate_audio_and_bridge_ga
     )
     assert rec2.resulting_state == "WARNING"
     assert eng.timing_trace["engine_trigger_s"] == 1.6
+
+
+def test_mission12_analysis_deliverable_invariants_and_honesty() -> None:
+    """Mission 12 analysis JSON and manifest preserve provenance labels, horizon limits, and zero fake reviews."""
+    m12_path = REPO_ROOT / "results" / "upright_27_event_evaluation" / "mission12_scientific_analysis.json"
+    manifest_path = REPO_ROOT / "docs" / "generated" / "professor_research_handover" / "HANDOVER_EVIDENCE_MANIFEST.json"
+    m12 = json.loads(m12_path.read_text(encoding="utf-8"))
+    rec = m12["priority5_and_6_reconciliation"]
+    assert rec["streams_verified"] == "54/54"
+    assert rec["active_stage21_human_reviews_count"] == 0
+    assert rec["official_phase12_ready"] is False
+    assert rec["audio_log_scale_and_eps_parity"]["log_scale"] == "natural"
+    assert rec["audio_log_scale_and_eps_parity"]["log_epsilon"] == 1e-10
+    assert rec["gate_timing_recording_horizon_audit"]["reopening_cycles_completed"] == 0
+    assert rec["gate_timing_recording_horizon_audit"]["occupancy_sensors_installed"] == 0
+
+    stress = m12["priority4_synthetic_perturbation_stress"]
+    assert "SYNTHETIC_PERTURBATION_STRESS_TEST" in stress["provenance"]
+    assert "EXPLORATORY_POST_HOC_MITIGATION" in m12["priority2_no_train_002_forensics"]["in_sample_caution"]
+
+    abl = m12["priority3_and_4_rule_comparison"]["ablation_matrix"]
+    assert abl["pred_F10_TrackROI_Or_RailBack_Or_Audio"]["view3_rail24_vs_nt3"]["tp"] == 24
+    assert abl["pred_F10_TrackROI_Or_RailBack_Or_Audio"]["view3_rail24_vs_nt3"]["fp"] == 0
+    assert abl["pred_F11_RailVehicle_2of3_RawFront"]["view3_rail24_vs_nt3"]["tp"] == 24
+    assert abl["pred_F11_RailVehicle_2of3_RawFront"]["view3_rail24_vs_nt3"]["fp"] == 0
+
+    hm = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert hm["artifact_count"] == 51
+    assert len(hm["artifacts"]) == 51
+    assert hm["mission12_scientific_handover_completed"] is True

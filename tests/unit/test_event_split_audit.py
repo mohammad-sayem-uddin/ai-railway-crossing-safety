@@ -79,6 +79,17 @@ def test_live_repository_split_audit_matches_checked_in_report():
             encoding="utf-8"
         )
     )
+    # Only the live local presence of untracked owner AUTH-MEDIA-ACCESS.json may differ from clean-checkout JSON.
+    expected_auth_status = (
+        "PRESENT"
+        if (REPO_ROOT / "data/governance/AUTH-MEDIA-ACCESS.json").is_file()
+        else "ABSENT_NOT_SIGNED_BY_OWNER"
+    )
+    live_gates = report["research_ownership_and_authorization_audit"]["authorization_workflow_gates"]
+    checked_gates = checked_in["research_ownership_and_authorization_audit"]["authorization_workflow_gates"]
+    assert live_gates[0]["gate_id"] == "AUTH-MEDIA-ACCESS"
+    assert live_gates[0]["current_on_disk_status"] == expected_auth_status
+    live_gates[0]["current_on_disk_status"] = checked_gates[0]["current_on_disk_status"]
     assert report == checked_in
     assert report["raw_media_accessed"] is False
     assert report["can_27_events_produce_leakage_safe_3way_split"] is False

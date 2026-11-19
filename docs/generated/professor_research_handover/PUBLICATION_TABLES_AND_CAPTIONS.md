@@ -189,6 +189,24 @@
 | `FSM_F6_Full_MM_Bounded27` | 23/23 | 23/23 | 22 | 22 | 8 | 1 | 1/3 | YES | 0 |
 | `FSM_F7_Exploratory_2of3_Bounded27` | 23/23 | 23/23 | 22 | 22 | 8 | 1 | 1/3 | YES | 0 |
 
+## Table XII — Mission 12 Exploratory Overhead-Bridge ROI Filter, Locomotive Preservation, Passage Coverage & Dropout Stress
+*(Evidence: [`mission12_scientific_analysis.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/upright_27_event_evaluation/mission12_scientific_analysis.json), [`spatial_filters.py`](file:///Users/sayemuddin/Desktop/Train_automation/src/railway_detection/fusion/spatial_filters.py); post-hoc `crossing_A` exploratory mitigations & labeled synthetic stress scenarios preserve frozen Mission 11 baselines unchanged.)*
+
+| Rule / Exploratory Variant (Provenance) | Train TP/23 | NT FP/3 | Eng001 | View 1 F1 (23+3) | View 3 Rail24 TP | View 3 Rail24 F1 | Pre-T2 Confirm (/22) |
+|---|---:|---:|---|---:|---:|---:|---:|
+| `V2_Raw (Upright Baseline)` | 23/23 | 1/3 | YES | 97.9% | 24/24 | 98.0% | - |
+| `V2_TrackROI (Exploratory Overhead Filter)` | 23/23 | 0/3 | YES | 100.0% | 24/24 | 100.0% | 22 |
+| `V5_SideRear (Upright Back S/R)` | 23/23 | 0/3 | no | 100.0% | 23/24 | 97.9% | - |
+| `V5_RailVehicle (Exploratory +Large Front)` | 23/23 | 0/3 | YES | 100.0% | 24/24 | 100.0% | - |
+| `F6_Raw_Or (Upright Fusion Baseline)` | 23/23 | 1/3 | YES | 97.9% | 24/24 | 98.0% | - |
+| `F8_Quorum_SideRear (Mission 11 2-of-3)` | 23/23 | 0/3 | no | 100.0% | 23/24 | 97.9% | 11 |
+| `F10_TrackROI_Or_RailBack_Or_Audio (Exploratory Union)` | 23/23 | 0/3 | YES | 100.0% | 24/24 | 100.0% | 22 |
+| `F11_RailVehicle_2of3_RawFront (Exploratory Quorum, No ROI)` | 23/23 | 0/3 | YES | 100.0% | 24/24 | 100.0% | 11 |
+
+- **Recorded `[T0..T4]` Continuous Passage Coverage (`n=23`):** Front = `75.19%`, Back = `80.27%`, Dual (`Front|Back`) = **`95.67%`**, Multimodal (`F|B|Audio`) = `95.88%`; trains with `>=5.0 s` blind gap dropped **`8/23 -> 1/23`**. Low-Front subgroup (`<70%`, `n=8`): Front `48.35%` -> Dual **`90.64%`**, `A3` positive in `4/8`. Night Session 2 (`n=3`): Front `65.73%` -> Dual `94.67%` (all `3/3` night trains lost Front before `T4`: `-14.3s` to `-2.4s`).
+- **`SYNTHETIC_PERTURBATION_STRESS_TEST` (Applied to Upright Streams):** Front blackout -> `V2_TrackROI=0/23`, **`F10=23/23`** (`11/22` pre-`T2`, `0/3` FP, `Eng001=True`); early `4 s` front glare -> `V2_TrackROI` pre-`T2` drops `3/22` vs **`F10=14/22`**; back blackout -> `V5_RailVehicle=0/23` vs **`F10=23/23` (`22/22` pre-`T2`)**; dual-camera blackout (audio only) -> **`A3=9/23`** (`3/22` pre-`T2`, `0/3` FP); `70%` random vision drop (seed 42) -> `V2_TrackROI` `15/22` vs `F10` `17/22`.
+
 16. **Fig. 16 (`fig16`):** Pre-`db40305` sideways caches vs upright (`db40305`) original-media train recall, no-train FPs, and Session 1/Session 2 stratification across all modalities and fusion rules. ([`fig16_upright_vs_baseline_ablation.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig16_upright_vs_baseline_ablation.png))
 17. **Fig. 17 (`fig17`):** Per-event optical detection recovery across all 27 original recordings and causal V3 FSM gate-closure timing relative to `T2`. ([`fig17_upright_event_recovery_and_fsm_timing.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig17_upright_event_recovery_and_fsm_timing.png))
+18. **Fig. 18 (`fig18`):** Recorded `[T0..T4]` continuous dual-camera passage coverage across all 23 trains (`75.19% -> 95.67%`, blind gaps `>=5s`: `8 -> 1`), exploratory ROI/locomotive trade-offs, and synthetic blackout/glare stress recovery. ([`fig18_mission12_roi_dropout_and_fusion_value.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig18_mission12_roi_dropout_and_fusion_value.png))
 <!-- MISSION11_UPRIGHT_TABLES_END -->

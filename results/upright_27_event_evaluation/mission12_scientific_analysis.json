@@ -1,0 +1,1454 @@
+{
+  "generated_at_utc": "2026-11-19T19:34:21.171560+00:00",
+  "priority2_no_train_002_forensics": {
+    "centroid_x_span_px": 4.77,
+    "cls_counts": {
+      "front": 1,
+      "side": 59
+    },
+    "conf_range": [
+      0.379,
+      0.8203
+    ],
+    "detected_frames": 58,
+    "event_id": "no_train_events/event_002",
+    "frame_size_wh": [
+      1080,
+      1920
+    ],
+    "in_sample_caution": "EXPLORATORY_POST_HOC_MITIGATION tested on crossing_A 27 events; held-out multi-crossing validation required.",
+    "max_consecutive": 20,
+    "median_consecutive_iou": 0.9577,
+    "roi_sensitivity_ycen": [
+      {
+        "engine_001_detected": true,
+        "max_ycen_norm": 0.3,
+        "min_train_max_consec": 11,
+        "no_train_fp": 0,
+        "train_tp": 23
+      },
+      {
+        "engine_001_detected": true,
+        "max_ycen_norm": 0.35,
+        "min_train_max_consec": 11,
+        "no_train_fp": 0,
+        "train_tp": 23
+      },
+      {
+        "engine_001_detected": true,
+        "max_ycen_norm": 0.4,
+        "min_train_max_consec": 11,
+        "no_train_fp": 0,
+        "train_tp": 23
+      }
+    ],
+    "root_cause": "Overhead concrete highway/metro flyover bridge deck across top image border (ymin_norm=0.0, ycen_med=0.149) misclassified as 'side' train car.",
+    "total_detections": 60,
+    "track_roi_causal_fsm_summary": {
+      "complete_close_reopen_cycles": 0,
+      "engine_001_triggered": true,
+      "no_train_false_closures": 0,
+      "train_full_closures": 23,
+      "train_pre_T2_close_cmd": 22,
+      "train_pre_T2_full_closure": 1,
+      "train_pre_T2_warning": 22,
+      "train_triggers": 23
+    },
+    "train_011_tail_bridge_objects_also_removed_by_roi": 136,
+    "why_short_window_iou_insufficient": "Real slow/approaching trains (e.g. train_events/event_017 median consec IoU=0.961, shift=7.8px) overlap static bridge IoU=0.958 at dt=0.2s.",
+    "ycen_norm_median": 0.1486,
+    "ymax_norm_median": 0.2972,
+    "ymin_norm_range": [
+      0.0,
+      0.4603
+    ]
+  },
+  "priority3_and_4_rule_comparison": {
+    "ablation_matrix": {
+      "pred_F10_TrackROI_Or_RailBack_Or_Audio": {
+        "causal_confirm_pre_T2_of_22": 22,
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": true,
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 26,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 0.9787,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "engine_events/event_001"
+          ],
+          "n_events": 27,
+          "precision": 0.9583,
+          "precision_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.75,
+          "specificity_ci95": [
+            0.3006,
+            0.9544
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.862,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.862,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 24
+        }
+      },
+      "pred_F11_RailVehicle_2of3_RawFront": {
+        "causal_confirm_pre_T2_of_22": 11,
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": true,
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 26,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 0.9787,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "engine_events/event_001"
+          ],
+          "n_events": 27,
+          "precision": 0.9583,
+          "precision_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.75,
+          "specificity_ci95": [
+            0.3006,
+            0.9544
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.862,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.862,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 24
+        }
+      },
+      "pred_F11_RailVehicle_2of3_TrackROI": {
+        "causal_confirm_pre_T2_of_22": 11,
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": true,
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 26,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 0.9787,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "engine_events/event_001"
+          ],
+          "n_events": 27,
+          "precision": 0.9583,
+          "precision_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.75,
+          "specificity_ci95": [
+            0.3006,
+            0.9544
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.862,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.862,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 24
+        }
+      },
+      "pred_F6_Raw_Or": {
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 0,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 0,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 0,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 0,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": true,
+          "f1": 0.9787,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "no_train_events/event_002"
+          ],
+          "n_events": 26,
+          "precision": 0.9583,
+          "precision_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.6667,
+          "specificity_ci95": [
+            0.2077,
+            0.9385
+          ],
+          "tn": 2,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 0.9583,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 2,
+          "fp_events": [
+            "no_train_events/event_002",
+            "engine_events/event_001"
+          ],
+          "n_events": 27,
+          "precision": 0.92,
+          "precision_ci95": [
+            0.7503,
+            0.9778
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.5,
+          "specificity_ci95": [
+            0.15,
+            0.85
+          ],
+          "tn": 2,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 0.9796,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "no_train_events/event_002"
+          ],
+          "n_events": 27,
+          "precision": 0.96,
+          "precision_ci95": [
+            0.8046,
+            0.9929
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.862,
+            1.0
+          ],
+          "specificity": 0.6667,
+          "specificity_ci95": [
+            0.2077,
+            0.9385
+          ],
+          "tn": 2,
+          "tp": 24
+        }
+      },
+      "pred_F8_Quorum_SideRear": {
+        "causal_confirm_pre_T2_of_22": 11,
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 1,
+          "discordant_pairs": 2,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": false,
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 26,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.5101,
+            1.0
+          ],
+          "tn": 4,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 0.9787,
+          "fn": 1,
+          "fn_events": [
+            "engine_events/event_001"
+          ],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 0.9583,
+          "recall_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        }
+      },
+      "pred_V2_Raw": {
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 0,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 0,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 0,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 0,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": true,
+          "f1": 0.9787,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "no_train_events/event_002"
+          ],
+          "n_events": 26,
+          "precision": 0.9583,
+          "precision_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.6667,
+          "specificity_ci95": [
+            0.2077,
+            0.9385
+          ],
+          "tn": 2,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 0.9583,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 2,
+          "fp_events": [
+            "no_train_events/event_002",
+            "engine_events/event_001"
+          ],
+          "n_events": 27,
+          "precision": 0.92,
+          "precision_ci95": [
+            0.7503,
+            0.9778
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.5,
+          "specificity_ci95": [
+            0.15,
+            0.85
+          ],
+          "tn": 2,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 0.9796,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "no_train_events/event_002"
+          ],
+          "n_events": 27,
+          "precision": 0.96,
+          "precision_ci95": [
+            0.8046,
+            0.9929
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.862,
+            1.0
+          ],
+          "specificity": 0.6667,
+          "specificity_ci95": [
+            0.2077,
+            0.9385
+          ],
+          "tn": 2,
+          "tp": 24
+        }
+      },
+      "pred_V2_TrackROI": {
+        "causal_confirm_pre_T2_of_22": 22,
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": true,
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 26,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 0.9787,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "engine_events/event_001"
+          ],
+          "n_events": 27,
+          "precision": 0.9583,
+          "precision_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.75,
+          "specificity_ci95": [
+            0.3006,
+            0.9544
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.862,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.862,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 24
+        }
+      },
+      "pred_V5_RailVehicle": {
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": true,
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 26,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 0.9787,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 1,
+          "fp_events": [
+            "engine_events/event_001"
+          ],
+          "n_events": 27,
+          "precision": 0.9583,
+          "precision_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 0.75,
+          "specificity_ci95": [
+            0.3006,
+            0.9544
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.862,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.862,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 24
+        }
+      },
+      "pred_V5_SideRear": {
+        "mcnemar_vs_baseline_v1": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 0,
+          "discordant_pairs": 1,
+          "exact_p_value": 1.0
+        },
+        "mcnemar_vs_baseline_v3": {
+          "b01_baseline_wrong_candidate_right": 1,
+          "b10_baseline_right_candidate_wrong": 1,
+          "discordant_pairs": 2,
+          "exact_p_value": 1.0
+        },
+        "view1_train23_vs_nt3": {
+          "engine_001_detected": false,
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 26,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        },
+        "view2_train23_vs_controls4": {
+          "f1": 1.0,
+          "fn": 0,
+          "fn_events": [],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 1.0,
+          "recall_ci95": [
+            0.8569,
+            1.0
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.5101,
+            1.0
+          ],
+          "tn": 4,
+          "tp": 23
+        },
+        "view3_rail24_vs_nt3": {
+          "f1": 0.9787,
+          "fn": 1,
+          "fn_events": [
+            "engine_events/event_001"
+          ],
+          "fp": 0,
+          "fp_events": [],
+          "n_events": 27,
+          "precision": 1.0,
+          "precision_ci95": [
+            0.8569,
+            1.0
+          ],
+          "recall": 0.9583,
+          "recall_ci95": [
+            0.7976,
+            0.9926
+          ],
+          "specificity": 1.0,
+          "specificity_ci95": [
+            0.4385,
+            1.0
+          ],
+          "tn": 3,
+          "tp": 23
+        }
+      }
+    },
+    "back_front_class_area_sensitivity": [
+      {
+        "engine_001_detected": true,
+        "min_front_area_norm": 0.02,
+        "min_front_conf": 0.7,
+        "no_train_fp": 0,
+        "train_tp": 23
+      },
+      {
+        "engine_001_detected": true,
+        "min_front_area_norm": 0.03,
+        "min_front_conf": 0.7,
+        "no_train_fp": 0,
+        "train_tp": 23
+      },
+      {
+        "engine_001_detected": true,
+        "min_front_area_norm": 0.05,
+        "min_front_conf": 0.7,
+        "no_train_fp": 0,
+        "train_tp": 23
+      }
+    ]
+  },
+  "priority4_recorded_data_evidence": {
+    "continuous_passage_coverage_T0_to_T4": {
+      "low_front_coverage_lt70_subgroup": {
+        "a3_audio_positive_count": 4,
+        "event_ids": [
+          "train_events/event_001",
+          "train_events/event_004",
+          "train_events/event_005",
+          "train_events/event_006",
+          "train_events/event_015",
+          "train_events/event_018",
+          "train_events/event_020",
+          "train_events/event_021"
+        ],
+        "mean_dual_fb_cov_pct": 90.64,
+        "mean_front_cov_pct": 48.35,
+        "n_events": 8
+      },
+      "mean_back_cov_pct": 80.27,
+      "mean_dual_fb_cov_pct": 95.67,
+      "mean_front_cov_pct": 75.19,
+      "mean_mm_fba_cov_pct": 95.88,
+      "n_trains": 23,
+      "per_event": [
+        {
+          "back_cov_pct": 21.7,
+          "back_last_minus_T4_s": -1.1867,
+          "dual_fb_cov_pct": 65.5,
+          "dual_fb_max_blind_gap_s": 2.2,
+          "event_id": "train_events/event_001",
+          "front_cov_pct": 52.7,
+          "front_last_minus_T4_s": 2.6017,
+          "front_max_blind_gap_s": 2.6,
+          "gt_horn_present": true,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 65.5,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 78.6,
+          "back_last_minus_T4_s": 1.2033,
+          "dual_fb_cov_pct": 97.9,
+          "dual_fb_max_blind_gap_s": 0.2,
+          "event_id": "train_events/event_002",
+          "front_cov_pct": 97.2,
+          "front_last_minus_T4_s": 3.2233,
+          "front_max_blind_gap_s": 0.4,
+          "gt_horn_present": true,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 87.6,
+          "back_last_minus_T4_s": 1.9033,
+          "dual_fb_cov_pct": 100.0,
+          "dual_fb_max_blind_gap_s": 0.0,
+          "event_id": "train_events/event_003",
+          "front_cov_pct": 96.7,
+          "front_last_minus_T4_s": 1.9233,
+          "front_max_blind_gap_s": 0.8,
+          "gt_horn_present": false,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 92.7,
+          "back_last_minus_T4_s": 1.2067,
+          "dual_fb_cov_pct": 97.4,
+          "dual_fb_max_blind_gap_s": 1.2,
+          "event_id": "train_events/event_004",
+          "front_cov_pct": 51.9,
+          "front_last_minus_T4_s": -1.5783,
+          "front_max_blind_gap_s": 8.6,
+          "gt_horn_present": true,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 97.7,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 84.9,
+          "back_last_minus_T4_s": null,
+          "dual_fb_cov_pct": 99.0,
+          "dual_fb_max_blind_gap_s": 0.4,
+          "event_id": "train_events/event_005",
+          "front_cov_pct": 67.8,
+          "front_last_minus_T4_s": null,
+          "front_max_blind_gap_s": 9.2,
+          "gt_horn_present": true,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 90.3,
+          "back_last_minus_T4_s": 1.0117,
+          "dual_fb_cov_pct": 93.2,
+          "dual_fb_max_blind_gap_s": 2.6,
+          "event_id": "train_events/event_006",
+          "front_cov_pct": 41.1,
+          "front_last_minus_T4_s": -2.9783,
+          "front_max_blind_gap_s": 12.4,
+          "gt_horn_present": true,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 93.5,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 63.1,
+          "back_last_minus_T4_s": 0.9033,
+          "dual_fb_cov_pct": 95.2,
+          "dual_fb_max_blind_gap_s": 0.8,
+          "event_id": "train_events/event_007",
+          "front_cov_pct": 92.9,
+          "front_last_minus_T4_s": 4.5283,
+          "front_max_blind_gap_s": 0.8,
+          "gt_horn_present": false,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 95.2,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 96.4,
+          "back_last_minus_T4_s": 1.4067,
+          "dual_fb_cov_pct": 100.0,
+          "dual_fb_max_blind_gap_s": 0.0,
+          "event_id": "train_events/event_008",
+          "front_cov_pct": 96.1,
+          "front_last_minus_T4_s": -2.39,
+          "front_max_blind_gap_s": 2.4,
+          "gt_horn_present": false,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 56.0,
+          "back_last_minus_T4_s": 1.0033,
+          "dual_fb_cov_pct": 100.0,
+          "dual_fb_max_blind_gap_s": 0.0,
+          "event_id": "train_events/event_009",
+          "front_cov_pct": 100.0,
+          "front_last_minus_T4_s": 6.03,
+          "front_max_blind_gap_s": 0.0,
+          "gt_horn_present": false,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 91.2,
+          "back_last_minus_T4_s": 0.8017,
+          "dual_fb_cov_pct": 98.2,
+          "dual_fb_max_blind_gap_s": 0.2,
+          "event_id": "train_events/event_010",
+          "front_cov_pct": 85.8,
+          "front_last_minus_T4_s": 1.4167,
+          "front_max_blind_gap_s": 2.8,
+          "gt_horn_present": false,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 98.2,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 54.7,
+          "back_last_minus_T4_s": 5.8033,
+          "dual_fb_cov_pct": 100.0,
+          "dual_fb_max_blind_gap_s": 0.0,
+          "event_id": "train_events/event_011",
+          "front_cov_pct": 100.0,
+          "front_last_minus_T4_s": 8.2267,
+          "front_max_blind_gap_s": 0.0,
+          "gt_horn_present": false,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 66.6,
+          "back_last_minus_T4_s": 1.0067,
+          "dual_fb_cov_pct": 88.5,
+          "dual_fb_max_blind_gap_s": 5.0,
+          "event_id": "train_events/event_012",
+          "front_cov_pct": 72.3,
+          "front_last_minus_T4_s": 3.62,
+          "front_max_blind_gap_s": 7.2,
+          "gt_horn_present": true,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 88.8,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 84.2,
+          "back_last_minus_T4_s": 2.405,
+          "dual_fb_cov_pct": 98.9,
+          "dual_fb_max_blind_gap_s": 0.6,
+          "event_id": "train_events/event_013",
+          "front_cov_pct": 94.9,
+          "front_last_minus_T4_s": 1.6183,
+          "front_max_blind_gap_s": 1.0,
+          "gt_horn_present": true,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 99.7,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 87.9,
+          "back_last_minus_T4_s": 2.005,
+          "dual_fb_cov_pct": 98.1,
+          "dual_fb_max_blind_gap_s": 0.6,
+          "event_id": "train_events/event_014",
+          "front_cov_pct": 72.8,
+          "front_last_minus_T4_s": 3.8067,
+          "front_max_blind_gap_s": 1.2,
+          "gt_horn_present": false,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 98.1,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 58.2,
+          "back_last_minus_T4_s": 2.7017,
+          "dual_fb_cov_pct": 89.0,
+          "dual_fb_max_blind_gap_s": 1.4,
+          "event_id": "train_events/event_015",
+          "front_cov_pct": 65.9,
+          "front_last_minus_T4_s": 11.3217,
+          "front_max_blind_gap_s": 5.0,
+          "gt_horn_present": true,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 89.0,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 99.1,
+          "back_last_minus_T4_s": 0.905,
+          "dual_fb_cov_pct": 100.0,
+          "dual_fb_max_blind_gap_s": 0.0,
+          "event_id": "train_events/event_016",
+          "front_cov_pct": 70.6,
+          "front_last_minus_T4_s": 2.7,
+          "front_max_blind_gap_s": 3.0,
+          "gt_horn_present": false,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 84.3,
+          "back_last_minus_T4_s": 1.1083,
+          "dual_fb_cov_pct": 99.0,
+          "dual_fb_max_blind_gap_s": 0.4,
+          "event_id": "train_events/event_017",
+          "front_cov_pct": 92.5,
+          "front_last_minus_T4_s": -0.875,
+          "front_max_blind_gap_s": 2.0,
+          "gt_horn_present": true,
+          "is_sync11": true,
+          "mm_fba_cov_pct": 99.0,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 91.8,
+          "back_last_minus_T4_s": 1.405,
+          "dual_fb_cov_pct": 98.0,
+          "dual_fb_max_blind_gap_s": 0.4,
+          "event_id": "train_events/event_018",
+          "front_cov_pct": 30.2,
+          "front_last_minus_T4_s": 8.01,
+          "front_max_blind_gap_s": 16.2,
+          "gt_horn_present": true,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 98.0,
+          "pred_A3": true,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 95.8,
+          "back_last_minus_T4_s": 3.805,
+          "dual_fb_cov_pct": 100.0,
+          "dual_fb_max_blind_gap_s": 0.0,
+          "event_id": "train_events/event_019",
+          "front_cov_pct": 95.8,
+          "front_last_minus_T4_s": 11.81,
+          "front_max_blind_gap_s": 1.8,
+          "gt_horn_present": false,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 94.4,
+          "back_last_minus_T4_s": 1.1033,
+          "dual_fb_cov_pct": 98.6,
+          "dual_fb_max_blind_gap_s": 0.2,
+          "event_id": "train_events/event_020",
+          "front_cov_pct": 54.9,
+          "front_last_minus_T4_s": -1.88,
+          "front_max_blind_gap_s": 2.8,
+          "gt_horn_present": true,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 98.6,
+          "pred_A3": false,
+          "recording_session": "Session 1"
+        },
+        {
+          "back_cov_pct": 76.4,
+          "back_last_minus_T4_s": -0.2967,
+          "dual_fb_cov_pct": 84.4,
+          "dual_fb_max_blind_gap_s": 3.2,
+          "event_id": "train_events/event_021",
+          "front_cov_pct": 22.3,
+          "front_last_minus_T4_s": -14.2933,
+          "front_max_blind_gap_s": 16.8,
+          "gt_horn_present": true,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 84.4,
+          "pred_A3": false,
+          "recording_session": "Session 2"
+        },
+        {
+          "back_cov_pct": 99.6,
+          "back_last_minus_T4_s": 0.5017,
+          "dual_fb_cov_pct": 99.6,
+          "dual_fb_max_blind_gap_s": 0.2,
+          "event_id": "train_events/event_022",
+          "front_cov_pct": 85.0,
+          "front_last_minus_T4_s": -5.8983,
+          "front_max_blind_gap_s": 5.8,
+          "gt_horn_present": true,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 99.6,
+          "pred_A3": false,
+          "recording_session": "Session 2"
+        },
+        {
+          "back_cov_pct": 90.8,
+          "back_last_minus_T4_s": 2.2017,
+          "dual_fb_cov_pct": 100.0,
+          "dual_fb_max_blind_gap_s": 0.0,
+          "event_id": "train_events/event_023",
+          "front_cov_pct": 89.9,
+          "front_last_minus_T4_s": -2.3967,
+          "front_max_blind_gap_s": 2.4,
+          "gt_horn_present": false,
+          "is_sync11": false,
+          "mm_fba_cov_pct": 100.0,
+          "pred_A3": false,
+          "recording_session": "Session 2"
+        }
+      ],
+      "sync11_only": {
+        "mean_dual_fb_cov_pct": 94.12,
+        "mean_front_cov_pct": 80.38,
+        "n_events": 11
+      },
+      "trains_with_dual_blind_gap_ge_5s": [
+        "train_events/event_012"
+      ],
+      "trains_with_front_blind_gap_ge_5s": [
+        "train_events/event_004",
+        "train_events/event_005",
+        "train_events/event_006",
+        "train_events/event_012",
+        "train_events/event_015",
+        "train_events/event_018",
+        "train_events/event_021",
+        "train_events/event_022"
+      ]
+    },
+    "subgroups": {
+      "day_session1_n20": {
+        "mean_dual_fb_cov_pct": 95.83,
+        "mean_front_cov_pct": 76.6,
+        "n_trains": 20,
+        "no_train_fp_v2": 0
+      },
+      "horn_absent_10_trains": {
+        "a1_037_k1_pos": 10,
+        "a3_075_k2_pos": 1,
+        "n_events": 10,
+        "v2_tp": 10
+      },
+      "horn_present_13": {
+        "a1_037_k1_tp": 12,
+        "a3_075_k2_tp": 8,
+        "n_events": 13,
+        "v2_tp": 13
+      },
+      "night_session2_n7": {
+        "mean_dual_fb_cov_pct": 94.67,
+        "mean_front_cov_pct": 65.73,
+        "n_engine": 1,
+        "n_no_train": 3,
+        "n_trains": 3,
+        "night_back_last_minus_T4_s": {
+          "train_events/event_021": -0.2967,
+          "train_events/event_022": 0.5017,
+          "train_events/event_023": 2.2017
+        },
+        "night_front_last_minus_T4_s": {
+          "train_events/event_021": -14.2933,
+          "train_events/event_022": -5.8983,
+          "train_events/event_023": -2.3967
+        },
+        "no_train_fp_v2": 1,
+        "no_train_fp_v2_trackroi": 0
+      }
+    }
+  },
+  "priority4_synthetic_perturbation_stress": {
+    "provenance": "SYNTHETIC_PERTURBATION_STRESS_TEST (applied to upright streams; hypotheses only)",
+    "scenarios": {
+      "back_total_blackout": {
+        "F10_Multimodal_pre_T2_confirm_of_22": 22,
+        "F10_Multimodal_train_tp": 23,
+        "F10_engine_001_detected": true,
+        "F10_no_train_fp": 0,
+        "V2_TrackROI_pre_T2_confirm_of_22": 22,
+        "V2_TrackROI_train_tp": 23,
+        "V5_RailVehicle_train_tp": 0
+      },
+      "dual_camera_total_blackout_audio_only": {
+        "F10_Multimodal_pre_T2_confirm_of_22": 3,
+        "F10_Multimodal_train_tp": 9,
+        "F10_engine_001_detected": false,
+        "F10_no_train_fp": 0,
+        "V2_TrackROI_pre_T2_confirm_of_22": 0,
+        "V2_TrackROI_train_tp": 0,
+        "V5_RailVehicle_train_tp": 0
+      },
+      "front_early_4s_glare_occlusion": {
+        "F10_Multimodal_pre_T2_confirm_of_22": 14,
+        "F10_Multimodal_train_tp": 23,
+        "F10_engine_001_detected": true,
+        "F10_no_train_fp": 0,
+        "V2_TrackROI_pre_T2_confirm_of_22": 3,
+        "V2_TrackROI_train_tp": 23,
+        "V5_RailVehicle_train_tp": 23
+      },
+      "front_total_blackout": {
+        "F10_Multimodal_pre_T2_confirm_of_22": 11,
+        "F10_Multimodal_train_tp": 23,
+        "F10_engine_001_detected": true,
+        "F10_no_train_fp": 0,
+        "V2_TrackROI_pre_T2_confirm_of_22": 0,
+        "V2_TrackROI_train_tp": 0,
+        "V5_RailVehicle_train_tp": 23
+      },
+      "random_70pct_vision_frame_drop_seed42": {
+        "F10_Multimodal_pre_T2_confirm_of_22": 17,
+        "F10_Multimodal_train_tp": 23,
+        "F10_engine_001_detected": true,
+        "F10_no_train_fp": 0,
+        "V2_TrackROI_pre_T2_confirm_of_22": 15,
+        "V2_TrackROI_train_tp": 23,
+        "V5_RailVehicle_train_tp": 23
+      }
+    }
+  },
+  "priority5_and_6_reconciliation": {
+    "active_stage21_human_reviews_count": 0,
+    "audio_log_scale_and_eps_parity": {
+      "log_epsilon": 1e-10,
+      "log_scale": "natural",
+      "max_abs_score_diff_vs_baseline": 0.0,
+      "norm_mean": -1.600999355316162,
+      "norm_std": 5.1239728927612305
+    },
+    "authoritative_table_rows": 27,
+    "checkpoints_verified": {
+      "audio_sha256_match": true,
+      "vision_sha256_match": true
+    },
+    "gate_timing_recording_horizon_audit": {
+      "fsm_discrete_warn_plus_boom_budget_s": 5.2,
+      "n_t2_annotated_trains": 22,
+      "occupancy_sensors_installed": 0,
+      "reopening_cycles_completed": 0,
+      "t2_max_s": 6.5,
+      "t2_median_s": 3.6,
+      "t2_min_s": 2.8,
+      "trains_with_t2_ge_5p2s": 1,
+      "trains_with_t2_lt_5p2s": 21
+    },
+    "invalidated_legacy_v7_review_files_count": 27,
+    "official_phase12_ready": false,
+    "reference_label_provenance": "RESEARCHER_ADOPTED_AI_ASSISTED_UNREVIEWED_STAGE21",
+    "remaining_official_blocker_codes": [
+      "COHORT_APPROVAL_MISSING",
+      "EVAL_AUTH_NOT_GRANTED",
+      "EVENT_SPLIT_DECISION_MISSING",
+      "MANIFEST_MISSING",
+      "STAGE21_RECORDS_MISSING"
+    ],
+    "streams_verified": "54/54"
+  },
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "schema_version": "mission12-scientific-analysis/1.0"
+}
