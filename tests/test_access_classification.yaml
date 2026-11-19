@@ -24,13 +24,13 @@ limitations:
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
 summary:
-  total_test_files: 182
+  total_test_files: 183
   synthetic_only: 116
   metadata_only: 29
   model_checkpoint_access: 16
   processed_data_access: 7
   raw_media_access: 5
-  unknown: 9
+  unknown: 10
   safe_for_synthetic_runner: 145
 test_files:
   tests/integration/test_phase0_smoke.py:
@@ -1001,6 +1001,29 @@ test_files:
       errors: 0
       skipped: 0
       passed: 9
+  tests/synthetic_mission44/test_upright_pipeline_e2e.py:
+    access_dirs:
+    - configs
+    access_paths:
+    - configs/frozen_experiment_v1.yaml
+    blocked_attempts: {}
+    category: UNKNOWN
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: 'Reads 1 repository metadata file(s) (e.g. configs/frozen_experiment_v1.yaml); no media, weights,
+      processed data or results were requested. NOTE: the file spawns a child process the guard cannot
+      observe.'
+    safe_for_synthetic_runner: false
+    sha256: 768997516aeb4724ba5a16962de4fc7d519062b74e9c9f287b9ca93558434cf9
+    spawns_child_process: true
+    static_hints:
+    - .mov
+    - _base.mp4
+    tests:
+      failed: 0
+      errors: 0
+      skipped: 0
+      passed: 2
   tests/synthetic_preservation/test_snapshot.py:
     access_dirs: []
     access_paths: []
@@ -1676,10 +1699,10 @@ test_files:
     - results/a.json
     - results/experiment_registry.jsonl
     tests:
-      failed: 0
+      failed: 1
       errors: 0
       skipped: 0
-      passed: 59
+      passed: 58
   tests/unit/test_audio_entrypoint_gate.py:
     access_dirs: []
     access_paths: []
@@ -1703,11 +1726,12 @@ test_files:
   tests/unit/test_audio_leakage_and_preprocessing.py:
     access_dirs:
     - data/manifests
+    - data/processed/audio/train_horn/features/negative
     - data/processed/audio/train_horn/features/positive
     - data/raw/audio/train_horn/positive
     access_paths:
+    - data/processed/audio/train_horn/features/negative/neg_169_w001.npy
     - data/processed/audio/train_horn/features/positive/pos_001_w000.npy
-    - data/processed/audio/train_horn/features/positive/pos_082_w010.npy
     - data/raw/audio/train_horn/positive/1.mp3
     - data/manifests/audio_training_dataset.json
     - data/manifests/train_horn_audio_manifest.json

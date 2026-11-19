@@ -1538,7 +1538,7 @@
       "gt_T2_s": 0.0,
       "gt_T4_s": null,
       "gt_horn_onset_s": null,
-      "recoverability_verdict": "SOLITARY_LOCOMOTIVE_BOUNDARY_CASE: Front camera (-90 deg) missed 100%; Back camera (0 deg upright) detected 14 'front'-class objects (13 frames, max=0.8995) but 0 side/rear objects because zero trailing cars exist; absent horn (max=0.1428)."
+      "recoverability_verdict": "SOLITARY_LOCOMOTIVE_BOUNDARY_CASE (pre-db40305): Front=0f (mc=0, F=0/S=0/R=0); Back=13f (mc=12, F=14/S=0/R=0); Audio max=0.1428."
     }
   ],
   "missed_f6_count": 8,

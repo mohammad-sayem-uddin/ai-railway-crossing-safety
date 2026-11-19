@@ -27,6 +27,8 @@ import hashlib
 import json
 import math
 import sys
+import tempfile
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -43,9 +45,15 @@ from exploratory_common import (  # noqa: E402
     VerifiedExploratoryContext,
     load_event_evidence_records,
     load_verified_context,
+    read_verified_utf8_text,
     wilson_ci_95,
 )
+from railway_detection.data.audio_extractor import extract_audio_from_video  # noqa: E402
 from railway_detection.data.sync import SyncAligner  # noqa: E402
+from railway_detection.experiments.layer_b_processor import (  # noqa: E402
+    LayerBEventProcessor,
+    serialize_evidence_record,
+)
 from railway_detection.fusion.collector import MultimodalEvidenceCollector  # noqa: E402
 from railway_detection.fusion.decision_engine_v3_four_layer import (  # noqa: E402
     MultimodalDecisionEngineV3FourLayer,
@@ -54,6 +62,7 @@ from railway_detection.fusion.rules_v3_four_layer import SideMovementTracker  # 
 from railway_detection.safety import media_guard  # noqa: E402
 from railway_detection.safety.media_guard import MediaAccessAuthorizationError  # noqa: E402
 from railway_detection.simulation.runner import EventSimulationRunner, SimulationRunResult  # noqa: E402
+from railway_detection.vision.video import SOURCE_DISPLAY_ROTATION_POLICY  # noqa: E402
 
 VISION_CACHE_PROVENANCE = (
     "Mission 39/43 Frozen YOLOv8n Actual Inference Caches "
@@ -86,6 +95,7 @@ AUDIO_PER_EVENT_CSV = (
     REPO_ROOT / "docs" / "generated" / "professor_evidence" / "mission43" / "AUDIO_PER_EVENT_RESULTS.csv"
 )
 UPRIGHT_OUT_DIR = REPO_ROOT / "results" / "upright_inference_v2"
+UPRIGHT_EVAL_DIR = REPO_ROOT / "results" / "upright_27_event_evaluation"
 
 
 def generate_owner_media_auth_template(output_path: Path = TEMPLATE_READY_PATH) -> dict[str, Any]:
@@ -165,74 +175,319 @@ def check_media_authorization_status() -> dict[str, Any]:
         }
 
 
-def run_upright_raw_inference(ctx: VerifiedExploratoryContext) -> dict[str, Any]:
+def _write_utf8_jsonl_and_sha256(path: Path, rows: list[dict[str, Any]], repo_root: Path = REPO_ROOT) -> tuple[str, str]:
+    """Write rows as UTF-8 JSONL and return (repo-relative-or-abs path, SHA-256 digest)."""
+    body = "".join(json.dumps(r, ensure_ascii=True) + "\n" for r in rows)
+    path.write_text(body, encoding="utf-8")
+    digest = hashlib.sha256(body.encode("utf-8")).hexdigest()
+    try:
+        rel = str(path.resolve().relative_to(repo_root.resolve()))
+    except ValueError:
+        rel = str(path)
+    return rel, digest
+
+
+def _audio_records_to_descriptive_rows(records: list[Any], *, threshold: float) -> list[dict[str, Any]]:
+    """Convert AudioEvidencePipeline EvidenceRecords into canonical descriptive window rows."""
+    rows: list[dict[str, Any]] = []
+    for idx, rec in enumerate(records):
+        if not rec.available:
+            raise RuntimeError(f"Audio inference failed on extracted stream: {rec.metadata}")
+        wid = str(rec.metadata.get("window_id", f"win_{idx:04d}"))
+        try:
+            win_idx = int(wid.split("_")[-1])
+        except ValueError:
+            win_idx = idx
+        start_s = float(rec.metadata.get("window_start_s", max(0.0, float(rec.timestamp_s) - 1.0)))
+        end_s = float(rec.metadata.get("window_end_s", float(rec.timestamp_s)))
+        prob = (
+            float(rec.metadata["probability"])
+            if "probability" in rec.metadata
+            else (float(rec.detections[0].confidence) if rec.detections else 0.0)
+        )
+        rows.append(
+            {
+                "window_index": win_idx,
+                "start_sec": round(start_s, 6),
+                "end_sec": round(end_s, 6),
+                "horn_confidence": prob,
+                "is_horn_detected": bool(prob >= float(threshold)),
+            }
+        )
+    return rows
+
+
+def _summarize_vision_stream_orientation(
+    records: list[Any], *, expected_rotation_deg: int | None
+) -> dict[str, Any]:
+    """Verify db40305 upright display rotation metadata and count per-class objects."""
+    cls_counts = {"front": 0, "side": 0, "rear": 0, "other": 0}
+    rotations: set[int] = set()
+    bases: set[str] = set()
+    sizes: set[tuple[int, int]] = set()
+    stream_indices: set[int] = set()
+    det_frames = 0
+
+    for rec in records:
+        meta = rec.metadata or {}
+        if "display_rotation_degrees" in meta:
+            rotations.add(int(meta["display_rotation_degrees"]))
+        if "image_coordinate_basis" in meta:
+            bases.add(str(meta["image_coordinate_basis"]))
+        if "input_image_size" in meta and isinstance(meta["input_image_size"], (list, tuple)) and len(meta["input_image_size"]) == 2:
+            sizes.add((int(meta["input_image_size"][0]), int(meta["input_image_size"][1])))
+        if "stream_index" in meta and meta["stream_index"] is not None:
+            stream_indices.add(int(meta["stream_index"]))
+        if rec.detections:
+            det_frames += 1
+        for det in rec.detections:
+            lbl = str(det.label).strip().lower()
+            cls_counts[lbl if lbl in cls_counts else "other"] += 1
+
+    rot_list = sorted(rotations)
+    basis_list = sorted(bases)
+    expected_ok = expected_rotation_deg is None or rot_list == [int(expected_rotation_deg)]
+    return {
+        "sampled_frames": len(records),
+        "det_frames": det_frames,
+        "total_objects": sum(cls_counts.values()),
+        "cls_counts": cls_counts,
+        "display_rotation_degrees_observed": rot_list,
+        "expected_quicktime_rotation_deg": expected_rotation_deg,
+        "image_coordinate_basis": basis_list,
+        "input_image_sizes_observed": [list(s) for s in sorted(sizes)],
+        "stream_indices_observed": sorted(stream_indices),
+        "orientation_verified": (
+            len(records) > 0
+            and basis_list == [SOURCE_DISPLAY_ROTATION_POLICY]
+            and expected_ok
+        ),
+    }
+
+
+def _process_upright_event_streams(
+    processor: LayerBEventProcessor,
+    frozen_config: Any,
+    *,
+    eid: str,
+    cohort: str,
+    event_id: str,
+    front_mov: Path,
+    back_mov: Path,
+    pred_dir: Path,
+    expected_front_rot: int | None,
+    expected_back_rot: int | None,
+    repo_root: Path = REPO_ROOT,
+) -> dict[str, Any]:
+    """Run upright PTS vision inference and fresh WAV audio inference for one event."""
+    yolo_ckpt = repo_root / frozen_config.checkpoints.vision.path
+    audio_ckpt = repo_root / frozen_config.checkpoints.audio_v3.path
+    sampling_fps = float(frozen_config.vision.sampling_fps)
+    vision_conf = float(frozen_config.vision.confidence_threshold_approach)
+    audio_thresh = float(frozen_config.audio.operating_threshold)
+    slug = eid.replace("/", "_")
+
+    f_recs = processor.run_vision_inference(
+        video_path=front_mov,
+        checkpoint_path=yolo_ckpt,
+        source_id="camera_1",
+        target_fps=sampling_fps,
+        conf=vision_conf,
+        use_cache=False,
+        source_pts=True,
+        video_stream_index=None,
+    )
+    b_recs = processor.run_vision_inference(
+        video_path=back_mov,
+        checkpoint_path=yolo_ckpt,
+        source_id="camera_2",
+        target_fps=sampling_fps,
+        conf=vision_conf,
+        use_cache=False,
+        source_pts=True,
+        video_stream_index=None,
+    )
+
+    with tempfile.TemporaryDirectory(prefix="tga_upright_audio_") as tmp_dir:
+        tmp_wav = Path(tmp_dir) / f"{slug}_front.wav"
+        extracted_wav = extract_audio_from_video(
+            front_mov,
+            tmp_wav,
+            sample_rate=int(frozen_config.audio.sample_rate),
+            channels=1,
+        )
+        if extracted_wav is None or not extracted_wav.exists() or extracted_wav.stat().st_size == 0:
+            raise RuntimeError(f"Failed to extract front WAV audio for {eid} from {front_mov}")
+        a_recs = processor.run_audio_inference(
+            wav_path=extracted_wav,
+            checkpoint_path=audio_ckpt,
+            source_id="audio_1",
+            threshold=audio_thresh,
+            cohort=cohort,
+            event_id=event_id,
+            use_cache=False,
+        )
+
+    f_rel, f_sha = _write_utf8_jsonl_and_sha256(
+        pred_dir / f"{slug}_front.jsonl",
+        [serialize_evidence_record(r) for r in f_recs],
+        repo_root=repo_root,
+    )
+    b_rel, b_sha = _write_utf8_jsonl_and_sha256(
+        pred_dir / f"{slug}_back.jsonl",
+        [serialize_evidence_record(r) for r in b_recs],
+        repo_root=repo_root,
+    )
+    a_desc_rows = _audio_records_to_descriptive_rows(a_recs, threshold=audio_thresh)
+    a_rel, a_sha = _write_utf8_jsonl_and_sha256(
+        pred_dir / f"{slug}_front_audio_descriptive_rows.jsonl",
+        a_desc_rows,
+        repo_root=repo_root,
+    )
+    a_raw_rel, a_raw_sha = _write_utf8_jsonl_and_sha256(
+        pred_dir / f"{slug}_front_audio_records.jsonl",
+        [serialize_evidence_record(r) for r in a_recs],
+        repo_root=repo_root,
+    )
+
+    f_orient = _summarize_vision_stream_orientation(f_recs, expected_rotation_deg=expected_front_rot)
+    b_orient = _summarize_vision_stream_orientation(b_recs, expected_rotation_deg=expected_back_rot)
+    if not f_orient["orientation_verified"] or not b_orient["orientation_verified"]:
+        raise RuntimeError(
+            f"Orientation verification failed for {eid}: front={f_orient}, back={b_orient}"
+        )
+
+    return {
+        "event_id": eid,
+        "cohort": cohort,
+        "raw_event_id": event_id,
+        "front_frames": len(f_recs),
+        "back_frames": len(b_recs),
+        "audio_windows": len(a_desc_rows),
+        "front_orientation": f_orient,
+        "back_orientation": b_orient,
+        "front_path": f_rel,
+        "front_sha256": f_sha,
+        "back_path": b_rel,
+        "back_sha256": b_sha,
+        "audio_path": a_rel,
+        "audio_sha256": a_sha,
+        "audio_raw_path": a_raw_rel,
+        "audio_raw_sha256": a_raw_sha,
+    }
+
+
+def run_upright_raw_inference(
+    ctx: VerifiedExploratoryContext,
+    *,
+    output_dir: Path = UPRIGHT_OUT_DIR,
+    processor: LayerBEventProcessor | None = None,
+) -> dict[str, Any]:
     """Execute owner-authorized upright db40305 YOLOv8n + Audio V3 inference across all 27 events.
 
     Fails closed unless data/governance/AUTH-MEDIA-ACCESS.json exists and passes
-    media_guard.verify_authorization_record(REPO_ROOT, operation="INFERENCE").
+    media_guard checks for READ_RAW_MEDIA, INFERENCE, AUDIO_EXTRACTION, and FEATURE_EXTRACTION.
     """
-    media_guard.precheck_operation_authorized("INFERENCE", repo_root=REPO_ROOT)
-
-    from railway_detection.experiments.layer_b_processor import (  # noqa: E402
-        LayerBEventProcessor,
-        serialize_evidence_record,
-    )
+    for required_op in ("INFERENCE", "READ_RAW_MEDIA", "AUDIO_EXTRACTION", "FEATURE_EXTRACTION"):
+        media_guard.precheck_operation_authorized(required_op, repo_root=REPO_ROOT)
 
     inventory = json.loads((REPO_ROOT / "docs/PHASE11_3_REVIEW_INVENTORY.json").read_text(encoding="utf-8"))
-    processor = LayerBEventProcessor(config=ctx.frozen_config)
-    UPRIGHT_OUT_DIR.mkdir(parents=True, exist_ok=True)
-    pred_dir = UPRIGHT_OUT_DIR / "predictions"
+    rot_map = _load_supporting_lookup()["rot_map"]
+    active_processor = processor or LayerBEventProcessor(config=ctx.frozen_config, repo_root=REPO_ROOT)
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    pred_dir = output_dir / "predictions"
     pred_dir.mkdir(parents=True, exist_ok=True)
 
     manifest_entries: list[dict[str, Any]] = []
-    for eid in ctx.event_order:
+    for idx, eid in enumerate(ctx.event_order, start=1):
         ev_info = inventory["events"][eid]
         f_mov = REPO_ROOT / ev_info["raw_media"]["front"]["path"]
         b_mov = REPO_ROOT / ev_info["raw_media"]["back"]["path"]
-        slug = eid.replace("/", "_")
-
-        f_recs = processor.process_video_stream(
-            f_mov,
-            source_id="camera_1",
-            target_fps=ctx.frozen_config.vision.target_fps,
-            apply_display_rotation=True,
+        entry = _process_upright_event_streams(
+            active_processor,
+            ctx.frozen_config,
+            eid=eid,
+            cohort=str(ev_info["cohort"]),
+            event_id=str(ev_info["event_id"]),
+            front_mov=f_mov,
+            back_mov=b_mov,
+            pred_dir=pred_dir,
+            expected_front_rot=rot_map[(eid, "front")]["rotation_deg"],
+            expected_back_rot=rot_map[(eid, "back")]["rotation_deg"],
+            repo_root=REPO_ROOT,
         )
-        b_recs = processor.process_video_stream(
-            b_mov,
-            source_id="camera_2",
-            target_fps=ctx.frozen_config.vision.target_fps,
-            apply_display_rotation=True,
+        print(
+            f"[UPRIGHT {idx:02d}/{len(ctx.event_order):02d}] {eid} | "
+            f"front={entry['front_frames']}f/{entry['front_orientation']['total_objects']}obj "
+            f"(rot={entry['front_orientation']['display_rotation_degrees_observed']}) | "
+            f"back={entry['back_frames']}f/{entry['back_orientation']['total_objects']}obj "
+            f"(rot={entry['back_orientation']['display_rotation_degrees_observed']}) | "
+            f"audio={entry['audio_windows']}w",
+            flush=True,
         )
-        a_recs = processor.process_audio_stream(f_mov, source_id="audio_1")
+        manifest_entries.append(entry)
 
-        f_out = pred_dir / f"{slug}_front.jsonl"
-        b_out = pred_dir / f"{slug}_back.jsonl"
-        a_out = pred_dir / f"{slug}_front_audio.jsonl"
-        for out_p, recs in [(f_out, f_recs), (b_out, b_recs), (a_out, a_recs)]:
-            body = "".join(json.dumps(serialize_evidence_record(r)) + "\n" for r in recs)
-            out_p.write_text(body, encoding="utf-8")
-
-        manifest_entries.append(
-            {
-                "event_id": eid,
-                "front_frames": len(f_recs),
-                "back_frames": len(b_recs),
-                "audio_windows": len(a_recs),
-                "front_path": str(f_out.relative_to(REPO_ROOT)),
-                "back_path": str(b_out.relative_to(REPO_ROOT)),
-                "audio_path": str(a_out.relative_to(REPO_ROOT)),
-            }
-        )
-
+    auth_status = check_media_authorization_status()
     manifest = {
-        "schema_version": "upright-raw-inference-manifest/1.0",
+        "schema_version": "upright-raw-inference-manifest/2.0",
         "generated_at_utc": dt.datetime.now(dt.UTC).isoformat(),
+        "orientation_policy": SOURCE_DISPLAY_ROTATION_POLICY,
         "apply_display_rotation": True,
+        "authorization": auth_status,
+        "frozen_config_sha256": ctx.artifact_hashes.get("configs/frozen_experiment_v1.yaml"),
+        "checkpoints": {
+            "vision_path": ctx.frozen_config.checkpoints.vision.path,
+            "vision_sha256": ctx.frozen_config.checkpoints.vision.expected_sha256,
+            "audio_path": ctx.frozen_config.checkpoints.audio_v3.path,
+            "audio_sha256": ctx.frozen_config.checkpoints.audio_v3.expected_sha256,
+        },
+        "total_events": len(manifest_entries),
+        "total_streams_verified": 2 * len(manifest_entries),
         "events": manifest_entries,
     }
-    manifest_path = UPRIGHT_OUT_DIR / "UPRIGHT_INFERENCE_MANIFEST.json"
-    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    manifest_path = output_dir / "UPRIGHT_INFERENCE_MANIFEST.json"
+    manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return manifest
+
+
+def _load_existing_upright_manifest(manifest_path: Path | None = None) -> dict[str, Any]:
+    """Load and SHA-256-verify an existing UPRIGHT_INFERENCE_MANIFEST.json."""
+    target = manifest_path or (UPRIGHT_OUT_DIR / "UPRIGHT_INFERENCE_MANIFEST.json")
+    if not target.exists():
+        raise FileNotFoundError(f"Upright inference manifest not found: {target}")
+    manifest = json.loads(target.read_text(encoding="utf-8"))
+    for ent in manifest.get("events", []):
+        read_verified_utf8_text(REPO_ROOT, ent["front_path"], expected_sha256=ent["front_sha256"])
+        read_verified_utf8_text(REPO_ROOT, ent["back_path"], expected_sha256=ent["back_sha256"])
+        read_verified_utf8_text(REPO_ROOT, ent["audio_path"], expected_sha256=ent["audio_sha256"])
+    return manifest
+
+
+def _build_upright_context(
+    base_ctx: VerifiedExploratoryContext, upright_manifest: dict[str, Any]
+) -> VerifiedExploratoryContext:
+    """Return a VerifiedExploratoryContext pointing at SHA-256-verified upright prediction caches."""
+    by_eid = {e["event_id"]: e for e in upright_manifest["events"]}
+    new_events: dict[str, dict[str, Any]] = {}
+    for eid in base_ctx.event_order:
+        if eid not in by_eid:
+            raise RuntimeError(f"Upright manifest missing event {eid}")
+        u = by_eid[eid]
+        old_ent = base_ctx.manifest_events[eid]
+        new_events[eid] = {
+            **old_ent,
+            "front_cache_path": u["front_path"],
+            "front_cache_sha256": u["front_sha256"],
+            "back_cache_path": u["back_path"],
+            "back_cache_sha256": u["back_sha256"],
+            "audio_cache_path": u["audio_path"],
+            "audio_cache_sha256": u["audio_sha256"],
+            "front_source": "mission10_upright_db40305",
+            "back_source": "mission10_upright_db40305",
+            "audio_source": "mission10_fresh_logmel",
+        }
+    return replace(base_ctx, manifest_events=new_events)
 
 
 def _exact_mcnemar(a_preds: list[bool], b_preds: list[bool], truths: list[bool]) -> dict[str, Any]:
@@ -756,7 +1011,7 @@ def _compute_binary_metrics(
     }
 
 
-def _failure_or_recovery_reason(row: dict[str, Any]) -> str:
+def _failure_or_recovery_reason(row: dict[str, Any], *, orientation_corrected: bool = False) -> str:
     if row["cohort"] == "no_train_events":
         parts = []
         if row["front_det_frames"] > 0:
@@ -768,9 +1023,16 @@ def _failure_or_recovery_reason(row: dict[str, Any]) -> str:
         return "TN under V2/F5/F6/F7; " + (", ".join(parts) if parts else "clean")
 
     if row["cohort"] == "engine_events":
+        if not orientation_corrected:
+            return (
+                f"Solitary locomotive (train_present=True, 0 cars): front(-90deg)=0f, audio=0w(max={row['audio_max_score']}); "
+                f"back(0deg)_cls_front={row['back_cls_front']}obj(c={row['back_max_consec']}, maxC={row['back_max_conf']}), 0 side/rear"
+            )
         return (
-            f"Solitary locomotive (train_present=True, 0 cars): front(-90deg)=0f, audio=0w(max={row['audio_max_score']}); "
-            f"back(0deg)_cls_front={row['back_cls_front']}obj(c={row['back_max_consec']}, maxC={row['back_max_conf']}), 0 side/rear"
+            f"Solitary locomotive (train_present=True, 0 cars): front(upright src_rot={row['front_rotation_deg']}deg)={row['front_det_frames']}f "
+            f"(mc={row['front_max_consec']}, maxC={row['front_max_conf']}), audio=0w(max={row['audio_max_score']}); "
+            f"back(0deg)_cls_front={row['back_cls_front']}obj(c={row['back_max_consec']}, maxC={row['back_max_conf']}), "
+            f"side/rear={row['back_cls_side'] + row['back_cls_rear']}obj"
         )
 
     if row["pred_V2_front_L1_confirm2"]:
@@ -786,13 +1048,19 @@ def _failure_or_recovery_reason(row: dict[str, Any]) -> str:
     if rec:
         return f"Missed by Front L1 (rot={row['front_rotation_deg']}deg, df={row['front_det_frames']}); RECOVERED by " + " + ".join(rec)
     if row["pred_F7_exploratory_2of3_multimodal"]:
+        suffix = " (upright db40305)" if orientation_corrected else ""
         return (
-            f"Missed by F6; RECOVERED by Exploratory 2-of-3 dropout tolerance "
+            f"Missed by F6{suffix}; RECOVERED by Exploratory 2-of-3 dropout tolerance "
             f"(front_gap={row['front_min_inter_det_gap_any_s']}s, back_sr_gap={row['back_min_inter_det_gap_sr_s']}s)"
         )
+    if not orientation_corrected:
+        return (
+            f"FAILED F6 & F7: both cams -90deg unrotated (front df={row['front_det_frames']}, "
+            f"back sr_c={row['back_max_consec_side_rear']}), audio max={row['audio_max_score']} (r75={row['audio_max_run_075']})"
+        )
     return (
-        f"FAILED F6 & F7: both cams -90deg unrotated (front df={row['front_det_frames']}, "
-        f"back sr_c={row['back_max_consec_side_rear']}), audio max={row['audio_max_score']} (r75={row['audio_max_run_075']})"
+        f"FAILED F6 & F7 (upright db40305 decoded): front df={row['front_det_frames']}, "
+        f"back sr_c={row['back_max_consec_side_rear']}, audio max={row['audio_max_score']} (r75={row['audio_max_run_075']})"
     )
 
 
@@ -832,8 +1100,10 @@ def _build_failed_events_forensics(
     f_details: dict[str, list[dict[str, Any]]],
     b_details: dict[str, list[dict[str, Any]]],
     a_details: dict[str, list[dict[str, Any]]],
+    *,
+    orientation_corrected: bool = False,
 ) -> dict[str, Any]:
-    """Build detailed forensic investigation for all 8 missed train events, 5 F6 recoveries, and engine_001."""
+    """Build detailed forensic investigation for all F6-missed train events, F6 recoveries, and engine_001."""
     missed_ids = [r["event_id"] for r in per_event_rows if r["cohort"] == "train_events" and not r["pred_F6_full_multimodal_dual_sr_or_audio_075_k2"]]
     recovered_ids = [
         r["event_id"]
@@ -851,80 +1121,109 @@ def _build_failed_events_forensics(
         ad = a_details[eid]
         recoverability = "ALREADY_RECOVERED_BY_F6"
         if eid in missed_ids:
-            if r["pred_F7_exploratory_2of3_multimodal"]:
-                recoverability = (
-                    "RECOVERABLE_BY_2OF3_DROPOUT_TOLERANCE_AND_LIKELY_UPRIGHT_ROTATION: "
-                    "Both streams were decoded sideways (-90 deg); existing detections already pair within <=0.60 s."
-                )
-            elif r["adopted_horn_status"] == "present" and r["audio_max_score"] >= 0.75:
-                recoverability = (
-                    "SINGLE_WINDOW_AUDIO_NEAR_MISS_AND_UNROTATED_OPTICAL: "
-                    "Strong peak horn window (0.8402 followed by 0.7440; missed 0.75 k=2 by 0.0060), "
-                    "0 optical frames at -90 deg; requires upright re-inference rather than overfitting threshold."
-                )
-            elif r["front_det_frames"] > 0 or r["back_det_frames"] > 0:
-                recoverability = (
-                    "SPARSE_UNROTATED_DETECTIONS_BELOW_RUN2: "
-                    "Both cameras were -90 deg unrotated, yielding only 1-4 scattered frames (gaps >=2.4 s) "
-                    "and quiet/absent horn; requires db40305 upright video re-inference."
-                )
+            if orientation_corrected:
+                if r["pred_F7_exploratory_2of3_multimodal"]:
+                    recoverability = (
+                        "MISSED_F6_EVEN_AFTER_UPRIGHT_ROTATION_BUT_RECOVERED_BY_F7_2OF3: "
+                        "Upright streams produced optical/acoustic hits pairing within <=0.60 s but no single-stream k>=2 run."
+                    )
+                elif r["adopted_horn_status"] == "present" and r["audio_max_score"] >= 0.75:
+                    recoverability = (
+                        "MISSED_EVEN_AFTER_UPRIGHT_ROTATION_AUDIO_NEAR_MISS: "
+                        f"Peak audio score={r['audio_max_score']} (r75={r['audio_max_run_075']}) and sparse upright vision "
+                        f"(front_df={r['front_det_frames']}, back_df={r['back_det_frames']})."
+                    )
+                elif r["front_det_frames"] > 0 or r["back_det_frames"] > 0:
+                    recoverability = (
+                        "SPARSE_UPRIGHT_DETECTIONS_BELOW_RUN2: "
+                        f"Upright decoding gave front_df={r['front_det_frames']}, back_sr_c={r['back_max_consec_side_rear']} without k>=2 consecutive confirmation."
+                    )
+                else:
+                    recoverability = (
+                        "ZERO_OPTICAL_AND_ACOUSTIC_AFTER_UPRIGHT_ROTATION: "
+                        "Genuine vision+horn failure under upright db40305 decoding (requires crossing-geometry/occlusion/lighting review)."
+                    )
             else:
-                recoverability = (
-                    "ZERO_OPTICAL_AT_MINUS90_AND_ABSENT_HORN: "
-                    "Both cameras were -90 deg unrotated (0 optical frames) and no horn present; "
-                    "only upright video re-inference can recover without acoustic overfitting."
-                )
+                if r["pred_F7_exploratory_2of3_multimodal"]:
+                    recoverability = (
+                        "RECOVERABLE_BY_2OF3_DROPOUT_TOLERANCE_AND_LIKELY_UPRIGHT_ROTATION: "
+                        "Both streams were decoded sideways (-90 deg); existing detections already pair within <=0.60 s."
+                    )
+                elif r["adopted_horn_status"] == "present" and r["audio_max_score"] >= 0.75:
+                    recoverability = (
+                        "SINGLE_WINDOW_AUDIO_NEAR_MISS_AND_UNROTATED_OPTICAL: "
+                        "Strong peak horn window (0.8402 followed by 0.7440; missed 0.75 k=2 by 0.0060), "
+                        "0 optical frames at -90 deg; requires upright re-inference rather than overfitting threshold."
+                    )
+                elif r["front_det_frames"] > 0 or r["back_det_frames"] > 0:
+                    recoverability = (
+                        "SPARSE_UNROTATED_DETECTIONS_BELOW_RUN2: "
+                        "Both cameras were -90 deg unrotated, yielding only 1-4 scattered frames (gaps >=2.4 s) "
+                        "and quiet/absent horn; requires db40305 upright video re-inference."
+                    )
+                else:
+                    recoverability = (
+                        "ZERO_OPTICAL_AT_MINUS90_AND_ABSENT_HORN: "
+                        "Both cameras were -90 deg unrotated (0 optical frames) and no horn present; "
+                        "only upright video re-inference can recover without acoustic overfitting."
+                    )
         elif eid == "engine_events/event_001":
             recoverability = (
-                "SOLITARY_LOCOMOTIVE_BOUNDARY_CASE: Front camera (-90 deg) missed 100%; "
-                "Back camera (0 deg upright) detected 14 'front'-class objects (13 frames, max=0.8995) "
-                "but 0 side/rear objects because zero trailing cars exist; absent horn (max=0.1428)."
+                f"SOLITARY_LOCOMOTIVE_BOUNDARY_CASE ({'upright db40305' if orientation_corrected else 'pre-db40305'}): "
+                f"Front={r['front_det_frames']}f (mc={r['front_max_consec']}, F={r['front_cls_front']}/S={r['front_cls_side']}/R={r['front_cls_rear']}); "
+                f"Back={r['back_det_frames']}f (mc={r['back_max_consec']}, F={r['back_cls_front']}/S={r['back_cls_side']}/R={r['back_cls_rear']}); "
+                f"Audio max={r['audio_max_score']}."
             )
 
-        cases.append(
-            {
-                "event_id": eid,
-                "cohort": r["cohort"],
-                "category": (
-                    "F6_MISSED_TRAIN" if eid in missed_ids else ("F6_RECOVERED_OVER_V2" if eid in recovered_ids else "ENGINE_BOUNDARY")
-                ),
-                "gt_T0_s": r["gt_T0_s"],
-                "gt_T2_s": r["gt_T2_s"],
-                "gt_T4_s": r["gt_T4_s"],
-                "adopted_horn_status": r["adopted_horn_status"],
-                "gt_horn_onset_s": r["gt_horn_onset_s"],
-                "front_rotation_deg": r["front_rotation_deg"],
-                "back_rotation_deg": r["back_rotation_deg"],
-                "front_det_frames": r["front_det_frames"],
-                "front_cls_counts": {"front": r["front_cls_front"], "side": r["front_cls_side"], "rear": r["front_cls_rear"]},
-                "front_min_inter_det_gap_any_s": r["front_min_inter_det_gap_any_s"],
-                "front_detections_raw": fd,
-                "back_det_frames": r["back_det_frames"],
-                "back_cls_counts": {"front": r["back_cls_front"], "side": r["back_cls_side"], "rear": r["back_cls_rear"]},
-                "back_min_inter_det_gap_sr_s": r["back_min_inter_det_gap_sr_s"],
-                "back_detections_raw": bd[:25],
-                "audio_windows": r["audio_windows"],
-                "audio_pos_037": r["audio_pos_037"],
-                "audio_pos_075": r["audio_pos_075"],
-                "audio_max_run_075": r["audio_max_run_075"],
-                "audio_max_score": r["audio_max_score"],
-                "audio_top5_windows": ad,
-                "recoverability_verdict": recoverability,
-            }
-        )
+        case_item: dict[str, Any] = {
+            "event_id": eid,
+            "cohort": r["cohort"],
+            "category": (
+                "F6_MISSED_TRAIN" if eid in missed_ids else ("F6_RECOVERED_OVER_V2" if eid in recovered_ids else "ENGINE_BOUNDARY")
+            ),
+            "gt_T0_s": r["gt_T0_s"],
+            "gt_T2_s": r["gt_T2_s"],
+            "gt_T4_s": r["gt_T4_s"],
+            "adopted_horn_status": r["adopted_horn_status"],
+            "gt_horn_onset_s": r["gt_horn_onset_s"],
+            "front_rotation_deg": r["front_rotation_deg"],
+            "back_rotation_deg": r["back_rotation_deg"],
+            "front_det_frames": r["front_det_frames"],
+            "front_cls_counts": {"front": r["front_cls_front"], "side": r["front_cls_side"], "rear": r["front_cls_rear"]},
+            "front_min_inter_det_gap_any_s": r["front_min_inter_det_gap_any_s"],
+            "front_detections_raw": fd,
+            "back_det_frames": r["back_det_frames"],
+            "back_cls_counts": {"front": r["back_cls_front"], "side": r["back_cls_side"], "rear": r["back_cls_rear"]},
+            "back_min_inter_det_gap_sr_s": r["back_min_inter_det_gap_sr_s"],
+            "back_detections_raw": bd[:25],
+            "audio_windows": r["audio_windows"],
+            "audio_pos_037": r["audio_pos_037"],
+            "audio_pos_075": r["audio_pos_075"],
+            "audio_max_run_075": r["audio_max_run_075"],
+            "audio_max_score": r["audio_max_score"],
+            "audio_top5_windows": ad,
+            "recoverability_verdict": recoverability,
+        }
+        if orientation_corrected:
+            case_item["front_upright_in_cache"] = r["front_upright_in_cache"]
+            case_item["back_upright_in_cache"] = r["back_upright_in_cache"]
+        cases.append(case_item)
 
-    return {
+    forensics_payload: dict[str, Any] = {
         "schema_version": "failed-events-forensic-diagnosis/1.0",
         "qualification": EXPLORATORY_LABEL,
         "missed_f6_count": len(missed_ids),
         "missed_f6_event_ids": missed_ids,
         "orientation_finding": {
-            "all_8_missed_front_minus90_deg": all(row_map[e]["front_rotation_deg"] == -90 for e in missed_ids),
-            "all_8_missed_back_minus90_deg": all(row_map[e]["back_rotation_deg"] == -90 for e in missed_ids),
+            "all_8_missed_front_minus90_deg": all(row_map[e]["front_rotation_deg"] == -90 for e in missed_ids) if missed_ids else False,
+            "all_8_missed_back_minus90_deg": all(row_map[e]["back_rotation_deg"] == -90 for e in missed_ids) if missed_ids else False,
             "zero_deg_upright_train_streams_detected": "4/4 (100%: front event_023=196f, back event_021=230f, event_022=228f, event_023=208f)",
         },
         "cases": cases,
     }
+    if orientation_corrected:
+        forensics_payload["orientation_corrected"] = True
+    return forensics_payload
 
 
 def _fmt(val: Any, suffix: str = "") -> str:
@@ -1105,19 +1404,21 @@ def _build_markdown_report(
     return "\n".join(lines) + "\n"
 
 
-def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
-    """Execute complete 27-event evaluation, causal FSM simulation, and failure forensics."""
-    ctx = load_verified_context(REPO_ROOT)
-    generate_owner_media_auth_template()
-    auth_status = check_media_authorization_status()
-
-    upright_manifest: dict[str, Any] | None = None
-    if run_upright:
-        upright_manifest = run_upright_raw_inference(ctx)
-
-    support = _load_supporting_lookup()
+def _evaluate_context_suite(
+    eval_ctx: VerifiedExploratoryContext,
+    support: dict[str, Any],
+    *,
+    output_dir: Path,
+    vision_provenance: str,
+    audio_provenance: str,
+    auth_status: dict[str, Any],
+    raw_media_accessed: bool,
+    upright_manifest: dict[str, Any] | None,
+    orientation_corrected: bool,
+    report_title: str = "Complete 27-Event Multimodal Experimental Evaluation, Causal Gate Control & Failure Forensics",
+) -> dict[str, Any]:
+    """Run full 27-event evaluation, causal FSM simulation, and forensics on one context."""
     rot_map = support["rot_map"]
-
     per_event_rows: list[dict[str, Any]] = []
     f_details: dict[str, list[dict[str, Any]]] = {}
     b_details: dict[str, list[dict[str, Any]]] = {}
@@ -1174,9 +1475,9 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
     }
     fsm_results_by_cfg: dict[str, list[dict[str, Any]]] = {k: [] for k in fsm_configs}
 
-    for eid in ctx.event_order:
-        ent = ctx.manifest_events[eid]
-        ref = ctx.references[eid]
+    for eid in eval_ctx.event_order:
+        ent = eval_ctx.manifest_events[eid]
+        ref = eval_ctx.references[eid]
         qt_info = support["qt"][eid]
         session_date = str(qt_info.get("creationdate_front", ""))[:10]
         rec_session = "Session 1" if session_date == "2026-09-14" else "Session 2"
@@ -1184,19 +1485,18 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
         f_stats = _parse_vision_stream(REPO_ROOT / ent["front_cache_path"])
         b_stats = _parse_vision_stream(REPO_ROOT / ent["back_cache_path"])
         a_stats = _parse_audio_stream(REPO_ROOT / ent["audio_cache_path"])
-        side_tracker = _run_side_tracker_proxy(ctx, eid)
+        side_tracker = _run_side_tracker_proxy(eval_ctx, eid)
 
         f_details[eid] = f_stats["det_records_detail"]
         b_details[eid] = b_stats["det_records_detail"]
         a_details[eid] = a_stats["top5_scores"]
 
-        # Run causal FSM configs for this event
         ev_fsm: dict[str, dict[str, Any]] = {}
         for cfg_name, spec in fsm_configs.items():
             if spec.get("sync11_only") and not ref.is_dual_sync_accepted:
                 continue
             res_fsm = _run_causal_fsm(
-                ctx,
+                eval_ctx,
                 eid,
                 condition=spec["condition"],
                 scenario_name=cfg_name,
@@ -1227,7 +1527,6 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             s11_info["policies"]["V3_GUARDED_DISAPPEARANCE"]["first_opening_s"] if s11_info else None
         )
 
-        # Event-level perception & fusion predictions
         gt_is_train = ref.cohort == "train_events"
         gt_rail_present = bool(ref.train_present)
         gt_horn = str(ref.horn_status or "").lower() == "present"
@@ -1276,8 +1575,8 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             "delta_qt_s": qt_info.get("delta_qt_s"),
             "front_rotation_deg": f_rot,
             "back_rotation_deg": b_rot,
-            "front_upright_in_cache": f_rot == 0,
-            "back_upright_in_cache": b_rot == 0,
+            "front_upright_in_cache": True if orientation_corrected else (f_rot == 0),
+            "back_upright_in_cache": True if orientation_corrected else (b_rot == 0),
             "gt_T0_s": ref.t0_raw_s,
             "gt_T0_cam": ref.t0_cam,
             "gt_T1_s": ref.t1_raw_s,
@@ -1285,7 +1584,6 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             "gt_T3_s": ref.t3_raw_s,
             "gt_T4_s": ref.t4_raw_s,
             "gt_T4_local_or_master_s": t4_display,
-            # Front Vision
             "front_sampled_frames": f_stats["sampled_frames"],
             "front_det_frames": f_stats["det_frames"],
             "front_total_objects": f_stats["total_objects"],
@@ -1304,7 +1602,6 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
                 if (ref.t2_cam == "front" and ref.t2_raw_s is not None and f_stats["first_det_s"] is not None)
                 else None
             ),
-            # Back Vision
             "back_sampled_frames": b_stats["sampled_frames"],
             "back_det_frames": b_stats["det_frames"],
             "back_total_objects": b_stats["total_objects"],
@@ -1322,11 +1619,9 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             "back_M2_err_vs_T4_s": m2_err,
             "sync11_M3_reopen_s": m3_reopen_s,
             "sync11_M3_guarded_reopen_s": m3_guarded_s,
-            # Side Proxy
             "dedicated_side_camera": False,
             "side_proxy_total_objects": f_stats["cls_counts"]["side"] + b_stats["cls_counts"]["side"],
             "side_tracker_state": side_tracker["tracker_state"],
-            # Audio
             "audio_windows": a_stats["n_windows"],
             "audio_pos_037": a_stats["pos_windows_037"],
             "audio_pos_075": a_stats["pos_windows_075"],
@@ -1339,7 +1634,6 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             "audio_max_score": a_stats["max_score"],
             "audio_loeo_oof_pred": loeo_info.get("oof_pred"),
             "audio_loeo_oof_cal_prob": loeo_info.get("oof_cal_prob"),
-            # Modality & Rule-Based Fusion Verdicts
             "pred_V1_front_any": v1,
             "pred_V2_front_L1_confirm2": v2,
             "pred_V3_back_any": v3,
@@ -1358,7 +1652,6 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             "pred_F5_dual_vision_side_rear_advisory": f5,
             "pred_F6_full_multimodal_dual_sr_or_audio_075_k2": f6,
             "pred_F7_exploratory_2of3_multimodal": f7,
-            # Default V3 B4 FSM
             "v3_b4_triggered": v2_fsm["triggered"],
             "v3_t_confirm_s": v2_fsm["t_confirm_front_s"],
             "v3_t_warning_s": v2_fsm["t_warning_s"],
@@ -1367,7 +1660,6 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             "v3_margin_full_vs_T2_s": v2_fsm["full_closure_margin_vs_T2_s"],
             "v3_final_crossing_state": v2_fsm["final_crossing_state"],
             "v3_final_gate_state": v2_fsm["final_gate_state"],
-            # F6 Multimodal Causal FSM
             "f6_fsm_clock_basis": f6_fsm["clock_basis"],
             "f6_fsm_triggered": f6_fsm["triggered"],
             "f6_fsm_first_useful_det_s": f6_fsm["first_useful_det_s"],
@@ -1383,13 +1675,11 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             "f6_fsm_reopen_completed": f6_fsm["reopen_completed"],
             "f6_fsm_final_state": f6_fsm["final_crossing_state"],
             "f6_fsm_final_gate_state": f6_fsm["final_gate_state"],
-            # F7 Exploratory 2-of-3 Multimodal Causal FSM
             "f7_fsm_triggered": f7_fsm["triggered"],
             "f7_fsm_trigger_s": f7_fsm["trigger_s"],
             "f7_fsm_trigger_rule": f7_fsm["trigger_rule"],
             "f7_fsm_t_fully_closed_s": f7_fsm["t_fully_closed_s"],
             "f7_fsm_closure_timing_class": f7_fsm["closure_timing_class"],
-            # Legacy compatibility columns
             "f6_first_trigger_source": f6_fsm["trigger_rule"],
             "f6_t_trigger_s": f6_fsm["trigger_s"],
             "v3_audio_extended_dwell": v2_fsm["audio_dwell_hold_fired"],
@@ -1398,7 +1688,7 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             "v3_t_half_closed_s": v2_fsm["t_half_closed_s"],
             "v3_t_reopen_s": v2_fsm["t_reopen_s"],
         }
-        row["diagnosis"] = _failure_or_recovery_reason(row)
+        row["diagnosis"] = _failure_or_recovery_reason(row, orientation_corrected=orientation_corrected)
         per_event_rows.append(row)
 
     model_specs: list[tuple[str, str, str, str, str]] = [
@@ -1454,32 +1744,35 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
             )
 
     fsm_summaries = {k: _summarize_fsm_suite(rows) for k, rows in fsm_results_by_cfg.items()}
-    forensics = _build_failed_events_forensics(per_event_rows, f_details, b_details, a_details)
+    forensics = _build_failed_events_forensics(
+        per_event_rows, f_details, b_details, a_details, orientation_corrected=orientation_corrected
+    )
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-    # 1. Master 27-row CSV
-    csv_path = OUTPUT_DIR / "event_by_event_27_multimodal_evaluation.csv"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = output_dir / "event_by_event_27_multimodal_evaluation.csv"
     with open(csv_path, "w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(per_event_rows[0].keys()))
         writer.writeheader()
         writer.writerows(per_event_rows)
 
-    # 2. Master 27-row JSON
-    json_events_path = OUTPUT_DIR / "event_by_event_27_multimodal_evaluation.json"
+    provenance_doc: dict[str, Any] = {
+        "vision": vision_provenance,
+        "audio": audio_provenance,
+        "reference": REFERENCE_PROVENANCE,
+        "raw_media_accessed": bool(raw_media_accessed),
+        "media_authorization_status": auth_status,
+        "upright_inference_executed": upright_manifest is not None,
+    }
+    if orientation_corrected:
+        provenance_doc["orientation_corrected"] = True
+
+    json_events_path = output_dir / "event_by_event_27_multimodal_evaluation.json"
     json_events_path.write_text(
         json.dumps(
             {
                 "schema_version": "complete-27-event-multimodal-evaluation/2.0",
                 "qualification": EXPLORATORY_LABEL,
-                "provenance": {
-                    "vision": VISION_CACHE_PROVENANCE,
-                    "audio": AUDIO_CACHE_PROVENANCE,
-                    "reference": REFERENCE_PROVENANCE,
-                    "raw_media_accessed": bool(run_upright),
-                    "media_authorization_status": auth_status,
-                    "upright_inference_executed": upright_manifest is not None,
-                },
+                "provenance": provenance_doc,
                 "n_events": len(per_event_rows),
                 "events": per_event_rows,
             },
@@ -1490,9 +1783,8 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
         encoding="utf-8",
     )
 
-    # 3. Modality & Fusion Ablation Metrics (JSON + CSV)
-    ablation_json_path = OUTPUT_DIR / "modality_and_fusion_ablation_metrics.json"
-    ablation_payload = {
+    ablation_json_path = output_dir / "modality_and_fusion_ablation_metrics.json"
+    ablation_payload: dict[str, Any] = {
         "schema_version": "multimodal-ablation-metrics/2.0",
         "qualification": EXPLORATORY_LABEL,
         "learned_fusion_model_present": False,
@@ -1503,9 +1795,11 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
         "view4_horn13_vs_nohorn14": horn_configs,
         "audio_loeo_23_folds": support["loeo_summary"],
     }
+    if orientation_corrected:
+        ablation_payload["orientation_corrected"] = True
     ablation_json_path.write_text(json.dumps(ablation_payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    ablation_csv_path = OUTPUT_DIR / "modality_and_fusion_ablation_metrics.csv"
+    ablation_csv_path = output_dir / "modality_and_fusion_ablation_metrics.csv"
     ab_rows = [
         {
             "configuration": k,
@@ -1536,20 +1830,17 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
         writer.writeheader()
         writer.writerows(ab_rows)
 
-    # 4. Causal FSM Gate Timing Summary (JSON + CSV)
-    fsm_json_path = OUTPUT_DIR / "causal_fsm_gate_timing_summary.json"
+    fsm_payload: dict[str, Any] = {
+        "schema_version": "causal-fsm-gate-timing-summary/1.0",
+        "qualification": EXPLORATORY_LABEL,
+        "summaries": fsm_summaries,
+        "per_config_events": fsm_results_by_cfg,
+    }
+    if orientation_corrected:
+        fsm_payload["orientation_corrected"] = True
+    fsm_json_path = output_dir / "causal_fsm_gate_timing_summary.json"
     fsm_json_path.write_text(
-        json.dumps(
-            {
-                "schema_version": "causal-fsm-gate-timing-summary/1.0",
-                "qualification": EXPLORATORY_LABEL,
-                "summaries": fsm_summaries,
-                "per_config_events": fsm_results_by_cfg,
-            },
-            indent=2,
-            sort_keys=True,
-        )
-        + "\n",
+        json.dumps(fsm_payload, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
 
@@ -1557,43 +1848,392 @@ def run_evaluation(run_upright: bool = False) -> dict[str, Any]:
         {"fsm_configuration": k, **{sk: sv for sk, sv in s.items() if not isinstance(sv, (dict, list))}}
         for k, s in fsm_summaries.items()
     ]
-    with open(OUTPUT_DIR / "causal_fsm_gate_timing_summary.csv", "w", encoding="utf-8", newline="") as handle:
+    with open(output_dir / "causal_fsm_gate_timing_summary.csv", "w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(fsm_csv_rows[0].keys()))
         writer.writeheader()
         writer.writerows(fsm_csv_rows)
 
-    # 5. Failed Events Forensics JSON
-    forensics_path = OUTPUT_DIR / "failed_events_forensic_diagnosis.json"
+    forensics_path = output_dir / "failed_events_forensic_diagnosis.json"
     forensics_path.write_text(json.dumps(forensics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    # 6. Markdown Report
-    report_path = OUTPUT_DIR / "COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md"
-    report_md = _build_markdown_report(
-        per_event_rows, view1, view2, view3, horn_configs, fsm_summaries, auth_status, forensics, model_specs, support
-    )
-    report_path.write_text(report_md, encoding="utf-8")
+    if not orientation_corrected:
+        report_path = output_dir / "COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md"
+        report_md = _build_markdown_report(
+            per_event_rows, view1, view2, view3, horn_configs, fsm_summaries, auth_status, forensics, model_specs, support
+        )
+        report_path.write_text(report_md, encoding="utf-8")
 
-    print("=== MISSION 9 COMPLETE 27-EVENT EVALUATION & CAUSAL FSM VALIDATION ===")
+    return {
+        "per_event_rows": per_event_rows,
+        "model_specs": model_specs,
+        "ablation_payload": ablation_payload,
+        "fsm_summaries": fsm_summaries,
+        "fsm_results_by_cfg": fsm_results_by_cfg,
+        "forensics": forensics,
+    }
+
+
+def _compute_audio_invariance_summary(
+    base_ctx: VerifiedExploratoryContext, upright_ctx: VerifiedExploratoryContext
+) -> dict[str, Any]:
+    """Compare Mission 39/43 audio scores with freshly extracted Mission 10 log-Mel scores."""
+    per_event: list[dict[str, Any]] = []
+    max_abs_diff = 0.0
+    for eid in base_ctx.event_order:
+        b_text, _ = read_verified_utf8_text(
+            REPO_ROOT, base_ctx.manifest_events[eid]["audio_cache_path"],
+            expected_sha256=base_ctx.manifest_events[eid]["audio_cache_sha256"],
+        )
+        u_text, _ = read_verified_utf8_text(
+            REPO_ROOT, upright_ctx.manifest_events[eid]["audio_cache_path"],
+            expected_sha256=upright_ctx.manifest_events[eid]["audio_cache_sha256"],
+        )
+        b_win = {int(json.loads(line)["window_index"]): float(json.loads(line)["horn_confidence"]) for line in b_text.splitlines() if line.strip()}
+        u_win = {int(json.loads(line)["window_index"]): float(json.loads(line)["horn_confidence"]) for line in u_text.splitlines() if line.strip()}
+        common = sorted(set(b_win) & set(u_win))
+        ev_max_diff = max((abs(b_win[w] - u_win[w]) for w in common), default=0.0)
+        max_abs_diff = max(max_abs_diff, ev_max_diff)
+        per_event.append(
+            {
+                "event_id": eid,
+                "baseline_windows": len(b_win),
+                "fresh_windows": len(u_win),
+                "max_abs_score_diff": round(ev_max_diff, 6),
+            }
+        )
+    return {
+        "n_events": len(per_event),
+        "max_abs_score_diff_across_all_windows": round(max_abs_diff, 6),
+        "per_event": per_event,
+    }
+
+
+def _compare_baseline_and_upright(
+    baseline_suite: dict[str, Any],
+    upright_suite: dict[str, Any],
+    base_ctx: VerifiedExploratoryContext,
+    upright_ctx: VerifiedExploratoryContext,
+    upright_manifest: dict[str, Any],
+    *,
+    output_dir: Path = UPRIGHT_EVAL_DIR,
+) -> dict[str, Any]:
+    """Build and write full Pre-db40305 vs Upright db40305 comparison tables and report."""
+    b_rows = {r["event_id"]: r for r in baseline_suite["per_event_rows"]}
+    u_rows = {r["event_id"]: r for r in upright_suite["per_event_rows"]}
+    u_by_eid = {e["event_id"]: e for e in upright_manifest["events"]}
+
+    b_v1 = baseline_suite["ablation_payload"]["view1_train23_vs_no_train3_engine_separate"]
+    u_v1 = upright_suite["ablation_payload"]["view1_train23_vs_no_train3_engine_separate"]
+    paired_train_nt = [
+        eid for eid in upright_ctx.event_order
+        if u_rows[eid]["cohort"] in ("train_events", "no_train_events")
+    ]
+    truths_v1 = [bool(u_rows[e]["gt_is_train_event"]) for e in paired_train_nt]
+
+    cfg_comparison: list[dict[str, Any]] = []
+    for cfg_name, pkey, _, _, desc in upright_suite["model_specs"]:
+        bm = b_v1[cfg_name]
+        um = u_v1[cfg_name]
+        mcnemar_pre_vs_up = _exact_mcnemar(
+            [bool(b_rows[e][pkey]) for e in paired_train_nt],
+            [bool(u_rows[e][pkey]) for e in paired_train_nt],
+            truths_v1,
+        )
+        recovered = [
+            e for e in paired_train_nt
+            if u_rows[e]["cohort"] == "train_events" and not b_rows[e][pkey] and u_rows[e][pkey]
+        ]
+        regressed = [
+            e for e in paired_train_nt
+            if u_rows[e]["cohort"] == "train_events" and b_rows[e][pkey] and not u_rows[e][pkey]
+        ]
+        cfg_comparison.append(
+            {
+                "configuration": cfg_name,
+                "label": desc,
+                "baseline_tp": bm["tp"],
+                "baseline_fn": bm["fn"],
+                "baseline_fp_no_train": bm["fp"],
+                "baseline_recall": bm["recall"],
+                "baseline_f1": bm["f1"],
+                "baseline_engine_001": bm["engine_001_detected"],
+                "upright_tp": um["tp"],
+                "upright_fn": um["fn"],
+                "upright_fp_no_train": um["fp"],
+                "upright_recall": um["recall"],
+                "upright_f1": um["f1"],
+                "upright_engine_001": um["engine_001_detected"],
+                "delta_tp": um["tp"] - bm["tp"],
+                "delta_fp_no_train": um["fp"] - bm["fp"],
+                "mcnemar_p_upright_vs_baseline": mcnemar_pre_vs_up["exact_p_value"],
+                "recovered_train_events": recovered,
+                "regressed_train_events": regressed,
+            }
+        )
+
+    fsm_comparison: list[dict[str, Any]] = []
+    for fk, bs in baseline_suite["fsm_summaries"].items():
+        us = upright_suite["fsm_summaries"][fk]
+        fsm_comparison.append(
+            {
+                "fsm_configuration": fk,
+                "baseline_triggers": bs["train_triggers"],
+                "upright_triggers": us["train_triggers"],
+                "baseline_full_closures": bs["train_full_closures"],
+                "upright_full_closures": us["train_full_closures"],
+                "baseline_pre_T2_warning": bs["train_pre_T2_warning"],
+                "upright_pre_T2_warning": us["train_pre_T2_warning"],
+                "baseline_pre_T2_close_cmd": bs["train_pre_T2_close_cmd"],
+                "upright_pre_T2_close_cmd": us["train_pre_T2_close_cmd"],
+                "baseline_pre_T2_full_closure": bs["train_pre_T2_full_closure"],
+                "upright_pre_T2_full_closure": us["train_pre_T2_full_closure"],
+                "baseline_no_train_fp": bs["no_train_false_closures"],
+                "upright_no_train_fp": us["no_train_false_closures"],
+                "baseline_engine_001": bs["engine_001_triggered"],
+                "upright_engine_001": us["engine_001_triggered"],
+                "baseline_reopen_cycles": bs["complete_close_reopen_cycles"],
+                "upright_reopen_cycles": us["complete_close_reopen_cycles"],
+            }
+        )
+
+    prior_8_missed = [
+        eid for eid in base_ctx.event_order
+        if b_rows[eid]["cohort"] == "train_events" and not b_rows[eid]["pred_F6_full_multimodal_dual_sr_or_audio_075_k2"]
+    ]
+    eight_event_recovery = [
+        {
+            "event_id": eid,
+            "front_rotation_deg": u_rows[eid]["front_rotation_deg"],
+            "back_rotation_deg": u_rows[eid]["back_rotation_deg"],
+            "baseline_front_det_frames": b_rows[eid]["front_det_frames"],
+            "upright_front_det_frames": u_rows[eid]["front_det_frames"],
+            "upright_front_max_consec": u_rows[eid]["front_max_consec"],
+            "baseline_back_det_frames": b_rows[eid]["back_det_frames"],
+            "upright_back_det_frames": u_rows[eid]["back_det_frames"],
+            "upright_back_max_consec_sr": u_rows[eid]["back_max_consec_side_rear"],
+            "recovered_V2_front_L1": bool(u_rows[eid]["pred_V2_front_L1_confirm2"]),
+            "recovered_F6_multimodal": bool(u_rows[eid]["pred_F6_full_multimodal_dual_sr_or_audio_075_k2"]),
+            "recovered_F7_2of3": bool(u_rows[eid]["pred_F7_exploratory_2of3_multimodal"]),
+            "upright_diagnosis": u_rows[eid]["diagnosis"],
+        }
+        for eid in prior_8_missed
+    ]
+
+    event_deltas = [
+        {
+            "event_id": eid,
+            "cohort": u_rows[eid]["cohort"],
+            "rot_front_back": f"{u_rows[eid]['front_rotation_deg']}/{u_rows[eid]['back_rotation_deg']}",
+            "front_orient_verified": u_by_eid[eid]["front_orientation"]["orientation_verified"],
+            "back_orient_verified": u_by_eid[eid]["back_orientation"]["orientation_verified"],
+            "base_front_df": b_rows[eid]["front_det_frames"],
+            "up_front_df": u_rows[eid]["front_det_frames"],
+            "base_front_mc": b_rows[eid]["front_max_consec"],
+            "up_front_mc": u_rows[eid]["front_max_consec"],
+            "up_front_cls": f"{u_rows[eid]['front_cls_front']}/{u_rows[eid]['front_cls_side']}/{u_rows[eid]['front_cls_rear']}",
+            "base_back_df": b_rows[eid]["back_det_frames"],
+            "up_back_df": u_rows[eid]["back_det_frames"],
+            "base_back_sr_c": b_rows[eid]["back_max_consec_side_rear"],
+            "up_back_sr_c": u_rows[eid]["back_max_consec_side_rear"],
+            "up_back_cls": f"{u_rows[eid]['back_cls_front']}/{u_rows[eid]['back_cls_side']}/{u_rows[eid]['back_cls_rear']}",
+            "base_V2": b_rows[eid]["pred_V2_front_L1_confirm2"],
+            "up_V2": u_rows[eid]["pred_V2_front_L1_confirm2"],
+            "base_F6": b_rows[eid]["pred_F6_full_multimodal_dual_sr_or_audio_075_k2"],
+            "up_F6": u_rows[eid]["pred_F6_full_multimodal_dual_sr_or_audio_075_k2"],
+            "up_F7": u_rows[eid]["pred_F7_exploratory_2of3_multimodal"],
+            "up_f6_timing_class": u_rows[eid]["f6_fsm_closure_timing_class"],
+        }
+        for eid in upright_ctx.event_order
+    ]
+
+    audio_invariance = _compute_audio_invariance_summary(base_ctx, upright_ctx)
+    payload = {
+        "schema_version": "baseline-vs-upright-comparison/1.0",
+        "qualification": EXPLORATORY_LABEL,
+        "orientation_policy": SOURCE_DISPLAY_ROTATION_POLICY,
+        "streams_verified_count": sum(
+            1 for e in upright_manifest["events"]
+            for cam in ("front_orientation", "back_orientation")
+            if e[cam]["orientation_verified"]
+        ),
+        "total_streams": 2 * len(upright_manifest["events"]),
+        "audio_invariance": audio_invariance,
+        "config_comparison": cfg_comparison,
+        "fsm_comparison": fsm_comparison,
+        "prior_8_f6_missed_recovery": eight_event_recovery,
+        "event_deltas_27": event_deltas,
+    }
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "baseline_vs_upright_comparison.json").write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    with open(output_dir / "modality_and_fusion_ablation_upright_vs_baseline.csv", "w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[k for k in cfg_comparison[0] if not isinstance(cfg_comparison[0][k], list)] + ["recovered_train_events", "regressed_train_events"],
+        )
+        writer.writeheader()
+        for row in cfg_comparison:
+            flat = dict(row)
+            flat["recovered_train_events"] = ";".join(flat["recovered_train_events"])
+            flat["regressed_train_events"] = ";".join(flat["regressed_train_events"])
+            writer.writerow(flat)
+
+    # Render concise Upright vs Baseline Markdown Report
+    md: list[str] = [
+        "# Mission 10 Upright (`db40305`) 27-Event Multimodal Evaluation & Baseline Comparison",
+        "",
+        f"**Qualification:** `{EXPLORATORY_LABEL}`",
+        f"**Orientation Policy Applied:** `{SOURCE_DISPLAY_ROTATION_POLICY}` (`{payload['streams_verified_count']}/{payload['total_streams']}` streams verified)",
+        f"**Audio Log-Mel Fresh Extraction Max Score Delta vs Baseline Cache:** `{audio_invariance['max_abs_score_diff_across_all_windows']}` across `{audio_invariance['n_events']}` events",
+        "",
+        "## 1. Pre-`db40305` Baseline vs Upright (`db40305`) Ablation Comparison (`23` Train vs `3` No-Train; `engine_001` Separate)",
+        "",
+        "| Configuration | Base TP/23 | Upright TP/23 | Delta TP | Base NT FP/3 | Upright NT FP/3 | Base F1 | Upright F1 | Eng001 Base->Up | McNemar p (Base vs Up) | Recovered Trains |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---|---|---|",
+    ]
+    for c in cfg_comparison:
+        rec_str = ", ".join(x.replace("train_events/", "") for x in c["recovered_train_events"]) or "—"
+        md.append(
+            f"| {c['label']} | {c['baseline_tp']} | {c['upright_tp']} | {c['delta_tp']:+d} | "
+            f"{c['baseline_fp_no_train']} | {c['upright_fp_no_train']} | {c['baseline_f1']*100:.1f}% | {c['upright_f1']*100:.1f}% | "
+            f"{'Y' if c['baseline_engine_001'] else 'N'}->{'Y' if c['upright_engine_001'] else 'N'} | "
+            f"{c['mcnemar_p_upright_vs_baseline']:.4f} | {rec_str} |"
+        )
+    md.extend([
+        "",
+        "## 2. Recovery of the 8 Previously Failed (`pre-db40305` F6-Missed) Train Events",
+        "",
+        "| Event ID | Rot F/B | Front DF Base->Up (mc) | Back DF Base->Up (sr_c) | Upright V2 | Upright F6 | Upright F7 | Diagnosis |",
+        "|---|---|---:|---:|---|---|---|---|",
+    ])
+    for r in eight_event_recovery:
+        md.append(
+            f"| `{r['event_id']}` | {r['front_rotation_deg']}/{r['back_rotation_deg']} | "
+            f"{r['baseline_front_det_frames']}->{r['upright_front_det_frames']} ({r['upright_front_max_consec']}) | "
+            f"{r['baseline_back_det_frames']}->{r['upright_back_det_frames']} ({r['upright_back_max_consec_sr']}) | "
+            f"{'YES' if r['recovered_V2_front_L1'] else 'no'} | {'YES' if r['recovered_F6_multimodal'] else 'no'} | "
+            f"{'YES' if r['recovered_F7_2of3'] else 'no'} | {r['upright_diagnosis']} |"
+        )
+    md.extend([
+        "",
+        "## 3. Causal FSM Gate Timing Comparison (Baseline vs Upright)",
+        "",
+        "| FSM Architecture | Trig B->U | Full Closed B->U | Warn<=T2 B->U | Cmd<=T2 B->U | Full<=T2 B->U | NT FP B->U | Eng001 B->U | Reopen B->U |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ])
+    for f in fsm_comparison:
+        md.append(
+            f"| `{f['fsm_configuration']}` | {f['baseline_triggers']}->{f['upright_triggers']} | "
+            f"{f['baseline_full_closures']}->{f['upright_full_closures']} | "
+            f"{f['baseline_pre_T2_warning']}->{f['upright_pre_T2_warning']} | "
+            f"{f['baseline_pre_T2_close_cmd']}->{f['upright_pre_T2_close_cmd']} | "
+            f"{f['baseline_pre_T2_full_closure']}->{f['upright_pre_T2_full_closure']} | "
+            f"{f['baseline_no_train_fp']}->{f['upright_no_train_fp']} | "
+            f"{'Y' if f['baseline_engine_001'] else 'N'}->{'Y' if f['upright_engine_001'] else 'N'} | "
+            f"{f['baseline_reopen_cycles']}->{f['upright_reopen_cycles']} |"
+        )
+    (output_dir / "COMPLETE_27_EVENT_UPRIGHT_MULTIMODAL_REPORT.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    return payload
+
+
+def run_evaluation(
+    run_upright: bool = False,
+    *,
+    evaluate_existing_upright: bool = False,
+) -> dict[str, Any]:
+    """Execute complete 27-event evaluation, causal FSM simulation, and optional upright comparison."""
+    ctx = load_verified_context(REPO_ROOT)
+    generate_owner_media_auth_template()
+    auth_status = check_media_authorization_status()
+    support = _load_supporting_lookup()
+
+    upright_manifest: dict[str, Any] | None = None
+    if run_upright:
+        upright_manifest = run_upright_raw_inference(ctx)
+    elif evaluate_existing_upright:
+        upright_manifest = _load_existing_upright_manifest()
+
+    baseline_suite = _evaluate_context_suite(
+        ctx,
+        support,
+        output_dir=OUTPUT_DIR,
+        vision_provenance=VISION_CACHE_PROVENANCE,
+        audio_provenance=AUDIO_CACHE_PROVENANCE,
+        auth_status=auth_status,
+        raw_media_accessed=False,
+        upright_manifest=upright_manifest,
+        orientation_corrected=False,
+    )
+
+    print("=== MISSION 9 BASELINE 27-EVENT EVALUATION & CAUSAL FSM VALIDATION ===")
     print(f"Auth status: {auth_status}")
     for k in ["FSM_V2_Front_L1", "FSM_F2_V3_Default_B4", "FSM_F3_WeakFront_Plus_Audio", "FSM_F4_Front_Or_Audio075k2", "FSM_F6_Full_MM_Sync11", "FSM_F6_Full_MM_Bounded27", "FSM_F7_Exploratory_2of3_Bounded27"]:
-        fs = fsm_summaries[k]
+        fs = baseline_suite["fsm_summaries"][k]
         print(
             f"  {k:34s} | trig={fs['train_triggers']:2d}/{fs['n_train']} full={fs['train_full_closures']:2d}/{fs['n_train']} "
             f"preT2_warn={fs['train_pre_T2_warning']} preT2_cmd={fs['train_pre_T2_close_cmd']} preT2_full={fs['train_pre_T2_full_closure']} "
             f"fp_nt={fs['no_train_false_closures']}/3 eng={fs['engine_001_triggered']}"
         )
-    return ablation_payload
+
+    if upright_manifest is not None:
+        upright_ctx = _build_upright_context(ctx, upright_manifest)
+        upright_suite = _evaluate_context_suite(
+            upright_ctx,
+            support,
+            output_dir=UPRIGHT_EVAL_DIR,
+            vision_provenance=(
+                "Mission 10 Upright db40305 YOLOv8n Actual Inference "
+                f"(orientation_policy={SOURCE_DISPLAY_ROTATION_POLICY}, 54/54 streams decoded via PyAV source_pts + apply_display_rotation)"
+            ),
+            audio_provenance="Mission 10 Fresh CompactTrainHornCNN Natural Log-Mel Inference (ffmpeg 16kHz mono WAV, 1.0s / 0.5s hop)",
+            auth_status=auth_status,
+            raw_media_accessed=bool(run_upright),
+            upright_manifest=upright_manifest,
+            orientation_corrected=True,
+        )
+        comparison = _compare_baseline_and_upright(
+            baseline_suite, upright_suite, ctx, upright_ctx, upright_manifest, output_dir=UPRIGHT_EVAL_DIR
+        )
+        print("=== MISSION 10 UPRIGHT (db40305) 27-EVENT EVALUATION & COMPARISON ===")
+        print(
+            f"Streams verified: {comparison['streams_verified_count']}/{comparison['total_streams']} | "
+            f"Audio max diff: {comparison['audio_invariance']['max_abs_score_diff_across_all_windows']}"
+        )
+        for k in ["FSM_V2_Front_L1", "FSM_F4_Front_Or_Audio075k2", "FSM_F6_Full_MM_Sync11", "FSM_F6_Full_MM_Bounded27", "FSM_F7_Exploratory_2of3_Bounded27"]:
+            fs = upright_suite["fsm_summaries"][k]
+            print(
+                f"  UPRIGHT {k:28s} | trig={fs['train_triggers']:2d}/{fs['n_train']} full={fs['train_full_closures']:2d}/{fs['n_train']} "
+                f"preT2_warn={fs['train_pre_T2_warning']} preT2_cmd={fs['train_pre_T2_close_cmd']} preT2_full={fs['train_pre_T2_full_closure']} "
+                f"fp_nt={fs['no_train_false_closures']}/3 eng={fs['engine_001_triggered']}"
+            )
+        return {
+            **baseline_suite["ablation_payload"],
+            "upright_ablation": upright_suite["ablation_payload"],
+            "upright_vs_baseline": comparison,
+        }
+
+    return baseline_suite["ablation_payload"]
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Mission 9 27-Event Multimodal Evaluation")
+    parser = argparse.ArgumentParser(description="Mission 9/10 27-Event Multimodal Evaluation")
     parser.add_argument(
         "--run-upright-raw-inference",
         action="store_true",
         help="Run display-matrix upright YOLOv8n + Audio V3 inference on raw media (requires AUTH-MEDIA-ACCESS.json).",
     )
+    parser.add_argument(
+        "--evaluate-existing-upright",
+        action="store_true",
+        help="Evaluate and compare already-generated results/upright_inference_v2/UPRIGHT_INFERENCE_MANIFEST.json without accessing raw media.",
+    )
     args = parser.parse_args()
-    run_evaluation(run_upright=bool(args.run_upright_raw_inference))
+    run_evaluation(
+        run_upright=bool(args.run_upright_raw_inference),
+        evaluate_existing_upright=bool(args.evaluate_existing_upright),
+    )
 
 
 if __name__ == "__main__":
