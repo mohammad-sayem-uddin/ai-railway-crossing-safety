@@ -1,0 +1,9 @@
+fsm_configuration,n_events,n_train,train_triggers,train_full_closures,train_warning_eof_never_closed,train_missed_closures,train_pre_T2_warning,train_pre_T2_close_cmd,train_pre_T2_half_closed,train_pre_T2_full_closure,no_train_false_closures,engine_001_triggered,complete_close_reopen_cycles
+FSM_V2_Front_L1,27,23,10,9,1,13,4,3,1,0,0,False,0
+FSM_F2_V3_Default_B4,27,23,10,9,1,13,4,3,1,0,0,False,0
+FSM_F3_WeakFront_Plus_Audio,27,23,11,10,1,12,5,3,1,0,0,False,0
+FSM_F4_Front_Or_Audio075k2,27,23,14,13,1,9,6,3,1,0,0,False,0
+FSM_F5_Dual_Vision_Sync11,11,11,5,5,0,6,1,1,1,0,0,False,0
+FSM_F6_Full_MM_Sync11,11,11,8,8,0,3,2,1,1,0,0,False,0
+FSM_F6_Full_MM_Bounded27,27,23,15,15,0,8,6,3,1,0,0,False,0
+FSM_F7_Exploratory_2of3_Bounded27,27,23,17,17,0,6,8,4,1,0,0,False,0

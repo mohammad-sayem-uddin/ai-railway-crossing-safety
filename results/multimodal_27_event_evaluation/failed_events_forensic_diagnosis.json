@@ -1,0 +1,1562 @@
+{
+  "cases": [
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 1,
+      "audio_max_score": 0.8109,
+      "audio_pos_037": 13,
+      "audio_pos_075": 1,
+      "audio_top5_windows": [
+        {
+          "end_sec": 27.0,
+          "score": 0.8109
+        },
+        {
+          "end_sec": 47.0,
+          "score": 0.6701
+        },
+        {
+          "end_sec": 37.0,
+          "score": 0.6058
+        },
+        {
+          "end_sec": 27.5,
+          "score": 0.5163
+        },
+        {
+          "end_sec": 47.5,
+          "score": 0.5119
+        }
+      ],
+      "audio_windows": 116,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 2,
+        "side": 0
+      },
+      "back_det_frames": 2,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.4981,
+              "label": "rear"
+            }
+          ],
+          "frame_index": 648,
+          "timestamp_s": 21.6017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.366,
+              "label": "rear"
+            }
+          ],
+          "frame_index": 666,
+          "timestamp_s": 22.2017
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": 0.6,
+      "back_rotation_deg": -90,
+      "category": "F6_MISSED_TRAIN",
+      "cohort": "train_events",
+      "event_id": "train_events/event_008",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 0,
+      "front_detections_raw": [],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.2,
+      "gt_T4_s": 61.2,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "RECOVERABLE_BY_2OF3_DROPOUT_TOLERANCE_AND_LIKELY_UPRIGHT_ROTATION: Both streams were decoded sideways (-90 deg); existing detections already pair within <=0.60 s."
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.582,
+      "audio_pos_037": 7,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 29.0,
+          "score": 0.582
+        },
+        {
+          "end_sec": 25.5,
+          "score": 0.548
+        },
+        {
+          "end_sec": 20.0,
+          "score": 0.5235
+        },
+        {
+          "end_sec": 20.5,
+          "score": 0.5122
+        },
+        {
+          "end_sec": 28.0,
+          "score": 0.4898
+        }
+      ],
+      "audio_windows": 84,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 0,
+      "back_detections_raw": [],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": -90,
+      "category": "F6_MISSED_TRAIN",
+      "cohort": "train_events",
+      "event_id": "train_events/event_009",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 0,
+      "front_detections_raw": [],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 1.5,
+      "gt_T2_s": 5.0,
+      "gt_T4_s": 36.4,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "ZERO_OPTICAL_AT_MINUS90_AND_ABSENT_HORN: Both cameras were -90 deg unrotated (0 optical frames) and no horn present; only upright video re-inference can recover without acoustic overfitting."
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.4473,
+      "audio_pos_037": 2,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 15.0,
+          "score": 0.4473
+        },
+        {
+          "end_sec": 7.5,
+          "score": 0.3855
+        },
+        {
+          "end_sec": 8.0,
+          "score": 0.3517
+        },
+        {
+          "end_sec": 15.5,
+          "score": 0.3509
+        },
+        {
+          "end_sec": 14.5,
+          "score": 0.3497
+        }
+      ],
+      "audio_windows": 47,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 0,
+      "back_detections_raw": [],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": -90,
+      "category": "F6_MISSED_TRAIN",
+      "cohort": "train_events",
+      "event_id": "train_events/event_010",
+      "front_cls_counts": {
+        "front": 1,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 1,
+      "front_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.7361,
+              "label": "front"
+            }
+          ],
+          "frame_index": 6,
+          "timestamp_s": 0.2
+        }
+      ],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.5,
+      "gt_T4_s": 22.4,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "SPARSE_UNROTATED_DETECTIONS_BELOW_RUN2: Both cameras were -90 deg unrotated, yielding only 1-4 scattered frames (gaps >=2.4 s) and quiet/absent horn; requires db40305 upright video re-inference."
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.4502,
+      "audio_pos_037": 3,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 34.0,
+          "score": 0.4502
+        },
+        {
+          "end_sec": 21.5,
+          "score": 0.3816
+        },
+        {
+          "end_sec": 36.0,
+          "score": 0.3797
+        },
+        {
+          "end_sec": 26.0,
+          "score": 0.2637
+        },
+        {
+          "end_sec": 32.5,
+          "score": 0.2601
+        }
+      ],
+      "audio_windows": 74,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 0,
+      "back_detections_raw": [],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": -90,
+      "category": "F6_MISSED_TRAIN",
+      "cohort": "train_events",
+      "event_id": "train_events/event_011",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 3,
+        "side": 0
+      },
+      "front_det_frames": 2,
+      "front_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.4707,
+              "label": "rear"
+            }
+          ],
+          "frame_index": 846,
+          "timestamp_s": 28.22
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5971,
+              "label": "rear"
+            },
+            {
+              "confidence": 0.4906,
+              "label": "rear"
+            }
+          ],
+          "frame_index": 1050,
+          "timestamp_s": 35.025
+        }
+      ],
+      "front_min_inter_det_gap_any_s": 6.805,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.6,
+      "gt_T4_s": 29.4,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "SPARSE_UNROTATED_DETECTIONS_BELOW_RUN2: Both cameras were -90 deg unrotated, yielding only 1-4 scattered frames (gaps >=2.4 s) and quiet/absent horn; requires db40305 upright video re-inference."
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.5166,
+      "audio_pos_037": 5,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 24.0,
+          "score": 0.5166
+        },
+        {
+          "end_sec": 11.0,
+          "score": 0.4931
+        },
+        {
+          "end_sec": 49.5,
+          "score": 0.4563
+        },
+        {
+          "end_sec": 23.0,
+          "score": 0.4398
+        },
+        {
+          "end_sec": 25.5,
+          "score": 0.3746
+        }
+      ],
+      "audio_windows": 109,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 2
+      },
+      "back_det_frames": 2,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.4115,
+              "label": "side"
+            }
+          ],
+          "frame_index": 570,
+          "timestamp_s": 19.0017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5939,
+              "label": "side"
+            }
+          ],
+          "frame_index": 582,
+          "timestamp_s": 19.4017
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": 0.4,
+      "back_rotation_deg": -90,
+      "category": "F6_MISSED_TRAIN",
+      "cohort": "train_events",
+      "event_id": "train_events/event_014",
+      "front_cls_counts": {
+        "front": 3,
+        "rear": 0,
+        "side": 1
+      },
+      "front_det_frames": 4,
+      "front_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.4263,
+              "label": "front"
+            }
+          ],
+          "frame_index": 54,
+          "timestamp_s": 1.8017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.535,
+              "label": "front"
+            }
+          ],
+          "frame_index": 66,
+          "timestamp_s": 2.2017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5062,
+              "label": "front"
+            }
+          ],
+          "frame_index": 102,
+          "timestamp_s": 3.4017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5242,
+              "label": "side"
+            }
+          ],
+          "frame_index": 366,
+          "timestamp_s": 12.2083
+        }
+      ],
+      "front_min_inter_det_gap_any_s": 0.4,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.4,
+      "gt_T4_s": 51.2,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "RECOVERABLE_BY_2OF3_DROPOUT_TOLERANCE_AND_LIKELY_UPRIGHT_ROTATION: Both streams were decoded sideways (-90 deg); existing detections already pair within <=0.60 s."
+    },
+    {
+      "adopted_horn_status": "present",
+      "audio_max_run_075": 1,
+      "audio_max_score": 0.8402,
+      "audio_pos_037": 5,
+      "audio_pos_075": 1,
+      "audio_top5_windows": [
+        {
+          "end_sec": 23.5,
+          "score": 0.8402
+        },
+        {
+          "end_sec": 24.0,
+          "score": 0.744
+        },
+        {
+          "end_sec": 24.5,
+          "score": 0.5637
+        },
+        {
+          "end_sec": 20.0,
+          "score": 0.4825
+        },
+        {
+          "end_sec": 20.5,
+          "score": 0.3791
+        }
+      ],
+      "audio_windows": 61,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 0,
+      "back_detections_raw": [],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": -90,
+      "category": "F6_MISSED_TRAIN",
+      "cohort": "train_events",
+      "event_id": "train_events/event_015",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 0,
+      "front_detections_raw": [],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 1.5,
+      "gt_T2_s": 5.0,
+      "gt_T4_s": 19.5,
+      "gt_horn_onset_s": 14.85,
+      "recoverability_verdict": "SINGLE_WINDOW_AUDIO_NEAR_MISS_AND_UNROTATED_OPTICAL: Strong peak horn window (0.8402 followed by 0.7440; missed 0.75 k=2 by 0.0060), 0 optical frames at -90 deg; requires upright re-inference rather than overfitting threshold."
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.55,
+      "audio_pos_037": 6,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 18.5,
+          "score": 0.55
+        },
+        {
+          "end_sec": 17.5,
+          "score": 0.5376
+        },
+        {
+          "end_sec": 19.0,
+          "score": 0.4631
+        },
+        {
+          "end_sec": 8.5,
+          "score": 0.4325
+        },
+        {
+          "end_sec": 16.0,
+          "score": 0.4047
+        }
+      ],
+      "audio_windows": 119,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 0,
+      "back_detections_raw": [],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": -90,
+      "category": "F6_MISSED_TRAIN",
+      "cohort": "train_events",
+      "event_id": "train_events/event_019",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 1,
+        "side": 0
+      },
+      "front_det_frames": 1,
+      "front_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.3638,
+              "label": "rear"
+            }
+          ],
+          "frame_index": 288,
+          "timestamp_s": 9.6067
+        }
+      ],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.8,
+      "gt_T4_s": 47.2,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "SPARSE_UNROTATED_DETECTIONS_BELOW_RUN2: Both cameras were -90 deg unrotated, yielding only 1-4 scattered frames (gaps >=2.4 s) and quiet/absent horn; requires db40305 upright video re-inference."
+    },
+    {
+      "adopted_horn_status": "present",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.378,
+      "audio_pos_037": 1,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 20.0,
+          "score": 0.378
+        },
+        {
+          "end_sec": 24.5,
+          "score": 0.2215
+        },
+        {
+          "end_sec": 22.0,
+          "score": 0.2155
+        },
+        {
+          "end_sec": 21.5,
+          "score": 0.1775
+        },
+        {
+          "end_sec": 21.0,
+          "score": 0.1441
+        }
+      ],
+      "audio_windows": 56,
+      "back_cls_counts": {
+        "front": 3,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 3,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.5013,
+              "label": "front"
+            }
+          ],
+          "frame_index": 84,
+          "timestamp_s": 2.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4105,
+              "label": "front"
+            }
+          ],
+          "frame_index": 156,
+          "timestamp_s": 5.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6048,
+              "label": "front"
+            }
+          ],
+          "frame_index": 228,
+          "timestamp_s": 7.6
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": -90,
+      "category": "F6_MISSED_TRAIN",
+      "cohort": "train_events",
+      "event_id": "train_events/event_020",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 0,
+      "front_detections_raw": [],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.1,
+      "gt_T4_s": 28.7,
+      "gt_horn_onset_s": 0.58,
+      "recoverability_verdict": "SPARSE_UNROTATED_DETECTIONS_BELOW_RUN2: Both cameras were -90 deg unrotated, yielding only 1-4 scattered frames (gaps >=2.4 s) and quiet/absent horn; requires db40305 upright video re-inference."
+    },
+    {
+      "adopted_horn_status": "present",
+      "audio_max_run_075": 2,
+      "audio_max_score": 0.9834,
+      "audio_pos_037": 3,
+      "audio_pos_075": 2,
+      "audio_top5_windows": [
+        {
+          "end_sec": 3.5,
+          "score": 0.9834
+        },
+        {
+          "end_sec": 3.0,
+          "score": 0.8898
+        },
+        {
+          "end_sec": 4.0,
+          "score": 0.6507
+        },
+        {
+          "end_sec": 14.5,
+          "score": 0.0942
+        },
+        {
+          "end_sec": 11.0,
+          "score": 0.0837
+        }
+      ],
+      "audio_windows": 63,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 43
+      },
+      "back_det_frames": 42,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.4087,
+              "label": "side"
+            }
+          ],
+          "frame_index": 72,
+          "timestamp_s": 2.4
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.7668,
+              "label": "side"
+            }
+          ],
+          "frame_index": 78,
+          "timestamp_s": 2.6
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6496,
+              "label": "side"
+            }
+          ],
+          "frame_index": 84,
+          "timestamp_s": 2.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5687,
+              "label": "side"
+            }
+          ],
+          "frame_index": 96,
+          "timestamp_s": 3.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6107,
+              "label": "side"
+            }
+          ],
+          "frame_index": 120,
+          "timestamp_s": 4.0
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5384,
+              "label": "side"
+            }
+          ],
+          "frame_index": 126,
+          "timestamp_s": 4.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6497,
+              "label": "side"
+            }
+          ],
+          "frame_index": 132,
+          "timestamp_s": 4.4
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8042,
+              "label": "side"
+            }
+          ],
+          "frame_index": 138,
+          "timestamp_s": 4.6
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.3746,
+              "label": "side"
+            }
+          ],
+          "frame_index": 144,
+          "timestamp_s": 4.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.801,
+              "label": "side"
+            }
+          ],
+          "frame_index": 168,
+          "timestamp_s": 5.6
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5378,
+              "label": "side"
+            }
+          ],
+          "frame_index": 174,
+          "timestamp_s": 5.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5908,
+              "label": "side"
+            }
+          ],
+          "frame_index": 180,
+          "timestamp_s": 6.0
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6972,
+              "label": "side"
+            }
+          ],
+          "frame_index": 186,
+          "timestamp_s": 6.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.7009,
+              "label": "side"
+            }
+          ],
+          "frame_index": 204,
+          "timestamp_s": 6.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4879,
+              "label": "side"
+            }
+          ],
+          "frame_index": 216,
+          "timestamp_s": 7.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5539,
+              "label": "side"
+            }
+          ],
+          "frame_index": 228,
+          "timestamp_s": 7.6
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5088,
+              "label": "side"
+            }
+          ],
+          "frame_index": 234,
+          "timestamp_s": 7.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5972,
+              "label": "side"
+            }
+          ],
+          "frame_index": 282,
+          "timestamp_s": 9.4017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6204,
+              "label": "side"
+            }
+          ],
+          "frame_index": 288,
+          "timestamp_s": 9.6017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5873,
+              "label": "side"
+            }
+          ],
+          "frame_index": 300,
+          "timestamp_s": 10.0017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6669,
+              "label": "side"
+            }
+          ],
+          "frame_index": 306,
+          "timestamp_s": 10.2017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4609,
+              "label": "side"
+            }
+          ],
+          "frame_index": 312,
+          "timestamp_s": 10.4017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6404,
+              "label": "side"
+            }
+          ],
+          "frame_index": 486,
+          "timestamp_s": 16.2017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.36,
+              "label": "side"
+            }
+          ],
+          "frame_index": 492,
+          "timestamp_s": 16.4017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5184,
+              "label": "side"
+            }
+          ],
+          "frame_index": 498,
+          "timestamp_s": 16.6017
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": 0.2,
+      "back_rotation_deg": -90,
+      "category": "F6_RECOVERED_OVER_V2",
+      "cohort": "train_events",
+      "event_id": "train_events/event_002",
+      "front_cls_counts": {
+        "front": 1,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 1,
+      "front_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.7152,
+              "label": "front"
+            }
+          ],
+          "frame_index": 108,
+          "timestamp_s": 3.6033
+        }
+      ],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.6,
+      "gt_T4_s": 28.8,
+      "gt_horn_onset_s": 2.5,
+      "recoverability_verdict": "ALREADY_RECOVERED_BY_F6"
+    },
+    {
+      "adopted_horn_status": "present",
+      "audio_max_run_075": 7,
+      "audio_max_score": 0.9715,
+      "audio_pos_037": 105,
+      "audio_pos_075": 31,
+      "audio_top5_windows": [
+        {
+          "end_sec": 6.5,
+          "score": 0.9715
+        },
+        {
+          "end_sec": 5.0,
+          "score": 0.9694
+        },
+        {
+          "end_sec": 71.0,
+          "score": 0.9619
+        },
+        {
+          "end_sec": 71.5,
+          "score": 0.9475
+        },
+        {
+          "end_sec": 6.0,
+          "score": 0.94
+        }
+      ],
+      "audio_windows": 158,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 0,
+      "back_detections_raw": [],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": -90,
+      "category": "F6_RECOVERED_OVER_V2",
+      "cohort": "train_events",
+      "event_id": "train_events/event_005",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 0,
+      "front_detections_raw": [],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": null,
+      "gt_T4_s": null,
+      "gt_horn_onset_s": 1.28,
+      "recoverability_verdict": "ALREADY_RECOVERED_BY_F6"
+    },
+    {
+      "adopted_horn_status": "present",
+      "audio_max_run_075": 3,
+      "audio_max_score": 0.9779,
+      "audio_pos_037": 34,
+      "audio_pos_075": 8,
+      "audio_top5_windows": [
+        {
+          "end_sec": 37.0,
+          "score": 0.9779
+        },
+        {
+          "end_sec": 36.5,
+          "score": 0.9512
+        },
+        {
+          "end_sec": 24.5,
+          "score": 0.8945
+        },
+        {
+          "end_sec": 25.0,
+          "score": 0.8674
+        },
+        {
+          "end_sec": 27.0,
+          "score": 0.8499
+        }
+      ],
+      "audio_windows": 149,
+      "back_cls_counts": {
+        "front": 2,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 2,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.3987,
+              "label": "front"
+            }
+          ],
+          "frame_index": 864,
+          "timestamp_s": 28.8033
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.3785,
+              "label": "front"
+            }
+          ],
+          "frame_index": 948,
+          "timestamp_s": 31.6033
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": -90,
+      "category": "F6_RECOVERED_OVER_V2",
+      "cohort": "train_events",
+      "event_id": "train_events/event_012",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 0,
+      "front_detections_raw": [],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.9,
+      "gt_T4_s": 69.2,
+      "gt_horn_onset_s": 6.78,
+      "recoverability_verdict": "ALREADY_RECOVERED_BY_F6"
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.7093,
+      "audio_pos_037": 5,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 22.0,
+          "score": 0.7093
+        },
+        {
+          "end_sec": 32.5,
+          "score": 0.432
+        },
+        {
+          "end_sec": 25.0,
+          "score": 0.4256
+        },
+        {
+          "end_sec": 14.5,
+          "score": 0.3975
+        },
+        {
+          "end_sec": 22.5,
+          "score": 0.3744
+        }
+      ],
+      "audio_windows": 92,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 8
+      },
+      "back_det_frames": 8,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.4937,
+              "label": "side"
+            }
+          ],
+          "frame_index": 378,
+          "timestamp_s": 12.6017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.3769,
+              "label": "side"
+            }
+          ],
+          "frame_index": 390,
+          "timestamp_s": 13.0017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6217,
+              "label": "side"
+            }
+          ],
+          "frame_index": 396,
+          "timestamp_s": 13.2017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5256,
+              "label": "side"
+            }
+          ],
+          "frame_index": 402,
+          "timestamp_s": 13.4017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8893,
+              "label": "side"
+            }
+          ],
+          "frame_index": 408,
+          "timestamp_s": 13.6017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.5865,
+              "label": "side"
+            }
+          ],
+          "frame_index": 414,
+          "timestamp_s": 13.8017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4419,
+              "label": "side"
+            }
+          ],
+          "frame_index": 1206,
+          "timestamp_s": 40.2033
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4661,
+              "label": "side"
+            }
+          ],
+          "frame_index": 1242,
+          "timestamp_s": 41.4033
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": 0.2,
+      "back_rotation_deg": -90,
+      "category": "F6_RECOVERED_OVER_V2",
+      "cohort": "train_events",
+      "event_id": "train_events/event_016",
+      "front_cls_counts": {
+        "front": 5,
+        "rear": 0,
+        "side": 1
+      },
+      "front_det_frames": 5,
+      "front_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.5327,
+              "label": "front"
+            },
+            {
+              "confidence": 0.4528,
+              "label": "front"
+            }
+          ],
+          "frame_index": 60,
+          "timestamp_s": 2.0017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.3957,
+              "label": "front"
+            }
+          ],
+          "frame_index": 72,
+          "timestamp_s": 2.4017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.423,
+              "label": "front"
+            }
+          ],
+          "frame_index": 372,
+          "timestamp_s": 12.4083
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4164,
+              "label": "front"
+            }
+          ],
+          "frame_index": 390,
+          "timestamp_s": 13.01
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4873,
+              "label": "side"
+            }
+          ],
+          "frame_index": 414,
+          "timestamp_s": 13.81
+        }
+      ],
+      "front_min_inter_det_gap_any_s": 0.4,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 1.5,
+      "gt_T2_s": 5.0,
+      "gt_T4_s": 44.1,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "ALREADY_RECOVERED_BY_F6"
+    },
+    {
+      "adopted_horn_status": "present",
+      "audio_max_run_075": 3,
+      "audio_max_score": 0.9855,
+      "audio_pos_037": 21,
+      "audio_pos_075": 8,
+      "audio_top5_windows": [
+        {
+          "end_sec": 66.0,
+          "score": 0.9855
+        },
+        {
+          "end_sec": 65.5,
+          "score": 0.9831
+        },
+        {
+          "end_sec": 43.5,
+          "score": 0.9559
+        },
+        {
+          "end_sec": 43.0,
+          "score": 0.9477
+        },
+        {
+          "end_sec": 22.5,
+          "score": 0.9465
+        }
+      ],
+      "audio_windows": 162,
+      "back_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 4
+      },
+      "back_det_frames": 4,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.3786,
+              "label": "side"
+            }
+          ],
+          "frame_index": 714,
+          "timestamp_s": 23.8017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4886,
+              "label": "side"
+            }
+          ],
+          "frame_index": 1092,
+          "timestamp_s": 36.4033
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4524,
+              "label": "side"
+            }
+          ],
+          "frame_index": 2388,
+          "timestamp_s": 79.6067
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.3581,
+              "label": "side"
+            }
+          ],
+          "frame_index": 2430,
+          "timestamp_s": 81.0067
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": 1.4,
+      "back_rotation_deg": -90,
+      "category": "F6_RECOVERED_OVER_V2",
+      "cohort": "train_events",
+      "event_id": "train_events/event_017",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 0,
+      "front_detections_raw": [],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 3.6,
+      "gt_T4_s": 82.5,
+      "gt_horn_onset_s": 0.83,
+      "recoverability_verdict": "ALREADY_RECOVERED_BY_F6"
+    },
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.1428,
+      "audio_pos_037": 0,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 1.0,
+          "score": 0.1428
+        },
+        {
+          "end_sec": 2.0,
+          "score": 0.1242
+        },
+        {
+          "end_sec": 1.5,
+          "score": 0.1138
+        },
+        {
+          "end_sec": 3.5,
+          "score": 0.1066
+        },
+        {
+          "end_sec": 4.0,
+          "score": 0.0715
+        }
+      ],
+      "audio_windows": 14,
+      "back_cls_counts": {
+        "front": 14,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 13,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.4071,
+              "label": "front"
+            }
+          ],
+          "frame_index": 114,
+          "timestamp_s": 3.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8364,
+              "label": "front"
+            }
+          ],
+          "frame_index": 222,
+          "timestamp_s": 7.4
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8474,
+              "label": "front"
+            }
+          ],
+          "frame_index": 228,
+          "timestamp_s": 7.6
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.859,
+              "label": "front"
+            }
+          ],
+          "frame_index": 234,
+          "timestamp_s": 7.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8641,
+              "label": "front"
+            }
+          ],
+          "frame_index": 240,
+          "timestamp_s": 8.0
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8566,
+              "label": "front"
+            }
+          ],
+          "frame_index": 246,
+          "timestamp_s": 8.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8756,
+              "label": "front"
+            }
+          ],
+          "frame_index": 252,
+          "timestamp_s": 8.4
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8995,
+              "label": "front"
+            }
+          ],
+          "frame_index": 258,
+          "timestamp_s": 8.6
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8974,
+              "label": "front"
+            }
+          ],
+          "frame_index": 264,
+          "timestamp_s": 8.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8984,
+              "label": "front"
+            },
+            {
+              "confidence": 0.3786,
+              "label": "front"
+            }
+          ],
+          "frame_index": 270,
+          "timestamp_s": 9.0
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8924,
+              "label": "front"
+            }
+          ],
+          "frame_index": 276,
+          "timestamp_s": 9.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8783,
+              "label": "front"
+            }
+          ],
+          "frame_index": 282,
+          "timestamp_s": 9.4
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8796,
+              "label": "front"
+            }
+          ],
+          "frame_index": 288,
+          "timestamp_s": 9.6
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": 0,
+      "category": "ENGINE_BOUNDARY",
+      "cohort": "engine_events",
+      "event_id": "engine_events/event_001",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 0
+      },
+      "front_det_frames": 0,
+      "front_detections_raw": [],
+      "front_min_inter_det_gap_any_s": null,
+      "front_rotation_deg": -90,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 0.0,
+      "gt_T4_s": null,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "SOLITARY_LOCOMOTIVE_BOUNDARY_CASE: Front camera (-90 deg) missed 100%; Back camera (0 deg upright) detected 14 'front'-class objects (13 frames, max=0.8995) but 0 side/rear objects because zero trailing cars exist; absent horn (max=0.1428)."
+    }
+  ],
+  "missed_f6_count": 8,
+  "missed_f6_event_ids": [
+    "train_events/event_008",
+    "train_events/event_009",
+    "train_events/event_010",
+    "train_events/event_011",
+    "train_events/event_014",
+    "train_events/event_015",
+    "train_events/event_019",
+    "train_events/event_020"
+  ],
+  "orientation_finding": {
+    "all_8_missed_back_minus90_deg": true,
+    "all_8_missed_front_minus90_deg": true,
+    "zero_deg_upright_train_streams_detected": "4/4 (100%: front event_023=196f, back event_021=230f, event_022=228f, event_023=208f)"
+  },
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "schema_version": "failed-events-forensic-diagnosis/1.0"
+}

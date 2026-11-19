@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md",
-      "size_bytes": 34119,
-      "sha256": "455dc87ca95232cd1fe080bf5ed8805b2c68127a70c4df1cd4430d81207d4401"
+      "size_bytes": 34809,
+      "sha256": "6db78358e125d1cac17a4580cb80047812f707aa5f12d827ae02f64fa9cde034"
     },
     {
       "path": "docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md",
@@ -28,8 +28,8 @@
     },
     {
       "path": "docs/generated/professor_research_handover/PUBLICATION_TABLES_AND_CAPTIONS.md",
-      "size_bytes": 20873,
-      "sha256": "bc36cd3a30acc39b4552583fa10b68c5b63bb3d3d3b2caafde012708424931e5"
+      "size_bytes": 22881,
+      "sha256": "1ac2485b1cb2d13074ec39b1988e94b5ccda6d7163b522027db7eb0b2fda5a87"
     },
     {
       "path": "docs/generated/professor_research_handover/VERIFIED_REFERENCES.bib",
@@ -265,33 +265,53 @@
   "multimodal_27_event_evaluation_artifacts": [
     {
       "path": "scripts/run_complete_27_event_multimodal_evaluation.py",
-      "size_bytes": 59029,
-      "sha256": "9b17688a7a1039d302d276ebceffe3af5e1083f77316dd9047995044ad91db2a"
+      "size_bytes": 78672,
+      "sha256": "212d4c19b04792d76d82940c4bc2995b555479d3d980266b30f6fba38d50076e"
+    },
+    {
+      "path": "docs/generated/human_approval_templates/AUTH_MEDIA_ACCESS_MISSION9_READY.json",
+      "size_bytes": 1656,
+      "sha256": "b9088641c86b4b403e7a39592b3c8bbb0c297e27fa5b41f68202dd095db8aad1"
     },
     {
       "path": "results/multimodal_27_event_evaluation/COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md",
-      "size_bytes": 27032,
-      "sha256": "2df37ac320295766cf48c2e588e252f3ae2faaf456fc0b06ab7912a7646f4d89"
+      "size_bytes": 18868,
+      "sha256": "b99d0e57a5ec95bf34f74cca356e4d0f8b92bc1ea7fec07daac3cb34ca7190b4"
     },
     {
       "path": "results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv",
-      "size_bytes": 18342,
-      "sha256": "f202d7d641af92a27bd9ded13e53073c32a1c28d0ac6e71d1d9fb2d0274a311b"
+      "size_bytes": 23860,
+      "sha256": "5a3e149732abba92ab62dcf728ed54578be68bcc20614638344434013e3c830e"
     },
     {
       "path": "results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.json",
-      "size_bytes": 103518,
-      "sha256": "68c5af73e906f73b25a0cec5880e6a1a33881cd23ae26cf1c97dbcfa92fafb8c"
+      "size_bytes": 127312,
+      "sha256": "2b376e94ddbac5816bfb6dbe26860fe1dcb436b7cdfcac88849458a363014757"
     },
     {
       "path": "results/multimodal_27_event_evaluation/modality_and_fusion_ablation_metrics.csv",
-      "size_bytes": 4206,
-      "sha256": "4c4c32b0a2cbe7375e895d98a971b0a8a9cef1aa9662648d584e0a66b736a1f4"
+      "size_bytes": 5251,
+      "sha256": "77296b68d9b57705b06b45b60ea7698248fff83cef4802256e2eb229448d6be1"
     },
     {
       "path": "results/multimodal_27_event_evaluation/modality_and_fusion_ablation_metrics.json",
-      "size_bytes": 78341,
-      "sha256": "4f73cc2660f52e61ff20c682b1379ce671b810d8e11983aa58758cd846475b10"
+      "size_bytes": 87895,
+      "sha256": "b39f45e90a474fc342dffd4cd44a452a988810018cfeac0f5d1bba8d4abe2454"
+    },
+    {
+      "path": "results/multimodal_27_event_evaluation/causal_fsm_gate_timing_summary.csv",
+      "size_bytes": 769,
+      "sha256": "fa7a62d67e5783201843cb6d61cc3852f5756922c256e1b7c9635bed54d9a70c"
+    },
+    {
+      "path": "results/multimodal_27_event_evaluation/causal_fsm_gate_timing_summary.json",
+      "size_bytes": 189067,
+      "sha256": "2c4e582f8dba4845cf77207a6bc5e2219320c08ec5f2e2823ed6c24aa1c1c08e"
+    },
+    {
+      "path": "results/multimodal_27_event_evaluation/failed_events_forensic_diagnosis.json",
+      "size_bytes": 37137,
+      "sha256": "2bed1a8bf17e992515d705cf6430d3287e1c22c46c33237eda4bd0ec947bc979"
     }
   ]
 }

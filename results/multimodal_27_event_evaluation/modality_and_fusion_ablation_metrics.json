@@ -1,4 +1,5 @@
 {
+  "all_fusion_rules_type": "RULE_BASED_LATE_FUSION",
   "audio_loeo_23_folds": {
     "accuracy": 0.608696,
     "f1": 0.64,
@@ -10,8 +11,9 @@
     "tn": 6,
     "tp": 8
   },
+  "learned_fusion_model_present": false,
   "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
-  "schema_version": "multimodal-ablation-metrics/1.1",
+  "schema_version": "multimodal-ablation-metrics/2.0",
   "view1_train23_vs_no_train3_engine_separate": {
     "A1_Audio_Frozen_037_k1": {
       "accuracy": 0.8462,
@@ -48,6 +50,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 13,
         "b10_baseline_right_candidate_wrong": 4,
@@ -72,6 +75,7 @@
         0.0,
         0.5615
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 0,
       "tp": 22
     },
@@ -111,6 +115,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 9,
         "b10_baseline_right_candidate_wrong": 5,
@@ -135,6 +140,7 @@
         0.0,
         0.5615
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 0,
       "tp": 17
     },
@@ -173,6 +179,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 5,
@@ -197,6 +204,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 9
     },
@@ -233,6 +241,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 13,
         "b10_baseline_right_candidate_wrong": 3,
@@ -257,6 +266,7 @@
         0.0,
         0.5615
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 0,
       "tp": 23
     },
@@ -289,6 +299,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 0,
         "b10_baseline_right_candidate_wrong": 0,
@@ -313,6 +324,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 3,
       "tp": 10
     },
@@ -346,6 +358,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 1,
         "b10_baseline_right_candidate_wrong": 0,
@@ -370,6 +383,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 11
     },
@@ -403,6 +417,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 0,
@@ -427,6 +442,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 14
     },
@@ -460,6 +476,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 0,
@@ -484,6 +501,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 12
     },
@@ -517,6 +535,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 5,
         "b10_baseline_right_candidate_wrong": 0,
@@ -541,8 +560,68 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 15
+    },
+    "F7_Exploratory_2of3_Multimodal": {
+      "accuracy": 0.7692,
+      "accuracy_ci95": [
+        0.5795,
+        0.8897
+      ],
+      "engine_001_detected": false,
+      "events_gained_over_front_L1": [
+        "train_events/event_002",
+        "train_events/event_005",
+        "train_events/event_008",
+        "train_events/event_012",
+        "train_events/event_014",
+        "train_events/event_016",
+        "train_events/event_017"
+      ],
+      "f1": 0.85,
+      "false_negative_events": [
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_015",
+        "train_events/event_019",
+        "train_events/event_020"
+      ],
+      "false_positive_events": [],
+      "fn": 6,
+      "fp": 0,
+      "fp_engine": 0,
+      "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
+      "mcnemar_vs_baseline": {
+        "b01_baseline_wrong_candidate_right": 7,
+        "b10_baseline_right_candidate_wrong": 0,
+        "discordant_pairs": 7,
+        "exact_p_value": 0.015625
+      },
+      "n_events": 26,
+      "neg_gt": 3,
+      "pos_gt": 23,
+      "precision": 1.0,
+      "precision_ci95": [
+        0.8157,
+        1.0
+      ],
+      "recall": 0.7391,
+      "recall_ci95": [
+        0.5353,
+        0.8745
+      ],
+      "specificity": 1.0,
+      "specificity_ci95": [
+        0.4385,
+        1.0
+      ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
+      "tn": 3,
+      "tp": 17
     },
     "V1_Front_Any_Stateless": {
       "accuracy": 0.6538,
@@ -577,6 +656,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 6,
         "b10_baseline_right_candidate_wrong": 2,
@@ -601,6 +681,7 @@
         0.0615,
         0.7923
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 16
     },
@@ -633,6 +714,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 0,
         "b10_baseline_right_candidate_wrong": 0,
@@ -657,6 +739,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 3,
       "tp": 10
     },
@@ -693,6 +776,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 7,
         "b10_baseline_right_candidate_wrong": 2,
@@ -717,6 +801,7 @@
         0.0615,
         0.7923
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 17
     },
@@ -756,6 +841,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 5,
@@ -780,6 +866,7 @@
         0.0615,
         0.7923
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 9
     },
@@ -816,6 +903,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 3,
@@ -840,6 +928,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 9
     },
@@ -873,6 +962,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 0,
@@ -897,6 +987,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 3,
       "tp": 14
     },
@@ -933,6 +1024,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 2,
@@ -957,6 +1049,7 @@
         0.0615,
         0.7923
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 12
     },
@@ -990,6 +1083,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 0,
@@ -1014,6 +1108,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 12
     }
@@ -1053,6 +1148,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 13,
         "b10_baseline_right_candidate_wrong": 4,
@@ -1077,6 +1173,7 @@
         0.0456,
         0.6994
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 22
     },
@@ -1115,6 +1212,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 9,
         "b10_baseline_right_candidate_wrong": 5,
@@ -1139,6 +1237,7 @@
         0.0456,
         0.6994
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 1,
       "tp": 17
     },
@@ -1176,6 +1275,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 5,
@@ -1200,6 +1300,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 4,
       "tp": 9
     },
@@ -1235,6 +1336,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 13,
         "b10_baseline_right_candidate_wrong": 3,
@@ -1259,6 +1361,7 @@
         0.0456,
         0.6994
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 23
     },
@@ -1290,6 +1393,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 0,
         "b10_baseline_right_candidate_wrong": 0,
@@ -1314,6 +1418,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 4,
       "tp": 10
     },
@@ -1346,6 +1451,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 1,
         "b10_baseline_right_candidate_wrong": 0,
@@ -1370,6 +1476,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 4,
       "tp": 11
     },
@@ -1402,6 +1509,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 0,
@@ -1426,6 +1534,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 4,
       "tp": 14
     },
@@ -1458,6 +1567,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 0,
@@ -1482,6 +1592,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 4,
       "tp": 12
     },
@@ -1514,6 +1625,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 5,
         "b10_baseline_right_candidate_wrong": 0,
@@ -1538,8 +1650,67 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 4,
       "tp": 15
+    },
+    "F7_Exploratory_2of3_Multimodal": {
+      "accuracy": 0.7778,
+      "accuracy_ci95": [
+        0.5924,
+        0.8939
+      ],
+      "events_gained_over_front_L1": [
+        "train_events/event_002",
+        "train_events/event_005",
+        "train_events/event_008",
+        "train_events/event_012",
+        "train_events/event_014",
+        "train_events/event_016",
+        "train_events/event_017"
+      ],
+      "f1": 0.85,
+      "false_negative_events": [
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_015",
+        "train_events/event_019",
+        "train_events/event_020"
+      ],
+      "false_positive_events": [],
+      "fn": 6,
+      "fp": 0,
+      "fp_engine": 0,
+      "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
+      "mcnemar_vs_baseline": {
+        "b01_baseline_wrong_candidate_right": 7,
+        "b10_baseline_right_candidate_wrong": 0,
+        "discordant_pairs": 7,
+        "exact_p_value": 0.015625
+      },
+      "n_events": 27,
+      "neg_gt": 4,
+      "pos_gt": 23,
+      "precision": 1.0,
+      "precision_ci95": [
+        0.8157,
+        1.0
+      ],
+      "recall": 0.7391,
+      "recall_ci95": [
+        0.5353,
+        0.8745
+      ],
+      "specificity": 1.0,
+      "specificity_ci95": [
+        0.5101,
+        1.0
+      ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
+      "tn": 4,
+      "tp": 17
     },
     "V1_Front_Any_Stateless": {
       "accuracy": 0.6667,
@@ -1573,6 +1744,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 6,
         "b10_baseline_right_candidate_wrong": 2,
@@ -1597,6 +1769,7 @@
         0.15,
         0.85
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 2,
       "tp": 16
     },
@@ -1628,6 +1801,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 0,
         "b10_baseline_right_candidate_wrong": 0,
@@ -1652,6 +1826,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 4,
       "tp": 10
     },
@@ -1688,6 +1863,7 @@
       "fp": 3,
       "fp_engine": 1,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 7,
         "b10_baseline_right_candidate_wrong": 3,
@@ -1712,6 +1888,7 @@
         0.0456,
         0.6994
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 17
     },
@@ -1751,6 +1928,7 @@
       "fp": 3,
       "fp_engine": 1,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 6,
@@ -1775,6 +1953,7 @@
         0.0456,
         0.6994
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 9
     },
@@ -1810,6 +1989,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 3,
@@ -1834,6 +2014,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 4,
       "tp": 9
     },
@@ -1866,6 +2047,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 0,
@@ -1890,6 +2072,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 4,
       "tp": 14
     },
@@ -1926,6 +2109,7 @@
       "fp": 3,
       "fp_engine": 1,
       "fp_no_train": 2,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 3,
@@ -1950,6 +2134,7 @@
         0.0456,
         0.6994
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 12
     },
@@ -1982,6 +2167,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 0,
@@ -2006,6 +2192,7 @@
         0.5101,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 4,
       "tp": 12
     }
@@ -2046,6 +2233,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 13,
         "b10_baseline_right_candidate_wrong": 4,
@@ -2070,6 +2258,7 @@
         0.0,
         0.5615
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 0,
       "tp": 22
     },
@@ -2109,6 +2298,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 9,
         "b10_baseline_right_candidate_wrong": 5,
@@ -2133,6 +2323,7 @@
         0.0,
         0.5615
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 0,
       "tp": 17
     },
@@ -2171,6 +2362,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 5,
@@ -2195,6 +2387,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 9
     },
@@ -2232,6 +2425,7 @@
       "fp": 3,
       "fp_engine": 0,
       "fp_no_train": 3,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 13,
         "b10_baseline_right_candidate_wrong": 3,
@@ -2256,6 +2450,7 @@
         0.0,
         0.5615
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 0,
       "tp": 23
     },
@@ -2288,6 +2483,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 0,
         "b10_baseline_right_candidate_wrong": 0,
@@ -2312,6 +2508,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 3,
       "tp": 10
     },
@@ -2345,6 +2542,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 1,
         "b10_baseline_right_candidate_wrong": 0,
@@ -2369,6 +2567,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 11
     },
@@ -2402,6 +2601,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 0,
@@ -2426,6 +2626,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 14
     },
@@ -2459,6 +2660,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 0,
@@ -2483,6 +2685,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 12
     },
@@ -2516,6 +2719,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 5,
         "b10_baseline_right_candidate_wrong": 0,
@@ -2540,8 +2744,68 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 15
+    },
+    "F7_Exploratory_2of3_Multimodal": {
+      "accuracy": 0.7407,
+      "accuracy_ci95": [
+        0.5532,
+        0.8683
+      ],
+      "events_gained_over_front_L1": [
+        "train_events/event_002",
+        "train_events/event_005",
+        "train_events/event_008",
+        "train_events/event_012",
+        "train_events/event_014",
+        "train_events/event_016",
+        "train_events/event_017"
+      ],
+      "f1": 0.8293,
+      "false_negative_events": [
+        "train_events/event_009",
+        "train_events/event_010",
+        "train_events/event_011",
+        "train_events/event_015",
+        "train_events/event_019",
+        "train_events/event_020",
+        "engine_events/event_001"
+      ],
+      "false_positive_events": [],
+      "fn": 7,
+      "fp": 0,
+      "fp_engine": 0,
+      "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
+      "mcnemar_vs_baseline": {
+        "b01_baseline_wrong_candidate_right": 7,
+        "b10_baseline_right_candidate_wrong": 0,
+        "discordant_pairs": 7,
+        "exact_p_value": 0.015625
+      },
+      "n_events": 27,
+      "neg_gt": 3,
+      "pos_gt": 24,
+      "precision": 1.0,
+      "precision_ci95": [
+        0.8157,
+        1.0
+      ],
+      "recall": 0.7083,
+      "recall_ci95": [
+        0.5083,
+        0.8509
+      ],
+      "specificity": 1.0,
+      "specificity_ci95": [
+        0.4385,
+        1.0
+      ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
+      "tn": 3,
+      "tp": 17
     },
     "V1_Front_Any_Stateless": {
       "accuracy": 0.6296,
@@ -2576,6 +2840,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 6,
         "b10_baseline_right_candidate_wrong": 2,
@@ -2600,6 +2865,7 @@
         0.0615,
         0.7923
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 16
     },
@@ -2632,6 +2898,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 0,
         "b10_baseline_right_candidate_wrong": 0,
@@ -2656,6 +2923,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 3,
       "tp": 10
     },
@@ -2692,6 +2960,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 8,
         "b10_baseline_right_candidate_wrong": 2,
@@ -2716,6 +2985,7 @@
         0.0615,
         0.7923
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 18
     },
@@ -2755,6 +3025,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 3,
         "b10_baseline_right_candidate_wrong": 5,
@@ -2779,6 +3050,7 @@
         0.0615,
         0.7923
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 10
     },
@@ -2815,6 +3087,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 3,
@@ -2839,6 +3112,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 9
     },
@@ -2872,6 +3146,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Single-Modality",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 4,
         "b10_baseline_right_candidate_wrong": 0,
@@ -2896,6 +3171,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 3,
       "tp": 14
     },
@@ -2932,6 +3208,7 @@
       "fp": 2,
       "fp_engine": 0,
       "fp_no_train": 2,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 3,
         "b10_baseline_right_candidate_wrong": 2,
@@ -2956,6 +3233,7 @@
         0.0615,
         0.7923
       ],
+      "threshold_provenance": "FROZEN_PROTOCOL",
       "tn": 1,
       "tp": 13
     },
@@ -2989,6 +3267,7 @@
       "fp": 0,
       "fp_engine": 0,
       "fp_no_train": 0,
+      "fusion_type": "Rule-Based Late Fusion",
       "mcnemar_vs_baseline": {
         "b01_baseline_wrong_candidate_right": 2,
         "b10_baseline_right_candidate_wrong": 0,
@@ -3013,6 +3292,7 @@
         0.4385,
         1.0
       ],
+      "threshold_provenance": "EXPLORATORY_COHORT_SELECTED",
       "tn": 3,
       "tp": 12
     }

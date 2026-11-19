@@ -1,0 +1,54 @@
+{
+  "schema_version": "phase5-media-access-authorization/2",
+  "authorization_id": "AUTH-MEDIA-ACCESS-2026-11-19-MISSION9",
+  "authorization_class": "AUTH-MEDIA-ACCESS",
+  "status": "APPROVED",
+  "authorized_by": "raihankabirrahu@gmail.com",
+  "authorized_at_utc": "2026-11-19T00:00:00+00:00",
+  "expires_at_utc": "2027-11-19T00:00:00+00:00",
+  "revoked": false,
+  "authorization_statement": "Research owner authorization for Mission 9 orientation-corrected (db40305) YOLOv8n and natural log-Mel CompactTrainHornCNN inference across all 27 Layer-B v2 events.",
+  "attestation": {
+    "type": "RECORDED_RESEARCHER_STATEMENT",
+    "signature": null
+  },
+  "recorded_by": {
+    "kind": "researcher",
+    "identity": "raihankabirrahu@gmail.com"
+  },
+  "scope": {
+    "operations": [
+      "AUDIO_EXTRACTION",
+      "FEATURE_EXTRACTION",
+      "FRAME_EXTRACTION",
+      "HASH_RAW_MEDIA",
+      "INFERENCE",
+      "MEDIA_PROBE",
+      "READ_RAW_MEDIA",
+      "REAL_REPLAY"
+    ],
+    "datasets": [
+      "layer_b"
+    ],
+    "events": [
+      "ALL_EVENTS_IN_DATASETS"
+    ],
+    "media_types": [
+      "video",
+      "audio"
+    ],
+    "purpose": "Reprocess all 27 recorded Layer-B events with QuickTime display-matrix orientation correction using frozen YOLOv8n and CompactTrainHornCNN checkpoints."
+  },
+  "restrictions": {
+    "path_prefixes": [
+      "data/raw/layer_b/"
+    ]
+  },
+  "bindings": {
+    "protocol_document": {
+      "path": "configs/frozen_experiment_v1.yaml",
+      "sha256": "b8ef5da052f002e75a2da0985add02a72d0d5684936263c14257aa12b0c9ac9a"
+    }
+  },
+  "record_sha256": "f287374368cb4df210eb0fb179f6798a8c5084d291188f49d28c332117a67324"
+}

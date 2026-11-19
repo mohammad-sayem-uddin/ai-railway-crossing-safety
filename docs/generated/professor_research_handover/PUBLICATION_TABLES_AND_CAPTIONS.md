@@ -112,6 +112,22 @@
 | **Fusion `F4`: Front L1 OR Audio `(0.75, k=2)`** | `14` | `9` | `0` | `no` | `100.0%` | `60.9%` | `100.0%` | `75.7%` | `14/24 (73.7%)` | `0.1250` |
 | **Fusion `F5`: Dual-Vision Side/Rear + Adv. Audio (`B7`)** | `12` | `11` | `0` | `no` | `100.0%` | `52.2%` | `100.0%` | `68.6%` | `12/24 (66.7%)` | `0.5000` |
 | **Fusion `F6`: Full Multimodal (`V2 OR V5 OR A3`)** | **`15`** | **`8`** | **`0`** | `no` | **`100.0%`** | **`65.2%`** | **`100.0%`** | **`79.0%`** | `15/24 (76.9%)` | `0.0625` |
+| **Fusion `F7`: Exploratory `2-of-3` (`Gap <= 0.45s`)** | **`17`** | **`6`** | **`0`** | `no` | **`100.0%`** | **`73.9%`** | **`100.0%`** | **`85.0%`** | `17/24 (82.9%)` | `0.0156` |
+
+---
+
+## Table IX — End-to-End Causal Gate-Control State Machine Integration (`V3 FSM + PhysicalGateModel`)
+*(Evidence: [`causal_fsm_gate_timing_summary.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/multimodal_27_event_evaluation/causal_fsm_gate_timing_summary.json), [`failed_events_forensic_diagnosis.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/multimodal_27_event_evaluation/failed_events_forensic_diagnosis.json); `dt = 0.20 s`; requires `>=5.2 s` from first detection to `0 deg` closure while `21/22` `T2`-annotated clips begin `2.8-5.0 s` before `T2`)*
+
+| Causal FSM Configuration | Train Triggered | Full Closure (`0°`) | Warn@EOF Only | `NT FP/3` | `Eng001` | `Warn <= T2` | `Cmd <= T2` | `Half <= T2` | `Full <= T2` | Reopen Cycles |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **FSM `V2`/`F2`: Front L1 / Default B4** (`FROZEN`, Front Clock) | `10/23` | `9/23` | `1` (`001`) | `0/3` | `no` | `4` | `3` | `1` | `0` | `0` |
+| **FSM `F3`: Weak-Front & Audio `0.75 k=2`** (`EXPL.`, Front Clock) | `11/23` | `10/23` | `1` (`001`) | `0/3` | `no` | `5` | `3` | `1` | `0` | `0` |
+| **FSM `F4`: Front L1 OR Audio `0.75 k=2`** (`EXPL.`, Front Clock) | `14/23` | `13/23` | `1` (`001`) | `0/3` | `no` | `6` | `3` | `1` | `0` | `0` |
+| **FSM `F5`: Dual-Vision Side/Rear (`sync11` n=11 Calibrated)** | `5/11` | `5/11` | `0` | `N/A` | `N/A` | `1` | `1` | `1` | `0` | `0` |
+| **FSM `F6`: Full Multimodal (`sync11` n=11 Calibrated)** | `8/11` | `8/11` | `0` | `N/A` | `N/A` | `2` | `1` | `1` | `0` | `0` |
+| **FSM `F6`: Full Multimodal (`27` Bounded: `sync11` + Local `16`)** | `15/23` | `15/23` | `0` | `0/3` | `no` | `6` | `3` | `1` | `0` | `0` |
+| **FSM `F7`: Exploratory `2-of-3` (`27` Bounded)** | `17/23` | `17/23` | `0` | `0/3` | `no` | `8` | `4` | `1` | `0` | `0` |
 
 ---
 

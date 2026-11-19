@@ -70,6 +70,13 @@ class MultimodalDecisionEngineV3FourLayer:
         optical_visibility_floor: float = 0.45,
         degraded_audio_wakeup_threshold: float = 0.75,
         degraded_audio_wakeup_frames: int = 3,
+        enable_back_side_rear_approach_backup: bool = False,
+        back_backup_confirm_frames: int = 2,
+        enable_audio_hysteresis_wakeup: bool = False,
+        enable_corroborated_weak_front_audio_wakeup: bool = False,
+        audio_hysteresis_threshold: float = 0.75,
+        audio_hysteresis_confirm_windows: int = 2,
+        max_approach_inter_frame_gap_s: float | None = None,
         occupancy_verifier: OccupancyVerifier | None = None,
         source_tracker: SourceTracker | None = None,
     ) -> None:
@@ -99,6 +106,15 @@ class MultimodalDecisionEngineV3FourLayer:
         self.optical_visibility_floor = float(optical_visibility_floor)
         self.degraded_audio_wakeup_threshold = float(degraded_audio_wakeup_threshold)
         self.degraded_audio_wakeup_frames = max(1, int(degraded_audio_wakeup_frames))
+        self.enable_back_side_rear_approach_backup = bool(enable_back_side_rear_approach_backup)
+        self.back_backup_confirm_frames = max(1, int(back_backup_confirm_frames))
+        self.enable_audio_hysteresis_wakeup = bool(enable_audio_hysteresis_wakeup)
+        self.enable_corroborated_weak_front_audio_wakeup = bool(enable_corroborated_weak_front_audio_wakeup)
+        self.audio_hysteresis_threshold = float(audio_hysteresis_threshold)
+        self.audio_hysteresis_confirm_windows = max(1, int(audio_hysteresis_confirm_windows))
+        self.max_approach_inter_frame_gap_s = (
+            float(max_approach_inter_frame_gap_s) if max_approach_inter_frame_gap_s is not None else None
+        )
 
         self.occupancy_verifier = (
             occupancy_verifier
@@ -140,13 +156,24 @@ class MultimodalDecisionEngineV3FourLayer:
         self.back_first_seen_time_s: float | None = None
         self.back_negative_since_s: float | None = None
         self.consecutive_degraded_audio_count = 0
+        self.consecutive_back_side_rear_count = 0
+        self.consecutive_hysteresis_audio_windows = 0
+        self._last_hysteresis_audio_window_key: tuple[str, Any] | None = None
+        self._last_back_sr_sample_key: tuple[str, float] | None = None
+        self.last_front_detection_time_s: float | None = None
+        self.last_back_sr_detection_time_s: float | None = None
+        self.seen_front_detection_count = 0
+        self.engine_trigger_rule: str | None = None
         self.stream_terminated_sources: set[str] = set()
         self.side_tracker.reset()
         self.occupancy_verifier.reset()
         self.source_tracker = SourceTracker(default_timeout_s=self.sensor_timeout_s)
         self.timing_trace: dict[str, float | None] = {
             "first_front_detection_s": None,
+            "first_useful_detection_s": None,
             "confirmed_front_detection_s": None,
+            "confirmed_back_side_rear_s": None,
+            "confirmed_audio_hysteresis_s": None,
             "engine_trigger_s": None,
             "gate_close_command_s": None,
             "rear_confirmed_s": None,
@@ -287,6 +314,10 @@ class MultimodalDecisionEngineV3FourLayer:
             self.back_first_seen_time_s = None
             self.back_negative_since_s = None
             self.consecutive_rear_count = 0
+            if prev_s != CrossingState.IDLE:
+                self.consecutive_back_side_rear_count = 0
+                self.consecutive_hysteresis_audio_windows = 0
+                self.seen_front_detection_count = 0
 
         return DecisionRecord(
             timestamp_s=timestamp_s,
@@ -305,6 +336,104 @@ class MultimodalDecisionEngineV3FourLayer:
             observation_ages=self.source_tracker.get_age_map(timestamp_s),
             gate_command=next_g.value,
         )
+
+    def _update_first_useful_detection(self, t: float) -> None:
+        if self.timing_trace["first_useful_detection_s"] is None:
+            self.timing_trace["first_useful_detection_s"] = t
+
+    def _update_multimodal_fusion_counters(
+        self,
+        *,
+        t: float,
+        l1: Layer1FrontEvidence,
+        l4: Layer4DepartureAssessment,
+        effective_vision: tuple[EvidenceRecord, ...],
+        effective_audio: tuple[EvidenceRecord, ...],
+        roles: dict[str, list[str]],
+    ) -> None:
+        """Update deduplicated causal counters for front gap tolerance, back side/rear backup, and audio hysteresis."""
+        if l1.detected:
+            self.seen_front_detection_count += 1
+            self.last_front_detection_time_s = t
+            self._update_first_useful_detection(t)
+
+        # Deduplicated fresh back side/rear counter (only on new camera_2 frames)
+        if self.enable_back_side_rear_approach_backup:
+            back_recs = [r for r in effective_vision if r.available and r.source_id in roles["back"]]
+            if back_recs:
+                latest_b = max(back_recs, key=lambda r: float(r.timestamp_s))
+                b_key = (latest_b.source_id, round(float(latest_b.timestamp_s), 6))
+                if b_key != self._last_back_sr_sample_key:
+                    self._last_back_sr_sample_key = b_key
+                    if l4.back_present:
+                        self.consecutive_back_side_rear_count += 1
+                        self.last_back_sr_detection_time_s = t
+                        self._update_first_useful_detection(t)
+                    else:
+                        within_gap = (
+                            self.max_approach_inter_frame_gap_s is not None
+                            and self.last_back_sr_detection_time_s is not None
+                            and (t - self.last_back_sr_detection_time_s) <= self.max_approach_inter_frame_gap_s
+                        )
+                        if not within_gap:
+                            self.consecutive_back_side_rear_count = 0
+
+        # Deduplicated fresh audio hysteresis counter (keyed by distinct window_index / timestamp)
+        if self.enable_audio_hysteresis_wakeup or self.enable_corroborated_weak_front_audio_wakeup:
+            aud_recs = [r for r in effective_audio if r.available]
+            if aud_recs:
+                latest_a = max(aud_recs, key=lambda r: float(r.timestamp_s))
+                win_tok = latest_a.metadata.get("window_index", round(float(latest_a.timestamp_s), 6))
+                a_key = (latest_a.source_id, win_tok)
+                if a_key != self._last_hysteresis_audio_window_key:
+                    self._last_hysteresis_audio_window_key = a_key
+                    max_a_conf = max((float(d.confidence) for d in latest_a.detections), default=0.0)
+                    if max_a_conf >= self.audio_hysteresis_threshold:
+                        self.consecutive_hysteresis_audio_windows += 1
+                        self._update_first_useful_detection(t)
+                    else:
+                        self.consecutive_hysteresis_audio_windows = 0
+
+    def _check_fusion_backup_trigger(self, t: float) -> tuple[str, str] | None:
+        """Return (rule_id, explanation) if an opt-in causal fusion trigger fires while waiting."""
+        if (
+            self.enable_back_side_rear_approach_backup
+            and self.consecutive_back_side_rear_count >= self.back_backup_confirm_frames
+        ):
+            self.timing_trace["confirmed_back_side_rear_s"] = t
+            self.timing_trace["engine_trigger_s"] = t
+            self.engine_trigger_rule = RuleIdV3.RULE_L4_BACK_SIDE_REAR_BACKUP_TRIGGER.value
+            return (
+                RuleIdV3.RULE_L4_BACK_SIDE_REAR_BACKUP_TRIGGER.value,
+                f"Back-camera side/rear confirmed ({self.consecutive_back_side_rear_count} frames); triggering backup warning",
+            )
+        if (
+            self.enable_corroborated_weak_front_audio_wakeup
+            and self.seen_front_detection_count >= 1
+            and self.consecutive_hysteresis_audio_windows >= self.audio_hysteresis_confirm_windows
+        ):
+            self.timing_trace["confirmed_audio_hysteresis_s"] = t
+            self.timing_trace["engine_trigger_s"] = t
+            self.engine_trigger_rule = RuleIdV3.RULE_L3_CORROBORATED_WEAK_VISION_AUDIO_WAKEUP.value
+            return (
+                RuleIdV3.RULE_L3_CORROBORATED_WEAK_VISION_AUDIO_WAKEUP.value,
+                "Weak front vision corroborated by sustained audio hysteresis; triggering warning",
+            )
+        if (
+            self.enable_audio_hysteresis_wakeup
+            and self.consecutive_hysteresis_audio_windows >= self.audio_hysteresis_confirm_windows
+        ):
+            self.timing_trace["confirmed_audio_hysteresis_s"] = t
+            self.timing_trace["engine_trigger_s"] = t
+            self.engine_trigger_rule = RuleIdV3.RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP.value
+            return (
+                RuleIdV3.RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP.value,
+                (
+                    f"Opt-in high-specificity audio hysteresis ({self.consecutive_hysteresis_audio_windows} "
+                    f"windows >= {self.audio_hysteresis_threshold:.2f}); triggering warning"
+                ),
+            )
+        return None
 
     def _has_clear_reopen_preconditions(
         self,
@@ -488,6 +617,15 @@ class MultimodalDecisionEngineV3FourLayer:
         if l1.detected and self.timing_trace["first_front_detection_s"] is None:
             self.timing_trace["first_front_detection_s"] = t
 
+        self._update_multimodal_fusion_counters(
+            t=t,
+            l1=l1,
+            l4=l4,
+            effective_vision=effective_vision,
+            effective_audio=effective_audio,
+            roles=roles,
+        )
+
         # Compute vision availability flags safely
         has_vision = bool(vision_sources)
         any_vision_healthy = any(self._source_is_healthy(s, t, frame, status_map) for s in vision_sources)
@@ -636,11 +774,18 @@ class MultimodalDecisionEngineV3FourLayer:
                     rule_id = RuleIdV3.RULE_L1_FRONT_APPROACH_TRIGGER.value
                     self.timing_trace["confirmed_front_detection_s"] = t
                     self.timing_trace["engine_trigger_s"] = t
+                    self.engine_trigger_rule = rule_id
                     explanation = f"Layer 1 front approach confirmed ({self.confirm_frames} frames); triggering warning"
                 else:
-                    next_state = CrossingState.TRAIN_APPROACHING
-                    rule_id = RuleIdV3.RULE_L1_FRONT_APPROACH_TRIGGER.value
-                    explanation = "Layer 1 front approach detected; awaiting confirmation"
+                    backup = self._check_fusion_backup_trigger(t)
+                    if backup is not None:
+                        next_state = CrossingState.WARNING
+                        next_gate = GateState.OPEN if self.warning_dwell_s > 0.0 else GateState.CLOSING
+                        rule_id, explanation = backup
+                    else:
+                        next_state = CrossingState.TRAIN_APPROACHING
+                        rule_id = RuleIdV3.RULE_L1_FRONT_APPROACH_TRIGGER.value
+                        explanation = "Layer 1 front approach detected; awaiting confirmation"
             elif (
                 self.enable_optical_degradation_audio_wakeup
                 and front_optically_degraded
@@ -651,13 +796,21 @@ class MultimodalDecisionEngineV3FourLayer:
                 next_gate = GateState.OPEN if self.warning_dwell_s > 0.0 else GateState.CLOSING
                 rule_id = RuleIdV3.RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP.value
                 self.timing_trace["engine_trigger_s"] = t
+                self.engine_trigger_rule = rule_id
                 explanation = (
                     f"Opt-in degraded-optics audio wakeup ({self.consecutive_degraded_audio_count} "
                     f"consecutive horn windows >= {self.degraded_audio_wakeup_threshold:.2f}); triggering warning"
                 )
-            elif l3.horn_detected:
-                rule_id = RuleIdV3.RULE_L3_AUDIO_SUPPORT_ONLY.value
-                explanation = "Layer 3 audio horn in IDLE held as supporting evidence only (no gate closure)"
+            else:
+                backup = self._check_fusion_backup_trigger(t)
+                if backup is not None:
+                    self.train_present_or_approaching = True
+                    next_state = CrossingState.WARNING
+                    next_gate = GateState.OPEN if self.warning_dwell_s > 0.0 else GateState.CLOSING
+                    rule_id, explanation = backup
+                elif l3.horn_detected:
+                    rule_id = RuleIdV3.RULE_L3_AUDIO_SUPPORT_ONLY.value
+                    explanation = "Layer 3 audio horn in IDLE held as supporting evidence only (no gate closure)"
 
         elif prev_state == CrossingState.TRAIN_APPROACHING:
             self.train_present_or_approaching = True
@@ -669,19 +822,33 @@ class MultimodalDecisionEngineV3FourLayer:
                     rule_id = RuleIdV3.RULE_L1_FRONT_APPROACH_TRIGGER.value
                     self.timing_trace["confirmed_front_detection_s"] = t
                     self.timing_trace["engine_trigger_s"] = t
+                    self.engine_trigger_rule = rule_id
                     explanation = "Layer 1 front approach confirmed; initiating warning"
             else:
-                front_negative_fresh = any(
-                    r.available and not r.detections for r in effective_vision if r.source_id in roles["front"]
-                )
-                if front_negative_fresh or not roles["front"]:
-                    self.consecutive_approach_count = 0
-                    self.train_present_or_approaching = False
-                    next_state = CrossingState.IDLE
-                    rule_id = RuleIdV3.RULE_L1_APPROACH_UNCONFIRMED_RESET.value
-                    explanation = "Single/unconfirmed approach negated by fresh negative frame; returning IDLE"
+                backup = self._check_fusion_backup_trigger(t)
+                if backup is not None:
+                    next_state = CrossingState.WARNING
+                    next_gate = GateState.OPEN if self.warning_dwell_s > 0.0 else GateState.CLOSING
+                    rule_id, explanation = backup
                 else:
-                    explanation = "Front source dropped/unrefreshed before confirmation; not duplicating stale detection"
+                    within_gap = (
+                        self.max_approach_inter_frame_gap_s is not None
+                        and self.last_front_detection_time_s is not None
+                        and (t - self.last_front_detection_time_s) <= self.max_approach_inter_frame_gap_s
+                    )
+                    front_negative_fresh = any(
+                        r.available and not r.detections for r in effective_vision if r.source_id in roles["front"]
+                    )
+                    if not within_gap and (front_negative_fresh or not roles["front"]):
+                        self.consecutive_approach_count = 0
+                        self.train_present_or_approaching = False
+                        next_state = CrossingState.IDLE
+                        rule_id = RuleIdV3.RULE_L1_APPROACH_UNCONFIRMED_RESET.value
+                        explanation = "Single/unconfirmed approach negated by fresh negative frame; returning IDLE"
+                    elif within_gap:
+                        explanation = "Single dropped front frame bridged within gap tolerance; awaiting confirmation"
+                    else:
+                        explanation = "Front source dropped/unrefreshed before confirmation; not duplicating stale detection"
 
         elif prev_state == CrossingState.WARNING:
             self.train_present_or_approaching = True

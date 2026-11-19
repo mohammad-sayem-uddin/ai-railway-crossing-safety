@@ -1932,11 +1932,17 @@ test_files:
       passed: 8
   tests/unit/test_complete_27_event_multimodal_evaluation.py:
     access_dirs:
+    - configs
+    - data/ground_truth
+    - docs/generated/human_approval_templates
     - results/multimodal_27_event_evaluation
     access_paths:
-    - results/multimodal_27_event_evaluation/COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md
+    - results/multimodal_27_event_evaluation/causal_fsm_gate_timing_summary.json
     - results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv
     - results/multimodal_27_event_evaluation/modality_and_fusion_ablation_metrics.json
+    - configs/frozen_experiment_v1.yaml
+    - data/ground_truth/authorized_reviewers.json
+    - docs/generated/human_approval_templates/AUTH_MEDIA_ACCESS_MISSION9_READY.json
     blocked_attempts:
       PROCESSED_DATA: 3
     category: PROCESSED_DATA_ACCESS
@@ -1945,14 +1951,15 @@ test_files:
     reason: Attempted 3 blocked read(s) of PROCESSED_DATA locations; e.g. results/multimodal_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv
       via open in test_complete_27_event_multimodal_outputs_exist_and_cover_all_cohorts (call).
     safe_for_synthetic_runner: false
-    sha256: c78d0beb6fa4265f0a5dcd740c242911ecb69eaa4813b057693212d0c9108a13
+    sha256: 0734291a1a966497f5b5142fe785eb248ee13d04df6ef913c0a8b374ba61ad04
     spawns_child_process: false
-    static_hints: []
+    static_hints:
+    - data/raw/layer_b/v2/train_events/event_001/camera_front.mov
     tests:
       failed: 3
       errors: 0
       skipped: 0
-      passed: 0
+      passed: 2
   tests/unit/test_config.py:
     access_dirs: []
     access_paths: []
