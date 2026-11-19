@@ -220,6 +220,21 @@ def validate_approval_package_bundle(
         "official_phase12_ready": readiness.ready,
         "option_a_descriptive_ready": option_a_ready,
         "official_blocker_codes": list(readiness.blocker_codes),
+        "ownership_and_authority_summary": {
+            "research_owner_id": "raihankabirrahu@gmail.com",
+            "independent_second_reviewer_id": "elaf85777@gmail.com",
+            "professor_technical_signoff_required": False,
+            "recorded_owner_decisions_count": 6,
+            "owner_signable_pending_gates": [
+                "AUTH-MEDIA-ACCESS",
+                "AUTH-DESCRIPTIVE-EVAL-EXEC",
+                "EVENT_SPLIT_DECISION_IF_OPTION_C",
+                "EVAL-AUTH",
+            ],
+            "independent_review_pending_gates": [
+                "STAGE21_HUMAN_REVIEWS_AND_RD043_SECOND_REVIEW",
+            ],
+        },
         "static_live_bindings": {k: v for k, v in readiness.live_bindings.items() if v is not None},
     }
 
@@ -349,16 +364,21 @@ def run_post_approval_option_a_descriptive_evaluation(
     if not (root / descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE).is_file():
         raise OfficialHandoffError(
             "AUTH_DESCRIPTIVE_EVAL_EXEC_NOT_GRANTED",
-            f"missing {descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE}; supervisor descriptive execution approval required",
+            f"missing {descriptive_exec_gate.DESCRIPTIVE_AUTH_RELATIVE}; research owner descriptive execution authorization required",
         )
 
-    try:
-        allowlist = governance.load_allowlist(root)
-        governance.verify_promotion_receipt(
-            root, allowlist=allowlist, expected_stage="stage3_single_camera_baseline"
+    readiness = assess_official_phase12_readiness(root)
+    if "STAGE21_PROMOTION_RECEIPT_INVALID" in readiness.blocker_codes:
+        detail = next(
+            (b.detail for b in readiness.blockers if b.code == "STAGE21_PROMOTION_RECEIPT_INVALID"),
+            "invalid Stage-2.1 promotion receipt",
         )
-    except governance.GovernanceError as exc:
-        raise OfficialHandoffError(exc.code, exc.detail) from exc
+        raise OfficialHandoffError("STAGE21_PROMOTION_RECEIPT_INVALID", detail)
+    if "STAGE21_PROMOTION_RECEIPT_MISSING" in readiness.blocker_codes:
+        raise OfficialHandoffError(
+            "STAGE21_PROMOTION_RECEIPT_MISSING",
+            f"missing valid {governance.PROMOTION_RECEIPT_RELATIVE}; complete Stage-2.1 review and emit receipt first",
+        )
 
     mpath = Path(manifest_path)
     if not mpath.is_absolute():

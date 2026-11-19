@@ -144,3 +144,22 @@ def test_live_repository_split_audit_matches_checked_in_report():
     assert methods["M3_monotonic_transit_and_post_rear_silence"]["real_t4_corpus_premature"] == 0
     assert methods["M5_v3_plus_m3_and_independent_occupancy_sensor"]["synthetic_nominal_with_occ_clear"]["reopened_cleanly"] is True
     assert methods["M5_v3_plus_m3_and_independent_occupancy_sensor"]["synthetic_without_occ_sensor"]["reopened_cleanly"] is False
+
+    # Mission 7 ownership & Option A complete cross-verification
+    own = report["research_ownership_and_authorization_audit"]
+    assert own["ownership_structure"]["research_owner"]["identity"] == "raihankabirrahu@gmail.com"
+    assert own["ownership_structure"]["independent_second_reviewer"]["identity"] == "elaf85777@gmail.com"
+    assert own["ownership_structure"]["academic_professor_supervisor"]["technical_signoff_required"] is False
+    assert own["recorded_owner_authorizations_present_count"] == 6
+
+    opt_verif = report["option_a_complete_descriptive_evaluation_and_verification"]["independent_cross_verification"]
+    assert opt_verif["independent_verification_passed"] is True
+    assert opt_verif["checks_total"] == 12
+    assert opt_verif["discrepancy_count"] == 0
+
+    handover_manifest_path = REPO_ROOT / "docs/generated/professor_research_handover/HANDOVER_EVIDENCE_MANIFEST.json"
+    handover_manifest = json.loads(handover_manifest_path.read_text(encoding="utf-8"))
+    assert handover_manifest["artifact_count"] == 51
+    assert handover_manifest["professor_technical_signoff_required"] is False
+    for entry in handover_manifest["artifacts"]:
+        assert (REPO_ROOT / entry["path"]).is_file(), f"Missing handover artifact: {entry['path']}"

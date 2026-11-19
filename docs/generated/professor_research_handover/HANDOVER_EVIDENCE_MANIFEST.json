@@ -1,0 +1,265 @@
+{
+  "schema_version": "professor-handover-evidence-manifest/1.0",
+  "research_owner": "raihankabirrahu@gmail.com",
+  "primary_handover_document": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md",
+  "artifact_count": 51,
+  "raw_media_accessed": false,
+  "professor_technical_signoff_required": false,
+  "artifacts": [
+    {
+      "path": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md",
+      "size_bytes": 31993,
+      "sha256": "3b3cb9358b81fdb1363596b791085802fdc0e51a7d065376ff7ef6ada81de488"
+    },
+    {
+      "path": "docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md",
+      "size_bytes": 40164,
+      "sha256": "e7ed044ae7e006406989b5a20b3fc3a5d5691224d5e9f95694c4fd95f7159312"
+    },
+    {
+      "path": "docs/generated/RASPBERRY_PI_DEPLOYMENT_RUNBOOK.md",
+      "size_bytes": 13120,
+      "sha256": "9ec126fd20a8a88a8763aeb498b96cf8cc46047c3559b14db81e33011173613d"
+    },
+    {
+      "path": "docs/generated/professor_research_handover/README_HANDOVER_INDEX.md",
+      "size_bytes": 6973,
+      "sha256": "c359a6a1f10017839e8b186745456ee7806466336ebe9b08760840b458d76e14"
+    },
+    {
+      "path": "docs/generated/professor_research_handover/PUBLICATION_TABLES_AND_CAPTIONS.md",
+      "size_bytes": 17709,
+      "sha256": "9cbcf2088fb57e5e727e5a31eba412672eb488923fcef2e72ceb1ebffddf4072"
+    },
+    {
+      "path": "docs/generated/professor_research_handover/VERIFIED_REFERENCES.bib",
+      "size_bytes": 2608,
+      "sha256": "c3f6607b65ca27d7ac5d610a469d967b1f05ae5bdc35ad9297e4c3d24b4bf9cb"
+    },
+    {
+      "path": "docs/generated/final_research_v2/SYSTEM_ARCHITECTURE.md",
+      "size_bytes": 8233,
+      "sha256": "c18209897add393d48de5d965f0e5aa1bd844b39c828db34042c66ec8252b8c4"
+    },
+    {
+      "path": "docs/generated/final_research_v2/FOUR_LAYER_DETECTION_WORKFLOW.md",
+      "size_bytes": 7802,
+      "sha256": "a3ebf58ea058f41b417b37bfecb1720682e3f39031745c5cdc5bea67ba70cbb4"
+    },
+    {
+      "path": "docs/generated/final_research_v2/EXPERIMENTAL_METHODOLOGY.md",
+      "size_bytes": 9942,
+      "sha256": "84b359bf8aa973c1bd778ffc881965ea6abbb493f58c0a2f2e9a489a6605665b"
+    },
+    {
+      "path": "docs/generated/final_research_v2/DATASET_AND_REFERENCE_ANNOTATIONS.md",
+      "size_bytes": 6587,
+      "sha256": "5a91c9f50d80d821b5a7ae834e9c42960156e3a4be8a7b4e968298975e392884"
+    },
+    {
+      "path": "docs/generated/final_research_v2/EXPERIMENTAL_RESULTS.md",
+      "size_bytes": 20201,
+      "sha256": "17b873f1707987a0c0d296d3e65a933960c29ecdbe8436be78839e03b3b67e89"
+    },
+    {
+      "path": "docs/generated/final_research_v2/STATISTICAL_ANALYSIS.md",
+      "size_bytes": 8381,
+      "sha256": "866561ef48484461c83d676aa263c689b293688699e8b067a19346ac13aeb681"
+    },
+    {
+      "path": "docs/generated/final_research_v2/LIMITATIONS_AND_FUTURE_WORK.md",
+      "size_bytes": 4588,
+      "sha256": "08c5a8f4874b96497458fac6de32083739fce0f4052a0c67e43c7db4f234b9c3"
+    },
+    {
+      "path": "docs/generated/final_research_v2/REPRODUCIBILITY.md",
+      "size_bytes": 6359,
+      "sha256": "6a2f58b919615145cbec8dda2c73aeec92e5964f64a23c2564005bbdd118e153"
+    },
+    {
+      "path": "docs/generated/final_research_v2/FILE_HASH_MANIFEST.sha256",
+      "size_bytes": 3315,
+      "sha256": "52b258be60179b9203986e8f90b28327a6129ade1ddddeaad381911a0fb1fb86"
+    },
+    {
+      "path": "results/dataset_audit/layer_b_split_audit_and_collection_plan.json",
+      "size_bytes": 95871,
+      "sha256": "723dd1d1d9edc9e0232a2801f3078e00cb3836cc0cfb06cdd80710747f11ed69"
+    },
+    {
+      "path": "results/dataset_audit/vision_audio_leakage_audit.json",
+      "size_bytes": 13215,
+      "sha256": "0873111c5e0e7feaa229995a46496305d9484cffb3214ab35ef46125f9c10c26"
+    },
+    {
+      "path": "results/exploratory_v2/MASTER_V2_SUMMARY.json",
+      "size_bytes": 1706,
+      "sha256": "a199652d30dc36b7e6d6e32a873a2714c4664b4448ee79f1881b0223f5c518ba"
+    },
+    {
+      "path": "results/exploratory_v2/FILE_HASH_MANIFEST.sha256",
+      "size_bytes": 2902,
+      "sha256": "0cb9d452ef4296f4e0b0481dd6e34f98c0f902e61f6ab5c87a0471c0aa0382b6"
+    },
+    {
+      "path": "results/exploratory_v2/analysis/statistical_comparisons.json",
+      "size_bytes": 1650,
+      "sha256": "e3f4a5f549cf688affb9e310773066113df76b3831537045b40a7bad24e86ad0"
+    },
+    {
+      "path": "results/exploratory_v2/experiments/exp_a_front_detection.json",
+      "size_bytes": 31980,
+      "sha256": "93288d29d74ddc9e4c9e12d8a9bdee7d6161d154bd6f1cef7d63d265f368ce3f"
+    },
+    {
+      "path": "results/exploratory_v2/experiments/exp_c_audio_horn.json",
+      "size_bytes": 9353,
+      "sha256": "1ab2f01be41706d56477835099afc94dd31606b7f5bb12697af22beb201a450e"
+    },
+    {
+      "path": "results/exploratory_v2/experiments/exp_d_back_departure.json",
+      "size_bytes": 23516,
+      "sha256": "b301c7cf83c895aa29b785d74958d763aace1ee04fca17768f11be2ee1e42f21"
+    },
+    {
+      "path": "results/exploratory_v2/experiments/exp_i_complete_system.json",
+      "size_bytes": 16480,
+      "sha256": "1714dbd3e38c5bb1262bcd724bda6ce72998a9ef469b392c8a5cbf855d765449"
+    },
+    {
+      "path": "results/exploratory_v2/experiments/exp_j_temporal_vs_stateless.json",
+      "size_bytes": 151541,
+      "sha256": "85accabc3f8aa07c23f883e8cfbd8ecae113d614b1a5e25b6bcd3363932dfea4"
+    },
+    {
+      "path": "results/exploratory_v2/experiments/exp_k_ablation.json",
+      "size_bytes": 4547,
+      "sha256": "6f784013e5b996be90b657d5ac179ce5dafc1a706fc7f9788ed4dc6e7f7ef6ce"
+    },
+    {
+      "path": "results/exploratory_v2/experiments/exp_n_event_matrix.csv",
+      "size_bytes": 9032,
+      "sha256": "f7dc81f4d0249f82d7317f8c248622e51a47f86a8ea923770e39466ad0fadeac"
+    },
+    {
+      "path": "results/exploratory_v2/failure_injection/exp_l_fault_injection.json",
+      "size_bytes": 20495,
+      "sha256": "4d7bc5b8a400d2f0dd1281db8eadd9ed2505542a5b60751038b50e86e78db0ac"
+    },
+    {
+      "path": "results/exploratory_v2/optimization_and_stress/exp_o_audio_calibration_hysteresis.json",
+      "size_bytes": 19844,
+      "sha256": "155ce7bc21601089ddcfbb7d7278e932afdced4392c4b6fe2666a0bdd69d39fe"
+    },
+    {
+      "path": "results/exploratory_v2/optimization_and_stress/exp_p_cpu_edge_benchmark.json",
+      "size_bytes": 11524,
+      "sha256": "efab276a0dc6b5b5e39cc85e5abe959b31955419a494a003c0333d311c61f6ab"
+    },
+    {
+      "path": "results/exploratory_v2/optimization_and_stress/exp_q_weather_and_interlocking_stress.json",
+      "size_bytes": 7674,
+      "sha256": "b7ad2733f4e47022d0ade630a2a011f3546285a282342d000a70740ad721ccad"
+    },
+    {
+      "path": "results/exploratory_v2/optimization_and_stress/exp_r_crossval_and_failsafe.json",
+      "size_bytes": 9799,
+      "sha256": "0a0ff7ddf79471d2c0699f6c232cb75d023ac47c1ba88e6332760dbbf938ca84"
+    },
+    {
+      "path": "results/exploratory_v2/optimization_and_stress/exp_r_independent_validation.json",
+      "size_bytes": 33645,
+      "sha256": "a015c5d310dd9f28762332d7fb4c49a9682648e0dab6c2e59857a7b182788a16"
+    },
+    {
+      "path": "results/exploratory_v2/optimization_and_stress/host_edge_scaling_benchmark.json",
+      "size_bytes": 3398,
+      "sha256": "d1959d754b8287f2b7f742db472420b175aab033778cd4e24d15540d1fdd1529"
+    },
+    {
+      "path": "docs/generated/professor_evidence/mission43/ACTUAL_FULL_COHORT_RESULTS.json",
+      "size_bytes": 4674,
+      "sha256": "1aeab8a45a68136e8e0eadc7d85265bb09d040edcce2d527d39484e25f9b4a06"
+    },
+    {
+      "path": "docs/generated/professor_evidence/mission43/RESEARCHER_ANNOTATION_ADOPTION.json",
+      "size_bytes": 10863,
+      "sha256": "4482847884f05650007d97367139f5b6ecd8bd567c113b538264baf97c5d5d15"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig01_system_architecture.png",
+      "size_bytes": 681992,
+      "sha256": "ace3b577ca03b5443cd3fad9cfceb5d29714282dc18013a18dbb2526f4de9264"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig02_four_layer_workflow.png",
+      "size_bytes": 435738,
+      "sha256": "c36a20d49dfe7ee372a5452512ec70247af9ae6f3ed7699ca30a9b2119b27bac"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig03_gate_closure_timeline.png",
+      "size_bytes": 497241,
+      "sha256": "103c9ee5905c3511c43734df3d13edbfeb6bd7eb1c8a62031e1c546f757a222e"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig04_departure_and_clearance_workflow.png",
+      "size_bytes": 431679,
+      "sha256": "428e8ab1a3e065c638f9e090ad230464318244551cccf3cfe8b1014d5891a1ac"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig05_modality_ablation.png",
+      "size_bytes": 280024,
+      "sha256": "d565514d3a088b66fdbcd3e05a9385ebacd9c49b1a722989d5559305858ab90e"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig06_closure_performance.png",
+      "size_bytes": 298968,
+      "sha256": "e1e34a78154347139ed0c4af841cb276aa0fedf8cf4f9fd1a1433d8a6548b9f7"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig07_premature_opening_analysis.png",
+      "size_bytes": 302066,
+      "sha256": "7e67e4f151d3e197972cd8aa513d6f27465a092511ef33cf5f9744b608c0b418"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig08_fault_injection_outcomes.png",
+      "size_bytes": 640612,
+      "sha256": "746d32e807c933da536eab318bcb580a7d6cc8531d3f0cfa6a8bad12e47e0eb3"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig09_detection_and_actuation_timing.png",
+      "size_bytes": 442197,
+      "sha256": "89e4d60b4c806b8c7a345d7dff626f98f397a823e58d4d1fd1ba7f55c6d7e728"
+    },
+    {
+      "path": "docs/generated/final_research_v2/figures/fig10_real_world_installation_concept.png",
+      "size_bytes": 392304,
+      "sha256": "56cab53c17e402a38170b69f2f5c270c6115396275b57c3111e8a89695953667"
+    },
+    {
+      "path": "docs/generated/figures/fig11_dataset_leakage_comparison.png",
+      "size_bytes": 205968,
+      "sha256": "a6ce4aee6d51cc211716ae32e469181b09c35ee8dab0601a9a6f1ecfa18d5e0b"
+    },
+    {
+      "path": "docs/generated/figures/fig12_audio_hysteresis_and_calibration.png",
+      "size_bytes": 310383,
+      "sha256": "36d3af35b5b5c5d490c60dda4b507dada31df65f9b4af732c78e51ce186b7afb"
+    },
+    {
+      "path": "docs/generated/figures/fig13_cpu_edge_benchmark_and_duty_cycle.png",
+      "size_bytes": 210564,
+      "sha256": "ce3e6a32e2a75478fb5c2b7bd7b2feed70cce043d73d0807ca280f17ae4b695d"
+    },
+    {
+      "path": "docs/generated/figures/fig14_weather_attenuation_stress_heatmap.png",
+      "size_bytes": 294138,
+      "sha256": "0780117a2b6060b8952c2855fae17085f66168a6b44953eb1af6b76ccdea3ee7"
+    },
+    {
+      "path": "docs/generated/figures/fig15_exp_r_loeo_and_optical_wakeup.png",
+      "size_bytes": 288674,
+      "sha256": "13079be3f576b2bff452691ea8f49c6b6ac9fd02bf317e473b00eb5fe6c434f1"
+    }
+  ]
+}

@@ -1,21 +1,22 @@
-# Principal Investigator Final Research Approval & Execution Handoff
+# Research Owner Authorization & Option A/C Execution Brief
 
 **Repository:** `/Users/sayemuddin/Desktop/Train_automation` | **Branch:** `exp/four-layer-completion`  
-**Audience:** Principal Investigator / Authorized Reviewers (`elaf85777@gmail.com`, `raihankabirrahu@gmail.com`)  
+**Research Owner:** `raihankabirrahu@gmail.com` | **Independent Second Reviewer (`RD-043`):** `elaf85777@gmail.com`  
+**Professor Deliverable (Academic Writing Package):** [`FINAL_PROFESSOR_RESEARCH_HANDOVER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md) (`professor_technical_signoff_required = false`)  
 **Current Automated Readiness:** **`official_phase12_ready = false` (`7` blockers)** | **`option_a_descriptive_ready = false`** | **`physical_raspberry_pi_tested = false`**
 
-> **Hard Scientific Boundary:** No human approvals have been fabricated and no raw video/audio under `data/raw/` has been accessed. Never approve any `train/val/test` partition of the existing `27` single-crossing events as `leakage_safe = true` — doing so cannot turn single-crossing, session-confounded recordings into an independent generalization test.
+> **Hard Scientific Boundary:** The Research Owner (`raihankabirrahu@gmail.com`) already holds professor project authorization and controls the dataset; no routine technical sign-off from the professor is needed. Genuine `AUTH-MEDIA-ACCESS`, `Stage-2.1` (`8.1.0-stage2.1`) inspection, and separate independent `RD-043` second reviews (`elaf85777@gmail.com`) are preserved for scientific integrity. Never approve any `train/val/test` partition of the existing `27` single-crossing events as `leakage_safe = true`.
 
 ---
 
-## 1. Decisions the PI Must Make (vs Automated Technical Tasks)
+## 1. Research Owner vs Independent Reviewer Responsibilities
 
-| Decision / Action | Owner | What Must Be Decided or Signed |
+| Decision / Action | Responsible Role | What Must Be Decided or Signed |
 |---|---|---|
-| **D1. Research Scope** | **PI (Human)** | Elect **Option A** (complete 27-event single-crossing descriptive cohort study on existing data) as the immediate milestone, **Option C** (collect `235` balanced multi-crossing events before official Phase 12 evaluation), or **Both Sequentially** (publish Option A descriptively now -> collect Option C for generalization). |
-| **D2. Raw Media Ethics** | **PI (Human)** | Authorize human inspection, upright rotation re-extraction, and `Stage-2.1` review on `data/raw/layer_b/` (`AUTH-MEDIA-ACCESS`). |
-| **D3. Ground Truth (`Stage-2.1`)** | **Human Reviewers** | Perform independent frame-by-frame review across all `27` events (`+ RD-043` second reviewer where triggered), fixing the `7` AI-proposal Session-2/lighting bugs and separating road horns from locomotive horns. |
-| **D4. Execution Sign-Off** | **PI (Human)** | Sign `AUTH-DESCRIPTIVE-EVAL-EXEC.json` (Option A) and/or `phase12_event_split_decision.json` + `eval_authorization.json` (Option C / Phase 12) once bound SHA-256 hashes match. |
+| **D1. Research Scope** | **Research Owner (`raihankabirrahu@gmail.com`)** | Recorded `Option A` (`SPLIT-DECISION-OPTION-A-2026-11-09` descriptive 27-event study) active; professor receives completed findings via [`FINAL_PROFESSOR_RESEARCH_HANDOVER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md). Collect **Option C** (`235`/`271` events) for cross-site generalization. |
+| **D2. Raw Media Access** | **Research Owner (`raihankabirrahu@gmail.com`)** | Record signed owner authorization (`AUTH-MEDIA-ACCESS.json`) before upright `.mov` re-extraction & `Stage-2.1` review on `data/raw/layer_b/`. |
+| **D3. Ground Truth & Independent Peer Review (`Stage-2.1`)** | **Research Owner + `elaf85777@gmail.com` (`RD-043`)** | Primary frame-by-frame `8.1.0-stage2.1` review across all `27` events plus **separate independent reviewer (`elaf85777@gmail.com`)** wherever `RD-043` triggers (`engine_events/001`, `UNCERTAIN`, flags). |
+| **D4. Execution Sign-Off** | **Research Owner (`raihankabirrahu@gmail.com`)** | Sign `AUTH-DESCRIPTIVE-EVAL-EXEC.json` (Option A) and/or `phase12_event_split_decision.json` + `eval_authorization.json` (Option C) once bound SHA-256 hashes match. |
 | **T1–T4. CLI Execution** | **Software / Agent** | After D2–D4 exist on disk: emit promotion receipt (`readiness_cli`), build manifest (`manifest_builder`), run `prepare_and_execute_official_evaluation.py`, and run `rpi_edge_benchmark.py` on Pi hardware. |
 
 ---
@@ -94,6 +95,6 @@ A `3`-crossing/`6`-session floor (`~12` test trains, `~6` test `no_train`) yield
 | **1. Tested Software Properties** | **VERIFIED (`11/11` checks, `3,889` pytest)** | Fail-closed FSM transition legality, causal non-backfill alignment, zero-overlap Vision/Audio split synthesis, governance refusal logic. | Real-world field accuracy or barrier certification. |
 | **2. Synthetic Simulations** | **VERIFIED (`Exp L, Q, R` wakeup)** | Zero unsafe openings across `100` `Exp Q` stress runs; `M5` nominal reopening when `occ_sensor=CLEAR` & `post_t4 >= 3.5 s`. | Proof of rain/fog detection accuracy on real trains. |
 | **3. Cached Exploratory Results** | **EXPLORATORY (`pre-db40305`, `0` reviews)** | Session 1 (`7/20`) vs Session 2 (`3/3`) disparity; `0/11` `sync11` EOF fail-closed holds; `Exp O/R` road-horn runs & `Recall` drop (`0.9231->0.6154`, Brier Δ CI crossing `0`). | Verified human ground-truth performance or reliable real-clip automatic reopening. |
-| **4. Human-Verified Descriptive (Opt A)** | **BLOCKED (`0` Stage-2.1 reviews)** | Pipeline prepared; ready once PI completes Section 3 Option A sequence. | Published Option A results prior to review completion. |
+| **4. Human-Verified Descriptive (Opt A)** | **BLOCKED (`0` Stage-2.1 reviews)** | Pipeline prepared; ready once Research Owner & independent `RD-043` reviewer complete Section 3 Option A sequence. | Published Option A results prior to review completion. |
 | **5. Independent Held-Out Eval (Opt C)** | **BLOCKED (`ready=false`, `1` crossing)** | Quantified `235`-event (`271` high-power) multi-crossing protocol ready. | Any cross-crossing or held-out generalization claim. |
 | **6. Physical Hardware Results** | **BLOCKED (`Pi_tested=false`)** | Apple M1 CPU kernel benchmarks & unmeasured analytical Pi 4B/5 scaling (`host_edge_scaling_benchmark.json`). | Real Raspberry Pi latency/thermal SLA or live relay operation (`RASPBERRY_PI_DEPLOYMENT_RUNBOOK.md` §§8–9 mandatory first; never wire to live railway signals). |

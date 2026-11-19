@@ -2,16 +2,16 @@
   "schema_version": "phase12-event-split-decision/1",
   "decision_status": "__HUMAN_APPROVAL_REQUIRED___SET_APPROVED_ONLY_IF_ELECTING_SINGLE_SITE_HELD_OUT_EVALUATION",
   "decision_id": "__HUMAN_APPROVAL_REQUIRED___e.g._PHASE12-EVENT-SPLIT-2026-11-XX",
-  "decided_by": "__HUMAN_APPROVAL_REQUIRED___CHOOSE_FROM_elaf85777@gmail.com|raihankabirrahu@gmail.com",
+  "decided_by": "__HUMAN_APPROVAL_REQUIRED___RESEARCH_OWNER_OR_ALLOWLISTED_elaf85777@gmail.com|raihankabirrahu@gmail.com",
   "decided_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ",
-  "researcher_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_PI_STATEMENT_SUPERSEDING_SPLIT-DECISION-OPTION-A-2026-11-09_IF_ELECTED_WITHIN_SITE_ONLY",
+  "researcher_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_RESEARCH_OWNER_STATEMENT_SUPERSEDING_SPLIT-DECISION-OPTION-A-2026-11-09_IF_ELECTED_WITHIN_SITE_ONLY",
   "attestation": {
     "type": "RECORDED_RESEARCHER_STATEMENT",
     "signature": null
   },
   "recorded_by": {
     "kind": "researcher",
-    "identity": "__HUMAN_APPROVAL_REQUIRED___REVIEWER_EMAIL"
+    "identity": "__HUMAN_APPROVAL_REQUIRED___RESEARCH_OWNER_raihankabirrahu@gmail.com"
   },
   "partitions": {
     "train": [

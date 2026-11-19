@@ -32,6 +32,9 @@ def test_validate_approval_package_bundle_succeeds_across_all_12_docs() -> None:
     assert report["zero_fabricated_approvals"] is True
     assert report["official_phase12_ready"] is False
     assert report["option_a_descriptive_ready"] is False
+    assert report["ownership_and_authority_summary"]["research_owner_id"] == "raihankabirrahu@gmail.com"
+    assert report["ownership_and_authority_summary"]["professor_technical_signoff_required"] is False
+    assert report["ownership_and_authority_summary"]["recorded_owner_decisions_count"] == 6
     assert set(report["official_blocker_codes"]) == {
         "COHORT_APPROVAL_MISSING",
         "EVAL_AUTH_NOT_GRANTED",

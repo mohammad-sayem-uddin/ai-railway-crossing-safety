@@ -2101,7 +2101,7 @@ test_files:
     reason: Attempted 1 blocked read(s) of PROCESSED_DATA locations; e.g. results/r04_sync_estimation/quicktime_creationdate_deltas.json
       via io.open in test_live_repository_split_audit_matches_checked_in_report (call).
     safe_for_synthetic_runner: false
-    sha256: 3321df5e0d25176cd22cec914b5b890f8f6d5a3ab279a780ba123a3f1cce1e20
+    sha256: 4d4a4f405a689158206666ae5245dfc8f26c9bef58b3ad97e72857cbd53bad74
     spawns_child_process: false
     static_hints:
     - results/dataset_audit/layer_b_split_audit_and_collection_plan.json
@@ -3004,7 +3004,7 @@ test_files:
     reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
       via open in test_validate_approval_package_bundle_succeeds_across_all_12_docs (call).
     safe_for_synthetic_runner: false
-    sha256: 7e0184b15ef42c7126af6338f0e0e5d0aa52daade02f2563167952ddf95cbab5
+    sha256: bc0a57304621f9e59c473874e853e7c1e55c1e9996502093bda84e031f8b6099
     spawns_child_process: false
     static_hints: []
     tests:
@@ -3707,7 +3707,7 @@ test_files:
     reason: Attempted 2 blocked read(s) of MODEL_CHECKPOINT locations; e.g. experiments/vision/39f402dfe460/checkpoints/weights/best.pt
       via open in test_prepare_pi_approval_packages_matches_checked_in_artifacts_and_schemas (call).
     safe_for_synthetic_runner: false
-    sha256: 8d18be2dd9771c43074071d8e8bf15afc938d0fca4d40038e68fe46667d0a733
+    sha256: 4ad22b6f69c099130e298fa752f4da3b88bff4eaf5401c6ea2828631d7e0d623
     spawns_child_process: false
     static_hints:
     - data/raw/layer_b/v2/train_events/event_001

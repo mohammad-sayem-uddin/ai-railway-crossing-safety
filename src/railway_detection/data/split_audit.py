@@ -9,6 +9,7 @@ two-session split ``leakage_safe=True``.
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import math
 from collections import Counter, defaultdict
@@ -19,8 +20,9 @@ from typing import Any
 import yaml
 
 from railway_detection.research_contracts import ResearchContractError, validate_event_level_split
+from railway_detection.safety.media_guard import require_media_authorization
 
-SCHEMA_VERSION = "layer-b-event-split-audit/1.2"
+SCHEMA_VERSION = "layer-b-event-split-audit/1.3"
 _Z_95 = 1.959963984540054
 
 
@@ -1014,8 +1016,360 @@ def generate_targeted_collection_plan() -> dict[str, Any]:
     }
 
 
+def _sha256_or_none(path: Path) -> str | None:
+    if not path.is_file():
+        return None
+    require_media_authorization(path, "HASH_RAW_MEDIA")
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def audit_research_ownership_and_authorization_workflow(repo_root: Path) -> dict[str, Any]:
+    """Audit research ownership vs independent peer-review & fail-closed governance gates."""
+    allowlist_path = repo_root / "data/ground_truth/authorized_reviewers.json"
+    allowlist_data = _read_json(allowlist_path) if allowlist_path.is_file() else {}
+    allowlisted = list(allowlist_data.get("authorized_reviewers", []))
+
+    recorded_specs = [
+        (
+            "LEG-EXEC",
+            "data/governance/leg_exec_authorization.json",
+            "RESEARCH_OWNER_SUFFICIENT",
+            "Legacy review invalidation execution across 27 stale 7.0.0 records",
+        ),
+        (
+            "ADOPTED-AI-REFERENCE",
+            "docs/generated/professor_evidence/mission43/RESEARCHER_ANNOTATION_ADOPTION.json",
+            "RESEARCH_OWNER_SUFFICIENT",
+            "Research owner adoption of active 27 AI-assisted event references (exploratory only)",
+        ),
+        (
+            "PROTOCOL-CHOICE",
+            "data/manifests/phase12_protocol_decision.json",
+            "RESEARCH_OWNER_SUFFICIENT",
+            "Primary premature-opening metric window (M4 first_blocked_to_t4_clearance) & censoring profile",
+        ),
+        (
+            "R04-SYNC-SCOPE",
+            "data/manifests/phase12_r04_scope_decision.json",
+            "RESEARCH_OWNER_SUFFICIENT",
+            "Acceptance of 11 CALIBRATION_SUPPORTED dual-camera events & 16 independent-camera events",
+        ),
+        (
+            "POLICY-ADOPTION-V2",
+            "docs/generated/research_decisions/POLICY_ADOPTION_V2_20261109.md",
+            "RESEARCH_OWNER_SUFFICIENT",
+            "Experimental policy v2 adoption (v1 frozen baseline retained)",
+        ),
+        (
+            "SPLIT-DECISION-OPTION-A",
+            "docs/generated/research_decisions/SPLIT_DECISION_OPTION_A_20261109.md",
+            "RESEARCH_OWNER_SUFFICIENT",
+            "Full 27-event single-crossing descriptive cohort scope (no leaky train/val/test split)",
+        ),
+    ]
+    recorded_owner_authorizations = []
+    for decision_id, rel_path, tier, purpose in recorded_specs:
+        full_path = repo_root / rel_path
+        recorded_owner_authorizations.append(
+            {
+                "decision_id": decision_id,
+                "path": rel_path,
+                "present_on_disk": full_path.is_file(),
+                "sha256": _sha256_or_none(full_path),
+                "authority_tier": tier,
+                "purpose": purpose,
+            }
+        )
+
+    reviews_root = repo_root / "data/ground_truth/reviews"
+    stage21_active_count = 0
+    if reviews_root.is_dir():
+        for rev_file in sorted(reviews_root.rglob("*_review.json")):
+            try:
+                rev_json = _read_json(rev_file)
+                if rev_json.get("schema_version") == "8.1.0-stage2.1" and rev_json.get("invalidation") is None:
+                    stage21_active_count += 1
+            except (OSError, json.JSONDecodeError):
+                pass
+
+    gates = [
+        {
+            "gate_id": "AUTH-MEDIA-ACCESS",
+            "target_path": "data/governance/AUTH-MEDIA-ACCESS.json",
+            "schema_version": "phase5-media-access-authorization/2",
+            "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+            "eligible_signers": [r for r in allowlisted if r == "raihankabirrahu@gmail.com"] or allowlisted[:1],
+            "professor_signature_required": False,
+            "current_on_disk_status": (
+                "PRESENT" if (repo_root / "data/governance/AUTH-MEDIA-ACCESS.json").is_file() else "ABSENT_NOT_SIGNED_BY_OWNER"
+            ),
+            "why_gate_cannot_be_bypassed": (
+                "Enforced on every data/raw/ media byte access (media_guard.py); dataset owner can sign directly using template."
+            ),
+        },
+        {
+            "gate_id": "STAGE21_PRIMARY_REVIEW",
+            "target_path": "data/ground_truth/reviews/<cohort>/event_XXX_review.json",
+            "schema_version": "8.1.0-stage2.1",
+            "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+            "eligible_signers": allowlisted,
+            "professor_signature_required": False,
+            "current_on_disk_status": f"{stage21_active_count}/27 valid Stage-2.1 records on disk (27 legacy 7.0.0 records invalidated)",
+            "why_gate_cannot_be_bypassed": (
+                "Requires >=30 s genuine raw media review per event and live reviewer_observed_media_hashes (promotion_gate.py); synthetic/bulk-stamped records fail integrity checks."
+            ),
+        },
+        {
+            "gate_id": "STAGE21_RD043_SECOND_REVIEW",
+            "target_path": "data/ground_truth/reviews/<cohort>/event_XXX_review.json (second_review_of)",
+            "schema_version": "8.1.0-stage2.1",
+            "authority_tier": "INDEPENDENT_SECOND_REVIEWER_REQUIRED",
+            "eligible_signers": [r for r in allowlisted if r != "raihankabirrahu@gmail.com"],
+            "professor_signature_required": False,
+            "current_on_disk_status": "PENDING_TRIGGERED_EVENTS (mandatory when T3/T4 interpreted on engine_events or UNCERTAIN/flag)",
+            "why_gate_cannot_be_bypassed": (
+                "Scientific peer-review integrity (RD-043 & BATCH_SAME_REVIEWER_SECOND_REVIEW): primary reviewer cannot second-review their own uncertain/engine adjudication."
+            ),
+        },
+        {
+            "gate_id": "COHORT_APPROVAL_AND_PROMOTION_RECEIPT",
+            "target_path": "data/governance/stage21_promotion_receipt.json",
+            "schema_version": "phase12-stage21-promotion-receipt/2",
+            "authority_tier": "DERIVED_MACHINE_VERIFIED_ARTIFACT",
+            "eligible_signers": ["readiness_cli (after owner + independent second reviews)"],
+            "professor_signature_required": False,
+            "current_on_disk_status": (
+                "PRESENT" if (repo_root / "data/governance/stage21_promotion_receipt.json").is_file() else "ABSENT_WAITING_STAGE21_REVIEWS"
+            ),
+            "why_gate_cannot_be_bypassed": (
+                "Cryptographically binds all active 8.1.0-stage2.1 reviews, allowlist, inventory, active proposals, and live media SHA-256 verification."
+            ),
+        },
+        {
+            "gate_id": "AUTH-DESCRIPTIVE-EVAL-EXEC",
+            "target_path": "data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json",
+            "schema_version": "phase5-descriptive-eval-execution-authorization/1",
+            "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+            "eligible_signers": [r for r in allowlisted if r == "raihankabirrahu@gmail.com"] or allowlisted[:1],
+            "professor_signature_required": False,
+            "current_on_disk_status": (
+                "PRESENT"
+                if (repo_root / "data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json").is_file()
+                else "ABSENT_WAITING_PROMOTION_RECEIPT_AND_OWNER_SIGN"
+            ),
+            "why_gate_cannot_be_bypassed": (
+                "Binds promotion_receipt_sha256, evaluation_manifest_sha256, protocol_sha256, metric_scope_sha256, and model_config_provenance_sha256 before official descriptive cohort replay."
+            ),
+        },
+        {
+            "gate_id": "EVENT_SPLIT_DECISION",
+            "target_path": "data/splits/phase12_event_split_decision.json",
+            "schema_version": "phase12-event-split-decision/1",
+            "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+            "eligible_signers": [r for r in allowlisted if r == "raihankabirrahu@gmail.com"] or allowlisted[:1],
+            "professor_signature_required": False,
+            "current_on_disk_status": (
+                "PRESENT"
+                if (repo_root / "data/splits/phase12_event_split_decision.json").is_file()
+                else "INTENTIONALLY_ABSENT_UNDER_OPTION_A (SPLIT-DECISION-OPTION-A-2026-11-09)"
+            ),
+            "why_gate_cannot_be_bypassed": (
+                "Research owner chose Option A descriptive cohort evaluation because 27 single-crossing events cannot yield a leakage-safe 3-way split; reserved for Option C multi-crossing capture."
+            ),
+        },
+        {
+            "gate_id": "EVAL_INPUT_MANIFEST_AND_EVAL_AUTH",
+            "target_path": "data/manifests/phase12_evaluation_inputs.json + data/governance/eval_authorization.json",
+            "schema_version": "phase12-evaluation-inputs/1 + phase12-eval-authorization/1",
+            "authority_tier": "DERIVED_MANIFEST + RESEARCH_OWNER_SUFFICIENT_AFTER_STAGE21",
+            "eligible_signers": [r for r in allowlisted if r == "raihankabirrahu@gmail.com"] or allowlisted[:1],
+            "professor_signature_required": False,
+            "current_on_disk_status": (
+                "READY"
+                if (repo_root / "data/governance/eval_authorization.json").is_file()
+                else "HELD_BY_OPTION_A_UNTIL_STAGE21_AND_OPTION_C"
+            ),
+            "why_gate_cannot_be_bypassed": (
+                "Requires real Stage-2.1 promoted reviews, clean phase12-replay-evidence/1 inputs (non-cache), split decision, and bound owner statement."
+            ),
+        },
+    ]
+
+    return {
+        "schema_version": "research-ownership-authorization-audit/1.0",
+        "ownership_structure": {
+            "research_owner": {
+                "identity": "raihankabirrahu@gmail.com",
+                "role": "Independent Research Owner & Dataset Controller",
+                "holds_professor_project_authorization": True,
+                "professor_technical_signoff_required": False,
+            },
+            "independent_second_reviewer": {
+                "identity": "elaf85777@gmail.com",
+                "role": "Independent Peer Reviewer for RD-043 Second Review & Adjudication",
+                "enforced_by": "promotion_gate.validate_batch_for_promotion (BATCH_SAME_REVIEWER_SECOND_REVIEW)",
+            },
+            "academic_professor_supervisor": {
+                "role": "Academic Paper Preparation & Publication Submission from Verified Research Handover",
+                "technical_signoff_required": False,
+                "deliverable_path": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md",
+            },
+        },
+        "allowlisted_identities": allowlisted,
+        "recorded_owner_authorizations": recorded_owner_authorizations,
+        "recorded_owner_authorizations_present_count": sum(
+            1 for r in recorded_owner_authorizations if r["present_on_disk"]
+        ),
+        "authorization_workflow_gates": gates,
+    }
+
+
+def evaluate_option_a_complete_descriptive_study_and_verification(repo_root: Path) -> dict[str, Any]:
+    """Compile and independently cross-verify the complete Option A 27-event descriptive results."""
+    required = {
+        "master_v2": repo_root / "results/exploratory_v2/MASTER_V2_SUMMARY.json",
+        "exp_n_csv": repo_root / "results/exploratory_v2/experiments/exp_n_event_matrix.csv",
+        "exp_j": repo_root / "results/exploratory_v2/experiments/exp_j_temporal_vs_stateless.json",
+        "exp_i": repo_root / "results/exploratory_v2/experiments/exp_i_complete_system.json",
+        "stats": repo_root / "results/exploratory_v2/analysis/statistical_comparisons.json",
+        "exp_r_val": repo_root / "results/exploratory_v2/optimization_and_stress/exp_r_independent_validation.json",
+        "m43_cohort": repo_root / "docs/generated/professor_evidence/mission43/ACTUAL_FULL_COHORT_RESULTS.json",
+        "m43_adopt": repo_root / "docs/generated/professor_evidence/mission43/RESEARCHER_ANNOTATION_ADOPTION.json",
+        "leakage": repo_root / "results/dataset_audit/vision_audio_leakage_audit.json",
+    }
+    missing = [name for name, p in required.items() if not p.is_file()]
+    if missing:
+        return {
+            "schema_version": "option-a-complete-descriptive-verification/1.0",
+            "status": "ARTIFACTS_ABSENT_IN_TEMP_TREE",
+            "missing_artifacts": missing,
+            "independent_verification_passed": False,
+            "discrepancy_count": len(missing),
+        }
+
+    master_v2 = _read_json(required["master_v2"])
+    exp_j = _read_json(required["exp_j"])
+    exp_i = _read_json(required["exp_i"])
+    stats = _read_json(required["stats"])
+    exp_r_val = _read_json(required["exp_r_val"])
+    m43_cohort = _read_json(required["m43_cohort"])
+    m43_adopt = _read_json(required["m43_adopt"])
+    leakage = _read_json(required["leakage"])
+    with required["exp_n_csv"].open(encoding="utf-8", newline="") as handle:
+        exp_n_rows = list(csv.DictReader(handle))
+
+    # Recompute metrics from raw CSV / per-event lists independently
+    csv_train_closures = sum(
+        1 for r in exp_n_rows if r["event_type"] == "REAL_WORLD_TRAIN_EVENT" and r["closure_decision"] == "True"
+    )
+    csv_nt_fp = sum(
+        1 for r in exp_n_rows if r["event_type"] == "REAL_WORLD_NO_TRAIN" and r["closure_decision"] == "True"
+    )
+    csv_eng_fp = sum(
+        1 for r in exp_n_rows if r["event_type"] == "REAL_WORLD_ENGINE_ONLY" and r["closure_decision"] == "True"
+    )
+    csv_s11_prem_v2 = sum(
+        1 for r in exp_n_rows if r["is_sync11"] == "True" and r["v2_premature_opening_vs_T4"] == "True"
+    )
+    csv_s11_prem_v3 = sum(
+        1 for r in exp_n_rows if r["is_sync11"] == "True" and r["v3_premature_opening_vs_T4"] == "True"
+    )
+
+    exp_a = master_v2["exp_a_summary"]
+    exp_c = master_v2["exp_c_summary"]
+    exp_d_prem = master_v2["exp_d_premature_counts"]
+    m43_cm = m43_cohort["audio_event_reference_metrics"]["confusion_matrix"]
+    loeo_base = exp_r_val["reproduced_published_loeo"]["baseline_metrics"]
+    loeo_oof = exp_r_val["reproduced_published_loeo"]["oof_metrics"]
+    v705 = leakage["vision_705d388743ea"]["split_image_counts"]
+    vgrp = leakage["vision_session_grouped_candidate"]["audit"]["temporal_session_sweeps"]
+    vgrp_600 = next(r for r in vgrp if r["gap_s"] == 600.0)
+    agrp = leakage["audio_v3_stem_grouped_candidate"]
+
+    checks = [
+        ("adopted_event_count_equals_27", len(exp_n_rows) == 27 and len(m43_adopt["adopted_active_annotations"]) == 27 and m43_cohort["physical_events"] == 27, 27, len(exp_n_rows)),
+        ("v3_train23_closures_cross_match", csv_train_closures == exp_a["train_events_triggered"] == exp_j["policies"]["v3_conservative"]["b4_train23_closures"] == exp_i["causal_vs_backfill_b4_train23_closures"]["causal"], csv_train_closures, exp_a["train_events_triggered"]),
+        ("v3_no_train3_fp_cross_match", csv_nt_fp == exp_a["no_train_false_closures"] == exp_j["policies"]["v3_conservative"]["b4_no_train3_false_closures"], 0, csv_nt_fp),
+        ("v3_engine1_fp_zero", csv_eng_fp == 0 and exp_a["engine_only_triggered"] is False, 0, csv_eng_fp),
+        ("stateless_union_mcnemar_cross_match", exp_j["policies"]["stateless_union"]["b4_no_train3_false_closures"] == stats["exp_j_no_train_fp_mcnemar"]["b01_a_wrong_b_right"] == 3, 3, stats["exp_j_no_train_fp_mcnemar"]["b01_a_wrong_b_right"]),
+        ("sync11_v2_premature_openings_cross_match", csv_s11_prem_v2 == exp_d_prem["V2_RULE_3B_3C"] == 4, 4, csv_s11_prem_v2),
+        ("sync11_v3_premature_openings_cross_match", csv_s11_prem_v3 == exp_d_prem["V3_CONSERVATIVE_POSITIVE"] == 0, 0, csv_s11_prem_v3),
+        ("audio23_confusion_matrix_m43_vs_v2_match", [m43_cm["tp"], m43_cm["fp"], m43_cm["fn"], m43_cm["tn"]] == [exp_c["TP"], exp_c["FP"], exp_c["FN"], exp_c["TN"]] == [loeo_base["tp"], loeo_base["fp"], loeo_base["fn"], loeo_base["tn"]], [exp_c["TP"], exp_c["FP"], exp_c["FN"], exp_c["TN"]], [m43_cm["tp"], m43_cm["fp"], m43_cm["fn"], m43_cm["tn"]]),
+        ("audio_windows_2600_cross_match", m43_cohort["audio_windows"] == exp_r_val["corpus_verification"]["n_total_windows"] == 2600, 2600, exp_r_val["corpus_verification"]["n_total_windows"]),
+        ("loeo_oof_counts_exact", [loeo_oof["tp"], loeo_oof["fp"], loeo_oof["tn"], loeo_oof["fn"]] == [8, 4, 6, 5], [8, 4, 6, 5], [loeo_oof["tp"], loeo_oof["fp"], loeo_oof["tn"], loeo_oof["fn"]]),
+        ("vision_v1_total_images_3157_match", v705["train"] + v705["val"] + v705["test"] == 3157 and vgrp_600["crossing_timestamped_sessions"] == 0, 3157, v705["train"] + v705["val"] + v705["test"]),
+        ("audio_v3_grouped_zero_stem_leakage", agrp["cross_split_positive_stem_count"] == 0 and agrp["positive_recordings_in_cross_split_stems"] == 0, 0, agrp["cross_split_positive_stem_count"]),
+    ]
+
+    verification_items = [
+        {"check_id": cid, "passed": bool(passed), "expected": exp_v, "observed": obs_v}
+        for cid, passed, exp_v, obs_v in checks
+    ]
+    discrepancies = [c for c in verification_items if not c["passed"]]
+
+    policy_comparison = []
+    for pkey, label in (
+        ("stateless_union", "Stateless Union (any single modality frame)"),
+        ("stateless_vision_rule2", "Stateless Vision Rule 2"),
+        ("v1", "V1 Rule 3 Disappearance"),
+        ("v2", "V2 Rule 3B/3C Disappearance (adopted experimental baseline)"),
+        ("v3_conservative", "V3 Four-Layer Conservative Positive (target engine)"),
+    ):
+        pdata = exp_j["policies"][pkey]
+        tr_c = pdata["b4_train23_closures"]
+        nt_c = pdata["b4_no_train3_false_closures"]
+        ill = sum(1 for r in pdata["b4_per_event"] if not r.get("transition_legal", True))
+        policy_comparison.append(
+            {
+                "policy_id": pkey,
+                "label": label,
+                "train23_closures": tr_c,
+                "train23_closure_rate": round(tr_c / 23.0, 4),
+                "train23_wilson_95_ci": list(_wilson_ci_95(tr_c, 23)),
+                "no_train3_false_closures": nt_c,
+                "sync11_closures": pdata["sync11_closures"],
+                "sync11_premature_openings_vs_T4": pdata["sync11_premature_openings_vs_T4"],
+                "b4_illegal_transition_events": ill,
+            }
+        )
+
+    return {
+        "schema_version": "option-a-complete-descriptive-verification/1.0",
+        "study_scope": "OPTION_A_SINGLE_CROSSING_DESCRIPTIVE_COHORT_27_EVENTS",
+        "cross_site_generalization_claimed": False,
+        "reference_status": {
+            "adopted_ai_assisted_references_events": len(m43_adopt["adopted_active_annotations"]),
+            "stage21_human_canonical_promotion_complete": (
+                repo_root / "data/governance/stage21_promotion_receipt.json"
+            ).is_file(),
+            "raw_media_re_extraction_performed": False,
+            "cache_basis": "pre-db40305 YOLOv8n inference + corrected natural-log-Mel Audio V3 caches",
+        },
+        "full_27_event_stream_inventory": {
+            "physical_events": m43_cohort["physical_events"],
+            "source_members_verified": m43_cohort["source_members_verified"],
+            "front_sampled_frames": m43_cohort["visual"]["front"]["sampled_records"],
+            "front_predicted_objects": m43_cohort["visual"]["front"]["predicted_objects"],
+            "back_sampled_frames": m43_cohort["visual"]["back"]["sampled_records"],
+            "back_predicted_objects": m43_cohort["visual"]["back"]["predicted_objects"],
+            "audio_windows": m43_cohort["audio_windows"],
+            "audio_positive_windows_at_037": m43_cohort["audio_model_positive_windows"],
+            "b2_assembled_frames": m43_cohort["B2_input_frames"],
+            "b2_paired_frames": m43_cohort["B2_both_record_frames"],
+        },
+        "policy_comparison_b4_and_sync11": policy_comparison,
+        "independent_cross_verification": {
+            "independent_verification_passed": len(discrepancies) == 0,
+            "checks_total": len(verification_items),
+            "checks_passed": len(verification_items) - len(discrepancies),
+            "discrepancy_count": len(discrepancies),
+            "items": verification_items,
+        },
+    }
+
+
 def run_split_audit(repo_root: Path) -> dict[str, Any]:
-    """Run complete non-raw audit of the 27-event split problem."""
+    """Run complete non-raw audit of the 27-event split problem, ownership & Option A results."""
     events = build_event_provenance_table(repo_root)
     prior_proposal = _read_json(repo_root / "docs/generated/CANDIDATE_EVENT_SPLIT_PROPOSAL.json")
     prior_eval = evaluate_candidate_split(
@@ -1062,7 +1416,8 @@ def run_split_audit(repo_root: Path) -> dict[str, Any]:
                 f"{primary['cohorts']['test']['cohort_total_events']} test across "
                 f"{primary['total_crossings']} crossings and {primary['total_sessions']} sessions)"
             ),
-            "pi_approval_required_before_scope_change": True,
+            "research_owner_decision_sufficient_for_scope": True,
+            "professor_technical_signoff_required": False,
         },
         "root_causes": [
             f"Single physical site: all 27 events share crossing_id={crossings!r} (0 held-out crossings).",
@@ -1072,6 +1427,10 @@ def run_split_audit(repo_root: Path) -> dict[str, Any]:
         ],
         "proposal_metadata_inconsistencies_count": len(proposal_bugs),
         "proposal_metadata_inconsistencies": proposal_bugs,
+        "research_ownership_and_authorization_audit": audit_research_ownership_and_authorization_workflow(repo_root),
+        "option_a_complete_descriptive_evaluation_and_verification": (
+            evaluate_option_a_complete_descriptive_study_and_verification(repo_root)
+        ),
         "option_a_stratified_diagnostics": evaluate_option_a_stratified_corpus_diagnostics(repo_root, events),
         "autonomous_reopening_and_clearance_investigation": evaluate_autonomous_reopening_and_clearance_methods(
             repo_root, events

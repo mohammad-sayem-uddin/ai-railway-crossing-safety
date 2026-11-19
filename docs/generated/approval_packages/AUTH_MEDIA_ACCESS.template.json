@@ -3,18 +3,18 @@
   "authorization_id": "__HUMAN_APPROVAL_REQUIRED___e.g._AUTH-MEDIA-ACCESS-2026-11-XX",
   "authorization_class": "AUTH-MEDIA-ACCESS",
   "status": "__HUMAN_APPROVAL_REQUIRED___SET_APPROVED_WHEN_SIGNED",
-  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___CHOOSE_FROM_elaf85777@gmail.com|raihankabirrahu@gmail.com",
+  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___RESEARCH_OWNER_OR_ALLOWLISTED_elaf85777@gmail.com|raihankabirrahu@gmail.com",
   "authorized_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ",
   "expires_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ_AFTER_ISSUED",
   "revoked": false,
-  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_RESEARCHER_STATEMENT_AUTHORIZING_LAYER_B_MEDIA_INSPECTION",
+  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_RESEARCH_OWNER_STATEMENT_AUTHORIZING_LAYER_B_MEDIA_INSPECTION",
   "attestation": {
     "type": "RECORDED_RESEARCHER_STATEMENT",
     "signature": null
   },
   "recorded_by": {
     "kind": "researcher",
-    "identity": "__HUMAN_APPROVAL_REQUIRED___REVIEWER_EMAIL"
+    "identity": "__HUMAN_APPROVAL_REQUIRED___RESEARCH_OWNER_raihankabirrahu@gmail.com"
   },
   "scope": {
     "operations": [

@@ -69,12 +69,12 @@ def _build_auth_media_access_template(
         "authorization_id": f"{HUMAN_PLACEHOLDER}_e.g._AUTH-MEDIA-ACCESS-2026-11-XX",
         "authorization_class": media_guard.AUTHORIZATION_CLASS,
         "status": f"{HUMAN_PLACEHOLDER}_SET_APPROVED_WHEN_SIGNED",
-        "authorized_by": f"{HUMAN_PLACEHOLDER}_CHOOSE_FROM_{'|'.join(reviewers)}",
+        "authorized_by": f"{HUMAN_PLACEHOLDER}_RESEARCH_OWNER_OR_ALLOWLISTED_{'|'.join(reviewers)}",
         "authorized_at_utc": f"{HUMAN_PLACEHOLDER}_ISO8601_UTC_WITH_TZ",
         "expires_at_utc": f"{HUMAN_PLACEHOLDER}_ISO8601_UTC_WITH_TZ_AFTER_ISSUED",
         "revoked": False,
         "authorization_statement": (
-            f"{HUMAN_PLACEHOLDER}_EXPLICIT_RESEARCHER_STATEMENT_AUTHORIZING_LAYER_B_MEDIA_INSPECTION"
+            f"{HUMAN_PLACEHOLDER}_EXPLICIT_RESEARCH_OWNER_STATEMENT_AUTHORIZING_LAYER_B_MEDIA_INSPECTION"
         ),
         "attestation": {
             "type": media_guard.ATTESTATION_RECORDED_STATEMENT,
@@ -82,7 +82,7 @@ def _build_auth_media_access_template(
         },
         "recorded_by": {
             "kind": "researcher",
-            "identity": f"{HUMAN_PLACEHOLDER}_REVIEWER_EMAIL",
+            "identity": f"{HUMAN_PLACEHOLDER}_RESEARCH_OWNER_raihankabirrahu@gmail.com",
         },
         "scope": {
             "operations": sorted(media_guard.VALID_MEDIA_OPERATIONS),
@@ -203,9 +203,10 @@ def _build_stage21_checklist(
         "# Stage-2.1 Ground-Truth Human Review Preparation Checklist (27 Events)",
         "",
         f"- **Required Schema:** `{STAGE_2_1_SCHEMA_VERSION}` (`MIN_PLAUSIBLE_REVIEW_DURATION_S = {MIN_PLAUSIBLE_REVIEW_DURATION_S:.1f}s`)",
-        f"- **Authorized Reviewers:** `{', '.join(reviewers)}`",
-        "- **Prerequisite:** Genuine `data/governance/AUTH-MEDIA-ACCESS.json` (`phase5-media-access-authorization/2`) MUST exist before running review sessions on raw media.",
-        "- **Legacy Status:** All `27/27` existing `6.0.0` reviews are invalidated and quarantined cleanly (`0` valid Stage-2.1 records on disk).",
+        f"- **Research Owner (Primary Reviewer):** `{primary_reviewer}`",
+        f"- **Independent Second Reviewer (`RD-043`):** `{secondary_reviewer}` (separate reviewer required on triggered events; professor signature not required)",
+        "- **Prerequisite:** Research Owner records `data/governance/AUTH-MEDIA-ACCESS.json` (`phase5-media-access-authorization/2`) before inspecting raw `.mov`/`.wav` media.",
+        "- **Legacy Status:** All `27/27` existing `6.0.0`/`7.0.0` reviews are invalidated via `LEG-EXEC` (`0` valid Stage-2.1 records on disk).",
         "",
         "| # | Event Key | Session / Lighting / R04 Scope | Active Proposal (SHA-256 prefix) | Expected Front & Back SHA-256 prefixes | Primary Review CLI Command |",
         "|---|---|---|---|---|---|",
@@ -342,10 +343,10 @@ def _build_split_decision_package(
         "schema_version": governance.SPLIT_DECISION_SCHEMA,
         "decision_status": f"{HUMAN_PLACEHOLDER}_SET_APPROVED_ONLY_IF_ELECTING_SINGLE_SITE_HELD_OUT_EVALUATION",
         "decision_id": f"{HUMAN_PLACEHOLDER}_e.g._PHASE12-EVENT-SPLIT-2026-11-XX",
-        "decided_by": f"{HUMAN_PLACEHOLDER}_CHOOSE_FROM_{'|'.join(reviewers)}",
+        "decided_by": f"{HUMAN_PLACEHOLDER}_RESEARCH_OWNER_OR_ALLOWLISTED_{'|'.join(reviewers)}",
         "decided_at_utc": f"{HUMAN_PLACEHOLDER}_ISO8601_UTC_WITH_TZ",
         "researcher_statement": (
-            f"{HUMAN_PLACEHOLDER}_EXPLICIT_PI_STATEMENT_SUPERSEDING_SPLIT-DECISION-OPTION-A-2026-11-09_IF_ELECTED_WITHIN_SITE_ONLY"
+            f"{HUMAN_PLACEHOLDER}_EXPLICIT_RESEARCH_OWNER_STATEMENT_SUPERSEDING_SPLIT-DECISION-OPTION-A-2026-11-09_IF_ELECTED_WITHIN_SITE_ONLY"
         ),
         "attestation": {
             "type": governance.ATTESTATION_RECORDED_STATEMENT,
@@ -353,7 +354,7 @@ def _build_split_decision_package(
         },
         "recorded_by": {
             "kind": "researcher",
-            "identity": f"{HUMAN_PLACEHOLDER}_REVIEWER_EMAIL",
+            "identity": f"{HUMAN_PLACEHOLDER}_RESEARCH_OWNER_raihankabirrahu@gmail.com",
         },
         "partitions": chrono_partitions,
         "source_proposal": {
@@ -379,7 +380,7 @@ def _build_split_decision_package(
             "# Event-Level Split Decision Preparation & Option A Reconciliation",
             "",
             f"- **Mechanical Validator Status (`chrono_temporal_block_15_5_7`):** `governance.validate_event_level_split(partitions)` **PASSED** (`train={len(chrono_partitions['train'])}`, `val={len(chrono_partitions['val'])}`, `test={len(chrono_partitions['test'])}`, total=`27` disjoint events).",
-            f"- **Active Prior PI Decision (`SPLIT-DECISION-OPTION-A-2026-11-09`, file present=`{option_a_exists}`):** Explicitly chose **Option A (Descriptive single-crossing study — NO Phase 12 train/val/test split)**. Keeping `data/splits/phase12_event_split_decision.json` absent remains scientifically preferred for this 27-event single-crossing corpus.",
+            f"- **Active Research Owner Decision (`SPLIT-DECISION-OPTION-A-2026-11-09`, file present=`{option_a_exists}`):** Research Owner (`raihankabirrahu@gmail.com`) explicitly chose **Option A (Descriptive single-crossing study — NO Phase 12 train/val/test split)**. Keeping `data/splits/phase12_event_split_decision.json` absent remains scientifically preferred for this 27-event single-crossing corpus.",
             "- **Why NO Split of These 27 Events Can Be `leakage_safe = true` ([audit JSON](../../results/dataset_audit/layer_b_split_audit_and_collection_plan.json)):**",
             "  1. All `27/27` events share one physical site (`crossing_id = crossing_A`).",
             "  2. Only `2` physical capture sessions exist (`session_20260914`: 20 train events; `session_20261004`: 3 night train + 3 no_train + 1 engine) — mathematically fewer than `3` non-empty split roles.",
@@ -387,8 +388,8 @@ def _build_split_decision_package(
             f"- **Why Prior `16/6/5` (`CANDIDATE_EVENT_SPLIT_PROPOSAL.json`) Was Rejected (`leakage_safe={prior_eval['leakage_safe']}`):** Hash-shuffling caused `{', '.join(prior_eval['scientific_defects'])}` — specifically `0` `no_train` events in `val` and `0` R04 `dual_camera` events in `test`, plus split adjacent pair `event_007`/`event_008`.",
             f"- **Improved Within-Site Chronological Candidate (`chrono_temporal_block_15_5_7`, `leakage_safe={chrono_eval['leakage_safe']}`):** Keeps tied `event_007`/`008` together, places `1` `no_train` and `>=1` R04 `dual_camera` event in every role (`9/1/1`), and holds out late chronological clips per session — yet STILL carries `leakage_safe = false` and permits **no cross-crossing OOD claim**.",
             "- **For True Leakage-Free Held-Out Evaluation (`Option C`):** Execute the reconciled plan in `results/dataset_audit/layer_b_split_audit_and_collection_plan.json` (`235` total events = `98` train + `43` val + `94` test across `5` crossings and `13` balanced sessions for `<= 10%` cluster-adjusted 95% risk bound; `207` unclustered; `271` for cluster-adjusted `>= 80%` McNemar power at `p_10 = 0.20`).",
-            "- **Option A Descriptive Path Activation (After Action 1 + Action 2 Stage-2.1 Promotion Receipt):** Sign `AUTH_DESCRIPTIVE_EVAL_EXEC.template.json` to `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json`, then run `PYTHONPATH=src:. .venv/bin/python scripts/prepare_and_execute_official_evaluation.py --mode execute-option-a-descriptive --output-dir <OUT_DIR>`.",
-            "- **Activation Target (ONLY if PI explicitly elects chronological single-site diagnostic split):** Sign `phase12_event_split_decision.candidate.template.json` to `data/splits/phase12_event_split_decision.json`.",
+            "- **Option A Descriptive Path Activation (After AUTH-MEDIA-ACCESS + Stage-2.1 + Independent RD-043 Promotion Receipt):** Research Owner signs `AUTH_DESCRIPTIVE_EVAL_EXEC.template.json` to `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json`, then runs `PYTHONPATH=src:. .venv/bin/python scripts/prepare_and_execute_official_evaluation.py --mode execute-option-a-descriptive --output-dir <OUT_DIR>`.",
+            "- **Activation Target (ONLY if Research Owner explicitly elects chronological single-site diagnostic split):** Sign `phase12_event_split_decision.candidate.template.json` to `data/splits/phase12_event_split_decision.json`.",
             "",
         ]
     )
@@ -461,12 +462,12 @@ def _build_auth_descriptive_eval_exec_template(
         "authorization_id": f"{HUMAN_PLACEHOLDER}_e.g._AUTH-DESCRIPTIVE-EVAL-EXEC-2026-11-XX",
         "authorization_class": descriptive_exec_gate.AUTHORIZATION_CLASS,
         "status": f"{HUMAN_PLACEHOLDER}_SET_APPROVED_WHEN_SIGNED",
-        "authorized_by": f"{HUMAN_PLACEHOLDER}_CHOOSE_FROM_{'|'.join(reviewers)}",
+        "authorized_by": f"{HUMAN_PLACEHOLDER}_RESEARCH_OWNER_OR_ALLOWLISTED_{'|'.join(reviewers)}",
         "authorized_at_utc": f"{HUMAN_PLACEHOLDER}_ISO8601_UTC_WITH_TZ",
         "expires_at_utc": f"{HUMAN_PLACEHOLDER}_ISO8601_UTC_WITH_TZ_AFTER_ISSUED",
         "revoked": False,
         "authorization_statement": (
-            f"{HUMAN_PLACEHOLDER}_EXPLICIT_PI_STATEMENT_AUTHORIZING_SINGLE_SITE_OPTION_A_DESCRIPTIVE_EVALUATION"
+            f"{HUMAN_PLACEHOLDER}_EXPLICIT_RESEARCH_OWNER_STATEMENT_AUTHORIZING_SINGLE_SITE_OPTION_A_DESCRIPTIVE_EVALUATION"
         ),
         "attestation": {
             "type": governance.ATTESTATION_RECORDED_STATEMENT,
@@ -474,7 +475,7 @@ def _build_auth_descriptive_eval_exec_template(
         },
         "recorded_by": {
             "kind": "researcher",
-            "identity": f"{HUMAN_PLACEHOLDER}_REVIEWER_EMAIL",
+            "identity": f"{HUMAN_PLACEHOLDER}_RESEARCH_OWNER_raihankabirrahu@gmail.com",
         },
         "scope": {
             "operation": descriptive_exec_gate.DESCRIPTIVE_OPERATION,
@@ -516,10 +517,10 @@ def _build_eval_authorization_template(
         "schema_version": governance.EVAL_AUTH_SCHEMA,
         "authorization_id": f"{HUMAN_PLACEHOLDER}_e.g._EVAL-AUTH-2026-11-XX",
         "stage": "stage3_single_camera_baseline",
-        "authorized_by": f"{HUMAN_PLACEHOLDER}_CHOOSE_FROM_{'|'.join(reviewers)}",
+        "authorized_by": f"{HUMAN_PLACEHOLDER}_RESEARCH_OWNER_OR_ALLOWLISTED_{'|'.join(reviewers)}",
         "authorized_at_utc": f"{HUMAN_PLACEHOLDER}_ISO8601_UTC_WITH_TZ",
         "authorization_statement": (
-            f"{HUMAN_PLACEHOLDER}_EXPLICIT_PI_STATEMENT_AUTHORIZING_OFFICIAL_PHASE12_EVALUATION"
+            f"{HUMAN_PLACEHOLDER}_EXPLICIT_RESEARCH_OWNER_STATEMENT_AUTHORIZING_OFFICIAL_PHASE12_EVALUATION"
         ),
         "attestation": {
             "type": governance.ATTESTATION_RECORDED_STATEMENT,
@@ -527,7 +528,7 @@ def _build_eval_authorization_template(
         },
         "recorded_by": {
             "kind": "researcher",
-            "identity": f"{HUMAN_PLACEHOLDER}_REVIEWER_EMAIL",
+            "identity": f"{HUMAN_PLACEHOLDER}_RESEARCH_OWNER_raihankabirrahu@gmail.com",
         },
         "scope": {
             "operation": governance.AUTHORIZED_OPERATION,
@@ -581,17 +582,17 @@ def build_pi_approval_packages(repo_root: Path, output_dir: Path) -> dict[str, A
 
     guide = "\n".join(
         [
-            "# PI Human-Approval Preparation Package Index",
+            "# Research Owner Authorization & Review Execution Package Index",
             "",
-            "All templates in this directory are **unsigned technical preparation artifacts** (`__HUMAN_APPROVAL_REQUIRED__` markers preserved). No active governance files under `data/governance/`, `data/splits/`, `data/manifests/`, or `data/ground_truth/reviews/` were created or modified. For concise supervisor guides, read [`PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md`](../PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md) and [`RESEARCH_OWNER_FINAL_ACTION_DASHBOARD.md`](../RESEARCH_OWNER_FINAL_ACTION_DASHBOARD.md).",
+            "All templates in this directory are **unsigned preparation artifacts** (`__HUMAN_APPROVAL_REQUIRED__` markers preserved). No active governance files under `data/governance/`, `data/splits/`, `data/manifests/`, or `data/ground_truth/reviews/` were created or modified. Primary workflow decisions belong to the **Research Owner (`raihankabirrahu@gmail.com`)**; professor technical signatures are NOT required. Only `RD-043` second reviews require the independent second reviewer (`elaf85777@gmail.com`). For academic submission evidence, inspect [`FINAL_PROFESSOR_RESEARCH_HANDOVER.md`](../FINAL_PROFESSOR_RESEARCH_HANDOVER.md).",
             "",
-            "## Ordered PI Approval Sequence",
-            "1. **Raw Media Access (`AUTH-MEDIA-ACCESS`):** Review & sign [`AUTH_MEDIA_ACCESS.template.json`](AUTH_MEDIA_ACCESS.template.json), compute `record_sha256 = media_guard._canonical_sha256(record)`, and write to `data/governance/AUTH-MEDIA-ACCESS.json`.",
-            "2. **Stage-2.1 27-Event Ground-Truth Reviews:** Execute human frame-by-frame review across all 27 events per [`STAGE21_27_EVENT_REVIEW_CHECKLIST.md`](STAGE21_27_EVENT_REVIEW_CHECKLIST.md) ([JSON](STAGE21_27_EVENT_REVIEW_CHECKLIST.json)).",
-            "3. **Three Cohort Packages & Promotion Receipt:** Confirm coverage across `train_events`, `no_train_events`, and `engine_events` via [`COHORT_APPROVAL_PACKAGES.md`](COHORT_APPROVAL_PACKAGES.md) ([JSON](COHORT_APPROVAL_PACKAGES.json)) and emit `data/governance/stage21_promotion_receipt.json` via `PYTHONPATH=src:. .venv/bin/python -m railway_detection.annotation.readiness_cli ...`.",
-            "4. **Event-Level Split Decision (`Option A` vs `Option C`):** Read [`SPLIT_OPTION_A_RECONCILIATION.md`](SPLIT_OPTION_A_RECONCILIATION.md) & `results/dataset_audit/layer_b_split_audit_and_collection_plan.json`. **For the 27 existing events (`Option A` — `SPLIT-DECISION-OPTION-A-2026-11-09`):** keep `phase12_event_split_decision.json` absent, sign [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](AUTH_DESCRIPTIVE_EVAL_EXEC.template.json) to `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json`, and run `PYTHONPATH=src:. .venv/bin/python scripts/prepare_and_execute_official_evaluation.py --mode execute-option-a-descriptive --output-dir <OUT_DIR>`. **For generalization (`Option C`):** collect new multi-crossing data (`235` total events = `98` train + `43` val + `94` test across `5` crossings and `13` sessions for `<= 10%` cluster-adjusted 95% risk bound) before Phase 12; only sign [`phase12_event_split_decision.candidate.template.json`](phase12_event_split_decision.candidate.template.json) to `data/splits/phase12_event_split_decision.json` if explicitly electing single-site chronological diagnostics (`leakage_safe = false`).",
+            "## Ordered Research Owner & Independent Review Sequence",
+            "1. **Raw Media Access (`AUTH-MEDIA-ACCESS`, Research Owner Sign-Off):** Review & sign [`AUTH_MEDIA_ACCESS.template.json`](AUTH_MEDIA_ACCESS.template.json), compute `record_sha256 = media_guard._canonical_sha256(record)`, and write to `data/governance/AUTH-MEDIA-ACCESS.json`.",
+            "2. **Stage-2.1 27-Event Ground-Truth Reviews + `RD-043` Independent Second Review:** Primary review across all 27 events per [`STAGE21_27_EVENT_REVIEW_CHECKLIST.md`](STAGE21_27_EVENT_REVIEW_CHECKLIST.md) ([JSON](STAGE21_27_EVENT_REVIEW_CHECKLIST.json)), with independent second review (`elaf85777@gmail.com`) where `RD-043` triggers.",
+            "3. **Three Cohort Packages & Promotion Receipt (Derived After Step 2):** Confirm coverage across `train_events`, `no_train_events`, and `engine_events` via [`COHORT_APPROVAL_PACKAGES.md`](COHORT_APPROVAL_PACKAGES.md) ([JSON](COHORT_APPROVAL_PACKAGES.json)) and emit `data/governance/stage21_promotion_receipt.json` via `PYTHONPATH=src:. .venv/bin/python -m railway_detection.annotation.readiness_cli ...`.",
+            "4. **Event-Level Split Decision (`Option A` vs `Option C`, Research Owner Choice):** Read [`SPLIT_OPTION_A_RECONCILIATION.md`](SPLIT_OPTION_A_RECONCILIATION.md) & `results/dataset_audit/layer_b_split_audit_and_collection_plan.json`. **For the 27 existing events (`Option A` — `SPLIT-DECISION-OPTION-A-2026-11-09`):** keep `phase12_event_split_decision.json` absent, Research Owner signs [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](AUTH_DESCRIPTIVE_EVAL_EXEC.template.json) to `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json`, and runs `PYTHONPATH=src:. .venv/bin/python scripts/prepare_and_execute_official_evaluation.py --mode execute-option-a-descriptive --output-dir <OUT_DIR>`. **For generalization (`Option C`):** collect new multi-crossing data (`235` total events = `98` train + `43` val + `94` test across `5` crossings and `13` sessions for `<= 10%` cluster-adjusted 95% risk bound) before Phase 12; only sign [`phase12_event_split_decision.candidate.template.json`](phase12_event_split_decision.candidate.template.json) to `data/splits/phase12_event_split_decision.json` if explicitly electing single-site chronological diagnostics (`leakage_safe = false`).",
             "5. **Evaluation Input Manifest (Phase 12 Held-Out Path Only):** Follow [`EVALUATION_INPUT_MANIFEST_RUNBOOK.md`](EVALUATION_INPUT_MANIFEST_RUNBOOK.md) (exact schema: [`phase12_evaluation_inputs.template.json`](phase12_evaluation_inputs.template.json)) to produce `data/manifests/phase12_evaluation_inputs.json` from real post-Stage-2.1 `phase12-replay-evidence/1` sources.",
-            "6. **Evaluation Authorization & Execution (Phase 12 Held-Out Path Only):** Populate dynamic hashes in [`eval_authorization.template.json`](eval_authorization.template.json) from `assess_official_phase12_readiness(Path('.')).live_bindings`, compute `record_sha256 = governance.canonical_record_sha256(record)`, save as `data/governance/eval_authorization.json`, verify `PYTHONPATH=src:. .venv/bin/python -m railway_detection evaluation status` (`ready: true`), then execute `PYTHONPATH=src:. .venv/bin/python -m railway_detection evaluation run --output-dir <OUT_DIR_OUTSIDE_REPO_TREES>` (or `scripts/prepare_and_execute_official_evaluation.py --mode execute-after-approval --output-dir <OUT_DIR>`).",
+            "6. **Evaluation Authorization & Execution (Phase 12 Held-Out Path Only, Research Owner Sign-Off):** Populate dynamic hashes in [`eval_authorization.template.json`](eval_authorization.template.json) from `assess_official_phase12_readiness(Path('.')).live_bindings`, compute `record_sha256 = governance.canonical_record_sha256(record)`, save as `data/governance/eval_authorization.json`, verify `PYTHONPATH=src:. .venv/bin/python -m railway_detection evaluation status` (`ready: true`), then execute `PYTHONPATH=src:. .venv/bin/python -m railway_detection evaluation run --output-dir <OUT_DIR_OUTSIDE_REPO_TREES>` (or `scripts/prepare_and_execute_official_evaluation.py --mode execute-after-approval --output-dir <OUT_DIR>`).",
             "",
             "## Pre-Verified Static Live Bindings (Current Repository)",
             f"- `decision_policy_sha256`: `{readiness.live_bindings['decision_policy_sha256']}`",

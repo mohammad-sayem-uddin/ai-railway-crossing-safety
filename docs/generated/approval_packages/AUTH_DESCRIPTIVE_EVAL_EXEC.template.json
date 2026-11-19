@@ -3,18 +3,18 @@
   "authorization_id": "__HUMAN_APPROVAL_REQUIRED___e.g._AUTH-DESCRIPTIVE-EVAL-EXEC-2026-11-XX",
   "authorization_class": "AUTH-DESCRIPTIVE-EVAL-EXEC",
   "status": "__HUMAN_APPROVAL_REQUIRED___SET_APPROVED_WHEN_SIGNED",
-  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___CHOOSE_FROM_elaf85777@gmail.com|raihankabirrahu@gmail.com",
+  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___RESEARCH_OWNER_OR_ALLOWLISTED_elaf85777@gmail.com|raihankabirrahu@gmail.com",
   "authorized_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ",
   "expires_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ_AFTER_ISSUED",
   "revoked": false,
-  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_PI_STATEMENT_AUTHORIZING_SINGLE_SITE_OPTION_A_DESCRIPTIVE_EVALUATION",
+  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_RESEARCH_OWNER_STATEMENT_AUTHORIZING_SINGLE_SITE_OPTION_A_DESCRIPTIVE_EVALUATION",
   "attestation": {
     "type": "RECORDED_RESEARCHER_STATEMENT",
     "signature": null
   },
   "recorded_by": {
     "kind": "researcher",
-    "identity": "__HUMAN_APPROVAL_REQUIRED___REVIEWER_EMAIL"
+    "identity": "__HUMAN_APPROVAL_REQUIRED___RESEARCH_OWNER_raihankabirrahu@gmail.com"
   },
   "scope": {
     "operation": "descriptive_cache_only_replay",

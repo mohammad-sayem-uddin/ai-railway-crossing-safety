@@ -1,9 +1,10 @@
 # Stage-2.1 Ground-Truth Human Review Preparation Checklist (27 Events)
 
 - **Required Schema:** `8.1.0-stage2.1` (`MIN_PLAUSIBLE_REVIEW_DURATION_S = 30.0s`)
-- **Authorized Reviewers:** `elaf85777@gmail.com, raihankabirrahu@gmail.com`
-- **Prerequisite:** Genuine `data/governance/AUTH-MEDIA-ACCESS.json` (`phase5-media-access-authorization/2`) MUST exist before running review sessions on raw media.
-- **Legacy Status:** All `27/27` existing `6.0.0` reviews are invalidated and quarantined cleanly (`0` valid Stage-2.1 records on disk).
+- **Research Owner (Primary Reviewer):** `raihankabirrahu@gmail.com`
+- **Independent Second Reviewer (`RD-043`):** `elaf85777@gmail.com` (separate reviewer required on triggered events; professor signature not required)
+- **Prerequisite:** Research Owner records `data/governance/AUTH-MEDIA-ACCESS.json` (`phase5-media-access-authorization/2`) before inspecting raw `.mov`/`.wav` media.
+- **Legacy Status:** All `27/27` existing `6.0.0`/`7.0.0` reviews are invalidated via `LEG-EXEC` (`0` valid Stage-2.1 records on disk).
 
 | # | Event Key | Session / Lighting / R04 Scope | Active Proposal (SHA-256 prefix) | Expected Front & Back SHA-256 prefixes | Primary Review CLI Command |
 |---|---|---|---|---|---|

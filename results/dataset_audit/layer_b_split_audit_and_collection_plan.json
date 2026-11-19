@@ -1,5 +1,5 @@
 {
-  "schema_version": "layer-b-event-split-audit/1.2",
+  "schema_version": "layer-b-event-split-audit/1.3",
   "raw_media_accessed": false,
   "corpus_counts": {
     "total_events": 27,
@@ -28,7 +28,8 @@
   "strategy_comparison": {
     "recommended_for_existing_27_events": "Option A (Descriptive single-crossing research via Stage-2.1 + AUTH-DESCRIPTIVE-EVAL-EXEC)",
     "recommended_for_generalization_and_model_retraining": "Option C (235 total events = 98 train + 43 val + 94 test across 5 crossings and 13 sessions)",
-    "pi_approval_required_before_scope_change": true
+    "research_owner_decision_sufficient_for_scope": true,
+    "professor_technical_signoff_required": false
   },
   "root_causes": [
     "Single physical site: all 27 events share crossing_id=['crossing_A'] (0 held-out crossings).",
@@ -84,6 +85,364 @@
       ]
     }
   ],
+  "research_ownership_and_authorization_audit": {
+    "schema_version": "research-ownership-authorization-audit/1.0",
+    "ownership_structure": {
+      "research_owner": {
+        "identity": "raihankabirrahu@gmail.com",
+        "role": "Independent Research Owner & Dataset Controller",
+        "holds_professor_project_authorization": true,
+        "professor_technical_signoff_required": false
+      },
+      "independent_second_reviewer": {
+        "identity": "elaf85777@gmail.com",
+        "role": "Independent Peer Reviewer for RD-043 Second Review & Adjudication",
+        "enforced_by": "promotion_gate.validate_batch_for_promotion (BATCH_SAME_REVIEWER_SECOND_REVIEW)"
+      },
+      "academic_professor_supervisor": {
+        "role": "Academic Paper Preparation & Publication Submission from Verified Research Handover",
+        "technical_signoff_required": false,
+        "deliverable_path": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md"
+      }
+    },
+    "allowlisted_identities": [
+      "raihankabirrahu@gmail.com",
+      "elaf85777@gmail.com"
+    ],
+    "recorded_owner_authorizations": [
+      {
+        "decision_id": "LEG-EXEC",
+        "path": "data/governance/leg_exec_authorization.json",
+        "present_on_disk": true,
+        "sha256": "77933986b42b44d340723227c8319a4fb90687a9d6dbe00133de39780bd9cb7e",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "purpose": "Legacy review invalidation execution across 27 stale 7.0.0 records"
+      },
+      {
+        "decision_id": "ADOPTED-AI-REFERENCE",
+        "path": "docs/generated/professor_evidence/mission43/RESEARCHER_ANNOTATION_ADOPTION.json",
+        "present_on_disk": true,
+        "sha256": "4482847884f05650007d97367139f5b6ecd8bd567c113b538264baf97c5d5d15",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "purpose": "Research owner adoption of active 27 AI-assisted event references (exploratory only)"
+      },
+      {
+        "decision_id": "PROTOCOL-CHOICE",
+        "path": "data/manifests/phase12_protocol_decision.json",
+        "present_on_disk": true,
+        "sha256": "163cab437e8070eb99e1a64c8596d289becdeb9187afd4909eddefbd53ef9d4e",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "purpose": "Primary premature-opening metric window (M4 first_blocked_to_t4_clearance) & censoring profile"
+      },
+      {
+        "decision_id": "R04-SYNC-SCOPE",
+        "path": "data/manifests/phase12_r04_scope_decision.json",
+        "present_on_disk": true,
+        "sha256": "f6eabebaab9a925628c119feb9638ba108b7e0c3fbcb942efdf890c2d6e5fc08",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "purpose": "Acceptance of 11 CALIBRATION_SUPPORTED dual-camera events & 16 independent-camera events"
+      },
+      {
+        "decision_id": "POLICY-ADOPTION-V2",
+        "path": "docs/generated/research_decisions/POLICY_ADOPTION_V2_20261109.md",
+        "present_on_disk": true,
+        "sha256": "d7907aa8fbbed11345df4e6103d3397532e6bae8db49f4ef021138e35217f4d2",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "purpose": "Experimental policy v2 adoption (v1 frozen baseline retained)"
+      },
+      {
+        "decision_id": "SPLIT-DECISION-OPTION-A",
+        "path": "docs/generated/research_decisions/SPLIT_DECISION_OPTION_A_20261109.md",
+        "present_on_disk": true,
+        "sha256": "e26474112473ea646f353ac40eecc42c8face82c1c72bd7cee0db28c7570b83b",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "purpose": "Full 27-event single-crossing descriptive cohort scope (no leaky train/val/test split)"
+      }
+    ],
+    "recorded_owner_authorizations_present_count": 6,
+    "authorization_workflow_gates": [
+      {
+        "gate_id": "AUTH-MEDIA-ACCESS",
+        "target_path": "data/governance/AUTH-MEDIA-ACCESS.json",
+        "schema_version": "phase5-media-access-authorization/2",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "eligible_signers": [
+          "raihankabirrahu@gmail.com"
+        ],
+        "professor_signature_required": false,
+        "current_on_disk_status": "ABSENT_NOT_SIGNED_BY_OWNER",
+        "why_gate_cannot_be_bypassed": "Enforced on every data/raw/ media byte access (media_guard.py); dataset owner can sign directly using template."
+      },
+      {
+        "gate_id": "STAGE21_PRIMARY_REVIEW",
+        "target_path": "data/ground_truth/reviews/<cohort>/event_XXX_review.json",
+        "schema_version": "8.1.0-stage2.1",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "eligible_signers": [
+          "raihankabirrahu@gmail.com",
+          "elaf85777@gmail.com"
+        ],
+        "professor_signature_required": false,
+        "current_on_disk_status": "0/27 valid Stage-2.1 records on disk (27 legacy 7.0.0 records invalidated)",
+        "why_gate_cannot_be_bypassed": "Requires >=30 s genuine raw media review per event and live reviewer_observed_media_hashes (promotion_gate.py); synthetic/bulk-stamped records fail integrity checks."
+      },
+      {
+        "gate_id": "STAGE21_RD043_SECOND_REVIEW",
+        "target_path": "data/ground_truth/reviews/<cohort>/event_XXX_review.json (second_review_of)",
+        "schema_version": "8.1.0-stage2.1",
+        "authority_tier": "INDEPENDENT_SECOND_REVIEWER_REQUIRED",
+        "eligible_signers": [
+          "elaf85777@gmail.com"
+        ],
+        "professor_signature_required": false,
+        "current_on_disk_status": "PENDING_TRIGGERED_EVENTS (mandatory when T3/T4 interpreted on engine_events or UNCERTAIN/flag)",
+        "why_gate_cannot_be_bypassed": "Scientific peer-review integrity (RD-043 & BATCH_SAME_REVIEWER_SECOND_REVIEW): primary reviewer cannot second-review their own uncertain/engine adjudication."
+      },
+      {
+        "gate_id": "COHORT_APPROVAL_AND_PROMOTION_RECEIPT",
+        "target_path": "data/governance/stage21_promotion_receipt.json",
+        "schema_version": "phase12-stage21-promotion-receipt/2",
+        "authority_tier": "DERIVED_MACHINE_VERIFIED_ARTIFACT",
+        "eligible_signers": [
+          "readiness_cli (after owner + independent second reviews)"
+        ],
+        "professor_signature_required": false,
+        "current_on_disk_status": "ABSENT_WAITING_STAGE21_REVIEWS",
+        "why_gate_cannot_be_bypassed": "Cryptographically binds all active 8.1.0-stage2.1 reviews, allowlist, inventory, active proposals, and live media SHA-256 verification."
+      },
+      {
+        "gate_id": "AUTH-DESCRIPTIVE-EVAL-EXEC",
+        "target_path": "data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json",
+        "schema_version": "phase5-descriptive-eval-execution-authorization/1",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "eligible_signers": [
+          "raihankabirrahu@gmail.com"
+        ],
+        "professor_signature_required": false,
+        "current_on_disk_status": "ABSENT_WAITING_PROMOTION_RECEIPT_AND_OWNER_SIGN",
+        "why_gate_cannot_be_bypassed": "Binds promotion_receipt_sha256, evaluation_manifest_sha256, protocol_sha256, metric_scope_sha256, and model_config_provenance_sha256 before official descriptive cohort replay."
+      },
+      {
+        "gate_id": "EVENT_SPLIT_DECISION",
+        "target_path": "data/splits/phase12_event_split_decision.json",
+        "schema_version": "phase12-event-split-decision/1",
+        "authority_tier": "RESEARCH_OWNER_SUFFICIENT",
+        "eligible_signers": [
+          "raihankabirrahu@gmail.com"
+        ],
+        "professor_signature_required": false,
+        "current_on_disk_status": "INTENTIONALLY_ABSENT_UNDER_OPTION_A (SPLIT-DECISION-OPTION-A-2026-11-09)",
+        "why_gate_cannot_be_bypassed": "Research owner chose Option A descriptive cohort evaluation because 27 single-crossing events cannot yield a leakage-safe 3-way split; reserved for Option C multi-crossing capture."
+      },
+      {
+        "gate_id": "EVAL_INPUT_MANIFEST_AND_EVAL_AUTH",
+        "target_path": "data/manifests/phase12_evaluation_inputs.json + data/governance/eval_authorization.json",
+        "schema_version": "phase12-evaluation-inputs/1 + phase12-eval-authorization/1",
+        "authority_tier": "DERIVED_MANIFEST + RESEARCH_OWNER_SUFFICIENT_AFTER_STAGE21",
+        "eligible_signers": [
+          "raihankabirrahu@gmail.com"
+        ],
+        "professor_signature_required": false,
+        "current_on_disk_status": "HELD_BY_OPTION_A_UNTIL_STAGE21_AND_OPTION_C",
+        "why_gate_cannot_be_bypassed": "Requires real Stage-2.1 promoted reviews, clean phase12-replay-evidence/1 inputs (non-cache), split decision, and bound owner statement."
+      }
+    ]
+  },
+  "option_a_complete_descriptive_evaluation_and_verification": {
+    "schema_version": "option-a-complete-descriptive-verification/1.0",
+    "study_scope": "OPTION_A_SINGLE_CROSSING_DESCRIPTIVE_COHORT_27_EVENTS",
+    "cross_site_generalization_claimed": false,
+    "reference_status": {
+      "adopted_ai_assisted_references_events": 27,
+      "stage21_human_canonical_promotion_complete": false,
+      "raw_media_re_extraction_performed": false,
+      "cache_basis": "pre-db40305 YOLOv8n inference + corrected natural-log-Mel Audio V3 caches"
+    },
+    "full_27_event_stream_inventory": {
+      "physical_events": 27,
+      "source_members_verified": 54,
+      "front_sampled_frames": 6613,
+      "front_predicted_objects": 329,
+      "back_sampled_frames": 6479,
+      "back_predicted_objects": 1020,
+      "audio_windows": 2600,
+      "audio_positive_windows_at_037": 445,
+      "b2_assembled_frames": 6614,
+      "b2_paired_frames": 3897
+    },
+    "policy_comparison_b4_and_sync11": [
+      {
+        "policy_id": "stateless_union",
+        "label": "Stateless Union (any single modality frame)",
+        "train23_closures": 23,
+        "train23_closure_rate": 1.0,
+        "train23_wilson_95_ci": [
+          0.8569,
+          1.0
+        ],
+        "no_train3_false_closures": 3,
+        "sync11_closures": 11,
+        "sync11_premature_openings_vs_T4": 0,
+        "b4_illegal_transition_events": 26
+      },
+      {
+        "policy_id": "stateless_vision_rule2",
+        "label": "Stateless Vision Rule 2",
+        "train23_closures": 16,
+        "train23_closure_rate": 0.6957,
+        "train23_wilson_95_ci": [
+          0.4913,
+          0.844
+        ],
+        "no_train3_false_closures": 2,
+        "sync11_closures": 9,
+        "sync11_premature_openings_vs_T4": 0,
+        "b4_illegal_transition_events": 18
+      },
+      {
+        "policy_id": "v1",
+        "label": "V1 Rule 3 Disappearance",
+        "train23_closures": 9,
+        "train23_closure_rate": 0.3913,
+        "train23_wilson_95_ci": [
+          0.2216,
+          0.5921
+        ],
+        "no_train3_false_closures": 0,
+        "sync11_closures": 5,
+        "sync11_premature_openings_vs_T4": 2,
+        "b4_illegal_transition_events": 0
+      },
+      {
+        "policy_id": "v2",
+        "label": "V2 Rule 3B/3C Disappearance (adopted experimental baseline)",
+        "train23_closures": 10,
+        "train23_closure_rate": 0.4348,
+        "train23_wilson_95_ci": [
+          0.2563,
+          0.6319
+        ],
+        "no_train3_false_closures": 0,
+        "sync11_closures": 5,
+        "sync11_premature_openings_vs_T4": 4,
+        "b4_illegal_transition_events": 0
+      },
+      {
+        "policy_id": "v3_conservative",
+        "label": "V3 Four-Layer Conservative Positive (target engine)",
+        "train23_closures": 10,
+        "train23_closure_rate": 0.4348,
+        "train23_wilson_95_ci": [
+          0.2563,
+          0.6319
+        ],
+        "no_train3_false_closures": 0,
+        "sync11_closures": 9,
+        "sync11_premature_openings_vs_T4": 0,
+        "b4_illegal_transition_events": 0
+      }
+    ],
+    "independent_cross_verification": {
+      "independent_verification_passed": true,
+      "checks_total": 12,
+      "checks_passed": 12,
+      "discrepancy_count": 0,
+      "items": [
+        {
+          "check_id": "adopted_event_count_equals_27",
+          "passed": true,
+          "expected": 27,
+          "observed": 27
+        },
+        {
+          "check_id": "v3_train23_closures_cross_match",
+          "passed": true,
+          "expected": 10,
+          "observed": 10
+        },
+        {
+          "check_id": "v3_no_train3_fp_cross_match",
+          "passed": true,
+          "expected": 0,
+          "observed": 0
+        },
+        {
+          "check_id": "v3_engine1_fp_zero",
+          "passed": true,
+          "expected": 0,
+          "observed": 0
+        },
+        {
+          "check_id": "stateless_union_mcnemar_cross_match",
+          "passed": true,
+          "expected": 3,
+          "observed": 3
+        },
+        {
+          "check_id": "sync11_v2_premature_openings_cross_match",
+          "passed": true,
+          "expected": 4,
+          "observed": 4
+        },
+        {
+          "check_id": "sync11_v3_premature_openings_cross_match",
+          "passed": true,
+          "expected": 0,
+          "observed": 0
+        },
+        {
+          "check_id": "audio23_confusion_matrix_m43_vs_v2_match",
+          "passed": true,
+          "expected": [
+            12,
+            10,
+            1,
+            0
+          ],
+          "observed": [
+            12,
+            10,
+            1,
+            0
+          ]
+        },
+        {
+          "check_id": "audio_windows_2600_cross_match",
+          "passed": true,
+          "expected": 2600,
+          "observed": 2600
+        },
+        {
+          "check_id": "loeo_oof_counts_exact",
+          "passed": true,
+          "expected": [
+            8,
+            4,
+            6,
+            5
+          ],
+          "observed": [
+            8,
+            4,
+            6,
+            5
+          ]
+        },
+        {
+          "check_id": "vision_v1_total_images_3157_match",
+          "passed": true,
+          "expected": 3157,
+          "observed": 3157
+        },
+        {
+          "check_id": "audio_v3_grouped_zero_stem_leakage",
+          "passed": true,
+          "expected": 0,
+          "observed": 0
+        }
+      ]
+    }
+  },
   "option_a_stratified_diagnostics": {
     "schema_version": "option-a-stratified-diagnostics/1.0",
     "evidence_classification": "CACHE_ONLY_EXPLORATORY_PRE_DB40305",

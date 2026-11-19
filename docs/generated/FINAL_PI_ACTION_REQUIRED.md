@@ -1,6 +1,7 @@
-# Final Supervisor / PI Action Required — Train Gate Automation Research
+# Research Owner Governance Execution Reference — Train Gate Automation Research
 
-**Audience:** Research Supervisor / Principal Investigator (`elaf85777@gmail.com` / `raihankabirrahu@gmail.com`)  
+**Primary Authority:** Research Owner (`raihankabirrahu@gmail.com`) | **Independent Second Reviewer (`RD-043`):** `elaf85777@gmail.com`  
+**Academic Paper Handover for Professor:** [`FINAL_PROFESSOR_RESEARCH_HANDOVER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md) *(the professor is NOT required to sign routine repository governance artifacts)*  
 **Repository:** `/Users/sayemuddin/Desktop/Train_automation` (branch `exp/four-layer-completion`)  
 **Current Automated Evaluation Readiness:** `ready: false` (`7` governance blockers; zero fabricated signatures or bypassed checks)
 
@@ -8,14 +9,15 @@
 
 ## Executive Summary (Plain-English Status)
 
-All software engineering, causal discrete-event simulation corrections (`Convention B`), stratified corpus uncertainty diagnostics (`Exp S`), `M1`–`M5` autonomous-reopening investigation, synthetic stress/ablation studies (`Exp K–R`), reconciled Option C statistical sample-size recalculation (`207 / 235 / 271`), split-leakage forensic audits, test-suite repairs, and preflight approval templates (`12` unsigned schema-verified files under [`docs/generated/approval_packages/`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/PI_APPROVAL_EXECUTION_GUIDE.md)) have been completed and verified without touching raw video/audio under `data/raw/` or inventing human sign-off. Also inspect the concise single-page decision brief [`PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md) and dashboard [`RESEARCH_OWNER_FINAL_ACTION_DASHBOARD.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/RESEARCH_OWNER_FINAL_ACTION_DASHBOARD.md).
+All software engineering, causal discrete-event simulation corrections (`Convention B`), stratified corpus uncertainty diagnostics (`Exp S`), `M1`–`M5` autonomous-reopening investigation, `12/12` Option A cross-artifact consistency verification checks, synthetic stress/ablation studies (`Exp K–R`), reconciled Option C statistical sample-size recalculation (`207 / 235 / 271`), split-leakage forensic audits, test-suite repairs, academic handover preparation ([`FINAL_PROFESSOR_RESEARCH_HANDOVER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md)), and preflight authorization templates (`12` unsigned schema-verified files under [`docs/generated/approval_packages/`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/PI_APPROVAL_EXECUTION_GUIDE.md)) have been completed without touching raw video/audio under `data/raw/` or inventing signatures. Also inspect [`PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md) and [`RESEARCH_OWNER_FINAL_ACTION_DASHBOARD.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/RESEARCH_OWNER_FINAL_ACTION_DASHBOARD.md).
 
-### Separation of Responsibilities (Scientific Approval vs Technical Execution)
+### Separation of Responsibilities (Research Owner vs Independent Review vs Technical Execution)
 
 | Layer | Who Performs It | Examples |
 |---|---|---|
-| **Scientific & Ethical Approval** *(Human Only)* | Research Supervisor / PI (`elaf85777@gmail.com`, `raihankabirrahu@gmail.com`) | Authorizing raw video/audio access (`AUTH-MEDIA-ACCESS`), performing human frame-by-frame `Stage-2.1` video review & dual review, choosing **Option A** (descriptive 27-event study) vs **Option C** (multi-crossing collection), and signing `AUTH-DESCRIPTIVE-EVAL-EXEC` or `eval_authorization.json`. |
-| **Technical Execution** *(Autonomous Software / CLI)* | Pipeline / Agent (after approval exists on disk) | Validating 12 approval templates (`prepare_pi_approval_package.py`), computing statistical power (`audit_event_splits.py`), emitting promotion receipt (`readiness_cli`), compiling clean manifests (`manifest_builder`), running fail-closed replay (`prepare_and_execute_official_evaluation.py`), and running Raspberry Pi edge benchmarks (`rpi_edge_benchmark.py`). |
+| **Research Owner Governance** *(Owner Statement Only)* | **Research Owner (`raihankabirrahu@gmail.com`)** | Signing owner raw-media access (`AUTH-MEDIA-ACCESS`), performing primary `Stage-2.1` video review, keeping **Option A** vs **Option C**, and signing `AUTH-DESCRIPTIVE-EVAL-EXEC` or `eval_authorization.json`. |
+| **Independent Scientific Review** *(Separate Reviewer)* | **Independent Reviewer (`elaf85777@gmail.com`)** | Mandatory `RD-043` independent second review (`second_review_of`) whenever `engine_events/001` T3/T4 is interpreted or any boundary is `UNCERTAIN` (`BATCH_SAME_REVIEWER_SECOND_REVIEW` prevents self-review). |
+| **Technical Execution** *(Autonomous Software / CLI)* | Pipeline / Agent (after owner & `RD-043` records exist on disk) | Validating 12 templates (`prepare_pi_approval_package.py`), auditing ownership & Option A verification (`audit_event_splits.py`), emitting promotion receipt (`readiness_cli`), compiling clean manifests (`manifest_builder`), running fail-closed replay (`prepare_and_execute_official_evaluation.py`), and running Raspberry Pi benchmarks (`rpi_edge_benchmark.py`). |
 
 Three classes of prerequisites **cannot legally or scientifically be performed by an autonomous software agent** and now await human researcher decisions or physical lab hardware:
 

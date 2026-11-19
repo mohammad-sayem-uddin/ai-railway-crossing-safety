@@ -1,9 +1,10 @@
 # Research Owner Final Action Dashboard — Train Gate Automation
 
 **Branch:** `exp/four-layer-completion`  
-**Concise PI Decision Brief:** [`PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md)  
-**Owner Handoff Companion:** [`FINAL_PI_ACTION_REQUIRED.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PI_ACTION_REQUIRED.md) (detailed copy-paste guide for supervisor/PI)  
-**Audit & Strategy Engine:** [`layer_b_split_audit_and_collection_plan.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/dataset_audit/layer_b_split_audit_and_collection_plan.json) (`schema: layer-b-event-split-audit/1.2`)
+**Academic Professor Handover Package:** [`FINAL_PROFESSOR_RESEARCH_HANDOVER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md) ([Indexed Folder](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/professor_research_handover/README_HANDOVER_INDEX.md))  
+**Concise Research Owner Brief:** [`PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/PI_FINAL_RESEARCH_APPROVAL_AND_EXECUTION.md)  
+**Detailed Copy-Paste Reference:** [`FINAL_PI_ACTION_REQUIRED.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PI_ACTION_REQUIRED.md)  
+**Audit & Strategy Engine:** [`layer_b_split_audit_and_collection_plan.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/dataset_audit/layer_b_split_audit_and_collection_plan.json) (`schema: layer-b-event-split-audit/1.3`)
 
 ---
 
@@ -13,25 +14,25 @@
   - `V3 Four-Layer Causal FSM` (`decision_engine_v3_four_layer.py`, `rules_v3_four_layer.py`, `occupancy.py`) with non-backfill causal collector (`allow_stale_detection_backfill=False`), orthogonal container rotation normalization (`video.py`), natural log-Mel parity (`audio/features.py`), and opt-in `RULE_L3_OPTICAL_DEGRADED_AUDIO_WAKEUP` (`False` by default).
   - Causal `Convention B` simulation specification & fail-closed governance gates (`media_guard.py`, `governance.py`, `descriptive_exec_gate.py`, `official_handoff.py`).
   - Access guard fix (`_Guard._safe_is_dir` `ENAMETOOLONG` remediation), `9/9` `UNKNOWN` test forensic audit (`133/133` pass, [`UNKNOWN_TESTS_FORENSIC_AUDIT.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/UNKNOWN_TESTS_FORENSIC_AUDIT.md)), `181`-file access registry (`145` safe files).
-- **Forensic Leakage Audits & Clean Retraining Splits:**
+- **Forensic Leakage Audits, Option A Descriptive Verification & Clean Retraining Splits:**
   - Exposed and repaired Vision V1 leakage (`87.1%` aug + `93.1%` session leakage -> `vision_v1_session_grouped`, `0/29` session crossings) and Audio V3 leakage (`32.56%` YouTube stem overlap -> `audio_v3_stem_grouped`, `0/57` stem crossings).
-  - Proved mathematically why the `27` single-crossing (`crossing_A`), `2`-session Layer-B events cannot yield a `leakage_safe = true` 3-way split, documented `7/27` AI-proposal Session-2/lighting bugs, and published **Option A stratified uncertainty diagnostics (`Exp S`)** + **Option C statistical sample-size recalculation**.
-- **Unsigned Human-Approval Templates (`12` verified files):**
-  - All `12` schemas verified against live code and hashes under `docs/generated/approval_packages/` (covering both **Option A** [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_DESCRIPTIVE_EVAL_EXEC.template.json) and **Option C / Phase 12** [`eval_authorization.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/eval_authorization.template.json)), zero fabricated approvals, and `FILE_HASH_MANIFEST.sha256` (`23/23 OK`).
+  - Independently cross-verified all `12/12` Option A 27-event descriptive consistency checks (`0` discrepancies, `Exp A–S`, `M1`–`M5`) alongside `6` recorded Research Owner authorizations/decisions (`leg_exec`, `RESEARCHER_ANNOTATION_ADOPTION`, `protocol_decision`, `r04_scope`, `POLICY_ADOPTION_V2`, `SPLIT_DECISION_OPTION_A`), proving `leakage_safe = false` for any 3-way split of the 27 single-crossing events and delivering [`FINAL_PROFESSOR_RESEARCH_HANDOVER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md).
+- **Unsigned Authorization Templates (`12` verified files):**
+  - All `12` schemas verified against live code and hashes under `docs/generated/approval_packages/` (covering both **Option A** [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_DESCRIPTIVE_EVAL_EXEC.template.json) and **Option C / Phase 12** [`eval_authorization.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/eval_authorization.template.json)), zero fabricated approvals, `professor_technical_signoff_required = false`, and `FILE_HASH_MANIFEST.sha256` (`23/23 OK`).
 
 ---
 
-## 2. APPROVAL REQUIRED
+## 2. AUTHORIZATION & INDEPENDENT REVIEW STATUS (No Professor Sign-Off Required)
 
-*(Every item below requires human PI / authorized reviewer action (`elaf85777@gmail.com` or `raihankabirrahu@gmail.com`) — software cannot execute these legitimately.)*
+*(Routine & research-level decisions belong to the **Research Owner (`raihankabirrahu@gmail.com`)**; only triggered `RD-043` second reviews require the separate allowlisted independent reviewer (`elaf85777@gmail.com`).)*
 
-| Gate / File Target | Who Approves | Decision Needed | Unlocks |
+| Gate / File Target | Authority / Reviewer Required | Decision Needed | Unlocks |
 |---|---|---|---|
-| `data/governance/AUTH-MEDIA-ACCESS.json` | PI / Allowlisted Reviewer | Ethical/research authorization for `layer_b` (`27` events) raw video/audio inspection | Upright frame re-extraction & human `Stage-2.1` review |
-| `data/ground_truth/reviews/*_review.json` + `data/governance/stage21_promotion_receipt.json` | Human Reviewers (+ `RD-043` second reviewer) | Independent `8.1.0-stage2.1` timestamps (`T0–T4`), road vs train horn attribution, Session 2 lighting fix | Clears `STAGE21_RECORDS_MISSING` & `COHORT_APPROVAL_MISSING` (`3` cohorts) |
-| **Research Strategy Choice** | Principal Investigator | **Choose:** **Option A** (keep `SPLIT-DECISION-OPTION-A-2026-11-09` descriptive 27-event study, leave Phase 12 split absent) **OR** **Option C** (hold Phase 12 until new multi-crossing dataset collected) **OR** diagnostic single-site split (`leakage_safe=false`) | Scientific scope & publication framing |
-| `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json` *(Option A path)* | Principal Investigator | Sign `AUTH_DESCRIPTIVE_EVAL_EXEC.template.json` bound to `stage21_promotion_receipt` & manifest hash | Authorized **Option A** 27-event descriptive cohort run |
-| `data/splits/phase12_event_split_decision.json` + `data/manifests/phase12_evaluation_inputs.json` + `data/governance/eval_authorization.json` *(Option C / Phase 12 path)* | Principal Investigator | Approve event split (`OPTION C` data recommended), compile post-Stage-2.1 `phase12-replay-evidence/1` manifest, sign `EVAL-AUTH` | Official Phase 12 `evaluation run` (`ready: true`) |
+| `data/governance/AUTH-MEDIA-ACCESS.json` | **Research Owner (`raihankabirrahu@gmail.com`)** | Sign owner raw-media access authorization for `layer_b` (`27` events) | Upright frame re-extraction & human `Stage-2.1` review |
+| `data/ground_truth/reviews/*_review.json` + `data/governance/stage21_promotion_receipt.json` | **Research Owner** + **Independent Second Reviewer (`elaf85777@gmail.com` for `RD-043`)** | Genuine `8.1.0-stage2.1` frame-by-frame review + independent `RD-043` second review where triggered | Clears `STAGE21_RECORDS_MISSING` & `COHORT_APPROVAL_MISSING` (`3` cohorts) |
+| **Research Strategy Choice** | **Research Owner (`raihankabirrahu@gmail.com`)** | **Keep Option A** (`SPLIT-DECISION-OPTION-A-2026-11-09` descriptive 27-event study, recorded) **OR** execute **Option C** (`235`/`271` multi-crossing collection) | Scientific scope & publication framing |
+| `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json` *(Option A path)* | **Research Owner (`raihankabirrahu@gmail.com`)** | Sign `AUTH_DESCRIPTIVE_EVAL_EXEC.template.json` bound to `stage21_promotion_receipt` & manifest hash | Authorized **Option A** post-Stage-2.1 27-event descriptive cohort run |
+| `data/splits/phase12_event_split_decision.json` + `data/manifests/phase12_evaluation_inputs.json` + `data/governance/eval_authorization.json` *(Option C / Phase 12 path)* | **Research Owner (`raihankabirrahu@gmail.com`)** | Approve event split (`OPTION C` data recommended), compile post-Stage-2.1 `phase12-replay-evidence/1` manifest, sign `EVAL-AUTH` | Official Phase 12 `evaluation run` (`ready: true`) |
 
 ---
 
@@ -75,8 +76,8 @@
 
 ## 6. NEXT ACTION
 
-**Shortest Legitimate Sequence to Unlock Valid Research Stage (Option A First, Then Hardware / Option C):**
-1. **Today (Supervisor, ~5 min):** Sign [`AUTH_MEDIA_ACCESS.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_MEDIA_ACCESS.template.json) -> `data/governance/AUTH-MEDIA-ACCESS.json` (and copy/confirm Option A framing vs Option C goal).
-2. **Next (Human Reviewers):** Execute `Stage-2.1` human review across all `27` events per [`STAGE21_27_EVENT_REVIEW_CHECKLIST.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/STAGE21_27_EVENT_REVIEW_CHECKLIST.md) (`~30s+` per event + `RD-043` second review where triggered), then emit `data/governance/stage21_promotion_receipt.json` via `readiness_cli`.
-3. **Option A Completion:** PI signs [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_DESCRIPTIVE_EVAL_EXEC.template.json) (pre-bound to `MM_SUPPORTED_CONDITIONS` + manifest SHA-256 `2fb08c92...`) -> `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json` for authorized upright 27-event descriptive evaluation via `scripts/prepare_and_execute_official_evaluation.py --mode execute-option-a-descriptive`; publish Option A paper strictly under the 6-tier evidence boundaries without cross-site claims.
+**Shortest Legitimate Sequence (Research Owner + Independent `RD-043` Review; Professor Already Has `FINAL_PROFESSOR_RESEARCH_HANDOVER.md`):**
+1. **Owner Raw-Media Sign-Off (~5 min):** Research Owner (`raihankabirrahu@gmail.com`) signs [`AUTH_MEDIA_ACCESS.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_MEDIA_ACCESS.template.json) -> `data/governance/AUTH-MEDIA-ACCESS.json`.
+2. **Stage-2.1 Review + Independent Second Review:** Execute `Stage-2.1` review across all `27` events per [`STAGE21_27_EVENT_REVIEW_CHECKLIST.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/STAGE21_27_EVENT_REVIEW_CHECKLIST.md) (`~30s+` per event + mandatory `RD-043` independent second review by `elaf85777@gmail.com` where triggered), then emit `data/governance/stage21_promotion_receipt.json` via `readiness_cli`.
+3. **Option A Completion:** Research Owner signs [`AUTH_DESCRIPTIVE_EVAL_EXEC.template.json`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/approval_packages/AUTH_DESCRIPTIVE_EVAL_EXEC.template.json) (pre-bound to `MM_SUPPORTED_CONDITIONS` + manifest SHA-256 `2fb08c92...`) -> `data/governance/AUTH-DESCRIPTIVE-EVAL-EXEC.json` and runs `scripts/prepare_and_execute_official_evaluation.py --mode execute-option-a-descriptive`; Professor writes from [`FINAL_PROFESSOR_RESEARCH_HANDOVER.md`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md) strictly under the 6-tier evidence boundaries without cross-site claims.
 4. **Hardware & Option C Expansion (Parallel Track):** Run [`scripts/rpi_edge_benchmark.py`](file:///Users/sayemuddin/Desktop/Train_automation/scripts/rpi_edge_benchmark.py) + 30-min soak on physical Raspberry Pi 4B/5, then collect the `>= 5`-crossing / `13`-session (`235`-event primary, `271` high-power) balanced dataset with `>= 15 s` post-`T4` tail and physical occupancy ground truth before unlocking Phase 12 (`eval_authorization.json`).

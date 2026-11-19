@@ -68,6 +68,7 @@ def test_templates_pass_live_validators_when_human_placeholders_filled(tmp_path:
     # 1) AUTH_MEDIA_ACCESS template must pass media_guard.verify_authorization_record once filled
     auth_tmpl = _load(out / "AUTH_MEDIA_ACCESS.template.json")
     assert HUMAN_PLACEHOLDER in auth_tmpl["authorized_by"]
+    assert "RESEARCH_OWNER" in auth_tmpl["authorized_by"]
     assert HUMAN_PLACEHOLDER in auth_tmpl["status"]
     auth_tmpl["authorization_id"] = "AUTH-MEDIA-ACCESS-TEST-01"
     auth_tmpl["status"] = "APPROVED"

@@ -2,16 +2,16 @@
   "schema_version": "phase12-eval-authorization/1",
   "authorization_id": "__HUMAN_APPROVAL_REQUIRED___e.g._EVAL-AUTH-2026-11-XX",
   "stage": "stage3_single_camera_baseline",
-  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___CHOOSE_FROM_elaf85777@gmail.com|raihankabirrahu@gmail.com",
+  "authorized_by": "__HUMAN_APPROVAL_REQUIRED___RESEARCH_OWNER_OR_ALLOWLISTED_elaf85777@gmail.com|raihankabirrahu@gmail.com",
   "authorized_at_utc": "__HUMAN_APPROVAL_REQUIRED___ISO8601_UTC_WITH_TZ",
-  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_PI_STATEMENT_AUTHORIZING_OFFICIAL_PHASE12_EVALUATION",
+  "authorization_statement": "__HUMAN_APPROVAL_REQUIRED___EXPLICIT_RESEARCH_OWNER_STATEMENT_AUTHORIZING_OFFICIAL_PHASE12_EVALUATION",
   "attestation": {
     "type": "RECORDED_RESEARCHER_STATEMENT",
     "signature": null
   },
   "recorded_by": {
     "kind": "researcher",
-    "identity": "__HUMAN_APPROVAL_REQUIRED___REVIEWER_EMAIL"
+    "identity": "__HUMAN_APPROVAL_REQUIRED___RESEARCH_OWNER_raihankabirrahu@gmail.com"
   },
   "scope": {
     "operation": "phase12_official_evaluation",
