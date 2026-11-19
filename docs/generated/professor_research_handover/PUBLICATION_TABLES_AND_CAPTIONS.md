@@ -148,3 +148,47 @@
 13. **Fig. 13 (`fig13`):** Apple M1 CPU stage latencies, TorchScript scaling, checkpoint stripping (`-74.91%`), and analytical daily duty-cycle frame reductions (`96.56%–98.64%`, `Exp P`). ([`fig13_cpu_edge_benchmark_and_duty_cycle.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig13_cpu_edge_benchmark_and_duty_cycle.png))
 14. **Fig. 14 (`fig14`):** Synthetic weather optical confidence attenuation × frame burst-dropout closure heatmap (`Exp Q`: `0/100` unsafe openings, `alpha = 0.35` healthy-empty-frame cliff). ([`fig14_weather_attenuation_stress_heatmap.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig14_weather_attenuation_stress_heatmap.png))
 15. **Fig. 15 (`fig15`):** `23`-fold nested LOEO acoustic CV trade-off (`Spec 0.00 -> 0.60`, `Recall 0.92 -> 0.62`, non-significant Brier Δ) and synthetic `RULE_L3` optical-degraded wakeup (`Exp R`). ([`fig15_exp_r_loeo_and_optical_wakeup.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig15_exp_r_loeo_and_optical_wakeup.png))
+
+<!-- MISSION11_UPRIGHT_TABLES_START -->
+## Table X — Upright (`db40305`) Original-Media 27-Event Modality & Fusion vs `pre-db40305` Baseline
+*(Evidence: [`UPRIGHT_INFERENCE_MANIFEST.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/upright_inference_v2/UPRIGHT_INFERENCE_MANIFEST.json), [`baseline_vs_upright_comparison.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/upright_27_event_evaluation/baseline_vs_upright_comparison.json), [`authoritative_27_event_results_table.csv`](file:///Users/sayemuddin/Desktop/Train_automation/results/upright_27_event_evaluation/authoritative_27_event_results_table.csv); `54/54` streams orientation-verified, audio max score delta vs cache = `0.0`)*
+
+| Configuration | Base TP/23 | Upright TP/23 | ΔTP | NT FP/3 | Eng001 (B->U) | Upright Prec | Upright Recall [95% CI] | Upright Spec | Upright F1 | Rail24 F1 (V3) | McNemar p (Base vs Up) |
+|---|---:|---:|---:|---:|---|---:|---:|---:|---:|---:|---:|
+| `A1_Audio_Frozen_037_k1` | 22 | **22** | +0 | 3 | N->N | 88.0% | 95.7% [79.0-99.2%] | 0.0% | 91.7% | 22/24 (89.8%) | 1.0000 |
+| `A2_Audio_037_k2` | 17 | **17** | +0 | 3 | N->N | 85.0% | 73.9% [53.5-87.5%] | 0.0% | 79.1% | 17/24 (77.3%) | 1.0000 |
+| `A3_Audio_Hysteresis_075_k2` | 9 | **9** | +0 | 0 | N->N | 100.0% | 39.1% [22.2-59.2%] | 100.0% | 56.2% | 9/24 (54.5%) | 1.0000 |
+| `F1_Stateless_Union_FrontAny_Or_Audio037` | 23 | **23** | +0 | 3 | N->Y | 88.5% | 100.0% [85.7-100.0%] | 0.0% | 93.9% | 24/24 (94.1%) | 1.0000 |
+| `F2_V3_Default_Front_L1_Advisory_Audio` | 10 | **23** | +13 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.0018 |
+| `F3_Front_L1_Or_Corroborated_WeakFront_Audio075k2` | 11 | **23** | +12 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.0034 |
+| `F4_Front_L1_Or_Audio075k2` | 14 | **23** | +9 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.0215 |
+| `F5_Dual_Vision_SideRear_Advisory_Audio` | 12 | **23** | +11 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.0063 |
+| `F6_Full_Multimodal_Dual_SideRear_Or_Audio075k2` | 15 | **23** | +8 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.0391 |
+| `F7_Exploratory_2of3_Multimodal` | 17 | **23** | +6 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.1250 |
+| `V1_Front_Any_Stateless` | 16 | **23** | +7 | 3 | N->Y | 88.5% | 100.0% [85.7-100.0%] | 0.0% | 93.9% | 24/24 (94.1%) | 0.0703 |
+| `V2_Front_L1_Confirm2` | 10 | **23** | +13 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.0018 |
+| `V3_Back_Any_Stateless` | 17 | **23** | +6 | 2 | Y->Y | 92.0% | 100.0% [85.7-100.0%] | 33.3% | 95.8% | 24/24 (96.0%) | 0.0312 |
+| `V4_Back_Confirm2_AllClasses` | 9 | **23** | +14 | 2 | Y->Y | 92.0% | 100.0% [85.7-100.0%] | 33.3% | 95.8% | 24/24 (96.0%) | 0.0001 |
+| `V5_Back_Confirm2_SideRear` | 9 | **23** | +14 | 0 | N->N | 100.0% | 100.0% [85.7-100.0%] | 100.0% | 100.0% | 23/24 (97.9%) | 0.0001 |
+| `V6_Side_Proxy_Any` | 14 | **23** | +9 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.0215 |
+| `V7_Dual_Vision_Confirm2_AllClasses` | 12 | **23** | +11 | 3 | Y->Y | 88.5% | 100.0% [85.7-100.0%] | 0.0% | 93.9% | 24/24 (94.1%) | 0.0063 |
+| `V8_Dual_Vision_Confirm2_SideRear` | 12 | **23** | +11 | 1 | N->Y | 95.8% | 100.0% [85.7-100.0%] | 66.7% | 97.9% | 24/24 (98.0%) | 0.0063 |
+| `F8_Exploratory_Strong_2of3_Quorum` (>=2 of V2,V5,A3) | 10 | **23** | +13 | 0 | N->N | 100.0% | 100.0% | 100.0% | 100.0% | 23/24 (97.9%) | 0.0002 |
+
+## Table XI — Upright (`db40305`) Causal V3 FSM Gate-Control Replay & Previously Missed Event Recovery
+*(Evidence: [`causal_fsm_gate_timing_summary.json`](file:///Users/sayemuddin/Desktop/Train_automation/results/upright_27_event_evaluation/causal_fsm_gate_timing_summary.json), [`COMPLETE_27_EVENT_UPRIGHT_MULTIMODAL_REPORT.md`](file:///Users/sayemuddin/Desktop/Train_automation/results/upright_27_event_evaluation/COMPLETE_27_EVENT_UPRIGHT_MULTIMODAL_REPORT.md))*
+
+| Causal FSM Architecture | Train Trig/23 | Full Boom Closed/23 | Warn<=T2 | Cmd<=T2 | Half<=T2 | Full<=T2 | NT FP/3 | Eng001 | Reopen Cycles |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `FSM_V2_Front_L1` | 23/23 | 23/23 | 22 | 22 | 8 | 1 | 1/3 | YES | 0 |
+| `FSM_F2_V3_Default_B4` | 23/23 | 23/23 | 22 | 22 | 8 | 1 | 1/3 | YES | 0 |
+| `FSM_F3_WeakFront_Plus_Audio` | 23/23 | 23/23 | 22 | 22 | 8 | 1 | 1/3 | YES | 0 |
+| `FSM_F4_Front_Or_Audio075k2` | 23/23 | 23/23 | 22 | 22 | 8 | 1 | 1/3 | YES | 0 |
+| `FSM_F5_Dual_Vision_Sync11` | 11/11 | 11/11 | 10 | 10 | 4 | 1 | N/A | N/A | 0 |
+| `FSM_F6_Full_MM_Sync11` | 11/11 | 11/11 | 10 | 10 | 4 | 1 | N/A | N/A | 0 |
+| `FSM_F6_Full_MM_Bounded27` | 23/23 | 23/23 | 22 | 22 | 8 | 1 | 1/3 | YES | 0 |
+| `FSM_F7_Exploratory_2of3_Bounded27` | 23/23 | 23/23 | 22 | 22 | 8 | 1 | 1/3 | YES | 0 |
+
+16. **Fig. 16 (`fig16`):** Pre-`db40305` sideways caches vs upright (`db40305`) original-media train recall, no-train FPs, and Session 1/Session 2 stratification across all modalities and fusion rules. ([`fig16_upright_vs_baseline_ablation.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig16_upright_vs_baseline_ablation.png))
+17. **Fig. 17 (`fig17`):** Per-event optical detection recovery across all 27 original recordings and causal V3 FSM gate-closure timing relative to `T2`. ([`fig17_upright_event_recovery_and_fsm_timing.png`](file:///Users/sayemuddin/Desktop/Train_automation/docs/generated/figures/fig17_upright_event_recovery_and_fsm_timing.png))
+<!-- MISSION11_UPRIGHT_TABLES_END -->

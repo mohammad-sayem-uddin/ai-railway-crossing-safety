@@ -1,0 +1,83 @@
+{
+  "audio_path": "results/upright_inference_v2/predictions/train_events_event_023_front_audio_descriptive_rows.jsonl",
+  "audio_raw_path": "results/upright_inference_v2/predictions/train_events_event_023_front_audio_records.jsonl",
+  "audio_raw_sha256": "2a4e32f6caadf14885e8ee215eaec7b24b662e148143235b9b424d1d660bb70e",
+  "audio_sha256": "6606b096257042ea72f890d6e7768b27ca899990e1c776e8b6d33a02d6798720",
+  "audio_windows": 88,
+  "back_frames": 229,
+  "back_orientation": {
+    "cls_counts": {
+      "front": 0,
+      "other": 0,
+      "rear": 14,
+      "side": 196
+    },
+    "det_frames": 208,
+    "display_rotation_degrees_observed": [
+      0
+    ],
+    "expected_quicktime_rotation_deg": 0,
+    "image_coordinate_basis": [
+      "orthogonal_display_matrix_rotation_v1"
+    ],
+    "input_image_sizes_observed": [
+      [
+        3840,
+        2160
+      ]
+    ],
+    "orientation_verified": true,
+    "sampled_frames": 229,
+    "stream_indices_observed": [
+      1
+    ],
+    "total_objects": 210
+  },
+  "back_path": "results/upright_inference_v2/predictions/train_events_event_023_back.jsonl",
+  "back_sha256": "9873a7b54f3a8a9332d53b3ff63955f50998e0bc8ffbacde9eb25cfbf2f7fa6b",
+  "cohort": "train_events",
+  "errors": [],
+  "event_id": "train_events/event_023",
+  "execution_status": "SUCCESS",
+  "front_frames": 225,
+  "front_orientation": {
+    "cls_counts": {
+      "front": 15,
+      "other": 0,
+      "rear": 2,
+      "side": 182
+    },
+    "det_frames": 196,
+    "display_rotation_degrees_observed": [
+      0
+    ],
+    "expected_quicktime_rotation_deg": 0,
+    "image_coordinate_basis": [
+      "orthogonal_display_matrix_rotation_v1"
+    ],
+    "input_image_sizes_observed": [
+      [
+        1920,
+        1080
+      ]
+    ],
+    "orientation_verified": true,
+    "sampled_frames": 225,
+    "stream_indices_observed": [
+      0
+    ],
+    "total_objects": 199
+  },
+  "front_path": "results/upright_inference_v2/predictions/train_events_event_023_front.jsonl",
+  "front_sha256": "36bc191644c6e60b888fa3b7d32abddf977bb45beaba01d5fe97c448917f2c15",
+  "raw_event_id": "event_023",
+  "source_media": {
+    "back_path": "data/raw/layer_b/v2/train_events/event_023/camera_back.mov",
+    "back_sha256": "a36d099f479e81bef2cfa31ac4492bf0cd01c97eac5378d85c96a89f58e49766",
+    "back_sha256_verified_against_inventory": true,
+    "front_path": "data/raw/layer_b/v2/train_events/event_023/camera_front.mov",
+    "front_sha256": "cb855aa632bac4a032496a7ccc0a40a28b631807231254775a2a24f85d81564b",
+    "front_sha256_verified_against_inventory": true
+  },
+  "timestamp_basis": "source_pts"
+}

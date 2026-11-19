@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "docs/generated/FINAL_PROFESSOR_RESEARCH_HANDOVER.md",
-      "size_bytes": 34809,
-      "sha256": "6db78358e125d1cac17a4580cb80047812f707aa5f12d827ae02f64fa9cde034"
+      "size_bytes": 37737,
+      "sha256": "1748d9ce6f21c217f8df80a62a1353ea48202d2258c3e86f138dbf0573d6f313"
     },
     {
       "path": "docs/generated/IEEE_MANUSCRIPT_TRAIN_GATE_AUTOMATION.md",
@@ -23,13 +23,13 @@
     },
     {
       "path": "docs/generated/professor_research_handover/README_HANDOVER_INDEX.md",
-      "size_bytes": 6973,
-      "sha256": "c359a6a1f10017839e8b186745456ee7806466336ebe9b08760840b458d76e14"
+      "size_bytes": 8038,
+      "sha256": "bbfcf2f640b394ef32b56397a52eab52a9f27916b39312ed2795734913de8e43"
     },
     {
       "path": "docs/generated/professor_research_handover/PUBLICATION_TABLES_AND_CAPTIONS.md",
-      "size_bytes": 22881,
-      "sha256": "1ac2485b1cb2d13074ec39b1988e94b5ccda6d7163b522027db7eb0b2fda5a87"
+      "size_bytes": 28529,
+      "sha256": "b325b76974d7d5c7a8fc94c589bd11b8d37d2a80e7253f10359d2b411f35223b"
     },
     {
       "path": "docs/generated/professor_research_handover/VERIFIED_REFERENCES.bib",
@@ -265,8 +265,8 @@
   "multimodal_27_event_evaluation_artifacts": [
     {
       "path": "scripts/run_complete_27_event_multimodal_evaluation.py",
-      "size_bytes": 78672,
-      "sha256": "212d4c19b04792d76d82940c4bc2995b555479d3d980266b30f6fba38d50076e"
+      "size_bytes": 129058,
+      "sha256": "13bf9bbaeccf31bb10934541f9b867cb7000dde3a6eeedefc488aeb1e66743e3"
     },
     {
       "path": "docs/generated/human_approval_templates/AUTH_MEDIA_ACCESS_MISSION9_READY.json",
@@ -310,8 +310,97 @@
     },
     {
       "path": "results/multimodal_27_event_evaluation/failed_events_forensic_diagnosis.json",
-      "size_bytes": 37137,
-      "sha256": "2bed1a8bf17e992515d705cf6430d3287e1c22c46c33237eda4bd0ec947bc979"
+      "size_bytes": 37025,
+      "sha256": "a048d95e6dc889ecaeab4e04ef30131e04b47a4d1089fe0863d4e02ddb54bb1f"
     }
-  ]
+  ],
+  "upright_27_event_experiment_artifacts": [
+    {
+      "path": "scripts/generate_mission11_upright_figures.py",
+      "size_bytes": 10879,
+      "sha256": "7cc4505811aa28d40237c9bf5c9632fd7d03cf21c09d3b76d8d2c6df99cae9b0"
+    },
+    {
+      "path": "scripts/build_mission11_handover_updates.py",
+      "size_bytes": 27326,
+      "sha256": "fa8082313789cf5680e6e38550560c1b116ade86e276e45d1fcb3d93747e40f0"
+    },
+    {
+      "path": "results/upright_inference_v2/UPRIGHT_INFERENCE_MANIFEST.json",
+      "size_bytes": 81695,
+      "sha256": "cbeec5b267a203eba6603aa3f2468d47bf8fa70fcb58b0c262618b5a923c6318"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/COMPLETE_27_EVENT_UPRIGHT_MULTIMODAL_REPORT.md",
+      "size_bytes": 7697,
+      "sha256": "1a5b170307b6b9a3d542e8ae641cde5dd51450c579daccf469433610fbbae340"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/event_by_event_27_multimodal_evaluation.csv",
+      "size_bytes": 25250,
+      "sha256": "ae0ee46e7b9a7b30d365ff32d360fe6dcc8d2e65cdd09a58412a3ccd436f3a42"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/event_by_event_27_multimodal_evaluation.json",
+      "size_bytes": 128975,
+      "sha256": "d66dad952164844ce6898e82d62b8d1675846d0bfa2c8b4b8ee32012b793da89"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/modality_and_fusion_ablation_metrics.csv",
+      "size_bytes": 3562,
+      "sha256": "0409b99e2329f151c75a94ba9552618ac80e08616075a2013cf9fa906ec03d20"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/modality_and_fusion_ablation_metrics.json",
+      "size_bytes": 65312,
+      "sha256": "448364d2e990275044dc68c3bab3edee61a80519bb47eabdc78702d6c2b535a8"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/modality_and_fusion_ablation_upright_vs_baseline.csv",
+      "size_bytes": 6231,
+      "sha256": "5df867bb4151720cb04bd360ec565101a2ad306a77307fa48620638e876ad512"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/causal_fsm_gate_timing_summary.csv",
+      "size_bytes": 782,
+      "sha256": "a6fae94e03c6779ef64cd0055084766eaf92fc9b9c4152ada2e368fa0a4aa419"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/causal_fsm_gate_timing_summary.json",
+      "size_bytes": 202011,
+      "sha256": "8b33e39972f236ace579062f180e1d115bfa46fe82a2593edddf5a3d59462d56"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/failed_events_forensic_diagnosis.json",
+      "size_bytes": 6232,
+      "sha256": "d0ee16a9a8f6a9661c906fd714dc9dc484c7ff1a3437b6f7f3147a5f202c4db2"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/baseline_vs_upright_comparison.json",
+      "size_bytes": 59007,
+      "sha256": "91a8204b6b8f1e77ef4c78c3aeb39911ccb2b5382dc928944f5267d5559c3af6"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/authoritative_27_event_results_table.csv",
+      "size_bytes": 15966,
+      "sha256": "0d47f1bf88e07ec8bcd150b3160f825906a41b2afda76904c689fdd3c893cc3e"
+    },
+    {
+      "path": "results/upright_27_event_evaluation/authoritative_27_event_results_table.json",
+      "size_bytes": 65829,
+      "sha256": "7f8e073563b36fbaf4dd7110a58819f83beab0b698e7683aadaca4b179a4434a"
+    },
+    {
+      "path": "docs/generated/figures/fig16_upright_vs_baseline_ablation.png",
+      "size_bytes": 236571,
+      "sha256": "fd8e959a67e15fe07f9883e4d4a6d64ffa7abcbb4fef3a0eacfb7ddec8736073"
+    },
+    {
+      "path": "docs/generated/figures/fig17_upright_event_recovery_and_fsm_timing.png",
+      "size_bytes": 198327,
+      "sha256": "b832c6cded5bf402ad6ca3bf0080b27fae635adb41e4c219c22f7f8893bd6a10"
+    }
+  ],
+  "mission11_raw_media_accessed": true,
+  "mission11_authorization_id": "AUTH-MEDIA-ACCESS-20261119-MISSION10"
 }

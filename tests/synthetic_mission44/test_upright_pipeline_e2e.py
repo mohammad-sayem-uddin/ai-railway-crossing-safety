@@ -22,6 +22,7 @@ if str(REPO_ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
 import run_complete_27_event_multimodal_evaluation as m10  # noqa: E402
+
 from railway_detection.audio.model import PyTorchTrainHornClassifier  # noqa: E402
 from railway_detection.audio.pipeline import AudioEvidencePipeline  # noqa: E402
 from railway_detection.experiments.frozen_config import load_frozen_config  # noqa: E402
@@ -169,7 +170,11 @@ def test_upright_event_pipeline_rotates_frames_extracts_audio_and_parses_cleanly
     assert {"window_index", "start_sec", "end_sec", "horn_confidence", "is_horn_detected"} <= set(first_audio_row)
 
 
-def test_run_upright_raw_inference_fails_closed_without_owner_auth(tmp_path: Path) -> None:
-    assert not (REPO_ROOT / "data" / "governance" / "AUTH-MEDIA-ACCESS.json").exists()
+def test_run_upright_raw_inference_fails_closed_without_owner_auth(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    empty_repo = tmp_path / "isolated_repo"
+    empty_repo.mkdir()
+    monkeypatch.setattr(m10, "REPO_ROOT", empty_repo)
     with pytest.raises(MediaAccessAuthorizationError, match="AUTH_MEDIA_ACCESS_NOT_GRANTED"):
         m10.run_upright_raw_inference(SimpleNamespace(event_order=()), output_dir=tmp_path)  # type: ignore[arg-type]

@@ -1,0 +1,268 @@
+{
+  "cases": [
+    {
+      "adopted_horn_status": "absent_observed",
+      "audio_max_run_075": 0,
+      "audio_max_score": 0.1428,
+      "audio_pos_037": 0,
+      "audio_pos_075": 0,
+      "audio_top5_windows": [
+        {
+          "end_sec": 1.0,
+          "score": 0.1428
+        },
+        {
+          "end_sec": 2.0,
+          "score": 0.1242
+        },
+        {
+          "end_sec": 1.5,
+          "score": 0.1138
+        },
+        {
+          "end_sec": 3.5,
+          "score": 0.1066
+        },
+        {
+          "end_sec": 4.0,
+          "score": 0.0715
+        }
+      ],
+      "audio_windows": 14,
+      "back_cls_counts": {
+        "front": 14,
+        "rear": 0,
+        "side": 0
+      },
+      "back_det_frames": 13,
+      "back_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.4071,
+              "label": "front"
+            }
+          ],
+          "frame_index": 114,
+          "timestamp_s": 3.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8364,
+              "label": "front"
+            }
+          ],
+          "frame_index": 222,
+          "timestamp_s": 7.4
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8474,
+              "label": "front"
+            }
+          ],
+          "frame_index": 228,
+          "timestamp_s": 7.6
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.859,
+              "label": "front"
+            }
+          ],
+          "frame_index": 234,
+          "timestamp_s": 7.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8641,
+              "label": "front"
+            }
+          ],
+          "frame_index": 240,
+          "timestamp_s": 8.0
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8566,
+              "label": "front"
+            }
+          ],
+          "frame_index": 246,
+          "timestamp_s": 8.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8756,
+              "label": "front"
+            }
+          ],
+          "frame_index": 252,
+          "timestamp_s": 8.4
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8995,
+              "label": "front"
+            }
+          ],
+          "frame_index": 258,
+          "timestamp_s": 8.6
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8974,
+              "label": "front"
+            }
+          ],
+          "frame_index": 264,
+          "timestamp_s": 8.8
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8984,
+              "label": "front"
+            },
+            {
+              "confidence": 0.3786,
+              "label": "front"
+            }
+          ],
+          "frame_index": 270,
+          "timestamp_s": 9.0
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8924,
+              "label": "front"
+            }
+          ],
+          "frame_index": 276,
+          "timestamp_s": 9.2
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8783,
+              "label": "front"
+            }
+          ],
+          "frame_index": 282,
+          "timestamp_s": 9.4
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.8796,
+              "label": "front"
+            }
+          ],
+          "frame_index": 288,
+          "timestamp_s": 9.6
+        }
+      ],
+      "back_min_inter_det_gap_sr_s": null,
+      "back_rotation_deg": 0,
+      "back_upright_in_cache": true,
+      "category": "ENGINE_BOUNDARY",
+      "cohort": "engine_events",
+      "event_id": "engine_events/event_001",
+      "front_cls_counts": {
+        "front": 0,
+        "rear": 0,
+        "side": 6
+      },
+      "front_det_frames": 6,
+      "front_detections_raw": [
+        {
+          "detections": [
+            {
+              "confidence": 0.5215,
+              "label": "side"
+            }
+          ],
+          "frame_index": 36,
+          "timestamp_s": 1.2017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4337,
+              "label": "side"
+            }
+          ],
+          "frame_index": 42,
+          "timestamp_s": 1.4017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.6592,
+              "label": "side"
+            }
+          ],
+          "frame_index": 48,
+          "timestamp_s": 1.6017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.3705,
+              "label": "side"
+            }
+          ],
+          "frame_index": 54,
+          "timestamp_s": 1.8017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.4293,
+              "label": "side"
+            }
+          ],
+          "frame_index": 60,
+          "timestamp_s": 2.0017
+        },
+        {
+          "detections": [
+            {
+              "confidence": 0.3518,
+              "label": "side"
+            }
+          ],
+          "frame_index": 66,
+          "timestamp_s": 2.2017
+        }
+      ],
+      "front_min_inter_det_gap_any_s": 0.2,
+      "front_rotation_deg": -90,
+      "front_upright_in_cache": true,
+      "gt_T0_s": 0.0,
+      "gt_T2_s": 0.0,
+      "gt_T4_s": null,
+      "gt_horn_onset_s": null,
+      "recoverability_verdict": "SOLITARY_LOCOMOTIVE_BOUNDARY_CASE (upright db40305): Front=6f (mc=6, F=0/S=6/R=0); Back=13f (mc=12, F=14/S=0/R=0); Audio max=0.1428."
+    }
+  ],
+  "missed_f6_count": 0,
+  "missed_f6_event_ids": [],
+  "orientation_corrected": true,
+  "orientation_finding": {
+    "all_8_missed_back_minus90_deg": false,
+    "all_8_missed_front_minus90_deg": false,
+    "zero_deg_upright_train_streams_detected": "4/4 (100%: front event_023=196f, back event_021=230f, event_022=228f, event_023=208f)"
+  },
+  "qualification": "Exploratory evaluation against researcher-adopted AI-assisted reference annotations.",
+  "schema_version": "failed-events-forensic-diagnosis/1.0"
+}

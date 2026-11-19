@@ -24,11 +24,11 @@ limitations:
 - Reads performed by the repository's tests/conftest.py registry fingerprint are exempt (results/experiment_registry.jsonl,
   a text run-log).
 summary:
-  total_test_files: 183
+  total_test_files: 184
   synthetic_only: 116
   metadata_only: 29
   model_checkpoint_access: 16
-  processed_data_access: 7
+  processed_data_access: 8
   raw_media_access: 5
   unknown: 10
   safe_for_synthetic_runner: 145
@@ -1014,7 +1014,7 @@ test_files:
       processed data or results were requested. NOTE: the file spawns a child process the guard cannot
       observe.'
     safe_for_synthetic_runner: false
-    sha256: 768997516aeb4724ba5a16962de4fc7d519062b74e9c9f287b9ca93558434cf9
+    sha256: b2b32b166b3a8fe1b490bfddea35585fc03c70536f2ae3eec79b98f7b7760d90
     spawns_child_process: true
     static_hints:
     - .mov
@@ -2782,6 +2782,30 @@ test_files:
       errors: 0
       skipped: 0
       passed: 13
+  tests/unit/test_mission11_upright_deliverables.py:
+    access_dirs:
+    - results/upright_27_event_evaluation
+    - results/upright_inference_v2
+    access_paths:
+    - results/upright_27_event_evaluation/authoritative_27_event_results_table.csv
+    - results/upright_27_event_evaluation/baseline_vs_upright_comparison.json
+    - results/upright_inference_v2/UPRIGHT_INFERENCE_MANIFEST.json
+    blocked_attempts:
+      PROCESSED_DATA: 3
+    category: PROCESSED_DATA_ACCESS
+    child_processes_guarded: false
+    evidence: dynamic_run_under_read_blocking_guard
+    reason: Attempted 3 blocked read(s) of PROCESSED_DATA locations; e.g. results/upright_inference_v2/UPRIGHT_INFERENCE_MANIFEST.json
+      via io.open in test_upright_inference_manifest_covers_all_54_verified_streams (call).
+    safe_for_synthetic_runner: false
+    sha256: bba8acac6d20f50ba2ef04b3c49843680282019123de630dc2c8b12beced3135
+    spawns_child_process: false
+    static_hints: []
+    tests:
+      failed: 3
+      errors: 0
+      skipped: 0
+      passed: 0
   tests/unit/test_mission2_pipeline_integrity.py:
     access_dirs:
     - configs

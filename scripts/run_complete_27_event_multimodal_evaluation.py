@@ -21,11 +21,13 @@ Mission 9 Upgrade:
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import csv
 import datetime as dt
 import hashlib
 import json
 import math
+import os
 import sys
 import tempfile
 from dataclasses import replace
@@ -48,8 +50,14 @@ from exploratory_common import (  # noqa: E402
     read_verified_utf8_text,
     wilson_ci_95,
 )
+
 from railway_detection.data.audio_extractor import extract_audio_from_video  # noqa: E402
 from railway_detection.data.sync import SyncAligner  # noqa: E402
+from railway_detection.experiments.cache_provenance import (  # noqa: E402
+    build_audio_preprocessing_config,
+    build_vision_preprocessing_config,
+)
+from railway_detection.experiments.frozen_config import compute_file_sha256  # noqa: E402
 from railway_detection.experiments.layer_b_processor import (  # noqa: E402
     LayerBEventProcessor,
     serialize_evidence_record,
@@ -61,7 +69,10 @@ from railway_detection.fusion.decision_engine_v3_four_layer import (  # noqa: E4
 from railway_detection.fusion.rules_v3_four_layer import SideMovementTracker  # noqa: E402
 from railway_detection.safety import media_guard  # noqa: E402
 from railway_detection.safety.media_guard import MediaAccessAuthorizationError  # noqa: E402
-from railway_detection.simulation.runner import EventSimulationRunner, SimulationRunResult  # noqa: E402
+from railway_detection.simulation.runner import (  # noqa: E402
+    EventSimulationRunner,
+    SimulationRunResult,
+)
 from railway_detection.vision.video import SOURCE_DISPLAY_ROTATION_POLICY  # noqa: E402
 
 VISION_CACHE_PROVENANCE = (
@@ -187,17 +198,18 @@ def _write_utf8_jsonl_and_sha256(path: Path, rows: list[dict[str, Any]], repo_ro
     return rel, digest
 
 
+def _hash_authorized_media_file(path: Path) -> str:
+    """Compute SHA-256 of an authorized raw media file after enforcing HASH_RAW_MEDIA guard."""
+    media_guard.require_media_authorization(path, "HASH_RAW_MEDIA", declared_media=True)
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def _audio_records_to_descriptive_rows(records: list[Any], *, threshold: float) -> list[dict[str, Any]]:
     """Convert AudioEvidencePipeline EvidenceRecords into canonical descriptive window rows."""
     rows: list[dict[str, Any]] = []
     for idx, rec in enumerate(records):
         if not rec.available:
             raise RuntimeError(f"Audio inference failed on extracted stream: {rec.metadata}")
-        wid = str(rec.metadata.get("window_id", f"win_{idx:04d}"))
-        try:
-            win_idx = int(wid.split("_")[-1])
-        except ValueError:
-            win_idx = idx
         start_s = float(rec.metadata.get("window_start_s", max(0.0, float(rec.timestamp_s) - 1.0)))
         end_s = float(rec.metadata.get("window_end_s", float(rec.timestamp_s)))
         prob = (
@@ -207,7 +219,7 @@ def _audio_records_to_descriptive_rows(records: list[Any], *, threshold: float) 
         )
         rows.append(
             {
-                "window_index": win_idx,
+                "window_index": idx,
                 "start_sec": round(start_s, 6),
                 "end_sec": round(end_s, 6),
                 "horn_confidence": prob,
@@ -361,6 +373,9 @@ def _process_upright_event_streams(
         "event_id": eid,
         "cohort": cohort,
         "raw_event_id": event_id,
+        "execution_status": "SUCCESS",
+        "errors": [],
+        "timestamp_basis": "source_pts",
         "front_frames": len(f_recs),
         "back_frames": len(b_recs),
         "audio_windows": len(a_desc_rows),
@@ -377,70 +392,215 @@ def _process_upright_event_streams(
     }
 
 
+_WORKER_STATE: dict[str, Any] = {}
+
+
+def _init_upright_worker(torch_threads: int) -> None:
+    """Initialize process-local frozen LayerBEventProcessor and thread count."""
+    import torch
+
+    torch.set_num_threads(max(1, int(torch_threads)))
+    ctx_cfg = load_verified_context(REPO_ROOT).frozen_config
+    _WORKER_STATE["config"] = ctx_cfg
+    _WORKER_STATE["processor"] = LayerBEventProcessor(config=ctx_cfg, repo_root=REPO_ROOT)
+
+
+def _execute_one_event_task(task: dict[str, Any]) -> dict[str, Any]:
+    """Worker-safe entry point processing or resuming one event under full media guards."""
+    pred_dir = Path(task["pred_dir"])
+    eid = str(task["eid"])
+    slug = eid.replace("/", "_")
+    ckpt_manifest = pred_dir / f"{slug}_event_manifest.json"
+
+    if task.get("resume") and ckpt_manifest.exists():
+        cached = json.loads(ckpt_manifest.read_text(encoding="utf-8"))
+        src = cached.get("source_media", {})
+        if (
+            src.get("front_sha256") == task["expected_f_sha"]
+            and src.get("back_sha256") == task["expected_b_sha"]
+            and cached.get("execution_status") == "SUCCESS"
+        ):
+            try:
+                read_verified_utf8_text(REPO_ROOT, cached["front_path"], expected_sha256=cached["front_sha256"])
+                read_verified_utf8_text(REPO_ROOT, cached["back_path"], expected_sha256=cached["back_sha256"])
+                read_verified_utf8_text(REPO_ROOT, cached["audio_path"], expected_sha256=cached["audio_sha256"])
+                return cached
+            except Exception:
+                pass
+
+    cfg = _WORKER_STATE.get("config") or load_verified_context(REPO_ROOT).frozen_config
+    proc = _WORKER_STATE.get("processor") or LayerBEventProcessor(config=cfg, repo_root=REPO_ROOT)
+
+    f_mov = Path(task["f_mov"])
+    b_mov = Path(task["b_mov"])
+    actual_f_sha = _hash_authorized_media_file(f_mov)
+    actual_b_sha = _hash_authorized_media_file(b_mov)
+    if actual_f_sha != task["expected_f_sha"] or actual_b_sha != task["expected_b_sha"]:
+        raise RuntimeError(
+            f"Source media SHA-256 mismatch for {eid}: "
+            f"front={actual_f_sha} vs {task['expected_f_sha']}, back={actual_b_sha} vs {task['expected_b_sha']}"
+        )
+
+    entry = _process_upright_event_streams(
+        proc,
+        cfg,
+        eid=eid,
+        cohort=str(task["cohort"]),
+        event_id=str(task["event_id"]),
+        front_mov=f_mov,
+        back_mov=b_mov,
+        pred_dir=pred_dir,
+        expected_front_rot=task["expected_front_rot"],
+        expected_back_rot=task["expected_back_rot"],
+        repo_root=REPO_ROOT,
+    )
+    entry["source_media"] = {
+        "front_path": task["front_rel"],
+        "front_sha256": actual_f_sha,
+        "front_sha256_verified_against_inventory": True,
+        "back_path": task["back_rel"],
+        "back_sha256": actual_b_sha,
+        "back_sha256_verified_against_inventory": True,
+    }
+    ckpt_manifest.write_text(json.dumps(entry, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return entry
+
+
 def run_upright_raw_inference(
     ctx: VerifiedExploratoryContext,
     *,
     output_dir: Path = UPRIGHT_OUT_DIR,
     processor: LayerBEventProcessor | None = None,
+    workers: int = 4,
+    resume: bool = False,
 ) -> dict[str, Any]:
     """Execute owner-authorized upright db40305 YOLOv8n + Audio V3 inference across all 27 events.
 
     Fails closed unless data/governance/AUTH-MEDIA-ACCESS.json exists and passes
-    media_guard checks for READ_RAW_MEDIA, INFERENCE, AUDIO_EXTRACTION, and FEATURE_EXTRACTION.
+    media_guard checks for READ_RAW_MEDIA, INFERENCE, AUDIO_EXTRACTION, FEATURE_EXTRACTION, and HASH_RAW_MEDIA.
     """
-    for required_op in ("INFERENCE", "READ_RAW_MEDIA", "AUDIO_EXTRACTION", "FEATURE_EXTRACTION"):
+    for required_op in (
+        "INFERENCE",
+        "READ_RAW_MEDIA",
+        "AUDIO_EXTRACTION",
+        "FEATURE_EXTRACTION",
+        "HASH_RAW_MEDIA",
+    ):
         media_guard.precheck_operation_authorized(required_op, repo_root=REPO_ROOT)
 
     inventory = json.loads((REPO_ROOT / "docs/PHASE11_3_REVIEW_INVENTORY.json").read_text(encoding="utf-8"))
     rot_map = _load_supporting_lookup()["rot_map"]
-    active_processor = processor or LayerBEventProcessor(config=ctx.frozen_config, repo_root=REPO_ROOT)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     pred_dir = output_dir / "predictions"
     pred_dir.mkdir(parents=True, exist_ok=True)
 
-    manifest_entries: list[dict[str, Any]] = []
-    for idx, eid in enumerate(ctx.event_order, start=1):
+    tasks: list[dict[str, Any]] = []
+    for eid in ctx.event_order:
         ev_info = inventory["events"][eid]
-        f_mov = REPO_ROOT / ev_info["raw_media"]["front"]["path"]
-        b_mov = REPO_ROOT / ev_info["raw_media"]["back"]["path"]
-        entry = _process_upright_event_streams(
-            active_processor,
-            ctx.frozen_config,
-            eid=eid,
-            cohort=str(ev_info["cohort"]),
-            event_id=str(ev_info["event_id"]),
-            front_mov=f_mov,
-            back_mov=b_mov,
-            pred_dir=pred_dir,
-            expected_front_rot=rot_map[(eid, "front")]["rotation_deg"],
-            expected_back_rot=rot_map[(eid, "back")]["rotation_deg"],
-            repo_root=REPO_ROOT,
+        tasks.append(
+            {
+                "eid": eid,
+                "cohort": str(ev_info["cohort"]),
+                "event_id": str(ev_info["event_id"]),
+                "front_rel": str(ev_info["raw_media"]["front"]["path"]),
+                "back_rel": str(ev_info["raw_media"]["back"]["path"]),
+                "f_mov": str(REPO_ROOT / ev_info["raw_media"]["front"]["path"]),
+                "b_mov": str(REPO_ROOT / ev_info["raw_media"]["back"]["path"]),
+                "expected_f_sha": str(ev_info["raw_media"]["front"]["sha256"]),
+                "expected_b_sha": str(ev_info["raw_media"]["back"]["sha256"]),
+                "expected_front_rot": rot_map[(eid, "front")]["rotation_deg"],
+                "expected_back_rot": rot_map[(eid, "back")]["rotation_deg"],
+                "pred_dir": str(pred_dir),
+                "resume": bool(resume),
+            }
         )
-        print(
-            f"[UPRIGHT {idx:02d}/{len(ctx.event_order):02d}] {eid} | "
-            f"front={entry['front_frames']}f/{entry['front_orientation']['total_objects']}obj "
-            f"(rot={entry['front_orientation']['display_rotation_degrees_observed']}) | "
-            f"back={entry['back_frames']}f/{entry['back_orientation']['total_objects']}obj "
-            f"(rot={entry['back_orientation']['display_rotation_degrees_observed']}) | "
-            f"audio={entry['audio_windows']}w",
-            flush=True,
-        )
-        manifest_entries.append(entry)
+
+    entries_by_eid: dict[str, dict[str, Any]] = {}
+    effective_workers = 1 if processor is not None else max(1, int(workers))
+    if effective_workers == 1:
+        if processor is not None:
+            _WORKER_STATE["config"] = ctx.frozen_config
+            _WORKER_STATE["processor"] = processor
+        else:
+            _init_upright_worker(torch_threads=min(4, os.cpu_count() or 4))
+        for idx, task in enumerate(tasks, start=1):
+            entry = _execute_one_event_task(task)
+            entries_by_eid[entry["event_id"]] = entry
+            print(
+                f"[UPRIGHT {idx:02d}/{len(tasks):02d}] {entry['event_id']} | "
+                f"front={entry['front_frames']}f/{entry['front_orientation']['total_objects']}obj "
+                f"(rot={entry['front_orientation']['display_rotation_degrees_observed']}) | "
+                f"back={entry['back_frames']}f/{entry['back_orientation']['total_objects']}obj "
+                f"(rot={entry['back_orientation']['display_rotation_degrees_observed']}) | "
+                f"audio={entry['audio_windows']}w",
+                flush=True,
+            )
+    else:
+        threads_per_worker = max(1, (os.cpu_count() or 8) // effective_workers)
+        with concurrent.futures.ProcessPoolExecutor(
+            max_workers=effective_workers,
+            initializer=_init_upright_worker,
+            initargs=(threads_per_worker,),
+        ) as pool:
+            future_map = {pool.submit(_execute_one_event_task, task): task["eid"] for task in tasks}
+            done_count = 0
+            for fut in concurrent.futures.as_completed(future_map):
+                done_count += 1
+                entry = fut.result()
+                entries_by_eid[entry["event_id"]] = entry
+                print(
+                    f"[UPRIGHT {done_count:02d}/{len(tasks):02d}] {entry['event_id']} | "
+                    f"front={entry['front_frames']}f/{entry['front_orientation']['total_objects']}obj "
+                    f"(rot={entry['front_orientation']['display_rotation_degrees_observed']}) | "
+                    f"back={entry['back_frames']}f/{entry['back_orientation']['total_objects']}obj "
+                    f"(rot={entry['back_orientation']['display_rotation_degrees_observed']}) | "
+                    f"audio={entry['audio_windows']}w",
+                    flush=True,
+                )
+
+    manifest_entries = [entries_by_eid[eid] for eid in ctx.event_order]
 
     auth_status = check_media_authorization_status()
+    vision_ckpt_sha = compute_file_sha256(REPO_ROOT / ctx.frozen_config.checkpoints.vision.path)
+    audio_ckpt_sha = compute_file_sha256(REPO_ROOT / ctx.frozen_config.checkpoints.audio_v3.path)
+    if vision_ckpt_sha != ctx.frozen_config.checkpoints.vision.expected_sha256:
+        raise RuntimeError(f"Vision checkpoint SHA mismatch: {vision_ckpt_sha}")
+    if audio_ckpt_sha != ctx.frozen_config.checkpoints.audio_v3.expected_sha256:
+        raise RuntimeError(f"Audio checkpoint SHA mismatch: {audio_ckpt_sha}")
+
     manifest = {
         "schema_version": "upright-raw-inference-manifest/2.0",
         "generated_at_utc": dt.datetime.now(dt.UTC).isoformat(),
+        "execution_status": "SUCCESS",
+        "errors": [],
+        "preprocessing_version": {
+            "vision": build_vision_preprocessing_config(ctx.frozen_config),
+            "audio": build_audio_preprocessing_config(ctx.frozen_config),
+        },
         "orientation_policy": SOURCE_DISPLAY_ROTATION_POLICY,
         "apply_display_rotation": True,
+        "timestamp_basis": "source_pts",
+        "inference_parameters": {
+            "vision_sampling_fps": float(ctx.frozen_config.vision.sampling_fps),
+            "vision_conf_threshold": float(ctx.frozen_config.vision.confidence_threshold_approach),
+            "vision_image_size": list(ctx.frozen_config.vision.image_size),
+            "audio_sample_rate": int(ctx.frozen_config.audio.sample_rate),
+            "audio_window_s": float(ctx.frozen_config.audio.window_s),
+            "audio_hop_s": float(ctx.frozen_config.audio.hop_s),
+            "audio_log_scale": "natural",
+            "audio_log_epsilon": 1e-10,
+            "audio_operating_threshold": float(ctx.frozen_config.audio.operating_threshold),
+            "seed": int(ctx.frozen_config.experiment.seed),
+            "device": str(ctx.frozen_config.experiment.device),
+        },
         "authorization": auth_status,
         "frozen_config_sha256": ctx.artifact_hashes.get("configs/frozen_experiment_v1.yaml"),
         "checkpoints": {
             "vision_path": ctx.frozen_config.checkpoints.vision.path,
-            "vision_sha256": ctx.frozen_config.checkpoints.vision.expected_sha256,
+            "vision_sha256": vision_ckpt_sha,
             "audio_path": ctx.frozen_config.checkpoints.audio_v3.path,
-            "audio_sha256": ctx.frozen_config.checkpoints.audio_v3.expected_sha256,
+            "audio_sha256": audio_ckpt_sha,
         },
         "total_events": len(manifest_entries),
         "total_streams_verified": 2 * len(manifest_entries),
@@ -494,7 +654,7 @@ def _exact_mcnemar(a_preds: list[bool], b_preds: list[bool], truths: list[bool])
     """Exact two-sided binomial McNemar test on paired correctness of predictor A vs B."""
     b01 = 0
     b10 = 0
-    for pa, pb, yt in zip(a_preds, b_preds, truths):
+    for pa, pb, yt in zip(a_preds, b_preds, truths, strict=True):
         ra = pa == yt
         rb = pb == yt
         if not ra and rb:
@@ -519,7 +679,7 @@ def _exact_mcnemar(a_preds: list[bool], b_preds: list[bool], truths: list[bool])
 def _parse_vision_stream(jsonl_path: Path, threshold: float = 0.35) -> dict[str, Any]:
     """Parse precomputed vision JSONL cache into per-class counts, timestamps, confidences, and gaps."""
     frames: list[dict[str, Any]] = []
-    with open(jsonl_path, "r", encoding="utf-8", newline="") as handle:
+    with open(jsonl_path, encoding="utf-8", newline="") as handle:
         for line in handle:
             if line.strip():
                 frames.append(json.loads(line))
@@ -635,7 +795,7 @@ def _parse_vision_stream(jsonl_path: Path, threshold: float = 0.35) -> dict[str,
 def _parse_audio_stream(jsonl_path: Path) -> dict[str, Any]:
     """Parse precomputed audio window JSONL cache across frozen and hysteresis thresholds."""
     windows: list[dict[str, Any]] = []
-    with open(jsonl_path, "r", encoding="utf-8", newline="") as handle:
+    with open(jsonl_path, encoding="utf-8", newline="") as handle:
         for line in handle:
             if line.strip():
                 windows.append(json.loads(line))
@@ -1020,7 +1180,11 @@ def _failure_or_recovery_reason(row: dict[str, Any], *, orientation_corrected: b
             parts.append(f"back_false_front={row['back_cls_front']}obj")
         if row["audio_pos_037"] > 0:
             parts.append(f"audio_037={row['audio_pos_037']}w(r75={row['audio_max_run_075']})")
-        return "TN under V2/F5/F6/F7; " + (", ".join(parts) if parts else "clean")
+        triggered_v2_f6 = bool(
+            row.get("pred_V2_front_L1_confirm2") or row.get("pred_F6_full_multimodal_dual_sr_or_audio_075_k2")
+        )
+        prefix = "FP under V2/F5/F6/F7 (TN under V5/A3/F8); " if triggered_v2_f6 else "TN under V2/F5/F6/F7; "
+        return prefix + (", ".join(parts) if parts else "clean")
 
     if row["cohort"] == "engine_events":
         if not orientation_corrected:
@@ -1416,6 +1580,7 @@ def _evaluate_context_suite(
     upright_manifest: dict[str, Any] | None,
     orientation_corrected: bool,
     report_title: str = "Complete 27-Event Multimodal Experimental Evaluation, Causal Gate Control & Failure Forensics",
+    write_outputs: bool = True,
 ) -> dict[str, Any]:
     """Run full 27-event evaluation, causal FSM simulation, and forensics on one context."""
     rot_map = support["rot_map"]
@@ -1594,6 +1759,7 @@ def _evaluate_context_suite(
             "front_mean_conf": f_stats["mean_conf"],
             "front_max_conf": f_stats["max_conf"],
             "front_first_det_s": f_stats["first_det_s"],
+            "front_first_consec2_s": f_stats["first_consec2_any_s"],
             "front_last_det_s": f_stats["last_det_s"],
             "front_max_consec": f_stats["max_consec_any"],
             "front_min_inter_det_gap_any_s": f_stats["min_inter_det_gap_any_s"],
@@ -1612,6 +1778,7 @@ def _evaluate_context_suite(
             "back_mean_conf": b_stats["mean_conf"],
             "back_max_conf": b_stats["max_conf"],
             "back_first_det_s": b_stats["first_det_s"],
+            "back_first_consec2_sr_s": b_stats["first_consec2_sr_s"],
             "back_last_det_s": b_stats["last_det_s"],
             "back_max_consec": b_stats["max_consec_any"],
             "back_max_consec_side_rear": b_stats["max_consec_side_rear"],
@@ -1748,42 +1915,42 @@ def _evaluate_context_suite(
         per_event_rows, f_details, b_details, a_details, orientation_corrected=orientation_corrected
     )
 
-    output_dir.mkdir(parents=True, exist_ok=True)
-    csv_path = output_dir / "event_by_event_27_multimodal_evaluation.csv"
-    with open(csv_path, "w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(per_event_rows[0].keys()))
-        writer.writeheader()
-        writer.writerows(per_event_rows)
+    if write_outputs:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        csv_path = output_dir / "event_by_event_27_multimodal_evaluation.csv"
+        with open(csv_path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(per_event_rows[0].keys()))
+            writer.writeheader()
+            writer.writerows(per_event_rows)
 
-    provenance_doc: dict[str, Any] = {
-        "vision": vision_provenance,
-        "audio": audio_provenance,
-        "reference": REFERENCE_PROVENANCE,
-        "raw_media_accessed": bool(raw_media_accessed),
-        "media_authorization_status": auth_status,
-        "upright_inference_executed": upright_manifest is not None,
-    }
-    if orientation_corrected:
-        provenance_doc["orientation_corrected"] = True
+        provenance_doc: dict[str, Any] = {
+            "vision": vision_provenance,
+            "audio": audio_provenance,
+            "reference": REFERENCE_PROVENANCE,
+            "raw_media_accessed": bool(raw_media_accessed),
+            "media_authorization_status": auth_status,
+            "upright_inference_executed": upright_manifest is not None,
+        }
+        if orientation_corrected:
+            provenance_doc["orientation_corrected"] = True
 
-    json_events_path = output_dir / "event_by_event_27_multimodal_evaluation.json"
-    json_events_path.write_text(
-        json.dumps(
-            {
-                "schema_version": "complete-27-event-multimodal-evaluation/2.0",
-                "qualification": EXPLORATORY_LABEL,
-                "provenance": provenance_doc,
-                "n_events": len(per_event_rows),
-                "events": per_event_rows,
-            },
-            indent=2,
-            sort_keys=True,
+        json_events_path = output_dir / "event_by_event_27_multimodal_evaluation.json"
+        json_events_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": "complete-27-event-multimodal-evaluation/2.0",
+                    "qualification": EXPLORATORY_LABEL,
+                    "provenance": provenance_doc,
+                    "n_events": len(per_event_rows),
+                    "events": per_event_rows,
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n",
+            encoding="utf-8",
         )
-        + "\n",
-        encoding="utf-8",
-    )
 
-    ablation_json_path = output_dir / "modality_and_fusion_ablation_metrics.json"
     ablation_payload: dict[str, Any] = {
         "schema_version": "multimodal-ablation-metrics/2.0",
         "qualification": EXPLORATORY_LABEL,
@@ -1797,71 +1964,74 @@ def _evaluate_context_suite(
     }
     if orientation_corrected:
         ablation_payload["orientation_corrected"] = True
-    ablation_json_path.write_text(json.dumps(ablation_payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    ablation_csv_path = output_dir / "modality_and_fusion_ablation_metrics.csv"
-    ab_rows = [
-        {
-            "configuration": k,
-            "fusion_type": view1[k]["fusion_type"],
-            "threshold_provenance": view1[k]["threshold_provenance"],
-            "v1_train23_vs_nt3_n": view1[k]["n_events"],
-            "v1_tp": view1[k]["tp"],
-            "v1_fn": view1[k]["fn"],
-            "v1_fp_no_train": view1[k]["fp"],
-            "v1_tn_no_train": view1[k]["tn"],
-            "engine_001_detected": view1[k]["engine_001_detected"],
-            "v1_precision": view1[k]["precision"],
-            "v1_recall": view1[k]["recall"],
-            "v1_specificity": view1[k]["specificity"],
-            "v1_f1": view1[k]["f1"],
-            "v1_accuracy": view1[k]["accuracy"],
-            "v1_mcnemar_p_vs_front_L1": view1[k]["mcnemar_vs_baseline"]["exact_p_value"],
-            "v3_rail24_tp": view3[k]["tp"],
-            "v3_rail24_recall": view3[k]["recall"],
-            "v3_rail24_f1": view3[k]["f1"],
-            "events_gained_over_front_L1": ";".join(view1[k]["events_gained_over_front_L1"]),
-            "no_train_false_positive_events": ";".join(view1[k]["false_positive_events"]),
+    if write_outputs:
+        ablation_json_path = output_dir / "modality_and_fusion_ablation_metrics.json"
+        ablation_json_path.write_text(json.dumps(ablation_payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+        ablation_csv_path = output_dir / "modality_and_fusion_ablation_metrics.csv"
+        ab_rows = [
+            {
+                "configuration": k,
+                "fusion_type": view1[k]["fusion_type"],
+                "threshold_provenance": view1[k]["threshold_provenance"],
+                "v1_train23_vs_nt3_n": view1[k]["n_events"],
+                "v1_tp": view1[k]["tp"],
+                "v1_fn": view1[k]["fn"],
+                "v1_fp_no_train": view1[k]["fp"],
+                "v1_tn_no_train": view1[k]["tn"],
+                "engine_001_detected": view1[k]["engine_001_detected"],
+                "v1_precision": view1[k]["precision"],
+                "v1_recall": view1[k]["recall"],
+                "v1_specificity": view1[k]["specificity"],
+                "v1_f1": view1[k]["f1"],
+                "v1_accuracy": view1[k]["accuracy"],
+                "v1_mcnemar_p_vs_front_L1": view1[k]["mcnemar_vs_baseline"]["exact_p_value"],
+                "v3_rail24_tp": view3[k]["tp"],
+                "v3_rail24_recall": view3[k]["recall"],
+                "v3_rail24_f1": view3[k]["f1"],
+                "events_gained_over_front_L1": ";".join(view1[k]["events_gained_over_front_L1"]),
+                "no_train_false_positive_events": ";".join(view1[k]["false_positive_events"]),
+            }
+            for k in view1
+        ]
+        with open(ablation_csv_path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(ab_rows[0].keys()))
+            writer.writeheader()
+            writer.writerows(ab_rows)
+
+        fsm_payload: dict[str, Any] = {
+            "schema_version": "causal-fsm-gate-timing-summary/1.0",
+            "qualification": EXPLORATORY_LABEL,
+            "summaries": fsm_summaries,
+            "per_config_events": fsm_results_by_cfg,
         }
-        for k in view1
-    ]
-    with open(ablation_csv_path, "w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(ab_rows[0].keys()))
-        writer.writeheader()
-        writer.writerows(ab_rows)
-
-    fsm_payload: dict[str, Any] = {
-        "schema_version": "causal-fsm-gate-timing-summary/1.0",
-        "qualification": EXPLORATORY_LABEL,
-        "summaries": fsm_summaries,
-        "per_config_events": fsm_results_by_cfg,
-    }
-    if orientation_corrected:
-        fsm_payload["orientation_corrected"] = True
-    fsm_json_path = output_dir / "causal_fsm_gate_timing_summary.json"
-    fsm_json_path.write_text(
-        json.dumps(fsm_payload, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
-
-    fsm_csv_rows = [
-        {"fsm_configuration": k, **{sk: sv for sk, sv in s.items() if not isinstance(sv, (dict, list))}}
-        for k, s in fsm_summaries.items()
-    ]
-    with open(output_dir / "causal_fsm_gate_timing_summary.csv", "w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(fsm_csv_rows[0].keys()))
-        writer.writeheader()
-        writer.writerows(fsm_csv_rows)
-
-    forensics_path = output_dir / "failed_events_forensic_diagnosis.json"
-    forensics_path.write_text(json.dumps(forensics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
-    if not orientation_corrected:
-        report_path = output_dir / "COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md"
-        report_md = _build_markdown_report(
-            per_event_rows, view1, view2, view3, horn_configs, fsm_summaries, auth_status, forensics, model_specs, support
+        if orientation_corrected:
+            fsm_payload["orientation_corrected"] = True
+        fsm_json_path = output_dir / "causal_fsm_gate_timing_summary.json"
+        fsm_json_path.write_text(
+            json.dumps(fsm_payload, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
         )
-        report_path.write_text(report_md, encoding="utf-8")
+
+        fsm_csv_rows = [
+            {"fsm_configuration": k, **{sk: sv for sk, sv in s.items() if not isinstance(sv, (dict, list))}}
+            for k, s in fsm_summaries.items()
+        ]
+        with open(output_dir / "causal_fsm_gate_timing_summary.csv", "w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(fsm_csv_rows[0].keys()))
+            writer.writeheader()
+            writer.writerows(fsm_csv_rows)
+
+        forensics_path = output_dir / "failed_events_forensic_diagnosis.json"
+        forensics_path.write_text(json.dumps(forensics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+        if not orientation_corrected:
+            report_path = output_dir / "COMPLETE_27_EVENT_MULTIMODAL_EXPERIMENT_REPORT.md"
+            report_md = _build_markdown_report(
+                per_event_rows, view1, view2, view3, horn_configs, fsm_summaries, auth_status, forensics, model_specs, support
+            )
+            report_path.write_text(report_md, encoding="utf-8")
 
     return {
         "per_event_rows": per_event_rows,
@@ -2047,6 +2217,165 @@ def _compare_baseline_and_upright(
     ]
 
     audio_invariance = _compute_audio_invariance_summary(base_ctx, upright_ctx)
+    session_comparison: dict[str, dict[str, Any]] = {}
+    for sess in ("Session 1", "Session 2"):
+        s_trains = [eid for eid in upright_ctx.event_order if u_rows[eid]["cohort"] == "train_events" and u_rows[eid]["recording_session"] == sess]
+        s_all = [eid for eid in upright_ctx.event_order if u_rows[eid]["recording_session"] == sess]
+        session_comparison[sess] = {
+            "n_total_events": len(s_all),
+            "n_train_events": len(s_trains),
+            "baseline_V2_train_tp": sum(1 for e in s_trains if b_rows[e]["pred_V2_front_L1_confirm2"]),
+            "upright_V2_train_tp": sum(1 for e in s_trains if u_rows[e]["pred_V2_front_L1_confirm2"]),
+            "baseline_V5_back_sr_tp": sum(1 for e in s_trains if b_rows[e]["pred_V5_back_confirm2_side_rear"]),
+            "upright_V5_back_sr_tp": sum(1 for e in s_trains if u_rows[e]["pred_V5_back_confirm2_side_rear"]),
+            "baseline_F6_train_tp": sum(1 for e in s_trains if b_rows[e]["pred_F6_full_multimodal_dual_sr_or_audio_075_k2"]),
+            "upright_F6_train_tp": sum(1 for e in s_trains if u_rows[e]["pred_F6_full_multimodal_dual_sr_or_audio_075_k2"]),
+            "upright_F7_train_tp": sum(1 for e in s_trains if u_rows[e]["pred_F7_exploratory_2of3_multimodal"]),
+        }
+    no_train_audio_audit = [
+        {
+            "event_id": eid,
+            "audio_pos_037": u_rows[eid]["audio_pos_037"],
+            "audio_pos_075": u_rows[eid]["audio_pos_075"],
+            "audio_max_run_075": u_rows[eid]["audio_max_run_075"],
+            "audio_max_score": u_rows[eid]["audio_max_score"],
+            "audio_peak_s": u_rows[eid]["audio_peak_s"],
+            "fp_at_frozen_tau037_k1": bool(u_rows[eid]["pred_A1_audio_037_k1"]),
+            "fp_at_hysteresis_tau075_k2": bool(u_rows[eid]["pred_A3_audio_075_k2"]),
+        }
+        for eid in upright_ctx.event_order
+        if u_rows[eid]["cohort"] == "no_train_events"
+    ]
+
+    def _eval_quorum_set(rows_map: dict[str, dict[str, Any]], pred_fn: Any) -> dict[str, Any]:
+        tr = [e for e in upright_ctx.event_order if rows_map[e]["cohort"] == "train_events"]
+        nt = [e for e in upright_ctx.event_order if rows_map[e]["cohort"] == "no_train_events"]
+        eng_id = next(e for e in upright_ctx.event_order if rows_map[e]["cohort"] == "engine_events")
+        tp = sum(1 for e in tr if pred_fn(rows_map[e]))
+        fn = len(tr) - tp
+        fp = sum(1 for e in nt if pred_fn(rows_map[e]))
+        tn = len(nt) - fp
+        eng_det = bool(pred_fn(rows_map[eng_id]))
+        p = tp / (tp + fp) if (tp + fp) else 0.0
+        r_v = tp / len(tr)
+        s_v = tn / len(nt)
+        f1_v = (2.0 * p * r_v / (p + r_v)) if (p + r_v) else 0.0
+        tp_v3 = tp + (1 if eng_det else 0)
+        p_v3 = tp_v3 / (tp_v3 + fp) if (tp_v3 + fp) else 0.0
+        r_v3 = tp_v3 / (len(tr) + 1)
+        f1_v3 = (2.0 * p_v3 * r_v3 / (p_v3 + r_v3)) if (p_v3 + r_v3) else 0.0
+        return {
+            "tp": tp,
+            "fn": fn,
+            "fp_no_train": fp,
+            "tn_no_train": tn,
+            "engine_001_detected": eng_det,
+            "precision": round(p, 4),
+            "recall": round(r_v, 4),
+            "specificity": round(s_v, 4),
+            "f1": round(f1_v, 4),
+            "rail24_tp": tp_v3,
+            "rail24_f1": round(f1_v3, 4),
+        }
+
+    def _f8_fn(row: dict[str, Any]) -> bool:
+        votes = (
+            int(bool(row["pred_V2_front_L1_confirm2"]))
+            + int(bool(row["pred_V5_back_confirm2_side_rear"]))
+            + int(bool(row["pred_A3_audio_075_k2"]))
+        )
+        return votes >= 2
+
+    def _f9_fn(row: dict[str, Any]) -> bool:
+        return bool(row["pred_V2_front_L1_confirm2"]) and bool(row["pred_V5_back_confirm2_side_rear"])
+
+    f8_base = _eval_quorum_set(b_rows, _f8_fn)
+    f8_up = _eval_quorum_set(u_rows, _f8_fn)
+    f9_base = _eval_quorum_set(b_rows, _f9_fn)
+    f9_up = _eval_quorum_set(u_rows, _f9_fn)
+
+    f8_timing_events: list[dict[str, Any]] = []
+    f8_pre_t2_confirm = 0
+    f8_pre_t2_cmd_est = 0
+    v2_pre_t2_confirm = 0
+    for eid in upright_ctx.event_order:
+        ur = u_rows[eid]
+        if ur["cohort"] != "train_events":
+            continue
+        t_v2 = ur.get("front_first_consec2_s")
+        t_v5_local = ur.get("back_first_consec2_sr_s")
+        t_v5_master = (
+            round(float(t_v5_local) + float(ur["back_offset_s"]), 4)
+            if (t_v5_local is not None and ur["is_sync11"] and ur["back_offset_s"] is not None)
+            else t_v5_local
+        )
+        t_a3 = ur.get("audio_first_075_k2_s")
+        conf_times = sorted(float(x) for x in (t_v2, t_v5_master, t_a3) if x is not None)
+        t_f8_confirm = round(conf_times[1], 4) if len(conf_times) >= 2 else None
+        t2 = ur.get("gt_T2_s")
+        if t2 is not None and t_v2 is not None and float(t_v2) <= float(t2):
+            v2_pre_t2_confirm += 1
+        if t2 is not None and t_f8_confirm is not None:
+            if t_f8_confirm <= float(t2):
+                f8_pre_t2_confirm += 1
+            if (t_f8_confirm + 2.2) <= float(t2):
+                f8_pre_t2_cmd_est += 1
+        f8_timing_events.append(
+            {
+                "event_id": eid,
+                "t_v2_confirm_s": t_v2,
+                "t_v5_confirm_local_or_master_s": t_v5_master,
+                "t_a3_confirm_s": t_a3,
+                "t_f8_quorum_confirm_s": t_f8_confirm,
+                "gt_T2_s": t2,
+                "f8_confirm_lead_vs_T2_s": (
+                    round(float(t2) - float(t_f8_confirm), 4) if (t2 is not None and t_f8_confirm is not None) else None
+                ),
+            }
+        )
+
+    mcnemar_f8_base_vs_up = _exact_mcnemar(
+        [_f8_fn(b_rows[e]) for e in paired_train_nt],
+        [_f8_fn(u_rows[e]) for e in paired_train_nt],
+        truths_v1,
+    )
+    mcnemar_f8_vs_f6_up = _exact_mcnemar(
+        [bool(u_rows[e]["pred_F6_full_multimodal_dual_sr_or_audio_075_k2"]) for e in paired_train_nt],
+        [_f8_fn(u_rows[e]) for e in paired_train_nt],
+        truths_v1,
+    )
+    exploratory_quorum = {
+        "provenance": "EXPLORATORY_POST_HOC_ANALYSIS",
+        "F8_Exploratory_Strong_2of3_Quorum": {
+            "rule": ">=2 of {V2 Front L1, V5 Back Side/Rear L1, A3 Audio 0.75 k=2}",
+            "baseline": f8_base,
+            "upright": f8_up,
+            "mcnemar_p_baseline_vs_upright": mcnemar_f8_base_vs_up["exact_p_value"],
+            "mcnemar_p_upright_F8_vs_upright_F6": mcnemar_f8_vs_f6_up["exact_p_value"],
+            "causal_quorum_timing_summary": {
+                "n_train_with_T2": sum(1 for r in f8_timing_events if r["gt_T2_s"] is not None),
+                "v2_pre_T2_confirm": v2_pre_t2_confirm,
+                "f8_pre_T2_confirm": f8_pre_t2_confirm,
+                "f8_pre_T2_close_cmd_est_plus2p2s": f8_pre_t2_cmd_est,
+                "per_event": f8_timing_events,
+            },
+        },
+        "F9_Exploratory_Dual_Camera_Confirm2_And": {
+            "rule": "V2 Front L1 AND V5 Back Side/Rear L1",
+            "baseline": f9_base,
+            "upright": f9_up,
+        },
+    }
+    m2_errs = [float(u_rows[e]["back_M2_err_vs_T4_s"]) for e in upright_ctx.event_order if u_rows[e].get("back_M2_err_vs_T4_s") is not None]
+    m2_departure_summary = {
+        "n_events_with_T4_and_back_det": len(m2_errs),
+        "mean_err_s": round(sum(m2_errs) / len(m2_errs), 4) if m2_errs else None,
+        "median_err_s": round(sorted(m2_errs)[len(m2_errs) // 2], 4) if m2_errs else None,
+        "min_err_s": round(min(m2_errs), 4) if m2_errs else None,
+        "max_err_s": round(max(m2_errs), 4) if m2_errs else None,
+        "non_premature_count": sum(1 for x in m2_errs if x >= 0.0),
+    }
+
     payload = {
         "schema_version": "baseline-vs-upright-comparison/1.0",
         "qualification": EXPLORATORY_LABEL,
@@ -2058,6 +2387,10 @@ def _compare_baseline_and_upright(
         ),
         "total_streams": 2 * len(upright_manifest["events"]),
         "audio_invariance": audio_invariance,
+        "session_comparison": session_comparison,
+        "no_train_audio_fp_audit": no_train_audio_audit,
+        "exploratory_quorum_comparison": exploratory_quorum,
+        "upright_m2_departure_summary": m2_departure_summary,
         "config_comparison": cfg_comparison,
         "fsm_comparison": fsm_comparison,
         "prior_8_f6_missed_recovery": eight_event_recovery,
@@ -2134,6 +2467,36 @@ def _compare_baseline_and_upright(
             f"{'Y' if f['baseline_engine_001'] else 'N'}->{'Y' if f['upright_engine_001'] else 'N'} | "
             f"{f['baseline_reopen_cycles']}->{f['upright_reopen_cycles']} |"
         )
+    qt = exploratory_quorum["F8_Exploratory_Strong_2of3_Quorum"]["causal_quorum_timing_summary"]
+    md.extend([
+        "",
+        "## 4. Exploratory Multimodal Quorum (`F8` / `F9`): Eliminating Upright Single-Camera False Positives vs Lead-Time Trade-off",
+        "",
+        "After orientation correction, single-camera `V2` (and OR-fusion `F6`) triggers `1/3` false positive on `no_train_events/event_002` (`front_max_consec=20`, `back_sr=0`, `A3=False`) and triggers `engine_events/event_001`.",
+        "",
+        "| Exploratory Quorum Rule | Base TP/23 | Up TP/23 | Up NT FP/3 | Up Eng001 | Up Prec | Up Rec | Up F1 | Causal Confirm<=T2 | Causal Est Cmd<=T2 |",
+        "|---|---:|---:|---:|---|---:|---:|---:|---:|---:|",
+        (
+            f"| `F8_Exploratory_Strong_2of3_Quorum` (>=2 of V2,V5,A3) | {f8_base['tp']} | **{f8_up['tp']}** | "
+            f"**{f8_up['fp_no_train']}** | {'YES' if f8_up['engine_001_detected'] else 'no'} | "
+            f"{f8_up['precision']*100:.1f}% | {f8_up['recall']*100:.1f}% | {f8_up['f1']*100:.1f}% | "
+            f"{qt['f8_pre_T2_confirm']}/{qt['n_train_with_T2']} (vs V2 {qt['v2_pre_T2_confirm']}/22) | "
+            f"{qt['f8_pre_T2_close_cmd_est_plus2p2s']}/{qt['n_train_with_T2']} |"
+        ),
+        (
+            f"| `F9_Exploratory_Dual_Camera_And` (V2 AND V5) | {f9_base['tp']} | **{f9_up['tp']}** | "
+            f"**{f9_up['fp_no_train']}** | {'YES' if f9_up['engine_001_detected'] else 'no'} | "
+            f"{f9_up['precision']*100:.1f}% | {f9_up['recall']*100:.1f}% | {f9_up['f1']*100:.1f}% | — | — |"
+        ),
+        "",
+        "## 5. Upright Back-Camera Departure Tracking (`M2` vs `gt_T4_s`)",
+        "",
+        (
+            f"- Across `{m2_departure_summary['n_events_with_T4_and_back_det']}/22` `T4`-annotated trains, upright `back_last_det_s - T4` error has "
+            f"mean `{m2_departure_summary['mean_err_s']}s`, median `{m2_departure_summary['median_err_s']}s`, range `[{m2_departure_summary['min_err_s']}s, {m2_departure_summary['max_err_s']}s]`, "
+            f"with `{m2_departure_summary['non_premature_count']}/{m2_departure_summary['n_events_with_T4_and_back_det']}` non-premature (`>=0s`)."
+        ),
+    ])
     (output_dir / "COMPLETE_27_EVENT_UPRIGHT_MULTIMODAL_REPORT.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     return payload
 
@@ -2142,6 +2505,8 @@ def run_evaluation(
     run_upright: bool = False,
     *,
     evaluate_existing_upright: bool = False,
+    workers: int = 4,
+    resume_upright: bool = True,
 ) -> dict[str, Any]:
     """Execute complete 27-event evaluation, causal FSM simulation, and optional upright comparison."""
     ctx = load_verified_context(REPO_ROOT)
@@ -2151,7 +2516,7 @@ def run_evaluation(
 
     upright_manifest: dict[str, Any] | None = None
     if run_upright:
-        upright_manifest = run_upright_raw_inference(ctx)
+        upright_manifest = run_upright_raw_inference(ctx, workers=workers, resume=resume_upright)
     elif evaluate_existing_upright:
         upright_manifest = _load_existing_upright_manifest()
 
@@ -2165,6 +2530,7 @@ def run_evaluation(
         raw_media_accessed=False,
         upright_manifest=upright_manifest,
         orientation_corrected=False,
+        write_outputs=(upright_manifest is None),
     )
 
     print("=== MISSION 9 BASELINE 27-EVENT EVALUATION & CAUSAL FSM VALIDATION ===")
@@ -2229,10 +2595,23 @@ def main() -> None:
         action="store_true",
         help="Evaluate and compare already-generated results/upright_inference_v2/UPRIGHT_INFERENCE_MANIFEST.json without accessing raw media.",
     )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=4,
+        help="Number of parallel event workers for upright raw-media inference (default: 4).",
+    )
+    parser.add_argument(
+        "--no-resume",
+        action="store_true",
+        help="Re-run all 27 events instead of resuming verified per-event checkpoints.",
+    )
     args = parser.parse_args()
     run_evaluation(
         run_upright=bool(args.run_upright_raw_inference),
         evaluate_existing_upright=bool(args.evaluate_existing_upright),
+        workers=int(args.workers),
+        resume_upright=not bool(args.no_resume),
     )
 
 
